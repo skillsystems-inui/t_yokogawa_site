@@ -587,6 +587,7 @@ admin.product.class_management: 規格管理
 admin.product.class_category_management: 規格分類管理
 admin.product.category_management: カテゴリ管理
 admin.product.tag_management: タグ管理
+admin.customer.customer_csv_upload: 会員CSV登録
 admin.product.product_csv_upload: 商品CSV登録
 admin.product.category_csv_upload: カテゴリCSV登録
 
@@ -784,6 +785,42 @@ admin.product.category_csv.parent_category_id_col: 親カテゴリID
 admin.product.category_csv.parent_category_id_description: ''
 admin.product.category_csv.delete_flag_col: カテゴリ削除フラグ
 admin.product.category_csv.delete_flag_description: 0:登録 1:削除を指定します。未指定の場合、0として扱います。
+
+# 会員CSV雛形
+admin.customer.customer_csv.customer_id_col: 会員ID
+admin.customer.customer_csv.customer_id_description: 新規登録の場合は空にしてください。既存の会員を更新する場合は、会員IDを指定してください。
+admin.customer.customer_csv.display_status_col: 会員ステータス(ID)
+admin.customer.customer_csv.display_status_description: ''
+admin.customer.customer_csv.customer_name01_col: 会員名1
+admin.customer.customer_csv.customer_name01_description: ''
+admin.customer.customer_csv.customer_name02_col: 会員名2
+admin.customer.customer_csv.customer_name02_description: ''
+admin.customer.customer_csv.email_col: メールアドレス
+admin.customer.customer_csv.email_description: ''
+admin.customer.customer_csv.password_col: パスワード
+admin.customer.customer_csv.password_description: ''
+admin.customer.customer_csv.customer_name01_kana_col: 会員名1(カナ)
+admin.customer.customer_csv.customer_name01_kana_description: ''
+admin.customer.customer_csv.customer_name02_kana_col: 会員名2(カナ)
+admin.customer.customer_csv.customer_name02_kana_description: ''
+admin.customer.customer_csv.customer_postal_code_col: 郵便番号
+admin.customer.customer_csv.customer_postal_code_description: ''
+admin.customer.customer_csv.customer_addr01_col: 住所1
+admin.customer.customer_csv.customer_addr01_description: ''
+admin.customer.customer_csv.customer_addr02_col: 住所2
+admin.customer.customer_csv.customer_addr02_description: ''
+admin.customer.customer_csv.customer_phone_number_col: 電話番号
+admin.customer.customer_csv.customer_phone_number_description: '例:0611112222'
+admin.customer.customer_csv.customer_sex_col: 性別
+admin.customer.customer_csv.customer_sex_description: '1男性:,女性:2'
+admin.customer.customer_csv.customer_birth_col: 誕生日
+admin.customer.customer_csv.customer_birth_description: '例:2021-01-01'
+admin.customer.customer_csv.customer_point_col: ポイント
+admin.customer.customer_csv.customer_point_description: '0以上の数字を指定してください'
+admin.customer.customer_csv.customer_is_family_main_col: 家族代表フラグ
+admin.customer.customer_csv.customer_is_family_main_description: '0;代表者ではない,1:代表者である'
+admin.customer.customer_csv.customer_family_main_customer_id_col: 家族代表会員ID
+admin.customer.customer_csv.customer_family_main_customer_id_description: '家族代表者とする会員IDを指定してください'
 
 #------------------------------------------------------------------------------------
 # 受注
@@ -1561,6 +1598,7 @@ tooltip.product.free_area: 商品詳細ページに入力内容が表示され�
 tooltip.product.shop_memo: 店舗用のメモ欄です。フロント画面には表示されません。
 tooltip.product.backend_name: 管理者用に別名を登録しておくことができます（例：規格名：サイズ　管理名：サイズ（服）、サイズ（靴）等 ）。フロント画面には表示されません。
 tooltip.product.csv_upload: 所定の型のCSVデータを用いて商品を一括で登録することができます。
+tooltip.customer.csv_upload: 所定の型のCSVデータを用いて会員を一括で登録することができます。
 tooltip.product.csv_format: 雛形ファイルをダウンロードして編集すれば、簡単に所定の型のCSVデータを作成できます。
 tooltip.category.csv_upload: 所定の型のCSVデータを用いてカテゴリを一括で登録することができます。
 tooltip.category.csv_format: 雛形ファイルをダウンロードして編集すれば、簡単に所定の型のCSVデータを作成できます。

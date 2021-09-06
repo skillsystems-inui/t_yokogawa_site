@@ -175,6 +175,13 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
          * })
          */
         private $ClassCategory10;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="additional_price", type="decimal", precision=12, scale=2, options={"default":0})
+         */
+        private $additional_price = 0;
 
         /**
          * @var \Eccube\Entity\Cart
@@ -258,7 +265,7 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
          */
         public function getTotalPrice()
         {
-            return $this->getPrice() * $this->getQuantity();
+            return ($this->getPrice() + $this->getAdditionalPrice()) * $this->getQuantity();
         }
 
         /**
@@ -720,6 +727,25 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
             return $this->printname_noshi;
         }
         
+        /**
+         * @param  integer  $additional_price
+         *
+         * @return CartItem
+         */
+        public function setAdditionalPrice($additional_price)
+        {
+            $this->additional_price = $additional_price;
+
+            return $this;
+        }
+
+        /**
+         * @return string
+         */
+        public function getAdditionalPrice()
+        {
+            return $this->additional_price;
+        }
         
         public function getPriceIncTax()
         {

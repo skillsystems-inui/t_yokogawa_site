@@ -237,6 +237,11 @@ final class EccubeEvents
     // csvTemplate
 
     /**
+     * Admin/Customer/CsvImportController
+     */
+    // csvCustomer
+
+    /**
      * Admin/Product/ProductClassController
      */
     // index

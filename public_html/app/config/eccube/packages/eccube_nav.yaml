@@ -48,6 +48,9 @@ parameters:
                 customer_edit:
                     name: admin.customer.customer_registration
                     url: admin_customer_new
+                customer_csv_import:
+                    name: admin.customer.customer_csv_upload
+                    url: admin_customer_csv_import
         content:
             name: admin.content.contents_management
             icon: fa-file-text-o

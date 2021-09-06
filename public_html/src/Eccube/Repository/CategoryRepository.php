@@ -103,6 +103,54 @@ class CategoryRepository extends AbstractRepository
 
         return $Categories;
     }
+    
+    /**
+     * カテゴリ一覧を取得する.(袋以外)
+     *
+     * 引数 $Parent を指定した場合は, 指定したカテゴリの子以下を取得する.
+     *
+     * @param Category|null $Parent 指定の親カテゴリ
+     * @param bool $flat trueの場合, 階層化されたカテゴリを一つの配列にまとめる
+     *
+     * @return Category[] カテゴリの配列
+     */
+    public function getListWithoutBag(Category $Parent = null, $flat = false)
+    {
+        $qb = $this->createQueryBuilder('c1')
+            ->select('c1, c2, c3, c4, c5')
+            ->leftJoin('c1.Children', 'c2')
+            ->leftJoin('c2.Children', 'c3')
+            ->leftJoin('c3.Children', 'c4')
+            ->leftJoin('c4.Children', 'c5')
+            ->orderBy('c1.sort_no', 'DESC')
+            ->addOrderBy('c2.sort_no', 'DESC')
+            ->addOrderBy('c3.sort_no', 'DESC')
+            ->addOrderBy('c4.sort_no', 'DESC')
+            ->addOrderBy('c5.sort_no', 'DESC');
+
+        if ($Parent) {
+            $qb->where('c1.Parent = :Parent')->setParameter('Parent', $Parent);
+        } else {
+            $qb->where('c1.Parent IS NULL');
+        }
+        
+        //袋を除く
+        $qb->where('c1.name not like :bag')->setParameter('bag', '%袋%');
+        
+        $Categories = $qb->getQuery()
+            ->useResultCache(true, $this->getCacheLifetime())
+            ->getResult();
+
+        if ($flat) {
+            $array = [];
+            foreach ($Categories as $Category) {
+                $array = array_merge($array, $Category->getSelfAndDescendants());
+            }
+            $Categories = $array;
+        }
+
+        return $Categories;
+    }
 
     /**
      * カテゴリを保存する.

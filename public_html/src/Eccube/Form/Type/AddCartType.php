@@ -97,34 +97,10 @@ class AddCartType extends AbstractType
                     ])
                     ->addModelTransformer(new EntityToIdTransformer($this->doctrine->getManager(), ProductClass::class)))
              
-             /*
-            ->add(
-                $builder
-                    ->create('ClassCategory', HiddenType::class, [
-                        'data_class' => null,
-                        'data' => $Product->hasClassCategory() ? null : $ClassCategoryies->first(),
-                        'constraints' => [
-                            new Assert\NotBlank(),
-                        ],
-                    ])
-                    ->addModelTransformer(new EntityToIdTransformer($this->doctrine->getManager(), ClassCategory::class)))
-                    
-                    */
-                    
-                    /*
-                    ->add(
-                $builder
-                    ->create('ClassCategory1', HiddenType::class, [
-                        'data_class' => null,
-                        'data' => null,
-                        'constraints' => [
-                            new Assert\NotBlank(),
-                        ],
-                    ])
-                    ->addModelTransformer(new EntityToIdTransformer($this->doctrine->getManager(), ClassCategory::class)))
-                    */
-                    
-                    ;
+             ->add('additional_price', HiddenType::class, [
+                'data' => 0,
+                 ])
+                 ;
                     
 
         if ($Product->getStockFind()) {
@@ -298,56 +274,11 @@ class AddCartType extends AbstractType
                 /** @var CartItem $CartItem */
                 $CartItem = $event->getData();
                 $ProductClass = $CartItem->getProductClass();
-                //オプション1取得 ToDo0803
-                $ClassCategory1 = $CartItem->getClassCategory1();
-                
-                //test                
-                log_info(
-					            '__istest!!',
-					            [
-					                '__ClassCategory1__' => $ClassCategory1,
-					                
-					            ]
-					        );
-					        
-					        //'__CartItem__' => $CartItem,
-                
-                if (!$ProductClass) {
-                	var_dump('no_ProductClass');
-                	$ProductClass->getPrice02IncTax___();
-                }
-                
-                
                 // FIXME 価格の設定箇所、ここでいいのか
                 if ($ProductClass) {
                     $CartItem
                         ->setProductClass($ProductClass)
                         ->setPrice($ProductClass->getPrice02IncTax());
-                        
-                        //ToDo0803 ClassCategoryのセットが必要
-                        //オプション1セット
-                        
-                        if($ClassCategory1){
-                        	$test = 'IsIN!';
-                        	log_info(
-					            '__testLog',
-					            [
-					                'test_val' => $test,
-					                'ClassCategory1' => $ClassCategory1,
-					            ]
-					        );
-                        }else{
-                        	$test = 'IsNO!';
-                        	log_info(
-					            '__testLog',
-					            [
-					                'test_val' => $test,
-					                'ClassCategory1' => $ClassCategory1,
-					            ]
-					        );
-                        }
-                        /*
-                        */
                 }
             });
         }

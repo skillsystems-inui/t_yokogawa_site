@@ -390,6 +390,8 @@ class CartService
      * @param $ClassCategoryOption10 ClassCategory 商品オプション10
      * @param $PrintnamePlate 名付け(プレート)
      * @param $PrintnameNoshi 名付け(熨斗)
+     * @param $PrintnameNoshi 名付け(熨斗)
+     * @param $AdditionalOptionPrice オプションによる追加価格　additional_option_price
      * @param $quantity int 数量
      *
      * @return bool 商品を追加できた場合はtrue
@@ -407,6 +409,7 @@ class CartService
                                      $ClassCategoryOption10, 
                                      $PrintnamePlate,
                                      $PrintnameNoshi,
+                                     $AdditionalOptionPrice,
                                      $quantity = 1)
     {
         
@@ -596,6 +599,8 @@ class CartService
         //[Option]名付け(熨斗)をCartItemに登録する
         $newItem->setPrintnameNoshi($PrintnameNoshi);
         
+        //[Option]オプションによる追加価格をCartItemに登録する
+        $newItem->setAdditionalPrice($AdditionalOptionPrice);
         
         $allCartItems = $this->mergeAllCartItems([$newItem]);
         $this->restoreCarts($allCartItems);

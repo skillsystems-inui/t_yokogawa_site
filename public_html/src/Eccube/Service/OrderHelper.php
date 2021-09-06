@@ -374,6 +374,10 @@ class OrderHelper
             
             //名入れ(熨斗)
             $OptionPrintNoshi = $item->getPrintnameNoshi();
+            
+            //オプションによる追加価格
+            $AdditionalPrice = $item->getAdditionalPrice();
+            
 
             $OrderItem = new OrderItem();
             $OrderItem
@@ -445,6 +449,10 @@ class OrderHelper
             //名入れ(熨斗)
             if (!is_null($OptionPrintNoshi)) {
                 $OrderItem->setOptionPrintnameNoshi($OptionPrintNoshi);
+            }
+            //オプションによる追加価格
+            if (!is_null($AdditionalPrice)) {
+                $OrderItem->setAdditionalPrice($AdditionalPrice);
             }
 
             return $OrderItem;

@@ -483,6 +483,42 @@ admin.common.move_to_confirm_save_and_move: Save & Move
 admin.common.admin_url_warning: Please set the Admin Console URL that is hard to guess for security. You can set it at "<a href="%url%">Security</a>".
 
 
+# Customer CSV
+admin.customer.customer_csv.customer_id_col: Customer Id
+admin.customer.customer_csv.customer_id_description: Please leave it empty for new registration. If you want to renew an existing member please specify the member ID
+admin.customer.customer_csv.display_status_col: Customer status (ID)
+admin.customer.customer_csv.display_status_description: ''
+admin.customer.customer_csv.customer_name01_col: Customer Name1
+admin.customer.customer_csv.customer_name01_description: ''
+admin.customer.customer_csv.customer_name02_col: Customer Name12
+admin.customer.customer_csv.customer_name02_description: ''
+admin.customer.customer_csv.email_col: MailAddress
+admin.customer.customer_csv.email_description: ''
+admin.customer.customer_csv.password_col: Password
+admin.customer.customer_csv.password_description: ''
+admin.customer.customer_csv.customer_name01_kana_col: 会員名1(カナ)
+admin.customer.customer_csv.customer_name01_kana_description: ''
+admin.customer.customer_csv.customer_name02_kana_col: 会員名2(カナ)
+admin.customer.customer_csv.customer_name02_kana_description: ''
+admin.customer.customer_csv.customer_postal_code_col: 郵便番号
+admin.customer.customer_csv.customer_postal_code_description: ''
+admin.customer.customer_csv.customer_addr01_col: 住所1
+admin.customer.customer_csv.customer_addr01_description: ''
+admin.customer.customer_csv.customer_addr02_col: 住所2
+admin.customer.customer_csv.customer_addr02_description: ''
+admin.customer.customer_csv.customer_phone_number_col: 電話番号
+admin.customer.customer_csv.customer_phone_number_description: '例:0611112222'
+admin.customer.customer_csv.customer_sex_col: 性別
+admin.customer.customer_csv.customer_sex_description: '1男性:,女性:2'
+admin.customer.customer_csv.customer_birth_col: 誕生日
+admin.customer.customer_csv.customer_birth_description: '例:2021-01-01'
+admin.customer.customer_csv.customer_point_col: ポイント
+admin.customer.customer_csv.customer_point_description: '0以上の数字を指定してください'
+admin.customer.customer_csv.customer_is_family_main_col: 家族代表フラグ
+admin.customer.customer_csv.customer_is_family_main_description: '0;代表者ではない,1:代表者である'
+admin.customer.customer_csv.customer_family_main_customer_id_col: 家族代表会員ID
+admin.customer.customer_csv.customer_family_main_customer_id_description: '家族代表者とする会員IDを指定してください'
+
 # Labels related to entity
 admin.common.id: ID
 admin.common.name: Name
@@ -587,6 +623,7 @@ admin.product.class_management: Options
 admin.product.class_category_management: Option Groups
 admin.product.category_management: Categories
 admin.product.tag_management: Tags
+admin.customer.customer_csv_upload: Customer CSV
 admin.product.product_csv_upload: Product CSV
 admin.product.category_csv_upload: Category CSV
 
@@ -1561,6 +1598,7 @@ tooltip.product.free_area: The entry will be displayed on the product page. The 
 tooltip.product.shop_memo: Notes for store use. This will not be displayed on the storefront.
 tooltip.product.backend_name: 'You can register an alias for administrator (e.g. Option Name: Size - Alias: Size (Clothing) or Size (Shoes) etc. It will not be displayed on the storefront.'
 tooltip.product.csv_upload: Bulk product registration is available with a CSV template.
+tooltip.customer.csv_upload: Bulk customer registration is available with a CSV template.
 tooltip.product.csv_format: You can create a CSV data easily with templates available for downloads.
 tooltip.category.csv_upload: Bulk category registration is available with a CSV template.
 tooltip.category.csv_format: You can create a CSV data easily with templates available for downloads.

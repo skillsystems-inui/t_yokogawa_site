@@ -267,7 +267,7 @@ class PurchaseFlow
     protected function calculateTotal(ItemHolderInterface $itemHolder)
     {
         $total = array_reduce($itemHolder->getItems()->toArray(), function ($sum, ItemInterface $item) {
-            $sum += $item->getPriceIncTax() * $item->getQuantity();
+            $sum += ($item->getPriceIncTax() + $item->getAdditionalPrice()) * $item->getQuantity();
 
             return $sum;
         }, 0);
@@ -284,7 +284,7 @@ class PurchaseFlow
         $total = $itemHolder->getItems()
             ->getProductClasses()
             ->reduce(function ($sum, ItemInterface $item) {
-                $sum += $item->getPriceIncTax() * $item->getQuantity();
+                $sum += ($item->getPriceIncTax() + $item->getAdditionalPrice()) * $item->getQuantity();
 
                 return $sum;
             }, 0);
@@ -303,7 +303,7 @@ class PurchaseFlow
         $total = $itemHolder->getItems()
             ->getDeliveryFees()
             ->reduce(function ($sum, ItemInterface $item) {
-                $sum += $item->getPriceIncTax() * $item->getQuantity();
+                $sum += ($item->getPriceIncTax() + $item->getAdditionalPrice()) * $item->getQuantity();
 
                 return $sum;
             }, 0);
@@ -318,7 +318,7 @@ class PurchaseFlow
         $total = $itemHolder->getItems()
             ->getDiscounts()
             ->reduce(function ($sum, ItemInterface $item) {
-                $sum += $item->getPriceIncTax() * $item->getQuantity();
+                $sum += ($item->getPriceIncTax() + $item->getAdditionalPrice()) * $item->getQuantity();
 
                 return $sum;
             }, 0);
@@ -334,7 +334,7 @@ class PurchaseFlow
         $total = $itemHolder->getItems()
             ->getCharges()
             ->reduce(function ($sum, ItemInterface $item) {
-                $sum += $item->getPriceIncTax() * $item->getQuantity();
+                $sum += ($item->getPriceIncTax() + $item->getAdditionalPrice()) * $item->getQuantity();
 
                 return $sum;
             }, 0);
@@ -351,7 +351,7 @@ class PurchaseFlow
                 if ($item instanceof OrderItem) {
                     $sum += $item->getTax() * $item->getQuantity();
                 } else {
-                    $sum += ($item->getPriceIncTax() - $item->getPrice()) * $item->getQuantity();
+                    $sum += (($item->getPriceIncTax() + $item->getAdditionalPrice()) - $item->getPrice()) * $item->getQuantity();
                 }
 
                 return $sum;

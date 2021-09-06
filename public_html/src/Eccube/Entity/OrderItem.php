@@ -52,7 +52,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
          */
         public function getTotalPrice()
         {
-            return $this->getPriceIncTax() * $this->getQuantity();
+            return ($this->getPriceIncTax() + $this->getAdditionalPrice()) * $this->getQuantity();
         }
 
         /**
@@ -318,7 +318,14 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
          * @ORM\Column(name="option_printname_noshi", type="string", length=255, nullable=true)
          */
         private $option_printname_noshi;
-                
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="additional_price", type="decimal", precision=12, scale=2, options={"default":0})
+         */
+        private $additional_price = 0;
+        
         /**
          * @var string|null
          *
@@ -1197,6 +1204,26 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
             $this->option_printname_noshi = $optionPrintnameNoshi;
 
             return $this;
+        }
+        
+        /**
+         * @param  integer  $additional_price
+         *
+         * @return CartItem
+         */
+        public function setAdditionalPrice($additional_price)
+        {
+            $this->additional_price = $additional_price;
+
+            return $this;
+        }
+
+        /**
+         * @return string
+         */
+        public function getAdditionalPrice()
+        {
+            return $this->additional_price;
         }
         
         /**

@@ -410,7 +410,6 @@ class ProductController extends AbstractController
                 'product_id' => $Product->getId(),
                 'product_class_id' => $addCartData['product_class_id'],
                 'quantity' => $addCartData['quantity'],
-                'addCartData' => $addCartData,
             ]
         );
         
@@ -514,6 +513,9 @@ class ProductController extends AbstractController
         //名付け(熨斗)
         $printname_noshi = $form->get('printname_noshi')->getData();
         
+        //オプションによる追加価格
+        $additional_option_price = $form->get('additional_price')->getData();
+        
         //オプション選択されていればカートに反映する
         $this->cartService->addProductOption($addCartData['product_class_id'], 
                                              $optionClassCategoryId1, 
@@ -528,6 +530,7 @@ class ProductController extends AbstractController
                                              $optionClassCategoryId10, 
                                              $printname_plate,
                                              $printname_noshi,
+                                             $additional_option_price,
                                              $addCartData['quantity']);
         //$this->cartService->addProduct($addCartData['product_class_id'], $addCartData['quantity']);
 
