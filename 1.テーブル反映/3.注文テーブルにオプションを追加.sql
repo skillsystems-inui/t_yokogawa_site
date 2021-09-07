@@ -38,3 +38,6 @@ ALTER TABLE `dtb_order_item` ADD `option_printname_noshi` varchar(255) DEFAULT N
 --íçï∂é}î‘Çí«â¡
 ALTER TABLE `dtb_order_item` ADD `order_sub_no` varchar(255) DEFAULT NULL;
 ALTER TABLE `dtb_order_item` MODIFY `order_sub_no` varchar(255) NULL DEFAULT NULL;
+
+--ÉIÉvÉVÉáÉìÇ…ÇÊÇÈí«â¡óøã‡
+ALTER TABLE `dtb_order_item` ADD `additional_price` decimal(12,2) NOT NULL DEFAULT '0.00';
