@@ -75,3 +75,13 @@ INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`,
 (2, 1, 'Eccube\\\\Entity\\\\Customer', 'Familymain', 'name', '家族代表フラグ', 4, 1, NOW(), NOW(), 'csv'),
 (2, 1, 'Eccube\\\\Entity\\\\Customer', 'Maincustomer', 'name_all', '家族代表会員', 6, 1, NOW(), NOW(), 'csv');
 
+
+
+
+
+
+--会員　家族情報
+-----家族情報01　続柄
+ALTER TABLE `dtb_customer` ADD `family_relation01` varchar(50) DEFAULT NULL;
+-----家族情報01　誕生日
+ALTER TABLE `dtb_customer` ADD `family_birth01` datetime DEFAULT NULL;

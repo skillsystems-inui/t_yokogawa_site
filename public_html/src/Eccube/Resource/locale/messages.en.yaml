@@ -544,6 +544,8 @@ admin.common.birth_day__start: Date of Birth (Start)
 admin.common.birth_day__end: Date of Birth (End)
 admin.common.point: Points
 admin.common.familymain: Family Main
+admin.common.family_info: Family Info
+admin.common.family_relation: Family Relation
 admin.common.shop_memo: Notes (Store Use)
 admin.common.create_date: Registration Date
 admin.common.create_date__start: Registration Date (Start)

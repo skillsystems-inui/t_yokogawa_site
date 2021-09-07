@@ -508,6 +508,8 @@ admin.common.birth_day__start: 誕生日(開始)
 admin.common.birth_day__end: 誕生日(終了)
 admin.common.point: ポイント
 admin.common.familymain: 家族代表
+admin.common.family_info: 家族情報
+admin.common.family_relation: 続柄
 admin.common.shop_memo: ショップ用メモ欄
 admin.common.create_date: 登録日
 admin.common.create_date__start: 登録日(開始)

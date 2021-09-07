@@ -163,6 +163,32 @@ class CustomerType extends AbstractType
             ->add('mainname', MainnameType::class, [
                 'required' => false,
             ])
+            
+            //家族情報
+            //  1人目
+            ->add('family_birth01', BirthdayType::class, [
+                'required' => false,
+                'input' => 'datetime',
+                'years' => range(date('Y'), date('Y') - $this->eccubeConfig['eccube_birth_max']),
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'constraints' => [
+                    new Assert\LessThanOrEqual([
+                        'value' => date('Y-m-d', strtotime('-1 day')),
+                        'message' => 'form_error.select_is_future_or_now_date',
+                    ]),
+                ],
+            ])
+            ->add('family_relation01', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            
             ->add('note', TextareaType::class, [
                 'required' => false,
                 'constraints' => [

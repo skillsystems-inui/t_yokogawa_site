@@ -234,6 +234,20 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          * @ORM\Column(name="update_date", type="datetimetz")
          */
         private $update_date;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_relation01", type="string", length=50)
+         */
+        private $family_relation01;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="family_birth01", type="datetimetz", nullable=true)
+         */
+        private $family_birth01;
 
         /**
          * @var \Doctrine\Common\Collections\Collection
@@ -1343,6 +1357,56 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         {
             return $this->mainname;
         }
+        
+        /**
+         * Set family_relation01.
+         *
+         * @param string $family_relation01
+         *
+         * @return Customer
+         */
+        public function setFamilyRelation01($family_relation01)
+        {
+            $this->family_relation01 = $family_relation01;
+
+            return $this;
+        }
+
+        /**
+         * Get family_relation01.
+         *
+         * @return string
+         */
+        public function getFamilyRelation01()
+        {
+            return $this->family_relation01;
+        }
+        
+        
+        /**
+         * Set family_birth01.
+         *
+         * @param string $family_birth01
+         *
+         * @return Customer
+         */
+        public function setFamilyBirth01($family_birth01)
+        {
+            $this->family_birth01 = $family_birth01;
+
+            return $this;
+        }
+
+        /**
+         * Get family_birth01.
+         *
+         * @return string
+         */
+        public function getFamilyBirth01()
+        {
+            return $this->family_birth01;
+        }
+        
 
     }
 }
