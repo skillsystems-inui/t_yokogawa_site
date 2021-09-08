@@ -229,52 +229,52 @@
         var $addprice = 0;//初期値0円
         
         //オプション1
-        var $optn1 = $form.find('select[name=optioncategory_id1] option:selected');
+        var $optn1 = $form.find('input[name=optioncategory_id1] option:selected');
         var yen1 = eccube.getPerOptionPrice($form, $optn1);
         $addprice = $addprice +  yen1;
         
         //オプション2
-        var $optn2 = $form.find('select[name=optioncategory_id2] option:selected');
+        var $optn2 = $form.find('input[name=optioncategory_id2] option:selected');
         var yen2 = eccube.getPerOptionPrice($form, $optn2);
         $addprice = $addprice +  yen2;
 
         //オプション3
-        var $optn3 = $form.find('select[name=optioncategory_id3] option:selected');
+        var $optn3 = $form.find('input[name=optioncategory_id3] option:selected');
         var yen3 = eccube.getPerOptionPrice($form, $optn3);
         $addprice = $addprice +  yen3;
 
         //オプション4
-        var $optn4 = $form.find('select[name=optioncategory_id4] option:selected');
+        var $optn4 = $form.find('input[name=optioncategory_id4] option:selected');
         var yen4 = eccube.getPerOptionPrice($form, $optn4);
         $addprice = $addprice +  yen4;
 
         //オプション5
-        var $optn5 = $form.find('select[name=optioncategory_id5] option:selected');
+        var $optn5 = $form.find('input[name=optioncategory_id5] option:selected');
         var yen5 = eccube.getPerOptionPrice($form, $optn5);
         $addprice = $addprice +  yen5;
         
         //オプション6
-        var $optn6 = $form.find('select[name=optioncategory_id6] option:selected');
+        var $optn6 = $form.find('input[name=optioncategory_id6] option:selected');
         var yen6 = eccube.getPerOptionPrice($form, $optn6);
         $addprice = $addprice +  yen6;
         
         //オプション7
-        var $optn7 = $form.find('select[name=optioncategory_id7] option:selected');
+        var $optn7 = $form.find('input[name=optioncategory_id7] option:selected');
         var yen7 = eccube.getPerOptionPrice($form, $optn7);
         $addprice = $addprice +  yen7;
 
         //オプション8
-        var $optn8 = $form.find('select[name=optioncategory_id8] option:selected');
+        var $optn8 = $form.find('input[name=optioncategory_id8] option:selected');
         var yen8 = eccube.getPerOptionPrice($form, $optn8);
         $addprice = $addprice +  yen8;
 
         //オプション9
-        var $optn9 = $form.find('select[name=optioncategory_id9] option:selected');
+        var $optn9 = $form.find('input[name=optioncategory_id9] option:selected');
         var yen9 = eccube.getPerOptionPrice($form, $optn9);
         $addprice = $addprice +  yen9;
         
         //オプション10
-        var $optn10 = $form.find('select[name=optioncategory_id10] option:selected');
+        var $optn10 = $form.find('input[name=optioncategory_id10] option:selected');
         var yen10 = eccube.getPerOptionPrice($form, $optn10);
         $addprice = $addprice +  yen10;
         
@@ -293,52 +293,52 @@
         var $addprice = 0;//初期値0円
         
         //オプション1
-        var $optn1 = $form.find('select[name=optioncategory_id1] option:selected');
+        var $optn1 = $form.find('input[name=optioncategory_id1] option:selected');
         var yen1 = eccube.getPerOptionPrice($form, $optn1);
         $addprice = $addprice +  yen1;
         
         //オプション2
-        var $optn2 = $form.find('select[name=optioncategory_id2] option:selected');
+        var $optn2 = $form.find('input[name=optioncategory_id2] option:selected');
         var yen2 = eccube.getPerOptionPrice($form, $optn2);
         $addprice = $addprice +  yen2;
 
         //オプション3
-        var $optn3 = $form.find('select[name=optioncategory_id3] option:selected');
+        var $optn3 = $form.find('input[name=optioncategory_id3] option:selected');
         var yen3 = eccube.getPerOptionPrice($form, $optn3);
         $addprice = $addprice +  yen3;
 
         //オプション4
-        var $optn4 = $form.find('select[name=optioncategory_id4] option:selected');
+        var $optn4 = $form.find('input[name=optioncategory_id4] option:selected');
         var yen4 = eccube.getPerOptionPrice($form, $optn4);
         $addprice = $addprice +  yen4;
 
         //オプション5
-        var $optn5 = $form.find('select[name=optioncategory_id5] option:selected');
+        var $optn5 = $form.find('input[name=optioncategory_id5] option:selected');
         var yen5 = eccube.getPerOptionPrice($form, $optn5);
         $addprice = $addprice +  yen5;
         
         //オプション6
-        var $optn6 = $form.find('select[name=optioncategory_id6] option:selected');
+        var $optn6 = $form.find('input[name=optioncategory_id6] option:selected');
         var yen6 = eccube.getPerOptionPrice($form, $optn6);
         $addprice = $addprice +  yen6;
         
         //オプション7
-        var $optn7 = $form.find('select[name=optioncategory_id7] option:selected');
+        var $optn7 = $form.find('input[name=optioncategory_id7] option:selected');
         var yen7 = eccube.getPerOptionPrice($form, $optn7);
         $addprice = $addprice +  yen7;
 
         //オプション8
-        var $optn8 = $form.find('select[name=optioncategory_id8] option:selected');
+        var $optn8 = $form.find('input[name=optioncategory_id8] option:selected');
         var yen8 = eccube.getPerOptionPrice($form, $optn8);
         $addprice = $addprice +  yen8;
 
         //オプション9
-        var $optn9 = $form.find('select[name=optioncategory_id9] option:selected');
+        var $optn9 = $form.find('input[name=optioncategory_id9] option:selected');
         var yen9 = eccube.getPerOptionPrice($form, $optn9);
         $addprice = $addprice +  yen9;
         
         //オプション10
-        var $optn10 = $form.find('select[name=optioncategory_id10] option:selected');
+        var $optn10 = $form.find('input[name=optioncategory_id10] option:selected');
         var yen10 = eccube.getPerOptionPrice($form, $optn10);
         $addprice = $addprice +  yen10;
         
@@ -405,7 +405,7 @@
             
         
         // オプション1選択時
-        $('select[name=optioncategory_id1]')
+        $('input[name=optioncategory_id1]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
@@ -416,7 +416,7 @@
                 }
             });
         // オプション2選択時
-        $('select[name=optioncategory_id2]')
+        $('input[name=optioncategory_id2]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
@@ -427,7 +427,7 @@
                 }
             });
         // オプション3選択時
-        $('select[name=optioncategory_id3]')
+        $('input[name=optioncategory_id3]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
@@ -438,7 +438,7 @@
                 }
             });
         // オプション4選択時
-        $('select[name=optioncategory_id4]')
+        $('input[name=optioncategory_id4]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
@@ -449,7 +449,7 @@
                 }
             });
         // オプション5選択時
-        $('select[name=optioncategory_id5]')
+        $('input[name=optioncategory_id5]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
@@ -460,7 +460,7 @@
                 }
             });
         // オプション6選択時
-        $('select[name=optioncategory_id6]')
+        $('input[name=optioncategory_id6]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
@@ -471,7 +471,7 @@
                 }
             });
         // オプション7選択時
-        $('select[name=optioncategory_id7]')
+        $('input[name=optioncategory_id7]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
@@ -482,7 +482,7 @@
                 }
             });
         // オプション8選択時
-        $('select[name=optioncategory_id8]')
+        $('input[name=optioncategory_id8]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
@@ -493,7 +493,7 @@
                 }
             });
         // オプション9選択時
-        $('select[name=optioncategory_id9]')
+        $('input[name=optioncategory_id9]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
@@ -504,7 +504,7 @@
                 }
             });
         // オプション10選択時
-        $('select[name=optioncategory_id10]')
+        $('input[name=optioncategory_id10]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();

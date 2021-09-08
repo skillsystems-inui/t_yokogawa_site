@@ -155,96 +155,176 @@ class AddCartType extends AbstractType
             }
             
             //オプションセット
+            /*
+            	【ケーキ】
+            	[タイプ]　　　[オプション名]
+            	ラジオボタン　メッセージ(名入れあり)、持ち帰りポリ袋
+            	数字入力　　　キャンドル(番号、本数)、デコレーション追加
+            	【ギフト】
+            	[タイプ]　　　[オプション名]
+            	ラジオボタン　包装方法、掛け方、種類、上書き、(名入れ)
+            	数字入力　　　なし
+            */
             if ($Product && $Product->getProductClassCategories()) {
                 $Product->set_options();//オプション内容を取得
                 if (!is_null($Product->getOptionName1())) {
-                    $select_text =  '--- '.$Product->getOptionName1().'(選択)'.' ---';
                     $builder->add('optioncategory_id1', ChoiceType::class, [
                         'label' => $Product->getOptionName1(),
-                        'choices' => [$select_text => '__unselected'] + $Product->getOptionCategories1AsFlip(),
+                        'choices' => $Product->getOptionCategories1AsFlip(),
                         'mapped' => false,
                     ]);
+                    $options = $builder->get('optioncategory_id1')->getOptions();
+
+		            //ラジオボタン指定
+		            $options['compound'] = true;
+		            $options['expanded'] = true;
+		            unset($options['choices']['common.select']);
+
+		            $builder->add('optioncategory_id1', ChoiceType::class, $options);
                 }
                 
                 if (!is_null($Product->getOptionName2())) {
-                    $select_text =  '--- '.$Product->getOptionName2().'(選択)'.' ---';
                     $builder->add('optioncategory_id2', ChoiceType::class, [
                         'label' => $Product->getOptionName2(),
-                        'choices' => [$select_text => '__unselected'] + $Product->getOptionCategories2AsFlip(),
+                        'choices' => $Product->getOptionCategories2AsFlip(),
                         'mapped' => false,
                     ]);
+                    $options = $builder->get('optioncategory_id2')->getOptions();
+
+		            //ラジオボタン指定
+		            $options['compound'] = true;
+		            $options['expanded'] = true;
+		            unset($options['choices']['common.select']);
+
+		            $builder->add('optioncategory_id2', ChoiceType::class, $options);
                 }
                 
                 if (!is_null($Product->getOptionName3())) {
-                    $select_text =  '--- '.$Product->getOptionName3().'(選択)'.' ---';
                     $builder->add('optioncategory_id3', ChoiceType::class, [
                         'label' => $Product->getOptionName3(),
-                        'choices' => [$select_text => '__unselected'] + $Product->getOptionCategories3AsFlip(),
+                        'choices' => $Product->getOptionCategories3AsFlip(),
                         'mapped' => false,
                     ]);
+                    $options = $builder->get('optioncategory_id3')->getOptions();
+
+		            //ラジオボタン指定
+		            $options['compound'] = true;
+		            $options['expanded'] = true;
+		            unset($options['choices']['common.select']);
+
+		            $builder->add('optioncategory_id3', ChoiceType::class, $options);
                 }
                 
                 if (!is_null($Product->getOptionName4())) {
-                    $select_text =  '--- '.$Product->getOptionName4().'(選択)'.' ---';
                     $builder->add('optioncategory_id4', ChoiceType::class, [
                         'label' => $Product->getOptionName4(),
-                        'choices' => [$select_text => '__unselected'] + $Product->getOptionCategories4AsFlip(),
+                        'choices' => $Product->getOptionCategories4AsFlip(),
                         'mapped' => false,
                     ]);
+                    $options = $builder->get('optioncategory_id4')->getOptions();
+
+		            //ラジオボタン指定
+		            $options['compound'] = true;
+		            $options['expanded'] = true;
+		            unset($options['choices']['common.select']);
+
+		            $builder->add('optioncategory_id4', ChoiceType::class, $options);
                 }
                 
                 if (!is_null($Product->getOptionName5())) {
-                    $select_text =  '--- '.$Product->getOptionName5().'(選択)'.' ---';
                     $builder->add('optioncategory_id5', ChoiceType::class, [
                         'label' => $Product->getOptionName5(),
-                        'choices' => [$select_text => '__unselected'] + $Product->getOptionCategories5AsFlip(),
+                        'choices' => $Product->getOptionCategories5AsFlip(),
                         'mapped' => false,
                     ]);
+                    $options = $builder->get('optioncategory_id5')->getOptions();
+
+		            //ラジオボタン指定
+		            $options['compound'] = true;
+		            $options['expanded'] = true;
+		            unset($options['choices']['common.select']);
+
+		            $builder->add('optioncategory_id5', ChoiceType::class, $options);
                 }
                 
                 if (!is_null($Product->getOptionName6())) {
-                    $select_text =  '--- '.$Product->getOptionName6().'(選択)'.' ---';
                     $builder->add('optioncategory_id6', ChoiceType::class, [
                         'label' => $Product->getOptionName6(),
-                        'choices' => [$select_text => '__unselected'] + $Product->getOptionCategories6AsFlip(),
+                        'choices' => $Product->getOptionCategories6AsFlip(),
                         'mapped' => false,
                     ]);
+                    $options = $builder->get('optioncategory_id6')->getOptions();
+
+		            //ラジオボタン指定
+		            $options['compound'] = true;
+		            $options['expanded'] = true;
+		            unset($options['choices']['common.select']);
+
+		            $builder->add('optioncategory_id6', ChoiceType::class, $options);
                 }
                 
                 if (!is_null($Product->getOptionName7())) {
-                    $select_text =  '--- '.$Product->getOptionName7().'(選択)'.' ---';
                     $builder->add('optioncategory_id7', ChoiceType::class, [
                         'label' => $Product->getOptionName7(),
-                        'choices' => [$select_text => '__unselected'] + $Product->getOptionCategories7AsFlip(),
+                        'choices' => $Product->getOptionCategories7AsFlip(),
                         'mapped' => false,
                     ]);
+                    $options = $builder->get('optioncategory_id7')->getOptions();
+
+		            //ラジオボタン指定
+		            $options['compound'] = true;
+		            $options['expanded'] = true;
+		            unset($options['choices']['common.select']);
+
+		            $builder->add('optioncategory_id7', ChoiceType::class, $options);
                 }
                 
                 if (!is_null($Product->getOptionName8())) {
-                    $select_text =  '--- '.$Product->getOptionName8().'(選択)'.' ---';
                     $builder->add('optioncategory_id8', ChoiceType::class, [
                         'label' => $Product->getOptionName8(),
-                        'choices' => [$select_text => '__unselected'] + $Product->getOptionCategories8AsFlip(),
+                        'choices' => $Product->getOptionCategories8AsFlip(),
                         'mapped' => false,
                     ]);
+                    $options = $builder->get('optioncategory_id8')->getOptions();
+
+		            //ラジオボタン指定
+		            $options['compound'] = true;
+		            $options['expanded'] = true;
+		            unset($options['choices']['common.select']);
+
+		            $builder->add('optioncategory_id8', ChoiceType::class, $options);
                 }
                 
                 if (!is_null($Product->getOptionName9())) {
-                    $select_text =  '--- '.$Product->getOptionName9().'(選択)'.' ---';
                     $builder->add('optioncategory_id9', ChoiceType::class, [
                         'label' => $Product->getOptionName9(),
-                        'choices' => [$select_text => '__unselected'] + $Product->getOptionCategories9AsFlip(),
+                        'choices' => $Product->getOptionCategories9AsFlip(),
                         'mapped' => false,
                     ]);
+                    $options = $builder->get('optioncategory_id9')->getOptions();
+
+		            //ラジオボタン指定
+		            $options['compound'] = true;
+		            $options['expanded'] = true;
+		            unset($options['choices']['common.select']);
+
+		            $builder->add('optioncategory_id9', ChoiceType::class, $options);
                 }
                 
                 if (!is_null($Product->getOptionName10())) {
-                    $select_text =  '--- '.$Product->getOptionName10().'(選択)'.' ---';
                     $builder->add('optioncategory_id10', ChoiceType::class, [
                         'label' => $Product->getOptionName10(),
-                        'choices' => [$select_text => '__unselected'] + $Product->getOptionCategories10AsFlip(),
+                        'choices' => $Product->getOptionCategories10AsFlip(),
                         'mapped' => false,
                     ]);
+                    $options = $builder->get('optioncategory_id10')->getOptions();
+
+		            //ラジオボタン指定
+		            $options['compound'] = true;
+		            $options['expanded'] = true;
+		            unset($options['choices']['common.select']);
+
+		            $builder->add('optioncategory_id10', ChoiceType::class, $options);
                 }
                 
                 //名入れ(プレート)
