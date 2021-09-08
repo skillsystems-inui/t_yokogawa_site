@@ -377,12 +377,12 @@
      */
     $(function() {
         // 規格1選択時
-        $('select[name=classcategory_id1]')
+        $('input[name=classcategory_id1]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
                 var $sele1 = $(this);
-                var $sele2 = $form.find('select[name=classcategory_id2]');
+                var $sele2 = $form.find('input[name=classcategory_id2]');
 
                 // 規格1のみの場合
                 if (!$sele2.length) {
@@ -394,11 +394,11 @@
             });
 
         // 規格2選択時
-        $('select[name=classcategory_id2]')
+        $('input[name=classcategory_id2]')
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
-                var $sele1 = $form.find('select[name=classcategory_id1]');
+                var $sele1 = $form.find('input[name=classcategory_id1]');
                 var $sele2 = $(this);
                 eccube.checkStock($form, product_id, $sele1.val(), $sele2.val());
             });
@@ -409,7 +409,7 @@
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
-                var $sele1 = $form.find('select[name=classcategory_id1]');
+                var $sele1 = $form.find('input[name=classcategory_id1]');
                 //規格1指定ありの場合のみ在庫チェック
                 if($sele1.length > 0){
                 	eccube.checkStock($form, product_id, $sele1.val(), null);
@@ -420,7 +420,7 @@
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
-                var $sele1 = $form.find('select[name=classcategory_id1]');
+                var $sele1 = $form.find('input[name=classcategory_id1]');
                 //規格1指定ありの場合のみ在庫チェック
                 if($sele1.length > 0){
                 	eccube.checkStock($form, product_id, $sele1.val(), null);
@@ -431,7 +431,7 @@
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
-                var $sele1 = $form.find('select[name=classcategory_id1]');
+                var $sele1 = $form.find('input[name=classcategory_id1]');
                 //規格1指定ありの場合のみ在庫チェック
                 if($sele1.length > 0){
                 	eccube.checkStock($form, product_id, $sele1.val(), null);
@@ -442,7 +442,7 @@
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
-                var $sele1 = $form.find('select[name=classcategory_id1]');
+                var $sele1 = $form.find('input[name=classcategory_id1]');
                 //規格1指定ありの場合のみ在庫チェック
                 if($sele1.length > 0){
                 	eccube.checkStock($form, product_id, $sele1.val(), null);
@@ -453,7 +453,7 @@
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
-                var $sele1 = $form.find('select[name=classcategory_id1]');
+                var $sele1 = $form.find('input[name=classcategory_id1]');
                 //規格1指定ありの場合のみ在庫チェック
                 if($sele1.length > 0){
                 	eccube.checkStock($form, product_id, $sele1.val(), null);
@@ -464,7 +464,7 @@
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
-                var $sele1 = $form.find('select[name=classcategory_id1]');
+                var $sele1 = $form.find('input[name=classcategory_id1]');
                 //規格1指定ありの場合のみ在庫チェック
                 if($sele1.length > 0){
                 	eccube.checkStock($form, product_id, $sele1.val(), null);
@@ -475,7 +475,7 @@
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
-                var $sele1 = $form.find('select[name=classcategory_id1]');
+                var $sele1 = $form.find('input[name=classcategory_id1]');
                 //規格1指定ありの場合のみ在庫チェック
                 if($sele1.length > 0){
                 	eccube.checkStock($form, product_id, $sele1.val(), null);
@@ -486,7 +486,7 @@
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
-                var $sele1 = $form.find('select[name=classcategory_id1]');
+                var $sele1 = $form.find('input[name=classcategory_id1]');
                 //規格1指定ありの場合のみ在庫チェック
                 if($sele1.length > 0){
                 	eccube.checkStock($form, product_id, $sele1.val(), null);
@@ -497,7 +497,7 @@
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
-                var $sele1 = $form.find('select[name=classcategory_id1]');
+                var $sele1 = $form.find('input[name=classcategory_id1]');
                 //規格1指定ありの場合のみ在庫チェック
                 if($sele1.length > 0){
                 	eccube.checkStock($form, product_id, $sele1.val(), null);
@@ -508,7 +508,7 @@
             .change(function() {
                 var $form = $(this).parents('form');
                 var product_id = $form.find('input[name=product_id]').val();
-                var $sele1 = $form.find('select[name=classcategory_id1]');
+                var $sele1 = $form.find('input[name=classcategory_id1]');
                 //規格1指定ありの場合のみ在庫チェック
                 if($sele1.length > 0){
                 	eccube.checkStock($form, product_id, $sele1.val(), null);

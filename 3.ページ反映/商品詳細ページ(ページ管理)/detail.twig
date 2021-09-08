@@ -370,6 +370,30 @@ file that was distributed with this source code.
                     <form action="{{ url('product_add_cart', {id:Product.id}) }}" method="post" id="form1" name="form1">
                         {% if Product.stock_find %}
                             
+                            <!-- サイズ -->
+                            {% if form.classcategory_id1 is defined %}
+                                <div class="">
+                                    {{ form_widget(form.classcategory_id1) }}
+                                    {{ form_errors(form.classcategory_id1) }}
+                                </div>
+                                {% if form.classcategory_id2 is defined %}
+                                    <div class="ec-select">
+                                        {{ form_widget(form.classcategory_id2) }}
+                                        {{ form_errors(form.classcategory_id2) }}
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                            
+                            <!-- 個数(サイズのみ) -->
+                            <div class="ec-numberInput">
+                            	<span>{{ '個数:'|trans }}</span>
+                                {{ form_widget(form.quantity) }}
+                                {{ form_errors(form.quantity) }}
+                                <span>{{ '個'|trans }}</span>
+                            </div>
+                            
+                            <!-- 金額(サイズのみ) -->
+                            
                             <!-- カートへ入れるmodal -->
 		                    <div class="ec-option-modal" style="display: none;position: fixed;top: 0;left: 0;z-index: 99999;width: 100%;height: 100%;">
 		                        <div class="ec-option-modal-overlay" style="display: flex;justify-content: center;align-items: center;background-color: rgba(0, 0, 0, 0.3);width: 100%;height: 100%;">
@@ -381,18 +405,6 @@ file that was distributed with this source code.
 		                                </span>
 		                                
 			                            <div class="ec-productRole__actions">
-			                                {% if form.classcategory_id1 is defined %}
-			                                    <div class="ec-select">
-			                                        {{ form_widget(form.classcategory_id1) }}
-			                                        {{ form_errors(form.classcategory_id1) }}
-			                                    </div>
-			                                    {% if form.classcategory_id2 is defined %}
-			                                        <div class="ec-select">
-			                                            {{ form_widget(form.classcategory_id2) }}
-			                                            {{ form_errors(form.classcategory_id2) }}
-			                                        </div>
-			                                    {% endif %}
-			                                {% endif %}
 			                                
 			                                <!-- オプション -->
 			                                {% if form.optioncategory_id1 is defined %}
@@ -538,12 +550,6 @@ file that was distributed with this source code.
 						                        {% endif %}
 						                    </div>
 						                    
-			                                
-			                                
-			                                <div class="ec-numberInput"><span>{{ '数量'|trans }}</span>
-			                                    {{ form_widget(form.quantity) }}
-			                                    {{ form_errors(form.quantity) }}
-			                                </div>
 			                            </div>
 			                            
 			                            
@@ -658,6 +664,8 @@ file that was distributed with this source code.
                 </div>
             </div>
         </div>
+        
+        <!-- 自由入力 -->
         {% if Product.freearea %}
              <div class="ec-productRole__description">
                  {{ include(template_from_string(Product.freearea)) }}
