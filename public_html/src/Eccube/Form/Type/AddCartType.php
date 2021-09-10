@@ -389,6 +389,7 @@ class AddCartType extends AbstractType
         $resolver->setRequired('product');
         $resolver->setDefaults([
             'data_class' => CartItem::class,
+            'allow_extra_fields' => true,
             'id_add_product_id' => true,
             'constraints' => [
                 // FIXME new Assert\Callback(array($this, 'validate')),

@@ -103,9 +103,288 @@ file that was distributed with this source code.
 		/**
 	     * オプション入力欄をセットする.
 	     */
-	     eccube.getPerOptionText = function($form, $optn) {
+	     eccube.getPerOptionText = function($no, $form, $optn, $opt_id) {
+	        
+	        /*
+	        * 写真付きオプション用のパス一覧
+	        *  ※画像はファイル管理で登録されているものを指定してください
+	        */
+	        //キャンドル
+	        var optimg_candle_big     = '';//キャンドル大
+	        var optimg_candle_small   = '';//キャンドル小
+	        var optimg_candle_no      = '';//キャンドルNo
+	        //メッセージ
+	        var optimg_message_muji          = '/eccube/html/user_data/assets/img/option/opt_plate_muji.png';//無地プレート
+	        var optimg_message_omedetou_only = '/eccube/html/user_data/assets/img/option/opt_plate_omedeto_only.png';//おたんじょうびおめでとう
+	        var optimg_message_omedetou_plus = '/eccube/html/user_data/assets/img/option/opt_plate_omedeto_plus.png';//おたんじょうびおめでとう(□に名前が入ります)
+	        //デコレーション追加
+	        var optimg_decoadd_ichigo     = '/eccube/html/user_data/assets/img/option/opt_adddeco_ichigo.png';//いちごUP
+	        var optimg_decoadd_fruit      = '/eccube/html/user_data/assets/img/option/opt_adddeco_fruit.png';//フルーツUP
+	        var optimg_decoadd_choko_nama = '/eccube/html/user_data/assets/img/option/opt_adddeco_choko_nama.png';//生チョコUP
+	        var optimg_decoadd_choko_e    = '/eccube/html/user_data/assets/img/option/opt_adddeco_choko_e.png';//絵チョコ (4号)
+	        
 	        //オプション選択
 	        var $optn_select_text = $optn.text();
+	        var lbl_id = $opt_id + '_lbl';
+	        var lbl_info = document.getElementById(lbl_id);
+	        if(lbl_info != null){
+	        	//〇キャンドルの場合
+	        	if (lbl_info.textContent.indexOf('ろうそく') != -1 || lbl_info.textContent.indexOf('キャンドル') != -1) {
+	        		var innner_id = $opt_id + '_nyuryoku';
+	        		
+	        		var innnerElm = document.getElementById(innner_id);
+	        		if(innnerElm != null){
+		        		
+		        		//数字選択欄を表示させる
+		        		innnerElm.style.display="block";
+		        		
+		        		//ろうそくならラジオボタン入力欄を非表示
+		        		var orgblock_id = $opt_id + '_wdg';
+		        		if(document.getElementById(orgblock_id) != null){
+	        				//document.getElementById(orgblock_id).style.display="block";
+	        				document.getElementById(orgblock_id).style.display="none";
+	        			}
+	        			
+	        			//ToDo ろうそく関連の先頭の判断をすればいいのでは？
+	        			//ろうそく大をろうそく関連のメインラベルで出す
+	        			if (lbl_info.textContent.indexOf('大') != -1) 
+	        			{
+	        				var inlbl_id = $opt_id + '_mainlabel';
+			        		var innnerLbl = document.getElementById(inlbl_id);
+			        		if(innnerLbl != null){
+			        				//タグ作成
+					        		let lbltag ='<div style="background-color:lightblue; font-size:21px;">';
+					        		lbltag = lbltag + '<div class="" style="float:left; width:80%; padding:8px;"><b>キャンドルを選択</b></div>';
+			        				lbltag = lbltag + '<div style="float:left; width:20%; padding:8px; font-size:16px;"><input type="checkbox" id="chk_candle_nosel" name="chk_candle_nosel"><label for="chk_candle_nosel">不要</label></div>';
+			        				lbltag = lbltag + '<div style="clear:both;"></div>';
+			        				lbltag = lbltag + '</div>';
+			        				
+			        				//タグを埋め込む
+					        		//innnerLbl.innerHTML = lbltag;
+					        		innnerLbl.insertAdjacentHTML('afterend', lbltag);
+			        		}
+	        			}
+	        		}
+	        	}else if(lbl_info.textContent.indexOf('追加') != -1){
+	        		
+	        		//〇デコレーション追加入力の場合
+	        		var innner_id = $opt_id + '_nyuryoku';
+	        		
+	        		//1.入力項目制御(数字選択)
+	        		var innnerElm = document.getElementById(innner_id);
+	        		if(innnerElm != null){
+		        		
+		        		//数字選択欄を表示させる
+		        		innnerElm.style.display="block";
+		        		
+		        		//デコレーション追加ならラジオボタン入力欄を非表示
+		        		var orgblock_id = $opt_id + '_wdg';
+		        		if(document.getElementById(orgblock_id) != null){
+	        				//document.getElementById(orgblock_id).style.display="block";
+	        				document.getElementById(orgblock_id).style.display="none";
+	        			}
+	        		}
+	        		//2.画像と大カテゴリタイトルセット
+		        	{
+		        		//ラジオボタン選択の項目なので先頭に画像をセットさせる
+		        		// 対象のID名
+		        		var item_id_target = $opt_id + '_lbl';
+		        		// あるかチェック
+		        		var target_info = document.getElementById(item_id_target);
+				        // --項目の数だけ繰り返し--
+				        if(target_info != null) {
+							// div要素を作成
+							var img_element = document.createElement('div');
+							
+							//ToDo テキスト入力項目のラベル名の取り方は？　いったん想定される項目の中から選ぶ
+							
+							//.ラベル取得
+							
+							//-- 画像の判定 --
+							//　　対象の画像パス
+							var target_img_pass = '';
+							//  ラジオボタン名から判定する
+							if(lbl_info.textContent.indexOf('いちご') != -1){
+								//いちごUP
+								target_img_pass = optimg_decoadd_ichigo;
+							}else if(lbl_info.textContent.indexOf('フルーツ') != -1){
+								//フルーツUP
+								target_img_pass = optimg_decoadd_fruit;
+							}else if(lbl_info.textContent.indexOf('生チョコ') != -1){
+								//生チョコUP
+								target_img_pass = optimg_decoadd_choko_nama;
+							}else if(lbl_info.textContent.indexOf('絵チョコ') != -1){
+								//絵チョコ(4号)
+								target_img_pass = optimg_decoadd_choko_e;
+							}
+							// 画像パスセット
+							img_element.style.width  = '160px';
+							img_element.style.height = '160px'; 
+							img_element.style.backgroundImage = 'url(' + target_img_pass + ')'; 
+							
+							//指定要素の前にセット
+							target_info.before(img_element);
+							
+						}
+						// --.項目の数だけ繰り返し--
+					
+						//オプション大タイトルを付ける(デコレーション追加)
+						//ToDo 先頭の判断をすればいいのでは？
+	        			//いちごをデコレーション追加関連のメインラベルで出す
+	        			if (lbl_info.textContent.indexOf('いちご') != -1) 
+	        			{
+	        				var inlbl_id = $opt_id + '_mainlabel';
+			        		var innnerLbl = document.getElementById(inlbl_id);
+			        		if(innnerLbl != null){
+			        				//タグ作成
+					        		let lbltag ='<div style="background-color:lightblue; font-size:21px;">';
+					        		lbltag = lbltag + '<div class="" style="float:left; width:80%; padding:8px;"><b>デコレーション追加</b></div>';
+			        				lbltag = lbltag + '<div style="float:left; width:20%; padding:8px; font-size:16px;"><input type="checkbox" id="chk_message_nosel" name="chk_message_nosel"><label for="chk_message_nosel">不要</label></div>';
+			        				lbltag = lbltag + '<div style="clear:both;"></div>';
+			        				lbltag = lbltag + '</div>';
+			        				
+			        				//タグを埋め込む
+					        		//innnerLbl.innerHTML = lbltag;
+					        		innnerLbl.insertAdjacentHTML('afterend', lbltag);
+			        		}
+	        			}
+					}
+	        		//------------------------------------------------------------------------------------------------------------
+	        	
+	        	}else{
+	        		//ろうそく意外なら数字入力欄は非活性にする
+	        		var innum_id = $opt_id + '_num';
+	        		var innumElm = document.getElementById(innum_id);
+	        		if(innumElm != null){
+	        			//非活性にする
+	        			innumElm.disabled = true;
+	        		}
+	        		
+	        		//〇メッセージ入力の場合
+	        		if (lbl_info.textContent.indexOf('プレート') != -1) {
+		        		//ラジオボタン選択の項目なので先頭に画像をセットさせる
+		        		// ラジオボタンの項目はidとして「」のように持っている
+		        		var item_id_base = $opt_id + '_';
+		        		var item_cnt = 0;//初期値は0番目
+		        		// 対象のID名
+		        		var item_id_target = $opt_id + '_' + item_cnt;
+		        		// あるかチェック
+		        		var target_info = document.getElementById(item_id_target);
+				        // --項目の数だけ繰り返し--
+				        while (target_info != null) {
+							
+							//現在の対象id
+							var cur_item_id_target = item_id_base + item_cnt;
+							// div要素を作成
+							var img_element = document.createElement('div');
+							//ラベル取得
+							var label = null;
+							var this_label = null;
+							if (cur_item_id_target !== '') {
+							  label = document.querySelector('label[for="' + cur_item_id_target + '"]');
+							}
+							if (!label) {
+							  label = element.closest('label');
+							}
+							this_label = label ? label.textContent : '';
+							//.ラベル取得
+							
+							//-- 画像の判定 --
+							//　　対象の画像パス
+							var target_img_pass = '';
+							//  ラジオボタン名から判定する
+							if(this_label.indexOf('無地') != -1){
+								//無地プレート
+								target_img_pass = optimg_message_muji;
+							}else if(this_label.indexOf('名前が') != -1){
+								//おたんじょうびおめでとう(□に名前が入ります)
+								target_img_pass = optimg_message_omedetou_plus;
+							}else if(this_label.indexOf('たんじょうび') != -1){
+								//おたんじょうびおめでとう
+								target_img_pass = optimg_message_omedetou_only;
+							}
+							// 画像パスセット
+							img_element.style.width  = '160px';
+							img_element.style.height = '100px'; 
+							img_element.style.backgroundImage = 'url(' + target_img_pass + ')'; 
+							
+							//指定要素の前にセット
+							target_info.before(img_element);
+							
+							//次の項目へ
+							item_cnt++;
+							var tmp_item_id_target = item_id_base + item_cnt;
+							target_info = document.getElementById(tmp_item_id_target);
+						}
+						// --.項目の数だけ繰り返し--
+					
+						//オプション大タイトルを付ける(メッセージ)
+	        			{
+	        				var inlbl_id = $opt_id + '_mainlabel';
+			        		var innnerLbl = document.getElementById(inlbl_id);
+			        		if(innnerLbl != null){
+			        				//タグ作成
+					        		let lbltag ='<div style="background-color:lightblue; font-size:21px;">';
+					        		lbltag = lbltag + '<div class="" style="float:left; width:80%; padding:8px;"><b>メッセージを入力</b></div>';
+			        				lbltag = lbltag + '<div style="float:left; width:20%; padding:8px; font-size:16px;"><input type="checkbox" id="chk_message_nosel" name="chk_message_nosel"><label for="chk_message_nosel">不要</label></div>';
+			        				lbltag = lbltag + '<div style="clear:both;"></div>';
+			        				lbltag = lbltag + '</div>';
+			        				
+			        				//タグを埋め込む
+					        		//innnerLbl.innerHTML = lbltag;
+					        		innnerLbl.insertAdjacentHTML('afterend', lbltag);
+			        		}
+	        			}
+					}
+	        		//------------------------------------------------------------------------------------------------------------
+	        		
+	        		//〇受取店舗の場合
+	        		if (lbl_info.textContent.indexOf('店舗') != -1) {
+		        		//オプション大タイトルを付ける(受取店舗)
+	        			{
+	        				var inlbl_id = $opt_id + '_mainlabel';
+			        		var innnerLbl = document.getElementById(inlbl_id);
+			        		if(innnerLbl != null){
+			        				//タグ作成
+					        		let lbltag ='<div style="background-color:lightblue; font-size:21px;">';
+					        		lbltag = lbltag + '<div class="" style="float:left; width:80%; padding:8px;"><b>受取店舗</b></div>';
+			        				lbltag = lbltag + '<div style="float:left; width:20%; padding:8px; font-size:16px;"><input type="checkbox" id="chk_shop_nosel" name="chk_shop_nosel"><label for="chk_shop_nosel">不要</label></div>';
+			        				lbltag = lbltag + '<div style="clear:both;"></div>';
+			        				lbltag = lbltag + '</div>';
+			        				
+			        				//タグを埋め込む
+					        		//innnerLbl.innerHTML = lbltag;
+					        		innnerLbl.insertAdjacentHTML('afterend', lbltag);
+			        		}
+	        			}
+					}
+	        		//------------------------------------------------------------------------------------------------------------
+	        		
+	        		//〇持ち帰りポリ袋の場合
+	        		if (lbl_info.textContent.indexOf('持ち帰り') != -1) {
+		        		//オプション大タイトルを付ける(持ち帰りポリ袋)
+	        			{
+	        				var inlbl_id = $opt_id + '_mainlabel';
+			        		var innnerLbl = document.getElementById(inlbl_id);
+			        		if(innnerLbl != null){
+			        				//タグ作成
+					        		let lbltag ='<div style="background-color:lightblue; font-size:21px;">';
+					        		lbltag = lbltag + '<div class="" style="float:left; width:80%; padding:8px;"><b>持ち帰りポリ袋</b></div>';
+			        				lbltag = lbltag + '<div style="float:left; width:20%; padding:8px; font-size:16px;"><input type="checkbox" id="chk_message_nosel" name="chk_message_nosel"><label for="chk_message_nosel">不要</label></div>';
+			        				lbltag = lbltag + '<div style="clear:both;"></div>';
+			        				lbltag = lbltag + '</div>';
+			        				
+			        				//タグを埋め込む
+					        		//innnerLbl.innerHTML = lbltag;
+					        		innnerLbl.insertAdjacentHTML('afterend', lbltag);
+			        		}
+	        			}
+					}
+	        		//------------------------------------------------------------------------------------------------------------
+	        		
+	        	}
+	        }
+	        
 	        
 	        //ToDo ケーキならプレート、ギフトならのし　で表示区別してもいいのでは？
 	        
@@ -128,43 +407,43 @@ file that was distributed with this source code.
 	        
 	        //オプション1
 	        var $optn1 = $form.find('select[name=optioncategory_id1]');
-	        eccube.getPerOptionText($form, $optn1);
+	        eccube.getPerOptionText(1, $form, $optn1, 'optioncategory_id1');
 	        
 	        //オプション2
 	        var $optn2 = $form.find('select[name=optioncategory_id2]');
-	        eccube.getPerOptionText($form, $optn2);
+	        eccube.getPerOptionText(2, $form, $optn2, 'optioncategory_id2');
 	        
 	        //オプション3
 	        var $optn3 = $form.find('select[name=optioncategory_id3]');
-	        eccube.getPerOptionText($form, $optn3);
+	        eccube.getPerOptionText(3, $form, $optn3, 'optioncategory_id3');
 	        
 	        //オプション4
 	        var $optn4 = $form.find('select[name=optioncategory_id4]');
-	        eccube.getPerOptionText($form, $optn4);
+	        eccube.getPerOptionText(4, $form, $optn4, 'optioncategory_id4');
 	        
 	        //オプション5
 	        var $optn5 = $form.find('select[name=optioncategory_id5]');
-	        eccube.getPerOptionText($form, $optn5);
+	        eccube.getPerOptionText(5, $form, $optn5, 'optioncategory_id5');
 	        
 	        //オプション6
 	        var $optn6 = $form.find('select[name=optioncategory_id6]');
-	        eccube.getPerOptionText($form, $optn6);
+	        eccube.getPerOptionText(6, $form, $optn6, 'optioncategory_id6');
 	        
 	        //オプション7
 	        var $optn7 = $form.find('select[name=optioncategory_id7]');
-	        eccube.getPerOptionText($form, $optn7);
+	        eccube.getPerOptionText(7, $form, $optn7, 'optioncategory_id7');
 	        
 	        //オプション8
 	        var $optn8 = $form.find('select[name=optioncategory_id8]');
-	        eccube.getPerOptionText($form, $optn8);
+	        eccube.getPerOptionText(8, $form, $optn8, 'optioncategory_id8');
 	        
 	        //オプション9
 	        var $optn9 = $form.find('select[name=optioncategory_id9]');
-	        eccube.getPerOptionText($form, $optn9);
+	        eccube.getPerOptionText(9, $form, $optn9, 'optioncategory_id9');
 	        
 	        //オプション10
 	        var $optn10 = $form.find('select[name=optioncategory_id10]');
-	        eccube.getPerOptionText($form, $optn10);
+	        eccube.getPerOptionText(10, $form, $optn10, 'optioncategory_id10');
 
 	    }
 	</script>
@@ -284,6 +563,73 @@ file that was distributed with this source code.
             });
         });
         
+        //詳細を指定する
+        $('.select-options').on('click', function() {
+            //詳細エリアにスクロールする
+            // detail_areaの表示位置を取得
+			var detail_area = document.getElementById('detail_area');
+			var content_position = detail_area.getBoundingClientRect();
+	        // detail_areaへ移動
+			window.scrollTo( 0, content_position.top);
+        });
+        
+        
+        //オプションの数字が入力されたとき
+        //詳細を指定する
+        /*
+        $('.select-options').on('click', function() {
+            //event.preventDefault();
+            //ToDo 詳細エリアにスクロールする
+            alert('go scroll!');
+        });
+        */
+        
+        $('input[type="number"]').bind('keyup mouseup', function () {
+		    
+		    //数字入力された項目のidを取得
+		    $this_item_id = this.id;
+		    
+		    $this_item_str = $this_item_id.toString();
+		    
+		    //意図的にテキスト入力されたラジオボタンのチェックを入れる
+		    //　(オプション項目の場合のみ実施する)
+		    if($this_item_str.indexOf('optioncategory_id') != -1){
+			    //入力された数字も取得　なければしない
+			    const elem = document.getElementById($this_item_id);
+				
+				if(elem != null){
+					//存在するなら処理実施
+					//取れる値(数字)をセット
+					var num = elem.value;
+				    
+				    //数字セットされてるなら該当のラジオボタンをチェックする
+				    if(num.length < 1)
+				    {
+				    	//数字セットされてないなら0番目(なし)をチェックする
+				    	num = 0;
+				    }
+				    
+				    //ラジオボタン名は「_num」を除いた名前
+				    $this_item_name = $this_item_str.replace('_num', '')
+				    
+				    //選択番号
+					var selnum = num;
+					
+					// 要素名セット
+					var ele_name = $this_item_name + '_' + selnum;
+					// form要素を取得
+					var rdo_ele = document.getElementById( ele_name ) ;
+
+					// 該当番号の要素を選択状態にする
+					if(rdo_ele != null){
+						rdo_ele.checked = true;
+					}
+				}
+			}
+		});
+		
+        
+        
     </script>
 {% endblock %}
 
@@ -379,71 +725,261 @@ file that was distributed with this source code.
                             
                             <!-- 金額(サイズのみ) -->
                             
-
-		                    
+                            <!-- 詳細を指定するボタン -->
+                            <div class="ec-productRole__btn" style="padding-top:10px;width:100%;">
+                                <button type="button" class="ec-blockBtn--action select-options" style="background: url('/eccube/html/user_data/assets/img/option/btn_syousai.png') no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto;">
+                                </button>
+                            </div>
+                            
+                            
+                            <!-- 自由入力 -->
+					        {% if Product.freearea %}
+					             <div class="ec-productRole__description">
+					                 {{ include(template_from_string(Product.freearea)) }}
+					            </div>
+					        {% endif %}
+                            
+                            
+                            
+                            
+                         <!----- 【詳細を指定】ブロック ----->
+                            {# 詳細を指定する #}
+                            <div class="ec-productRole__profile" style="width:100%; padding-top:100px;">
+			                    <div style="margin-left:auto; margin-right:auto; background: url('/eccube/html/user_data/assets/img/option/mark_write_sentence.png') no-repeat scroll 0 0; border-color:#fff;min-height:150px; height:auto;">
+	                            </div>
+			                </div>
+                            
+                            <!-- 詳細指定エリア -->
+                            <div id="detail_area"></div>
+                            
+                            
 		                    <!-- オプション一覧 -->
-		                    <div style="position: relative;border-radius: 2px;border: 1px solid #333;background-color: #fff;padding: 40px 10px;margin: 20px auto;">
+		                    <div style="position: relative;border-radius: 2px;background-color: #fff;">
 		                                
 			                            <div class="ec-productRole__actions">
 			                                
+			                                <!--   ろうそく1番目か判定する  -->
+			                                {% set toped_canldle_flg = 'false' %}
+			                                
 			                                <!-- オプション -->
 			                                {% if form.optioncategory_id1 is defined %}
-			                                    <div class="">
-			                                        {{ form_widget(form.optioncategory_id1) }}
+			                                	<!-- 大オプションラベル -->
+			                                    <div id="optioncategory_id1_mainlabel"></div>
+			                                    <!-- 入力エリア -->
+			                                	<div class="">
+			                                        <p id="optioncategory_id1_lbl">
+			                                    		{{ form_label(form.optioncategory_id1) }}
+			                                        </p>
+			                                        <!-- 特別な入力欄 -->			                                        
+			                                        <div id="optioncategory_id1_nyuryoku" style="display:none;">
+														<div class="ec-numberInput">
+															<span>本数:</span>
+															<input type="number" id="optioncategory_id1_num" name="optioncategory_id1_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															<span>本</span>
+														</div>
+			                                        </div>
+			                                        
+			                                        <div id="optioncategory_id1_wdg" style="display:block;">
+			                                        	{{ form_widget(form.optioncategory_id1) }}
+			                                        </div>
 			                                        {{ form_errors(form.optioncategory_id1) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id2 is defined %}
+			                                    <!-- 大オプションラベル -->
+			                                    <div id="optioncategory_id2_mainlabel"></div>
+			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                        {{ form_widget(form.optioncategory_id2) }}
+			                                    	<p id="optioncategory_id2_lbl">
+			                                    		{{ form_label(form.optioncategory_id2) }}
+			                                        </p>
+			                                        <!-- 特別な入力欄 -->			                                        
+			                                        <div id="optioncategory_id2_nyuryoku" style="display:none;">
+			                                        	<div class="ec-numberInput">
+															<span>本数:</span>
+															<input type="number" id="optioncategory_id2_num" name="optioncategory_id2_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															<span>本</span>
+														</div>
+			                                        </div>
+			                                        <div id="optioncategory_id2_wdg" style="display:block;">
+			                                        	{{ form_widget(form.optioncategory_id2) }}
+			                                        </div>
 			                                        {{ form_errors(form.optioncategory_id2) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id3 is defined %}
+			                                    <!-- 大オプションラベル -->
+			                                    <div id="optioncategory_id3_mainlabel"></div>
+			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                        {{ form_widget(form.optioncategory_id3) }}
+			                                    	<p id="optioncategory_id3_lbl">
+			                                    		{{ form_label(form.optioncategory_id3) }}
+			                                        </p>
+			                                        <!-- 特別な入力欄 -->			                                        
+			                                        <div id="optioncategory_id3_nyuryoku" style="display:none;">
+			                                        	<div class="ec-numberInput">
+															<span>本数:</span>
+															<input type="number" id="optioncategory_id3_num" name="optioncategory_id3_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															<span>本</span>
+														</div>
+			                                        </div>
+			                                        <div id="optioncategory_id3_wdg" style="display:block;">
+			                                        	{{ form_widget(form.optioncategory_id3) }}
+			                                        </div>
 			                                        {{ form_errors(form.optioncategory_id3) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id4 is defined %}
+			                                    <!-- 大オプションラベル -->
+			                                    <div id="optioncategory_id4_mainlabel"></div>
+			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                        {{ form_widget(form.optioncategory_id4) }}
+			                                    	<p id="optioncategory_id4_lbl">
+			                                    		{{ form_label(form.optioncategory_id4) }}
+			                                        </p>
+			                                        <!-- 特別な入力欄 -->			                                        
+			                                        <div id="optioncategory_id4_nyuryoku" style="display:none;">
+			                                        	<div class="ec-numberInput">
+															<span>本数:</span>
+															<input type="number" id="optioncategory_id4_num" name="optioncategory_id4_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															<span>本</span>
+														</div>
+			                                        </div>
+			                                        <div id="optioncategory_id4_wdg" style="display:block;">
+			                                        	{{ form_widget(form.optioncategory_id4) }}
+			                                        </div>
 			                                        {{ form_errors(form.optioncategory_id4) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id5 is defined %}
+			                                    <!-- 大オプションラベル -->
+			                                    <div id="optioncategory_id5_mainlabel"></div>
+			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                        {{ form_widget(form.optioncategory_id5) }}
+			                                        <p id="optioncategory_id5_lbl">
+			                                    		{{ form_label(form.optioncategory_id5) }}
+			                                        </p>
+			                                        <!-- 特別な入力欄 -->			                                        
+			                                        <div id="optioncategory_id5_nyuryoku" style="display:none;">
+			                                        	<div class="ec-numberInput">
+															<span>本数:</span>
+															<input type="number" id="optioncategory_id5_num" name="optioncategory_id5_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															<span>本</span>
+														</div>
+			                                        </div>
+			                                        <div id="optioncategory_id5_wdg" style="display:block;">
+			                                        	{{ form_widget(form.optioncategory_id5) }}
+			                                        </div>
 			                                        {{ form_errors(form.optioncategory_id5) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id6 is defined %}
+			                                    <!-- 大オプションラベル -->
+			                                    <div id="optioncategory_id6_mainlabel"></div>
+			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                        {{ form_widget(form.optioncategory_id6) }}
+			                                    	<p id="optioncategory_id6_lbl">
+			                                    		{{ form_label(form.optioncategory_id6) }}
+			                                        </p>
+			                                        <!-- 特別な入力欄 -->			                                        
+			                                        <div id="optioncategory_id6_nyuryoku" style="display:none;">
+			                                        	<div class="ec-numberInput">
+															<span>本数:</span>
+															<input type="number" id="optioncategory_id6_num" name="optioncategory_id6_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															<span>本</span>
+														</div>
+			                                        </div>
+			                                        <div id="optioncategory_id6_wdg" style="display:block;">
+			                                        	{{ form_widget(form.optioncategory_id6) }}
+			                                        </div>
 			                                        {{ form_errors(form.optioncategory_id6) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id7 is defined %}
+			                                    <!-- 大オプションラベル -->
+			                                    <div id="optioncategory_id7_mainlabel"></div>
+			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                        {{ form_widget(form.optioncategory_id7) }}
+			                                    	<p id="optioncategory_id7_lbl">
+			                                    		{{ form_label(form.optioncategory_id7) }}
+			                                        </p>
+			                                        <!-- 特別な入力欄 -->			                                        
+			                                        <div id="optioncategory_id7_nyuryoku" style="display:none;">
+			                                        	<div class="ec-numberInput">
+															<span>本数:</span>
+															<input type="number" id="optioncategory_id7_num" name="optioncategory_id7_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															<span>本</span>
+														</div>
+			                                        </div>
+			                                        <div id="optioncategory_id7_wdg" style="display:block;">
+			                                        	{{ form_widget(form.optioncategory_id7) }}
+			                                        </div>
 			                                        {{ form_errors(form.optioncategory_id7) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id8 is defined %}
+			                                    <!-- 大オプションラベル -->
+			                                    <div id="optioncategory_id8_mainlabel"></div>
+			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                        {{ form_widget(form.optioncategory_id8) }}
+			                                    	<p id="optioncategory_id8_lbl">
+			                                    		{{ form_label(form.optioncategory_id8) }}
+			                                        </p>
+			                                        <!-- 特別な入力欄 -->			                                        
+			                                        <div id="optioncategory_id8_nyuryoku" style="display:none;">
+			                                        	<div class="ec-numberInput">
+															<span>本数:</span>
+															<input type="number" id="optioncategory_id8_num" name="optioncategory_id8_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															<span>本</span>
+														</div>
+			                                        </div>
+			                                        <div id="optioncategory_id8_wdg" style="display:block;">
+			                                        	{{ form_widget(form.optioncategory_id8) }}
+			                                        </div>
 			                                        {{ form_errors(form.optioncategory_id8) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id9 is defined %}
+			                                    <!-- 大オプションラベル -->
+			                                    <div id="optioncategory_id9_mainlabel"></div>
+			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                        {{ form_widget(form.optioncategory_id9) }}
+			                                        <p id="optioncategory_id9_lbl">
+			                                    		{{ form_label(form.optioncategory_id9) }}
+			                                        </p>
+			                                        <!-- 特別な入力欄 -->			                                        
+			                                        <div id="optioncategory_id9_nyuryoku" style="display:none;">
+			                                        	<div class="ec-numberInput">
+															<span>本数:</span>
+															<input type="number" id="optioncategory_id9_num" name="optioncategory_id9_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															<span>本</span>
+														</div>
+			                                        </div>
+			                                        <div id="optioncategory_id9_wdg" style="display:block;">
+			                                        	{{ form_widget(form.optioncategory_id9) }}
+			                                        </div>
 			                                        {{ form_errors(form.optioncategory_id9) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id10 is defined %}
+			                                    <!-- 大オプションラベル -->
+			                                    <div id="optioncategory_id10_mainlabel"></div>
+			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                        {{ form_widget(form.optioncategory_id10) }}
+			                                    	<p id="optioncategory_id10_lbl">
+			                                    		{{ form_label(form.optioncategory_id10) }}
+			                                        </p>
+			                                        <!-- 特別な入力欄 -->			                                        
+			                                        <div id="optioncategory_id10_nyuryoku" style="display:none;">
+			                                        	<div class="ec-numberInput">
+															<span>本数:</span>
+															<input type="number" id="optioncategory_id10_num" name="optioncategory_id10_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															<span>本</span>
+														</div>
+			                                        </div>
+			                                        <div id="optioncategory_id10_wdg" style="display:block;">
+			                                        	{{ form_widget(form.optioncategory_id10) }}
+			                                        </div>
 			                                        {{ form_errors(form.optioncategory_id10) }}
 			                                    </div>
 			                                {% endif %}
@@ -532,12 +1068,6 @@ file that was distributed with this source code.
 						                    
 			                            </div>
 			                            
-			                            <!-- 自由入力 -->
-								        {% if Product.freearea %}
-								             <div class="ec-productRole__description">
-								                 {{ include(template_from_string(Product.freearea)) }}
-								            </div>
-								        {% endif %}
 			                            
 			                            
 			                            {# 定価(表示用) #}
@@ -584,13 +1114,13 @@ file that was distributed with this source code.
 					                    </div>
 			                            
 			                            
-			                            <div class="ec-productRole__btn">
-			                                <button type="submit" class="ec-blockBtn--action add-cart">
-			                                    {{ 'カートに入れる'|trans }}
+			                            <div class="ec-productRole__btn" style="width:100%;">
+			                                <button type="submit" class="ec-blockBtn--action add-cart" style="background: url('/eccube/html/user_data/assets/img/option/btn_cart.png') no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto;">
 			                                </button>
 			                            </div>
 		                            </div>
 		                    <!-- .オプション一覧-->
+		                 <!----- .【詳細を指定】ブロック ----->
 		                    
                         {% else %}
                             <div class="ec-productRole__btn">
@@ -601,7 +1131,9 @@ file that was distributed with this source code.
                         {% endif %}
                         
                         {{ form_rest(form) }}
-
+                        
+                        
+                         
                     <div class="ec-modal">
                         <div class="ec-modal-overlay">
                             <div class="ec-modal-wrap">
