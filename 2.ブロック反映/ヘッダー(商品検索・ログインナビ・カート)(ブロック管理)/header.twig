@@ -23,20 +23,20 @@ file that was distributed with this source code.
         </span>
         <div class="header_btn">
         	<a href="/guide.html" class="guide">ご利用ガイド</a>
-        	<a href="javascript:ssl_login('member')" class="member">新規会員登録</a> 
-        	<a href="javascript:ssl_login('login')" class="M_loginBtn">ログイン</a>
-        	<a href="javascript:ssl_login('mypage')" class="mypage">マイページ</a>
+        	<a href="{{ url('entry') }}" class="member">新規会員登録</a> 
+        	<a href="{{ url('mypage_login') }}" class="M_loginBtn">ログイン</a>
+        	<a href="{{ url('mypage') }}" class="mypage">マイページ</a>
         	<a href="https://www.instagram.com/cake_yokogawa/" rel="noopener noreferrer" target="_blank" class="insta"></a>
         	<a href="https://line.me/R/ti/p/%40854fgmlr" rel="noopener noreferrer" target="_blank" class="line"></a>
         </div>
         <ul>
           <li class="about"><a href="/about.html"><span><span class="agp">OUR BRAND</span>私たちについて</span></a></li>
-          <li class="item"><a href="/item_all.html"><span><span class="agp">PRODUCTS</span>商品一覧</span></a></li>
+          <li class="item"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}"><span><span class="agp">PRODUCTS</span>商品一覧</span></a></li>
           <li class="item_sp">
             <div class="inner">
             <p><span class="agp">PRODUCTS</span>商品からえらぶ</p>
 <div class="search"><input type="text" id="MakeShopTopSearchInput" onkeydown="javascript:MakeShop_TopSearch(event, 'MakeShopTopSearchInput');" placeholder="キーワード検索"><a href="javascript:void(0)" id="MakeShopTopSearchButton" onclick="javascript:MakeShop_TopSearch(event, 'MakeShopTopSearchInput');">検索</a><script>$(function(){$('#MakeShopTopSearchInput').attr('placeholder','キーワード検索');});</script></div>
-            <a href="/shop/basket.html" class="cart_btn">カートを見る</a>
+            <a href="{{ url('cart') }}" class="cart_btn">カートを見る</a>
             <dl class="category">
               <dt>商品一覧</dt>
               <dd><a href="/shopbrand/deco"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav01.jpg" alt=""><span>デコレーション</span></a></dd>
@@ -75,7 +75,7 @@ file that was distributed with this source code.
           <li class="shop"><a href="/shop.html"><span><span class="agp">SHOP</span>店舗</span></a></li>
           <li class="news"><a href="/new/index.html"><span><span class="agp">NEWS</span>お知らせ</span></a></li>
           <li class="recruit"><a href="/recruit.html"><span><span class="agp">RECRUIT</span>採用情報</span></a></li>
-          <li class="cart"><a href="/shop/basket.html" class="cart_btn">カートを見る</a></li>
+          <li class="cart"><a href="{{ url('cart') }}" class="cart_btn">カートを見る</a></li>
         </ul>
       </nav>
     </div>
