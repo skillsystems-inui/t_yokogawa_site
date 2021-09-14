@@ -44,13 +44,13 @@ file that was distributed with this source code.
 
         <div class="ec-topicRole__list">
             <div class="ec-topicRole__listItem">
-                <a href="{{ url('product_list') }}?category_id=1">
-                    <img src="{{ asset('assets/img/top/yuuryouka.jpg') }}">
+                <a>
+                    <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/banner_01.jpg" alt="">
                 </a>
             </div>
             <div class="ec-topicRole__listItem">
-                <a href="{{ url('product_list') }}?category_id=5">
-                    <img src="{{ asset('assets/img/top/point_present.jpg') }}">
+                <a href="{{ url('homepage') }}">
+                    <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/banner_02.jpg" alt="">
                 </a>
             </div>
         </div>
@@ -58,12 +58,6 @@ file that was distributed with this source code.
 </div>
 
 
-<div class="ec-role" style="padding-top:0px;">
-    <div class="ec-newItemRole">
-        <div class="ec-eyecatchRole">
-            <div class="ec-eyecatchRole__intro" style="max-width:300px; height:60px; margin:auto;">
-                <a class="ec-blockBtn--top" style="background-color:#F5F4F9; border:1px solid #F5F4F9; color:#000;" href="{{ url('product_list') }}">{{ 'ニュース一覧'|trans }}</a>
-            </div>
-        </div>
-    </div>
+<div class="ec-newItemRole" style="padding-top:20px; padding-bottom:100px;">
+	<a href="{{ url('homepage') }}" class="btn agp">ニュース一覧</a>
 </div>
