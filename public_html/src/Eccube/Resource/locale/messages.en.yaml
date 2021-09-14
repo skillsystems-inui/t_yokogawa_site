@@ -443,6 +443,8 @@ admin.common.bulk_actions: All
 admin.common.select: Please select
 admin.common.select__pref: Select a prefecture
 admin.common.select__unspecified: Unspecified
+admin.common.check: please check
+admin.common.agree_policy: agree policy 
 admin.common.separator__range: '-'
 admin.common.separator__colon: ':'
 admin.common.count: '%count% items'

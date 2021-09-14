@@ -443,6 +443,8 @@ admin.common.bulk_actions: 一括操作
 admin.common.select: 選択してください
 admin.common.select__pref: 都道府県を選択
 admin.common.select__unspecified: 指定なし
+admin.common.check: チェックしてください
+admin.common.agree_policy: 個人情報保護ポリシーに同意する
 admin.common.separator__range: 〜
 admin.common.separator__colon: ：
 admin.common.count: '%count%件'

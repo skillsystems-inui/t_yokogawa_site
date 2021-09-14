@@ -36,7 +36,7 @@ file that was distributed with this source code.
                                 {{ form_widget(form.name.name02, { type : 'hidden' }) }}
                             </dd>
                         </dl>
-                        <dl>
+                        <dl style="display:none;">
                             <dt>
                                 {{ form_label(form.kana, 'お名前(カナ)', { 'label_attr': { 'class': 'ec-label' }}) }}
                             </dt>
@@ -47,7 +47,7 @@ file that was distributed with this source code.
                                 {{ form_widget(form.kana.kana02, { type : 'hidden' }) }}
                             </dd>
                         </dl>
-                        <dl>
+                        <dl style="display:none;">
                             <dt>
                                 {{ form_label(form.address, '住所', { 'label_attr': { 'class': 'ec-label' }}) }}
                             </dt>
@@ -62,7 +62,7 @@ file that was distributed with this source code.
                                 {{ form_widget(form.address.addr02, { type : 'hidden' }) }}
                             </dd>
                         </dl>
-                        <dl>
+                        <dl style="display:none;">
                             <dt>
                                 {{ form_label(form.phone_number, '電話番号', { 'label_attr': { 'class': 'ec-label' }}) }}
                             </dt>
@@ -113,8 +113,9 @@ file that was distributed with this source code.
                             <div class="ec-off4Grid__cell">
                                 <button type="submit"
                                         class="ec-blockBtn--action"
+                                        style="background: #666; border-color: #666;"
                                         name="mode"
-                                        value="complete">{{ '送信する'|trans }}
+                                        value="complete">{{ 'この内容で問い合わせる'|trans }}
                                 </button>
                                 <button type="submit"
                                         class="ec-blockBtn--cancel"

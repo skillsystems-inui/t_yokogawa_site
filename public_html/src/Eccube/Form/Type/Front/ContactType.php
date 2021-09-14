@@ -21,6 +21,7 @@ use Eccube\Form\Type\PhoneNumberType;
 use Eccube\Form\Type\PostalType;
 use Eccube\Form\Validator\Email;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -74,7 +75,16 @@ class ContactType extends AbstractType
                 'constraints' => [
                     new Assert\NotBlank(),
                 ],
-            ]);
+            ])
+            ->add('agree', CheckboxType::class, [
+                'required' => true,
+                'label' => 'admin.common.agree_policy',
+                'mapped' => false,
+                'constraints' => [
+                    new Assert\NotBlank(['message' => trans('admin.common.check')]),
+                ],
+            ])
+            ;
     }
 
     /**
