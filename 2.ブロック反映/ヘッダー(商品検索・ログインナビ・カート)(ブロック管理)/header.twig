@@ -9,9 +9,41 @@ For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 #}
 
+<script>
+    $(function() {
+        const homepage_url = document.getElementById("homepageurl").value;
+        
+        var is_home = false;
+        if(location.href == homepage_url){
+        	//トップページと判定
+        	is_home = true;
+        }
+        
+        var startPos = 0, winScrollTop = 0;
+		// scrollイベントを設定
+		window.addEventListener('scroll', function () {
+		    winScrollTop = this.scrollY;
+		    //トップページ時のみ実行
+		    if(is_home == true)
+		    {
+			    if (winScrollTop >= startPos) {
+			        // 下にスクロールされた時
+			        if (winScrollTop >= 500) {
+			            // 下に500pxスクロールされたら透過させない
+			            document.getElementById('topheader').classList.remove('top_header');
+			        }
+			    } else {
+			        // 上にスクロールされた時
+			        document.getElementById('topheader').classList.add('top_header');
+			    }
+			    startPos = winScrollTop;
+		    }
+		});
+    });
+</script>
 
-
-<header class="">
+<input type="hidden" value="{{ url('homepage') }}" id="homepageurl" />
+<header id="topheader"  class="{% if Page.url == 'homepage' %}top_header{% endif %}">
     <div class="inner">
       <p class="logo"><a href="/"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo.png" alt="菓子工房T.YOKOGAWA"></a></p><!-- .logo -->
       <span class="burger"><span></span><span></span><span></span></span>

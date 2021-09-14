@@ -63,9 +63,15 @@ file that was distributed with this source code.
 <div class="ec-layoutRole">
     {# Layout: HEADER #}
     {% if Layout.Header %}
+        {% if Page.url == 'homepage' %}
+        <div class="ec-layoutRole__header" style="height:0px;">
+            {{ include('block.twig', {'Blocks': Layout.Header}) }}
+        </div>
+        {% else %}
         <div class="ec-layoutRole__header" style="height:132px;">
             {{ include('block.twig', {'Blocks': Layout.Header}) }}
         </div>
+        {% endif %}
     {% endif %}
 
     {# Layout: CONTENTS_TOP #}
