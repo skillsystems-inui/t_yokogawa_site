@@ -108,23 +108,90 @@ file that was distributed with this source code.
                 {% endfor %}
             </form>
             <div class="ec-searchnavRole__topicpath">
-                <ol class="ec-topicpath">
+                <ol class="ec-topicpath" style="color:#000; letter-spacing: 0;">
+                    <!-- 非表示
                     <li class="ec-topicpath__item"><a href="{{ url('product_list') }}">{{ '全て'|trans }}</a>
                     </li>
+                    -->
+                    
                     {% if Category is not null %}
+                        
                         {% for Path in Category.path %}
+                            
+                            <!--
+					          カテゴリ写真用のパス一覧
+					          ※画像はファイル管理で登録されているものを指定してください
+					        -->
+					        
+                            <!-- カテゴリ画像を表示する -->
+                            <!--  デコレーション  -->
+                            {% set image_pass = '' %}
+                            {% if 'デコレーション' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000002_deco.gif' %}
+                            {% endif %}
+                            {% if 'プチガトー' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000003_puchigato.gif' %}
+                            {% endif %}
+                            {% if 'ロールケーキ' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000004_rollcake.gif' %}
+                            {% endif %}
+                            {% if 'バームクーヘン' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000005_baum.gif' %}
+                            {% endif %}
+                            {% if 'マドレーヌ' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000006_madorenu.gif' %}
+                            {% endif %}
+                            {% if 'パウンド' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000007_paundocake.gif' %}
+                            {% endif %}
+                            {% if 'クッキー' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000008_cookie.gif' %}
+                            {% endif %}
+                            {% if '要冷蔵' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000009_youreizoukasi.gif' %}
+                            {% endif %}
+                            {% if 'コンフ' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000010_conficyuru.gif' %}
+                            {% endif %}
+                            {% if 'ドーナツ' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000011_dounatscastera.gif' %}
+                            {% endif %}
+                            {% if 'チョコレート' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000043_chocolate.gif' %}
+                            {% endif %}
+                            {% if '限定スイーツ' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000045_genteisweets.gif' %}
+                            {% endif %}
+                            
+                            
+                            <!-- 画像表示 -->
+                            {% if image_pass != '' %}
+                            <div class="item_main">
+                            	<img src="{{image_pass}}" alt="">
+                            </div>
+                            {% endif %}
+                            
+                            <!-- カテゴリ名を表示する -->
+	                        <h1 class="small_title"><strong>{{ Path.name }}</strong></h1>
+	                        
+                            <!-- 非表示
                             <li class="ec-topicpath__divider">|</li>
                             <li class="ec-topicpath__item{% if loop.last %}--active{% endif %}"><a
                                         href="{{ url('product_list') }}?category_id={{ Path.id }}">{{ Path.name }}</a>
                             </li>
+                            -->
                         {% endfor %}
+                        
                     {% endif %}
+                    
                     {% if search_form.vars.value and search_form.vars.value.name %}
                         <li class="ec-topicpath__divider">|</li>
                         <li class="ec-topicpath__item">{{ '「%name%」の検索結果'|trans({ '%name%': search_form.vars.value.name }) }}</li>
                     {% endif %}
                 </ol>
             </div>
+            
+            <!-- 非表示
             <div class="ec-searchnavRole__infos">
                 <div class="ec-searchnavRole__counter">
                     {% if pagination.totalItemCount > 0 %}
@@ -142,6 +209,8 @@ file that was distributed with this source code.
                     </div>
                 {% endif %}
             </div>
+            -->
+            
         </div>
         {% if pagination.totalItemCount > 0 %}
             <div class="ec-shelfRole">
