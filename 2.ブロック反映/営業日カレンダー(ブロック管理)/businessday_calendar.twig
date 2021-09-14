@@ -146,7 +146,14 @@
 	                    {% else %}
 	                        {% set class = class ~ ' weekdaydate' %}
 	                    {% endif %}
-	                        <td style="border:1px solid #fff;" {% if class != '' %} class="{{ class }}" {% endif %}>{{ day|date('j') }}</td>
+	                        
+	                        <!-- 日付表示指定あり -->
+	                        <!-- 指定方法: month == '指定月' and day|date('j') == '指定日' -->
+	                        {% if month == '10' and day|date('j') == '3' %}
+	                        <td style="border:1px solid #fff;" {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ day|date('j') }}<br><small style="font-size:2px;">18時閉店</small></span></td>
+	                    	{% else %}
+	                    	<td style="border:1px solid #fff;" {% if class != '' %} class="{{ class }}" {% endif %}>{{ day|date('j') }}</td>
+	                    	{% endif %}
 	                    {% if day|date('w') == 6 or loop.last %}
 	                        </tr>
 	                    {% endif %}
