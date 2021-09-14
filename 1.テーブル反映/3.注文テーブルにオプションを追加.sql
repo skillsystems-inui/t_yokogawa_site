@@ -41,3 +41,37 @@ ALTER TABLE `dtb_order_item` MODIFY `order_sub_no` varchar(255) NULL DEFAULT NUL
 
 --オプションによる追加料金
 ALTER TABLE `dtb_order_item` ADD `additional_price` decimal(12,2) NOT NULL DEFAULT '0.00';
+
+--オプション拡張(11～20)
+ALTER TABLE `dtb_order_item` ADD `class_category_id11` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `class_category_id12` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `class_category_id13` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `class_category_id14` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `class_category_id15` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `class_category_id16` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `class_category_id17` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `class_category_id18` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `class_category_id19` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `class_category_id20` int(10) unsigned DEFAULT NULL;
+
+ALTER TABLE `dtb_order_item` ADD `option_name11` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_name12` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_name13` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_name14` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_name15` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_name16` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_name17` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_name18` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_name19` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_name20` varchar(255) DEFAULT NULL;
+
+ALTER TABLE `dtb_order_item` ADD `option_category_name11` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_category_name12` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_category_name13` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_category_name14` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_category_name15` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_category_name16` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_category_name17` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_category_name18` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_category_name19` varchar(255) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_category_name20` varchar(255) DEFAULT NULL;

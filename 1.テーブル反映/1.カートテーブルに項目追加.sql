@@ -20,3 +20,16 @@ ALTER TABLE `dtb_cart_item` ADD `printname_noshi` varchar(255) DEFAULT NULL;
 
 --í«â¡âøäiÅö
 ALTER TABLE `dtb_cart_item` ADD `additional_price` decimal(12,2) NOT NULL DEFAULT '0.00';
+
+
+--ÉIÉvÉVÉáÉìid11Å`20(ägí£)
+ALTER TABLE `dtb_cart_item` ADD `option_class_category_id11` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_class_category_id12` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_class_category_id13` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_class_category_id14` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_class_category_id15` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_class_category_id16` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_class_category_id17` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_class_category_id18` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_class_category_id19` int(10) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_class_category_id20` int(10) unsigned DEFAULT NULL;
