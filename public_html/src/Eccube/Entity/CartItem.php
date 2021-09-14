@@ -176,6 +176,108 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
          */
         private $ClassCategory10;
         
+        
+        /**
+         * @var \Eccube\Entity\ClassCategory
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="option_class_category_id11", referencedColumnName="id")
+         * })
+         */
+        private $ClassCategory11;
+
+        /**
+         * @var \Eccube\Entity\ClassCategory
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="option_class_category_id12", referencedColumnName="id")
+         * })
+         */
+        private $ClassCategory12;
+
+        /**
+         * @var \Eccube\Entity\ClassCategory
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="option_class_category_id13", referencedColumnName="id")
+         * })
+         */
+        private $ClassCategory13;
+
+        /**
+         * @var \Eccube\Entity\ClassCategory
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="option_class_category_id14", referencedColumnName="id")
+         * })
+         */
+        private $ClassCategory14;
+
+        /**
+         * @var \Eccube\Entity\ClassCategory
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="option_class_category_id15", referencedColumnName="id")
+         * })
+         */
+        private $ClassCategory15;
+
+        /**
+         * @var \Eccube\Entity\ClassCategory
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="option_class_category_id16", referencedColumnName="id")
+         * })
+         */
+        private $ClassCategory16;
+
+        /**
+         * @var \Eccube\Entity\ClassCategory
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="option_class_category_id17", referencedColumnName="id")
+         * })
+         */
+        private $ClassCategory17;
+
+        /**
+         * @var \Eccube\Entity\ClassCategory
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="option_class_category_id18", referencedColumnName="id")
+         * })
+         */
+        private $ClassCategory18;
+
+        /**
+         * @var \Eccube\Entity\ClassCategory
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="option_class_category_id19", referencedColumnName="id")
+         * })
+         */
+        private $ClassCategory19;
+
+        /**
+         * @var \Eccube\Entity\ClassCategory
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\ClassCategory")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="option_class_category_id20", referencedColumnName="id")
+         * })
+         */
+        private $ClassCategory20;
+        
+        
         /**
          * @var string
          *
@@ -678,6 +780,317 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         {
             return $this->option_class_category_id10;
         }
+        
+        /**
+         * @param ClassCategory $ClassCategory11
+         *
+         * @return $this
+         */
+        public function setClassCategory11(ClassCategory $ClassCategory11)
+        {
+            $this->ClassCategory11 = $ClassCategory11;
+
+            $this->option_class_category_id11 = is_object($ClassCategory11) ?
+            $ClassCategory11->getId() : null;
+
+            return $this;
+        }
+
+        /**
+         * @return ClassCategory
+         */
+        public function getClassCategory11()
+        {
+            return $this->ClassCategory11;
+        }
+
+        /**
+         * @return int|null
+         */
+        public function getClassCategoryId11()
+        {
+            return $this->option_class_category_id11;
+        }
+
+        /**
+         * @param ClassCategory $ClassCategory12
+         *
+         * @return $this
+         */
+        public function setClassCategory12(ClassCategory $ClassCategory12)
+        {
+            $this->ClassCategory12 = $ClassCategory12;
+
+            $this->option_class_category_id12 = is_object($ClassCategory12) ?
+            $ClassCategory12->getId() : null;
+
+            return $this;
+        }
+
+        /**
+         * @return ClassCategory
+         */
+        public function getClassCategory12()
+        {
+            return $this->ClassCategory12;
+        }
+
+        /**
+         * @return int|null
+         */
+        public function getClassCategoryId12()
+        {
+            return $this->option_class_category_id12;
+        }
+
+        /**
+         * @param ClassCategory $ClassCategory13
+         *
+         * @return $this
+         */
+        public function setClassCategory13(ClassCategory $ClassCategory13)
+        {
+            $this->ClassCategory13 = $ClassCategory13;
+
+            $this->option_class_category_id13 = is_object($ClassCategory13) ?
+            $ClassCategory13->getId() : null;
+
+            return $this;
+        }
+
+        /**
+         * @return ClassCategory
+         */
+        public function getClassCategory13()
+        {
+            return $this->ClassCategory13;
+        }
+
+        /**
+         * @return int|null
+         */
+        public function getClassCategoryId13()
+        {
+            return $this->option_class_category_id13;
+        }
+
+        /**
+         * @param ClassCategory $ClassCategory14
+         *
+         * @return $this
+         */
+        public function setClassCategory14(ClassCategory $ClassCategory14)
+        {
+            $this->ClassCategory14 = $ClassCategory14;
+
+            $this->option_class_category_id14 = is_object($ClassCategory14) ?
+            $ClassCategory14->getId() : null;
+
+            return $this;
+        }
+
+        /**
+         * @return ClassCategory
+         */
+        public function getClassCategory14()
+        {
+            return $this->ClassCategory14;
+        }
+
+        /**
+         * @return int|null
+         */
+        public function getClassCategoryId14()
+        {
+            return $this->option_class_category_id14;
+        }
+
+        /**
+         * @param ClassCategory $ClassCategory15
+         *
+         * @return $this
+         */
+        public function setClassCategory15(ClassCategory $ClassCategory15)
+        {
+            $this->ClassCategory15 = $ClassCategory15;
+
+            $this->option_class_category_id15 = is_object($ClassCategory15) ?
+            $ClassCategory15->getId() : null;
+
+            return $this;
+        }
+
+        /**
+         * @return ClassCategory
+         */
+        public function getClassCategory15()
+        {
+            return $this->ClassCategory15;
+        }
+
+        /**
+         * @return int|null
+         */
+        public function getClassCategoryId15()
+        {
+            return $this->option_class_category_id15;
+        }
+
+        /**
+         * @param ClassCategory $ClassCategory16
+         *
+         * @return $this
+         */
+        public function setClassCategory16(ClassCategory $ClassCategory16)
+        {
+            $this->ClassCategory16 = $ClassCategory16;
+
+            $this->option_class_category_id16 = is_object($ClassCategory16) ?
+            $ClassCategory16->getId() : null;
+
+            return $this;
+        }
+
+        /**
+         * @return ClassCategory
+         */
+        public function getClassCategory16()
+        {
+            return $this->ClassCategory16;
+        }
+
+        /**
+         * @return int|null
+         */
+        public function getClassCategoryId16()
+        {
+            return $this->option_class_category_id16;
+        }
+
+        /**
+         * @param ClassCategory $ClassCategory17
+         *
+         * @return $this
+         */
+        public function setClassCategory17(ClassCategory $ClassCategory17)
+        {
+            $this->ClassCategory17 = $ClassCategory17;
+
+            $this->option_class_category_id17 = is_object($ClassCategory17) ?
+            $ClassCategory17->getId() : null;
+
+            return $this;
+        }
+
+        /**
+         * @return ClassCategory
+         */
+        public function getClassCategory17()
+        {
+            return $this->ClassCategory17;
+        }
+
+        /**
+         * @return int|null
+         */
+        public function getClassCategoryId17()
+        {
+            return $this->option_class_category_id17;
+        }
+
+        /**
+         * @param ClassCategory $ClassCategory18
+         *
+         * @return $this
+         */
+        public function setClassCategory18(ClassCategory $ClassCategory18)
+        {
+            $this->ClassCategory18 = $ClassCategory18;
+
+            $this->option_class_category_id18 = is_object($ClassCategory18) ?
+            $ClassCategory18->getId() : null;
+
+            return $this;
+        }
+
+        /**
+         * @return ClassCategory
+         */
+        public function getClassCategory18()
+        {
+            return $this->ClassCategory18;
+        }
+
+        /**
+         * @return int|null
+         */
+        public function getClassCategoryId18()
+        {
+            return $this->option_class_category_id18;
+        }
+
+        /**
+         * @param ClassCategory $ClassCategory19
+         *
+         * @return $this
+         */
+        public function setClassCategory19(ClassCategory $ClassCategory19)
+        {
+            $this->ClassCategory19 = $ClassCategory19;
+
+            $this->option_class_category_id19 = is_object($ClassCategory19) ?
+            $ClassCategory19->getId() : null;
+
+            return $this;
+        }
+
+        /**
+         * @return ClassCategory
+         */
+        public function getClassCategory19()
+        {
+            return $this->ClassCategory19;
+        }
+
+        /**
+         * @return int|null
+         */
+        public function getClassCategoryId19()
+        {
+            return $this->option_class_category_id19;
+        }
+
+        /**
+         * @param ClassCategory $ClassCategory20
+         *
+         * @return $this
+         */
+        public function setClassCategory20(ClassCategory $ClassCategory20)
+        {
+            $this->ClassCategory20 = $ClassCategory20;
+
+            $this->option_class_category_id20 = is_object($ClassCategory20) ?
+            $ClassCategory20->getId() : null;
+
+            return $this;
+        }
+
+        /**
+         * @return ClassCategory
+         */
+        public function getClassCategory20()
+        {
+            return $this->ClassCategory20;
+        }
+
+        /**
+         * @return int|null
+         */
+        public function getClassCategoryId20()
+        {
+            return $this->option_class_category_id20;
+        }
+
 
         /**
          * Set printname_plate.

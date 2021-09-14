@@ -305,6 +305,78 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
          */
         private $option_name10;
         
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_name11", type="string", length=255, nullable=true)
+         */
+        private $option_name11;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_name12", type="string", length=255, nullable=true)
+         */
+        private $option_name12;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_name13", type="string", length=255, nullable=true)
+         */
+        private $option_name13;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_name14", type="string", length=255, nullable=true)
+         */
+        private $option_name14;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_name15", type="string", length=255, nullable=true)
+         */
+        private $option_name15;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_name16", type="string", length=255, nullable=true)
+         */
+        private $option_name16;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_name17", type="string", length=255, nullable=true)
+         */
+        private $option_name17;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_name18", type="string", length=255, nullable=true)
+         */
+        private $option_name18;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_name19", type="string", length=255, nullable=true)
+         */
+        private $option_name19;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_name20", type="string", length=255, nullable=true)
+         */
+        private $option_name20;
+        
+        
         /**
          * @var string|null
          *
@@ -396,6 +468,76 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
          */
         private $option_category_name10;
         
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_category_name11", type="string", length=255, nullable=true)
+         */
+        private $option_category_name11;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_category_name12", type="string", length=255, nullable=true)
+         */
+        private $option_category_name12;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_category_name13", type="string", length=255, nullable=true)
+         */
+        private $option_category_name13;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_category_name14", type="string", length=255, nullable=true)
+         */
+        private $option_category_name14;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_category_name15", type="string", length=255, nullable=true)
+         */
+        private $option_category_name15;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_category_name16", type="string", length=255, nullable=true)
+         */
+        private $option_category_name16;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_category_name17", type="string", length=255, nullable=true)
+         */
+        private $option_category_name17;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_category_name18", type="string", length=255, nullable=true)
+         */
+        private $option_category_name18;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_category_name19", type="string", length=255, nullable=true)
+         */
+        private $option_category_name19;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_category_name20", type="string", length=255, nullable=true)
+         */
+        private $option_category_name20;
         
         
         /**
@@ -1178,6 +1320,147 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
             return $this;
         }
         
+        
+        /**
+         * Set optionName11.
+         *
+         * @param string|null $optionName11
+         *
+         * @return OrderItem
+         */
+        public function setOptionName11($optionName11 = null)
+        {
+            $this->option_name11 = $optionName11;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionName12.
+         *
+         * @param string|null $optionName12
+         *
+         * @return OrderItem
+         */
+        public function setOptionName12($optionName12 = null)
+        {
+            $this->option_name12 = $optionName12;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionName13.
+         *
+         * @param string|null $optionName13
+         *
+         * @return OrderItem
+         */
+        public function setOptionName13($optionName13 = null)
+        {
+            $this->option_name13 = $optionName13;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionName14.
+         *
+         * @param string|null $optionName14
+         *
+         * @return OrderItem
+         */
+        public function setOptionName14($optionName14 = null)
+        {
+            $this->option_name14 = $optionName14;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionName15.
+         *
+         * @param string|null $optionName15
+         *
+         * @return OrderItem
+         */
+        public function setOptionName15($optionName15 = null)
+        {
+            $this->option_name15 = $optionName15;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionName16.
+         *
+         * @param string|null $optionName16
+         *
+         * @return OrderItem
+         */
+        public function setOptionName16($optionName16 = null)
+        {
+            $this->option_name16 = $optionName16;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionName17.
+         *
+         * @param string|null $optionName17
+         *
+         * @return OrderItem
+         */
+        public function setOptionName17($optionName17 = null)
+        {
+            $this->option_name17 = $optionName17;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionName18.
+         *
+         * @param string|null $optionName18
+         *
+         * @return OrderItem
+         */
+        public function setOptionName18($optionName18 = null)
+        {
+            $this->option_name18 = $optionName18;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionName19.
+         *
+         * @param string|null $optionName19
+         *
+         * @return OrderItem
+         */
+        public function setOptionName19($optionName19 = null)
+        {
+            $this->option_name19 = $optionName19;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionName20.
+         *
+         * @param string|null $optionName20
+         *
+         * @return OrderItem
+         */
+        public function setOptionName20($optionName20 = null)
+        {
+            $this->option_name20 = $optionName20;
+
+            return $this;
+        }
+        
         /**
          * Set optionPrintnamePlate.
          *
@@ -1324,6 +1607,107 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         {
             return $this->option_name10;
         }
+        
+        
+        /**
+         * Get optionName11.
+         *
+         * @return string|null
+         */
+        public function getOptionName11()
+        {
+            return $this->option_name11;
+        }
+
+        /**
+         * Get optionName12.
+         *
+         * @return string|null
+         */
+        public function getOptionName12()
+        {
+            return $this->option_name12;
+        }
+        
+        /**
+         * Get optionName13.
+         *
+         * @return string|null
+         */
+        public function getOptionName13()
+        {
+            return $this->option_name13;
+        }
+        
+        /**
+         * Get optionName14.
+         *
+         * @return string|null
+         */
+        public function getOptionName14()
+        {
+            return $this->option_name14;
+        }
+        
+        /**
+         * Get optionName15.
+         *
+         * @return string|null
+         */
+        public function getOptionName15()
+        {
+            return $this->option_name15;
+        }
+        
+        /**
+         * Get optionName16.
+         *
+         * @return string|null
+         */
+        public function getOptionName16()
+        {
+            return $this->option_name16;
+        }
+        
+        /**
+         * Get optionName17.
+         *
+         * @return string|null
+         */
+        public function getOptionName17()
+        {
+            return $this->option_name17;
+        }
+        
+        /**
+         * Get optionName18.
+         *
+         * @return string|null
+         */
+        public function getOptionName18()
+        {
+            return $this->option_name18;
+        }
+        /**
+         * Get optionName19.
+         *
+         * @return string|null
+         */
+        public function getOptionName19()
+        {
+            return $this->option_name19;
+        }
+        
+        /**
+         * Get optionName20.
+         *
+         * @return string|null
+         */
+        public function getOptionName20()
+        {
+            return $this->option_name20;
+        }
+        
         
         /**
          * Get optionPrintnameNoshi.
@@ -1583,6 +1967,244 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
             return $this->option_category_name10;
         }
         
+        
+        /**
+         * Set optionCategoryName11.
+         *
+         * @param string|null $optionCategoryName11
+         *
+         * @return OrderItem
+         */
+        public function setOptionCategoryName11($optionCategoryName11 = null)
+        {
+            $this->option_category_name11 = $optionCategoryName11;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionCategoryName12.
+         *
+         * @param string|null $optionCategoryName12
+         *
+         * @return OrderItem
+         */
+        public function setOptionCategoryName12($optionCategoryName12 = null)
+        {
+            $this->option_category_name12 = $optionCategoryName12;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionCategoryName13.
+         *
+         * @param string|null $optionCategoryName13
+         *
+         * @return OrderItem
+         */
+        public function setOptionCategoryName13($optionCategoryName13 = null)
+        {
+            $this->option_category_name13 = $optionCategoryName13;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionCategoryName14.
+         *
+         * @param string|null $optionCategoryName14
+         *
+         * @return OrderItem
+         */
+        public function setOptionCategoryName14($optionCategoryName14 = null)
+        {
+            $this->option_category_name14 = $optionCategoryName14;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionCategoryName15.
+         *
+         * @param string|null $optionCategoryName15
+         *
+         * @return OrderItem
+         */
+        public function setOptionCategoryName15($optionCategoryName15 = null)
+        {
+            $this->option_category_name15 = $optionCategoryName15;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionCategoryName16.
+         *
+         * @param string|null $optionCategoryName16
+         *
+         * @return OrderItem
+         */
+        public function setOptionCategoryName16($optionCategoryName16 = null)
+        {
+            $this->option_category_name16 = $optionCategoryName16;
+
+            return $this;
+        }
+        /**
+         * Set optionCategoryName17.
+         *
+         * @param string|null $optionCategoryName17
+         *
+         * @return OrderItem
+         */
+        public function setOptionCategoryName17($optionCategoryName17 = null)
+        {
+            $this->option_category_name17 = $optionCategoryName17;
+
+            return $this;
+        }
+        /**
+         * Set optionCategoryName18.
+         *
+         * @param string|null $optionCategoryName18
+         *
+         * @return OrderItem
+         */
+        public function setOptionCategoryName18($optionCategoryName18 = null)
+        {
+            $this->option_category_name18 = $optionCategoryName18;
+
+            return $this;
+        }
+        /**
+         * Set optionCategoryName19.
+         *
+         * @param string|null $optionCategoryName19
+         *
+         * @return OrderItem
+         */
+        public function setOptionCategoryName19($optionCategoryName19 = null)
+        {
+            $this->option_category_name19 = $optionCategoryName19;
+
+            return $this;
+        }
+        
+        /**
+         * Set optionCategoryName20.
+         *
+         * @param string|null $optionCategoryName20
+         *
+         * @return OrderItem
+         */
+        public function setOptionCategoryName20($optionCategoryName20 = null)
+        {
+            $this->option_category_name20 = $optionCategoryName20;
+
+            return $this;
+        }
+
+        /**
+         * Get optionCategoryName11.
+         *
+         * @return string|null
+         */
+        public function getOptionCategoryName11()
+        {
+            return $this->option_category_name11;
+        }
+        
+        /**
+         * Get optionCategoryName12.
+         *
+         * @return string|null
+         */
+        public function getOptionCategoryName12()
+        {
+            return $this->option_category_name12;
+        }
+        
+
+        /**
+         * Get optionCategoryName13.
+         *
+         * @return string|null
+         */
+        public function getOptionCategoryName13()
+        {
+            return $this->option_category_name13;
+        }
+
+        /**
+         * Get optionCategoryName14.
+         *
+         * @return string|null
+         */
+        public function getOptionCategoryName14()
+        {
+            return $this->option_category_name14;
+        }
+
+        /**
+         * Get optionCategoryName15.
+         *
+         * @return string|null
+         */
+        public function getOptionCategoryName15()
+        {
+            return $this->option_category_name15;
+        }
+
+        /**
+         * Get optionCategoryName16.
+         *
+         * @return string|null
+         */
+        public function getOptionCategoryName16()
+        {
+            return $this->option_category_name16;
+        }
+
+        /**
+         * Get optionCategoryName17.
+         *
+         * @return string|null
+         */
+        public function getOptionCategoryName17()
+        {
+            return $this->option_category_name17;
+        }
+
+        /**
+         * Get optionCategoryName18.
+         *
+         * @return string|null
+         */
+        public function getOptionCategoryName18()
+        {
+            return $this->option_category_name18;
+        }
+
+        /**
+         * Get optionCategoryName19.
+         *
+         * @return string|null
+         */
+        public function getOptionCategoryName19()
+        {
+            return $this->option_category_name19;
+        }
+        
+        /**
+         * Get optionCategoryName20.
+         *
+         * @return string|null
+         */
+        public function getOptionCategoryName20()
+        {
+            return $this->option_category_name20;
+        }
         
         
         /**
