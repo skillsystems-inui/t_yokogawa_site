@@ -1,0 +1,69 @@
+{#
+This file is part of EC-CUBE
+
+Copyright(c) EC-CUBE CO.,LTD. All Rights Reserved.
+
+http://www.ec-cube.co.jp/
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+#}
+{% set NewsList = repository('Eccube\\Entity\\News').getList() %}
+
+
+<div class="ec-role">
+    <div class="ec-newsRole">
+    
+        <div class="ec-secHeading" style="text-align:center;">
+            <span class="ec-secHeading__en">{{ 'NEWS'|trans }}</span>
+        </div>
+        <div class="ec-newsRole__news">
+            {% for News in NewsList %}
+                <div class="ec-newsRole__newsItem">
+                    <div class="ec-newsRole__newsHeading">
+                        <div class="ec-newsRole__newsDate">
+                            [{{ News.publish_date|date_day }}]
+                        </div>
+                        <div class="ec-newsRole__newsColumn">
+                            <div class="ec-newsRole__newsTitle">
+                              <a style="color:#000;" href="{{ News.url }}">
+                                {{ News.title }}
+                              </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+</div>
+
+<div class="ec-topicRole" style="padding-top:0px; padding-bottom:0px;">
+    <div class="ec-role">
+
+        <div class="ec-topicRole__list">
+            <div class="ec-topicRole__listItem">
+                <a href="{{ url('product_list') }}?category_id=1">
+                    <img src="{{ asset('assets/img/top/yuuryouka.jpg') }}">
+                </a>
+            </div>
+            <div class="ec-topicRole__listItem">
+                <a href="{{ url('product_list') }}?category_id=5">
+                    <img src="{{ asset('assets/img/top/point_present.jpg') }}">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="ec-role" style="padding-top:0px;">
+    <div class="ec-newItemRole">
+        <div class="ec-eyecatchRole">
+            <div class="ec-eyecatchRole__intro" style="max-width:300px; height:60px; margin:auto;">
+                <a class="ec-blockBtn--top" style="background-color:#F5F4F9; border:1px solid #F5F4F9; color:#000;" href="{{ url('product_list') }}">{{ 'ÉjÉÖÅ[ÉXàÍóó'|trans }}</a>
+            </div>
+        </div>
+    </div>
+</div>
