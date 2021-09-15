@@ -407,6 +407,16 @@ class CartService
                                      $ClassCategoryOption8, 
                                      $ClassCategoryOption9, 
                                      $ClassCategoryOption10, 
+                                     $ClassCategoryOption11, 
+                                     $ClassCategoryOption12, 
+                                     $ClassCategoryOption13, 
+                                     $ClassCategoryOption14, 
+                                     $ClassCategoryOption15, 
+                                     $ClassCategoryOption16, 
+                                     $ClassCategoryOption17, 
+                                     $ClassCategoryOption18, 
+                                     $ClassCategoryOption19, 
+                                     $ClassCategoryOption20, 
                                      $PrintnamePlate,
                                      $PrintnameNoshi,
                                      $AdditionalOptionPrice,
@@ -535,6 +545,117 @@ class CartService
 	        }
         }
         
+        //オプション11用オブジェクト取得
+        if (!is_null($ClassCategoryOption11)) {
+	        if (!$ClassCategoryOption11 instanceof ClassCategory) {
+	            
+	            $ClassCategoryOption11Id = $ClassCategoryOption11;
+	            
+	            $ClassCategoryOption11 = $this->entityManager
+	                ->getRepository(ClassCategory::class)
+	                ->find($ClassCategoryOption11Id);
+	        }
+        }
+        //オプション12用オブジェクト取得
+        if (!is_null($ClassCategoryOption12)) {
+	        if (!$ClassCategoryOption12 instanceof ClassCategory) {
+	            
+	            $ClassCategoryOption12Id = $ClassCategoryOption12;
+	            
+	            $ClassCategoryOption12 = $this->entityManager
+	                ->getRepository(ClassCategory::class)
+	                ->find($ClassCategoryOption12Id);
+	        }
+        }
+        //オプション13用オブジェクト取得
+        if (!is_null($ClassCategoryOption13)) {
+	        if (!$ClassCategoryOption13 instanceof ClassCategory) {
+	            
+	            $ClassCategoryOption13Id = $ClassCategoryOption13;
+	            
+	            $ClassCategoryOption13 = $this->entityManager
+	                ->getRepository(ClassCategory::class)
+	                ->find($ClassCategoryOption13Id);
+	        }
+        }
+        //オプション4用オブジェクト取得
+        if (!is_null($ClassCategoryOption14)) {
+	        if (!$ClassCategoryOption14 instanceof ClassCategory) {
+	            
+	            $ClassCategoryOption14Id = $ClassCategoryOption14;
+	            
+	            $ClassCategoryOption14 = $this->entityManager
+	                ->getRepository(ClassCategory::class)
+	                ->find($ClassCategoryOption14Id);
+	        }
+        }
+        //オプション5用オブジェクト取得
+        if (!is_null($ClassCategoryOption15)) {
+	        if (!$ClassCategoryOption15 instanceof ClassCategory) {
+	            
+	            $ClassCategoryOption15Id = $ClassCategoryOption15;
+	            
+	            $ClassCategoryOption15 = $this->entityManager
+	                ->getRepository(ClassCategory::class)
+	                ->find($ClassCategoryOption15Id);
+	        }
+        }
+        //オプション6用オブジェクト取得
+        if (!is_null($ClassCategoryOption16)) {
+	        if (!$ClassCategoryOption16 instanceof ClassCategory) {
+	            
+	            $ClassCategoryOption16Id = $ClassCategoryOption16;
+	            
+	            $ClassCategoryOption16 = $this->entityManager
+	                ->getRepository(ClassCategory::class)
+	                ->find($ClassCategoryOption16Id);
+	        }
+        }
+        //オプション7用オブジェクト取得
+        if (!is_null($ClassCategoryOption17)) {
+	        if (!$ClassCategoryOption17 instanceof ClassCategory) {
+	            
+	            $ClassCategoryOption17Id = $ClassCategoryOption17;
+	            
+	            $ClassCategoryOption17 = $this->entityManager
+	                ->getRepository(ClassCategory::class)
+	                ->find($ClassCategoryOption17Id);
+	        }
+        }
+        //オプション8用オブジェクト取得
+        if (!is_null($ClassCategoryOption18)) {
+	        if (!$ClassCategoryOption18 instanceof ClassCategory) {
+	            
+	            $ClassCategoryOption18Id = $ClassCategoryOption18;
+	            
+	            $ClassCategoryOption18 = $this->entityManager
+	                ->getRepository(ClassCategory::class)
+	                ->find($ClassCategoryOption18Id);
+	        }
+        }
+        //オプション19用オブジェクト取得
+        if (!is_null($ClassCategoryOption19)) {
+	        if (!$ClassCategoryOption19 instanceof ClassCategory) {
+	            
+	            $ClassCategoryOption19Id = $ClassCategoryOption19;
+	            
+	            $ClassCategoryOption19 = $this->entityManager
+	                ->getRepository(ClassCategory::class)
+	                ->find($ClassCategoryOption19Id);
+	        }
+        }
+        //オプション20用オブジェクト取得
+        if (!is_null($ClassCategoryOption20)) {
+	        if (!$ClassCategoryOption20 instanceof ClassCategory) {
+	            
+	            $ClassCategoryOption20Id = $ClassCategoryOption20;
+	            
+	            $ClassCategoryOption20 = $this->entityManager
+	                ->getRepository(ClassCategory::class)
+	                ->find($ClassCategoryOption20Id);
+	        }
+        }
+        
 
         $ClassCategory1 = $ProductClass->getClassCategory1();
         
@@ -591,6 +712,46 @@ class CartService
         //[Option]オプション10をCartItemに登録する(未指定(null)でなければ実施する)
         if (!is_null($ClassCategoryOption10)) {
             $newItem->setClassCategory10($ClassCategoryOption10);
+        }
+		//[Option]オプション11をCartItemに登録する(未指定(null)でなければ実施する)
+        if (!is_null($ClassCategoryOption11)) {
+            $newItem->setClassCategory11($ClassCategoryOption11);
+        }
+        //[Option]オプション12をCartItemに登録する(未指定(null)でなければ実施する)
+        if (!is_null($ClassCategoryOption12)) {
+            $newItem->setClassCategory12($ClassCategoryOption12);
+        }
+        //[Option]オプション13をCartItemに登録する(未指定(null)でなければ実施する)
+        if (!is_null($ClassCategoryOption13)) {
+            $newItem->setClassCategory13($ClassCategoryOption13);
+        }
+        //[Option]オプション14をCartItemに登録する(未指定(null)でなければ実施する)
+        if (!is_null($ClassCategoryOption14)) {
+            $newItem->setClassCategory14($ClassCategoryOption14);
+        }
+        //[Option]オプション15をCartItemに登録する(未指定(null)でなければ実施する)
+        if (!is_null($ClassCategoryOption15)) {
+            $newItem->setClassCategory15($ClassCategoryOption15);
+        }
+        //[Option]オプション16をCartItemに登録する(未指定(null)でなければ実施する)
+        if (!is_null($ClassCategoryOption16)) {
+            $newItem->setClassCategory16($ClassCategoryOption16);
+        }
+        //[Option]オプション17をCartItemに登録する(未指定(null)でなければ実施する)
+        if (!is_null($ClassCategoryOption17)) {
+            $newItem->setClassCategory17($ClassCategoryOption17);
+        }
+        //[Option]オプション18をCartItemに登録する(未指定(null)でなければ実施する)
+        if (!is_null($ClassCategoryOption18)) {
+            $newItem->setClassCategory18($ClassCategoryOption18);
+        }
+        //[Option]オプション19をCartItemに登録する(未指定(null)でなければ実施する)
+        if (!is_null($ClassCategoryOption19)) {
+            $newItem->setClassCategory19($ClassCategoryOption19);
+        }
+        //[Option]オプション20をCartItemに登録する(未指定(null)でなければ実施する)
+        if (!is_null($ClassCategoryOption20)) {
+            $newItem->setClassCategory20($ClassCategoryOption20);
         }
         
         //[Option]名付け(プレート)をCartItemに登録する
