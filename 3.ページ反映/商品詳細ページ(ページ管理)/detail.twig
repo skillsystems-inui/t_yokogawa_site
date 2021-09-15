@@ -109,19 +109,28 @@ file that was distributed with this source code.
 	        * 写真付きオプション用のパス一覧
 	        *  ※画像はファイル管理で登録されているものを指定してください
 	        */
+	        var evm = location.href.indexOf('free') != -1 ? '/eccube' : '';
+	        
 	        //キャンドル
-	        var optimg_candle_big     = '';//キャンドル大
-	        var optimg_candle_small   = '';//キャンドル小
-	        var optimg_candle_no      = '';//キャンドルNo
+	        var optimg_candle_big     = '/html/user_data/assets/img/option/opt_candle_big.png';//キャンドル大
+	        var optimg_candle_small   = '/html/user_data/assets/img/option/opt_candle_small.png';//キャンドル小
+	        var optimg_candle_no      = '/html/user_data/assets/img/option/opt_candle_no.png';//キャンドルNo
 	        //メッセージ
-	        var optimg_message_muji          = '/eccube/html/user_data/assets/img/option/opt_plate_muji.png';//無地プレート
-	        var optimg_message_omedetou_only = '/eccube/html/user_data/assets/img/option/opt_plate_omedeto_only.png';//おたんじょうびおめでとう
-	        var optimg_message_omedetou_plus = '/eccube/html/user_data/assets/img/option/opt_plate_omedeto_plus.png';//おたんじょうびおめでとう(□に名前が入ります)
+	        var optimg_message_muji          = '/html/user_data/assets/img/option/opt_plate_muji.png';//無地プレート
+	        var optimg_message_omedetou_only = '/html/user_data/assets/img/option/opt_plate_omedeto_only.png';//おたんじょうびおめでとう
+	        var optimg_message_omedetou_plus = '/html/user_data/assets/img/option/opt_plate_omedeto_plus.png';//おたんじょうびおめでとう(□に名前が入ります)
 	        //デコレーション追加
-	        var optimg_decoadd_ichigo     = '/eccube/html/user_data/assets/img/option/opt_adddeco_ichigo.png';//いちごUP
-	        var optimg_decoadd_fruit      = '/eccube/html/user_data/assets/img/option/opt_adddeco_fruit.png';//フルーツUP
-	        var optimg_decoadd_choko_nama = '/eccube/html/user_data/assets/img/option/opt_adddeco_choko_nama.png';//生チョコUP
-	        var optimg_decoadd_choko_e    = '/eccube/html/user_data/assets/img/option/opt_adddeco_choko_e.png';//絵チョコ (4号)
+	        var optimg_decoadd_ichigo     = '/html/user_data/assets/img/option/opt_adddeco_ichigo.png';//いちごUP
+	        var optimg_decoadd_fruit      = '/html/user_data/assets/img/option/opt_adddeco_fruit.png';//フルーツUP
+	        var optimg_decoadd_choko_nama = '/html/user_data/assets/img/option/opt_adddeco_choko_nama.png';//生チョコUP
+	        var optimg_decoadd_choko_e    = '/html/user_data/assets/img/option/opt_adddeco_choko_e.png';//絵チョコ (4号)
+	        var hskimg_decoadd_choko_e    = '/html/user_data/assets/img/option/setumei_choko_nama.png';//絵チョコ (4号) (補足)
+	        //包装方法
+	        var optimg_housohouho_housou    = '/html/user_data/assets/img/option/opt_gift_housou.png';//包装
+	        var optimg_housohouho_jitaku    = '/html/user_data/assets/img/option/opt_gift_jitaku.png';//自宅用
+	        var optimg_housohouho_ribon     = '/html/user_data/assets/img/option/opt_gift_ribon.png'; //リボン
+	        var optimg_housohouho_noshi     = '/html/user_data/assets/img/option/opt_gift_noshi.png'; //熨斗
+	        //--------------------------------------
 	        
 	        //オプション選択
 	        var $optn_select_text = $optn.text();
@@ -135,9 +144,10 @@ file that was distributed with this source code.
 	        		var innnerElm = document.getElementById(innner_id);
 	        		if(innnerElm != null){
 		        		
+		        		//1.入力項目制御(数字選択)
+		        		
 		        		//数字選択欄を表示させる
 		        		innnerElm.style.display="block";
-		        		
 		        		//ろうそくならラジオボタン入力欄を非表示
 		        		var orgblock_id = $opt_id + '_wdg';
 		        		if(document.getElementById(orgblock_id) != null){
@@ -145,6 +155,7 @@ file that was distributed with this source code.
 	        				document.getElementById(orgblock_id).style.display="none";
 	        			}
 	        			
+	        			//2.大カテゴリタイトルセット
 	        			//ToDo ろうそく関連の先頭の判断をすればいいのでは？
 	        			//ろうそく大をろうそく関連のメインラベルで出す
 	        			if (lbl_info.textContent.indexOf('大') != -1) 
@@ -164,6 +175,85 @@ file that was distributed with this source code.
 					        		innnerLbl.insertAdjacentHTML('afterend', lbltag);
 			        		}
 	        			}
+	        			
+			        	//3.オプション画像セット
+			        	{
+			        		//ラジオボタン選択の項目なので先頭に画像をセットさせる
+			        		// 対象のID名(xxx_gazou)
+			        		var item_id_target = $opt_id + '_gazou';
+			        		// あるかチェック
+			        		var target_info = document.getElementById(item_id_target);
+							if(target_info != null){
+								// div要素を作成
+								var img_element = document.createElement('div');
+								//-- 画像の判定 --
+								//　　対象の画像パス
+								var target_img_pass = '';
+								
+								//オプション名から判定する
+								if(lbl_info.textContent.indexOf('大') != -1){
+									//キャンドル大
+									target_img_pass = evm + optimg_candle_big;
+									//サイズ
+									img_element.style.width  = '100px';
+									img_element.style.height = '100px';
+								}else if(lbl_info.textContent.indexOf('小') != -1){
+									//キャンドル小
+									target_img_pass = evm + optimg_candle_small;
+									//サイズ
+									img_element.style.width  = '100px';
+									img_element.style.height = '100px';
+								}else if(lbl_info.textContent.indexOf('N') != -1){
+									//Noキャンドル
+									target_img_pass = evm + optimg_candle_no;
+									
+									//2つ目以降は出さない
+									if(lbl_info.textContent.indexOf('1') != -1){
+										//サイズあり
+										img_element.style.width  = '280px';
+										img_element.style.height = '155px';
+									}else{
+										//サイズなし
+										img_element.style.width  = '0px';
+										img_element.style.height = '0pxx';
+									}
+								}
+								// 画像パスセット
+								 
+								img_element.style.backgroundImage = 'url(' + target_img_pass + ')'; 
+								//指定要素(gazou)の前にセット
+								target_info.before(img_element);
+							}
+						}
+						
+						//4.項目名セット
+	        			{
+	        				var kmkm_id = $opt_id + '_koumokumei';
+			        		var innnerKmk = document.getElementById(kmkm_id);
+			        		if(innnerKmk != null){
+			        				//タグ作成
+					        		let lbltag ='<div style="font-size:21px;">';
+					        		
+					        		if (lbl_info.textContent.indexOf('N') != -1 && lbl_info.textContent.indexOf('1') != -1) {
+						        		//Noキャンドルの場合
+						        		lbltag = lbltag + '<div style="float:left; padding:8px;">Noキャンドル</div>';
+						        		lbltag = lbltag + '<div style="float:left; padding:8px; color:red;">(+120円)</div>';
+				        				lbltag = lbltag + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
+			        				}else if(lbl_info.textContent.indexOf('大') != -1) {
+			        					//キャンドル大の場合
+						        		lbltag = lbltag + '<div style="float:left; padding:8px;">キャンドル　大</div>';
+			        				}else if(lbl_info.textContent.indexOf('大') != -1) {
+			        					//キャンドル小の場合
+						        		lbltag = lbltag + '<div style="float:left; padding:8px;">キャンドル　小</div>';
+			        				}
+			        				lbltag = lbltag + '<div style="clear:both;"></div>';
+			        				lbltag = lbltag + '</div>';
+			        				
+			        				//タグを埋め込む
+					        		innnerKmk.insertAdjacentHTML('afterend', lbltag);
+			        		}
+	        			}
+
 	        		}
 	        	}else if(lbl_info.textContent.indexOf('追加') != -1){
 	        		
@@ -195,6 +285,10 @@ file that was distributed with this source code.
 				        if(target_info != null) {
 							// div要素を作成
 							var img_element = document.createElement('div');
+							// 補足要素を作成
+							var img_hosoku = document.createElement('div');
+							img_hosoku.style.width  = '0px';
+							img_hosoku.style.height = '0px'; 
 							
 							//ToDo テキスト入力項目のラベル名の取り方は？　いったん想定される項目の中から選ぶ
 							
@@ -203,19 +297,24 @@ file that was distributed with this source code.
 							//-- 画像の判定 --
 							//　　対象の画像パス
 							var target_img_pass = '';
+							//    補足画像パス
+							var hosoku_img_pass = '';
 							//  ラジオボタン名から判定する
 							if(lbl_info.textContent.indexOf('いちご') != -1){
 								//いちごUP
-								target_img_pass = optimg_decoadd_ichigo;
+								target_img_pass = evm + optimg_decoadd_ichigo;
 							}else if(lbl_info.textContent.indexOf('フルーツ') != -1){
 								//フルーツUP
-								target_img_pass = optimg_decoadd_fruit;
+								target_img_pass = evm + optimg_decoadd_fruit;
 							}else if(lbl_info.textContent.indexOf('生チョコ') != -1){
 								//生チョコUP
-								target_img_pass = optimg_decoadd_choko_nama;
+								target_img_pass = evm + optimg_decoadd_choko_nama;
 							}else if(lbl_info.textContent.indexOf('絵チョコ') != -1){
 								//絵チョコ(4号)
-								target_img_pass = optimg_decoadd_choko_e;
+								target_img_pass = evm + optimg_decoadd_choko_e;
+								img_hosoku.style.width  = '350px';
+								img_hosoku.style.height = '200px'; 
+								hosoku_img_pass = evm + hskimg_decoadd_choko_e;
 							}
 							// 画像パスセット
 							img_element.style.width  = '160px';
@@ -224,6 +323,11 @@ file that was distributed with this source code.
 							
 							//指定要素の前にセット
 							target_info.before(img_element);
+							//------------
+							//補足用画像は後ろにつける
+							img_hosoku.style.backgroundImage = 'url(' + hosoku_img_pass + ')'; 
+							//指定要素の後ろにセット
+							target_info.after(img_hosoku);
 							
 						}
 						// --.項目の数だけ繰り返し--
@@ -295,13 +399,13 @@ file that was distributed with this source code.
 							//  ラジオボタン名から判定する
 							if(this_label.indexOf('無地') != -1){
 								//無地プレート
-								target_img_pass = optimg_message_muji;
+								target_img_pass = evm + optimg_message_muji;
 							}else if(this_label.indexOf('名前が') != -1){
 								//おたんじょうびおめでとう(□に名前が入ります)
-								target_img_pass = optimg_message_omedetou_plus;
+								target_img_pass = evm + optimg_message_omedetou_plus;
 							}else if(this_label.indexOf('たんじょうび') != -1){
 								//おたんじょうびおめでとう
-								target_img_pass = optimg_message_omedetou_only;
+								target_img_pass = evm + optimg_message_omedetou_only;
 							}
 							// 画像パスセット
 							img_element.style.width  = '160px';
@@ -327,6 +431,88 @@ file that was distributed with this source code.
 					        		let lbltag ='<div style="background-color:lightblue; font-size:21px;">';
 					        		lbltag = lbltag + '<div class="" style="float:left; width:80%; padding:8px;"><b>メッセージを入力</b></div>';
 			        				lbltag = lbltag + '<div style="float:left; width:20%; padding:8px; font-size:16px;"><input type="checkbox" id="chk_message_nosel" name="chk_message_nosel"><label for="chk_message_nosel">不要</label></div>';
+			        				lbltag = lbltag + '<div style="clear:both;"></div>';
+			        				lbltag = lbltag + '</div>';
+			        				
+			        				//タグを埋め込む
+					        		//innnerLbl.innerHTML = lbltag;
+					        		innnerLbl.insertAdjacentHTML('afterend', lbltag);
+			        		}
+	        			}
+					}
+	        		//------------------------------------------------------------------------------------------------------------
+	        		
+	        		//〇包装方法の場合
+	        		if (lbl_info.textContent.indexOf('包装方法') != -1) {
+		        		//ラジオボタン選択の項目なので先頭に画像をセットさせる
+		        		// ラジオボタンの項目はidとして「」のように持っている
+		        		var item_id_base = $opt_id + '_';
+		        		var item_cnt = 0;//初期値は0番目
+		        		// 対象のID名
+		        		var item_id_target = $opt_id + '_' + item_cnt;
+		        		// あるかチェック
+		        		var target_info = document.getElementById(item_id_target);
+				        // --項目の数だけ繰り返し--
+				        while (target_info != null) {
+							
+							//現在の対象id
+							var cur_item_id_target = item_id_base + item_cnt;
+							// div要素を作成
+							var img_element = document.createElement('div');
+							//ラベル取得
+							var label = null;
+							var this_label = null;
+							if (cur_item_id_target !== '') {
+							  label = document.querySelector('label[for="' + cur_item_id_target + '"]');
+							}
+							if (!label) {
+							  label = element.closest('label');
+							}
+							this_label = label ? label.textContent : '';
+							//.ラベル取得
+							
+							//-- 画像の判定 --
+							//　　対象の画像パス
+							var target_img_pass = '';
+							//  ラジオボタン名から判定する
+							if(this_label.indexOf('包装') != -1){
+								//包装
+								target_img_pass = evm + optimg_housohouho_housou;
+							}else if(this_label.indexOf('自宅') != -1){
+								//自宅用
+								target_img_pass = evm + optimg_housohouho_jitaku;
+							}else if(this_label.indexOf('リボン') != -1){
+								//リボン
+								target_img_pass = evm + optimg_housohouho_ribon;
+							}else if(this_label.indexOf('熨斗') != -1){
+								//熨斗
+								target_img_pass = evm + optimg_housohouho_noshi;
+							}
+							
+							// 画像パスセット
+							img_element.style.width  = '100px';
+							img_element.style.height = '100px'; 
+							img_element.style.backgroundImage = 'url(' + target_img_pass + ')'; 
+							
+							//指定要素の前にセット
+							target_info.before(img_element);
+							
+							//次の項目へ
+							item_cnt++;
+							var tmp_item_id_target = item_id_base + item_cnt;
+							target_info = document.getElementById(tmp_item_id_target);
+						}
+						// --.項目の数だけ繰り返し--
+					
+						//オプション大タイトルを付ける(包装方法)
+	        			{
+	        				var inlbl_id = $opt_id + '_mainlabel';
+			        		var innnerLbl = document.getElementById(inlbl_id);
+			        		if(innnerLbl != null){
+			        				//タグ作成
+					        		let lbltag ='<div style="background-color:lightblue; font-size:21px;">';
+					        		lbltag = lbltag + '<div class="" style="float:left; width:80%; padding:8px;"><b>包装方法を選択</b></div>';
+			        				lbltag = lbltag + '<div style="float:left; width:20%; padding:8px; font-size:16px;"><input type="checkbox" id="chk_housou_nosel" name="chk_housou_nosel"><label for="chk_housou_nosel">不要</label></div>';
 			        				lbltag = lbltag + '<div style="clear:both;"></div>';
 			        				lbltag = lbltag + '</div>';
 			        				
@@ -727,7 +913,7 @@ file that was distributed with this source code.
                             
                             <!-- 詳細を指定するボタン -->
                             <div class="ec-productRole__btn" style="padding-top:10px;width:100%;">
-                                <button type="button" class="ec-blockBtn--action select-options" style="background: url('/eccube/html/user_data/assets/img/option/btn_syousai.png') no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto;">
+                                <button type="button" class="ec-blockBtn--action select-options" style="background: url({{ asset('assets/img/btn_syousai.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto;">
                                 </button>
                             </div>
                             
@@ -745,7 +931,7 @@ file that was distributed with this source code.
                          <!----- 【詳細を指定】ブロック ----->
                             {# 詳細を指定する #}
                             <div class="ec-productRole__profile" style="width:100%; padding-top:100px;">
-			                    <div style="margin-left:auto; margin-right:auto; background: url('/eccube/html/user_data/assets/img/option/mark_write_sentence.png') no-repeat scroll 0 0; border-color:#fff;min-height:150px; height:auto;">
+			                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/mark_write_sentence.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:150px; height:auto;">
 	                            </div>
 			                </div>
                             
@@ -758,18 +944,31 @@ file that was distributed with this source code.
 		                                
 			                            <div class="ec-productRole__actions">
 			                                
-			                                <!--   ろうそく1番目か判定する  -->
-			                                {% set toped_canldle_flg = 'false' %}
+			                                <!-- メッセージを含むか判定 -->
+			                                {% set exist_message = false %}
+			                                <!-- 熨斗を含むか判定 -->
+			                                {% set exist_noshi = false %}
 			                                
 			                                <!-- オプション -->
 			                                {% if form.optioncategory_id1 is defined %}
 			                                	<!-- 大オプションラベル -->
 			                                    <div id="optioncategory_id1_mainlabel"></div>
+			                                    <!-- 文言 -->
+												<div id="optioncategory_id1_mongon"></div>
+			                                    <!-- オプション画像 -->
+			                                    <div id="optioncategory_id1_gazou"></div>
 			                                    <!-- 入力エリア -->
 			                                	<div class="">
-			                                        <p id="optioncategory_id1_lbl">
+			                                        <!-- 登録オプション名 -->
+			                                        <p id="optioncategory_id1_lbl" style="display:none;">
 			                                    		{{ form_label(form.optioncategory_id1) }}
 			                                        </p>
+			                                        <!-- オプション項目名 -->
+													<div style="display:block;">
+														<div id="optioncategory_id1_koumokumei"></div>
+					                                    <!-- アイコン -->
+					                                    <div id="optioncategory_id1_icon"></div>
+					                                </div>
 			                                        <!-- 特別な入力欄 -->			                                        
 			                                        <div id="optioncategory_id1_nyuryoku" style="display:none;">
 														<div class="ec-numberInput">
@@ -782,17 +981,73 @@ file that was distributed with this source code.
 			                                        <div id="optioncategory_id1_wdg" style="display:block;">
 			                                        	{{ form_widget(form.optioncategory_id1) }}
 			                                        </div>
+			                                        
+			                                        
+			                                        {% if 'メッセージ' in form_label(form.optioncategory_id1) %}
+			                                        	<!--    名入れ(プレート)    -->
+						                                {% if form.printname_plate is defined %}
+							                                <div id="printname_plate_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_plate) }}
+								                                    {{ form_errors(form.printname_plate) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_plate" name="printname_plate" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(プレート)    -->
+			                                        	{% set exist_message = true %}
+			                                        {% endif %}
+			                                        {% if '上書き' in form_label(form.optioncategory_id1) %}
+			                                        	<!--    名入れ(熨斗)    -->
+						                                {% if form.printname_noshi is defined %}
+							                                <div id="printname_noshi_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ '熨斗の名入れ希望はこちらへ（ふりがなもご記入頂ければ対応可能です）'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_noshi) }}
+								                                    {{ form_errors(form.printname_noshi) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_noshi" name="printname_noshi" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(熨斗)    -->
+			                                        	{% set exist_noshi = true %}
+			                                        {% endif %}
+			                                        
 			                                        {{ form_errors(form.optioncategory_id1) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id2 is defined %}
 			                                    <!-- 大オプションラベル -->
 			                                    <div id="optioncategory_id2_mainlabel"></div>
+			                                    <!-- 文言 -->
+												<div id="optioncategory_id2_mongon"></div>
+			                                    <!-- オプション画像 -->
+			                                    <div id="optioncategory_id2_gazou"></div>
 			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                    	<p id="optioncategory_id2_lbl">
+			                                    	<!-- 登録オプション名 -->
+			                                    	<p id="optioncategory_id2_lbl" style="display:none;">
 			                                    		{{ form_label(form.optioncategory_id2) }}
 			                                        </p>
+			                                        <!-- オプション項目名 -->
+													<div style="display:block;">
+														<div id="optioncategory_id2_koumokumei"></div>
+					                                    <!-- アイコン -->
+					                                    <div id="optioncategory_id2_icon"></div>
+					                                </div>
 			                                        <!-- 特別な入力欄 -->			                                        
 			                                        <div id="optioncategory_id2_nyuryoku" style="display:none;">
 			                                        	<div class="ec-numberInput">
@@ -801,20 +1056,76 @@ file that was distributed with this source code.
 															<span>本</span>
 														</div>
 			                                        </div>
+			                                        
 			                                        <div id="optioncategory_id2_wdg" style="display:block;">
 			                                        	{{ form_widget(form.optioncategory_id2) }}
 			                                        </div>
+			                                        
+			                                        {% if 'メッセージ' in form_label(form.optioncategory_id2) %}
+			                                        	<!--    名入れ(プレート)    -->
+						                                {% if form.printname_plate is defined %}
+							                                <div id="printname_plate_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_plate) }}
+								                                    {{ form_errors(form.printname_plate) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_plate" name="printname_plate" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(プレート)    -->
+			                                        	{% set exist_message = true %}
+			                                        {% endif %}
+			                                        {% if '上書き' in form_label(form.optioncategory_id2) %}
+			                                        	<!--    名入れ(熨斗)    -->
+						                                {% if form.printname_noshi is defined %}
+							                                <div id="printname_noshi_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ '熨斗の名入れ希望はこちらへ（ふりがなもご記入頂ければ対応可能です）'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_noshi) }}
+								                                    {{ form_errors(form.printname_noshi) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_noshi" name="printname_noshi" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(熨斗)    -->
+			                                        	{% set exist_noshi = true %}
+			                                        {% endif %}
+			                                        
 			                                        {{ form_errors(form.optioncategory_id2) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id3 is defined %}
 			                                    <!-- 大オプションラベル -->
 			                                    <div id="optioncategory_id3_mainlabel"></div>
+			                                    <!-- 文言 -->
+												<div id="optioncategory_id3_mongon"></div>
+			                                    <!-- オプション画像 -->
+			                                    <div id="optioncategory_id3_gazou"></div>
 			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                    	<p id="optioncategory_id3_lbl">
+			                                    	<!-- 登録オプション名 -->
+			                                    	<p id="optioncategory_id3_lbl" style="display:none;">
 			                                    		{{ form_label(form.optioncategory_id3) }}
 			                                        </p>
+			                                        <!-- オプション項目名 -->
+													<div style="display:block;">
+														<div id="optioncategory_id3_koumokumei"></div>
+					                                    <!-- アイコン -->
+					                                    <div id="optioncategory_id3_icon"></div>
+					                                </div>
 			                                        <!-- 特別な入力欄 -->			                                        
 			                                        <div id="optioncategory_id3_nyuryoku" style="display:none;">
 			                                        	<div class="ec-numberInput">
@@ -823,20 +1134,76 @@ file that was distributed with this source code.
 															<span>本</span>
 														</div>
 			                                        </div>
+			                                        
 			                                        <div id="optioncategory_id3_wdg" style="display:block;">
 			                                        	{{ form_widget(form.optioncategory_id3) }}
 			                                        </div>
+			                                        
+			                                        {% if 'メッセージ' in form_label(form.optioncategory_id3) %}
+			                                        	<!--    名入れ(プレート)    -->
+						                                {% if form.printname_plate is defined %}
+							                                <div id="printname_plate_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_plate) }}
+								                                    {{ form_errors(form.printname_plate) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_plate" name="printname_plate" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(プレート)    -->
+			                                        	{% set exist_message = true %}
+			                                        {% endif %}
+			                                        {% if '上書き' in form_label(form.optioncategory_id3) %}
+			                                        	<!--    名入れ(熨斗)    -->
+						                                {% if form.printname_noshi is defined %}
+							                                <div id="printname_noshi_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ '熨斗の名入れ希望はこちらへ（ふりがなもご記入頂ければ対応可能です）'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_noshi) }}
+								                                    {{ form_errors(form.printname_noshi) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_noshi" name="printname_noshi" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(熨斗)    -->
+			                                        	{% set exist_noshi = true %}
+			                                        {% endif %}
+			                                        
 			                                        {{ form_errors(form.optioncategory_id3) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id4 is defined %}
 			                                    <!-- 大オプションラベル -->
 			                                    <div id="optioncategory_id4_mainlabel"></div>
+			                                    <!-- 文言 -->
+												<div id="optioncategory_id4_mongon"></div>
+			                                    <!-- オプション画像 -->
+			                                    <div id="optioncategory_id4_gazou"></div>
 			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                    	<p id="optioncategory_id4_lbl">
+			                                    	<!-- 登録オプション名 -->
+			                                    	<p id="optioncategory_id4_lbl" style="display:none;">
 			                                    		{{ form_label(form.optioncategory_id4) }}
 			                                        </p>
+			                                        <!-- オプション項目名 -->
+													<div style="display:block;">
+														<div id="optioncategory_id4_koumokumei"></div>
+					                                    <!-- アイコン -->
+					                                    <div id="optioncategory_id4_icon"></div>
+					                                </div>
 			                                        <!-- 特別な入力欄 -->			                                        
 			                                        <div id="optioncategory_id4_nyuryoku" style="display:none;">
 			                                        	<div class="ec-numberInput">
@@ -845,20 +1212,77 @@ file that was distributed with this source code.
 															<span>本</span>
 														</div>
 			                                        </div>
+			                                        
 			                                        <div id="optioncategory_id4_wdg" style="display:block;">
 			                                        	{{ form_widget(form.optioncategory_id4) }}
 			                                        </div>
+			                                        
+			                                        
+			                                        {% if 'メッセージ' in form_label(form.optioncategory_id4) %}
+			                                        	<!--    名入れ(プレート)    -->
+						                                {% if form.printname_plate is defined %}
+							                                <div id="printname_plate_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_plate) }}
+								                                    {{ form_errors(form.printname_plate) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_plate" name="printname_plate" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(プレート)    -->
+			                                        	{% set exist_message = true %}
+			                                        {% endif %}
+			                                        {% if '上書き' in form_label(form.optioncategory_id4) %}
+			                                        	<!--    名入れ(熨斗)    -->
+						                                {% if form.printname_noshi is defined %}
+							                                <div id="printname_noshi_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ '熨斗の名入れ希望はこちらへ（ふりがなもご記入頂ければ対応可能です）'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_noshi) }}
+								                                    {{ form_errors(form.printname_noshi) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_noshi" name="printname_noshi" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(熨斗)    -->
+			                                        	{% set exist_noshi = true %}
+			                                        {% endif %}
+			                                        
 			                                        {{ form_errors(form.optioncategory_id4) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id5 is defined %}
 			                                    <!-- 大オプションラベル -->
 			                                    <div id="optioncategory_id5_mainlabel"></div>
+			                                    <!-- 文言 -->
+												<div id="optioncategory_id5_mongon"></div>
+			                                    <!-- オプション画像 -->
+			                                    <div id="optioncategory_id5_gazou"></div>
 			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                        <p id="optioncategory_id5_lbl">
+			                                        <!-- 登録オプション名 -->
+			                                        <p id="optioncategory_id5_lbl" style="display:none;">
 			                                    		{{ form_label(form.optioncategory_id5) }}
 			                                        </p>
+			                                        <!-- オプション項目名 -->
+													<div style="display:block;">
+														<div id="optioncategory_id5_koumokumei"></div>
+					                                    <!-- アイコン -->
+					                                    <div id="optioncategory_id5_icon"></div>
+					                                </div>
 			                                        <!-- 特別な入力欄 -->			                                        
 			                                        <div id="optioncategory_id5_nyuryoku" style="display:none;">
 			                                        	<div class="ec-numberInput">
@@ -867,20 +1291,76 @@ file that was distributed with this source code.
 															<span>本</span>
 														</div>
 			                                        </div>
+			                                        
 			                                        <div id="optioncategory_id5_wdg" style="display:block;">
 			                                        	{{ form_widget(form.optioncategory_id5) }}
 			                                        </div>
+			                                        
+			                                        {% if 'メッセージ' in form_label(form.optioncategory_id5) %}
+			                                        	<!--    名入れ(プレート)    -->
+						                                {% if form.printname_plate is defined %}
+							                                <div id="printname_plate_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_plate) }}
+								                                    {{ form_errors(form.printname_plate) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_plate" name="printname_plate" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(プレート)    -->
+			                                        	{% set exist_message = true %}
+			                                        {% endif %}
+			                                        {% if '上書き' in form_label(form.optioncategory_id5) %}
+			                                        	<!--    名入れ(熨斗)    -->
+						                                {% if form.printname_noshi is defined %}
+							                                <div id="printname_noshi_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ '熨斗の名入れ希望はこちらへ（ふりがなもご記入頂ければ対応可能です）'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_noshi) }}
+								                                    {{ form_errors(form.printname_noshi) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_noshi" name="printname_noshi" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(熨斗)    -->
+			                                        	{% set exist_noshi = true %}
+			                                        {% endif %}
+			                                        
 			                                        {{ form_errors(form.optioncategory_id5) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id6 is defined %}
 			                                    <!-- 大オプションラベル -->
 			                                    <div id="optioncategory_id6_mainlabel"></div>
+			                                    <!-- 文言 -->
+												<div id="optioncategory_id6_mongon"></div>
+			                                    <!-- オプション画像 -->
+			                                    <div id="optioncategory_id6_gazou"></div>
 			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                    	<p id="optioncategory_id6_lbl">
+			                                    	<!-- 登録オプション名 -->
+			                                    	<p id="optioncategory_id6_lbl" style="display:none;">
 			                                    		{{ form_label(form.optioncategory_id6) }}
 			                                        </p>
+			                                        <!-- オプション項目名 -->
+													<div style="display:block;">
+														<div id="optioncategory_id6_koumokumei"></div>
+					                                    <!-- アイコン -->
+					                                    <div id="optioncategory_id6_icon"></div>
+					                                </div>
 			                                        <!-- 特別な入力欄 -->			                                        
 			                                        <div id="optioncategory_id6_nyuryoku" style="display:none;">
 			                                        	<div class="ec-numberInput">
@@ -889,20 +1369,76 @@ file that was distributed with this source code.
 															<span>本</span>
 														</div>
 			                                        </div>
+			                                        
 			                                        <div id="optioncategory_id6_wdg" style="display:block;">
 			                                        	{{ form_widget(form.optioncategory_id6) }}
 			                                        </div>
+			                                        
+			                                        {% if 'メッセージ' in form_label(form.optioncategory_id6) %}
+			                                        	<!--    名入れ(プレート)    -->
+						                                {% if form.printname_plate is defined %}
+							                                <div id="printname_plate_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_plate) }}
+								                                    {{ form_errors(form.printname_plate) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_plate" name="printname_plate" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(プレート)    -->
+			                                        	{% set exist_message = true %}
+			                                        {% endif %}
+			                                        {% if '上書き' in form_label(form.optioncategory_id6) %}
+			                                        	<!--    名入れ(熨斗)    -->
+						                                {% if form.printname_noshi is defined %}
+							                                <div id="printname_noshi_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ '熨斗の名入れ希望はこちらへ（ふりがなもご記入頂ければ対応可能です）'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_noshi) }}
+								                                    {{ form_errors(form.printname_noshi) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_noshi" name="printname_noshi" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(熨斗)    -->
+			                                        	{% set exist_noshi = true %}
+			                                        {% endif %}
+			                                        
 			                                        {{ form_errors(form.optioncategory_id6) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id7 is defined %}
 			                                    <!-- 大オプションラベル -->
 			                                    <div id="optioncategory_id7_mainlabel"></div>
+			                                    <!-- 文言 -->
+												<div id="optioncategory_id7_mongon"></div>
+			                                    <!-- オプション画像 -->
+			                                    <div id="optioncategory_id7_gazou"></div>
 			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                    	<p id="optioncategory_id7_lbl">
+			                                    	<!-- 登録オプション名 -->
+			                                    	<p id="optioncategory_id7_lbl" style="display:none;">
 			                                    		{{ form_label(form.optioncategory_id7) }}
 			                                        </p>
+			                                        <!-- オプション項目名 -->
+													<div style="display:block;">
+														<div id="optioncategory_id7_koumokumei"></div>
+					                                    <!-- アイコン -->
+					                                    <div id="optioncategory_id7_icon"></div>
+					                                </div>
 			                                        <!-- 特別な入力欄 -->			                                        
 			                                        <div id="optioncategory_id7_nyuryoku" style="display:none;">
 			                                        	<div class="ec-numberInput">
@@ -911,20 +1447,76 @@ file that was distributed with this source code.
 															<span>本</span>
 														</div>
 			                                        </div>
+			                                        
 			                                        <div id="optioncategory_id7_wdg" style="display:block;">
 			                                        	{{ form_widget(form.optioncategory_id7) }}
 			                                        </div>
+			                                        
+			                                        {% if 'メッセージ' in form_label(form.optioncategory_id7) %}
+			                                        	<!--    名入れ(プレート)    -->
+						                                {% if form.printname_plate is defined %}
+							                                <div id="printname_plate_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_plate) }}
+								                                    {{ form_errors(form.printname_plate) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_plate" name="printname_plate" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(プレート)    -->
+			                                        	{% set exist_message = true %}
+			                                        {% endif %}
+			                                        {% if '上書き' in form_label(form.optioncategory_id7) %}
+			                                        	<!--    名入れ(熨斗)    -->
+						                                {% if form.printname_noshi is defined %}
+							                                <div id="printname_noshi_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ '熨斗の名入れ希望はこちらへ（ふりがなもご記入頂ければ対応可能です）'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_noshi) }}
+								                                    {{ form_errors(form.printname_noshi) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_noshi" name="printname_noshi" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(熨斗)    -->
+			                                        	{% set exist_noshi = true %}
+			                                        {% endif %}
+			                                        
 			                                        {{ form_errors(form.optioncategory_id7) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id8 is defined %}
 			                                    <!-- 大オプションラベル -->
 			                                    <div id="optioncategory_id8_mainlabel"></div>
+			                                    <!-- 文言 -->
+												<div id="optioncategory_id8_mongon"></div>
+			                                    <!-- オプション画像 -->
+			                                    <div id="optioncategory_id8_gazou"></div>
 			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                    	<p id="optioncategory_id8_lbl">
+			                                    	<!-- 登録オプション名 -->
+			                                    	<p id="optioncategory_id8_lbl" style="display:none;">
 			                                    		{{ form_label(form.optioncategory_id8) }}
 			                                        </p>
+			                                        <!-- オプション項目名 -->
+													<div style="display:block;">
+														<div id="optioncategory_id8_koumokumei"></div>
+					                                    <!-- アイコン -->
+					                                    <div id="optioncategory_id8_icon"></div>
+					                                </div>
 			                                        <!-- 特別な入力欄 -->			                                        
 			                                        <div id="optioncategory_id8_nyuryoku" style="display:none;">
 			                                        	<div class="ec-numberInput">
@@ -933,20 +1525,76 @@ file that was distributed with this source code.
 															<span>本</span>
 														</div>
 			                                        </div>
+			                                        
 			                                        <div id="optioncategory_id8_wdg" style="display:block;">
 			                                        	{{ form_widget(form.optioncategory_id8) }}
 			                                        </div>
+			                                        
+			                                        {% if 'メッセージ' in form_label(form.optioncategory_id8) %}
+			                                        	<!--    名入れ(プレート)    -->
+						                                {% if form.printname_plate is defined %}
+							                                <div id="printname_plate_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_plate) }}
+								                                    {{ form_errors(form.printname_plate) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_plate" name="printname_plate" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(プレート)    -->
+			                                        	{% set exist_message = true %}
+			                                        {% endif %}
+			                                        {% if '上書き' in form_label(form.optioncategory_id8) %}
+			                                        	<!--    名入れ(熨斗)    -->
+						                                {% if form.printname_noshi is defined %}
+							                                <div id="printname_noshi_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ '熨斗の名入れ希望はこちらへ（ふりがなもご記入頂ければ対応可能です）'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_noshi) }}
+								                                    {{ form_errors(form.printname_noshi) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_noshi" name="printname_noshi" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(熨斗)    -->
+			                                        	{% set exist_noshi = true %}
+			                                        {% endif %}
+			                                        
 			                                        {{ form_errors(form.optioncategory_id8) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id9 is defined %}
 			                                    <!-- 大オプションラベル -->
 			                                    <div id="optioncategory_id9_mainlabel"></div>
+			                                    <!-- 文言 -->
+												<div id="optioncategory_id9_mongon"></div>
+			                                    <!-- オプション画像 -->
+			                                    <div id="optioncategory_id9_gazou"></div>
 			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                        <p id="optioncategory_id9_lbl">
+			                                        <!-- 登録オプション名 -->
+			                                        <p id="optioncategory_id9_lbl" style="display:none;">
 			                                    		{{ form_label(form.optioncategory_id9) }}
 			                                        </p>
+			                                        <!-- オプション項目名 -->
+													<div style="display:block;">
+														<div id="optioncategory_id9_koumokumei"></div>
+					                                    <!-- アイコン -->
+					                                    <div id="optioncategory_id9_icon"></div>
+					                                </div>
 			                                        <!-- 特別な入力欄 -->			                                        
 			                                        <div id="optioncategory_id9_nyuryoku" style="display:none;">
 			                                        	<div class="ec-numberInput">
@@ -955,20 +1603,76 @@ file that was distributed with this source code.
 															<span>本</span>
 														</div>
 			                                        </div>
+			                                        
 			                                        <div id="optioncategory_id9_wdg" style="display:block;">
 			                                        	{{ form_widget(form.optioncategory_id9) }}
 			                                        </div>
+			                                        
+			                                        {% if 'メッセージ' in form_label(form.optioncategory_id9) %}
+			                                        	<!--    名入れ(プレート)    -->
+						                                {% if form.printname_plate is defined %}
+							                                <div id="printname_plate_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_plate) }}
+								                                    {{ form_errors(form.printname_plate) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_plate" name="printname_plate" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(プレート)    -->
+			                                        	{% set exist_message = true %}
+			                                        {% endif %}
+			                                        {% if '上書き' in form_label(form.optioncategory_id9) %}
+			                                        	<!--    名入れ(熨斗)    -->
+						                                {% if form.printname_noshi is defined %}
+							                                <div id="printname_noshi_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ '熨斗の名入れ希望はこちらへ（ふりがなもご記入頂ければ対応可能です）'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_noshi) }}
+								                                    {{ form_errors(form.printname_noshi) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_noshi" name="printname_noshi" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(熨斗)    -->
+			                                        	{% set exist_noshi = true %}
+			                                        {% endif %}
+			                                        
 			                                        {{ form_errors(form.optioncategory_id9) }}
 			                                    </div>
 			                                {% endif %}
 			                                {% if form.optioncategory_id10 is defined %}
 			                                    <!-- 大オプションラベル -->
 			                                    <div id="optioncategory_id10_mainlabel"></div>
+			                                    <!-- 文言 -->
+												<div id="optioncategory_id10_mongon"></div>
+			                                    <!-- オプション画像 -->
+			                                    <div id="optioncategory_id10_gazou"></div>
 			                                    <!-- 入力エリア -->
 			                                    <div class="">
-			                                    	<p id="optioncategory_id10_lbl">
+			                                    	<!-- 登録オプション名 -->
+			                                    	<p id="optioncategory_id10_lbl" style="display:none;">
 			                                    		{{ form_label(form.optioncategory_id10) }}
 			                                        </p>
+			                                        <!-- オプション項目名 -->
+													<div style="display:block;">
+														<div id="optioncategory_id10_koumokumei"></div>
+					                                    <!-- アイコン -->
+					                                    <div id="optioncategory_id10_icon"></div>
+					                                </div>
 			                                        <!-- 特別な入力欄 -->			                                        
 			                                        <div id="optioncategory_id10_nyuryoku" style="display:none;">
 			                                        	<div class="ec-numberInput">
@@ -977,15 +1681,60 @@ file that was distributed with this source code.
 															<span>本</span>
 														</div>
 			                                        </div>
+			                                        
 			                                        <div id="optioncategory_id10_wdg" style="display:block;">
 			                                        	{{ form_widget(form.optioncategory_id10) }}
 			                                        </div>
+			                                        
+			                                        {% if 'メッセージ' in form_label(form.optioncategory_id10) %}
+			                                        	<!--    名入れ(プレート)    -->
+						                                {% if form.printname_plate is defined %}
+							                                <div id="printname_plate_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_plate) }}
+								                                    {{ form_errors(form.printname_plate) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_plate" name="printname_plate" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(プレート)    -->
+			                                        	{% set exist_message = true %}
+			                                        {% endif %}
+			                                        {% if '上書き' in form_label(form.optioncategory_id10) %}
+			                                        	<!--    名入れ(熨斗)    -->
+						                                {% if form.printname_noshi is defined %}
+							                                <div id="printname_noshi_block" style="display:block;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    {{ '熨斗の名入れ希望はこちらへ（ふりがなもご記入頂ければ対応可能です）'|trans }}
+												                </div>
+								                                <div class="ec-input">
+												                    {{ form_widget(form.printname_noshi) }}
+								                                    {{ form_errors(form.printname_noshi) }}
+												                </div>
+											                </div>
+											            {% else %}
+											            	<div class="ec-input" style="display:none;">
+											                    <textarea id="printname_noshi" name="printname_noshi" class="form-control"></textarea>
+							                                    
+											                </div>
+										                {% endif %}
+						                                <!--    .名入れ(熨斗)    -->
+			                                        	{% set exist_noshi = true %}
+			                                        {% endif %}
+			                                        
 			                                        {{ form_errors(form.optioncategory_id10) }}
 			                                    </div>
 			                                {% endif %}
 			                                
 			                                <!--    名入れ(プレート)    -->
-			                                {% if form.printname_plate is defined %}
+			                                {% if form.printname_plate is defined and exist_message == false %}
 				                                <div id="printname_plate_block" style="display:none;">
 					                                <div class="ec-rectHeading" style="font-size:14px;">
 									                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
@@ -995,16 +1744,11 @@ file that was distributed with this source code.
 					                                    {{ form_errors(form.printname_plate) }}
 									                </div>
 								                </div>
-								            {% else %}
-								            	<div class="ec-input" style="display:none;">
-								                    <textarea id="printname_plate" name="printname_plate" class="form-control"></textarea>
-				                                    
-								                </div>
 							                {% endif %}
 			                                <!--    .名入れ(プレート)    -->
 			                                
 			                                <!--    名入れ(熨斗)    -->
-			                                {% if form.printname_noshi is defined %}
+			                                {% if form.printname_noshi is defined and exist_noshi == false %}
 				                                <div id="printname_noshi_block" style="display:none;">
 					                                <div class="ec-rectHeading" style="font-size:14px;">
 									                    {{ '熨斗の名入れ希望はこちらへ（ふりがなもご記入頂ければ対応可能です）'|trans }}
@@ -1013,11 +1757,6 @@ file that was distributed with this source code.
 									                    {{ form_widget(form.printname_noshi) }}
 					                                    {{ form_errors(form.printname_noshi) }}
 									                </div>
-								                </div>
-								            {% else %}
-								            	<div class="ec-input" style="display:none;">
-								                    <textarea id="printname_noshi" name="printname_noshi" class="form-control"></textarea>
-				                                    
 								                </div>
 							                {% endif %}
 			                                <!--    .名入れ(熨斗)    -->
@@ -1071,6 +1810,7 @@ file that was distributed with this source code.
 			                            
 			                            
 			                            {# 定価(表示用) #}
+					                    <!--
 					                    {% if Product.hasProductClass -%}
 					                        <div class="ec-productRole__priceRegular">
 					                            {% if Product.getPrice01Min is not null and Product.getPrice01IncTaxMin == Product.getPrice01IncTaxMax %}
@@ -1086,8 +1826,10 @@ file that was distributed with this source code.
 					                            <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：{{ Product.getPrice01IncTaxMin|price }}</span>
 					                            <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
 					                        {% endif %}
-					                    {% endif %}
+					                    {% endif %}]
+					                    -->
 					                    {# 販売価格(表示用) #}
+					                    <!--
 					                    <div class="ec-productRole__price" style="font-size:20px; color:#000;border-top:1px dotted #ccc;">
 					                        {% if Product.hasProductClass -%}
 					                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
@@ -1112,12 +1854,20 @@ file that was distributed with this source code.
 					                            </div>
 					                        {% endif %}
 					                    </div>
+					                    -->
 			                            
 			                            
 			                            <div class="ec-productRole__btn" style="width:100%;">
-			                                <button type="submit" class="ec-blockBtn--action add-cart" style="background: url('/eccube/html/user_data/assets/img/option/btn_cart.png') no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto;">
+			                                <button type="submit" class="ec-blockBtn--action add-cart" style="background: url({{ asset('assets/img/btn_cart.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto;">
 			                                </button>
 			                            </div>
+			                            
+			                            <div class="ec-productRole__btn" style="width:100%;">
+			                                <button type="button" onclick="location.href='{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}'" class="ec-blockBtn--action add-cart" style="background: url({{ asset('assets/img/btn_back.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto;">
+			                                </button>
+			                            </div>
+			                            
+				                            
 		                            </div>
 		                    <!-- .オプション一覧-->
 		                 <!----- .【詳細を指定】ブロック ----->

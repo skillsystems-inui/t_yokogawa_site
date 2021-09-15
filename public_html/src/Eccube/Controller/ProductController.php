@@ -506,98 +506,6 @@ class ProductController extends AbstractController
 	        }
         }
         
-        //選択オプション11
-        $optionClassCategoryId11 = null;
-        if (!is_null($Product->getOptionName11())) {
-	        $optionClassCategoryId11 = $form->get('optioncategory_id11')->getData();
-	        // 未選択の場合nullセット
-	        if($optionClassCategoryId11 == '__unselected'){
-	        	$optionClassCategoryId11 = null;
-	        }
-        }
-
-        //選択オプション12
-        $optionClassCategoryId12 = null;
-        if (!is_null($Product->getOptionName12())) {
-	        $optionClassCategoryId12 = $form->get('optioncategory_id12')->getData();
-	        // 未選択の場合nullセット
-	        if($optionClassCategoryId12 == '__unselected'){
-	        	$optionClassCategoryId12 = null;
-	        }
-        }
-        //選択オプション13
-        $optionClassCategoryId13 = null;
-        if (!is_null($Product->getOptionName13())) {
-	        $optionClassCategoryId13 = $form->get('optioncategory_id13')->getData();
-	        // 未選択の場合nullセット
-	        if($optionClassCategoryId13 == '__unselected'){
-	        	$optionClassCategoryId13 = null;
-	        }
-        }
-        //選択オプション14
-        $optionClassCategoryId14 = null;
-        if (!is_null($Product->getOptionName14())) {
-	        $optionClassCategoryId14 = $form->get('optioncategory_id14')->getData();
-	        // 未選択の場合nullセット
-	        if($optionClassCategoryId14 == '__unselected'){
-	        	$optionClassCategoryId14 = null;
-	        }
-        }
-        //選択オプション15
-        $optionClassCategoryId15 = null;
-        if (!is_null($Product->getOptionName15())) {
-	        $optionClassCategoryId15 = $form->get('optioncategory_id15')->getData();
-	        // 未選択の場合nullセット
-	        if($optionClassCategoryId15 == '__unselected'){
-	        	$optionClassCategoryId15 = null;
-	        }
-        }
-        //選択オプション16
-        $optionClassCategoryId16 = null;
-        if (!is_null($Product->getOptionName16())) {
-	        $optionClassCategoryId16 = $form->get('optioncategory_id16')->getData();
-	        // 未選択の場合nullセット
-	        if($optionClassCategoryId16 == '__unselected'){
-	        	$optionClassCategoryId16 = null;
-	        }
-        }
-        //選択オプション17
-        $optionClassCategoryId17 = null;
-        if (!is_null($Product->getOptionName17())) {
-	        $optionClassCategoryId17 = $form->get('optioncategory_id17')->getData();
-	        // 未選択の場合nullセット
-	        if($optionClassCategoryId17 == '__unselected'){
-	        	$optionClassCategoryId17 = null;
-	        }
-        }
-        //選択オプション18
-        $optionClassCategoryId18 = null;
-        if (!is_null($Product->getOptionName18())) {
-	        $optionClassCategoryId18 = $form->get('optioncategory_id18')->getData();
-	        // 未選択の場合nullセット
-	        if($optionClassCategoryId18 == '__unselected'){
-	        	$optionClassCategoryId18 = null;
-	        }
-        }
-        //選択オプション19
-        $optionClassCategoryId19 = null;
-        if (!is_null($Product->getOptionName19())) {
-	        $optionClassCategoryId19 = $form->get('optioncategory_id19')->getData();
-	        // 未選択の場合nullセット
-	        if($optionClassCategoryId19 == '__unselected'){
-	        	$optionClassCategoryId19 = null;
-	        }
-        }
-        //選択オプション20
-        $optionClassCategoryId20 = null;
-        if (!is_null($Product->getOptionName20())) {
-	        $optionClassCategoryId20 = $form->get('optioncategory_id20')->getData();
-	        // 未選択の場合nullセット
-	        if($optionClassCategoryId20 == '__unselected'){
-	        	$optionClassCategoryId20 = null;
-	        }
-        }
-        
         
         //名付け(プレート)
         $printname_plate = $form->get('printname_plate')->getData();
@@ -620,16 +528,6 @@ class ProductController extends AbstractController
                                              $optionClassCategoryId8, 
                                              $optionClassCategoryId9, 
                                              $optionClassCategoryId10, 
-                                             $optionClassCategoryId11, 
-                                             $optionClassCategoryId12, 
-                                             $optionClassCategoryId13, 
-                                             $optionClassCategoryId14, 
-                                             $optionClassCategoryId15, 
-                                             $optionClassCategoryId16, 
-                                             $optionClassCategoryId17, 
-                                             $optionClassCategoryId18, 
-                                             $optionClassCategoryId19, 
-                                             $optionClassCategoryId20, 
                                              $printname_plate,
                                              $printname_noshi,
                                              $additional_option_price,
