@@ -53,6 +53,16 @@ if (!class_exists('\Eccube\Entity\Product')) {
         private $optionCategories8 = [];
         private $optionCategories9 = [];
         private $optionCategories10 = [];
+        private $optionCategories11 = [];
+        private $optionCategories12 = [];
+        private $optionCategories13 = [];
+        private $optionCategories14 = [];
+        private $optionCategories15 = [];
+        private $optionCategories16 = [];
+        private $optionCategories17 = [];
+        private $optionCategories18 = [];
+        private $optionCategories19 = [];
+        private $optionCategories20 = [];
         private $optionName1;
         private $optionName2;
         private $optionName3;
@@ -63,6 +73,16 @@ if (!class_exists('\Eccube\Entity\Product')) {
         private $optionName8;
         private $optionName9;
         private $optionName10;
+        private $optionName11;
+        private $optionName12;
+        private $optionName13;
+        private $optionName14;
+        private $optionName15;
+        private $optionName16;
+        private $optionName17;
+        private $optionName18;
+        private $optionName19;
+        private $optionName20;
 
         /**
          * @return string
@@ -216,6 +236,47 @@ if (!class_exists('\Eccube\Entity\Product')) {
                 case 10:
                     $this->optionName10 = $OptionName;
                     $this->optionCategories10[$ClassNameId] = $ProductClassCategory->getClassCategory()->getName();
+                    break;
+                    
+                case 11:
+                    $this->optionName11 = $OptionName;
+                    $this->optionCategories11[$ClassNameId] = $ProductClassCategory->getClassCategory()->getName();
+                    break;
+                case 12:
+                    $this->optionName12 = $OptionName;
+                    $this->optionCategories12[$ClassNameId] = $ProductClassCategory->getClassCategory()->getName();
+                    break;
+                case 13:
+                    $this->optionName13 = $OptionName;
+                    $this->optionCategories13[$ClassNameId] = $ProductClassCategory->getClassCategory()->getName();
+                    break;
+                case 14:
+                    $this->optionName14 = $OptionName;
+                    $this->optionCategories14[$ClassNameId] = $ProductClassCategory->getClassCategory()->getName();
+                    break;
+                case 15:
+                    $this->optionName15 = $OptionName;
+                    $this->optionCategories15[$ClassNameId] = $ProductClassCategory->getClassCategory()->getName();
+                    break;
+                case 16:
+                    $this->optionName16 = $OptionName;
+                    $this->optionCategories16[$ClassNameId] = $ProductClassCategory->getClassCategory()->getName();
+                    break;
+                case 17:
+                    $this->optionName17 = $OptionName;
+                    $this->optionCategories17[$ClassNameId] = $ProductClassCategory->getClassCategory()->getName();
+                    break;
+                case 18:
+                    $this->optionName18 = $OptionName;
+                    $this->optionCategories18[$ClassNameId] = $ProductClassCategory->getClassCategory()->getName();
+                    break;
+                case 19:
+                    $this->optionName19 = $OptionName;
+                    $this->optionCategories19[$ClassNameId] = $ProductClassCategory->getClassCategory()->getName();
+                    break;
+                case 20:
+                    $this->optionName20 = $OptionName;
+                    $this->optionCategories20[$ClassNameId] = $ProductClassCategory->getClassCategory()->getName();
                     break;
                 default:
                     break;
@@ -435,6 +496,151 @@ if (!class_exists('\Eccube\Entity\Product')) {
         public function getOptionCategories10AsFlip()
         {
             return array_flip($this->optionCategories10);
+        }
+        
+        
+        /**
+         * Get OptionName11
+         *
+         * @return string
+         */
+        public function getOptionName11()
+        {
+            return $this->optionName11;
+        }
+        public function getOptionCategories11AsFlip()
+        {
+            return array_flip($this->optionCategories11);
+        }
+
+        /**
+         * Get OptionName12
+         *
+         * @return string
+         */
+        public function getOptionName12()
+        {
+            return $this->optionName12;
+        }
+        public function getOptionCategories12AsFlip()
+        {
+            return array_flip($this->optionCategories12);
+        }
+        
+        /**
+         * Get OptionName13
+         *
+         * @return string
+         */
+        public function getOptionName13()
+        {
+            return $this->optionName13;
+        }
+        public function getOptionCategories13AsFlip()
+        {
+            return array_flip($this->optionCategories13);
+        }
+                
+        
+        /**
+         * Get OptionName14
+         *
+         * @return string
+         */
+        public function getOptionName14()
+        {
+            return $this->optionName14;
+        }
+        public function getOptionCategories14AsFlip()
+        {
+            return array_flip($this->optionCategories14);
+        }
+ 
+        /**
+         * Get OptionName15
+         *
+         * @return string
+         */
+        public function getOptionName15()
+        {
+            return $this->optionName15;
+        }
+        public function getOptionCategories15AsFlip()
+        {
+            return array_flip($this->optionCategories15);
+        }
+
+        /**
+         * Get OptionName16
+         *
+         * @return string
+         */
+        public function getOptionName16()
+        {
+            return $this->optionName16;
+        }
+        public function getOptionCategories16AsFlip()
+        {
+            return array_flip($this->optionCategories16);
+        }
+        
+        /**
+         * Get OptionName17
+         *
+         * @return string
+         */
+        public function getOptionName17()
+        {
+            return $this->optionName17;
+        }
+        public function getOptionCategories17AsFlip()
+        {
+            return array_flip($this->optionCategories17);
+        }
+        
+        
+        /**
+         * Get OptionName18
+         *
+         * @return string
+         */
+        public function getOptionName18()
+        {
+            return $this->optionName18;
+        }
+        public function getOptionCategories18AsFlip()
+        {
+            return array_flip($this->optionCategories18);
+        }
+        
+        
+        /**
+         * Get OptionName19
+         *
+         * @return string
+         */
+        public function getOptionName19()
+        {
+            return $this->optionName19;
+        }
+        public function getOptionCategories19AsFlip()
+        {
+            return array_flip($this->optionCategories19);
+        }
+        
+        
+        /**
+         * Get OptionName20
+         *
+         * @return string
+         */
+        public function getOptionName20()
+        {
+            return $this->optionName20;
+        }
+        public function getOptionCategories20AsFlip()
+        {
+            return array_flip($this->optionCategories20);
         }
         
         

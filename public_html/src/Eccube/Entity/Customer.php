@@ -1407,6 +1407,5 @@ if (!class_exists('\Eccube\Entity\Customer')) {
             return $this->family_birth01;
         }
         
-
     }
 }

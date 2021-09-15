@@ -241,4 +241,5 @@ class CustomerType extends AbstractType
     {
         return 'admin_customer';
     }
+    
 }

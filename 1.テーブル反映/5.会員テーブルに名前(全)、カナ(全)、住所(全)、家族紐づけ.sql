@@ -78,8 +78,6 @@ INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`,
 
 
 
-
-
 --‰ïˆõ@‰Æ‘°î•ñ
 -----‰Æ‘°î•ñ01@‘±•¿
 ALTER TABLE `dtb_customer` ADD `family_relation01` varchar(50) DEFAULT NULL;
