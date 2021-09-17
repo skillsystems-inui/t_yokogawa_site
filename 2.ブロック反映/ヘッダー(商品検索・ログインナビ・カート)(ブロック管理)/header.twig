@@ -54,15 +54,19 @@ file that was distributed with this source code.
         	</a>
         </span>
         <div class="header_btn">
-        	<a href="/guide.html" class="guide">ご利用ガイド</a>
+        	<a href="/guide" class="guide">ご利用ガイド</a>
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ url('mypage') }}" class="mypage">マイページ</a>
+        	<a href="{{ url('logout') }}" class="M_loginBtn">ログアウト</a>
+        {% else %}
         	<a href="{{ url('entry') }}" class="member">新規会員登録</a> 
         	<a href="{{ url('mypage_login') }}" class="M_loginBtn">ログイン</a>
-        	<a href="{{ url('mypage') }}" class="mypage">マイページ</a>
+        {% endif %}
         	<a href="https://www.instagram.com/cake_yokogawa/" rel="noopener noreferrer" target="_blank" class="insta"></a>
         	<a href="https://line.me/R/ti/p/%40854fgmlr" rel="noopener noreferrer" target="_blank" class="line"></a>
         </div>
         <ul>
-          <li class="about"><a href="/about.html"><span><span class="agp">OUR BRAND</span>私たちについて</span></a></li>
+          <li class="about"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "ourbrand"}) }}"><span><span class="agp">OUR BRAND</span>私たちについて</span></a></li>
           <li class="item"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}"><span><span class="agp">PRODUCTS</span>商品一覧</span></a></li>
           <li class="item_sp">
             <div class="inner">
@@ -104,9 +108,9 @@ file that was distributed with this source code.
             </dl><!-- .price -->
             </div><!-- .inner -->
           </li>
-          <li class="shop"><a href="/shop.html"><span><span class="agp">SHOP</span>店舗</span></a></li>
+          <li class="shop"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "SHOP"}) }}"><span><span class="agp">SHOP</span>店舗</span></a></li>
           <li class="news"><a href="/new/index.html"><span><span class="agp">NEWS</span>お知らせ</span></a></li>
-          <li class="recruit"><a href="/recruit.html"><span><span class="agp">RECRUIT</span>採用情報</span></a></li>
+          <li class="recruit"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "recruit"}) }}"><span><span class="agp">RECRUIT</span>採用情報</span></a></li>
           <li class="cart"><a href="{{ url('cart') }}" class="cart_btn">カートを見る</a></li>
         </ul>
       </nav>
