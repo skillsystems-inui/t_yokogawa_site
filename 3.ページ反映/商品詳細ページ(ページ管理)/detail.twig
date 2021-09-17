@@ -154,6 +154,13 @@ file that was distributed with this source code.
 	        				//document.getElementById(orgblock_id).style.display="block";
 	        				document.getElementById(orgblock_id).style.display="none";
 	        			}
+	        			//NoキャンドルならNo入力欄を表示する
+	        			if(lbl_info.textContent.indexOf('N') != -1){
+	        				var numtElm = document.getElementById($opt_id + '_numtext');
+	        				if(numtElm != null){
+	        					numtElm.style.display="block";
+	        				}
+	        			}
 	        			
 	        			//2.大カテゴリタイトルセット
 	        			//ToDo ろうそく関連の先頭の判断をすればいいのでは？
@@ -282,13 +289,13 @@ file that was distributed with this source code.
 	        	}else if(lbl_info.textContent.indexOf('追加') != -1){
 	        		
 	        		//〇デコレーション追加入力の場合
-	        		var innner_id = $opt_id + '_nyuryoku';
+	        		var innner_id = $opt_id + '_check';
 	        		
-	        		//1.入力項目制御(数字選択)
+	        		//1.入力項目制御(チェックボックス)
 	        		var innnerElm = document.getElementById(innner_id);
 	        		if(innnerElm != null){
 		        		
-		        		//数字選択欄を表示させる
+		        		//チェックボックス欄を表示させる
 		        		innnerElm.style.display="block";
 		        		
 		        		//デコレーション追加ならラジオボタン入力欄を非表示
@@ -380,6 +387,48 @@ file that was distributed with this source code.
 					        		innnerLbl.insertAdjacentHTML('afterend', lbltag);
 			        		}
 	        			}
+	        			
+	        			//3.項目名セット
+	        			{
+	        				var kmkm_id = $opt_id + '_koumokumei';
+			        		var innnerKmk = document.getElementById(kmkm_id);
+			        		if(innnerKmk != null){
+			        				//タグ作成
+					        		let lbltag ='<div style="font-size:21px;">';
+					        		
+					        		if(lbl_info.textContent.indexOf('いちご') != -1){
+										//いちごUP
+						        		lbltag = lbltag + '<div style="float:left; padding:8px;">いちごUP</div>';
+						        		lbltag = lbltag + '<div style="float:left; padding:8px; color:red;">(+350円)</div>';
+				        				lbltag = lbltag + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
+			        				}else if(lbl_info.textContent.indexOf('フルーツ') != -1){
+										//フルーツUP
+						        		lbltag = lbltag + '<div style="float:left; padding:8px;">フルーツUP</div>';
+						        		lbltag = lbltag + '<div style="float:left; padding:8px; color:red;">(+350円)</div>';
+				        				lbltag = lbltag + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
+			        				}else if(lbl_info.textContent.indexOf('生チョコ') != -1){
+										//生チョコUP
+						        		lbltag = lbltag + '<div style="float:left; padding:8px;">生チョコUP</div>';
+						        		lbltag = lbltag + '<div style="float:left; padding:8px; color:red;">(+350円)</div>';
+				        				lbltag = lbltag + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
+			        				}else if(lbl_info.textContent.indexOf('絵チョコ') != -1){
+										//絵チョコ(4号)
+						        		lbltag = lbltag + '<div style="float:left; padding:8px;">絵チョコ(4号)</div>';
+						        		lbltag = lbltag + '<div style="float:left; padding:8px; color:red;">(+850円)</div>';
+				        				lbltag = lbltag + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
+			        				}
+			        				lbltag = lbltag + '<div style="clear:both;"></div>';
+			        				lbltag = lbltag + '</div>';
+			        				
+			        				//タグを埋め込む
+					        		innnerKmk.insertAdjacentHTML('afterend', lbltag);
+					        		
+					        		//中央寄せ
+									innnerKmk.style.width = "80%";
+									innnerKmk.style.margin = "0 auto";
+									innnerKmk.style.textAlign = "center";
+			        		}
+			        	}
 					}
 	        		//------------------------------------------------------------------------------------------------------------
 	        	
@@ -968,6 +1017,50 @@ file that was distributed with this source code.
                                 <span>{{ '個'|trans }}</span>
                             </div>
                             
+                            {# 定価(表示用) #}
+		                    {% if Product.hasProductClass -%}
+		                        <div class="ec-productRole__priceRegular">
+		                            {% if Product.getPrice01Min is not null and Product.getPrice01IncTaxMin == Product.getPrice01IncTaxMax %}
+		                                <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：<span class="price01-view-default">{{ Product.getPrice01IncTaxMin|price }}</span></span>
+		                                <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
+		                            {% elseif Product.getPrice01Min is not null and Product.getPrice01Max is not null %}
+		                                <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：<span class="price01-view-default">{{ Product.getPrice01IncTaxMin|price }}～ {{ Product.getPrice01IncTaxMax|price }}</span></span>
+		                                <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
+		                            {% endif %}
+		                        </div>
+		                    {% else %}
+		                        {% if Product.getPrice01Max is not null %}
+		                            <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：{{ Product.getPrice01IncTaxMin|price }}</span>
+		                            <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
+		                        {% endif %}
+		                    {% endif %}
+		                    
+		                    {# 販売価格(表示用) #}
+		                    <div class="ec-productRole__price" style="font-size:20px; color:#000;border-top:1px dotted #ccc;">
+		                        {% if Product.hasProductClass -%}
+		                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
+		                                <div class="ec-price">
+		                                    <span class="ec-price__price price02-view-default">{{ Product.getPrice02IncTaxMin|price }}</span>
+		                                    <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
+		                                </div>
+		                            {% elseif Product.getPrice02Min is not null and Product.getPrice02Max is not null %}
+		                                <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：<span class="price02-view-default">{{ Product.getPrice02IncTaxMin|price }}～ {{ Product.getPrice02IncTaxMax|price }}</span></span>
+		                                <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
+		                            {% else %}
+		                                <div class="ec-price">
+		                                    <span class="ec-productRole__priceRegularPrice">{{ '価格'|trans }}：
+		                                    </span><span class="ec-price__price price02-view-default" style="padding-left:0px;font-weight: normal;;">{{ Product.getPrice02IncTaxMin|price }}</span>
+		                                    <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
+		                                </div>
+		                            {% endif %}
+		                        {% else %}
+		                            <div class="ec-price">
+		                                <span class="ec-price__price">{{ Product.getPrice02IncTaxMin|price }}</span>
+		                                <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
+		                            </div>
+		                        {% endif %}
+		                    </div>
+		                    
                             <!-- 金額(サイズのみ) -->
                             
                             <!-- 詳細を指定するボタン -->
@@ -1043,11 +1136,20 @@ file that was distributed with this source code.
 						                                </div>
 				                                        <!-- 特別な入力欄 -->			                                        
 				                                        <div id="optioncategory_id1_nyuryoku" style="display:none;">
-															<div class="ec-numberInput">
+															<div id="optioncategory_id1_numtext" class="ec-numberInput" style="float:left; display:none;">
+																<span>No:</span>
+																<input type="number" id="optioncategory_id1_no" name="optioncategory_id1_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															</div>
+															<div class="ec-numberInput" style="float:left">
 																<span>本数:</span>
 																<input type="number" id="optioncategory_id1_num" name="optioncategory_id1_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
 																<span>本</span>
 															</div>
+															<div style="clear:both;"></div>
+				                                        </div>
+				                                        <!-- 特別な入力欄(チェック) -->			                                        
+				                                        <div id="optioncategory_id1_check" style="display:none;">
+				                                        	<input type="checkbox" id="optioncategory_id1_chk" name="optioncategory_id1_chk" required="" value="">
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id1_wdg" style="display:block;">
@@ -1131,11 +1233,20 @@ file that was distributed with this source code.
 						                                </div>
 				                                        <!-- 特別な入力欄 -->			                                        
 				                                        <div id="optioncategory_id2_nyuryoku" style="display:none;">
-				                                        	<div class="ec-numberInput">
+				                                        	<div id="optioncategory_id2_numtext" class="ec-numberInput" style="float:left; display:none;">
+																<span>No:</span>
+																<input type="number" id="optioncategory_id2_no" name="optioncategory_id2_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															</div>
+				                                        	<div class="ec-numberInput" style="float:left">
 																<span>本数:</span>
 																<input type="number" id="optioncategory_id2_num" name="optioncategory_id2_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
 																<span>本</span>
 															</div>
+															<div style="clear:both;"></div>
+				                                        </div>
+				                                        <!-- 特別な入力欄(チェック) -->			                                        
+				                                        <div id="optioncategory_id2_check" style="display:none;">
+				                                        	<input type="checkbox" id="optioncategory_id2_chk" name="optioncategory_id2_chk" required="" value="">
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id2_wdg" style="display:block;">
@@ -1218,11 +1329,20 @@ file that was distributed with this source code.
 						                                </div>
 				                                        <!-- 特別な入力欄 -->			                                        
 				                                        <div id="optioncategory_id3_nyuryoku" style="display:none;">
-				                                        	<div class="ec-numberInput">
+				                                        	<div id="optioncategory_id3_numtext" class="ec-numberInput" style="float:left; display:none;">
+																<span>No:</span>
+																<input type="number" id="optioncategory_id3_no" name="optioncategory_id3_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															</div>
+				                                        	<div class="ec-numberInput" style="float:left">
 																<span>本数:</span>
 																<input type="number" id="optioncategory_id3_num" name="optioncategory_id3_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
 																<span>本</span>
 															</div>
+															<div style="clear:both;"></div>
+				                                        </div>
+				                                        <!-- 特別な入力欄(チェック) -->			                                        
+				                                        <div id="optioncategory_id3_check" style="display:none;">
+				                                        	<input type="checkbox" id="optioncategory_id3_chk" name="optioncategory_id3_chk" required="" value="">
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id3_wdg" style="display:block;">
@@ -1305,11 +1425,20 @@ file that was distributed with this source code.
 						                                </div>
 				                                        <!-- 特別な入力欄 -->			                                        
 				                                        <div id="optioncategory_id4_nyuryoku" style="display:none;">
-				                                        	<div class="ec-numberInput">
+				                                        	<div id="optioncategory_id4_numtext" class="ec-numberInput" style="float:left; display:none;">
+																<span>No:</span>
+																<input type="number" id="optioncategory_id4_no" name="optioncategory_id4_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															</div>
+				                                        	<div class="ec-numberInput" style="float:left">
 																<span>本数:</span>
 																<input type="number" id="optioncategory_id4_num" name="optioncategory_id4_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
 																<span>本</span>
 															</div>
+															<div style="clear:both;"></div>
+				                                        </div>
+				                                        <!-- 特別な入力欄(チェック) -->			                                        
+				                                        <div id="optioncategory_id4_check" style="display:none;">
+				                                        	<input type="checkbox" id="optioncategory_id4_chk" name="optioncategory_id4_chk" required="" value="">
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id4_wdg" style="display:block;">
@@ -1393,11 +1522,20 @@ file that was distributed with this source code.
 						                                </div>
 				                                        <!-- 特別な入力欄 -->			                                        
 				                                        <div id="optioncategory_id5_nyuryoku" style="display:none;">
-				                                        	<div class="ec-numberInput">
+				                                        	<div id="optioncategory_id5_numtext" class="ec-numberInput" style="float:left; display:none;">
+																<span>No:</span>
+																<input type="number" id="optioncategory_id5_no" name="optioncategory_id5_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															</div>
+				                                        	<div class="ec-numberInput" style="float:left">
 																<span>本数:</span>
 																<input type="number" id="optioncategory_id5_num" name="optioncategory_id5_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
 																<span>本</span>
 															</div>
+															<div style="clear:both;"></div>
+				                                        </div>
+				                                        <!-- 特別な入力欄(チェック) -->			                                        
+				                                        <div id="optioncategory_id5_check" style="display:none;">
+				                                        	<input type="checkbox" id="optioncategory_id5_chk" name="optioncategory_id5_chk" required="" value="">
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id5_wdg" style="display:block;">
@@ -1480,11 +1618,20 @@ file that was distributed with this source code.
 						                                </div>
 				                                        <!-- 特別な入力欄 -->			                                        
 				                                        <div id="optioncategory_id6_nyuryoku" style="display:none;">
-				                                        	<div class="ec-numberInput">
+				                                        	<div id="optioncategory_id6_numtext" class="ec-numberInput" style="float:left; display:none;">
+																<span>No:</span>
+																<input type="number" id="optioncategory_id6_no" name="optioncategory_id6_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															</div>
+				                                        	<div class="ec-numberInput" style="float:left">
 																<span>本数:</span>
 																<input type="number" id="optioncategory_id6_num" name="optioncategory_id6_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
 																<span>本</span>
 															</div>
+															<div style="clear:both;"></div>
+				                                        </div>
+				                                        <!-- 特別な入力欄(チェック) -->			                                        
+				                                        <div id="optioncategory_id6_check" style="display:none;">
+				                                        	<input type="checkbox" id="optioncategory_id6_chk" name="optioncategory_id6_chk" required="" value="">
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id6_wdg" style="display:block;">
@@ -1567,11 +1714,20 @@ file that was distributed with this source code.
 						                                </div>
 				                                        <!-- 特別な入力欄 -->			                                        
 				                                        <div id="optioncategory_id7_nyuryoku" style="display:none;">
-				                                        	<div class="ec-numberInput">
+				                                        	<div id="optioncategory_id7_numtext" class="ec-numberInput" style="float:left; display:none;">
+																<span>No:</span>
+																<input type="number" id="optioncategory_id7_no" name="optioncategory_id7_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															</div>
+				                                        	<div class="ec-numberInput" style="float:left">
 																<span>本数:</span>
 																<input type="number" id="optioncategory_id7_num" name="optioncategory_id7_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
 																<span>本</span>
 															</div>
+															<div style="clear:both;"></div>
+				                                        </div>
+				                                        <!-- 特別な入力欄(チェック) -->			                                        
+				                                        <div id="optioncategory_id7_check" style="display:none;">
+				                                        	<input type="checkbox" id="optioncategory_id7_chk" name="optioncategory_id7_chk" required="" value="">
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id7_wdg" style="display:block;">
@@ -1654,11 +1810,20 @@ file that was distributed with this source code.
 						                                </div>
 				                                        <!-- 特別な入力欄 -->			                                        
 				                                        <div id="optioncategory_id8_nyuryoku" style="display:none;">
-				                                        	<div class="ec-numberInput">
+				                                        	<div id="optioncategory_id8_numtext" class="ec-numberInput" style="float:left; display:none;">
+																<span>No:</span>
+																<input type="number" id="optioncategory_id8_no" name="optioncategory_id8_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															</div>
+				                                        	<div class="ec-numberInput" style="float:left">
 																<span>本数:</span>
 																<input type="number" id="optioncategory_id8_num" name="optioncategory_id8_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
 																<span>本</span>
 															</div>
+															<div style="clear:both;"></div>
+				                                        </div>
+				                                        <!-- 特別な入力欄(チェック) -->			                                        
+				                                        <div id="optioncategory_id8_check" style="display:none;">
+				                                        	<input type="checkbox" id="optioncategory_id8_chk" name="optioncategory_id8_chk" required="" value="">
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id8_wdg" style="display:block;">
@@ -1741,12 +1906,22 @@ file that was distributed with this source code.
 						                                </div>
 				                                        <!-- 特別な入力欄 -->			                                        
 				                                        <div id="optioncategory_id9_nyuryoku" style="display:none;">
-				                                        	<div class="ec-numberInput">
+				                                        	<div id="optioncategory_id9_numtext" class="ec-numberInput" style="float:left; display:none;">
+																<span>No:</span>
+																<input type="number" id="optioncategory_id9_no" name="optioncategory_id9_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															</div>
+				                                        	<div class="ec-numberInput" style="float:left">
 																<span>本数:</span>
 																<input type="number" id="optioncategory_id9_num" name="optioncategory_id9_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
 																<span>本</span>
 															</div>
+															<div style="clear:both;"></div>
 				                                        </div>
+				                                        <!-- 特別な入力欄(チェック) -->			                                        
+				                                        <div id="optioncategory_id9_check" style="display:none;">
+				                                        	<input type="checkbox" id="optioncategory_id9_chk" name="optioncategory_id9_chk" required="" value="">
+				                                        </div>
+				                                        
 				                                        
 				                                        <div id="optioncategory_id9_wdg" style="display:block;">
 				                                        	{{ form_widget(form.optioncategory_id9) }}
@@ -1828,11 +2003,20 @@ file that was distributed with this source code.
 						                                </div>
 				                                        <!-- 特別な入力欄 -->			                                        
 				                                        <div id="optioncategory_id10_nyuryoku" style="display:none;">
-				                                        	<div class="ec-numberInput">
+				                                        	<div id="optioncategory_id10_numtext" class="ec-numberInput" style="float:left; display:none;">
+																<span>No:</span>
+																<input type="number" id="optioncategory_id10_no" name="optioncategory_id10_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+															</div>
+				                                        	<div class="ec-numberInput" style="float:left">
 																<span>本数:</span>
 																<input type="number" id="optioncategory_id10_num" name="optioncategory_id10_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
 																<span>本</span>
 															</div>
+															<div style="clear:both;"></div>
+				                                        </div>
+				                                        <!-- 特別な入力欄(チェック) -->			                                        
+				                                        <div id="optioncategory_id10_check" style="display:none;">
+				                                        	<input type="checkbox" id="optioncategory_id10_chk" name="optioncategory_id10_chk" required="" value="">
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id10_wdg" style="display:block;">
@@ -1970,55 +2154,6 @@ file that was distributed with this source code.
 						                    </div>
 						                    
 			                            </div>
-			                            
-			                            
-			                            
-			                            {# 定価(表示用) #}
-					                    <!--
-					                    {% if Product.hasProductClass -%}
-					                        <div class="ec-productRole__priceRegular">
-					                            {% if Product.getPrice01Min is not null and Product.getPrice01IncTaxMin == Product.getPrice01IncTaxMax %}
-					                                <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：<span class="price01-view-default">{{ Product.getPrice01IncTaxMin|price }}</span></span>
-					                                <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
-					                            {% elseif Product.getPrice01Min is not null and Product.getPrice01Max is not null %}
-					                                <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：<span class="price01-view-default">{{ Product.getPrice01IncTaxMin|price }}～ {{ Product.getPrice01IncTaxMax|price }}</span></span>
-					                                <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
-					                            {% endif %}
-					                        </div>
-					                    {% else %}
-					                        {% if Product.getPrice01Max is not null %}
-					                            <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：{{ Product.getPrice01IncTaxMin|price }}</span>
-					                            <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
-					                        {% endif %}
-					                    {% endif %}]
-					                    -->
-					                    {# 販売価格(表示用) #}
-					                    <!--
-					                    <div class="ec-productRole__price" style="font-size:20px; color:#000;border-top:1px dotted #ccc;">
-					                        {% if Product.hasProductClass -%}
-					                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
-					                                <div class="ec-price">
-					                                    <span class="ec-price__price price02-view-default">{{ Product.getPrice02IncTaxMin|price }}</span>
-					                                    <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
-					                                </div>
-					                            {% elseif Product.getPrice02Min is not null and Product.getPrice02Max is not null %}
-					                                <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：<span class="price02-view-default">{{ Product.getPrice02IncTaxMin|price }}～ {{ Product.getPrice02IncTaxMax|price }}</span></span>
-					                                <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
-					                            {% else %}
-					                                <div class="ec-price">
-					                                    <span class="ec-productRole__priceRegularPrice">{{ '価格'|trans }}：
-					                                    </span><span class="ec-price__price price02-view-default" style="padding-left:0px;font-weight: normal;;">{{ Product.getPrice02IncTaxMin|price }}</span>
-					                                    <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
-					                                </div>
-					                            {% endif %}
-					                        {% else %}
-					                            <div class="ec-price">
-					                                <span class="ec-price__price">{{ Product.getPrice02IncTaxMin|price }}</span>
-					                                <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
-					                            </div>
-					                        {% endif %}
-					                    </div>
-					                    -->
 			                            
 			                            
 			                            <div class="ec-productRole__btn" style="width:100%;">
