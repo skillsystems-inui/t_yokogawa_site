@@ -371,6 +371,10 @@ file that was distributed with this source code.
 			        				lbltag = lbltag + '<div style="clear:both;"></div>';
 			        				lbltag = lbltag + '</div>';
 			        				
+			        				lbltag = lbltag + '<div class="ec-rectHeading" style="font-size:14px; color:red;">';
+									lbltag = lbltag + '<b>{{ '※写真はイメージです。実物と異なる場合があります。'|trans }}</b>';
+									lbltag = lbltag + '</div>';
+			        				
 			        				//タグを埋め込む
 					        		//innnerLbl.innerHTML = lbltag;
 					        		innnerLbl.insertAdjacentHTML('afterend', lbltag);
@@ -458,11 +462,16 @@ file that was distributed with this source code.
 			        				lbltag = lbltag + '<div style="clear:both;"></div>';
 			        				lbltag = lbltag + '</div>';
 			        				
+			        				lbltag = lbltag + '<div class="ec-rectHeading" style="font-size:14px;">';
+									lbltag = lbltag + '<b>{{ '①メッセージプレートを選択'|trans }}</b>';
+									lbltag = lbltag + '</div>';
+			        				
 			        				//タグを埋め込む
 					        		//innnerLbl.innerHTML = lbltag;
 					        		innnerLbl.insertAdjacentHTML('afterend', lbltag);
 			        		}
 	        			}
+	        			
 					}
 	        		//------------------------------------------------------------------------------------------------------------
 	        		
@@ -1050,8 +1059,13 @@ file that was distributed with this source code.
 				                                        	<!--    名入れ(プレート)    -->
 							                                {% if form.printname_plate is defined %}
 								                                <div id="printname_plate_block" style="display:block;">
+									                                <!-- 下矢印 -->
+										                            <div class="ec-productRole__profile" style="width:100%;">
+													                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+											                            </div>
+													                </div>
 									                                <div class="ec-rectHeading" style="font-size:14px;">
-													                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+													                    <b>{{ '②メッセージを入力 (○○文字以内)'|trans }}</b>
 													                </div>
 									                                <div class="ec-input">
 													                    {{ form_widget(form.printname_plate) }}
@@ -1132,8 +1146,13 @@ file that was distributed with this source code.
 				                                        	<!--    名入れ(プレート)    -->
 							                                {% if form.printname_plate is defined %}
 								                                <div id="printname_plate_block" style="display:block;">
+									                                <!-- 下矢印 -->
+										                            <div class="ec-productRole__profile" style="width:100%;">
+													                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+											                            </div>
+													                </div>
 									                                <div class="ec-rectHeading" style="font-size:14px;">
-													                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+													                    <b>{{ '②メッセージを入力 (○○文字以内)'|trans }}</b>
 													                </div>
 									                                <div class="ec-input">
 													                    {{ form_widget(form.printname_plate) }}
@@ -1214,8 +1233,13 @@ file that was distributed with this source code.
 				                                        	<!--    名入れ(プレート)    -->
 							                                {% if form.printname_plate is defined %}
 								                                <div id="printname_plate_block" style="display:block;">
+									                                <!-- 下矢印 -->
+										                            <div class="ec-productRole__profile" style="width:100%;">
+													                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+											                            </div>
+													                </div>
 									                                <div class="ec-rectHeading" style="font-size:14px;">
-													                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+													                    <b>{{ '②メッセージを入力 (○○文字以内)'|trans }}</b>
 													                </div>
 									                                <div class="ec-input">
 													                    {{ form_widget(form.printname_plate) }}
@@ -1297,8 +1321,13 @@ file that was distributed with this source code.
 				                                        	<!--    名入れ(プレート)    -->
 							                                {% if form.printname_plate is defined %}
 								                                <div id="printname_plate_block" style="display:block;">
+									                                <!-- 下矢印 -->
+										                            <div class="ec-productRole__profile" style="width:100%;">
+													                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+											                            </div>
+													                </div>
 									                                <div class="ec-rectHeading" style="font-size:14px;">
-													                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+													                    <b>{{ '②メッセージを入力 (○○文字以内)'|trans }}</b>
 													                </div>
 									                                <div class="ec-input">
 													                    {{ form_widget(form.printname_plate) }}
@@ -1379,8 +1408,13 @@ file that was distributed with this source code.
 				                                        	<!--    名入れ(プレート)    -->
 							                                {% if form.printname_plate is defined %}
 								                                <div id="printname_plate_block" style="display:block;">
+									                                <!-- 下矢印 -->
+										                            <div class="ec-productRole__profile" style="width:100%;">
+													                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+											                            </div>
+													                </div>
 									                                <div class="ec-rectHeading" style="font-size:14px;">
-													                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+													                    <b>{{ '②メッセージを入力 (○○文字以内)'|trans }}</b>
 													                </div>
 									                                <div class="ec-input">
 													                    {{ form_widget(form.printname_plate) }}
@@ -1461,8 +1495,13 @@ file that was distributed with this source code.
 				                                        	<!--    名入れ(プレート)    -->
 							                                {% if form.printname_plate is defined %}
 								                                <div id="printname_plate_block" style="display:block;">
+									                                <!-- 下矢印 -->
+										                            <div class="ec-productRole__profile" style="width:100%;">
+													                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+											                            </div>
+													                </div>
 									                                <div class="ec-rectHeading" style="font-size:14px;">
-													                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+													                    <b>{{ '②メッセージを入力 (○○文字以内)'|trans }}</b>
 													                </div>
 									                                <div class="ec-input">
 													                    {{ form_widget(form.printname_plate) }}
@@ -1543,8 +1582,13 @@ file that was distributed with this source code.
 				                                        	<!--    名入れ(プレート)    -->
 							                                {% if form.printname_plate is defined %}
 								                                <div id="printname_plate_block" style="display:block;">
+									                                <!-- 下矢印 -->
+										                            <div class="ec-productRole__profile" style="width:100%;">
+													                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+											                            </div>
+													                </div>
 									                                <div class="ec-rectHeading" style="font-size:14px;">
-													                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+													                    <b>{{ '②メッセージを入力 (○○文字以内)'|trans }}</b>
 													                </div>
 									                                <div class="ec-input">
 													                    {{ form_widget(form.printname_plate) }}
@@ -1625,8 +1669,13 @@ file that was distributed with this source code.
 				                                        	<!--    名入れ(プレート)    -->
 							                                {% if form.printname_plate is defined %}
 								                                <div id="printname_plate_block" style="display:block;">
+									                                <!-- 下矢印 -->
+										                            <div class="ec-productRole__profile" style="width:100%;">
+													                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+											                            </div>
+													                </div>
 									                                <div class="ec-rectHeading" style="font-size:14px;">
-													                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+													                    <b>{{ '②メッセージを入力 (○○文字以内)'|trans }}</b>
 													                </div>
 									                                <div class="ec-input">
 													                    {{ form_widget(form.printname_plate) }}
@@ -1707,8 +1756,13 @@ file that was distributed with this source code.
 				                                        	<!--    名入れ(プレート)    -->
 							                                {% if form.printname_plate is defined %}
 								                                <div id="printname_plate_block" style="display:block;">
+									                                <!-- 下矢印 -->
+										                            <div class="ec-productRole__profile" style="width:100%;">
+													                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+											                            </div>
+													                </div>
 									                                <div class="ec-rectHeading" style="font-size:14px;">
-													                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+													                    <b>{{ '②メッセージを入力 (○○文字以内)'|trans }}</b>
 													                </div>
 									                                <div class="ec-input">
 													                    {{ form_widget(form.printname_plate) }}
@@ -1789,8 +1843,13 @@ file that was distributed with this source code.
 				                                        	<!--    名入れ(プレート)    -->
 							                                {% if form.printname_plate is defined %}
 								                                <div id="printname_plate_block" style="display:block;">
+									                                <!-- 下矢印 -->
+										                            <div class="ec-productRole__profile" style="width:100%;">
+													                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+											                            </div>
+													                </div>
 									                                <div class="ec-rectHeading" style="font-size:14px;">
-													                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+													                    <b>{{ '②メッセージを入力 (○○文字以内)'|trans }}</b>
 													                </div>
 									                                <div class="ec-input">
 													                    {{ form_widget(form.printname_plate) }}
@@ -1836,8 +1895,13 @@ file that was distributed with this source code.
 			                                <!--    名入れ(プレート)    -->
 			                                {% if form.printname_plate is defined and exist_message == false %}
 				                                <div id="printname_plate_block" style="display:none;">
+					                                <!-- 下矢印 -->
+						                            <div class="ec-productRole__profile" style="width:100%;">
+									                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+							                            </div>
+									                </div>
 					                                <div class="ec-rectHeading" style="font-size:14px;">
-									                    {{ 'お名前おつけできます。「お誕生日おめでとう」以外の場合も入力してください。'|trans }}
+									                    <b>{{ '②メッセージを入力 (○○文字以内)'|trans }}</b>
 									                </div>
 					                                <div class="ec-input">
 									                    {{ form_widget(form.printname_plate) }}
