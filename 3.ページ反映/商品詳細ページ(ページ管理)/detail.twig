@@ -298,37 +298,6 @@ file that was distributed with this source code.
 		        		//チェックボックス欄を表示させる
 		        		innnerElm.style.display="block";
 		        		
-		        		//チェックボックス名をセットする
-		        		var clblElm = document.getElementById($opt_id + '_chl');
-		        		if(clblElm != null){
-		        			let chkLbl ='';
-		        			
-		        			if(lbl_info.textContent.indexOf('いちご') != -1){
-								//いちごUP
-				        		chkLbl = chkLbl + '<div style="float:left; padding:8px;">いちごUP</div>';
-				        		chkLbl = chkLbl + '<div style="float:left; padding:8px; color:red;">(+350円)</div>';
-		        				chkLbl = chkLbl + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
-	        				}else if(lbl_info.textContent.indexOf('フルーツ') != -1){
-								//フルーツUP
-				        		chkLbl = chkLbl + '<div style="float:left; padding:8px;">フルーツUP</div>';
-				        		chkLbl = chkLbl + '<div style="float:left; padding:8px; color:red;">(+350円)</div>';
-		        				chkLbl = chkLbl + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
-	        				}else if(lbl_info.textContent.indexOf('生チョコ') != -1){
-								//生チョコUP
-				        		chkLbl = chkLbl + '<div style="float:left; padding:8px;">生チョコUP</div>';
-				        		chkLbl = chkLbl + '<div style="float:left; padding:8px; color:red;">(+350円)</div>';
-		        				chkLbl = chkLbl + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
-	        				}else if(lbl_info.textContent.indexOf('絵チョコ') != -1){
-								//絵チョコ(4号)
-				        		chkLbl = chkLbl + '<div style="float:left; padding:8px;">絵チョコ(4号)</div>';
-				        		chkLbl = chkLbl + '<div style="float:left; padding:8px; color:red;">(+850円)</div>';
-		        				chkLbl = chkLbl + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
-	        				}
-	        				//ラジオボタンラベルセット
-	        				clblElm.innerHTML = chkLbl;
-	        				//clblElm.insertAdjacentHTML('afterend', chkLbl);
-		        		}
-		        		
 		        		//デコレーション追加ならラジオボタン入力欄を非表示
 		        		var orgblock_id = $opt_id + '_wdg';
 		        		if(document.getElementById(orgblock_id) != null){
@@ -421,7 +390,6 @@ file that was distributed with this source code.
 	        			
 	        			//3.項目名セット
 	        			{
-	        				/*
 	        				var kmkm_id = $opt_id + '_koumokumei';
 			        		var innnerKmk = document.getElementById(kmkm_id);
 			        		if(innnerKmk != null){
@@ -460,7 +428,6 @@ file that was distributed with this source code.
 									innnerKmk.style.margin = "0 auto";
 									innnerKmk.style.textAlign = "center";
 			        		}
-			        		*/
 			        	}
 					}
 	        		//------------------------------------------------------------------------------------------------------------
@@ -663,58 +630,8 @@ file that was distributed with this source code.
 	        		
 	        		//〇持ち帰りポリ袋の場合
 	        		if (lbl_info.textContent.indexOf('持ち帰り') != -1) {
-		        		
-		        		//1.入力項目制御(チェックボックス)
-		        		var innner_id = $opt_id + '_check';
-		        		var innnerElm = document.getElementById(innner_id);
-		        		if(innnerElm != null){
-			        		
-			        		//チェックボックス欄を表示させる
-			        		innnerElm.style.display="block";
-			        		
-			        		//チェックボックス名をセットする
-			        		var clblElm = document.getElementById($opt_id + '_chl');
-			        		if(clblElm != null){
-			        			let chkLbl ='';
-			        			
-			        			if(lbl_info.textContent.indexOf('特大') != -1){
-									//ポリ袋 特大
-					        		chkLbl = chkLbl + '<div style="float:left; padding:8px;">ポリ袋 特大</div>';
-					        		chkLbl = chkLbl + '<div style="float:left; padding:8px; color:red;">(+\30)</div>';
-			        				chkLbl = chkLbl + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
-		        				}else if(lbl_info.textContent.indexOf('大') != -1){
-									//ポリ袋 大
-					        		chkLbl = chkLbl + '<div style="float:left; padding:8px;">ポリ袋 大</div>';
-					        		chkLbl = chkLbl + '<div style="float:left; padding:8px; color:red;">(+\30)</div>';
-			        				chkLbl = chkLbl + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
-		        				}else if(lbl_info.textContent.indexOf('中') != -1){
-									//ポリ袋 中
-					        		chkLbl = chkLbl + '<div style="float:left; padding:8px;">ポリ袋 中</div>';
-					        		chkLbl = chkLbl + '<div style="float:left; padding:8px; color:red;">(+\10)</div>';
-			        				chkLbl = chkLbl + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
-		        				}else if(lbl_info.textContent.indexOf('絵チョコ') != -1){
-									//絵チョコ(4号)
-					        		chkLbl = chkLbl + '<div style="float:left; padding:8px;">絵チョコ(4号)</div>';
-					        		chkLbl = chkLbl + '<div style="float:left; padding:8px; color:red;">(+850円)</div>';
-			        				chkLbl = chkLbl + '<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>';
-		        				}
-		        				//ラジオボタンラベルセット
-		        				clblElm.innerHTML = chkLbl;
-		        				//clblElm.insertAdjacentHTML('afterend', chkLbl);
-			        		}
-			        		
-			        		//デコレーション追加ならラジオボタン入力欄を非表示
-			        		var orgblock_id = $opt_id + '_wdg';
-			        		if(document.getElementById(orgblock_id) != null){
-		        				//document.getElementById(orgblock_id).style.display="block";
-		        				document.getElementById(orgblock_id).style.display="none";
-		        			}
-		        		}
-		        		
-		        		
-		        		//2.オプション大タイトルを付ける(持ち帰りポリ袋)
-	        			if (lbl_info.textContent.indexOf('中') != -1) 
-		        		{
+		        		//オプション大タイトルを付ける(持ち帰りポリ袋)
+	        			{
 	        				var inlbl_id = $opt_id + '_mainlabel';
 			        		var innnerLbl = document.getElementById(inlbl_id);
 			        		if(innnerLbl != null){
@@ -730,9 +647,6 @@ file that was distributed with this source code.
 					        		innnerLbl.insertAdjacentHTML('afterend', lbltag);
 			        		}
 	        			}
-	        			
-	        			
-	        			
 					}
 	        		//------------------------------------------------------------------------------------------------------------
 	        		
@@ -953,42 +867,16 @@ file that was distributed with this source code.
 			document.body.scrollTop = document.documentElement.scrollTop = 0;
         });
         
-        //プレートを追加する(2枚目)
-        $('.additionplate2_plus').on('click', function() {
-            //追加プレートを表示する
-            var addplate_id = 'printname_plate_frm2';
-    		if(document.getElementById(addplate_id) != null){
-				document.getElementById(addplate_id).style.display="block";
-			}
-			
-			//マイナスボタンに切り替える
-			var plus_id = 'additionplate2_plus';
-    		if(document.getElementById(plus_id) != null){
-				document.getElementById(plus_id).style.display="none";
-			}
-			var minus_id = 'additionplate2_minus';
-    		if(document.getElementById(minus_id) != null){
-				document.getElementById(minus_id).style.display="block";
-			}
+        
+        //オプションの数字が入力されたとき
+        //詳細を指定する
+        /*
+        $('.select-options').on('click', function() {
+            //event.preventDefault();
+            //ToDo 詳細エリアにスクロールする
+            alert('go scroll!');
         });
-        //プレートを追加を閉じる(2枚目)
-        $('.additionplate2_minus').on('click', function() {
-            //追加プレートを非表示にする
-            var addplate_id = 'printname_plate_frm2';
-    		if(document.getElementById(addplate_id) != null){
-				document.getElementById(addplate_id).style.display="none";
-			}
-			
-			//プラスボタンに切り替える
-			var plus_id = 'additionplate2_plus';
-    		if(document.getElementById(plus_id) != null){
-				document.getElementById(plus_id).style.display="block";
-			}
-			var minus_id = 'additionplate2_minus';
-    		if(document.getElementById(minus_id) != null){
-				document.getElementById(minus_id).style.display="none";
-			}
-        });
+        */
         
         $('input[type="number"]').bind('keyup mouseup', function () {
 		    
@@ -1262,9 +1150,6 @@ file that was distributed with this source code.
 				                                        <!-- 特別な入力欄(チェック) -->			                                        
 				                                        <div id="optioncategory_id1_check" style="display:none;">
 				                                        	<input type="checkbox" id="optioncategory_id1_chk" name="optioncategory_id1_chk" required="" value="">
-				                                        	<label for="optioncategory_id1_chk">
-												                <span id="optioncategory_id1_chl"></span>
-												            </label>
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id1_wdg" style="display:block;">
@@ -1288,18 +1173,6 @@ file that was distributed with this source code.
 													                    {{ form_widget(form.printname_plate) }}
 									                                    {{ form_errors(form.printname_plate) }}
 													                </div>
-													                
-													                <div class="ec-rectHeading" style="font-size:14px; height:50px;">
-													                    <div style="float:left; padding:8px;">
-													                    	<b>メッセージプレート追加</b>
-													                    </div>
-													                    <div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
-													                    <button type="button" id="additionplate2_plus" class="additionplate2_plus" style="display:block;">+</button>
-													                    <button type="button" id="additionplate2_minus" class="additionplate2_minus" style="display:none;">-</button>
-													                </div>
-													                <div id="printname_plate_frm2" class="ec-input" style="display:none;">
-													                    <textarea id="printname_plate_2" name="printname_plate_2" rows="2" style="min-height : 20px" class="form-control"></textarea>
-									                                </div>
 												                </div>
 												            {% else %}
 												            	<div class="ec-input" style="display:none;">
@@ -1374,9 +1247,6 @@ file that was distributed with this source code.
 				                                        <!-- 特別な入力欄(チェック) -->			                                        
 				                                        <div id="optioncategory_id2_check" style="display:none;">
 				                                        	<input type="checkbox" id="optioncategory_id2_chk" name="optioncategory_id2_chk" required="" value="">
-				                                        	<label for="optioncategory_id2_chk">
-												                <span id="optioncategory_id2_chl"></span>
-												            </label>
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id2_wdg" style="display:block;">
@@ -1399,19 +1269,6 @@ file that was distributed with this source code.
 													                    {{ form_widget(form.printname_plate) }}
 									                                    {{ form_errors(form.printname_plate) }}
 													                </div>
-													                
-													                <div class="ec-rectHeading" style="font-size:14px; height:50px;">
-													                    <div style="float:left; padding:8px;">
-													                    	<b>メッセージプレート追加</b>
-													                    </div>
-													                    <div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
-													                    <button type="button" id="additionplate2_plus" class="additionplate2_plus" style="display:block;">+</button>
-													                    <button type="button" id="additionplate2_minus" class="additionplate2_minus" style="display:none;">-</button>
-													                </div>
-													                
-																	<div id="printname_plate_frm2" class="ec-input" style="display:none;">
-													                    <textarea id="printname_plate_2" name="printname_plate_2" rows="2" style="min-height : 20px" class="form-control"></textarea>
-									                                </div>
 												                </div>
 												            {% else %}
 												            	<div class="ec-input" style="display:none;">
@@ -1486,9 +1343,6 @@ file that was distributed with this source code.
 				                                        <!-- 特別な入力欄(チェック) -->			                                        
 				                                        <div id="optioncategory_id3_check" style="display:none;">
 				                                        	<input type="checkbox" id="optioncategory_id3_chk" name="optioncategory_id3_chk" required="" value="">
-				                                        	<label for="optioncategory_id3_chk">
-												                <span id="optioncategory_id3_chl"></span>
-												            </label>
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id3_wdg" style="display:block;">
@@ -1510,20 +1364,7 @@ file that was distributed with this source code.
 									                                <div class="ec-input">
 													                    {{ form_widget(form.printname_plate) }}
 									                                    {{ form_errors(form.printname_plate) }}
-													                </div>													                
-													                
-													                <div class="ec-rectHeading" style="font-size:14px; height:50px;">
-													                    <div style="float:left; padding:8px;">
-													                    	<b>メッセージプレート追加</b>
-													                    </div>
-													                    <div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
-													                    <button type="button" id="additionplate2_plus" class="additionplate2_plus" style="display:block;">+</button>
-													                    <button type="button" id="additionplate2_minus" class="additionplate2_minus" style="display:none;">-</button>
 													                </div>
-													                
-																	<div id="printname_plate_frm2" class="ec-input" style="display:none;">
-													                    <textarea id="printname_plate_2" name="printname_plate_2" rows="2" style="min-height : 20px" class="form-control"></textarea>
-									                                </div>
 												                </div>
 												            {% else %}
 												            	<div class="ec-input" style="display:none;">
@@ -1598,9 +1439,6 @@ file that was distributed with this source code.
 				                                        <!-- 特別な入力欄(チェック) -->			                                        
 				                                        <div id="optioncategory_id4_check" style="display:none;">
 				                                        	<input type="checkbox" id="optioncategory_id4_chk" name="optioncategory_id4_chk" required="" value="">
-				                                        	<label for="optioncategory_id4_chk">
-												                <span id="optioncategory_id4_chl"></span>
-												            </label>
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id4_wdg" style="display:block;">
@@ -1624,19 +1462,6 @@ file that was distributed with this source code.
 													                    {{ form_widget(form.printname_plate) }}
 									                                    {{ form_errors(form.printname_plate) }}
 													                </div>
-													                
-													                <div class="ec-rectHeading" style="font-size:14px; height:50px;">
-													                    <div style="float:left; padding:8px;">
-													                    	<b>メッセージプレート追加</b>
-													                    </div>
-													                    <div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
-													                    <button type="button" id="additionplate2_plus" class="additionplate2_plus" style="display:block;">+</button>
-													                    <button type="button" id="additionplate2_minus" class="additionplate2_minus" style="display:none;">-</button>
-													                </div>
-													                
-																	<div id="printname_plate_frm2" class="ec-input" style="display:none;">
-													                    <textarea id="printname_plate_2" name="printname_plate_2" rows="2" style="min-height : 20px" class="form-control"></textarea>
-									                                </div>
 												                </div>
 												            {% else %}
 												            	<div class="ec-input" style="display:none;">
@@ -1711,9 +1536,6 @@ file that was distributed with this source code.
 				                                        <!-- 特別な入力欄(チェック) -->			                                        
 				                                        <div id="optioncategory_id5_check" style="display:none;">
 				                                        	<input type="checkbox" id="optioncategory_id5_chk" name="optioncategory_id5_chk" required="" value="">
-				                                        	<label for="optioncategory_id5_chk">
-												                <span id="optioncategory_id5_chl"></span>
-												            </label>
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id5_wdg" style="display:block;">
@@ -1736,19 +1558,6 @@ file that was distributed with this source code.
 													                    {{ form_widget(form.printname_plate) }}
 									                                    {{ form_errors(form.printname_plate) }}
 													                </div>
-													                
-													                <div class="ec-rectHeading" style="font-size:14px; height:50px;">
-													                    <div style="float:left; padding:8px;">
-													                    	<b>メッセージプレート追加</b>
-													                    </div>
-													                    <div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
-													                    <button type="button" id="additionplate2_plus" class="additionplate2_plus" style="display:block;">+</button>
-													                    <button type="button" id="additionplate2_minus" class="additionplate2_minus" style="display:none;">-</button>
-													                </div>
-													                
-																	<div id="printname_plate_frm2" class="ec-input" style="display:none;">
-													                    <textarea id="printname_plate_2" name="printname_plate_2" rows="2" style="min-height : 20px" class="form-control"></textarea>
-									                                </div>
 												                </div>
 												            {% else %}
 												            	<div class="ec-input" style="display:none;">
@@ -1823,9 +1632,6 @@ file that was distributed with this source code.
 				                                        <!-- 特別な入力欄(チェック) -->			                                        
 				                                        <div id="optioncategory_id6_check" style="display:none;">
 				                                        	<input type="checkbox" id="optioncategory_id6_chk" name="optioncategory_id6_chk" required="" value="">
-				                                        	<label for="optioncategory_id6_chk">
-												                <span id="optioncategory_id6_chl"></span>
-												            </label>
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id6_wdg" style="display:block;">
@@ -1848,19 +1654,6 @@ file that was distributed with this source code.
 													                    {{ form_widget(form.printname_plate) }}
 									                                    {{ form_errors(form.printname_plate) }}
 													                </div>
-														                
-													                <div class="ec-rectHeading" style="font-size:14px; height:50px;">
-													                    <div style="float:left; padding:8px;">
-													                    	<b>メッセージプレート追加</b>
-													                    </div>
-													                    <div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
-													                    <button type="button" id="additionplate2_plus" class="additionplate2_plus" style="display:block;">+</button>
-													                    <button type="button" id="additionplate2_minus" class="additionplate2_minus" style="display:none;">-</button>
-													                </div>
-													                
-																	<div id="printname_plate_frm2" class="ec-input" style="display:none;">
-													                    <textarea id="printname_plate_2" name="printname_plate_2" rows="2" style="min-height : 20px" class="form-control"></textarea>
-									                                </div>
 												                </div>
 												            {% else %}
 												            	<div class="ec-input" style="display:none;">
@@ -1935,9 +1728,6 @@ file that was distributed with this source code.
 				                                        <!-- 特別な入力欄(チェック) -->			                                        
 				                                        <div id="optioncategory_id7_check" style="display:none;">
 				                                        	<input type="checkbox" id="optioncategory_id7_chk" name="optioncategory_id7_chk" required="" value="">
-				                                        	<label for="optioncategory_id7_chk">
-												                <span id="optioncategory_id7_chl"></span>
-												            </label>
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id7_wdg" style="display:block;">
@@ -1960,19 +1750,6 @@ file that was distributed with this source code.
 													                    {{ form_widget(form.printname_plate) }}
 									                                    {{ form_errors(form.printname_plate) }}
 													                </div>
-													                
-													                <div class="ec-rectHeading" style="font-size:14px; height:50px;">
-													                    <div style="float:left; padding:8px;">
-													                    	<b>メッセージプレート追加</b>
-													                    </div>
-													                    <div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
-													                    <button type="button" id="additionplate2_plus" class="additionplate2_plus" style="display:block;">+</button>
-													                    <button type="button" id="additionplate2_minus" class="additionplate2_minus" style="display:none;">-</button>
-													                </div>
-													                
-																	<div id="printname_plate_frm2" class="ec-input" style="display:none;">
-													                    <textarea id="printname_plate_2" name="printname_plate_2" rows="2" style="min-height : 20px" class="form-control"></textarea>
-									                                </div>
 												                </div>
 												            {% else %}
 												            	<div class="ec-input" style="display:none;">
@@ -2047,9 +1824,6 @@ file that was distributed with this source code.
 				                                        <!-- 特別な入力欄(チェック) -->			                                        
 				                                        <div id="optioncategory_id8_check" style="display:none;">
 				                                        	<input type="checkbox" id="optioncategory_id8_chk" name="optioncategory_id8_chk" required="" value="">
-				                                        	<label for="optioncategory_id8_chk">
-												                <span id="optioncategory_id8_chl"></span>
-												            </label>
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id8_wdg" style="display:block;">
@@ -2072,19 +1846,6 @@ file that was distributed with this source code.
 													                    {{ form_widget(form.printname_plate) }}
 									                                    {{ form_errors(form.printname_plate) }}
 													                </div>
-														                
-													                <div class="ec-rectHeading" style="font-size:14px; height:50px;">
-													                    <div style="float:left; padding:8px;">
-													                    	<b>メッセージプレート追加</b>
-													                    </div>
-													                    <div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
-													                    <button type="button" id="additionplate2_plus" class="additionplate2_plus" style="display:block;">+</button>
-													                    <button type="button" id="additionplate2_minus" class="additionplate2_minus" style="display:none;">-</button>
-													                </div>
-													                
-																	<div id="printname_plate_frm2" class="ec-input" style="display:none;">
-													                    <textarea id="printname_plate_2" name="printname_plate_2" rows="2" style="min-height : 20px" class="form-control"></textarea>
-									                                </div>
 												                </div>
 												            {% else %}
 												            	<div class="ec-input" style="display:none;">
@@ -2159,9 +1920,6 @@ file that was distributed with this source code.
 				                                        <!-- 特別な入力欄(チェック) -->			                                        
 				                                        <div id="optioncategory_id9_check" style="display:none;">
 				                                        	<input type="checkbox" id="optioncategory_id9_chk" name="optioncategory_id9_chk" required="" value="">
-				                                        	<label for="optioncategory_id9_chk">
-												                <span id="optioncategory_id9_chl"></span>
-												            </label>
 				                                        </div>
 				                                        
 				                                        
@@ -2185,19 +1943,6 @@ file that was distributed with this source code.
 													                    {{ form_widget(form.printname_plate) }}
 									                                    {{ form_errors(form.printname_plate) }}
 													                </div>
-													                
-													                <div class="ec-rectHeading" style="font-size:14px; height:50px;">
-													                    <div style="float:left; padding:8px;">
-													                    	<b>メッセージプレート追加</b>
-													                    </div>
-													                    <div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
-													                    <button type="button" id="additionplate2_plus" class="additionplate2_plus" style="display:block;">+</button>
-													                    <button type="button" id="additionplate2_minus" class="additionplate2_minus" style="display:none;">-</button>
-													                </div>
-													                
-																	<div id="printname_plate_frm2" class="ec-input" style="display:none;">
-													                    <textarea id="printname_plate_2" name="printname_plate_2" rows="2" style="min-height : 20px" class="form-control"></textarea>
-									                                </div>
 												                </div>
 												            {% else %}
 												            	<div class="ec-input" style="display:none;">
@@ -2272,9 +2017,6 @@ file that was distributed with this source code.
 				                                        <!-- 特別な入力欄(チェック) -->			                                        
 				                                        <div id="optioncategory_id10_check" style="display:none;">
 				                                        	<input type="checkbox" id="optioncategory_id10_chk" name="optioncategory_id10_chk" required="" value="">
-				                                        	<label for="optioncategory_id10_chk">
-												                <span id="optioncategory_id10_chl"></span>
-												            </label>
 				                                        </div>
 				                                        
 				                                        <div id="optioncategory_id10_wdg" style="display:block;">
@@ -2297,19 +2039,6 @@ file that was distributed with this source code.
 													                    {{ form_widget(form.printname_plate) }}
 									                                    {{ form_errors(form.printname_plate) }}
 													                </div>
-														                
-													                <div class="ec-rectHeading" style="font-size:14px; height:50px;">
-													                    <div style="float:left; padding:8px;">
-													                    	<b>メッセージプレート追加</b>
-													                    </div>
-													                    <div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
-													                    <button type="button" id="additionplate2_plus" class="additionplate2_plus" style="display:block;">+</button>
-													                    <button type="button" id="additionplate2_minus" class="additionplate2_minus" style="display:none;">-</button>
-													                </div>
-													                
-																	<div id="printname_plate_frm2" class="ec-input" style="display:none;">
-													                    <textarea id="printname_plate_2" name="printname_plate_2" rows="2" style="min-height : 20px" class="form-control"></textarea>
-									                                </div>
 												                </div>
 												            {% else %}
 												            	<div class="ec-input" style="display:none;">
@@ -2362,19 +2091,6 @@ file that was distributed with this source code.
 									                    {{ form_widget(form.printname_plate) }}
 					                                    {{ form_errors(form.printname_plate) }}
 									                </div>
-									                										                								                
-									                <div class="ec-rectHeading" style="font-size:14px; height:50px;">
-									                    <div style="float:left; padding:8px;">
-									                    	<b>メッセージプレート追加</b>
-									                    </div>
-									                    <div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
-									                    <button type="button" id="additionplate2_plus" class="additionplate2_plus" style="display:block;">+</button>
-									                    <button type="button" id="additionplate2_minus" class="additionplate2_minus" style="display:none;">-</button>
-									                </div>
-									                
-													<div id="printname_plate_frm2" class="ec-input" style="display:none;">
-									                    <textarea id="printname_plate_2" name="printname_plate_2" rows="2" style="min-height : 20px" class="form-control"></textarea>
-					                                </div>
 								                </div>
 							                {% endif %}
 			                                <!--    .名入れ(プレート)    -->
