@@ -33,3 +33,8 @@ ALTER TABLE `dtb_cart_item` ADD `option_class_category_id17` int(10) unsigned DE
 ALTER TABLE `dtb_cart_item` ADD `option_class_category_id18` int(10) unsigned DEFAULT NULL;
 ALTER TABLE `dtb_cart_item` ADD `option_class_category_id19` int(10) unsigned DEFAULT NULL;
 ALTER TABLE `dtb_cart_item` ADD `option_class_category_id20` int(10) unsigned DEFAULT NULL;
+
+
+
+--オプション選択内容(文字列)
+ALTER TABLE `dtb_cart_item` ADD `option_detail` varchar(1024) DEFAULT NULL;

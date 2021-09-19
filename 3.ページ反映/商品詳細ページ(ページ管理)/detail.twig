@@ -447,14 +447,435 @@ file that was distributed with this source code.
 	                            </div>
 			                </div>
                             
-                            
-                            
 		                    <!-- オプション一覧 -->
 		                    <div style="position: relative;border-radius: 2px;background-color: #fff;">
 		                                
 			                            <div class="ec-productRole__actions">
 			                                
+			                                <!-- ☆↓-------------------オプション入力欄-------------------☆ -->
 			                                
+			                                <!-- 〇キャンドルオプション -->
+				                            <div id="option_form_candle" class="ec-productRole__actions">
+				                                	
+				                                	<!-- 大オプションラベル:キャンドルを選択 -->
+				                                    <div style="background-color:lightblue; font-size:21px;">
+				                                    	<div class="" style="float:left; width:80%; padding:8px;">
+				                                    		<b>キャンドルを選択</b>
+				                                    	</div>
+				                                    	<div style="float:left; width:20%; padding:8px; font-size:16px;">
+				                                    		<input type="checkbox" id="chk_candle_nosel" name="chk_candle_nosel">
+				                                    		<label for="chk_candle_nosel">不要</label>
+				                                    	</div>
+				                                    	<div style="clear:both;"></div>
+				                                    </div>
+				                                    <!-- .大オプションラベル:キャンドルを選択 -->
+				                                    
+				                                    <!-- キャンドル　大 -->
+													<div id="candle_dai_blk" style="float: left; width: 50%;">
+					                                    <!-- オプション画像 -->
+					                                    <div style="width: 100px; height: 100px; background-image: url(&quot;/html/user_data/assets/img/option/opt_candle_big.png&quot;);"></div>
+					                                    <!-- 入力エリア -->
+					                                	<div class="">
+					                                        <!-- オプション項目名 -->
+															<div style="display:block;">
+																<div id="candle_dai_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																<div style="font-size:21px;">
+																	<div style="float:left; padding:8px;">キャンドル　大</div>
+																	<div style="clear:both;"></div>
+																</div>
+							                                </div>
+							                                <!-- .オプション項目名 -->
+					                                        <!-- 入力欄：数字入力(本数) -->
+					                                        <div id="candle_dai_nyuryoku" style="display: block;">
+																<div class="ec-numberInput" style="float:left">
+																	<span>本数:</span>
+																	<input type="number" id="candle_dai_num" name="candle_dai_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<span>本</span>
+																</div>
+																<div style="clear:both;"></div>
+					                                        </div>
+					                                        <!-- .入力欄：数字入力(本数) -->
+					                                    </div>
+					                            	</div>
+				                                	<!-- .キャンドル　大 -->
+				                                	
+													<!-- キャンドル　小 -->
+													<div id="candle_syo_blk" style="float: left; width: 50%;">
+					                                    <!-- オプション画像 -->
+					                                    <div style="width: 100px; height: 100px; background-image: url(&quot;/html/user_data/assets/img/option/opt_candle_small.png&quot;);"></div>
+					                                    <div id="candle_syo_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+					                                    <!-- 入力エリア -->
+					                                    <div class="">
+					                                    	<!-- オプション項目名 -->
+															<div style="display:block;">
+																<div id="candle_syo_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																<div style="font-size:21px;">
+																	<div style="float:left; padding:8px;">キャンドル　小</div>
+																	<div style="clear:both;"></div>
+																</div>
+							                                </div>
+							                                <!-- .オプション項目名 -->
+							                                <!-- 入力欄：数字入力(本数) -->
+					                                        <div id="candle_syo_nyuryoku" style="display: block;">
+					                                        	<div class="ec-numberInput" style="float:left">
+																	<span>本数:</span>
+																	<input type="number" id="candle_syo_num" name="candle_syo_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<span>本</span>
+																</div>
+																<div style="clear:both;"></div>
+					                                        </div>
+					                                        <!-- ,入力欄：数字入力(本数) -->
+					                                    </div>
+					                            	</div>
+				                                	<!-- .キャンドル　小 -->
+				                                    
+				                                    <!-- Noキャンドル 1つめ -->
+													<div id="candle_no1_blk" style="clear: both; width: 100%;">
+						                                <!-- オプション画像 -->
+					                                    <div style="width: 280px; height: 155px; background-image: url(&quot;/html/user_data/assets/img/option/opt_candle_no.png&quot;);"></div>
+					                                    <div id="candle_no1_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+					                                    <!-- 入力エリア -->
+					                                    <div class="">
+					                                        <!-- オプション項目名 -->
+															<div style="display:block;">
+																<div id="candle_no1_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																<div style="font-size:21px;">
+																	<div style="float:left; padding:8px;">Noキャンドル</div>
+																	<div style="float:left; padding:8px; color:red;">(+130円)</div>
+																	<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
+																	<div style="clear:both;"></div>
+																</div>
+							                                </div>
+							                                <!-- .オプション項目名 -->
+					                                        <!-- 入力欄：数字入力(No,本数) -->
+					                                        <div id="candle_no1_nyuryoku" style="display: block;">
+					                                        	<div id="candle_no1_numtext" class="ec-numberInput" style="float: left; display: block;">
+																	<span>No:</span>
+																	<input type="number" id="candle_no1_no" name="candle_no1_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																</div>
+					                                        	<div class="ec-numberInput" style="float:left">
+																	<span>本数:</span>
+																	<input type="number" id="candle_no1_num" name="candle_no1_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<span>本</span>
+																</div>
+																<div style="clear:both;"></div>
+					                                        </div>
+					                                        <!-- .入力欄：数字入力(No,本数) -->
+					                                    </div>
+					                            	</div>
+				                                	<!-- .Noキャンドル 1つめ -->
+				                                	
+				                                    <!-- Noキャンドル 2つめ -->
+													<div id="candle_no2_blk" style="clear: both; width: 100%;">
+							                            <!-- オプション画像 -->
+					                                    <div style="width: 0px; background-image: url(&quot;/html/user_data/assets/img/option/opt_candle_no.png&quot;);"></div>
+					                                    <div id="candle_no2_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+					                                    <!-- 入力エリア -->
+					                                    <div class="">
+					                                    	<!-- オプション項目名 -->
+															<div style="display:block;">
+																<div id="candle_no2_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div><div style="font-size:21px;"><div style="clear:both;"></div></div>
+							                                    <!-- アイコン -->
+							                                    <div id="candle_no2_icon"></div>
+							                                </div>
+					                                        <!-- 入力欄：数字入力(No,本数) -->
+					                                        <div id="candle_no2_nyuryoku" style="display: block;">
+					                                        	<div id="candle_no2_numtext" class="ec-numberInput" style="float: left; display: block;">
+																	<span>No:</span>
+																	<input type="number" id="candle_no2_no" name="candle_no2_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																</div>
+					                                        	<div class="ec-numberInput" style="float:left">
+																	<span>本数:</span>
+																	<input type="number" id="candle_no2_num" name="candle_no2_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<span>本</span>
+																</div>
+																<div style="clear:both;"></div>
+					                                        </div>
+					                                        <!-- .入力欄：数字入力(No,本数) -->
+					                                    </div>
+					                            	</div>
+				                                	<!-- .Noキャンドル 2つめ -->
+				                                	
+				                                    <!-- Noキャンドル 3つめ -->
+													<div id="candle_no3_blk" style="clear: both; width: 100%;">
+					                                    <!-- オプション画像 -->
+					                                    <div style="width: 0px; background-image: url(&quot;/html/user_data/assets/img/option/opt_candle_no.png&quot;);"></div>
+					                                    <div id="candle_no3_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+					                                    <!-- 入力エリア -->
+					                                    <div class="">
+					                                        <!-- オプション項目名 -->
+															<div style="display:block;">
+																<div id="candle_no3_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																<div style="font-size:21px;">
+																	<div style="clear:both;"></div>
+																</div>
+							                                </div>
+					                                        <!-- .オプション項目名 -->
+					                                        <!-- 入力欄：数字入力(No,本数) -->
+					                                        <div id="candle_no3_nyuryoku" style="display: block;">
+					                                        	<div id="candle_no3_numtext" class="ec-numberInput" style="float: left; display: block;">
+																	<span>No:</span>
+																	<input type="number" id="candle_no3_no" name="candle_no3_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																</div>
+					                                        	<div class="ec-numberInput" style="float:left">
+																	<span>本数:</span>
+																	<input type="number" id="candle_no3_num" name="candle_no3_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<span>本</span>
+																</div>
+																<div style="clear:both;"></div>
+					                                        </div>
+					                                        <!-- .入力欄：数字入力(No,本数) -->
+					                                    </div>
+					                            	</div>
+				                                	<!-- .Noキャンドル 3つめ -->
+				                                	
+				                            </div>
+				                            <!-- .〇キャンドルオプション -->
+				                            
+				                            <!-- 〇デコオプション -->
+			                            	<div id="option_form_option" class="ec-productRole__actions">
+			                                    <!-- 大カテゴリ表示(メッセージ) -->
+			                                    <div style="background-color:lightblue; font-size:21px;">
+			                                    	<div class="" style="float:left; width:80%; padding:8px;">
+			                                    		<b>メッセージを入力</b>
+			                                    	</div>
+				                                    <div style="float:left; width:20%; padding:8px; font-size:16px;">
+				                                    	<input type="checkbox" id="chk_message_nosel" name="chk_message_nosel">
+				                                    	<label for="chk_message_nosel">不要</label>
+				                                    </div>
+				                                    <div style="clear:both;"></div>
+			                                    </div>
+			                                    <!-- .大カテゴリ表示(メッセージ) -->
+			                                    
+			                                    <!-- 入力エリア(メッセージ) -->
+			                                    <div class="ec-rectHeading" style="font-size:14px;">
+			                                    	<b>①メッセージプレートを選択</b>
+			                                    </div>
+			                                    <div id="messageplate_blk">
+				                                    <div class="">
+				                                        <div id="messageplate_wdg" style="display:block;">
+				                                        	<div id="messageplate">
+				                                        		<div class="form-check">
+				                                        			<div style="width: 160px; height: 100px; background-image: url(&quot;/html/user_data/assets/img/option/opt_plate_muji.png&quot;);">
+				                                        			</div>
+					                                        		<input type="radio" id="messageplate_0" name="messageplate" required="required" class="form-check-input" value="61">
+															        <label class="form-check-label required" for="messageplate_0">無地プレート</label>
+														    	</div>
+														    </div>
+														    <div class="form-check">
+														    	<div style="width: 160px; height: 100px; background-image: url(&quot;/html/user_data/assets/img/option/opt_plate_omedeto_only.png&quot;);">
+														    	</div>
+														    	<input type="radio" id="messageplate_1" name="messageplate" required="required" class="form-check-input" value="62">
+														        <label class="form-check-label required" for="messageplate_1">おたんじょうびおめでとう</label>
+													    	</div>
+													        <div class="form-check">
+													        	<div style="width: 160px; height: 100px; background-image: url(&quot;/html/user_data/assets/img/option/opt_plate_omedeto_plus.png&quot;);">
+													        	</div>
+													        	<input type="radio" id="messageplate_2" name="messageplate" required="required" class="form-check-input" value="63">
+													        	<label class="form-check-label required" for="messageplate_2">おたんじょうびおめでとう(□に名前が入ります)</label>
+													    	</div>
+														</div>
+			                                    	</div>
+				                                        
+				                                    <!--    名入れ(プレート)    -->
+							                        <div id="printname_plate_block" style="display:block;">
+						                                <!-- 下矢印 -->
+							                            <div class="ec-productRole__profile" style="width:100%;">
+										                    <div style="margin-left:auto; margin-right:auto; background: url(/html/template/default/assets/img/shita_yajirusi.png) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+								                            </div>
+										                </div>
+						                                <div class="ec-rectHeading" style="font-size:14px;">
+										                    <b>②メッセージを入力 (○○文字以内)</b>
+										                </div>
+						                                <div class="ec-input">
+										                    <textarea id="printname_plate" name="printname_plate" rows="2" style="min-height : 20px" class="form-control"></textarea>
+										                </div>
+									                </div>
+									            	<!--    .名入れ(プレート)    -->
+			                                	</div>
+			                                	<!-- .入力エリア(メッセージ) -->
+			                                </div>
+		                                	<!-- .〇デコオプション -->
+		                                	
+			                                
+			                                <!-- 〇デコレーション追加オプション -->
+			                            	<div id="option_form_deco" class="ec-productRole__actions">
+			                                    <div style="background-color:lightblue; font-size:21px;">
+			                                    	<div class="" style="float:left; width:80%; padding:8px;">
+			                                    		<b>デコレーション追加</b>
+			                                    	</div>
+				                                    <div style="float:left; width:20%; padding:8px; font-size:16px;">
+				                                    	<input type="checkbox" id="chk_message_nosel" name="chk_message_nosel">
+				                                    	<label for="chk_message_nosel">不要</label>
+				                                    </div>
+				                                    <div style="clear:both;"></div>
+						                      	</div>
+						                        <div class="ec-rectHeading" style="font-size:14px; color:red;">
+				                              		<b>※写真はイメージです。実物と異なる場合があります。</b>
+				                              	</div>
+
+			                                    <!-- いちごUP -->
+												<div id="ichigo_blk">
+					                                <!-- 入力エリア -->
+				                                    <div class="">
+				                                    	<!-- 登録オプション名 -->
+				                                    	<div style="width: 160px; height: 160px; background-image: url(&quot;/html/user_data/assets/img/option/opt_adddeco_ichigo.png&quot;);"></div>
+				                                    	<div style="width: 0px; height: 0px; background-image: url(&quot;&quot;);"></div>
+				                                        <!-- オプション項目名 -->
+														<div style="display:block;">
+															<div id="ichigo_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+															<div style="font-size:21px;">
+																<div style="float:left; padding:8px;">いちごUP</div>
+																<div style="float:left; padding:8px; color:red;">(+350円)</div>
+																<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
+																<div style="clear:both;"></div>
+															</div>
+						                                    
+						                                </div>
+
+				                                        <!-- 入力欄：チェック -->			                                        
+				                                        <div id="ichigo_check" style="display: block;">
+				                                        	<input type="checkbox" id="ichigo_chk" name="ichigo_chk" required="" value="">
+				                                        </div>
+				                                        
+				                                    </div>
+				                            	</div>
+			                                	<!-- .いちごUP -->
+			                                	
+			                                    <!-- フルーツUP -->
+												<div id="fruit_blk">
+						                            <!-- 入力エリア -->
+				                                    <div class="">
+				                                    	<!-- 登録オプション名 -->
+				                                    	<div style="width: 160px; height: 160px; background-image: url(&quot;/html/user_data/assets/img/option/opt_adddeco_fruit.png&quot;);"></div>
+				                                    	<div style="width: 0px; height: 0px; background-image: url(&quot;&quot;);"></div>
+				                                        <!-- オプション項目名 -->
+														<div style="display:block;">
+															<div id="fruit_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+															<div style="font-size:21px;">
+																<div style="float:left; padding:8px;">フルーツUP</div>
+																<div style="float:left; padding:8px; color:red;">(+350円)</div>
+																<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
+																<div style="clear:both;"></div>
+															</div>
+						                                </div>
+						                                
+				                                        <!-- 入力欄：チェック -->			                                        
+				                                        <div id="fruit_check" style="display: block;">
+				                                        	<input type="checkbox" id="fruit_chk" name="fruit_chk" required="" value="">
+				                                        </div>
+				                                        
+				                                    </div>
+				                            	</div>
+			                                	<!-- .フルーツUP -->
+			                                	
+			                                    <!-- 生チョコUP -->
+												<div id="namachoko_blk">
+				                                    <!-- 入力エリア -->
+				                                    <div class="">
+				                                        <!-- 登録オプション名 -->
+				                                        <div style="width: 160px; height: 160px; background-image: url(&quot;/html/user_data/assets/img/option/opt_adddeco_choko_nama.png&quot;);"></div>
+				                                        <div style="width: 0px; height: 0px; background-image: url(&quot;&quot;);"></div>
+				                                        <!-- オプション項目名 -->
+														<div style="display:block;">
+															<div id="namachoko_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																<div style="font-size:21px;">
+																	<div style="float:left; padding:8px;">生チョコUP</div>
+																	<div style="float:left; padding:8px; color:red;">(+350円)</div>
+																	<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
+																	<div style="clear:both;"></div>
+																</div>
+						                                </div>
+				                                        <!-- 入力欄：チェック -->			                                        
+				                                        <div id="namachoko_check" style="display: block;">
+				                                        	<input type="checkbox" id="namachoko_chk" name="namachoko_chk" required="" value="">
+				                                        </div>
+				                                    </div>
+				                            	</div>
+			                                	<!-- .生チョコUP -->
+			                                	
+			                                    <!-- 絵チョコ(4号) -->
+												<div id="echoko_blk">
+					                                <!-- 入力エリア -->
+				                                    <div class="">
+				                                    	<!-- デコレーション追加画像 -->
+				                                    	<div style="width: 160px; height: 160px; background-image: url(&quot;/html/user_data/assets/img/option/opt_adddeco_choko_e.png&quot;);"></div>
+				                                    	<div style="width: 350px; height: 200px; background-image: url(&quot;/html/user_data/assets/img/option/setumei_choko_nama.png&quot;);"></div>
+				                                        <!-- .デコレーション追加画像 -->
+				                                        <!-- オプション項目名 -->
+														<div style="display:block;">
+															<div id="echoko_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+															<div style="font-size:21px;">
+																<div style="float:left; padding:8px;">絵チョコ(4号)</div>
+																<div style="float:left; padding:8px; color:red;">(+850円)</div>
+																<div style="float:left; padding:8px; background-color:red; color:#fff;">有料</div>
+																<div style="clear:both;"></div>
+															</div>
+						                                </div>
+				                                        
+				                                        <!-- 入力欄：チェック -->			                                        
+				                                        <div id="echoko_check" style="display: block;">
+				                                        	<input type="checkbox" id="echoko_chk" name="echoko_chk" required="" value="">
+				                                        </div>
+				                                        
+				                                    </div>
+				                            	</div>
+				                            	<!-- .絵チョコ(4号) -->
+			                                </div>
+			                                <!-- .〇デコレーション追加オプション -->
+		                            		
+		                            		
+		                                	<!-- 〇袋オプション -->
+			                            	<div id="option_form_bag" class="ec-productRole__actions">
+			                                	
+			                                	<!-- 大カテゴリ表示(持ち帰りポリ袋) -->
+			                                    <div style="background-color:lightblue; font-size:21px;">
+			                                    	<div class="" style="float:left; width:80%; padding:8px;">
+			                                    		<b>持ち帰りポリ袋</b>
+			                                    	</div>
+				                                    <div style="float:left; width:20%; padding:8px; font-size:16px;">
+				                                    	<input type="checkbox" id="chk_message_nosel" name="chk_message_nosel">
+				                                    	<label for="chk_message_nosel">不要</label>
+				                                    </div>
+				                                    <div style="clear:both;"></div>
+			                                    </div>
+			                                    <!-- .大カテゴリ表示(持ち帰りポリ袋) -->
+			                                    
+												<!-- ブロック -->
+												<div id="hukuro_blk">
+				                                    <!-- 入力エリア -->
+				                                    <div class="">				                                        
+				                                        <div id="hukuro_wdg" style="display:block;">
+				                                        	<div id="hukuro">
+				                                        		<div class="form-check">
+				                                        			<input type="radio" id="hukuro_0" name="hukuro" required="required" class="form-check-input" value="64">
+															        <label class="form-check-label required" for="hukuro_0">ポリ袋中(+10円)</label>
+														        </div>
+														        <div class="form-check">
+															        <input type="radio" id="hukuro_1" name="hukuro" required="required" class="form-check-input" value="65">
+															        <label class="form-check-label required" for="hukuro_1">ポリ袋大(+10円)</label>
+														        </div>
+														        <div class="form-check">
+															        <input type="radio" id="hukuro_2" name="hukuro" required="required" class="form-check-input" value="66">
+															        <label class="form-check-label required" for="hukuro_2">ポリ袋特大(+30円)</label>
+														        </div>
+													        </div>
+				                                        </div>
+				                                    </div>
+				                            	</div>
+				                            </div>
+			                                <!-- .〇袋オプション -->
+			                                
+			                                <!-- オプション選択情報を裏側で保持する -->
+											{% if form.option_detail is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_detail) }}
+				                                    {{ form_errors(form.option_detail) }}
+				                                </div>
+				                            {% endif %}
+											<!-- .オプション選択情報を裏側で保持する -->
+			                                
+			                                <!-- ☆↑-------------------オプション入力欄-------------------☆ -->
 			                                
 			                                
 			                                {# 定価 #}
@@ -496,9 +917,7 @@ file that was distributed with this source code.
 						                            </div>
 						                        {% endif %}
 						                    </div>
-						                    
-			                            </div>
-			                            
+						                </div>
 			                            
 			                            <div class="ec-productRole__btn" style="width:100%;">
 			                                <button type="submit" class="ec-blockBtn--action add-cart" style="outline:none; background: url({{ asset('assets/img/btn_cart.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto;">
@@ -536,32 +955,10 @@ file that was distributed with this source code.
                             </div>
                         </div>
                     </div>
-                    
-                    <!--
-                    {% if BaseInfo.option_favorite_product %}
-                        <form action="{{ url('product_add_favorite', {id:Product.id}) }}" method="post">
-                            <div class="ec-productRole__btn">
-                                {% if is_favorite == false %}
-                                    <button type="submit" id="favorite" class="ec-blockBtn--cancel">
-                                        {{ 'お気に入りに追加'|trans }}
-                                    </button>
-                                {% else %}
-                                    <button type="submit" id="favorite" class="ec-blockBtn--cancel"
-                                            disabled="disabled">{{ 'お気に入りに追加済です。'|trans }}
-                                    </button>
-                                {% endif %}
-                            </div>
-                        </form>
-                    {% endif %}
-                    -->
-                    
                     </div>
                 </div>
             </div>
         </div>
-        
-        
-        
               
         </form>
         
