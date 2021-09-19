@@ -75,3 +75,6 @@ ALTER TABLE `dtb_order_item` ADD `option_category_name17` varchar(255) DEFAULT N
 ALTER TABLE `dtb_order_item` ADD `option_category_name18` varchar(255) DEFAULT NULL;
 ALTER TABLE `dtb_order_item` ADD `option_category_name19` varchar(255) DEFAULT NULL;
 ALTER TABLE `dtb_order_item` ADD `option_category_name20` varchar(255) DEFAULT NULL;
+
+--オプション選択内容(文字列)
+ALTER TABLE `dtb_order_item` ADD `option_detail` varchar(1024) DEFAULT NULL;
