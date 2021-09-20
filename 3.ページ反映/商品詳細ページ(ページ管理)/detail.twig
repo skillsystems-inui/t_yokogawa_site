@@ -292,13 +292,6 @@ file that was distributed with this source code.
         $(function() {
             $('.add-cart').on('click', function(event) {
                 
-                //koko
-                //オプション選択必須チェック
-                if(checkOptionSelect() != true){
-                	return true;
-                }
-                //オプション選択内容を作成(文字列)
-
                 event.preventDefault();
                 $form = $('#form1');
                 $.ajax({
@@ -333,7 +326,20 @@ file that was distributed with this source code.
                     $('.add-cart').prop('disabled', false);
                 });
             });
+           
         });
+        
+        //カートへ入れる前処理
+        $('.go-cart').on('click', function() {
+        	//オプション選択必須チェック
+                if(checkOptionSelect() == true){
+                	//オプション選択内容を作成(文字列)
+                	
+                	//未入力の項目がなければ意図的にカートに入れるボタンを押す
+                	document.getElementById("add_cart_btn").click();
+                 }
+        });
+        
         
         //詳細を指定する
         $('.select-options').on('click', function() {
@@ -671,7 +677,7 @@ file that was distributed with this source code.
 					                                        <div id="candle_dai_nyuryoku" style="display: block;">
 																<div class="ec-numberInput" style="float:left">
 																	<span>本数:</span>
-																	<input type="number" id="candle_dai_num" name="candle_dai_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<input type="number" id="candle_dai_num" name="candle_dai_num" min="1" max="10" maxlength="2" class="form-control" value="">
 																	<span>本</span>
 																</div>
 																<div style="clear:both;"></div>
@@ -701,7 +707,7 @@ file that was distributed with this source code.
 					                                        <div id="candle_syo_nyuryoku" style="display: block;">
 					                                        	<div class="ec-numberInput" style="float:left">
 																	<span>本数:</span>
-																	<input type="number" id="candle_syo_num" name="candle_syo_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<input type="number" id="candle_syo_num" name="candle_syo_num" min="1" max="10" maxlength="2" class="form-control" value="">
 																	<span>本</span>
 																</div>
 																<div style="clear:both;"></div>
@@ -730,11 +736,11 @@ file that was distributed with this source code.
 					                                        <div id="candle_no1_nyuryoku" style="display: block;">
 					                                        	<div id="candle_no1_numtext" class="ec-numberInput" style="float: left; display: block;">
 																	<span>No:</span>
-																	<input type="number" id="candle_no1_no" name="candle_no1_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<input type="number" id="candle_no1_no" name="candle_no1_no" min="1" max="10" maxlength="2" class="form-control" value="">
 																</div>
 					                                        	<div class="ec-numberInput" style="float:left">
 																	<span>本数:</span>
-																	<input type="number" id="candle_no1_num" name="candle_no1_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<input type="number" id="candle_no1_num" name="candle_no1_num" min="1" max="10" maxlength="2" class="form-control" value="">
 																	<span>本</span>
 																</div>
 																<div style="clear:both;"></div>
@@ -761,11 +767,11 @@ file that was distributed with this source code.
 					                                        <div id="candle_no2_nyuryoku" style="display: block;">
 					                                        	<div id="candle_no2_numtext" class="ec-numberInput" style="float: left; display: block;">
 																	<span>No:</span>
-																	<input type="number" id="candle_no2_no" name="candle_no2_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<input type="number" id="candle_no2_no" name="candle_no2_no" min="1" max="10" maxlength="2" class="form-control" value="">
 																</div>
 					                                        	<div class="ec-numberInput" style="float:left">
 																	<span>本数:</span>
-																	<input type="number" id="candle_no2_num" name="candle_no2_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<input type="number" id="candle_no2_num" name="candle_no2_num" min="1" max="10" maxlength="2" class="form-control" value="">
 																	<span>本</span>
 																</div>
 																<div style="clear:both;"></div>
@@ -794,11 +800,11 @@ file that was distributed with this source code.
 					                                        <div id="candle_no3_nyuryoku" style="display: block;">
 					                                        	<div id="candle_no3_numtext" class="ec-numberInput" style="float: left; display: block;">
 																	<span>No:</span>
-																	<input type="number" id="candle_no3_no" name="candle_no3_no" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<input type="number" id="candle_no3_no" name="candle_no3_no" min="1" max="10" maxlength="2" class="form-control" value="">
 																</div>
 					                                        	<div class="ec-numberInput" style="float:left">
 																	<span>本数:</span>
-																	<input type="number" id="candle_no3_num" name="candle_no3_num" required="required" min="1" max="10" maxlength="2" class="form-control" value="">
+																	<input type="number" id="candle_no3_num" name="candle_no3_num" min="1" max="10" maxlength="2" class="form-control" value="">
 																	<span>本</span>
 																</div>
 																<div style="clear:both;"></div>
@@ -839,21 +845,21 @@ file that was distributed with this source code.
 				                                        		<div class="form-check">
 				                                        			<div style="width: 160px; height: 100px; background-image: url({{ asset('assets/img/option/opt_plate_muji.png') }})">
 				                                        			</div>
-					                                        		<input type="radio" id="messageplate_0" name="messageplate" required="required" class="form-check-input" value="61">
+					                                        		<input type="radio" id="messageplate_0" name="messageplate" class="form-check-input" value="61">
 															        <label class="form-check-label required" for="messageplate_0">無地プレート</label>
 														    	</div>
 														    </div>
 														    <div class="form-check" style="float: left; width: 50%;">
 														    	<div style="width: 160px; height: 100px; background-image: url({{ asset('assets/img/option/opt_plate_omedeto_only.png') }})">
 														    	</div>
-														    	<input type="radio" id="messageplate_1" name="messageplate" required="required" class="form-check-input" value="62">
+														    	<input type="radio" id="messageplate_1" name="messageplate" class="form-check-input" value="62">
 														        <label class="form-check-label required" for="messageplate_1">おたんじょうびおめでとう</label>
 													    	</div>
 													    	<div style="clear:both;"></div>
 													        <div class="form-check" style="float: left; width: 50%;">
 													        	<div style="width: 160px; height: 100px; background-image: url({{ asset('assets/img/option/opt_plate_omedeto_plus.png') }})">
 													        	</div>
-													        	<input type="radio" id="messageplate_2" name="messageplate" required="required" class="form-check-input" value="63">
+													        	<input type="radio" id="messageplate_2" name="messageplate" class="form-check-input" value="63">
 													        	<label class="form-check-label required" for="messageplate_2">おたんじょうびおめでとう(□に名前が入ります)</label>
 													    	</div>
 													    	<div style="clear:both;"></div>
@@ -907,7 +913,7 @@ file that was distributed with this source code.
 				                                        
 				                                        <!-- 入力欄：チェック -->			                                        
 				                                        <div id="ichigo_check" style="display:block; font-size:14px;">
-				                                        	<input type="checkbox" id="ichigo_chk" name="ichigo_chk" required="" value="">
+				                                        	<input type="checkbox" id="ichigo_chk" name="ichigo_chk" value="">
 				                                        	<label for="ichigo_chk">
 																<div style="padding:8px;">いちごUP<span style="padding:8px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
@@ -927,7 +933,7 @@ file that was distributed with this source code.
 				                                        
 				                                        <!-- 入力欄：チェック -->			                                        
 				                                        <div id="fruit_check" style="display:block; font-size:14px;">
-				                                        	<input type="checkbox" id="fruit_chk" name="fruit_chk" required="" value="">
+				                                        	<input type="checkbox" id="fruit_chk" name="fruit_chk" value="">
 				                                        	<label for="fruit_chk">
 																<div style="padding:8px;">フルーツUP<span style="padding:8px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
@@ -948,7 +954,7 @@ file that was distributed with this source code.
 				                                        
 				                                        <!-- 入力欄：チェック -->			                                        
 				                                        <div id="namachoko_check" style="display:block; font-size:14px;">
-				                                        	<input type="checkbox" id="namachoko_chk" name="namachoko_chk" required="" value="">
+				                                        	<input type="checkbox" id="namachoko_chk" name="namachoko_chk" value="">
 				                                        	<label for="namachoko_chk">
 																<div style="padding:8px;">生チョコUP<span style="padding:8px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
@@ -967,7 +973,7 @@ file that was distributed with this source code.
 				                                        
 				                                        <!-- 入力欄：チェック -->			                                        
 				                                        <div id="echoko_check" style="display:block; font-size:14px;">
-				                                        	<input type="checkbox" id="echoko_chk" name="echoko_chk" required="" value="">
+				                                        	<input type="checkbox" id="echoko_chk" name="echoko_chk" value="">
 				                                        	<label for="echoko_chk">
 																<div style="padding:8px;">絵チョコ(4号)<span style="padding:8px; color:red;">(+850円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
@@ -1017,7 +1023,7 @@ file that was distributed with this source code.
 				                                        	
 				                                        	<div id="hukuro">
 				                                        		<div id="pori_cyu_check" style="display:block; font-size:14px;">
-						                                        	<input type="checkbox" id="pori_cyu_chk" name="pori_cyu_chk" required="" value="">
+						                                        	<input type="checkbox" id="pori_cyu_chk" name="pori_cyu_chk" value="">
 						                                        	<label for="pori_cyu_chk">
 																		<div style="padding:8px;">ポリ袋 中
 																			<span style="padding:8px; color:red;">(+10円)</span>
@@ -1026,7 +1032,7 @@ file that was distributed with this source code.
 																	</label>
 						                                        </div>
 														        <div id="pori_dai_check" style="display:block; font-size:14px;">
-						                                        	<input type="checkbox" id="pori_dai_chk" name="pori_dai_chk" required="" value="">
+						                                        	<input type="checkbox" id="pori_dai_chk" name="pori_dai_chk" value="">
 						                                        	<label for="pori_dai_chk">
 																		<div style="padding:8px;">ポリ袋 大
 																			<span style="padding:8px; color:red;">(+10円)</span>
@@ -1035,7 +1041,7 @@ file that was distributed with this source code.
 																	</label>
 						                                        </div>
 														        <div id="pori_tokudai_check" style="display:block; font-size:14px;">
-						                                        	<input type="checkbox" id="pori_tokudai_chk" name="pori_tokudai_chk" required="" value="">
+						                                        	<input type="checkbox" id="pori_tokudai_chk" name="pori_tokudai_chk" value="">
 						                                        	<label for="pori_tokudai_chk">
 																		<div style="padding:8px;">ポリ袋 特大
 																			<span style="padding:8px; color:red;">(+30円)</span>
@@ -1080,27 +1086,27 @@ file that was distributed with this source code.
 				                                        <div id="housouselect_wdg" style="display:block;">
 				                                        	<div id="housouselect" style="float: left; width: 50%;">
 				                                        		<div class="form-check">
-				                                        			<input type="radio" id="housouselect_0" name="housouselect" required="required" class="form-check-input" value="61">
+				                                        			<input type="radio" id="housouselect_0" name="housouselect"  class="form-check-input" value="61">
 															        <label class="form-check-label required" for="housouselect_0">包装</label>
 															        <div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gift_housou.png') }})">
 				                                        			</div>
 														    	</div>
 														    </div>
 														    <div class="form-check" style="float: left; width: 50%;">
-														    	<input type="radio" id="housouselect_1" name="housouselect" required="required" class="form-check-input" value="62">
+														    	<input type="radio" id="housouselect_1" name="housouselect" class="form-check-input" value="62">
 														        <label class="form-check-label required" for="housouselect_1">自宅用</label>
 														        <div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gift_jitaku.png') }})">
 														    	</div>
 													    	</div>
 													    	<div style="clear:both;"></div>
 													        <div class="form-check" style="float: left; width: 50%;">
-													        	<input type="radio" id="housouselect_2" name="housouselect" required="required" class="form-check-input" value="63">
+													        	<input type="radio" id="housouselect_2" name="housouselect" class="form-check-input" value="63">
 													        	<label class="form-check-label required" for="housouselect_2">リボン</label>
 													        	<div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gift_ribon.png') }})">
 													        	</div>
 													    	</div>
 													    	<div class="form-check" style="float: left; width: 50%;">
-													        	<input type="radio" id="housouselect_3" name="housouselect" required="required" class="form-check-input" value="63">
+													        	<input type="radio" id="housouselect_3" name="housouselect" class="form-check-input" value="63">
 													        	<label class="form-check-label required" for="housouselect_3">熨斗</label>
 													        	<div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gift_noshi.png') }})">
 													        	</div>
@@ -1118,12 +1124,12 @@ file that was distributed with this source code.
 				                                        <div id="noshikakekata_wdg" style="display:block;">
 				                                        	<div id="noshikakekata" style="float: left; width: 50%;">
 				                                        		<div class="form-check">
-				                                        			<input type="radio" id="noshikakekata_0" name="noshikakekata" required="required" class="form-check-input" value="61">
+				                                        			<input type="radio" id="noshikakekata_0" name="noshikakekata"  class="form-check-input" value="61">
 															        <label class="form-check-label required" for="noshikakekata_0">内熨斗</label>
 														    	</div>
 														    </div>
 														    <div class="form-check" style="float: left; width: 50%;">
-														    	<input type="radio" id="noshikakekata_1" name="noshikakekata" required="required" class="form-check-input" value="62">
+														    	<input type="radio" id="noshikakekata_1" name="noshikakekata" class="form-check-input" value="62">
 														        <label class="form-check-label required" for="noshikakekata_1">外熨斗</label>
 													    	</div>
 													    	<div style="clear:both;"></div>
@@ -1143,23 +1149,23 @@ file that was distributed with this source code.
 													<div class="" style="padding-bottom:20px;">
 				                                        <div id="kakehousousyurui_wdg" style="display:block;">
 			                                        		<div class="form-check" style="width: 100%;">
-			                                        			<input type="radio" id="kakehousousyurui_0" name="kakehousousyurui" required="required" class="form-check-input" value="61">
+			                                        			<input type="radio" id="kakehousousyurui_0" name="kakehousousyurui" class="form-check-input" value="61">
 														        <label class="form-check-label required" for="kakehousousyurui_0">紅白蝶結び（慶事用）</label>
 													    	</div>
 														    <div class="form-check" style="width: 100%;">
-														    	<input type="radio" id="kakehousousyurui_1" name="kakehousousyurui" required="required" class="form-check-input" value="62">
+														    	<input type="radio" id="kakehousousyurui_1" name="kakehousousyurui" class="form-check-input" value="62">
 														        <label class="form-check-label required" for="kakehousousyurui_1">紅白結切り10本（婚礼用）</label>
 													    	</div>
 													    	<div class="form-check" style="width: 100%;">
-			                                        			<input type="radio" id="kakehousousyurui_2" name="kakehousousyurui" required="required" class="form-check-input" value="61">
+			                                        			<input type="radio" id="kakehousousyurui_2" name="kakehousousyurui" class="form-check-input" value="61">
 														        <label class="form-check-label required" for="kakehousousyurui_2">紅白結切り5本（お見舞用）</label>
 													    	</div>
 														    <div class="form-check" style="width: 100%;">
-														    	<input type="radio" id="kakehousousyurui_3" name="kakehousousyurui" required="required" class="form-check-input" value="62">
+														    	<input type="radio" id="kakehousousyurui_3" name="kakehousousyurui" class="form-check-input" value="62">
 														        <label class="form-check-label required" for="kakehousousyurui_3">紅白結切り5本（快気祝用）</label>
 													    	</div>
 													    	<div class="form-check" style="width: 100%;">
-			                                        			<input type="radio" id="kakehousousyurui_4" name="kakehousousyurui" required="required" class="form-check-input" value="61">
+			                                        			<input type="radio" id="kakehousousyurui_4" name="kakehousousyurui" class="form-check-input" value="61">
 														        <label class="form-check-label required" for="kakehousousyurui_4">黄白（弔事用）</label>
 													    	</div>
 														</div>
@@ -1178,57 +1184,57 @@ file that was distributed with this source code.
 													<div class="" style="padding-bottom:20px;">
 				                                        <div id="uwagakisentaku_wdg" style="display:block;">
 			                                        		<div class="form-check" style="float: left; width: 50%;">
-			                                        			<input type="radio" id="uwagakisentaku_0" name="uwagakisentaku" required="required" class="form-check-input" value="61">
+			                                        			<input type="radio" id="uwagakisentaku_0" name="uwagakisentaku" class="form-check-input" value="61">
 														        <label class="form-check-label required" for="uwagakisentaku_0">御礼</label>
 													    	</div>
 														    <div class="form-check" style="float: left; width: 50%;">
-														    	<input type="radio" id="uwagakisentaku_1" name="uwagakisentaku" required="required" class="form-check-input" value="62">
+														    	<input type="radio" id="uwagakisentaku_1" name="uwagakisentaku" class="form-check-input" value="62">
 														        <label class="form-check-label required" for="uwagakisentaku_1">御見舞</label>
 													    	</div>
 													    	<div style="clear:both;"></div>
 													    	
 													    	<div class="form-check" style="float: left; width: 50%;">
-			                                        			<input type="radio" id="uwagakisentaku_2" name="uwagakisentaku" required="required" class="form-check-input" value="61">
+			                                        			<input type="radio" id="uwagakisentaku_2" name="uwagakisentaku" class="form-check-input" value="61">
 														        <label class="form-check-label required" for="uwagakisentaku_2">御祝</label>
 													    	</div>
 														    <div class="form-check" style="float: left; width: 50%;">
-														    	<input type="radio" id="uwagakisentaku_3" name="uwagakisentaku" required="required" class="form-check-input" value="62">
+														    	<input type="radio" id="uwagakisentaku_3" name="uwagakisentaku" class="form-check-input" value="62">
 														        <label class="form-check-label required" for="uwagakisentaku_3">快気祝</label>
 													    	</div>
 													    	<div style="clear:both;"></div>
 													    	
 													    	<div class="form-check" style="float: left; width: 50%;">
-			                                        			<input type="radio" id="uwagakisentaku_4" name="uwagakisentaku" required="required" class="form-check-input" value="61">
+			                                        			<input type="radio" id="uwagakisentaku_4" name="uwagakisentaku" class="form-check-input" value="61">
 														        <label class="form-check-label required" for="uwagakisentaku_4">内祝</label>
 													    	</div>
 														    <div class="form-check" style="float: left; width: 50%;">
-														    	<input type="radio" id="uwagakisentaku_5" name="uwagakisentaku" required="required" class="form-check-input" value="62">
+														    	<input type="radio" id="uwagakisentaku_5" name="uwagakisentaku" class="form-check-input" value="62">
 														        <label class="form-check-label required" for="uwagakisentaku_5">御供</label>
 													    	</div>
 													    	<div style="clear:both;"></div>
 													    	
 													    	<div class="form-check" style="float: left; width: 50%;">
-			                                        			<input type="radio" id="uwagakisentaku_6" name="uwagakisentaku" required="required" class="form-check-input" value="61">
+			                                        			<input type="radio" id="uwagakisentaku_6" name="uwagakisentaku" class="form-check-input" value="61">
 														        <label class="form-check-label required" for="uwagakisentaku_6">御挨拶</label>
 													    	</div>
 														    <div class="form-check" style="float: left; width: 50%;">
-														    	<input type="radio" id="uwagakisentaku_7" name="uwagakisentaku" required="required" class="form-check-input" value="62">
+														    	<input type="radio" id="uwagakisentaku_7" name="uwagakisentaku" class="form-check-input" value="62">
 														        <label class="form-check-label required" for="uwagakisentaku_7">粗供養</label>
 													    	</div>
 													    	<div style="clear:both;"></div>
 													    	
 													    	<div class="form-check" style="float: left; width: 50%;">
-			                                        			<input type="radio" id="uwagakisentaku_8" name="uwagakisentaku" required="required" class="form-check-input" value="61">
+			                                        			<input type="radio" id="uwagakisentaku_8" name="uwagakisentaku" class="form-check-input" value="61">
 														        <label class="form-check-label required" for="uwagakisentaku_8">御中元</label>
 													    	</div>
 														    <div class="form-check" style="float: left; width: 50%;">
-														    	<input type="radio" id="uwagakisentaku_9" name="uwagakisentaku" required="required" class="form-check-input" value="62">
+														    	<input type="radio" id="uwagakisentaku_9" name="uwagakisentaku" class="form-check-input" value="62">
 														        <label class="form-check-label required" for="uwagakisentaku_9">志</label>
 													    	</div>
 													    	<div style="clear:both;"></div>
 													    	
 													    	<div class="form-check" style="float: left; width: 50%;">
-			                                        			<input type="radio" id="uwagakisentaku_10" name="uwagakisentaku" required="required" class="form-check-input" value="61">
+			                                        			<input type="radio" id="uwagakisentaku_10" name="uwagakisentaku" class="form-check-input" value="61">
 														        <label class="form-check-label required" for="uwagakisentaku_10">御歳暮</label>
 													    	</div>
 													    	<div style="clear:both;"></div>
@@ -1315,8 +1321,14 @@ file that was distributed with this source code.
 						                    </div>
 						                </div>
 			                            
-			                            <div class="ec-productRole__btn" style="width:100%;">
-			                                <button type="submit" class="ec-blockBtn--action add-cart" style="outline:none; background: url({{ asset('assets/img/btn_cart.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto;">
+			                            <div class="ec-productRole__btn" style="display:none;">
+			                                <button type="submit" class="ec-blockBtn--action add-cart" id="add_cart_btn" style="outline:none; background: url({{ asset('assets/img/btn_cart.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto;">
+			                                </button>
+			                            </div>
+			                            
+			                            <!-- カートに入れるボタンを押す用のボタン -->
+			                            <div class="ec-productRole__btn" style="padding-top:10px;width:100%;">
+			                                <button type="button" class="ec-blockBtn--action go-cart" style="outline:none; background: url({{ asset('assets/img/btn_cart.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto;">
 			                                </button>
 			                            </div>
 			                            
