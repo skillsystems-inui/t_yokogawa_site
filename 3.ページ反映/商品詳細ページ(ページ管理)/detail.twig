@@ -632,6 +632,64 @@ file that was distributed with this source code.
                     
             <div class="ec-grid2__cell" style="width:100%;">
                 <div class="ec-productRole__profile">
+                    <!-- カテゴリの判定 (デコオプション、キャンドルオプション、ギフト、袋オプション、店頭受取可、取り寄せ可)-->
+                    {% set is_deco_option = false  %}
+                    {% set is_candle_option = false  %}
+                    {% set is_gift = false  %}
+                    {% set is_bag_option = false  %}
+                    {% set is_tentouuketorika = false  %}
+                    {% set is_toriyoseka = false  %}
+                    
+                    {% if Product.ProductCategories is not empty %}
+                        {% for ProductCategory in Product.ProductCategories %}
+                                {% for Category in ProductCategory.Category.path %}
+                                    
+                                    <!-- デコオプションと判定 -->
+                                    {% if Category.name == 'デコオプション' %}
+                                    	{% set is_deco_option = true  %}
+                                    {% endif %}
+                                    <!-- と判定 -->
+                                    {% if Category.name == 'キャンドルオプション' %}
+                                    	{% set is_candle_option = true  %}
+                                    {% endif %}
+                                    <!-- と判定 -->
+                                    {% if Category.name == 'ギフト' %}
+                                    	{% set is_gift = true  %}
+                                    {% endif %}
+                                    {% if Category.name == '袋オプション' %}
+                                    	{% set is_bag_option = true  %}
+                                    {% endif %}
+                                    
+                                    {% if Category.name == '店頭受取可' %}
+                                    	{% set is_tentouuketorika = true  %}
+                                    {% endif %}
+                                    {% if Category.name == '取り寄せ可' %}
+                                    	{% set is_toriyoseka = true  %}
+                                    {% endif %}
+                                    
+                                    {%- if loop.last == false %}
+                                    {% endif -%}
+                                {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                    <!-- .カテゴリの判定 -->
+                    
+                    
+                    {# 店頭受取可、取り寄せ可 #}
+                    <div class="" style="padding-bottom:20px;">
+                    	<!-- 店頭受取可 -->
+                    	{% if is_tentouuketorika == true %}
+                    		<div style="float:left; width: 86px; height: 72px; background-image: url({{ asset('assets/img/icon_tentouuketori.png') }})"></div>
+                    	{% endif %}
+                        <!-- .店頭受取可 -->
+                        <!-- 取り寄せ可 -->
+                    	{% if is_toriyoseka == true %}
+                    		<div style="float:left; width: 86px; height: 72px; background-image: url({{ asset('assets/img/icon_toriyose.png') }})"></div>
+                    	{% endif %}
+                        <!-- .取り寄せ可 -->
+                        <div style="clear:both;"></div>
+                    </div>
+                    
                     {# 商品名 #}
                     <div class="ec-productRole__title">
                         <h2 class="ec-headingTitle"><b>{{ Product.name }}</b></h2>
@@ -656,36 +714,6 @@ file that was distributed with this source code.
                     {% endif %}
                     -->
                     {# 関連カテゴリ #}
-                    <!-- カテゴリの判定 (デコオプション、キャンドルオプション、ギフト、袋オプション)-->
-                    {% set is_deco_option = false  %}
-                    {% set is_candle_option = false  %}
-                    {% set is_gift = false  %}
-                    {% set is_bag_option = false  %}
-                    {% if Product.ProductCategories is not empty %}
-                        {% for ProductCategory in Product.ProductCategories %}
-                                {% for Category in ProductCategory.Category.path %}
-                                    
-                                    <!-- デコオプションと判定 -->
-                                    {% if Category.name == 'デコオプション' %}
-                                    	{% set is_deco_option = true  %}
-                                    {% endif %}
-                                    <!-- と判定 -->
-                                    {% if Category.name == 'キャンドルオプション' %}
-                                    	{% set is_candle_option = true  %}
-                                    {% endif %}
-                                    <!-- と判定 -->
-                                    {% if Category.name == 'ギフト' %}
-                                    	{% set is_gift = true  %}
-                                    {% endif %}
-                                    {% if Category.name == '袋オプション' %}
-                                    	{% set is_bag_option = true  %}
-                                    {% endif %}
-                                    {%- if loop.last == false %}
-                                    {% endif -%}
-                                {% endfor %}
-                        {% endfor %}
-                    {% endif %}
-                    <!-- .カテゴリの判定 -->
                     <!--
                     {% if Product.ProductCategories is not empty %}
                         <div class="ec-productRole__category">
