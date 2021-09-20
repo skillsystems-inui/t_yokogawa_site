@@ -326,10 +326,11 @@ file that was distributed with this source code.
                     {% endif %}
                     -->
                     {# 関連カテゴリ #}
-                    <!-- カテゴリの判定 (デコオプション、キャンドルオプション、ギフト)-->
+                    <!-- カテゴリの判定 (デコオプション、キャンドルオプション、ギフト、袋オプション)-->
                     {% set is_deco_option = false  %}
                     {% set is_candle_option = false  %}
                     {% set is_gift = false  %}
+                    {% set is_bag_option = false  %}
                     {% if Product.ProductCategories is not empty %}
                         {% for ProductCategory in Product.ProductCategories %}
                                 {% for Category in ProductCategory.Category.path %}
@@ -346,7 +347,9 @@ file that was distributed with this source code.
                                     {% if Category.name == 'ギフト' %}
                                     	{% set is_gift = true  %}
                                     {% endif %}
-                                    
+                                    {% if Category.name == '袋オプション' %}
+                                    	{% set is_bag_option = true  %}
+                                    {% endif %}
                                     {%- if loop.last == false %}
                                     {% endif -%}
                                 {% endfor %}
@@ -842,6 +845,7 @@ file that was distributed with this source code.
 		                            		
 		                            		
 		                                	<!-- 〇袋オプション -->
+		                                	{% if is_bag_option == true %}
 			                            	<div id="option_form_bag" class="ec-productRole__actions">
 			                                	
 			                                	<!-- 大カテゴリ表示(持ち帰りポリ袋) -->
@@ -897,6 +901,7 @@ file that was distributed with this source code.
 				                                    </div>
 				                            	</div>
 				                            </div>
+			                                {% endif %}
 			                                <!-- .〇袋オプション -->
 			                                
 			                                
