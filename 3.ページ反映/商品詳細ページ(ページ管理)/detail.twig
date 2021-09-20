@@ -289,6 +289,124 @@ file that was distributed with this source code.
         }
     </script>
     <script>
+        // オプション選択内容をセットする
+        function inputOptionDetail() {
+            /*
+            * ※は有料
+            * <キャンドルオプション>
+            *  キャンドル大×数
+            *  キャンドル小×数
+            *  Noキャンドル×数 (1つめ) ※
+            *  Noキャンドル×数 (2つめ) ※
+            *  Noキャンドル×数 (3つめ) ※
+            * <デコオプション>
+            *  メッセージプレート種類
+            *  メッセージ入力(1つめ)
+            *  メッセージ入力(2つめ)※
+            *  メッセージ入力(3つめ)※
+            *  メッセージ入力(4つめ)※
+            *  メッセージ入力(5つめ)※
+            *  いちごUP      ※
+            *  フルーツUP    ※
+            *  生チョコUP    ※
+            *  絵チョコ(4号) ※
+            * <ギフト>
+            * 包装方法
+            * 熨斗紙の掛け方
+            * 掛け紙・熨斗の種類
+            * 上書き
+            * 熨斗の名入れ入力
+            * <袋オプション>
+            * ポリ袋 中   ※
+            * ポリ袋 大   ※
+            * ポリ袋 特大 ※
+            */
+            
+            var optionselect_all    = '';
+            var optionselect_candle = '[キャンドルオプション]:';
+            var optionselect_deco   = '[デコオプション]:';
+            var optionselect_bag    = '[袋オプション]:';
+            
+            //---キャンドル---
+			var option_form_candle = 'option_form_candle';
+			if(document.getElementById(option_form_candle) != null){
+				//キャンドルオプションがある場合
+				// キャンドル大
+				const candle_dai_num = document.getElementById("candle_dai_num");
+				// キャンドル小
+				const candle_syo_num = document.getElementById("candle_syo_num");
+				// Noキャンドル 1つめ
+				const candle_no1_no  = document.getElementById("candle_no1_no");
+				const candle_no1_num = document.getElementById("candle_no1_num");
+				// Noキャンドル 2つめ
+				const candle_no2_no  = document.getElementById("candle_no2_no");
+				const candle_no2_num = document.getElementById("candle_no2_num");
+				// Noキャンドル 3つめ
+				const candle_no3_no  = document.getElementById("candle_no3_no");
+				const candle_no3_num = document.getElementById("candle_no3_num");
+				
+				//キャンドルの不要チェック
+				const chk_candle_nosel = document.getElementById("chk_candle_nosel");
+				if(chk_candle_nosel.checked != true){
+					//・キャンドル指定あり
+					
+					//キャンドル大
+					if(candle_dai_num.value != ''){
+						
+						optionselect_candle = optionselect_candle + ' キャンドル大:'
+						optionselect_candle = optionselect_candle + ' ' + candle_dai_num.value + '本 '; 
+					}
+					
+					//キャンドル小
+					if(candle_syo_num.value != ''){
+						
+						optionselect_candle = optionselect_candle + ' キャンドル小:'
+						optionselect_candle = optionselect_candle + ' ' + candle_syo_num.value + '本 '; 
+					}
+					
+					//Noキャンドル(1)
+					if(candle_no1_no.value != '' && candle_no1_num.value != ''){
+						
+						optionselect_candle = optionselect_candle + ' Noキャンドル(1):'
+						optionselect_candle = optionselect_candle + ' No.' + candle_no1_no.value;
+						optionselect_candle = optionselect_candle + ' ' + candle_no1_num.value + '本 '; 
+					}
+					
+					//Noキャンドル(2)
+					if(candle_no2_no.value != '' && candle_no2_num.value != ''){
+						
+						optionselect_candle = optionselect_candle + ' Noキャンドル(2):'
+						optionselect_candle = optionselect_candle + ' No.' + candle_no2_no.value;
+						optionselect_candle = optionselect_candle + ' ' + candle_no2_num.value + '本'; 
+					}
+					
+					//Noキャンドル(3)
+					if(candle_no3_no.value != '' && candle_no3_num.value != ''){
+						
+						optionselect_candle = optionselect_candle + ' Noキャンドル(3):'
+						optionselect_candle = optionselect_candle + ' No.' + candle_no3_no.value;
+						optionselect_candle = optionselect_candle + ' ' + candle_no3_num.value + '本 '; 
+					}
+				}else{
+					//・キャンドル指定なし
+					optionselect_candle = optionselect_candle + ' 不要'; 
+				}
+				
+				//キャンドルオプション選択情報を追記する
+				optionselect_all = optionselect_all + optionselect_candle;
+			}
+            
+            //--- デコオプション ---
+            //--- ギフト ---
+            //--- 袋オプション ---
+            
+            //オプション選択内容テキストエリアに出力する
+            document.getElementById("option_detail").textContent = optionselect_all;
+           
+        }
+    </script>
+    
+    <script>
         $(function() {
             $('.add-cart').on('click', function(event) {
                 
@@ -334,6 +452,7 @@ file that was distributed with this source code.
         	//オプション選択必須チェック
                 if(checkOptionSelect() == true){
                 	//オプション選択内容を作成(文字列)
+                	inputOptionDetail();
                 	
                 	//未入力の項目がなければ意図的にカートに入れるボタンを押す
                 	document.getElementById("add_cart_btn").click();
