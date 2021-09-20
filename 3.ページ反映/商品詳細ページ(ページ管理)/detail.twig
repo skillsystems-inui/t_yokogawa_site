@@ -144,12 +144,160 @@ file that was distributed with this source code.
             })
         });
     </script>
+    
+<script>
+        // オプション選択必須チェック
+        function checkOptionSelect() {
+            /*
+            * ※は有料
+            * <キャンドルオプション>
+            *  キャンドル大×数
+            *  キャンドル小×数
+            *  Noキャンドル×数 (1つめ) ※
+            *  Noキャンドル×数 (2つめ) ※
+            *  Noキャンドル×数 (3つめ) ※
+            * <デコオプション>
+            *  メッセージプレート種類
+            *  メッセージ入力(1つめ)
+            *  メッセージ入力(2つめ)※
+            *  メッセージ入力(3つめ)※
+            *  メッセージ入力(4つめ)※
+            *  メッセージ入力(5つめ)※
+            *  いちごUP      ※
+            *  フルーツUP    ※
+            *  生チョコUP    ※
+            *  絵チョコ(4号) ※
+            * <ギフト>
+            * 包装方法
+            * 熨斗紙の掛け方
+            * 掛け紙・熨斗の種類
+            * 上書き
+            * 熨斗の名入れ入力
+            * <袋オプション>
+            * ポリ袋 中   ※
+            * ポリ袋 大   ※
+            * ポリ袋 特大 ※
+            */
+            
+            //---[入力チェック]キャンドル---
+			var option_form_candle = 'option_form_candle';
+			if(document.getElementById(option_form_candle) != null){
+				//キャンドルオプションがある場合
+				
+				// キャンドル大
+				const candle_dai_num = document.getElementById("candle_dai_num");
+				// キャンドル小
+				const candle_syo_num = document.getElementById("candle_syo_num");
+				// Noキャンドル 1つめ
+				const candle_no1_no  = document.getElementById("candle_no1_no");
+				const candle_no1_num = document.getElementById("candle_no1_num");
+				// Noキャンドル 2つめ
+				const candle_no2_no  = document.getElementById("candle_no2_no");
+				const candle_no2_num = document.getElementById("candle_no2_num");
+				// Noキャンドル 3つめ
+				const candle_no3_no  = document.getElementById("candle_no3_no");
+				const candle_no3_num = document.getElementById("candle_no3_num");
+				
+				//キャンドルの不要チェックがついていない場合、入力チェックを行う
+				const chk_candle_nosel = document.getElementById("chk_candle_nosel");
+				
+				if(chk_candle_nosel.checked != true){
+					//キャンドル大、キャンドル小、Noキャンドル のうち1つも入力がなければアラート表示
+					if(candle_dai_num.value == '' &&
+					   candle_syo_num.value == '' &&
+					   candle_no1_no.value == '' &&
+					   candle_no1_num.value == '' &&
+					   candle_no2_no.value == '' &&
+					   candle_no2_num.value == '' &&
+					   candle_no3_no.value == '' &&
+					   candle_no3_num.value == ''
+					){
+						//アラート
+		                alert('キャンドルを選択してください');
+		                
+		                //サイズ選択欄の背景色を赤にする
+		                var candle_sentaku_id = 'option_form_candle';
+			    		
+			    		if(document.getElementById(candle_sentaku_id) != null){
+							document.getElementById(candle_sentaku_id).style.color="red";
+						}
+						
+						return false;
+					}
+					
+					
+					//NoキャンドルのNoか本数が未選択ならアラート表示(1)
+					if((candle_no1_no.value != '' && candle_no1_num.value == '') ||
+					   (candle_no1_no.value == '' && candle_no1_num.value != '')
+					){
+						//アラート
+		                alert('NoキャンドルはNoと本数を選択してください');
+		                
+		                //サイズ選択欄の背景色を赤にする
+		                var candle_no1_sentaku_id = 'candle_no1_nyuryoku';
+			    		
+			    		if(document.getElementById(candle_no1_sentaku_id) != null){
+							document.getElementById(candle_no1_sentaku_id).style.color="red";
+						}
+						
+						return false;
+					}
+					
+					//NoキャンドルのNoか本数が未選択ならアラート表示(2)
+					if((candle_no2_no.value != '' && candle_no2_num.value == '') ||
+					   (candle_no2_no.value == '' && candle_no2_num.value != '')
+					){
+						//アラート
+		                alert('NoキャンドルはNoと本数を選択してください');
+		                
+		                //サイズ選択欄の背景色を赤にする
+		                var candle_no2_sentaku_id = 'candle_no2_nyuryoku';
+			    		
+			    		if(document.getElementById(candle_no2_sentaku_id) != null){
+							document.getElementById(candle_no2_sentaku_id).style.color="red";
+						}
+						
+						return false;
+					}
+					
+					//NoキャンドルのNoか本数が未選択ならアラート表示(3)
+					if((candle_no3_no.value != '' && candle_no3_num.value == '') ||
+					   (candle_no3_no.value == '' && candle_no3_num.value != '')
+					){
+						//アラート
+		                alert('NoキャンドルはNoと本数を選択してください');
+		                
+		                //サイズ選択欄の背景色を赤にする
+		                var candle_no3_sentaku_id = 'candle_no3_nyuryoku';
+			    		
+			    		if(document.getElementById(candle_no3_sentaku_id) != null){
+							document.getElementById(candle_no3_sentaku_id).style.color="red";
+						}
+						
+						return false;
+					}
+				}
+			}
+            
+            //--- デコオプション ---
+            //--- ギフト ---
+            //--- 袋オプション ---
+           
+            
+            //チェックに不備がなければtrue
+			return true;
+        }
+    </script>
     <script>
         $(function() {
             $('.add-cart').on('click', function(event) {
                 
-                //追加価格のオプションがあれば追加価格をセットする.
-                //eccube.checkOptionPrice($('#form1'));
+                //koko
+                //オプション選択必須チェック
+                if(checkOptionSelect() != true){
+                	return true;
+                }
+                //オプション選択内容を作成(文字列)
 
                 event.preventDefault();
                 $form = $('#form1');
