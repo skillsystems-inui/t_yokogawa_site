@@ -327,6 +327,50 @@ file that was distributed with this source code.
             var optionselect_deco   = '[デコオプション]:';
             var optionselect_bag    = '[袋オプション]:';
             
+            //オプションによる追加料金
+            var $addprice = 0;//初期値0円
+            
+            //----- 有料オプション価格 -----
+            //【デコオプション】
+            //  いちごUP
+            var $deco_ichigo_up       = 400;
+            //  フルーツUP
+            var $deco_fluit_up        = 400;
+            //  生チョコUP
+            var $deco_namachoko_up    = 400;
+            //  追加プレート(2枚目から)
+            var $deco_tuika_plate     = 60;
+            //  絵チョコ(4号)
+            var $deco_echoko_yongou   = 800;
+            
+            //【キャンドルオプション】
+            //  Noキャンドル
+            var $no_candle       = 120;
+            
+            //【袋オプション】
+            //  紙袋特小 目安:焼き菓子小分け用
+            var $bag_kami_tokusyo   = 10;
+            //  紙袋小   
+            var $bag_kami_syo       = 50;
+            //  紙袋中
+            var $bag_kami_cyu       = 50;
+            //  紙袋大
+            var $bag_kami_dai       = 100;
+            //  紙袋バーム用
+            var $bag_kami_baum      = 50;
+            //  ポリ特小 目安:焼き菓子小分け用
+            var $bag_poli_tokusyo   = 10;
+            //  ポリ中 目安:ケーキ4号・5号サイズ
+            var $bag_poli_cyu       = 10;
+            //  ポリ大 目安:ケーキ6号サイズ
+            var $bag_poli_dai       = 10;
+            //  ポリ特大 目安:ケーキ5号サイズ2つ
+            var $bag_poli_tokudai   = 30;
+            //  オリジナル保冷バッグ 目安:ホールケーキ
+            var $bag_horei_original  = 350;
+            //  保冷BAG小 目安:ロールケーキ1個
+            var $bag_horei_syo       = 180;
+            
             //---キャンドル---
 			var option_form_candle = 'option_form_candle';
 			if(document.getElementById(option_form_candle) != null){
@@ -370,6 +414,9 @@ file that was distributed with this source code.
 						optionselect_candle = optionselect_candle + ' Noキャンドル(1):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no1_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no1_num.value + '本 '; 
+						
+						//追加料金セット
+						$addprice = $addprice + (candle_no1_num.value*$no_candle);
 					}
 					
 					//Noキャンドル(2)
@@ -378,6 +425,9 @@ file that was distributed with this source code.
 						optionselect_candle = optionselect_candle + ' Noキャンドル(2):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no2_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no2_num.value + '本'; 
+						
+						//追加料金セット
+						$addprice = $addprice + (candle_no1_num.value*$no_candle);
 					}
 					
 					//Noキャンドル(3)
@@ -386,6 +436,9 @@ file that was distributed with this source code.
 						optionselect_candle = optionselect_candle + ' Noキャンドル(3):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no3_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no3_num.value + '本 '; 
+						
+						//追加料金セット
+						$addprice = $addprice + (candle_no1_num.value*$no_candle);
 					}
 				}else{
 					//・キャンドル指定なし
@@ -399,6 +452,10 @@ file that was distributed with this source code.
             //--- デコオプション ---
             //--- ギフト ---
             //--- 袋オプション ---
+            
+            //オプション選択による追加価格セット
+	        var $additional_price_dynamic = $form.find('[id^=additional_price]');
+	        $additional_price_dynamic.val($addprice);
             
             //オプション選択内容テキストエリアに出力する
             document.getElementById("option_detail").textContent = optionselect_all;

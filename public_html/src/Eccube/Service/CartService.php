@@ -379,12 +379,14 @@ class CartService
      *
      * @param $ProductClass ProductClass 商品規格
      * @param $OptionDetail オプション選択情報
+     * @param $additional_option_price 追加料金
      * @param $quantity int 数量
      *
      * @return bool 商品を追加できた場合はtrue
      */
     public function addProductOption($ProductClass, 
                                      $OptionDetail,
+                                     $additional_option_price,
                                      $quantity = 1)
     {
         
@@ -417,6 +419,9 @@ class CartService
         //[Option]オプション情報を登録する
         $newItem->setOptionDetail($OptionDetail);
         
+		//[Option]追加料金を登録する
+		$newItem->setAdditionalPrice($additional_option_price);
+		
         $allCartItems = $this->mergeAllCartItems([$newItem]);
         $this->restoreCarts($allCartItems);
 

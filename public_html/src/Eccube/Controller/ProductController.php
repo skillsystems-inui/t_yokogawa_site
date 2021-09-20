@@ -433,6 +433,7 @@ class ProductController extends AbstractController
         //オプション選択されていればカートに反映する
         $this->cartService->addProductOption($addCartData['product_class_id'], 
                                              $option_detail,
+                                             $additional_option_price,
                                              $addCartData['quantity']);
         //$this->cartService->addProduct($addCartData['product_class_id'], $addCartData['quantity']);
 
