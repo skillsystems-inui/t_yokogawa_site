@@ -776,6 +776,12 @@ file that was distributed with this source code.
                                                         )
                                                     {% endif %}
                                                 </span>
+                                                {% if OrderItem.optionDetail != "" %}
+                                                 <br>
+                                                 <span>
+                                                    {{ OrderItem.optionDetail|nl2br }}
+                                                 </span>
+                                                {% endif %}
                                                 {{ form_errors(orderItemForm.product_name) }}
                                             </td>
                                             <!-- 金額 -->

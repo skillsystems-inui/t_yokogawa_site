@@ -131,6 +131,16 @@ file that was distributed with this source code.
                                         {% if orderItem.optionName10 %}
                                             <p>{{ orderItem.optionName10 }}：{{ orderItem.optionCategoryName10 }}</p>
                                         {% endif %}
+                                        {% if orderItem.optionPrintnamePlate != "" %}
+                                            <br>メッセージ：{{ orderItem.optionPrintnamePlate }}
+                                        {% endif %}
+                                        {% if orderItem.optionPrintnameNoshi != "" %}
+                                            <br>のしの名入れ：{{ orderItem.optionPrintnameNoshi }}
+                                        {% endif %}
+                                        
+                                        {% if orderItem.optionDetail != "" %}
+                                            <br>{{ orderItem.optionDetail|nl2br }}
+                                        {% endif %}
                                         
                                         <p>{{ orderItem.priceIncTax|price }} × {{ orderItem.quantity|number_format }}<span>{{ '小計：'|trans }}{{ orderItem.totalPrice|price }}</span></p>
                                     </div>

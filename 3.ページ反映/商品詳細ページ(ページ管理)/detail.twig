@@ -413,37 +413,41 @@ file that was distributed with this source code.
 					//Noキャンドル(1)
 					if(candle_no1_no.value != '' && candle_no1_num.value != ''){
 						
+						//追加料金セット
+						$addprice = $addprice + (candle_no1_num.value*$no_candle);
+						
 						optionselect_candle = optionselect_candle + ' Noキャンドル(1):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no1_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no1_num.value + '本 '; 
+						optionselect_candle = optionselect_candle + ' (+' + $addprice + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
 						
-						//追加料金セット
-						$addprice = $addprice + (candle_no1_num.value*$no_candle);
 					}
 					
 					//Noキャンドル(2)
 					if(candle_no2_no.value != '' && candle_no2_num.value != ''){
 						
+						//追加料金セット
+						$addprice = $addprice + (candle_no1_num.value*$no_candle);
+						
 						optionselect_candle = optionselect_candle + ' Noキャンドル(2):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no2_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no2_num.value + '本'; 
+						optionselect_candle = optionselect_candle + ' (+' + $addprice + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
-						
-						//追加料金セット
-						$addprice = $addprice + (candle_no1_num.value*$no_candle);
 					}
 					
 					//Noキャンドル(3)
 					if(candle_no3_no.value != '' && candle_no3_num.value != ''){
 						
+						//追加料金セット
+						$addprice = $addprice + (candle_no1_num.value*$no_candle);
+						
 						optionselect_candle = optionselect_candle + ' Noキャンドル(3):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no3_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no3_num.value + '本 '; 
+						optionselect_candle = optionselect_candle + ' (+' + $addprice + '円) '; 
 						optionselect_candle = optionselect_candle + '\n';
-						
-						//追加料金セット
-						$addprice = $addprice + (candle_no1_num.value*$no_candle);
 					}
 				}else{
 					//・キャンドル指定なし

@@ -155,7 +155,7 @@ file that was distributed with this source code.
                                                 <img src="{{ asset(Product.MainListImage|no_image_product, 'save_image') }}" alt="{{ Product.name }}"/>
                                             </a>
                                         </div>
-                                        <div class="ec-cartRow__summary">
+                                        <div class="ec-cartRow__summary" style="width:70%;">
                                             <div class="ec-cartRow__name">
                                                 <a target="_blank" href="{{ url('product_detail', {id : Product.id} ) }}">{{ Product.name }}</a>
                                                 {% if ProductClass.ClassCategory1 and ProductClass.ClassCategory1.id %}
