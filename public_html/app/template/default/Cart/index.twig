@@ -137,6 +137,9 @@ file that was distributed with this source code.
                                 {% set ClassCategory8  = CartItem.ClassCategory8  %}
                                 {% set ClassCategory9  = CartItem.ClassCategory9  %}
                                 {% set ClassCategory10 = CartItem.ClassCategory10 %}
+                                {% set PrintnamePlate = CartItem.printname_plate %}
+                                {% set PrintnameNoshi = CartItem.printname_noshi %}
+                                {% set OptionDetail   = CartItem.option_detail %}
 
                                 
                                 {% set Product = ProductClass.Product %}
@@ -192,6 +195,17 @@ file that was distributed with this source code.
                                                 {% endif %}
                                                 {% if ClassCategory10 and ClassCategory10.id %}
                                                     <br>{{ ClassCategory10.ClassName.name }}：{{ ClassCategory10.name }}
+                                                {% endif %}
+                                                
+                                                {% if PrintnamePlate != "" %}
+                                                    <br>メッセージ：{{ PrintnamePlate }}
+                                                {% endif %}
+                                                {% if PrintnameNoshi != "" %}
+                                                    <br>のしの名入れ：{{ PrintnameNoshi }}
+                                                {% endif %}
+                                                
+                                                {% if OptionDetail != "" %}
+                                                    <br>{{ OptionDetail|nl2br }}
                                                 {% endif %}
                                                 
                                             </div>
@@ -253,7 +267,7 @@ file that was distributed with this source code.
                         </div>
                         
                         <!-- レジ袋購入リンク -->
-                        <a class="ec-blockBtn--cancel" style="margin-bottom:10px; background:rgba(226, 161, 10, 0.2); border:none; color:#000;"  href="{{ url('product_list') }}?category_id=20">{{ 'レジ袋の購入はこちら'|trans }}</a>
+                        <a class="ec-blockBtn--cancel" style="margin-bottom:10px; background:rgba(226, 161, 10, 0.2); border:none; color:#000;"  href="{{ url('product_list') }}?category_id=10">{{ 'レジ袋の購入はこちら'|trans }}</a>
                         
                         <a class="ec-blockBtn--action" href="{{ path('cart_buystep', {'cart_key':cartKey}) }}">{{ 'レジに進む'|trans }}</a>
                         {% if loop.last %}
