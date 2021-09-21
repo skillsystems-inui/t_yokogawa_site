@@ -322,10 +322,10 @@ file that was distributed with this source code.
             * ポリ袋 特大 ※
             */
             
-            var optionselect_all    = '';
-            var optionselect_candle = '[キャンドルオプション]:';
-            var optionselect_deco   = '[デコオプション]:';
-            var optionselect_bag    = '[袋オプション]:';
+            var optionselect_all    = '[オプション]' + '\n';
+            var optionselect_candle = '';
+            var optionselect_deco   = '';
+            var optionselect_bag    = '';
             
             //オプションによる追加料金
             var $addprice = 0;//初期値0円
@@ -399,6 +399,7 @@ file that was distributed with this source code.
 						
 						optionselect_candle = optionselect_candle + ' キャンドル大:'
 						optionselect_candle = optionselect_candle + ' ' + candle_dai_num.value + '本 '; 
+						optionselect_candle = optionselect_candle + '\n';
 					}
 					
 					//キャンドル小
@@ -406,6 +407,7 @@ file that was distributed with this source code.
 						
 						optionselect_candle = optionselect_candle + ' キャンドル小:'
 						optionselect_candle = optionselect_candle + ' ' + candle_syo_num.value + '本 '; 
+						optionselect_candle = optionselect_candle + '\n';
 					}
 					
 					//Noキャンドル(1)
@@ -414,6 +416,7 @@ file that was distributed with this source code.
 						optionselect_candle = optionselect_candle + ' Noキャンドル(1):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no1_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no1_num.value + '本 '; 
+						optionselect_candle = optionselect_candle + '\n';
 						
 						//追加料金セット
 						$addprice = $addprice + (candle_no1_num.value*$no_candle);
@@ -425,6 +428,7 @@ file that was distributed with this source code.
 						optionselect_candle = optionselect_candle + ' Noキャンドル(2):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no2_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no2_num.value + '本'; 
+						optionselect_candle = optionselect_candle + '\n';
 						
 						//追加料金セット
 						$addprice = $addprice + (candle_no1_num.value*$no_candle);
@@ -436,6 +440,7 @@ file that was distributed with this source code.
 						optionselect_candle = optionselect_candle + ' Noキャンドル(3):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no3_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no3_num.value + '本 '; 
+						optionselect_candle = optionselect_candle + '\n';
 						
 						//追加料金セット
 						$addprice = $addprice + (candle_no1_num.value*$no_candle);
