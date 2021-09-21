@@ -63,6 +63,7 @@
      * 規格の選択状態に応じて, フィールドを設定する.
      */
     var price02_origin = [];
+    var price02_orgkikaku = [];
     eccube.checkStock = function($form, product_id, classcat_id1, classcat_id2, option_id1 = null, option_id2 = null, option_id3 = null, option_id4 = null, option_id5 = null, option_id6 = null, option_id7 = null, option_id8 = null, option_id9 = null, option_id10 = null) {
 
         classcat_id2 = classcat_id2 ? classcat_id2 : '';
@@ -118,6 +119,14 @@
                 price02_origin[product_id] = $price02.text();
             }
             $price02.text(price02_origin[product_id]);
+            
+            // 販売価格(規格のみ)
+            var $price02_kikaku = $form.parent().find('.price02-view-default').first();
+            if (typeof price02_orgkikaku[product_id] === 'undefined') {
+                // 初期値を保持しておく
+                price02_orgkikaku[product_id] = $price02_kikaku.text();
+            }
+            $price02_kikaku.text(price02_orgkikaku[product_id]);
 
             // 商品規格
             var $product_class_id_dynamic = $form.find('[id^=ProductClass]');
@@ -196,6 +205,22 @@
             } else {
             	//画面表示時の価格(1,000～3,000など)
                 $price02.text(price02_origin[product_id]);
+            }
+            
+            // 販売価格
+            var $price02_kikaku = $form.parent().find('.price02-view-default').first();
+            if (typeof price02_orgkikaku[product_id] === 'undefined') {
+                // 初期値を保持しておく
+                price02_orgkikaku[product_id] = $price02_kikaku.text();
+            }
+            if (classcat2 && typeof classcat2.price02_inc_tax !== 'undefined' && String(classcat2.price02_inc_tax).length >= 1) {                
+                //規格の販売価格(1,000など)
+                //$price02_kikaku.text('￥' + classcat2.price02_inc_tax);
+                s_price2 = String(num_price2);
+                $price02_kikaku.text('￥' + s_price2);
+            } else {
+            	//画面表示時の価格(1,000～3,000など)
+                $price02_kikaku.text(price02_orgkikaku[product_id]);
             }
 
             // ポイント

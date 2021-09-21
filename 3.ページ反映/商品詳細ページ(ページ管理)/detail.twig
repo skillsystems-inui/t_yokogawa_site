@@ -1287,7 +1287,11 @@ file that was distributed with this source code.
                         <h2 class="ec-headingTitle"><b>{{ Product.name }}</b></h2>
                     </div>
                     {# 商品説明 #}
-                    <div class="ec-productRole__description" style="padding-top:10px;">{{ Product.description_detail|raw|nl2br }}
+                    <div class="ec-productRole__description" style="padding-top:10px;">
+                    	{{ Product.description_detail|raw|nl2br }}
+                    </div>	
+                    	
+                    <div class="ec-productRole__description" style="padding-top:10px;">
                     {# タグ #}
                     <!--
                     <ul class="ec-productRole__tags">
@@ -1350,46 +1354,45 @@ file that was distributed with this source code.
                                 <span>{{ '個'|trans }}</span>
                             </div>
                             
-                            {# 定価(表示用) #}
-		                    {% if Product.hasProductClass -%}
-		                        <div class="ec-productRole__priceRegular">
-		                            {% if Product.getPrice01Min is not null and Product.getPrice01IncTaxMin == Product.getPrice01IncTaxMax %}
-		                                <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：<span class="price01-view-default">{{ Product.getPrice01IncTaxMin|price }}</span></span>
-		                                <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
-		                            {% elseif Product.getPrice01Min is not null and Product.getPrice01Max is not null %}
-		                                <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：<span class="price01-view-default">{{ Product.getPrice01IncTaxMin|price }}～ {{ Product.getPrice01IncTaxMax|price }}</span></span>
-		                                <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
-		                            {% endif %}
-		                        </div>
-		                    {% else %}
-		                        {% if Product.getPrice01Max is not null %}
-		                            <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：{{ Product.getPrice01IncTaxMin|price }}</span>
-		                            <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
-		                        {% endif %}
-		                    {% endif %}
-		                    
 		                    {# 販売価格(表示用) #}
 		                    <div class="ec-productRole__price" style="font-size:20px; color:#000;border-top:1px dotted #ccc;">
 		                        {% if Product.hasProductClass -%}
 		                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
 		                                <div class="ec-price">
-		                                    <span class="ec-price__price price02-view-default">{{ Product.getPrice02IncTaxMin|price }}</span>
-		                                    <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
+		                                    <span class="ec-price__price price02-view-default" style="font-size:18px; font-weight:bold;">
+		                                    	{{ Product.getPrice02IncTaxMin|price }}
+		                                    </span>
+		                                    <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
+		                                    	{{ '(税込)'|trans }}
+		                                    </span>
 		                                </div>
 		                            {% elseif Product.getPrice02Min is not null and Product.getPrice02Max is not null %}
-		                                <span class="ec-productRole__priceRegularPrice">{{ '定価'|trans }}：<span class="price02-view-default">{{ Product.getPrice02IncTaxMin|price }}～ {{ Product.getPrice02IncTaxMax|price }}</span></span>
-		                                <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
+		                                <span class="ec-productRole__priceRegularPrice">
+			                                <span class="price02-view-default" style="font-size:18px; font-weight:bold;">
+			                                	{{ Product.getPrice02IncTaxMin|price }}～ {{ Product.getPrice02IncTaxMax|price }}
+			                                </span>
+		                                </span>
+		                                <span class="ec-productRole__priceRegularTax" style="font-size:16px; font-weight:bold;">
+		                                	{{ '(税込)'|trans }}
+		                                </span>
 		                            {% else %}
 		                                <div class="ec-price">
-		                                    <span class="ec-productRole__priceRegularPrice">{{ '価格'|trans }}：
-		                                    </span><span class="ec-price__price price02-view-default" style="padding-left:0px;font-weight: normal;;">{{ Product.getPrice02IncTaxMin|price }}</span>
-		                                    <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
+		                                    <span class="ec-price__price price02-view-default" style="padding-left:0px; font-size:18px; font-weight:bold;">
+		                                    	{{ Product.getPrice02IncTaxMin|price }}
+		                                    </span>
+		                                    <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
+		                                    	{{ '(税込)'|trans }}
+		                                    </span>
 		                                </div>
 		                            {% endif %}
 		                        {% else %}
 		                            <div class="ec-price">
-		                                <span class="ec-price__price">{{ Product.getPrice02IncTaxMin|price }}</span>
-		                                <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
+		                                <span class="ec-price__price" style="font-size:18px; font-weight:bold;">
+		                                	{{ Product.getPrice02IncTaxMin|price }}
+		                                </span>
+		                                <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
+		                                	{{ '(税込)'|trans }}
+		                                </span>
 		                            </div>
 		                        {% endif %}
 		                    </div>
@@ -2163,7 +2166,9 @@ file that was distributed with this source code.
 						                        {% if Product.hasProductClass -%}
 						                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
 						                                <div class="ec-price">
-						                                    <span class="ec-price__price price02-default">{{ Product.getPrice02IncTaxMin|price }}</span>
+						                                    <span class="ec-price__price price02-default">
+						                                    	{{ Product.getPrice02IncTaxMin|price }}
+						                                    </span>
 						                                    <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
 						                                </div>
 						                            {% else %}
