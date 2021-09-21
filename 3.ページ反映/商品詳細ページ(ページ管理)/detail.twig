@@ -989,6 +989,18 @@ file that was distributed with this source code.
     		if(document.getElementById(syohin_main_id) != null){
 				document.getElementById(syohin_main_id).style.display="none";
 			}
+			var syohin_top_id01 = 'top_syohin_main01';
+    		if(document.getElementById(syohin_top_id01) != null){
+				document.getElementById(syohin_top_id01).style.display="none";
+			}
+			var syohin_top_id02 = 'top_syohin_main02';
+    		if(document.getElementById(syohin_top_id02) != null){
+				document.getElementById(syohin_top_id02).style.display="none";
+			}
+			var syohin_top_id03 = 'top_syohin_main03';
+    		if(document.getElementById(syohin_top_id03) != null){
+				document.getElementById(syohin_top_id03).style.display="none";
+			}
 			
 			//ページトップへ移動
 			document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -1006,6 +1018,18 @@ file that was distributed with this source code.
             var syohin_main_id = 'blk_syohin_main';
     		if(document.getElementById(syohin_main_id) != null){
 				document.getElementById(syohin_main_id).style.display="block";
+			}
+			var syohin_top_id01 = 'top_syohin_main01';
+    		if(document.getElementById(syohin_top_id01) != null){
+				document.getElementById(syohin_top_id01).style.display="block";
+			}
+			var syohin_top_id02 = 'top_syohin_main02';
+    		if(document.getElementById(syohin_top_id02) != null){
+				document.getElementById(syohin_top_id02).style.display="block";
+			}
+			var syohin_top_id03 = 'top_syohin_main03';
+    		if(document.getElementById(syohin_top_id03) != null){
+				document.getElementById(syohin_top_id03).style.display="block";
 			}
 			
 			//ページトップへ移動
@@ -1266,69 +1290,59 @@ file that was distributed with this source code.
                     {% endif %}
                     <!-- .カテゴリの判定 -->
                     
-                    
-                    {# 店頭受取可、取り寄せ可 #}
-                    <div class="" style="padding-bottom:20px;">
-                    	<!-- 店頭受取可 -->
-                    	{% if is_tentouuketorika == true %}
-                    		<div style="float:left; width: 86px; height: 72px; background-image: url({{ asset('assets/img/icon_tentouuketori.png') }})"></div>
-                    	{% endif %}
-                        <!-- .店頭受取可 -->
-                        <!-- 取り寄せ可 -->
-                    	{% if is_toriyoseka == true %}
-                    		<div style="float:left; width: 86px; height: 72px; background-image: url({{ asset('assets/img/icon_toriyose.png') }})"></div>
-                    	{% endif %}
-                        <!-- .取り寄せ可 -->
-                        <div style="clear:both;"></div>
-                    </div>
-                    
-                    {# 商品名 #}
-                    <div class="ec-productRole__title">
-                        <h2 class="ec-headingTitle"><b>{{ Product.name }}</b></h2>
-                    </div>
-                    {# 商品説明 #}
-                    <div class="ec-productRole__description" style="padding-top:10px;">
-                    	{{ Product.description_detail|raw|nl2br }}
-                    </div>	
-                    	
-                    <div class="ec-productRole__description" style="padding-top:10px;">
-                    {# タグ #}
-                    <!--
-                    <ul class="ec-productRole__tags">
-                        {% for Tag in Product.Tags %}
-                            <li class="ec-productRole__tag tag_{{ Tag.id }}">{{ Tag }}</li>
-                        {% endfor %}
-                    </ul>
-                    -->
-                    
-                    {# 商品コード #}
-                    <!--
-                    {% if Product.code_min is not empty %}
-                        <div class="ec-productRole__code">
-                            {{ '商品コード'|trans }}： <span class="product-code-default">{{ Product.code_min }}{% if Product.code_min != Product.code_max %} ～ {{ Product.code_max }}{% endif %}</span>
-                        </div>
-                    {% endif %}
-                    -->
-                    {# 関連カテゴリ #}
-                    <!--
-                    {% if Product.ProductCategories is not empty %}
-                        <div class="ec-productRole__category">
-                            <div>{{ '関連カテゴリ'|trans }}</div>
-                            {% for ProductCategory in Product.ProductCategories %}
-                                <ul>
-                                    <li>
-                                        {% for Category in ProductCategory.Category.path %}
-                                            <a href="{{ url('product_list') }}?category_id={{ Category.id }}">{{ Category.name }}</a> {%- if loop.last == false %}
-                                            <span>＞</span>{% endif -%}
-                                        {% endfor %}
-                                    </li>
-                                </ul>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                    -->
-                    
-                    
+		                {# 店頭受取可、取り寄せ可 #}
+	                    <div id="top_syohin_main01" class="" style="padding-bottom:20px;">
+	                    	<!-- 店頭受取可 -->
+	                    	{% if is_tentouuketorika == true %}
+	                    		<div style="float:left; width: 86px; height: 72px; background-image: url({{ asset('assets/img/icon_tentouuketori.png') }})"></div>
+	                    	{% endif %}
+	                        <!-- .店頭受取可 -->
+	                        <!-- 取り寄せ可 -->
+	                    	{% if is_toriyoseka == true %}
+	                    		<div style="float:left; width: 86px; height: 72px; background-image: url({{ asset('assets/img/icon_toriyose.png') }})"></div>
+	                    	{% endif %}
+	                        <!-- .取り寄せ可 -->
+	                        <div style="clear:both;"></div>
+	                    </div>
+	                    
+	                    {# 商品名 #}
+	                    <div id="top_syohin_main02" class="ec-productRole__title">
+	                        <h2 class="ec-headingTitle"><b>{{ Product.name }}</b></h2>
+	                    </div>
+	                    {# 商品説明 #}
+	                    <div id="top_syohin_main03" class="ec-productRole__description" style="padding-top:10px;">
+	                    	{{ Product.description_detail|raw|nl2br }}
+	                    </div>	
+	                    	
+	                    <div class="ec-productRole__description" style="padding-top:10px;">
+	                    
+	                    {# 商品コード #}
+	                    <!--
+	                    {% if Product.code_min is not empty %}
+	                        <div class="ec-productRole__code">
+	                            {{ '商品コード'|trans }}： <span class="product-code-default">{{ Product.code_min }}{% if Product.code_min != Product.code_max %} ～ {{ Product.code_max }}{% endif %}</span>
+	                        </div>
+	                    {% endif %}
+	                    -->
+	                    {# 関連カテゴリ #}
+	                    <!--
+	                    {% if Product.ProductCategories is not empty %}
+	                        <div class="ec-productRole__category">
+	                            <div>{{ '関連カテゴリ'|trans }}</div>
+	                            {% for ProductCategory in Product.ProductCategories %}
+	                                <ul>
+	                                    <li>
+	                                        {% for Category in ProductCategory.Category.path %}
+	                                            <a href="{{ url('product_list') }}?category_id={{ Category.id }}">{{ Category.name }}</a> {%- if loop.last == false %}
+	                                            <span>＞</span>{% endif -%}
+	                                        {% endfor %}
+	                                    </li>
+	                                </ul>
+	                            {% endfor %}
+	                        </div>
+	                    {% endif %}
+	                    -->
+	                
                     
                         {% if Product.stock_find %}
                          <div id="blk_syohin_main" style="display:block;">   
@@ -1405,13 +1419,6 @@ file that was distributed with this source code.
                                 </button>
                             </div>
                             
-                            
-                            <!-- 自由入力 -->
-					        {% if Product.freearea %}
-					             <div class="ec-productRole__description">
-					                 {{ include(template_from_string(Product.freearea)) }}
-					            </div>
-					        {% endif %}
 					     </div>
                          <!-- .商品メインブロック -->
                         {% else %}
@@ -1421,14 +1428,19 @@ file that was distributed with this source code.
                                 </button>
                             </div>
                         {% endif %} 
-                            
+                        
+                        {# ショップメモ欄 #}
+	                    <div id="top_syohin_main04" class="ec-productRole__description" style="padding-top:10px;">
+	                    	{{ Product.note|raw|nl2br }}
+	                    </div>	
+	                        
                             
                             
                         <!----- 【詳細を指定】ブロック ----->
                         {% if Product.stock_find %}
                          <div id="blk_syousai_sitei" style="display:none;">
                             {# 詳細を指定する #}
-                            <div class="ec-productRole__profile" style="width:100%; padding-top:100px;">
+                            <div class="ec-productRole__profile" style="width:100%; padding-top:0px;">
 			                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/mark_write_sentence.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:80px; height:auto; outline:none;">
 	                            </div>
 			                </div>
@@ -2232,9 +2244,22 @@ file that was distributed with this source code.
                     </div>
                 </div>
             </div>
+            
+            
+            
+            
         </div>
               
         </form>
+        
+        <div style="width:100%;">
+            <!-- 自由入力 -->
+	        {% if Product.freearea %}
+	             <div class="ec-productRole__description">
+	                 {{ include(template_from_string(Product.freearea)) }}
+	            </div>
+	        {% endif %}
+        </div>
         
     </div>
 {% endblock %}
