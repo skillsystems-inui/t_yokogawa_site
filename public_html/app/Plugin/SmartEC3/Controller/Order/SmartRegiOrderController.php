@@ -241,9 +241,12 @@ class SmartRegiOrderController extends AbstractController
             $Shipping->setShippingDeliveryDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDeliveryName("スマレジ店内購入");
+            
+            //スマレジからの受取日をECCUBEのお届け予定日/お届け希望日にセットする
+            $Shipping->setShippingDeliveryDate(new \DateTime($arrOrder['pickUpDate']));
 
             $Order->addShipping($Shipping);
-
+            
         }else{
             $Order->setName01("ゲスト");
             $Order->setName02("ゲスト");
@@ -259,6 +262,9 @@ class SmartRegiOrderController extends AbstractController
             $Shipping->setShippingDeliveryDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDeliveryName("スマレジ店内購入");
+            
+            //スマレジからの受取日をECCUBEのお届け予定日/お届け希望日にセットする
+            $Shipping->setShippingDeliveryDate(new \DateTime($arrOrder['pickUpDate']));
 
             $Order->addShipping($Shipping);
         }
