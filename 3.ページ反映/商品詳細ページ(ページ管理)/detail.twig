@@ -451,7 +451,7 @@ file that was distributed with this source code.
 					}
 				}else{
 					//・キャンドル指定なし
-					optionselect_candle = optionselect_candle + ' 不要'; 
+					optionselect_candle = optionselect_candle + ' キャンドル: 不要' + '\n'; 
 				}
 				
 				//キャンドルオプション選択情報を追記する
@@ -459,6 +459,115 @@ file that was distributed with this source code.
 			}
             
             //--- デコオプション ---
+			var option_form_option = 'option_form_option';
+			var option_form_deco = 'option_form_deco';
+			if( (document.getElementById(option_form_option) != null) && (document.getElementById(option_form_deco) != null) ){
+				//デコオプションがある場合
+				
+				//メッセージプレートの不要チェック
+				const chk_message_nosel = document.getElementById("chk_message_nosel");
+				if(chk_message_nosel.checked != true){
+					//・メッセージプレート指定あり
+					
+					//メッセージプレート選択
+					let PlateSelElms = document.getElementsByName('messageplate');
+					let plen = PlateSelElms.length;
+					let checkPlate = '';
+					for (let i = 0; i < plen; i++){
+					    if (PlateSelElms.item(i).checked){
+					        checkPlate = PlateSelElms.item(i).value;
+					    }
+					}
+					if(checkPlate != ''){
+						
+						optionselect_deco = optionselect_deco + ' メッセージプレートを選択:'
+						optionselect_deco = optionselect_deco + ' ' + checkPlate + ' '; 
+						optionselect_deco = optionselect_deco + '\n';
+					}
+					
+					//メッセージ1
+					if(document.getElementById("printname_plate") != null){
+						const p_message = document.getElementById("printname_plate").value;
+						optionselect_deco = optionselect_deco + ' メッセージ入力:'
+						optionselect_deco = optionselect_deco + ' ' + p_message + ' '; 
+						optionselect_deco = optionselect_deco + '\n';
+					}
+					
+					//メッセージ2
+					if(document.getElementById("printname_plate_2") != null){
+						const p_message = document.getElementById("printname_plate_2").value;
+						if(p_message != ''){
+							optionselect_deco = optionselect_deco + ' メッセージ入力(2枚目):'
+							optionselect_deco = optionselect_deco + ' ' + p_message + ' '; 
+							optionselect_deco = optionselect_deco + '\n';
+						}
+					}
+					
+					//メッセージ3
+					if(document.getElementById("printname_plate_3") != null){
+						const p_message = document.getElementById("printname_plate_3").value;
+						if(p_message != ''){
+							optionselect_deco = optionselect_deco + ' メッセージ入力(3枚目):'
+							optionselect_deco = optionselect_deco + ' ' + p_message + ' '; 
+							optionselect_deco = optionselect_deco + '\n';
+						}
+					}
+					//メッセージ4
+					if(document.getElementById("printname_plate_4") != null){
+						const p_message = document.getElementById("printname_plate_4").value;
+						if(p_message != ''){
+							optionselect_deco = optionselect_deco + ' メッセージ入力(4枚目):'
+							optionselect_deco = optionselect_deco + ' ' + p_message + ' '; 
+							optionselect_deco = optionselect_deco + '\n';
+						}
+					}
+					//メッセージ5
+					if(document.getElementById("printname_plate_5") != null){
+						const p_message = document.getElementById("printname_plate_5").value;
+						if(p_message != ''){
+							optionselect_deco = optionselect_deco + ' メッセージ入力(5枚目):'
+							optionselect_deco = optionselect_deco + ' ' + p_message + ' '; 
+							optionselect_deco = optionselect_deco + '\n';
+						}
+					}
+					
+					//--- デコレーション追加 ---
+					//いちごUP
+					const ichigo_chk = document.getElementById("ichigo_chk");
+					if(ichigo_chk.checked){
+						//チェックあり
+						optionselect_deco = optionselect_deco + ' デコレーション追加: いちごUP (+350円)' 
+						optionselect_deco = optionselect_deco + '\n';
+					}
+					//フルーツUP
+					const fruit_chk = document.getElementById("fruit_chk");
+					if(fruit_chk.checked){
+						//チェックあり
+						optionselect_deco = optionselect_deco + ' デコレーション追加: フルーツUP (+350円)' 
+						optionselect_deco = optionselect_deco + '\n';
+					}
+					//生チョコUP
+					const namachoko_chk = document.getElementById("namachoko_chk");
+					if(namachoko_chk.checked){
+						//チェックあり
+						optionselect_deco = optionselect_deco + ' デコレーション追加: 生チョコUP (+350円)' 
+						optionselect_deco = optionselect_deco + '\n';
+					}
+					//絵チョコ(4号)
+					const echoko_chk = document.getElementById("echoko_chk");
+					if(echoko_chk.checked){
+						//チェックあり
+						optionselect_deco = optionselect_deco + ' デコレーション追加: 絵チョコ(4号) (+350円)' 
+						optionselect_deco = optionselect_deco + '\n';
+					}
+
+				}else{
+					//・メッセージプレート指定なし
+					optionselect_deco = optionselect_deco + ' 不要'; 
+				}
+				//デコオプション選択情報を追記する
+				optionselect_all = optionselect_all + optionselect_deco;
+			}
             //--- ギフト ---
             //--- 袋オプション ---
             
@@ -1240,22 +1349,22 @@ file that was distributed with this source code.
 				                                        		<div class="form-check">
 				                                        			<div style="width: 160px; height: 100px; background-image: url({{ asset('assets/img/option/opt_plate_muji.png') }})">
 				                                        			</div>
-					                                        		<input type="radio" id="messageplate_0" name="messageplate" class="form-check-input" value="61">
+					                                        		<input type="radio" id="messageplate_0" name="messageplate" class="form-check-input" value="無地プレート">
 															        <label class="form-check-label required" for="messageplate_0">無地プレート</label>
 														    	</div>
 														    </div>
 														    <div class="form-check" style="float: left; width: 50%;">
 														    	<div style="width: 160px; height: 100px; background-image: url({{ asset('assets/img/option/opt_plate_omedeto_only.png') }})">
 														    	</div>
-														    	<input type="radio" id="messageplate_1" name="messageplate" class="form-check-input" value="62">
+														    	<input type="radio" id="messageplate_1" name="messageplate" class="form-check-input" value="おたんじょうびおめでとう">
 														        <label class="form-check-label required" for="messageplate_1">おたんじょうびおめでとう</label>
 													    	</div>
 													    	<div style="clear:both;"></div>
 													        <div class="form-check" style="float: left; width: 50%;">
 													        	<div style="width: 160px; height: 100px; background-image: url({{ asset('assets/img/option/opt_plate_omedeto_plus.png') }})">
 													        	</div>
-													        	<input type="radio" id="messageplate_2" name="messageplate" class="form-check-input" value="63">
-													        	<label class="form-check-label required" for="messageplate_2">おたんじょうびおめでとう(□に名前が入ります)</label>
+													        	<input type="radio" id="messageplate_2" name="messageplate" class="form-check-input" value="おたんじょうびおめでとう(□に名前が入ります)">
+													        	<label class="form-check-label required" for="messageplate_2">おたんじょうびおめでとう<br>(□に名前が入ります)</label>
 													    	</div>
 													    	<div style="clear:both;"></div>
 														</div>

@@ -413,26 +413,124 @@ class ProductController extends AbstractController
             ]
         );
         
-        //オプション情報
-        $option_detail = $form->get('option_detail')->getData();
+        
+        //選択オプション1
+        $optionClassCategoryId1 = null;
+        if (!is_null($Product->getOptionName1())) {
+	        $optionClassCategoryId1 = $form->get('optioncategory_id1')->getData();
+	        // 未選択の場合nullセット
+	        if($optionClassCategoryId1 == '__unselected'){
+	        	$optionClassCategoryId1 = null;
+	        }
+        }
+
+        //選択オプション2
+        $optionClassCategoryId2 = null;
+        if (!is_null($Product->getOptionName2())) {
+	        $optionClassCategoryId2 = $form->get('optioncategory_id2')->getData();
+	        // 未選択の場合nullセット
+	        if($optionClassCategoryId2 == '__unselected'){
+	        	$optionClassCategoryId2 = null;
+	        }
+        }
+        //選択オプション3
+        $optionClassCategoryId3 = null;
+        if (!is_null($Product->getOptionName3())) {
+	        $optionClassCategoryId3 = $form->get('optioncategory_id3')->getData();
+	        // 未選択の場合nullセット
+	        if($optionClassCategoryId3 == '__unselected'){
+	        	$optionClassCategoryId3 = null;
+	        }
+        }
+        //選択オプション4
+        $optionClassCategoryId4 = null;
+        if (!is_null($Product->getOptionName4())) {
+	        $optionClassCategoryId4 = $form->get('optioncategory_id4')->getData();
+	        // 未選択の場合nullセット
+	        if($optionClassCategoryId4 == '__unselected'){
+	        	$optionClassCategoryId4 = null;
+	        }
+        }
+        //選択オプション5
+        $optionClassCategoryId5 = null;
+        if (!is_null($Product->getOptionName5())) {
+	        $optionClassCategoryId5 = $form->get('optioncategory_id5')->getData();
+	        // 未選択の場合nullセット
+	        if($optionClassCategoryId5 == '__unselected'){
+	        	$optionClassCategoryId5 = null;
+	        }
+        }
+        //選択オプション6
+        $optionClassCategoryId6 = null;
+        if (!is_null($Product->getOptionName6())) {
+	        $optionClassCategoryId6 = $form->get('optioncategory_id6')->getData();
+	        // 未選択の場合nullセット
+	        if($optionClassCategoryId6 == '__unselected'){
+	        	$optionClassCategoryId6 = null;
+	        }
+        }
+        //選択オプション7
+        $optionClassCategoryId7 = null;
+        if (!is_null($Product->getOptionName7())) {
+	        $optionClassCategoryId7 = $form->get('optioncategory_id7')->getData();
+	        // 未選択の場合nullセット
+	        if($optionClassCategoryId7 == '__unselected'){
+	        	$optionClassCategoryId7 = null;
+	        }
+        }
+        //選択オプション8
+        $optionClassCategoryId8 = null;
+        if (!is_null($Product->getOptionName8())) {
+	        $optionClassCategoryId8 = $form->get('optioncategory_id8')->getData();
+	        // 未選択の場合nullセット
+	        if($optionClassCategoryId8 == '__unselected'){
+	        	$optionClassCategoryId8 = null;
+	        }
+        }
+        //選択オプション9
+        $optionClassCategoryId9 = null;
+        if (!is_null($Product->getOptionName9())) {
+	        $optionClassCategoryId9 = $form->get('optioncategory_id9')->getData();
+	        // 未選択の場合nullセット
+	        if($optionClassCategoryId9 == '__unselected'){
+	        	$optionClassCategoryId9 = null;
+	        }
+        }
+        //選択オプション10
+        $optionClassCategoryId10 = null;
+        if (!is_null($Product->getOptionName10())) {
+	        $optionClassCategoryId10 = $form->get('optioncategory_id10')->getData();
+	        // 未選択の場合nullセット
+	        if($optionClassCategoryId10 == '__unselected'){
+	        	$optionClassCategoryId10 = null;
+	        }
+        }
+        
+        
+        //名付け(プレート)
+        $printname_plate = $form->get('printname_plate')->getData();
+        
+        //名付け(熨斗)
+        $printname_noshi = $form->get('printname_noshi')->getData();
         
         //オプションによる追加価格
         $additional_option_price = $form->get('additional_price')->getData();
         
-        //ToDo 01 オプション情報(文字列)をカートに保存する(対象の商品)
-        //ToDo 02 有料オプションをカートに入れる(入れるだけ、内容は対象商品へ)
-        //        　Noキャンドル
-        //        　メッセージプレート(2枚目から)
-        //        　デコレーション追加(いちごUP)
-        //        　デコレーション追加(フルーツUP)
-        //        　デコレーション追加(生チョコUP)
-        //        　デコレーション追加(絵チョコ(4号))
-        //        　ポリ袋中
-        //        　ポリ袋大
-        //        　ポリ袋特大
         //オプション選択されていればカートに反映する
         $this->cartService->addProductOption($addCartData['product_class_id'], 
-                                             $option_detail,
+                                             $optionClassCategoryId1, 
+                                             $optionClassCategoryId2, 
+                                             $optionClassCategoryId3, 
+                                             $optionClassCategoryId4, 
+                                             $optionClassCategoryId5, 
+                                             $optionClassCategoryId6, 
+                                             $optionClassCategoryId7, 
+                                             $optionClassCategoryId8, 
+                                             $optionClassCategoryId9, 
+                                             $optionClassCategoryId10, 
+                                             $printname_plate,
+                                             $printname_noshi,
+                                             $additional_option_price,
                                              $addCartData['quantity']);
         //$this->cartService->addProduct($addCartData['product_class_id'], $addCartData['quantity']);
 
