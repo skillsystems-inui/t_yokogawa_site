@@ -1,0 +1,159 @@
+{% extends '@admin/default_frame.twig' %}
+
+{% set menus = ['store', 'plugin', 'plugin_list'] %}
+
+{% block title %}SmartEC3{% endblock %}
+{% block sub_title %}プラグイン一覧{% endblock %}
+
+{% form_theme form '@admin/Form/bootstrap_4_horizontal_layout.html.twig' %}
+
+{% block stylesheet %}{% endblock stylesheet %}
+
+{% block javascript %}
+
+    <script>
+
+        $(function() {
+            $('#config_user_offset')['{{ form.user_update.vars.checked }}' == true ? "show" : "hide"]();
+            $('#user_offset_label')['{{ form.user_update.vars.checked }}' == true ? "show" : "hide"]();
+
+            $('#config_product_offset')[ '{{ form.product_update.vars.checked }}' == true ? "show" : "hide"]();
+            $('#product_offset_label')['{{ form.product_update.vars.checked }}' == true ? "show" : "hide"]();
+            
+            $('#config_category_offset')[ '{{ form.category_update.vars.checked }}' == true ? "show" : "hide"]();
+            $('#category_offset_label')['{{ form.category_update.vars.checked }}' == true ? "show" : "hide"]();
+        });
+
+        $('#config_user_update').click(function() {
+            $('#config_user_offset')[this.checked ? "show" : "hide"]();
+            $('#user_offset_label')[this.checked ? "show" : "hide"]();
+        });
+
+        $('#config_product_update').click(function() {
+            $('#config_product_offset')[this.checked ? "show" : "hide"]();
+            $('#product_offset_label')[this.checked ? "show" : "hide"]();
+        });
+        
+        $('#config_category_update').click(function() {
+            $('#config_category_offset')[this.checked ? "show" : "hide"]();
+            $('#category_offset_label')[this.checked ? "show" : "hide"]();
+        });
+
+    </script>
+
+{% endblock javascript %}
+
+{% block main %}
+    <form role="form" method="post">
+
+        {{ form_widget(form._token) }}
+
+        <div class="c-contentsArea__cols">
+            <div class="c-contentsArea__primaryCol">
+                <div class="c-primaryCol">
+                    <div class="card rounded border-0 mb-4">
+                        <div class="card-header"><span>{{ 'plg.smartec3.config.config'|trans }}</span></div>
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-3"><span>{{ 'plg.smartec3.config.contract_id'|trans }}</span><span
+                                            class="badge badge-primary ml-1">必須</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.contract_id) }}
+                                    {{ form_errors(form.contract_id) }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3"><span>{{ 'plg.smartec3.config.access_token'|trans }}</span><span
+                                            class="badge badge-primary ml-1">必須</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.access_token) }}
+                                    {{ form_errors(form.access_token) }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3"><span>{{ 'plg.smartec3.config.api_url'|trans }}</span><span
+                                            class="badge badge-primary ml-1">必須</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.api_url) }}
+                                    {{ form_errors(form.api_url) }}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3"><span>{{ 'plg.smartec3.config.user_update'|trans }}</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.user_update) }}
+                                    {{ form_errors(form.user_update) }}
+                                </div>
+                                <div class="col-3" id='user_offset_label' style="display:none;"><span>{{ 'plg.smartec3.config.user_offset'|trans }}</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.user_offset) }}
+                                    {{ form_errors(form.user_offset) }}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3"><span>{{ 'plg.smartec3.config.product_update'|trans }}</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.product_update) }}
+                                    {{ form_errors(form.product_update) }}
+                                </div>
+                                <div class="col-3" id='product_offset_label' style="display:none;"><span>{{ 'plg.smartec3.config.product_offset'|trans }}</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.product_offset) }}
+                                    {{ form_errors(form.product_offset) }}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3"><span>{{ 'plg.smartec3.config.category_update'|trans }}</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.category_update) }}
+                                    {{ form_errors(form.category_update) }}
+                                </div>
+                                <div class="col-3" id='category_offset_label' style="display:none;"><span>{{ 'plg.smartec3.config.category_offset'|trans }}</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.category_offset) }}
+                                    {{ form_errors(form.category_offset) }}
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3"><span>{{ 'plg.smartec3.config.order_update'|trans }}</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.order_update) }}
+                                    {{ form_errors(form.order_update) }}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="c-conversionArea">
+            <div class="c-conversionArea__container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-6">
+                        <div class="c-conversionArea__leftBlockItem">
+                            <a class="c-baseLink"
+                               href="{{ url('admin_store_plugin') }}">
+                                <i class="fa fa-backward" aria-hidden="true"></i>
+                                <span>プラグイン一覧</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                            <div class="col-auto">
+                                <button class="btn btn-ec-conversion px-5"
+                                        type="submit">登録</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

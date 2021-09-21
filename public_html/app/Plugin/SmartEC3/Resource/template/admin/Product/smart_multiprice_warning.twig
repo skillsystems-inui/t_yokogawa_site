@@ -1,0 +1,18 @@
+<script>
+    $(function () {
+        var headerTop = document.getElementById('ex-product_class-header');
+        $('#warningMsg').insertBefore(headerTop.parentNode);
+    });
+    
+</script>
+
+
+{% if SmartRegi is not null %}
+<div class="card rounded border-0 mb-4" id="warningMsg">
+
+    <div class="card-body">
+        <p style="color:red; font-weight: bold;">{{ 'plg.smartec3.product.multiprice_warning'|trans}}</p>
+    </div>
+
+</div>
+{% endif %}

@@ -1,0 +1,77 @@
+#====================================================================================
+# Plug in specific messages
+#====================================================================================
+
+#====================================================================================
+# 管理画面
+#====================================================================================
+
+# ラベル/メッセージ
+#======================
+# プラグイン設定画面
+#======================
+plg.smartec3.config.config: スマレジ設定
+plg.smartec3.config.contract_id: 契約ID
+plg.smartec3.config.access_token: アクセストークン
+plg.smartec3.config.api_url: URL
+plg.smartec3.config.user_update: 会員連携
+plg.smartec3.config.user_offset: 会員開始番号
+plg.smartec3.config.product_update: 商品情報連携
+plg.smartec3.config.product_offset: 商品開始番号
+plg.smartec3.config.category_update: カテゴリ連携
+plg.smartec3.config.category_offset: カテゴリー開始番号
+plg.smartec3.config.order_update: 注文連携
+plg.smartec3.config.not_complete: プラグインの設定が完了していない為、スマレジ連携が完了できません。もう一度プラグインの設定画面を確認してください。
+
+#======================
+# 商品登録画面/一覧画面
+#======================
+plg.smartec3.product.check_info: '情報確認'
+plg.smartec3.product.new_info: '新規登録'
+plg.smartec3.product.move_to_smart_regi__confirm_title: '「%name%」のスマレジ用情報'
+plg.smartec3.product.move_to_smart_regi: スマレジ用情報の編集
+plg.smartec3.product.title: スマレジ設定
+plg.smartec3.product.store_type: 販売店舗
+plg.smartec3.product.price_type: オープン価格（スマレジ専用項目）
+plg.smartec3.product.tax: 消費税率
+plg.smartec3.product.size: サイズ 
+plg.smartec3.product.color: カラー 
+
+plg.smartec3.product.tooltip: Tooltip blablablba
+
+plg.smartec3.product.move_to_confirm_message: '%name%に移動します。編集内容を保存してから移動しますか？'
+plg.smartec3.product.move_to_confirm_move_only: 保存せずに移動
+plg.smartec3.product.move_to_confirm_save_and_move: 保存して移動
+plg.smartec3.product.smart_registration: スマレジ用情報登録
+plg.smartec3.product.multiprice_no_support: 商品規格を対応していませんので個別に商品を登録してください。
+
+plg.smartec3.product.multiprice_warning: Save the product again to update SmartRegi
+
+# ボタン文章
+plg.smartec3.product.smart_confirm_of_product: このスマレジ用情報を確認
+plg.smartec3.product.upload_all: スマレジに商品一括登録
+
+#======================
+# カテゴリ一登録画面/一覧画面
+#======================
+plg.smartec3.category.upload_all: スマレジにカテゴリ一括登録
+
+#======================
+# 会員登録画面/一覧画面
+#======================
+plg.smartec3.customer.upload_all: スマレジに会員一括登録
+
+#======================
+# スマレジ用情報登録画面
+#======================
+plg.smartec3.smartregi.smart_registration: スマレジ用情報登録
+plg.smartec3.smartregi.smart_management: スマレジ用情報管理
+
+plg.smartec3.smartregi.id: スマレジ用ID
+plg.smartec3.smartregi.image: スマレジ連携画像
+plg.smartec3.smartregi.image_size: '推奨サイズ : 260px x 260px以下'
+plg.smartec3.smartregi.store_type: 販売店舗
+plg.smartec3.smartregi.price_type: オープン価格（スマレジ専用項目）
+plg.smartec3.smartregi.tax: 消費税率
+plg.smartec3.smartregi.size: サイズ 
+plg.smartec3.smartregi.color: カラー 

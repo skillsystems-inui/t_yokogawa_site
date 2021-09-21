@@ -1,0 +1,1922 @@
+
+-----------------------------------------------------------------------------------------
+Date: 2021/03/26 14:42:35
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: smj725t2
+access_token: a64c73a3e94c6623475a17b25156874c
+proc_division: U
+[0]
+table_name: Category
+categoryId:10055
+categoryName:Category Log Test
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:62
+categoryName:ケーキ一覧
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:61
+categoryName:店頭購入のみ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:60
+categoryName:店頭受取
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:59
+categoryName:【店頭受取】サマーギフト
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:58
+categoryName:サマーギフト
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:57
+categoryName:サンプル
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:56
+categoryName:【店頭受取】ソルベ、ゼリー
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:55
+categoryName:ソルベ、ゼリー
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:54
+categoryName:【店頭受取】母の日
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:26
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:53
+categoryName:母の日
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:26
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:52
+categoryName:【店頭受取】こどもの日
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:26
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:51
+categoryName:こどもの日
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:26
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:50
+categoryName:【店頭受取】ひなまつり
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:26
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:49
+categoryName:ひなまつり
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:26
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:48
+categoryName:【店頭受取】バレンタイン
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:26
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:47
+categoryName:バレンタイン
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:26
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:46
+categoryName:【店頭受取】クリスマスギフト
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:27
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:45
+categoryName:クリスマスギフト
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:27
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:44
+categoryName:クリスマス
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:27
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:43
+categoryName:【店頭受取】コンフィチュール・ハチミツ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:27
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:42
+categoryName:【店頭受取】ドーナツ・カステラ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:27
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:41
+categoryName:【店頭受取】要冷蔵菓子
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:27
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:40
+categoryName:【店頭受取】パウンドケーキ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:27
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:39
+categoryName:【店頭受取】限定スイーツ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:27
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:38
+categoryName:限定スイーツ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:28
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:37
+categoryName:【店頭受取】チョコレート
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:28
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:36
+categoryName:チョコレート
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:28
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:35
+categoryName:季節の商品
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:28
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:34
+categoryName:【店頭受取】3780円以上
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:28
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:33
+categoryName:【店頭受取】2160円から3780円
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:28
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:32
+categoryName:【店頭受取】2160円まで
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:28
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:31
+categoryName:【店頭受取】価格別
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:28
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:30
+categoryName:3780円以上
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:29
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:29
+categoryName:2160円から3780円
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:29
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:28
+categoryName:2160円まで
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:29
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:27
+categoryName:価格別
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:29
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:26
+categoryName:【店頭受取】法事のお供えとして
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:29
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:25
+categoryName:【店頭受取】内祝いとして
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:29
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:24
+categoryName:【店頭受取】お中元・お歳暮として
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:29
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:23
+categoryName:【店頭受取】身近な人へのお礼として
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:30
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:22
+categoryName:【店頭受取】用途別
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:30
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:21
+categoryName:法事のお供えとして
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:30
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:20
+categoryName:内祝いとして
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:30
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:19
+categoryName:お中元・お歳暮として
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:30
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:18
+categoryName:身近な人へのお礼として
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:30
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:17
+categoryName:用途別
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:30
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:16
+categoryName:【店頭受取】有料手提げ袋
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:30
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:15
+categoryName:【店頭受取】マドレーヌ・フィナンシェ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:31
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:14
+categoryName:【店頭受取】バームクーヘン
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:31
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:13
+categoryName:【店頭受取】クッキー・焼き菓子
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:31
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:12
+categoryName:【店頭受取】デコレーションケーキ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:31
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:11
+categoryName:有料手提げ袋
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:31
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:10
+categoryName:ドーナツ・カステラ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:31
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:9
+categoryName:コンフィチュール・ハチミツ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:31
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:8
+categoryName:要冷蔵菓子
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:31
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:7
+categoryName:クッキー・焼き菓子
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:32
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:6
+categoryName:パウンドケーキ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:32
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:5
+categoryName:マドレーヌ・フィナンシェ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:32
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:4
+categoryName:バームクーヘン
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:32
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:3
+categoryName:【店頭購入のみ】ロールケーキ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:52:32
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:2
+categoryName:【店頭購入のみ】プチガトー
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:11:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:64
+categoryName:今月のおすすめ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:11:41
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:65
+categoryName:秋冬
+parentCategoryId:64
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:12:00
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:66
+categoryName:春
+parentCategoryId:64
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:12:06
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:67
+categoryName:夏
+parentCategoryId:64
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:12:15
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:68
+categoryName:ケーキ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:12:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:69
+categoryName:デコレーション
+parentCategoryId:68
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:12:29
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:70
+categoryName:ロールケーキ
+parentCategoryId:68
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:12:35
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:71
+categoryName:カットケーキ
+parentCategoryId:68
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:12:45
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:72
+categoryName:デコオプション
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:12:54
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:73
+categoryName:デコオプション
+parentCategoryId:72
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:13:02
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:74
+categoryName:キャンドルオプション
+parentCategoryId:72
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:13:12
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:75
+categoryName:冷凍ケーキ
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:13:17
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:76
+categoryName:ギフト
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:13:25
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:77
+categoryName:おすすめ
+parentCategoryId:76
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:13:30
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:78
+categoryName:定番
+parentCategoryId:76
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:13:35
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:79
+categoryName:パウンド
+parentCategoryId:76
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:13:40
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:80
+categoryName:ドーナッツ
+parentCategoryId:76
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:13:46
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:81
+categoryName:カステラ
+parentCategoryId:76
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:13:49
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:82
+categoryName:冷凍
+parentCategoryId:76
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:13:59
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:83
+categoryName:単品
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:14:07
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:84
+categoryName:おすすめ
+parentCategoryId:83
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:14:16
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:85
+categoryName:クッキー
+parentCategoryId:83
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:14:21
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:86
+categoryName:焼菓子
+parentCategoryId:83
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:14:28
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:87
+categoryName:ドーナッツ
+parentCategoryId:83
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:14:33
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:88
+categoryName:パウンド
+parentCategoryId:83
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:14:38
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:89
+categoryName:カステラ
+parentCategoryId:83
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:14:42
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:90
+categoryName:マカロン
+parentCategoryId:83
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:14:46
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:91
+categoryName:冷凍
+parentCategoryId:83
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:15:00
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:92
+categoryName:コンフィチュール
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:15:06
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:93
+categoryName:チョコレート
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/18 00:15:16
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:94
+categoryName:袋オプション
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/21 04:05:35
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:95
+categoryName:店頭受取可
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/21 04:05:58
+Action: CATEGORY_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Category
+categoryId:96
+categoryName:取り寄せ可
+displayFlag:1
+pointNotApplicable:0
+taxFreeDivision:0
+reduceTaxId:
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------

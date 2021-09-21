@@ -1,0 +1,18 @@
+# Plugin/SmartEC3/Resource/config/services.yaml
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: true
+
+    smartec3.smart_regi_service:          
+        class: Plugin\SmartEC3\Service\SmartRegiService  
+        arguments: ["@doctrine.orm.entity_manager", "@service_container" ]
+        tags:
+            - { name: kernel.event_listener, event:  kernel.controller, method: route_listener }

@@ -1,0 +1,621 @@
+
+-----------------------------------------------------------------------------------------
+Date: 2021/04/01 15:24:04
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: smj725t2
+access_token: a64c73a3e94c6623475a17b25156874c
+proc_division: U
+[0]
+table_name: Customer
+customerId:10001
+customerCode:10001
+lastName:ハビ
+firstName:ハビ
+lastKana:ハビ
+firstKana:ハビ
+postCode:1111111
+address:北海道テストテスト
+phoneNumber:01012341234
+faxNumber:
+mailAddress:test2@test.com
+mailAddress2:
+note:
+companyName:Test Company Test
+point:15
+sex:0
+birthDate:2008-07-15
+entryDate:2021-03-16
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/04/01 15:31:53
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: smj725t2
+access_token: a64c73a3e94c6623475a17b25156874c
+proc_division: U
+[0]
+table_name: Customer
+customerId:10004
+customerCode:10004
+lastName:テスト
+firstName:テスト
+lastKana:テスト
+firstKana:テスト
+postCode:1111111
+address:青森県テストテスト
+phoneNumber:01012341234
+faxNumber:
+mailAddress:test@test.com
+mailAddress2:
+note:テストテストテストテストテストテストテスト
+companyName:テスト
+point:999
+sex:1
+birthDate:1961-04-06
+entryDate:2021-04-01
+status:1
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/04/01 15:32:16
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: smj725t2
+access_token: a64c73a3e94c6623475a17b25156874c
+proc_division: U
+[0]
+table_name: Customer
+customerId:10004
+customerCode:10004
+lastName:テスト
+firstName:テスト
+lastKana:テスト
+firstKana:テスト
+postCode:1111111
+address:青森県テストテスト
+phoneNumber:01012341234
+faxNumber:
+mailAddress:test@test.com
+mailAddress2:
+note:テストテストテストテストテストテストテスト
+companyName:テスト
+point:999
+sex:1
+birthDate:1961-04-07
+entryDate:2021-04-01
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/04/01 15:35:57
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: smj725t2
+access_token: a64c73a3e94c6623475a17b25156874c
+proc_division: U
+[0]
+table_name: Customer
+customerId:10004
+customerCode:10004
+lastName:テスト
+firstName:テスト
+lastKana:テスト
+firstKana:テスト
+postCode:1111111
+address:青森県テストテスト
+phoneNumber:01012341234
+faxNumber:
+mailAddress:test@test.com
+mailAddress2:
+note:テストテストテストテストテストテストテスト
+companyName:テスト
+point:999
+sex:1
+birthDate:1961-04-07
+entryDate:2021-04-01
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/04/01 15:35:57
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: smj725t2
+access_token: a64c73a3e94c6623475a17b25156874c
+proc_division: U
+[0]
+table_name: Customer
+customerId:10001
+customerCode:10001
+lastName:ハビ
+firstName:ハビ
+lastKana:ハビ
+firstKana:ハビ
+postCode:1111111
+address:北海道テストテスト
+phoneNumber:01012341234
+faxNumber:
+mailAddress:test2@test.com
+mailAddress2:
+note:
+companyName:Test Company Test
+point:15
+sex:0
+birthDate:2008-07-15
+entryDate:2021-03-16
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/04/01 15:38:14
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: smj725t2
+access_token: a64c73a3e94c6623475a17b25156874c
+proc_division: U
+[0]
+table_name: Customer
+customerId:10004
+customerCode:10004
+lastName:テスト
+firstName:テスト
+lastKana:テスト
+firstKana:テスト
+postCode:1111111
+address:青森県テストテスト
+phoneNumber:01012341234
+faxNumber:
+mailAddress:test@test.com
+mailAddress2:
+note:テストテストテストテストテストテストテスト
+companyName:テスト12345
+point:999
+sex:1
+birthDate:1961-04-07
+entryDate:2021-04-01
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 14:56:44
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:2
+customerCode:2
+lastName:開発用
+firstName:会員
+lastKana:カイハツヨウ
+firstKana:カイイン
+postCode:5330033
+address:大阪府大阪市東淀川区東中島123
+phoneNumber:0663704199
+faxNumber:
+mailAddress:k-inui@sic-net.co.jp
+mailAddress2:
+note:
+companyName:
+point:0
+sex:0
+entryDate:2021-09-02
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 14:57:03
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:3
+customerCode:3
+lastName:石塚
+firstName:崇
+lastKana:イシヅカ
+firstKana:タカシ
+postCode:0033
+address:大阪府大阪市東淀川区東中島1-17-26あああ
+phoneNumber:0663204199
+faxNumber:
+mailAddress:ishizuka@sic-net.co.jp
+mailAddress2:
+note:
+companyName:スキルインフォメーションズ株式会社
+point:0
+sex:1
+birthDate:1977-08-24
+entryDate:2021-09-02
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 14:57:42
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:5
+customerCode:5
+lastName:冨澤
+firstName:博史
+lastKana:トミサワ
+firstKana:ヒロシ
+postCode:5320004
+address:大阪府大阪市淀川区西宮原Ｘ番地
+phoneNumber:0120444444
+faxNumber:
+mailAddress:tomisawa@sic-net.co.jp
+mailAddress2:
+note:
+companyName:
+point:1000
+sex:1
+entryDate:2021-09-15
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 14:59:28
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:3
+customerCode:3
+lastName:石塚
+firstName:崇
+lastKana:イシヅカ
+firstKana:タカシ
+postCode:0033
+address:大阪府大阪市東淀川区東中島1-17-26あああ
+phoneNumber:0663204199
+faxNumber:
+mailAddress:ishizuka@sic-net.co.jp
+mailAddress2:
+note:
+companyName:スキルインフォメーションズ株式会社
+point:0
+sex:1
+birthDate:1977-08-24
+entryDate:2021-09-02
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 15:10:29
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:6
+customerCode:6
+lastName:乾
+firstName:和宏
+lastKana:イヌイ
+firstKana:カズヒロ
+postCode:5330033
+address:大阪府大阪市東淀川区東中島26-1
+phoneNumber:0600001111
+faxNumber:
+mailAddress:skillinui@gmail.com
+mailAddress2:
+note:
+companyName:スキルシステムズ株式会社
+point:0
+sex:0
+entryDate:2021-09-17
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 17:13:24
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:7
+customerCode:7
+lastName:徳川
+firstName:家康
+lastKana:トクガワ
+firstKana:イエヤス
+postCode:5330011
+address:大阪府大阪市東淀川区大桐1-1
+phoneNumber:0663204199
+faxNumber:
+mailAddress:ishizuka2@sic-net.co.jp
+mailAddress2:
+note:
+companyName:江戸幕府
+point:0
+sex:1
+birthDate:2000-04-01
+entryDate:2021-09-17
+status:1
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 17:13:24
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:3
+customerCode:3
+lastName:石塚
+firstName:崇
+lastKana:イシヅカ
+firstKana:タカシ
+postCode:0033
+address:大阪府大阪市東淀川区東中島1-17-26あああ
+phoneNumber:0663204199
+faxNumber:
+mailAddress:ishizuka@sic-net.co.jp
+mailAddress2:
+note:
+companyName:スキルインフォメーションズ株式会社
+point:0
+sex:1
+birthDate:1977-08-24
+entryDate:2021-09-02
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 17:13:24
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:5
+customerCode:5
+lastName:冨澤
+firstName:博史
+lastKana:トミサワ
+firstKana:ヒロシ
+postCode:5320004
+address:大阪府大阪市淀川区西宮原Ｘ番地
+phoneNumber:0120444444
+faxNumber:
+mailAddress:tomisawa@sic-net.co.jp
+mailAddress2:
+note:
+companyName:
+point:1052
+sex:1
+entryDate:2021-09-15
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 17:13:24
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:6
+customerCode:6
+lastName:乾
+firstName:和宏
+lastKana:イヌイ
+firstKana:カズヒロ
+postCode:5330033
+address:大阪府大阪市東淀川区東中島26-1
+phoneNumber:0600001111
+faxNumber:
+mailAddress:skillinui@gmail.com
+mailAddress2:
+note:
+companyName:スキルシステムズ株式会社
+point:0
+sex:0
+entryDate:2021-09-17
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 17:13:25
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:2
+customerCode:2
+lastName:開発用
+firstName:会員
+lastKana:カイハツヨウ
+firstKana:カイイン
+postCode:5330033
+address:大阪府大阪市東淀川区東中島123
+phoneNumber:0663704199
+faxNumber:
+mailAddress:k-inui@sic-net.co.jp
+mailAddress2:
+note:
+companyName:
+point:0
+sex:0
+entryDate:2021-09-02
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 17:13:25
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:4
+customerCode:4
+lastName:永山
+firstName:さくら
+lastKana:ナガヤマ
+firstKana:サクラ
+postCode:5941153
+address:大阪府和泉市青葉台123
+phoneNumber:08038095726
+faxNumber:
+mailAddress:so107072@gmail.com
+mailAddress2:
+note:
+companyName:
+point:0
+sex:2
+birthDate:1989-03-06
+entryDate:2021-09-02
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 17:13:37
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:7
+customerCode:7
+lastName:徳川
+firstName:家康
+lastKana:トクガワ
+firstKana:イエヤス
+postCode:5330011
+address:大阪府大阪市東淀川区大桐1-1
+phoneNumber:0663204199
+faxNumber:
+mailAddress:ishizuka2@sic-net.co.jp
+mailAddress2:
+note:
+companyName:江戸幕府
+point:0
+sex:1
+birthDate:2000-04-01
+entryDate:2021-09-17
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+Date: 2021/09/17 17:27:06
+Action: USER_UPDATE
+リクエストURL: https://webapi.smaregi.jp/access/
+contract_id: sne463v7
+access_token: b1b5c82f8e06ade530276ed5730f96a5
+proc_division: U
+[0]
+table_name: Customer
+customerId:8
+customerCode:8
+lastName:豊臣
+firstName:秀吉
+lastKana:トヨトミ
+firstKana:ヒデヨシ
+postCode:5300001
+address:大阪府大阪市北区梅田1-1
+phoneNumber:0666666666
+faxNumber:
+mailAddress:lushnishinaka@gmail.com
+mailAddress2:
+note:
+companyName:大阪城管理
+point:0
+sex:1
+birthDate:1997-05-01
+entryDate:2021-09-17
+status:0
+
+ステータス:ok
+
+-----------------------------------------------------------------------------------------

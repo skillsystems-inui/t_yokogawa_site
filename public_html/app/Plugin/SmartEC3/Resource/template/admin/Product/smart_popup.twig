@@ -1,0 +1,75 @@
+<style>
+.smart_image{
+    text-align: center;
+}
+</style>
+
+<div  class="align-middle">
+    <div  class="align-middle">
+
+        <div class="row">
+            <div class="col">
+                <div class="d-inline-block">
+                    <span>{{ 'plg.smartec3.product.store_type'|trans }}</span>
+                </div>
+            </div>
+            <div class="col">
+                <p>{{SmartRegi.store_type.name}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="d-inline-block">
+                    <span>{{ 'plg.smartec3.product.price_type'|trans }}</span>
+                </div>
+            </div>
+            <div class="col">
+                <p>{{SmartRegi.price_type.name}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="d-inline-block">
+                    <span>{{ 'plg.smartec3.product.tax'|trans }}</span>
+                </div>
+            </div>
+            <div class="col">
+                <p>{{SmartRegi.tax.tax_rate}}%</p>
+                {% if SmartRegi.tax.tax_rate == 8 %}
+                    <p>{{SmartRegi.tax_type.name}}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="d-inline-block">
+                    <span>{{ 'plg.smartec3.product.size'|trans }}</span>
+                </div>
+            </div>
+            <div class="col">
+                <p>{{SmartRegi.size}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="d-inline-block">
+                    <span>{{ 'plg.smartec3.product.color'|trans }}</span>
+                </div>
+            </div>
+            <div class="col">
+                <p>{{SmartRegi.color}}</p>
+            </div>
+        </div>
+            
+    </div>
+
+    {% if SmartRegi.SmartRegiImage|length > 0 %}
+        <div class="align-middle smart_image">
+            <img src="{{ asset(SmartRegi.SmartRegiImage.0, 'save_image') }}" width="260" height="260"></div>
+        </div>
+    {% endif %}
+</div>

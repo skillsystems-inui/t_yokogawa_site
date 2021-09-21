@@ -1,0 +1,170 @@
+<script>
+    {# JQueryのinsertAfterメソッドを使いProduct/detail.twigの<div class="ec-productRole__tags">の直後に挿入#}
+    $(function () {
+        var basicConfig = document.getElementById('basicConfig');
+        $('#smart_regi').insertAfter(basicConfig.parentNode);
+    });
+
+    var confirmFormChangeSmart = function(form, target, modal) {
+
+        var returnLink = form.find('input[type="hidden"][name*="return_link"]'),
+            saveBtn = modal.find('a[data-action="save"]'),
+            cancelBtn = modal.find('a[data-action="cancel"]');
+        modal.on('hidden.bs.modal', function() {
+            returnLink.val('');
+        });
+        saveBtn.on('click', function() {
+            returnLink.val($(this).data('return-link'));
+            form.submit();
+        });
+        target.on('click', function() {
+            modal.find('.modal-body .screen-name').text($(this).attr('title'));
+            modal.modal('show');
+            //saveBtn.data('return-link', $(this).attr('href'));
+            cancelBtn.attr('href', $(this).attr('href'));
+            return false;
+        });
+    };
+    confirmFormChangeSmart($('#form1'), $('a[data-action="confirm"]'), $('#confirmFormChangeModalSmart'))
+
+</script>
+
+
+<!-- 移動確認モーダル-->
+<!-- 予防のため、基本的にProductのページの方使う -->
+<div class="modal fade" id="confirmFormChangeModalSmart" tabindex="-1" role="dialog"
+        aria-labelledby="confirmFormChangeModalSmart" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ 'admin.common.move_to_confirm_title'|trans}}</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="screen-name"></p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-ec-conversion" data-action="save" href="javascript:void(0)">
+                    {{ 'plg.smartec3.product.move_to_confirm_save_and_move'|trans }}
+                </a>
+                <a class="btn btn-ec-sub" data-action="cancel" href="javascript:void(0)">
+                    {{ 'plg.smartec3.product.move_to_confirm_move_only'|trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+ {% if Product.id is not null %}
+<div class="card rounded border-0 mb-4" id="smart_regi">
+
+    <div class="card-header">
+        <div class="row">
+            <div class="col-8">
+                <div class="d-inline-block" data-tooltip="true" data-placement="top"
+                    title="{{ 'plg.smartec3.product.tooltip'|trans }}">
+                <span class="card-title">
+                    {{ 'plg.smartec3.product.title'|trans }}
+                    <i class="fa fa-question-circle fa-lg ml-1"></i>
+                </span>
+                </div>
+            </div>
+            <div class="col-4 text-right">
+                <a data-toggle="collapse" href="#smart_regi_settings" aria-expanded="false"
+                    aria-controls="smart_regi_settings">
+                    <i class="fa fa-angle-up fa-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="collapse show ec-cardCollapse card-body-flex" id="smart_regi_settings" style="display:flex; flex-wrap:wrap; box-sizing:border-box; width:100%; justify-content: space-around;">
+        {#{% if SmartRegi is not null and Product.hasProductClass == false %}#}
+        {% if SmartRegi is not null %}
+            <div class="card-body" style="box-sizing:border-box;">
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-inline-block">
+                            <span>{{ 'plg.smartec3.product.store_type'|trans }}</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p>{{SmartRegi.store_type.name}}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-inline-block">
+                            <span>{{ 'plg.smartec3.product.price_type'|trans }}</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p>{{SmartRegi.price_type.name}}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-inline-block">
+                            <span>{{ 'plg.smartec3.product.tax'|trans }}</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p>{{SmartRegi.tax.tax_rate}}%</p>
+                        {% if SmartRegi.tax.tax_rate == 8 %}
+                            <p>{{SmartRegi.tax_type.name}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-inline-block">
+                            <span>{{ 'plg.smartec3.product.size'|trans }}</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p>{{SmartRegi.size}}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-inline-block">
+                            <span>{{ 'plg.smartec3.product.color'|trans }}</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p>{{SmartRegi.color}}</p>
+                    </div>
+                </div>
+                
+            </div>
+
+            {% if SmartRegi.SmartRegiImage|length > 0 %}
+                <div class="card-body card-body-copy" style="box-sizing:border-box; width:260px">
+                    <img src="{{ asset(SmartRegi.SmartRegiImage.0, 'save_image') }}" width="260" height="260"></div>
+                </div>
+            {% endif %}
+
+        {% endif %}
+
+        <div class="d-block text-center text-center" style="box-sizing:border-box; width:100%; padding-bottom:1.25rem; padding-top:1.25rem;">
+            {# {% if Product.hasProductClass == false %} #}
+                <a href="{{ path('smart_ec3_admin_smartregi_edit', { 'id' : Product.id }) }}" class="btn btn-ec-regular" data-action="confirm"
+                    title="{{ 'plg.smartec3.product.move_to_confirm_message'|trans({'%name%' : 'plg.smartec3.product.smart_registration'|trans}) }}">
+                    {% if SmartRegi is not null %}{{ 'plg.smartec3.product.smart_confirm_of_product'|trans }}{% else %} {{ 'plg.smartec3.product.smart_registration'|trans }} {% endif %}
+                </a>
+            {#{% else %}#}
+                {#<p style="color:red; font-weight: bold;">{{ 'plg.smartec3.product.multiprice_no_support'|trans}}</p>#}
+            {#{% endif %}#}
+        </div>
+
+
+    </div>
+
+</div>
+{% endif %}
