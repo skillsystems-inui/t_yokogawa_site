@@ -139,6 +139,7 @@ file that was distributed with this source code.
                                 {% set ClassCategory10 = CartItem.ClassCategory10 %}
                                 {% set PrintnamePlate = CartItem.printname_plate %}
                                 {% set PrintnameNoshi = CartItem.printname_noshi %}
+                                {% set OptionDetail   = CartItem.option_detail %}
 
                                 
                                 {% set Product = ProductClass.Product %}
@@ -154,7 +155,7 @@ file that was distributed with this source code.
                                                 <img src="{{ asset(Product.MainListImage|no_image_product, 'save_image') }}" alt="{{ Product.name }}"/>
                                             </a>
                                         </div>
-                                        <div class="ec-cartRow__summary">
+                                        <div class="ec-cartRow__summary" style="width:75%;">
                                             <div class="ec-cartRow__name">
                                                 <a target="_blank" href="{{ url('product_detail', {id : Product.id} ) }}">{{ Product.name }}</a>
                                                 {% if ProductClass.ClassCategory1 and ProductClass.ClassCategory1.id %}
@@ -201,6 +202,10 @@ file that was distributed with this source code.
                                                 {% endif %}
                                                 {% if PrintnameNoshi != "" %}
                                                     <br>ÇÃÇµÇÃñºì¸ÇÍÅF{{ PrintnameNoshi }}
+                                                {% endif %}
+                                                
+                                                {% if OptionDetail != "" %}
+                                                    <br>{{ OptionDetail|nl2br }}
                                                 {% endif %}
                                                 
                                             </div>
