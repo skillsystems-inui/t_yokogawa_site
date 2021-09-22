@@ -989,6 +989,10 @@ file that was distributed with this source code.
     		if(document.getElementById(syohin_main_id) != null){
 				document.getElementById(syohin_main_id).style.display="none";
 			}
+			var syohin_top_id00 = 'top_syohin_main00';
+    		if(document.getElementById(syohin_top_id00) != null){
+				document.getElementById(syohin_top_id00).style.display="none";
+			}
 			var syohin_top_id01 = 'top_syohin_main01';
     		if(document.getElementById(syohin_top_id01) != null){
 				document.getElementById(syohin_top_id01).style.display="none";
@@ -1000,6 +1004,14 @@ file that was distributed with this source code.
 			var syohin_top_id03 = 'top_syohin_main03';
     		if(document.getElementById(syohin_top_id03) != null){
 				document.getElementById(syohin_top_id03).style.display="none";
+			}
+			var syohin_top_id04 = 'top_syohin_main04';
+    		if(document.getElementById(syohin_top_id04) != null){
+				document.getElementById(syohin_top_id04).style.display="none";
+			}
+			var bottom_syohin_main01 = 'bottom_syohin_main01';
+    		if(document.getElementById(bottom_syohin_main01) != null){
+				document.getElementById(bottom_syohin_main01).style.display="none";
 			}
 			
 			//ページトップへ移動
@@ -1019,6 +1031,10 @@ file that was distributed with this source code.
     		if(document.getElementById(syohin_main_id) != null){
 				document.getElementById(syohin_main_id).style.display="block";
 			}
+			var syohin_top_id00 = 'top_syohin_main00';
+    		if(document.getElementById(syohin_top_id00) != null){
+				document.getElementById(syohin_top_id00).style.display="flex";
+			}
 			var syohin_top_id01 = 'top_syohin_main01';
     		if(document.getElementById(syohin_top_id01) != null){
 				document.getElementById(syohin_top_id01).style.display="block";
@@ -1031,7 +1047,14 @@ file that was distributed with this source code.
     		if(document.getElementById(syohin_top_id03) != null){
 				document.getElementById(syohin_top_id03).style.display="block";
 			}
-			
+			var syohin_top_id04 = 'top_syohin_main04';
+    		if(document.getElementById(syohin_top_id04) != null){
+				document.getElementById(syohin_top_id04).style.display="block";
+			}
+			var bottom_syohin_main01 = 'bottom_syohin_main01';
+    		if(document.getElementById(bottom_syohin_main01) != null){
+				document.getElementById(bottom_syohin_main01).style.display="block";
+			}
 			//ページトップへ移動
 			document.body.scrollTop = document.documentElement.scrollTop = 0;
         });
@@ -1236,7 +1259,7 @@ file that was distributed with this source code.
                             <div class="slide-item"><img src="{{ asset(''|no_image_product, 'save_image') }}"/></div>
                         {% endfor %}
                     </div>
-                    <div class="item_nav">
+                    <div class="item_nav" id="top_syohin_main00">
                         {% for ProductImage in Product.ProductImage %}
                             <div class="slideThumb" data-index="{{ loop.index0 }}"><img src="{{ asset(ProductImage, 'save_image') }}"></div>
                         {% endfor %}
@@ -1361,56 +1384,57 @@ file that was distributed with this source code.
                             {% endif %}
                             
                             <!-- 個数(サイズのみ) -->
-                            <div class="ec-numberInput">
-                            	<span>{{ '個数:'|trans }}</span>
-                                {{ form_widget(form.quantity) }}
-                                {{ form_errors(form.quantity) }}
-                                <span>{{ '個'|trans }}</span>
+                            <div class="ec-numberInput" style="margin-top:20px;">
+                            	<div style="float:left; width:35%;">
+	                            	<span>{{ '個数:'|trans }}</span>
+	                                {{ form_widget(form.quantity) }}
+	                                {{ form_errors(form.quantity) }}
+	                                <span>{{ '個'|trans }}</span>
+                                </div>
+                                <div class="" style="font-size:20px; float:left; width:50%; padding:2px;">
+			                        {% if Product.hasProductClass -%}
+			                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
+			                                <div class="ec-price">
+			                                    <span class="ec-price__price price02-view-default" style="font-size:20px; font-weight:bold;">
+			                                    	{{ Product.getPrice02IncTaxMin|price }}
+			                                    </span>
+			                                    <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
+			                                    	{{ '(税込)'|trans }}
+			                                    </span>
+			                                </div>
+			                            {% elseif Product.getPrice02Min is not null and Product.getPrice02Max is not null %}
+			                                <span class="ec-productRole__priceRegularPrice">
+				                                <span class="price02-view-default" style="font-size:20px; font-weight:bold;">
+				                                	{{ Product.getPrice02IncTaxMin|price }}～ {{ Product.getPrice02IncTaxMax|price }}
+				                                </span>
+			                                </span>
+			                                <span class="ec-productRole__priceRegularTax" style="font-size:16px; font-weight:bold;">
+			                                	{{ '(税込)'|trans }}
+			                                </span>
+			                            {% else %}
+			                                <div class="ec-price">
+			                                    <span class="ec-price__price price02-view-default" style="padding-left:0px; font-size:20px; font-weight:bold;">
+			                                    	{{ Product.getPrice02IncTaxMin|price }}
+			                                    </span>
+			                                    <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
+			                                    	{{ '(税込)'|trans }}
+			                                    </span>
+			                                </div>
+			                            {% endif %}
+			                        {% else %}
+			                            <div class="ec-price">
+			                                <span class="ec-price__price" style="font-size:20px; font-weight:bold;">
+			                                	{{ Product.getPrice02IncTaxMin|price }}
+			                                </span>
+			                                <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
+			                                	{{ '(税込)'|trans }}
+			                                </span>
+			                            </div>
+			                        {% endif %}
+			                    </div>
+			                    <div class="" style="clear:both;"></div>
                             </div>
                             
-		                    {# 販売価格(表示用) #}
-		                    <div class="ec-productRole__price" style="font-size:20px; color:#000;border-top:1px dotted #ccc;">
-		                        {% if Product.hasProductClass -%}
-		                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
-		                                <div class="ec-price">
-		                                    <span class="ec-price__price price02-view-default" style="font-size:18px; font-weight:bold;">
-		                                    	{{ Product.getPrice02IncTaxMin|price }}
-		                                    </span>
-		                                    <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
-		                                    	{{ '(税込)'|trans }}
-		                                    </span>
-		                                </div>
-		                            {% elseif Product.getPrice02Min is not null and Product.getPrice02Max is not null %}
-		                                <span class="ec-productRole__priceRegularPrice">
-			                                <span class="price02-view-default" style="font-size:18px; font-weight:bold;">
-			                                	{{ Product.getPrice02IncTaxMin|price }}～ {{ Product.getPrice02IncTaxMax|price }}
-			                                </span>
-		                                </span>
-		                                <span class="ec-productRole__priceRegularTax" style="font-size:16px; font-weight:bold;">
-		                                	{{ '(税込)'|trans }}
-		                                </span>
-		                            {% else %}
-		                                <div class="ec-price">
-		                                    <span class="ec-price__price price02-view-default" style="padding-left:0px; font-size:18px; font-weight:bold;">
-		                                    	{{ Product.getPrice02IncTaxMin|price }}
-		                                    </span>
-		                                    <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
-		                                    	{{ '(税込)'|trans }}
-		                                    </span>
-		                                </div>
-		                            {% endif %}
-		                        {% else %}
-		                            <div class="ec-price">
-		                                <span class="ec-price__price" style="font-size:18px; font-weight:bold;">
-		                                	{{ Product.getPrice02IncTaxMin|price }}
-		                                </span>
-		                                <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
-		                                	{{ '(税込)'|trans }}
-		                                </span>
-		                            </div>
-		                        {% endif %}
-		                    </div>
-		                    
                             <!-- 金額(サイズのみ) -->
                             
                             <!-- 詳細を指定するボタン -->
@@ -1651,7 +1675,7 @@ file that was distributed with this source code.
 			                                    </div>
 			                                    <div id="messageplate_blk">
 				                                    <div class="">
-				                                        <div id="messageplate_wdg" style="display:block;">
+				                                        <div id="messageplate_wdg" style="display:block; font-size:13px;">
 				                                        	<div id="messageplate" style="float: left; width: 50%;">
 				                                        		<div class="form-check">
 				                                        			<div style="width: 160px; height: 100px; background-image: url({{ asset('assets/img/option/opt_plate_muji.png') }})">
@@ -1788,10 +1812,10 @@ file that was distributed with this source code.
 				                                    	<div style="width: 0px; height: 0px; background-image: url(&quot;&quot;);"></div>
 				                                        
 				                                        <!-- 入力欄：チェック -->			                                        
-				                                        <div id="ichigo_check" style="display:block; font-size:14px;">
+				                                        <div id="ichigo_check" style="display:block; font-size:12px;">
 				                                        	<input type="checkbox" id="ichigo_chk" name="ichigo_chk" value="">
 				                                        	<label for="ichigo_chk">
-																<div style="padding:8px;">いちごUP<span style="padding:8px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																<div style="padding:1px;">いちごUP<span style="padding:1px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
 				                                        </div>
 				                                        
@@ -1808,10 +1832,10 @@ file that was distributed with this source code.
 				                                    	<div style="width: 0px; height: 0px; background-image: url(&quot;&quot;);"></div>
 				                                        
 				                                        <!-- 入力欄：チェック -->			                                        
-				                                        <div id="fruit_check" style="display:block; font-size:14px;">
+				                                        <div id="fruit_check" style="display:block; font-size:12px;">
 				                                        	<input type="checkbox" id="fruit_chk" name="fruit_chk" value="">
 				                                        	<label for="fruit_chk">
-																<div style="padding:8px;">フルーツUP<span style="padding:8px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																<div style="padding:1px;">フルーツUP<span style="padding:1px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
 				                                        </div>
 				                                        
@@ -1829,10 +1853,10 @@ file that was distributed with this source code.
 				                                        <div style="width: 0px; height: 0px; background-image: url(&quot;&quot;);"></div>
 				                                        
 				                                        <!-- 入力欄：チェック -->			                                        
-				                                        <div id="namachoko_check" style="display:block; font-size:14px;">
+				                                        <div id="namachoko_check" style="display:block; font-size:12px;">
 				                                        	<input type="checkbox" id="namachoko_chk" name="namachoko_chk" value="">
 				                                        	<label for="namachoko_chk">
-																<div style="padding:8px;">生チョコUP<span style="padding:8px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																<div style="padding:1px;">生チョコUP<span style="padding:1px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
 				                                        </div>
 				                                    </div>
@@ -1848,10 +1872,10 @@ file that was distributed with this source code.
 				                                        <!-- .デコレーション追加画像 -->
 				                                        
 				                                        <!-- 入力欄：チェック -->			                                        
-				                                        <div id="echoko_check" style="display:block; font-size:14px;">
+				                                        <div id="echoko_check" style="display:block; font-size:11px;">
 				                                        	<input type="checkbox" id="echoko_chk" name="echoko_chk" value="">
 				                                        	<label for="echoko_chk">
-																<div style="padding:8px;">絵チョコ(4号)<span style="padding:8px; color:red;">(+850円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																<div style="padding:1px;">絵チョコ(4号)<span style="padding:1px; color:red;">(+850円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
 				                                        </div>
 				                                    </div>
@@ -2157,6 +2181,7 @@ file that was distributed with this source code.
 			                                
 			                                
 			                                {# 定価 #}
+						                    <!--
 						                    {% if Product.hasProductClass -%}
 						                        <div class="ec-productRole__priceRegular">
 						                            {% if Product.getPrice01Min is not null and Product.getPrice01IncTaxMin == Product.getPrice01IncTaxMax %}
@@ -2173,30 +2198,108 @@ file that was distributed with this source code.
 						                            <span class="ec-productRole__priceRegularTax">{{ '(税込)'|trans }}</span>
 						                        {% endif %}
 						                    {% endif %}
-						                    {# 販売価格 #}
+						                    -->
+						                    
 						                    <div class="ec-productRole__price" style="font-size:20px; color:#000;border-top:1px dotted #ccc;">
+						                    	
+						                    	
+						                    	{# 商品小計(税別) #}
 						                        {% if Product.hasProductClass -%}
 						                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
-						                                <div class="ec-price">
+						                                <div class="ec-price" style=" font-size:13px;">
+						                                    <span style="margin-right:50%;">
+						                                    	{{ '商品小計(税別)'|trans }}
+						                                    </span>
 						                                    <span class="ec-price__price price02-default">
 						                                    	{{ Product.getPrice02IncTaxMin|price }}
 						                                    </span>
-						                                    <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
 						                                </div>
 						                            {% else %}
-						                                <div class="ec-price">
-						                                    <span class="ec-productRole__priceRegularPrice">{{ '価格'|trans }}：
-						                                    </span><span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">{{ Product.getPrice02IncTaxMin|price }}</span>
-						                                    <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
+						                                <div class="ec-price" style=" font-size:13px;">
+						                                    <span style="margin-right:50%;">
+						                                    	{{ '商品小計(税別)'|trans }}
+						                                    </span>
+						                                    <span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">
+						                                    	{{ Product.getPrice02IncTaxMin|price }}
+						                                    </span>
 						                                </div>
 						                            {% endif %}
 						                        {% else %}
-						                            <div class="ec-price">
+						                            <div class="ec-price" style=" font-size:13px;">
+						                                <span style="margin-right:50%;">
+						                                	{{ '商品小計(税別)'|trans }}
+						                                </span>
 						                                <span class="ec-price__price">{{ Product.getPrice02IncTaxMin|price }}</span>
-						                                <span class="ec-price__tax">{{ '(税込)'|trans }}</span>
+						                            </div>
+						                        {% endif %}
+						                        
+						                        
+						                        {# 送料 #}
+						                        <!-- ToDo　配送地域によって異なるので標準を出す？？ -->
+						                        <div class="ec-price" style=" font-size:13px;">
+				                                    <span style="margin-right:50%;">
+				                                    	{{ '送料(税別)　　'|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+						                        {# 消費税 #}
+						                        <!-- ToDo　規格価格から税率で割り出す -->
+						                        <div class="ec-price" style=" font-size:13px;">
+				                                    <span style="margin-right:50%;">
+				                                    	{{ '消費税　　　　'|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                {# オプション #}
+						                        <!-- ToDo　有料オプションを出す -->
+						                        <!--
+						                        <div class="ec-price" style=" font-size:13px;">
+				                                    <span style="margin-right:50%;">
+				                                    	{{ '☆オプション名'|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">
+				                                    	{{ 100|price }}
+				                                    </span>
+				                                </div>
+				                                -->
+						                    </div>
+						                    <div class="ec-productRole__price" style="font-size:20px; color:#000;">
+						                    	{# 合計 #}
+						                        <!-- ToDo　合計を出す -->
+						                        {% if Product.hasProductClass -%}
+						                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
+						                                <div class="ec-price" style=" font-size:13px;">
+						                                    <span style="margin-right:50%;">
+						                                    	{{ '合計　　　　　'|trans }}
+						                                    </span>
+						                                    <span class="ec-price__price price02-default">
+						                                    	{{ Product.getPrice02IncTaxMin|price }}
+						                                    </span>
+						                                </div>
+						                            {% else %}
+						                                <div class="ec-price" style=" font-size:13px;">
+						                                    <span style="margin-right:50%;">
+						                                    	{{ '合計　　　　　'|trans }}
+						                                    </span>
+						                                    <span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">
+						                                    	{{ Product.getPrice02IncTaxMin|price }}
+						                                    </span>
+						                                </div>
+						                            {% endif %}
+						                        {% else %}
+						                            <div class="ec-price" style=" font-size:13px;">
+						                                <span style="margin-right:50%;">
+						                                	{{ '合計　　　　　'|trans }}
+						                                </span>
+						                                <span class="ec-price__price">{{ Product.getPrice02IncTaxMin|price }}</span>
 						                            </div>
 						                        {% endif %}
 						                    </div>
+						                    
 						                </div>
 			                            
 			                            <div class="ec-productRole__btn" style="display:none;">
@@ -2252,7 +2355,7 @@ file that was distributed with this source code.
               
         </form>
         
-        <div style="width:100%;">
+        <div id="bottom_syohin_main01" style="width:100%;">
             <!-- 自由入力 -->
 	        {% if Product.freearea %}
 	             <div class="ec-productRole__description">
