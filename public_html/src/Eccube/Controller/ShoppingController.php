@@ -482,6 +482,42 @@ class ShoppingController extends AbstractShoppingController
         $this->orderHelper->removeSession();
 
         $hasNextCart = !empty($this->cartService->getCarts());
+        
+        
+        log_info('[注文完了] 会員を更新開始します.');
+        $Customer = $this->getUser();
+        if($Customer != null){
+	        log_info('[注文完了] 登録会員です.', [$Customer->getId()]);
+	        $LoginCustomer = clone $Customer;
+	        $this->entityManager->detach($LoginCustomer);
+	        $previous_password = $Customer->getPassword();
+	        $Customer->setPassword($this->eccubeConfig['eccube_default_password']);
+	        if ($Customer->getPassword() === $this->eccubeConfig['eccube_default_password']) {
+	            $Customer->setPassword($previous_password);
+	        } else {
+	            $encoder = $this->encoderFactory->getEncoder($Customer);
+	            if ($Customer->getSalt() === null) {
+	                $Customer->setSalt($encoder->createSalt());
+	            }
+	            $Customer->setPassword(
+	                $encoder->encodePassword($Customer->getPassword(), $Customer->getSalt())
+	            );
+	        }
+	        $this->entityManager->flush();
+	        log_info('[注文完了] 会員を更新完了しました.');
+	        
+	        $event = new EventArgs(
+                [
+                    'form' => null,
+                    'Customer' => $Customer,
+                ],
+                $request
+            );
+            $this->eventDispatcher->dispatch(EccubeEvents::ADMIN_CUSTOMER_EDIT_INDEX_COMPLETE, $event);
+            
+        }else{
+        	log_info('[注文完了] 未登録会員のため更新しませんでした.');
+        }
 
         log_info('[注文完了] 注文完了画面を表示しました. ', [$hasNextCart]);
 
