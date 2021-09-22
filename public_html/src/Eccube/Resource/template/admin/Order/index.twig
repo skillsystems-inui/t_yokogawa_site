@@ -516,6 +516,8 @@ file that was distributed with this source code.
                                         <th class="border-top-0 pt-2 pb-2 text-center text-nowrap">{{ 'admin.common.payment_method'|trans }}</th>
                                         <th class="border-top-0 pt-2 pb-2 text-center">{{ 'admin.order.order_status'|trans }}</th>
                                         <th class="border-top-0 pt-2 pb-2 text-center">{{ 'admin.order.purchase_price'|trans }}</th>
+                                        <!-- お届け日 -->
+                                        <th class="border-top-0 pt-2 pb-2 text-center">{{ 'admin.order.delivery_date'|trans }}</th>
                                         <th class="border-top-0 pt-2 pb-2 text-center">{{ 'admin.order.message_short'|trans }}</th>
                                         <th class="border-top-0 pt-2 pb-2 text-center text-nowrap">{{ 'admin.order.shipping_status'|trans }}</th>
                                         <th class="border-top-0 pt-2 pb-2 text-center">{{ 'admin.order.tracking_number'|trans }}</th>
@@ -546,6 +548,10 @@ file that was distributed with this source code.
                                                 <td class="align-middle text-right">
                                                     {{ Order.payment_total|price }}<br>
                                                     {{ Order.payment_date ? Order.payment_date|date_day : 'admin.order.not_payment'|trans }}
+                                                </td>
+                                                <!-- お届け日 -->
+                                                <td class="align-middle text-center">
+                                                    {{ Order.Shippings[0].shipping_date|date_day }}
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     {% if Order.message is not empty %}

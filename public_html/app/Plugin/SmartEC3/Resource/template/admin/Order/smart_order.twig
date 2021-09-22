@@ -502,6 +502,12 @@ file that was distributed with this source code.
                                 </table>
                                 
                                 <hr class="mt-0">
+                                
+                                <!-- 受取日 -->
+                                <div class="row justify-content-end mb-3">
+                                    <div class="col-auto"><span class="align-middle">{{ 'admin.order.delivery_date'|trans }}</span></div>
+                                    <div class="col-2 text-right"><span class="h4 align-middle font-weight-normal">{{ Order.Shippings[0].shipping_date|date_day }}</span></div>
+                                </div>
                                 <!-- 小計 -->
                                 <div class="row justify-content-end mb-3">
                                     <div class="col-auto"><span class="align-middle">{{ 'admin.order.subtotal'|trans }}</span></div>

@@ -78,7 +78,7 @@ common.login: ログイン
 common.remember_me: 次回から自動的にログインする
 common.signup: 新規会員登録
 common.forgot_login: ログイン情報をお忘れですか？
-common.customer_address_count_is_over: お届け先登録の上限の%count%件に達しています。お届け先を入力したい場合は、削除か変更を行ってください。
+common.customer_address_count_is_over: 受け取り先登録の上限の%count%件に達しています。受け取り先を入力したい場合は、削除か変更を行ってください。
 common.search_keyword: キーワードを入力
 common.delete_confirm: 削除してもよろしいですか?
 common.pagetop: ページトップへ
@@ -220,7 +220,7 @@ front.mypage.nav__history_detail: ご注文履歴詳細
 front.mypage.nav__favorite: お気に入り一覧
 front.mypage.nav__customer: 会員情報編集
 front.mypage.nav__customer_complete: 会員情報編集(完了)
-front.mypage.nav__customer_address: お届け先一覧
+front.mypage.nav__customer_address: 受け取り先一覧
 front.mypage.nav__withdrow: 退会手続き
 front.mypage.history_count: '%count%件の履歴があります'
 front.mypage.history_not_found: ご注文履歴はありません。
@@ -232,10 +232,10 @@ front.mypage.order_date: ご注文日時
 front.mypage.use_point: ご利用ポイント
 front.mypage.add_point: 加算ポイント
 front.mypage.delivery_info: 配送情報
-front.mypage.delivery: お届け先
+front.mypage.delivery: 受け取り先
 front.mypage.delivery_provider: 配送方法
-front.mypage.delivery_date: お届け日
-front.mypage.delivery_time: お届け時間
+front.mypage.delivery_date: 受け取り日
+front.mypage.delivery_time: 受け取り時間
 front.mypage.current_price: 【現在価格】
 front.mypage.reorder: 再注文する
 front.mypage.payment_info: お支払い情報
@@ -248,11 +248,11 @@ front.mypage.customer_complete_message__title: 会員登録内容の変更が完
 front.mypage.customer_complete_message__body: それでは、引き続きショッピングをお楽しみください。
 front.mypage.favorite_count: '%count%件のお気に入りがあります'
 front.mypage.favorite_not_found: お気に入りは登録されていません。
-front.mypage.customer_address_count: '%count%件のお届け先があります'
-front.mypage.customer_address_not_found: お届け先は登録されていません。
-front.mypage.add_customer_address: '新規お届け先を追加する'
+front.mypage.customer_address_count: '%count%件の受け取り先があります'
+front.mypage.customer_address_not_found: 受け取り先は登録されていません。
+front.mypage.add_customer_address: '新規受け取り先を追加する'
 front.mypage.withdraw_message__title: 退会手続きの前にご確認ください
-front.mypage.withdraw_message__body: 退会手続きが完了した時点で、現在保存されている購入履歴やお届け先等の情報は、すべて削除されますのでご注意ください。
+front.mypage.withdraw_message__body: 退会手続きが完了した時点で、現在保存されている購入履歴や受け取り先等の情報は、すべて削除されますのでご注意ください。
 front.mypage.withdraw_execute_message__title: 退会手続きを実行してもよろしいでしょうか？
 front.mypage.withdraw_confirm: 退会手続きへ
 front.mypage.withdraw_cancel: いいえ、退会しません
@@ -322,11 +322,11 @@ front.shopping.title: ご注文手続き
 front.shopping.order_no: ご注文番号
 front.shopping.customer_info: お客様情報
 front.shopping.delivery_info: 配送情報
-front.shopping.delivery_to: お届け先
+front.shopping.delivery_to: 受け取り先
 front.shopping.delivery_provider: 配送方法
-front.shopping.delivery_date: お届け日
-front.shopping.delivery_time: お届け時間
-front.shopping.to_multiple: お届け先を追加する
+front.shopping.delivery_date: 受け取り日
+front.shopping.delivery_time: 受け取り時間
+front.shopping.to_multiple: 受け取り先を追加する
 front.shopping.payment_info: お支払方法
 front.shopping.point_info: 利用ポイント
 front.shopping.available_point: '%point% pt が利用可能です。'
@@ -339,14 +339,14 @@ front.shopping.message_info: お問い合わせ
 front.shopping.message_placeholder: お問い合わせ事項がございましたら、こちらにご入力ください。(3000文字まで)
 front.shopping.go_to_confirm: 確認する
 front.shopping.back_to_cart: カートに戻る
-front.shopping.shipping_title: お届け先の指定
-front.shopping.shipping_add_new_shipping: 新規お届け先を追加する
-front.shopping.shipping_add_new_shipping__short: お届け先追加
-front.shopping.shipping_unselected: お届け先を指定してください
-front.shopping.shipping_send_selected_shipping: 選択したお届け先に送る
-front.shopping.shipping_multiple_title: お届け先の複数指定
-front.shopping.shipping_multiple_message: 各商品のお届け先を選択してください。
-front.shppping.shipping_multiple_add_shipping: 各商品のお届け先を選択してください。
+front.shopping.shipping_title: 受け取り先の指定
+front.shopping.shipping_add_new_shipping: 新規受け取り先を追加する
+front.shopping.shipping_add_new_shipping__short: 受け取り先追加
+front.shopping.shipping_unselected: 受け取り先を指定してください
+front.shopping.shipping_send_selected_shipping: 選択した受け取り先に送る
+front.shopping.shipping_multiple_title: 受け取り先の複数指定
+front.shopping.shipping_multiple_message: 各商品の受け取り先を選択してください。
+front.shppping.shipping_multiple_add_shipping: 各商品の受け取り先を選択してください。
 front.shopping.confirm_title: ご注文内容のご確認
 front.shopping.checkout: 注文する
 front.shopping.back_to_order: ご注文手続きに戻る
@@ -359,9 +359,9 @@ front.shopping.continue: 購入を続ける
 front.shopping.guest_purchase_message: 会員登録をせずに購入手続きをされたい方は、下記よりお進みください。
 front.shopping.guest_purchase: ゲスト購入
 front.shopping.nonmember: お客様情報の入力
-front.shopping.shipping_edit_title_nomember: 商品購入/お届け先の変更
-front.shopping.shipping_edit_header_customer: お届け先の追加
-front.shopping.shipping_edit_header_nonmember: お届け先の変更
+front.shopping.shipping_edit_title_nomember: 商品購入/受け取り先の変更
+front.shopping.shipping_edit_header_customer: 受け取り先の追加
+front.shopping.shipping_edit_header_nonmember: 受け取り先の変更
 front.shopping.error: 購入エラー
 front.shopping.order_error: 購入処理でエラーが発生しました。
 front.shopping.system_error: 購入処理で予期しないエラーが発生しました。恐れ入りますがお問い合わせページよりご連絡ください。
@@ -850,8 +850,8 @@ admin.order.order_date__end: 注文日(終了)
 admin.order.payment_date: 入金日
 admin.order.payment_date__start: 入金日(開始)
 admin.order.payment_date__end: 入金日(終了)
-admin.order.delivery_date__start: お届け日(開始)
-admin.order.delivery_date__end: お届け日(終了)
+admin.order.delivery_date__start: 受け取り日(開始)
+admin.order.delivery_date__end: 受け取り日(終了)
 admin.order.order_no: 注文番号
 admin.order.shipping_date: 出荷日
 admin.order.message: お問い合わせ
@@ -911,8 +911,8 @@ admin.order.mail_confirm_title: 下の内容でメールを送信してもよろ
 admin.order.mail_send: 送信
 admin.order.mail_send_complete: メールを送信しました。
 admin.order.shipping_info: 出荷情報
-admin.order.delivery_date: お届け日
-admin.order.delivery_time: お届け時間
+admin.order.delivery_date: 受け取り日
+admin.order.delivery_time: 受け取り時間
 admin.order.delivery_provider: 配送方法
 admin.order.to_shipped: 出荷済にする
 admin.order.send_mail: メールする
@@ -940,7 +940,7 @@ admin.order.csv_shipping_date_description: 出荷日を「YYYY-MM-DD」の形式
 admin.order.order_csv: 受注CSV
 admin.order.shipping_csv: 出荷CSV
 admin.order.shipping_status: 出荷状況
-admin.order.delivery: お届け先
+admin.order.delivery: 受け取り先
 admin.order.not_payment: 未入金
 admin.order.unshipped: 未出荷
 admin.order.delete__confirm_title: 注文情報を削除します
@@ -951,7 +951,7 @@ admin.order.non_member: 非会員
 admin.order.search_from_customer: 会員から検索・入力
 admin.order.search_customer_title: 会員を検索
 admin.order.product_info: 商品情報
-admin.order.edit_multiple_shipping: お届け先を編集
+admin.order.edit_multiple_shipping: 受け取り先を編集
 admin.order.edit_multiple_shipping_description: 複数配送を指定している場合は、こちらのボタンからそれぞれの配送設定の編集ができます
 admin.order.product_item_not_found: 商品が追加されていません
 admin.order.delivery_note_create_date: 発行日
@@ -991,26 +991,26 @@ admin.order.shipping_csv.shipping_date_description: '出荷日を「YYYY-MM-DD�
 admin.customer.customer_management: 会員管理
 admin.customer.customer_list: 会員一覧
 admin.customer.customer_registration: 会員登録
-admin.customer.customer_address_registration: お届け先登録
+admin.customer.customer_address_registration: 受け取り先登録
 
 # ラベル/メッセージ
 admin.customer.customer_id: 会員ID
 admin.customer.customer_info: 会員情報
 admin.customer.purchase_history: 注文履歴
 admin.customer.purchase_history__not_found: 注文履歴がありません
-admin.customer.customer_address: お届け先住所
-admin.customer.customer_address__not_found: お届け先住所がありません
-admin.customer.customer_address__add: お届け先住所を追加
-admin.customer.customer_address_count_is_over: お届け先登録の上限の%eccube_deliv_addr_max%件に達しています。お届け先を入力したい場合は、削除か変更を行ってください。
-admin.customer.customer_address_id: お届け先ID
-admin.customer.customer_address_info: お届け先情報
+admin.customer.customer_address: 受け取り先住所
+admin.customer.customer_address__not_found: 受け取り先住所がありません
+admin.customer.customer_address__add: 受け取り先住所を追加
+admin.customer.customer_address_count_is_over: 受け取り先登録の上限の%eccube_deliv_addr_max%件に達しています。受け取り先を入力したい場合は、削除か変更を行ってください。
+admin.customer.customer_address_id: 受け取り先ID
+admin.customer.customer_address_info: 受け取り先情報
 admin.customer.multi_search_label: 会員ID・メールアドレス・お名前
 admin.customer.customer_status: 会員種別
 admin.customer.birth_month: 誕生月
 admin.customer.resend: 仮会員メール再送
 admin.customer.resend_confirm_title: 仮会員メールを再送します。
 admin.customer.resend_confirm_message: 仮登録メールを再送してもよろしいですか？
-admin.customer.no_customer_address: この会員のお届け先がありません
+admin.customer.no_customer_address: この会員の受け取り先がありません
 admin.customer.no_purchase_history: この会員の購入履歴がありません
 
 #------------------------------------------------------------------------------------
@@ -1211,7 +1211,7 @@ admin.setting.shop.delivery.delivery_sevice_name: 配送方法名称
 admin.setting.shop.delivery.tracking_number_url: お問い合わせ番号URL
 admin.setting.shop.delivery.sale_type: 販売種別
 admin.setting.shop.delivery.payment_method: 取り扱う支払方法
-admin.setting.shop.delivery.delivery_time_setting: お届け時間設定
+admin.setting.shop.delivery.delivery_time_setting: 受け取り時間設定
 admin.setting.shop.delivery.delivery_fee_by_pref: 都道府県別送料設定
 admin.setting.shop.delivery.apply_to_pref__title: 全国一律に設定
 admin.setting.shop.delivery.apply_to_pref__button: 各都道府県に適用
@@ -1613,7 +1613,7 @@ tooltip.order.order_info: 受注（注文）の基本情報です。
 tooltip.order.order_no: 注文時に自動で採番される管理番号です。
 tooltip.order.order_status: 新規受注登録以外は受注の対応状況を変更できます。1受注で出荷先が複数ある場合は、全て出荷されると対応状況が「出荷済」となります。
 tooltip.order.customer_id: 自動的に採番される会員のIDです。
-tooltip.order.shipping_info: 出荷先情報を表示します。出荷先の追加も可能です。1受注で複数の出荷先がある場合は「お届け先を編集」から出荷先詳細情報が確認できます。
+tooltip.order.shipping_info: 出荷先情報を表示します。出荷先の追加も可能です。1受注で複数の出荷先がある場合は「受け取り先を編集」から出荷先詳細情報が確認できます。
 tooltip.order.shipping_info.tracking_number: お問い合せ番号（出荷伝票番号）がある場合、こちらから入力できます。受注一覧からまとめて入力することも可能です。
 tooltip.order.shipping_info.delivery_provider: 配達業者、配達方法を変更できます。変更後、送料が変わる可能性がありますので、ご注意ください。
 tooltip.order.shipping_info.shop_memo: 出荷担当者、及び配送業者用のメモを保存しておけます。出荷用CSV等で確認が可能です。
@@ -1627,7 +1627,7 @@ tooltip.shipping.csv_upload: 所定の型のCSVデータを用いて出荷情報
 tooltip.shipping.csv_format: 雛形ファイルをダウンロードして編集すれば、簡単に所定の型のCSVデータを作成できます。
 tooltip.customer.multi_search_label: 情報を入力して一覧の絞り込み検索ができます。より詳細な条件を指定するには［詳細検索］を開いてください。
 tooltip.customer.customer_id: 自動的に採番される会員のIDです。
-tooltip.customer.customer_address: この会員が登録しているお届け先です。この画面から追加することもできます。
+tooltip.customer.customer_address: この会員が登録している受け取り先です。この画面から追加することもできます。
 tooltip.customer.purchase_history: この会員が注文をした履歴が表示されます。
 tooltip.customer.shop_memo: 店舗用のメモ欄です。フロント側には表示されません。
 tooltip.content.news.url: この新着情報の詳細な内容を記したウェブページある場合、URLを入力します。外部サイトのURLなどを利用することもできます。
