@@ -32,6 +32,7 @@ file that was distributed with this source code.
 					item_count = document.getElementById(item_cnt_id).value;
 				}
 				
+				/** ToDo 20210922 店頭受取orお取り寄せの判断がカテゴリですべき不明のためいったんコメント
 				//「店頭受付」カテゴリを持たない商品があるか
 				for (let i = 0; i < item_count; i++) {
 					var kagosyouhin_product = 'kagosyouhin_product_' + i;
@@ -54,6 +55,7 @@ file that was distributed with this source code.
 						}
 					}
 				}
+				+/
 	            
 	            //「店頭受付」カテゴリを持たない商品があればエラー表示
 	            if(judge == false){
@@ -79,6 +81,7 @@ file that was distributed with this source code.
 					item_count = document.getElementById(item_cnt_id).value;
 				}
 				
+				/** ToDo 20210922 店頭受取orお取り寄せの判断がカテゴリですべき不明のためいったんコメント
 				//「お取り寄せ」カテゴリを持たない商品があるか
 				for (let i = 0; i < item_count; i++) {
 					var kagosyouhin_product = 'kagosyouhin_product_' + i;
@@ -101,6 +104,7 @@ file that was distributed with this source code.
 						}
 					}
 				}
+				*/
 	            
 	            //「お取り寄せ」カテゴリを持たない商品があればエラー表示
 	            if(judge == false){
