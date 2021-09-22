@@ -12,6 +12,54 @@ file that was distributed with this source code.
 
 {% set body_class = 'cart_page' %}
 
+{% block javascript %}
+	<script>
+		$(function() {
+			$('.ec-modal-overlay, .ec-modal .ec-inlineBtn--cancel').on('click', function() {
+	            $('.ec-modal').hide();
+	            //オプション選択用ポップアップも閉じる
+	            $('.ec-option-modal').hide();
+	        });
+	        
+	        $('.sentaku_tentou').on('click', function() {
+	            alert('sentaku_tentou');
+	            //モーダルを閉じる
+	            $('.ec-option-modal').hide();
+	        });
+	        
+	        $('.sentaku_otoriyose').on('click', function() {
+	            alert('sentaku_otoriyose');
+	            //モーダルを閉じる
+	            $('.ec-option-modal').hide();
+	        });
+	        
+        });
+	</script>
+	
+	<script>
+        // 受け取り方法選択チェック
+        function checkUketoriType() {
+        	//受け取り方法選択モーダル表示
+        	event.preventDefault();
+            //オプション選択用ポップアップ表示
+            $('.ec-option-modal').show();
+        	
+        	//異なるタイプが入っていればアラートあり
+        	
+        	//同じタイプのみ「店頭受取」「お取り寄せ」入っていればアラートなし
+        	return true;
+        }
+        
+        function checkTypeRegi() {
+        	//受け取り方法選択チェック
+            if(checkUketoriType() == true){
+            	//レジに進むボタンを押すr
+            	document.getElementById("go-regi").click();
+             }
+        }
+    </script>
+{% endblock %}
+
 {% block main %}
 
     <div class="ec-role">
@@ -102,6 +150,9 @@ file that was distributed with this source code.
 
             <form name="form" id="form_cart" class="ec-cartRole" method="post" action="{{ url('cart') }}">
 
+                <!-- 商品数カウント -->
+                {% set item_cnt = 0 %}
+                
                 {% for CartIndex,Cart in Carts %}
                     {% set cartKey = Cart.cart_key %}
                     {% for error in app.session.flashbag.get('eccube.front.cart.' ~ cartKey ~ '.request.error') %}
@@ -122,6 +173,9 @@ file that was distributed with this source code.
                                 <li class="ec-cartHeader__label">{{ '商品内容'|trans }}</li>
                                 <li class="ec-cartHeader__label">{{ '数量'|trans }}</li>
                                 <li class="ec-cartHeader__label">{{ '小計'|trans }}</li>
+                                
+                                <li class="ec-cartHeader__label">{{ 'test'|trans }}</li>
+                                
                             </ol>
                             {% for CartItem in Cart.CartItems %}
                                 {% set ProductClass = CartItem.ProductClass %}
@@ -141,7 +195,6 @@ file that was distributed with this source code.
                                 {% set PrintnameNoshi = CartItem.printname_noshi %}
                                 {% set OptionDetail   = CartItem.option_detail %}
 
-                                
                                 {% set Product = ProductClass.Product %}
                                 <ul class="ec-cartRow">
                                     <li class="ec-cartRow__delColumn">
@@ -155,7 +208,7 @@ file that was distributed with this source code.
                                                 <img src="{{ asset(Product.MainListImage|no_image_product, 'save_image') }}" alt="{{ Product.name }}"/>
                                             </a>
                                         </div>
-                                        <div class="ec-cartRow__summary" style="width:75%;">
+                                        <div class="ec-cartRow__summary" style="width:75%;" id="kagosyouhin_product_{{ item_cnt }}">
                                             <div class="ec-cartRow__name">
                                                 <a target="_blank" href="{{ url('product_detail', {id : Product.id} ) }}">{{ Product.name }}</a>
                                                 {% if ProductClass.ClassCategory1 and ProductClass.ClassCategory1.id %}
@@ -234,6 +287,20 @@ file that was distributed with this source code.
                                     <li class="ec-cartRow__subtotalColumn">
                                         <div class="ec-cartRow__sutbtotal">{{ CartItem.total_price|price }}</div>
                                     </li>
+                                    
+                                    <!-- test -->
+									<!-- カテゴリ取得し保持する（店頭受取、お取り寄せ） -->
+									{% set UketoriType   = '' %}
+									{% for ProductCategory in Product.ProductCategories %}
+										{% if  '店頭受取' in ProductCategory.Category.name %}
+											{% set UketoriType   = UketoriType ~ '_tento' %}
+									    {% elseif '取り寄せ' in ProductCategory.Category.name %}
+									    	{% set UketoriType   = UketoriType ~ '_toriyose' %}
+									    {% endif %}
+									{% endfor %}
+									<input type="hidden" id="kagosyouhin_type_{{ item_cnt }}" name="postId" value="{{ UketoriType }}">
+									{% set item_cnt = item_cnt+1 %}
+									<!-- .カテゴリ取得し保持する（店頭受取、お取り寄せ） -->
                                 </ul>
                             {% endfor %}
                         </div>
@@ -269,7 +336,10 @@ file that was distributed with this source code.
                         <!-- レジ袋購入リンク -->
                         <a class="ec-blockBtn--cancel" style="margin-bottom:10px; background:rgba(226, 161, 10, 0.2); border:none; color:#000;"  href="{{ url('product_list') }}?category_id=10">{{ 'レジ袋の購入はこちら'|trans }}</a>
                         
-                        <a class="ec-blockBtn--action" href="{{ path('cart_buystep', {'cart_key':cartKey}) }}">{{ 'レジに進む'|trans }}</a>
+                        <a class="ec-blockBtn--action select-options" id="to-regi" onclick="checkTypeRegi()">{{ 'レジに進む'|trans }}</a>
+                        <!-- レジに進むボタン(実施)-->
+                        <a class="ec-blockBtn--action" style="display:none;" id="go-regi" href="{{ path('cart_buystep', {'cart_key':cartKey}) }}">{{ 'レジに進む実施'|trans }}</a>
+                        
                         {% if loop.last %}
                             <a class="ec-blockBtn--cancel" href="{{ path('homepage') }}">{{ 'お買い物を続ける'|trans }}</a>
                         {% endif %}
@@ -301,6 +371,31 @@ file that was distributed with this source code.
                 </div>
             </div>
         {% endif %}
+        
+        <!-- 受け取り方法選択modal -->
+        <div class="ec-option-modal" style="display: none;position: fixed;top: 0;left: 0;z-index: 99999;width: 100%;height: 100%;">
+            <div class="ec-option-modal-overlay" style="display: flex;justify-content: center;align-items: center;background-color: rgba(0, 0, 0, 0.3);width: 100%;height: 100%;">
+                <div class="ec-option-modal-wrap" style="position: relative;border-radius: 2px;border: 1px solid #333;background-color: #fff;padding: 40px 10px;margin: 20px auto;">
+                    
+                    <div class="ec-productRole__btn" style="width:100%; text-align:center; font-size:20px;">
+                    	<span><b>受取方法を選択ください</b></span>
+                    </div>
+                    
+                    <button id="sentaku_tentou" class="sentaku_tentou ec-productRole__btn" style="color:#fff; background-color:#e2041b; float:left; font-size:15px; width:200px; text-align:center; margin:20px;">
+                        {{ '店頭受取'|trans }}
+                    </button>
+                    
+                    <button id="sentaku_otoriyose" class="sentaku_otoriyose ec-productRole__btn" style="color:#fff; background-color:#ffa500; float:left; font-size:15px; width:200px; text-align:center; margin:20px;">
+                        {{ 'お取り寄せ'|trans }}
+                    </button>
+                    
+                    <div style="clear:both;"></div>
+
+                </div>
+            </div>
+        </div>
+        <!-- .受け取り方法選択modal -->
+        
     </div>
 
 {% endblock %}
