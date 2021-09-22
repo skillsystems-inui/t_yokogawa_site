@@ -22,40 +22,108 @@ file that was distributed with this source code.
 	        });
 	        
 	        $('.sentaku_tentou').on('click', function() {
-	            alert('sentaku_tentou');
-	            //モーダルを閉じる
-	            $('.ec-option-modal').hide();
+	            //--- 「店頭受付」選択時 ---
+	            var judge = true;
+	            
+	            var item_count = 0;
+	            var item_cnt_id = 'item_cnt_id';
+				if(document.getElementById(item_cnt_id) != null){
+					//件数取得
+					item_count = document.getElementById(item_cnt_id).value;
+				}
+				
+				//「店頭受付」カテゴリを持たない商品があるか
+				for (let i = 0; i < item_count; i++) {
+					var kagosyouhin_product = 'kagosyouhin_product_' + i;
+					//文字色初期値は黒
+					if(document.getElementById(kagosyouhin_product) != null){
+						document.getElementById(kagosyouhin_product).style.color="#000";
+					}
+					
+					var kagosyouhin_type = 'kagosyouhin_type_' + i;
+					if(document.getElementById(kagosyouhin_type) != null){
+						var tar_cat = document.getElementById(kagosyouhin_type).value;
+						if ( tar_cat.indexOf('_tento') == -1) {
+							//含まない場合
+							// エラー判定
+							judge = false;
+							// 該当商品の文字色を赤くする
+							if(document.getElementById(kagosyouhin_product) != null){
+								document.getElementById(kagosyouhin_product).style.color="red";
+							}
+						}
+					}
+				}
+	            
+	            //「店頭受付」カテゴリを持たない商品があればエラー表示
+	            if(judge == false){
+	            	alert('カートに店頭受付できない商品が含まれています。');
+	            	//モーダルを閉じる
+	            	$('.ec-option-modal').hide();
+	            }else{
+	            	//モーダルを閉じる
+	            	$('.ec-option-modal').hide();
+	            	//レジに進むボタンを押す
+	            	document.getElementById("go-regi").click();
+	            }
 	        });
 	        
 	        $('.sentaku_otoriyose').on('click', function() {
-	            alert('sentaku_otoriyose');
-	            //モーダルを閉じる
-	            $('.ec-option-modal').hide();
+	            //--- 「お取り寄せ」選択時 ---
+	            var judge = true;
+	            
+	            var item_count = 0;
+	            var item_cnt_id = 'item_cnt_id';
+				if(document.getElementById(item_cnt_id) != null){
+					//件数取得
+					item_count = document.getElementById(item_cnt_id).value;
+				}
+				
+				//「お取り寄せ」カテゴリを持たない商品があるか
+				for (let i = 0; i < item_count; i++) {
+					var kagosyouhin_product = 'kagosyouhin_product_' + i;
+					//文字色初期値は黒
+					if(document.getElementById(kagosyouhin_product) != null){
+						document.getElementById(kagosyouhin_product).style.color="#000";
+					}
+					
+					var kagosyouhin_type = 'kagosyouhin_type_' + i;
+					if(document.getElementById(kagosyouhin_type) != null){
+						var tar_cat = document.getElementById(kagosyouhin_type).value;
+						if ( tar_cat.indexOf('_toriyose') == -1) {
+							//含まない場合
+							// エラー判定
+							judge = false;
+							// 該当商品の文字色を赤くする
+							if(document.getElementById(kagosyouhin_product) != null){
+								document.getElementById(kagosyouhin_product).style.color="red";
+							}
+						}
+					}
+				}
+	            
+	            //「お取り寄せ」カテゴリを持たない商品があればエラー表示
+	            if(judge == false){
+	            	alert('カートにお取り寄せできない商品が含まれています。');
+	            	//モーダルを閉じる
+	            	$('.ec-option-modal').hide();
+	            }else{
+	            	//モーダルを閉じる
+	            	$('.ec-option-modal').hide();
+	            	//レジに進むボタンを押す
+	            	document.getElementById("go-regi").click();
+	            }
 	        });
 	        
         });
 	</script>
 	
 	<script>
-        // 受け取り方法選択チェック
-        function checkUketoriType() {
+        function checkTypeRegi() {
         	//受け取り方法選択モーダル表示
         	event.preventDefault();
             //オプション選択用ポップアップ表示
             $('.ec-option-modal').show();
-        	
-        	//異なるタイプが入っていればアラートあり
-        	
-        	//同じタイプのみ「店頭受取」「お取り寄せ」入っていればアラートなし
-        	return true;
-        }
-        
-        function checkTypeRegi() {
-        	//受け取り方法選択チェック
-            if(checkUketoriType() == true){
-            	//レジに進むボタンを押すr
-            	document.getElementById("go-regi").click();
-             }
         }
     </script>
 {% endblock %}
@@ -173,9 +241,6 @@ file that was distributed with this source code.
                                 <li class="ec-cartHeader__label">{{ '商品内容'|trans }}</li>
                                 <li class="ec-cartHeader__label">{{ '数量'|trans }}</li>
                                 <li class="ec-cartHeader__label">{{ '小計'|trans }}</li>
-                                
-                                <li class="ec-cartHeader__label">{{ 'test'|trans }}</li>
-                                
                             </ol>
                             {% for CartItem in Cart.CartItems %}
                                 {% set ProductClass = CartItem.ProductClass %}
@@ -208,7 +273,7 @@ file that was distributed with this source code.
                                                 <img src="{{ asset(Product.MainListImage|no_image_product, 'save_image') }}" alt="{{ Product.name }}"/>
                                             </a>
                                         </div>
-                                        <div class="ec-cartRow__summary" style="width:75%;" id="kagosyouhin_product_{{ item_cnt }}">
+                                        <div class="ec-cartRow__summary" style="width:75%; color:#000;" id="kagosyouhin_product_{{ item_cnt }}">
                                             <div class="ec-cartRow__name">
                                                 <a target="_blank" href="{{ url('product_detail', {id : Product.id} ) }}">{{ Product.name }}</a>
                                                 {% if ProductClass.ClassCategory1 and ProductClass.ClassCategory1.id %}
@@ -288,7 +353,6 @@ file that was distributed with this source code.
                                         <div class="ec-cartRow__sutbtotal">{{ CartItem.total_price|price }}</div>
                                     </li>
                                     
-                                    <!-- test -->
 									<!-- カテゴリ取得し保持する（店頭受取、お取り寄せ） -->
 									{% set UketoriType   = '' %}
 									{% for ProductCategory in Product.ProductCategories %}
@@ -298,13 +362,15 @@ file that was distributed with this source code.
 									    	{% set UketoriType   = UketoriType ~ '_toriyose' %}
 									    {% endif %}
 									{% endfor %}
-									<input type="hidden" id="kagosyouhin_type_{{ item_cnt }}" name="postId" value="{{ UketoriType }}">
+									<input type="hidden" id="kagosyouhin_type_{{ item_cnt }}" name="kagosyouhin_type_{{ item_cnt }}" value="{{ UketoriType }}">
 									{% set item_cnt = item_cnt+1 %}
 									<!-- .カテゴリ取得し保持する（店頭受取、お取り寄せ） -->
                                 </ul>
                             {% endfor %}
                         </div>
                     </div>
+                    <input type="hidden" id="item_cnt_id" name="item_cnt_id" value="{{ item_cnt }}">
+									
                     <div class="ec-cartRole__progress">
                         {% if BaseInfo.delivery_free_amount and BaseInfo.delivery_free_quantity %}
                             <br/>
