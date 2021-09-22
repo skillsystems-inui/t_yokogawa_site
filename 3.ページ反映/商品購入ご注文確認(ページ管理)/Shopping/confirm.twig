@@ -138,6 +138,10 @@ file that was distributed with this source code.
                                             <br>ÇÃÇµÇÃñºì¸ÇÍÅF{{ orderItem.optionPrintnameNoshi }}
                                         {% endif %}
                                         
+                                        {% if orderItem.optionDetail != "" %}
+                                            <br>{{ orderItem.optionDetail|nl2br }}
+                                        {% endif %}
+                                        
                                         <p>{{ orderItem.priceIncTax|price }} Å~ {{ orderItem.quantity|number_format }}<span>{{ 'è¨åvÅF'|trans }}{{ orderItem.totalPrice|price }}</span></p>
                                     </div>
                                 </div>
