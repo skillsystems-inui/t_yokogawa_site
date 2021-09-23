@@ -92,7 +92,31 @@ file that was distributed with this source code.
                 $('.mod-button').hide();
             });
             {% endif %}
+            
+            //受取店舗選択
+            $('.sentaku_tentou').on('click', function() {
+	            //モーダルを閉じる
+            	$('.ec-option-modal').hide();
+            	//確認するボタンを押す
+            	document.getElementById("go-regi").click();
+	        });
+	        
+	        $('.sentaku_otoriyose').on('click', function() {
+	            //モーダルを閉じる
+            	$('.ec-option-modal').hide();
+            	//確認するボタンを押す
+            	document.getElementById("go-regi").click();
+	        });
+	        
         });
+    </script>
+    <script>
+        function checkTypeRegi() {
+        	//受け取り店舗選択モーダル表示
+        	event.preventDefault();
+            //オプション選択用ポップアップ表示
+            $('.ec-option-modal').show();
+        }
     </script>
 {% endblock javascript %}
 
@@ -347,6 +371,10 @@ file that was distributed with this source code.
                                                     <br>のしの名入れ：{{ orderItem.optionPrintnameNoshi }}
                                                 {% endif %}
                                                 
+                                                {% if orderItem.optionDetail != "" %}
+                                                    <br>{{ orderItem.optionDetail|nl2br }}
+                                                {% endif %}
+                                                
                                                 <p>{{ orderItem.priceIncTax|price }} × {{ orderItem.quantity|number_format }}<span>{{ '小計：'|trans }}{{ orderItem.totalPrice|price }}</span></p>
                                             </div>
                                         </div>
@@ -471,11 +499,44 @@ file that was distributed with this source code.
                     </div>
                     {% endif %}
                     <div class="ec-totalBox__btn">
-                        <button type="submit" class="ec-blockBtn--action">{{ '確認する'|trans }}</button>
+                    	<!-- 確認するボタン(見た目)-->
+                    	<button class="ec-blockBtn--action" id="to-regi" onclick="checkTypeRegi()">{{ '確認する'|trans }}</button>
+                        <!-- 確認するボタン(実施)-->
+                        <button type="submit" class="ec-blockBtn--action" style="display:none;" id="go-regi">{{ '確認する'|trans }}</button>
+                        
                         <a href="{{ url("cart") }}" class="ec-blockBtn--cancel">{{ 'カートに戻る'|trans }}</a>
                     </div>
                 </div>
             </div>
         </div>
+        
+        
+        
+        
+        <!-- 受け取り店舗選択modal -->
+        <div class="ec-option-modal" style="display: none;position: fixed;top: 0;left: 0;z-index: 99999;width: 100%;height: 100%;">
+            <div class="ec-option-modal-overlay" style="display: flex;justify-content: center;align-items: center;background-color: rgba(0, 0, 0, 0.3);width: 100%;height: 100%;">
+                <div class="ec-option-modal-wrap" style="position: relative;border-radius: 2px;border: 1px solid #333;background-color: #fff;padding: 40px 10px;margin: 20px auto;">
+                    
+                    <div class="ec-productRole__btn" style="width:100%; text-align:center; font-size:20px;">
+                    	<span><b>受取方法を選択ください</b></span>
+                    </div>
+                    
+                    <button id="sentaku_tentou" class="sentaku_tentou ec-productRole__btn" style="color:#000; background-color:#fff; float:left; font-size:15px; width:200px; text-align:center; margin:20px;">
+                        {{ '和泉中央本店'|trans }}
+                    </button>
+                    
+                    <button id="sentaku_otoriyose" class="sentaku_otoriyose ec-productRole__btn" style="color:#000; background-color:#fff; float:left; font-size:15px; width:200px; text-align:center; margin:20px;">
+                        {{ '岸和田店'|trans }}
+                    </button>
+                    
+                    <div style="clear:both;"></div>
+
+                </div>
+            </div>
+        </div>
+        <!-- .受け取り店舗選択modal -->
+        
+        
     </form>
 {% endblock %}
