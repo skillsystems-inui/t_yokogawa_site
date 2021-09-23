@@ -321,12 +321,34 @@ class SmartRegiOrderController extends AbstractController
             $Payment = $this->paymentRepository->find($payment_id);
             $Order->setPayment($Payment);
         }
-        //skill custom スマレジで購入したデータは支払方法がnullで送られてくるみたいなので「スマレジ」ではなく「店舗支払い」とする 
+        //skill custom スマレジで購入したデータは支払方法がnullで送られてくるので「スマレジ」ではなく「店舗支払い」とする 
         //$method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"スマレジ";
         $method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"店舗支払い";
         $Order->setPaymentMethod($method);
 
+        log_info(
+            '__testLog',
+            [
+                'transactionHeadDivision' => $arrOrder['transactionHeadDivision'],
+            ]
+        );
+        
+        //[transactionHeadDivision]
+        //スマレジから通常購入：1
+        //スマレジから取り置き：10
+        //
+        //ECCUBE OrderStatus
+        //新規受付  NEW
+        //取り置き  KEEPED
+
         $OrderStatus = $this->orderStatusRepository->find(OrderStatus::DELIVERED);
+        //通常購入の場合
+        /*
+        if($arrOrder['transactionHeadDivision'] == 1){
+        	$OrderStatus = $this->orderStatusRepository->find(OrderStatus::NEW);
+        }
+        */
+        //取り置きの場合
         if($arrOrder['transactionHeadDivision'] == 10){
         	$OrderStatus = $this->orderStatusRepository->find(OrderStatus::KEEPED);
         }
