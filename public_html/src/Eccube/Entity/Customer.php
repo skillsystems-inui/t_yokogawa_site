@@ -250,6 +250,132 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $family_birth01;
 
         /**
+         * @var string
+         *
+         * @ORM\Column(name="family_relation02", type="string", length=50)
+         */
+        private $family_relation02;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="family_birth02", type="datetimetz", nullable=true)
+         */
+        private $family_birth02;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_relation03", type="string", length=50)
+         */
+        private $family_relation03;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="family_birth03", type="datetimetz", nullable=true)
+         */
+        private $family_birth03;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_relation04", type="string", length=50)
+         */
+        private $family_relation04;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="family_birth04", type="datetimetz", nullable=true)
+         */
+        private $family_birth04;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_relation05", type="string", length=50)
+         */
+        private $family_relation05;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="family_birth05", type="datetimetz", nullable=true)
+         */
+        private $family_birth05;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_relation06", type="string", length=50)
+         */
+        private $family_relation06;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="family_birth06", type="datetimetz", nullable=true)
+         */
+        private $family_birth06;
+
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_relation07", type="string", length=50)
+         */
+        private $family_relation07;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="family_birth07", type="datetimetz", nullable=true)
+         */
+        private $family_birth07;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_relation08", type="string", length=50)
+         */
+        private $family_relation08;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="family_birth08", type="datetimetz", nullable=true)
+         */
+        private $family_birth08;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_relation09", type="string", length=50)
+         */
+        private $family_relation09;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="family_birth09", type="datetimetz", nullable=true)
+         */
+        private $family_birth09;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_relation10", type="string", length=50)
+         */
+        private $family_relation10;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="family_birth10", type="datetimetz", nullable=true)
+         */
+        private $family_birth10;
+        
+        /**
          * @var \Doctrine\Common\Collections\Collection
          *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\CustomerFavoriteProduct", mappedBy="Customer", cascade={"remove"})
@@ -1405,6 +1531,453 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         public function getFamilyBirth01()
         {
             return $this->family_birth01;
+        }
+        
+        
+        /**
+         * Set family_relation02.
+         *
+         * @param string $family_relation02
+         *
+         * @return Customer
+         */
+        public function setFamilyRelation02($family_relation02)
+        {
+            $this->family_relation02 = $family_relation02;
+
+            return $this;
+        }
+
+        /**
+         * Get family_relation02.
+         *
+         * @return string
+         */
+        public function getFamilyRelation02()
+        {
+            return $this->family_relation02;
+        }
+        
+        
+        /**
+         * Set family_birth02.
+         *
+         * @param string $family_birth02
+         *
+         * @return Customer
+         */
+        public function setFamilyBirth02($family_birth02)
+        {
+            $this->family_birth02 = $family_birth02;
+
+            return $this;
+        }
+
+        /**
+         * Get family_birth02.
+         *
+         * @return string
+         */
+        public function getFamilyBirth02()
+        {
+            return $this->family_birth02;
+        }
+        
+        
+        /**
+         * Set family_relation03.
+         *
+         * @param string $family_relation03
+         *
+         * @return Customer
+         */
+        public function setFamilyRelation03($family_relation03)
+        {
+            $this->family_relation03 = $family_relation03;
+
+            return $this;
+        }
+
+        /**
+         * Get family_relation03.
+         *
+         * @return string
+         */
+        public function getFamilyRelation03()
+        {
+            return $this->family_relation03;
+        }
+        
+        /**
+         * Set family_birth03.
+         *
+         * @param string $family_birth03
+         *
+         * @return Customer
+         */
+        public function setFamilyBirth03($family_birth03)
+        {
+            $this->family_birth03 = $family_birth03;
+
+            return $this;
+        }
+
+        /**
+         * Get family_birth03.
+         *
+         * @return string
+         */
+        public function getFamilyBirth03()
+        {
+            return $this->family_birth03;
+        }
+        
+        
+        /**
+         * Set family_relation04.
+         *
+         * @param string $family_relation04
+         *
+         * @return Customer
+         */
+        public function setFamilyRelation04($family_relation04)
+        {
+            $this->family_relation04 = $family_relation04;
+
+            return $this;
+        }
+
+        /**
+         * Get family_relation04.
+         *
+         * @return string
+         */
+        public function getFamilyRelation04()
+        {
+            return $this->family_relation04;
+        }
+        
+        
+        /**
+         * Set family_birth04.
+         *
+         * @param string $family_birth04
+         *
+         * @return Customer
+         */
+        public function setFamilyBirth04($family_birth04)
+        {
+            $this->family_birth04 = $family_birth04;
+
+            return $this;
+        }
+
+        /**
+         * Get family_birth04.
+         *
+         * @return string
+         */
+        public function getFamilyBirth04()
+        {
+            return $this->family_birth04;
+        }
+        
+        
+        /**
+         * Set family_relation05.
+         *
+         * @param string $family_relation05
+         *
+         * @return Customer
+         */
+        public function setFamilyRelation05($family_relation05)
+        {
+            $this->family_relation05 = $family_relation05;
+
+            return $this;
+        }
+
+        /**
+         * Get family_relation05.
+         *
+         * @return string
+         */
+        public function getFamilyRelation05()
+        {
+            return $this->family_relation05;
+        }
+        
+        
+        /**
+         * Set family_birth05.
+         *
+         * @param string $family_birth05
+         *
+         * @return Customer
+         */
+        public function setFamilyBirth05($family_birth05)
+        {
+            $this->family_birth05 = $family_birth05;
+
+            return $this;
+        }
+
+        /**
+         * Get family_birth05.
+         *
+         * @return string
+         */
+        public function getFamilyBirth05()
+        {
+            return $this->family_birth05;
+        }
+        
+        /**
+         * Set family_relation06.
+         *
+         * @param string $family_relation06
+         *
+         * @return Customer
+         */
+        public function setFamilyRelation06($family_relation06)
+        {
+            $this->family_relation06 = $family_relation06;
+
+            return $this;
+        }
+
+        /**
+         * Get family_relation06.
+         *
+         * @return string
+         */
+        public function getFamilyRelation06()
+        {
+            return $this->family_relation06;
+        }
+        
+        
+        /**
+         * Set family_birth06.
+         *
+         * @param string $family_birth06
+         *
+         * @return Customer
+         */
+        public function setFamilyBirth06($family_birth06)
+        {
+            $this->family_birth06 = $family_birth06;
+
+            return $this;
+        }
+
+        /**
+         * Get family_birth06.
+         *
+         * @return string
+         */
+        public function getFamilyBirth06()
+        {
+            return $this->family_birth06;
+        }
+        
+        
+        /**
+         * Set family_relation07.
+         *
+         * @param string $family_relation07
+         *
+         * @return Customer
+         */
+        public function setFamilyRelation07($family_relation07)
+        {
+            $this->family_relation07 = $family_relation07;
+
+            return $this;
+        }
+
+        /**
+         * Get family_relation07.
+         *
+         * @return string
+         */
+        public function getFamilyRelation07()
+        {
+            return $this->family_relation07;
+        }
+        
+        
+        /**
+         * Set family_birth07.
+         *
+         * @param string $family_birth07
+         *
+         * @return Customer
+         */
+        public function setFamilyBirth07($family_birth07)
+        {
+            $this->family_birth07 = $family_birth07;
+
+            return $this;
+        }
+
+        /**
+         * Get family_birth07.
+         *
+         * @return string
+         */
+        public function getFamilyBirth07()
+        {
+            return $this->family_birth07;
+        }
+        
+        
+        /**
+         * Set family_relation08.
+         *
+         * @param string $family_relation08
+         *
+         * @return Customer
+         */
+        public function setFamilyRelation08($family_relation08)
+        {
+            $this->family_relation08 = $family_relation08;
+
+            return $this;
+        }
+
+        /**
+         * Get family_relation08.
+         *
+         * @return string
+         */
+        public function getFamilyRelation08()
+        {
+            return $this->family_relation08;
+        }
+        
+        /**
+         * Set family_birth08.
+         *
+         * @param string $family_birth08
+         *
+         * @return Customer
+         */
+        public function setFamilyBirth08($family_birth08)
+        {
+            $this->family_birth08 = $family_birth08;
+
+            return $this;
+        }
+
+        /**
+         * Get family_birth08.
+         *
+         * @return string
+         */
+        public function getFamilyBirth08()
+        {
+            return $this->family_birth08;
+        }
+        
+        
+        /**
+         * Set family_relation09.
+         *
+         * @param string $family_relation09
+         *
+         * @return Customer
+         */
+        public function setFamilyRelation09($family_relation09)
+        {
+            $this->family_relation09 = $family_relation09;
+
+            return $this;
+        }
+
+        /**
+         * Get family_relation09.
+         *
+         * @return string
+         */
+        public function getFamilyRelation09()
+        {
+            return $this->family_relation09;
+        }
+        
+        
+        /**
+         * Set family_birth09.
+         *
+         * @param string $family_birth09
+         *
+         * @return Customer
+         */
+        public function setFamilyBirth09($family_birth09)
+        {
+            $this->family_birth09 = $family_birth09;
+
+            return $this;
+        }
+
+        /**
+         * Get family_birth09.
+         *
+         * @return string
+         */
+        public function getFamilyBirth09()
+        {
+            return $this->family_birth09;
+        }
+        
+        
+        /**
+         * Set family_relation10.
+         *
+         * @param string $family_relation10
+         *
+         * @return Customer
+         */
+        public function setFamilyRelation10($family_relation10)
+        {
+            $this->family_relation10 = $family_relation10;
+
+            return $this;
+        }
+
+        /**
+         * Get family_relation10.
+         *
+         * @return string
+         */
+        public function getFamilyRelation10()
+        {
+            return $this->family_relation10;
+        }
+        
+        
+        /**
+         * Set family_birth10.
+         *
+         * @param string $family_birth10
+         *
+         * @return Customer
+         */
+        public function setFamilyBirth10($family_birth10)
+        {
+            $this->family_birth10 = $family_birth10;
+
+            return $this;
+        }
+
+        /**
+         * Get family_birth10.
+         *
+         * @return string
+         */
+        public function getFamilyBirth10()
+        {
+            return $this->family_birth10;
         }
         
     }

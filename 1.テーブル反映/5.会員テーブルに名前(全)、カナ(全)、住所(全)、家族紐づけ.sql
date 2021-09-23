@@ -83,3 +83,24 @@ INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`,
 ALTER TABLE `dtb_customer` ADD `family_relation01` varchar(50) DEFAULT NULL;
 -----â∆ë∞èÓïÒ01Å@íaê∂ì˙
 ALTER TABLE `dtb_customer` ADD `family_birth01` datetime DEFAULT NULL;
+
+
+-----â∆ë∞èÓïÒ02-10Å@ë±ïøÅ@íaê∂ì˙
+ALTER TABLE `dtb_customer` ADD `family_relation02` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_birth02` datetime DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_relation03` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_birth03` datetime DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_relation04` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_birth04` datetime DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_relation05` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_birth05` datetime DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_relation06` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_birth06` datetime DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_relation07` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_birth07` datetime DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_relation08` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_birth08` datetime DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_relation09` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_birth09` datetime DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_relation10` varchar(50) DEFAULT NULL;	
+ALTER TABLE `dtb_customer` ADD `family_birth10` datetime DEFAULT NULL;

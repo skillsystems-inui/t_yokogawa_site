@@ -224,7 +224,7 @@ file that was distributed with this source code.
                                 </div>
                                 
                                 <!-- 家族代表 -->
-                                <div class="row mb-2">
+                                <div class="row mb-2" style="display:none;">
                                     <div class="col-3">
                                         <span>{{ 'admin.common.familymain'|trans }}</span>
                                         <span class="badge badge-primary ml-1">{{ 'admin.common.required'|trans }}</span>
@@ -238,7 +238,7 @@ file that was distributed with this source code.
                                 
                                 
                                 <!-- 家族代表とする会員選択 -->
-                                <div class="row mb-2">
+                                <div class="row mb-2" style="display:none;">
                                     <div class="col-2">
                                         <span>家族代表会員</span>
                                     </div>
@@ -545,7 +545,8 @@ file that was distributed with this source code.
                         </div>
                         
                         <!--   家族情報   -->
-                        <!-- 家族情報1 続柄 -->
+                        <!-- 家族情報1～10 続柄 -->
+                        <!-- 家族情報1～10 誕生日 -->
                         <div class="row mb-2" style="padding-top:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
                             <div class="col-3">
                                 <span>{{ 'admin.common.family_relation'|trans }}1</span>
@@ -556,7 +557,7 @@ file that was distributed with this source code.
                             </div>
                         </div>
                         
-                        <!-- 家族情報1 誕生日 -->
+                        
                         <div class="row mb-2" style="padding-bottom:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
                             <div class="col-3">
                                 <span>{{ 'admin.common.birth_day'|trans }}1</span>
@@ -566,8 +567,197 @@ file that was distributed with this source code.
                                 {{ form_errors(form.family_birth01) }}
                             </div>
                         </div>
+                        
+                        <div class="row mb-2" style="padding-top:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.family_relation'|trans }}2</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_relation02) }}
+                                {{ form_errors(form.family_relation02) }}
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row mb-2" style="padding-bottom:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.birth_day'|trans }}2</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_birth02) }}
+                                {{ form_errors(form.family_birth02) }}
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-2" style="padding-top:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.family_relation'|trans }}3</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_relation03) }}
+                                {{ form_errors(form.family_relation03) }}
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row mb-2" style="padding-bottom:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.birth_day'|trans }}3</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_birth03) }}
+                                {{ form_errors(form.family_birth03) }}
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-2" style="padding-top:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.family_relation'|trans }}4</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_relation04) }}
+                                {{ form_errors(form.family_relation04) }}
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row mb-2" style="padding-bottom:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.birth_day'|trans }}4</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_birth04) }}
+                                {{ form_errors(form.family_birth04) }}
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-2" style="padding-top:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.family_relation'|trans }}5</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_relation05) }}
+                                {{ form_errors(form.family_relation05) }}
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row mb-2" style="padding-bottom:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.birth_day'|trans }}5</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_birth05) }}
+                                {{ form_errors(form.family_birth05) }}
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-2" style="padding-top:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.family_relation'|trans }}6</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_relation06) }}
+                                {{ form_errors(form.family_relation06) }}
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row mb-2" style="padding-bottom:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.birth_day'|trans }}6</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_birth06) }}
+                                {{ form_errors(form.family_birth06) }}
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-2" style="padding-top:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.family_relation'|trans }}7</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_relation07) }}
+                                {{ form_errors(form.family_relation07) }}
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row mb-2" style="padding-bottom:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.birth_day'|trans }}7</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_birth07) }}
+                                {{ form_errors(form.family_birth07) }}
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-2" style="padding-top:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.family_relation'|trans }}8</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_relation08) }}
+                                {{ form_errors(form.family_relation08) }}
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row mb-2" style="padding-bottom:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.birth_day'|trans }}8</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_birth08) }}
+                                {{ form_errors(form.family_birth08) }}
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-2" style="padding-top:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.family_relation'|trans }}9</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_relation09) }}
+                                {{ form_errors(form.family_relation09) }}
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row mb-2" style="padding-bottom:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.birth_day'|trans }}9</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_birth09) }}
+                                {{ form_errors(form.family_birth09) }}
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-2" style="padding-top:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.family_relation'|trans }}10</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_relation10) }}
+                                {{ form_errors(form.family_relation10) }}
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row mb-2" style="padding-bottom:0.8rem; padding-right:1.25rem; padding-left:1.25rem;">
+                            <div class="col-3">
+                                <span>{{ 'admin.common.birth_day'|trans }}10</span>
+                            </div>
+                            <div class="col">
+                                {{ form_widget(form.family_birth10) }}
+                                {{ form_errors(form.family_birth10) }}
+                            </div>
+                        </div>
+                        
                     </div>
-                    
                     
                     
                     <div class="card rounded border-0 mb-4">
