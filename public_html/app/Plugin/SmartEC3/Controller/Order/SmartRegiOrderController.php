@@ -231,13 +231,39 @@ class SmartRegiOrderController extends AbstractController
             $Order->setName02($Customer->getName02());
             $Order->setKana01($Customer->getKana01());
             $Order->setKana02($Customer->getKana02());
+
+            //電話。住所、メールを登録
+            /*
+            $Order->setPostalCode('5300001');
+            $Order->setPref(27);
+            $Order->setAddr01('大阪府大阪市');
+            $Order->setAddr02('123');
+            $Order->setPhoneNumber('09011112222');
+            $Order->setEmail('test@gmail.com');
+            */
+            $Order->setPostalCode($Customer->getPostalCode());
+            $Order->setPref($Customer->getPref());
+            $Order->setAddr01($Customer->getAddr01());
+            $Order->setAddr02($Customer->getAddr02());
+            $Order->setPhoneNumber($Customer->getPhoneNumber());
+            $Order->setEmail($Customer->getEmail());
+
             
             $Shipping = new Shipping();
             $Shipping->setOrder($Order);
             $Shipping->setName01($Customer->getName01());
             $Shipping->setName02($Customer->getName02());
+            //カナ登録
+            $Shipping->setKana01($Customer->getKana01());
+            $Shipping->setKana02($Customer->getKana02());
+            
             $Shipping->setPref($Customer->getPref());
-
+            
+            $Shipping->setPostalCode('5300001');
+            $Shipping->setPhoneNumber('09011112222');
+            $Shipping->setAddr01('大阪市北区梅田');
+            $Shipping->setAddr02('123');
+            
             $Shipping->setShippingDeliveryDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDeliveryName("スマレジ店内購入");
