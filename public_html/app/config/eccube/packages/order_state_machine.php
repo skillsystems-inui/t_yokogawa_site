@@ -35,6 +35,7 @@ $container->loadFromExtension('framework', [
                 (string) Status::PENDING,
                 (string) Status::PROCESSING,
                 (string) Status::RETURNED,
+                (string) Status::KEEPED,
             ],
             'transitions' => [
                 'pay' => [
@@ -46,7 +47,7 @@ $container->loadFromExtension('framework', [
                     'to' => (string) Status::IN_PROGRESS,
                 ],
                 'cancel' => [
-                    'from' => [(string) Status::NEW, (string) Status::IN_PROGRESS, (string) Status::PAID],
+                    'from' => [(string) Status::NEW, (string) Status::IN_PROGRESS, (string) Status::PAID, (string) Status::KEEPED],
                     'to' => (string) Status::CANCEL,
                 ],
                 'back_to_in_progress' => [
@@ -54,7 +55,7 @@ $container->loadFromExtension('framework', [
                     'to' => (string) Status::IN_PROGRESS,
                 ],
                 'ship' => [
-                    'from' => [(string) Status::NEW, (string) Status::PAID, (string) Status::IN_PROGRESS],
+                    'from' => [(string) Status::NEW, (string) Status::PAID, (string) Status::IN_PROGRESS, (string) Status::KEEPED],
                     'to' => [(string) Status::DELIVERED],
                 ],
                 'return' => [

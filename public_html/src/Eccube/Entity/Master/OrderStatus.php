@@ -43,6 +43,8 @@ class OrderStatus extends \Eccube\Entity\Master\AbstractMasterEntity
     const PROCESSING = 8;
     /** 返品 */
     const RETURNED = 9;
+    /** 取り置き */
+    const KEEPED = 10;
 
     /**
      * 受注一覧画面で, ステータスごとの受注件数を表示するかどうか

@@ -299,6 +299,9 @@ class SmartRegiOrderController extends AbstractController
         $Order->setPaymentMethod($method);
 
         $OrderStatus = $this->orderStatusRepository->find(OrderStatus::DELIVERED);
+        if($arrOrder['transactionHeadDivision'] == 10){
+        	$OrderStatus = $this->orderStatusRepository->find(OrderStatus::KEEPED);
+        }
         $Order->setOrderStatus($OrderStatus);
 
         $Order->setCreateDate(new \DateTime($arrOrder['transactionDateTime']));
