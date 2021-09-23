@@ -295,7 +295,9 @@ class SmartRegiOrderController extends AbstractController
             $Payment = $this->paymentRepository->find($payment_id);
             $Order->setPayment($Payment);
         }
-        $method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"スマレジ";
+        //skill custom スマレジで購入したデータは支払方法がnullで送られてくるみたいなので「スマレジ」ではなく「店舗支払い」とする 
+        //$method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"スマレジ";
+        $method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"店舗支払い";
         $Order->setPaymentMethod($method);
 
         $OrderStatus = $this->orderStatusRepository->find(OrderStatus::DELIVERED);
