@@ -12,6 +12,7 @@ use Eccube\Controller\AbstractController;
 
 use Eccube\Entity\Order;
 use Eccube\Entity\OrderItem;
+use Eccube\Entity\Master\Pref;
 use Eccube\Entity\Shipping;
 use Eccube\Entity\Master\OrderStatus;
 use Eccube\Entity\Master\OrderItemType;
@@ -258,7 +259,6 @@ class SmartRegiOrderController extends AbstractController
             $Shipping->setKana02($Customer->getKana02());
             
             $Shipping->setPref($Customer->getPref());
-            
             $Shipping->setPostalCode('5300001');
             $Shipping->setPhoneNumber('09011112222');
             $Shipping->setAddr01('大阪市北区梅田');
@@ -278,13 +278,41 @@ class SmartRegiOrderController extends AbstractController
             $Order->setName02("ゲスト");
             $Order->setKana01("ゲスト");
             $Order->setKana02("ゲスト");
+            
+            
+            $Order->setPostalCode('5300001');
+            $Order->setPhoneNumber('09011112222');
+            $Order->setAddr01('大阪市北区梅田');
+            $Order->setAddr02('123');
+            $Order->setEmail('test@gmail.com');
 
             $Shipping = new Shipping();
             $Shipping->setOrder($Order);
             $Shipping->setName01("ゲスト");
             $Shipping->setName02("ゲスト");
-            //$Shipping->setPref($Customer->getPref());
-
+            //カナ登録
+            $Shipping->setKana01("ゲスト");
+            $Shipping->setKana02("ゲスト");
+            
+            
+            //都道府県取得
+            $prf_customerId = 2;//実在するid
+            $prfCustomer = $this->customerRepository->find($prf_customerId);
+            //　該当会員がいるならそれをセット
+            if($prfCustomer != null){
+            	$Order->setPref($prfCustomer->getPref());
+            	$Shipping->setPref($prfCustomer->getPref());
+            }else{
+            	//いないならnullセット
+            	$Order->setPref(null);
+            	$Shipping->setPref(null);
+            }
+            
+            $Shipping->setPostalCode('5300001');
+            $Shipping->setPhoneNumber('09011112222');
+            $Shipping->setAddr01('大阪市北区梅田');
+            $Shipping->setAddr02('123');
+            
             $Shipping->setShippingDeliveryDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDeliveryName("スマレジ店内購入");
@@ -330,6 +358,7 @@ class SmartRegiOrderController extends AbstractController
             '__testLog',
             [
                 'transactionHeadDivision' => $arrOrder['transactionHeadDivision'],
+                
             ]
         );
         
