@@ -111,6 +111,52 @@ file that was distributed with this source code.
         });
     </script>
     <script>
+        // 受け取り店舗選択必須チェック
+        function checkUketoriSelect() {
+            /*
+            * 受け取り方法が「店舗受取」になっている場合は
+            * 受け取り日と受け取り時間は必須とする
+            */
+			
+			var uketori_type = document.getElementById('shopping_order_Shippings_0_Delivery');
+			var uketori_day  = document.getElementById('shopping_order_Shippings_0_shipping_delivery_date');
+			var uketori_time = document.getElementById('shopping_order_Shippings_0_DeliveryTime');
+			
+			if( (uketori_type != null) && (uketori_day != null) && (uketori_time != null) ){
+				//受け取り方法と受け取り日と受け取り時間がある場合
+				
+				//受け取り方法が店舗受け取りの場合のみチェックする
+				if((uketori_type.value).indexOf('店舗') != -1){				
+					//受け取り日の文字色を黒にする(初期値)
+	                uketori_day.style.color="red";
+					//受け取り時間の文字色を黒にする(初期値)
+	                uketori_time.style.color="red";
+					
+					//選択値取得
+					var sel_day  =  uketori_day.value;
+					var sel_time =  uketori_time.value;
+
+					//受け取り日と受け取り時間がどちらも指定されている場合以外ならエラー判定
+					if( !( (sel_day != '指定なし') && (sel_time != '指定なし') ) ){
+							//アラート
+			                alert('受け取り日と受け取り時間を選択してください');
+			                
+			                //受け取り日の文字色を赤にする
+			                uketori_day.style.color="red";
+							//受け取り時間の文字色を赤にする
+			                uketori_time.style.color="red";
+							
+							return false;
+						}
+					}
+				}
+			}
+            
+            //チェックに不備がなければtrue
+			return true;
+        }
+    </script>
+    <script>
         function checkTypeRegi() {
         	/*
         	//受け取り店舗選択モーダル表示
@@ -120,9 +166,10 @@ file that was distributed with this source code.
             */
             
             //ToDo 店舗受け取りの場合は日時が必須かチェックする
-            
-            //確認するボタンを押す
-            document.getElementById("go-regi").click();
+            if(checkUketoriSelect() == true){
+            	//確認するボタンを押す
+            	document.getElementById("go-regi").click();
+            }
         }
     </script>
 {% endblock javascript %}
