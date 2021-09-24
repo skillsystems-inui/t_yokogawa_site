@@ -551,7 +551,7 @@ file that was distributed with this source code.
                                                 </td>
                                                 <!-- お届け日 -->
                                                 <td class="align-middle text-center">
-                                                    {{ Order.Shippings[0].shipping_date|date_day }}
+                                                    {{ Shipping.shipping_delivery_date|date_day }}
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     {% if Order.message is not empty %}
