@@ -215,12 +215,14 @@ file that was distributed with this source code.
 						//アラート
 		                alert('キャンドルを選択してください');
 		                
+		                /* ToDo あとで全部反映
 		                //サイズ選択欄の背景色を赤にする
 		                var candle_sentaku_id = 'option_form_candle';
 			    		
 			    		if(document.getElementById(candle_sentaku_id) != null){
 							document.getElementById(candle_sentaku_id).style.color="red";
 						}
+						*/
 						
 						return false;
 					}
@@ -233,12 +235,14 @@ file that was distributed with this source code.
 						//アラート
 		                alert('NoキャンドルはNoと本数を選択してください');
 		                
+		                /* ToDo あとで全部反映
 		                //サイズ選択欄の背景色を赤にする
 		                var candle_no1_sentaku_id = 'candle_no1_nyuryoku';
 			    		
 			    		if(document.getElementById(candle_no1_sentaku_id) != null){
 							document.getElementById(candle_no1_sentaku_id).style.color="red";
 						}
+						*/
 						
 						return false;
 					}
@@ -250,12 +254,14 @@ file that was distributed with this source code.
 						//アラート
 		                alert('NoキャンドルはNoと本数を選択してください');
 		                
+		                /* ToDo あとで全部反映
 		                //サイズ選択欄の背景色を赤にする
 		                var candle_no2_sentaku_id = 'candle_no2_nyuryoku';
 			    		
 			    		if(document.getElementById(candle_no2_sentaku_id) != null){
 							document.getElementById(candle_no2_sentaku_id).style.color="red";
 						}
+						*/
 						
 						return false;
 					}
@@ -473,7 +479,7 @@ file that was distributed with this source code.
             * ポリ袋 特大 ※
             */
             
-            var optionselect_all    = '[オプション]' + '\n';
+            var optionselect_all    = '';
             var optionselect_candle = '';
             var optionselect_message= '';
             var optionselect_deco   = '';
@@ -567,12 +573,13 @@ file that was distributed with this source code.
 					if(candle_no1_no.value != '' && candle_no1_num.value != ''){
 						
 						//追加料金セット
-						$addprice = $addprice + (candle_no1_num.value*$no_candle);
+						var $plus_price_cn1 = candle_no1_num.value*$no_candle;
+						$addprice = $addprice + $plus_price_cn1;
 						
 						optionselect_candle = optionselect_candle + ' Noキャンドル(1):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no1_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no1_num.value + '本 '; 
-						optionselect_candle = optionselect_candle + ' (+' + $addprice + '円) ';
+						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn1 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
 						
 					}
@@ -581,12 +588,13 @@ file that was distributed with this source code.
 					if(candle_no2_no.value != '' && candle_no2_num.value != ''){
 						
 						//追加料金セット
-						$addprice = $addprice + (candle_no1_num.value*$no_candle);
+						var $plus_price_cn2 = candle_no2_num.value*$no_candle;
+						$addprice = $addprice + $plus_price_cn2;
 						
 						optionselect_candle = optionselect_candle + ' Noキャンドル(2):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no2_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no2_num.value + '本'; 
-						optionselect_candle = optionselect_candle + ' (+' + $addprice + '円) ';
+						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn2 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
 					}
 					
@@ -594,12 +602,13 @@ file that was distributed with this source code.
 					if(candle_no3_no.value != '' && candle_no3_num.value != ''){
 						
 						//追加料金セット
-						$addprice = $addprice + (candle_no1_num.value*$no_candle);
+						var $plus_price_cn3 = candle_no3_num.value*$no_candle;
+						$addprice = $addprice + $plus_price_cn3;
 						
 						optionselect_candle = optionselect_candle + ' Noキャンドル(3):'
 						optionselect_candle = optionselect_candle + ' No.' + candle_no3_no.value;
 						optionselect_candle = optionselect_candle + ' ' + candle_no3_num.value + '本 '; 
-						optionselect_candle = optionselect_candle + ' (+' + $addprice + '円) '; 
+						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn3 + '円) '; 
 						optionselect_candle = optionselect_candle + '\n';
 					}
 				}else{
@@ -640,7 +649,7 @@ file that was distributed with this source code.
 					//メッセージ1
 					if(document.getElementById("printname_plate") != null){
 						const p_message = document.getElementById("printname_plate").value;
-						optionselect_message = optionselect_message + ' メッセージ入力:'
+						optionselect_message = optionselect_message + ' メッセージ入力:';
 						optionselect_message = optionselect_message + ' ' + p_message + ' '; 
 						optionselect_message = optionselect_message + '\n';
 					}
@@ -649,7 +658,11 @@ file that was distributed with this source code.
 					if(document.getElementById("printname_plate_2") != null){
 						const p_message = document.getElementById("printname_plate_2").value;
 						if(p_message != ''){
-							optionselect_message = optionselect_message + ' メッセージ入力(2枚目):'
+							
+							//追加料金セット
+							$addprice = $addprice + ($deco_tuika_plate);
+							
+							optionselect_message = optionselect_message + ' メッセージ入力(2枚目)' + '(+' + $deco_tuika_plate + '円):';
 							optionselect_message = optionselect_message + ' ' + p_message + ' '; 
 							optionselect_message = optionselect_message + '\n';
 						}
@@ -659,7 +672,11 @@ file that was distributed with this source code.
 					if(document.getElementById("printname_plate_3") != null){
 						const p_message = document.getElementById("printname_plate_3").value;
 						if(p_message != ''){
-							optionselect_message = optionselect_message + ' メッセージ入力(3枚目):'
+							
+							//追加料金セット
+							$addprice = $addprice + ($deco_tuika_plate);
+							
+							optionselect_message = optionselect_message + ' メッセージ入力(3枚目)' + '(+' + $deco_tuika_plate + '円):';
 							optionselect_message = optionselect_message + ' ' + p_message + ' '; 
 							optionselect_message = optionselect_message + '\n';
 						}
@@ -668,7 +685,11 @@ file that was distributed with this source code.
 					if(document.getElementById("printname_plate_4") != null){
 						const p_message = document.getElementById("printname_plate_4").value;
 						if(p_message != ''){
-							optionselect_message = optionselect_message + ' メッセージ入力(4枚目):'
+							
+							//追加料金セット
+							$addprice = $addprice + ($deco_tuika_plate);
+							
+							optionselect_message = optionselect_message + ' メッセージ入力(4枚目)' + '(+' + $deco_tuika_plate + '円):';
 							optionselect_message = optionselect_message + ' ' + p_message + ' '; 
 							optionselect_message = optionselect_message + '\n';
 						}
@@ -677,7 +698,11 @@ file that was distributed with this source code.
 					if(document.getElementById("printname_plate_5") != null){
 						const p_message = document.getElementById("printname_plate_5").value;
 						if(p_message != ''){
-							optionselect_message = optionselect_message + ' メッセージ入力(5枚目):'
+							
+							//追加料金セット
+							$addprice = $addprice + ($deco_tuika_plate);
+							
+							optionselect_message = optionselect_message + ' メッセージ入力(5枚目)' + '(+' + $deco_tuika_plate + '円):';
 							optionselect_message = optionselect_message + ' ' + p_message + ' '; 
 							optionselect_message = optionselect_message + '\n';
 						}
@@ -701,29 +726,45 @@ file that was distributed with this source code.
 					//いちごUP
 					const ichigo_chk = document.getElementById("ichigo_chk");
 					if(ichigo_chk.checked){
+						
+						//追加料金セット
+						$addprice = $addprice + ($deco_ichigo_up);
+						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: いちごUP (+350円)' 
+						optionselect_deco = optionselect_deco + ' デコレーション追加: いちごUP (+400円)' 
 						optionselect_deco = optionselect_deco + '\n';
 					}
 					//フルーツUP
 					const fruit_chk = document.getElementById("fruit_chk");
 					if(fruit_chk.checked){
+						
+						//追加料金セット
+						$addprice = $addprice + ($deco_fluit_up);
+						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: フルーツUP (+350円)' 
+						optionselect_deco = optionselect_deco + ' デコレーション追加: フルーツUP (+400円)' 
 						optionselect_deco = optionselect_deco + '\n';
 					}
 					//生チョコUP
 					const namachoko_chk = document.getElementById("namachoko_chk");
 					if(namachoko_chk.checked){
+						
+						//追加料金セット
+						$addprice = $addprice + ($deco_namachoko_up);
+						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: 生チョコUP (+350円)' 
+						optionselect_deco = optionselect_deco + ' デコレーション追加: 生チョコUP (+400円)' 
 						optionselect_deco = optionselect_deco + '\n';
 					}
 					//絵チョコ(4号)
 					const echoko_chk = document.getElementById("echoko_chk");
 					if(echoko_chk.checked){
+						
+						//追加料金セット
+						$addprice = $addprice + ($deco_echoko_yongou);
+						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: 絵チョコ(4号) (+350円)' 
+						optionselect_deco = optionselect_deco + ' デコレーション追加: 絵チョコ(4号) (+800円)' 
 						optionselect_deco = optionselect_deco + '\n';
 					}
 
@@ -836,13 +877,21 @@ file that was distributed with this source code.
 					//ポリ袋 中
 					const pori_cyu_chk = document.getElementById("pori_cyu_chk");
 					if(pori_cyu_chk.checked){
+						
+						//追加料金セット
+						$addprice = $addprice + ($bag_kami_cyu);
+						
 						//チェックあり
-						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 中 (+0円)' 
+						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 中 (+10円)' 
 						optionselect_bag = optionselect_bag + '\n';
 					}
 					//ポリ袋 大
 					const pori_dai_chk = document.getElementById("pori_dai_chk");
 					if(pori_dai_chk.checked){
+						
+						//追加料金セット
+						$addprice = $addprice + ($bag_kami_dai);
+						
 						//チェックあり
 						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 大 (+10円)' 
 						optionselect_bag = optionselect_bag + '\n';
@@ -850,6 +899,10 @@ file that was distributed with this source code.
 					//ポリ袋 特大
 					const pori_tokudai_chk = document.getElementById("pori_tokudai_chk");
 					if(pori_tokudai_chk.checked){
+						
+						//追加料金セット
+						$addprice = $addprice + ($bag_poli_tokudai);
+						
 						//チェックあり
 						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 特大 (+30円)' 
 						optionselect_bag = optionselect_bag + '\n';
@@ -866,6 +919,11 @@ file that was distributed with this source code.
             //オプション選択による追加価格セット
 	        var $additional_price_dynamic = $form.find('[id^=additional_price]');
 	        $additional_price_dynamic.val($addprice);
+            
+            //オプション選択があればヘッダー追加
+            if(optionselect_all != ''){
+            	optionselect_all = '[オプション]' + '\n' + optionselect_all;
+            }
             
             //オプション選択内容テキストエリアに出力する
             document.getElementById("option_detail").textContent = optionselect_all;
@@ -1815,7 +1873,7 @@ file that was distributed with this source code.
 				                                        <div id="ichigo_check" style="display:block; font-size:12px;">
 				                                        	<input type="checkbox" id="ichigo_chk" name="ichigo_chk" value="">
 				                                        	<label for="ichigo_chk">
-																<div style="padding:1px;">いちごUP<span style="padding:1px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																<div style="padding:1px;">いちごUP<span style="padding:1px; color:red;">(+400円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
 				                                        </div>
 				                                        
@@ -1835,7 +1893,7 @@ file that was distributed with this source code.
 				                                        <div id="fruit_check" style="display:block; font-size:12px;">
 				                                        	<input type="checkbox" id="fruit_chk" name="fruit_chk" value="">
 				                                        	<label for="fruit_chk">
-																<div style="padding:1px;">フルーツUP<span style="padding:1px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																<div style="padding:1px;">フルーツUP<span style="padding:1px; color:red;">(+400円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
 				                                        </div>
 				                                        
@@ -1856,7 +1914,7 @@ file that was distributed with this source code.
 				                                        <div id="namachoko_check" style="display:block; font-size:12px;">
 				                                        	<input type="checkbox" id="namachoko_chk" name="namachoko_chk" value="">
 				                                        	<label for="namachoko_chk">
-																<div style="padding:1px;">生チョコUP<span style="padding:1px; color:red;">(+350円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																<div style="padding:1px;">生チョコUP<span style="padding:1px; color:red;">(+400円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
 				                                        </div>
 				                                    </div>
@@ -1875,7 +1933,7 @@ file that was distributed with this source code.
 				                                        <div id="echoko_check" style="display:block; font-size:11px;">
 				                                        	<input type="checkbox" id="echoko_chk" name="echoko_chk" value="">
 				                                        	<label for="echoko_chk">
-																<div style="padding:1px;">絵チョコ(4号)<span style="padding:1px; color:red;">(+850円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																<div style="padding:1px;">絵チョコ(4号)<span style="padding:1px; color:red;">(+800円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 															</label>
 				                                        </div>
 				                                    </div>
@@ -2236,6 +2294,7 @@ file that was distributed with this source code.
 						                        
 						                        {# 送料 #}
 						                        <!-- ToDo　配送地域によって異なるので標準を出す？？ -->
+						                        <!--
 						                        <div class="ec-price" style=" font-size:13px;">
 				                                    <span style="margin-right:50%;">
 				                                    	{{ '送料(税別)　　'|trans }}
@@ -2244,6 +2303,7 @@ file that was distributed with this source code.
 				                                    	{{ 0|price }}
 				                                    </span>
 				                                </div>
+				                                -->
 						                        {# 消費税 #}
 						                        <!-- ToDo　規格価格から税率で割り出す -->
 						                        <div class="ec-price" style=" font-size:13px;">
