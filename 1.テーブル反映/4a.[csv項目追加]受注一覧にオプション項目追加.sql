@@ -23,6 +23,8 @@ INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`,
 (3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_category_name9', NULL, 'オプション選択名9', 91, 1, NOW(), NOW(), 'csv'),
 (3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_category_name10', NULL, 'オプション選択名10', 92, 1, NOW(), NOW(), 'csv');
 
+
+
 ----- 注文枝番 
 INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
 (3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'order_sub_no', NULL, '注文枝番', 92, 1, NOW(), NOW(), 'csv');
@@ -85,3 +87,8 @@ INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`,
 (4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_category_name9', NULL, 'オプション選択名9', 91, 1, NOW(), NOW(), 'csv'),
 (4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_category_name10', NULL, 'オプション選択名10', 92, 1, NOW(), NOW(), 'csv');
 
+
+--CSV種別:受注CSV (dtb_csv:3)
+--オプション内容を追加
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_detail', NULL, 'オプション内容', 92, 1, NOW(), NOW(), 'csv');
