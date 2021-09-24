@@ -2261,12 +2261,12 @@ file that was distributed with this source code.
 						                    <div class="ec-productRole__price" style="font-size:20px; color:#000;border-top:1px dotted #ccc;">
 						                    	
 						                    	
-						                    	{# 商品小計(税別) #}
+						                    	{# 商品小計(税込) #}
 						                        {% if Product.hasProductClass -%}
 						                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
 						                                <div class="ec-price" style=" font-size:13px;">
 						                                    <span style="margin-right:50%;">
-						                                    	{{ '商品小計(税別)'|trans }}
+						                                    	{{ '商品小計(税込)'|trans }}
 						                                    </span>
 						                                    <span class="ec-price__price price02-default">
 						                                    	{{ Product.getPrice02IncTaxMin|price }}
@@ -2275,7 +2275,7 @@ file that was distributed with this source code.
 						                            {% else %}
 						                                <div class="ec-price" style=" font-size:13px;">
 						                                    <span style="margin-right:50%;">
-						                                    	{{ '商品小計(税別)'|trans }}
+						                                    	{{ '商品小計(税込)'|trans }}
 						                                    </span>
 						                                    <span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">
 						                                    	{{ Product.getPrice02IncTaxMin|price }}
@@ -2285,7 +2285,7 @@ file that was distributed with this source code.
 						                        {% else %}
 						                            <div class="ec-price" style=" font-size:13px;">
 						                                <span style="margin-right:50%;">
-						                                	{{ '商品小計(税別)'|trans }}
+						                                	{{ '商品小計(税込)'|trans }}
 						                                </span>
 						                                <span class="ec-price__price">{{ Product.getPrice02IncTaxMin|price }}</span>
 						                            </div>
@@ -2297,7 +2297,7 @@ file that was distributed with this source code.
 						                        <!--
 						                        <div class="ec-price" style=" font-size:13px;">
 				                                    <span style="margin-right:50%;">
-				                                    	{{ '送料(税別)　　'|trans }}
+				                                    	{{ '送料(税込)　　'|trans }}
 				                                    </span>
 				                                    <span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">
 				                                    	{{ 0|price }}
@@ -2306,6 +2306,7 @@ file that was distributed with this source code.
 				                                -->
 						                        {# 消費税 #}
 						                        <!-- ToDo　規格価格から税率で割り出す -->
+						                        <!--
 						                        <div class="ec-price" style=" font-size:13px;">
 				                                    <span style="margin-right:50%;">
 				                                    	{{ '消費税　　　　'|trans }}
@@ -2314,6 +2315,7 @@ file that was distributed with this source code.
 				                                    	{{ 0|price }}
 				                                    </span>
 				                                </div>
+				                                -->
 				                                {# オプション #}
 						                        <!-- ToDo　有料オプションを出す -->
 						                        <!--
