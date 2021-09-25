@@ -14,6 +14,14 @@ file that was distributed with this source code.
 
 {% block javascript %}
     <script src="//yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+    
+    <script type="text/javascript"> 
+	function setToiawaseBtnEnable(boolEnable){ 
+	  var elm = document.getElementById("toiawasebtn");
+	  elm.disabled = !boolEnable;
+	} 
+	</script> 
+	
 {% endblock javascript %}
 
 {% block main %}
@@ -200,13 +208,7 @@ file that was distributed with this source code.
 									</textarea>
 								</div>
 								<div class="agreeBox">
-				                    <!--
-				                    <input type="checkbox" name="agree" id="agree" class="agreeCheck"><label for="agree">個人情報保護ポリシーに同意する</label>
-				                    -->
-				                    {{ form_widget(form.agree) }}
-				                    <div style="color:red;">
-                                    	{{ form_errors(form.agree) }}
-                                    </div>
+				                    <input type="checkbox" name="agree" id="agree" class="agreeCheck" onclick="setToiawaseBtnEnable(this.checked)"><label for="agree">個人情報保護ポリシーに同意する</label>
 				                </div>
                         	</dd>
                         </dl>
@@ -232,10 +234,10 @@ file that was distributed with this source code.
                             {% endif %}
                         {% endfor %}
                     </div>
-                    <div class="ec-RegisterRole__actions">
+                    <div class="ec-RegisterRole__actions" style="padding-bottom:20px;">
                         <div class="ec-off4Grid">
                             <div class="ec-off4Grid__cell">
-                                <button type="submit" class="ec-blockBtn--action" style="background: #666; border-color: #666;" name="mode" value="confirm">{{ 'この内容で問い合わせる'|trans }}
+                                <button type="submit" class="ec-blockBtn--action" style="background: #666; border-color: #666;" name="mode" value="confirm" id="toiawasebtn" name="toiawasebtn" disabled="disabled">{{ 'この内容で問い合わせる'|trans }}
                                 </button>
                             </div>
                         </div>
