@@ -294,6 +294,21 @@ file that was distributed with this source code.
                                     </div>
                                 {% endif %}
                                 
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="d-inline-block">
+                                            <span>{{ 'admin.product.name'|trans }}</span>
+                                            <span class="badge badge-primary ml-1">
+                                                {{ 'admin.common.required'|trans }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        {{ form_widget(form.name) }}
+                                        {{ form_errors(form.name) }}
+                                    </div>
+                                </div>
+                                
                                 
                                 <!-- 商品コード -->
                                 {% if has_class == false %}
@@ -316,20 +331,6 @@ file that was distributed with this source code.
                                 <!-- .商品コード -->
                                 
                                 
-                                <div class="row">
-                                    <div class="col-3">
-                                        <div class="d-inline-block">
-                                            <span>{{ 'admin.product.name'|trans }}</span>
-                                            <span class="badge badge-primary ml-1">
-                                                {{ 'admin.common.required'|trans }}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-2">
-                                        {{ form_widget(form.name) }}
-                                        {{ form_errors(form.name) }}
-                                    </div>
-                                </div>
                                 {% if has_class == false %}
                                     <div class="row" style="display:none;">
                                         <div class="col-3">
@@ -494,7 +495,7 @@ file that was distributed with this source code.
                                 
                                 
                                 <!-- オプション -->
-			                    <div class="row">
+			                    <div class="row" style="display:none;">
 			                        <div class="col-3">
 			                            <div class="d-inline-block" data-tooltip="true" data-placement="top" title="{{ 'tooltip.product.sale_type'|trans }}">
 			                                <span>オプション</span>
