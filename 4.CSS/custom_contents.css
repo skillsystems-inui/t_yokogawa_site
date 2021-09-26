@@ -14,8 +14,9 @@ body {
 	font-weight: 400;
 	text-align: left;
 	letter-spacing: .05em;
-	min-width: 950px;
 }
+
+
 li {
     list-style: none;
 }
@@ -189,7 +190,6 @@ header {
 	z-index: 100;
 	box-shadow: 0 0 5px rgba(0,0,0,.3);
 	transition: .3s;
-	min-width: 950px;
 }
 header div {
 	display: flex;
@@ -292,6 +292,7 @@ header div nav ul {
 	justify-content: flex-end;
 	width: 100%;
 }
+
 header div nav ul li {
 	height: 60px;
 	position: relative;
@@ -524,9 +525,9 @@ footer p {
 	color: #573B28;
 }
 /*==================================================
-$top_page
+$front_page
 ==================================================*/
-.top_page .slider_wrap .slider .slider_item {
+.front_page .slider_wrap .slider .slider_item {
 	width: 100%;
 	/* height: 100vh; */
 	height: 85vh;
@@ -535,43 +536,43 @@ $top_page
 	background-position: center;
 	background-size: cover;
 }
-.top_page .slider_wrap .slider .slider_item.main01 {
+.front_page .slider_wrap .slider .slider_item.main01 {
 	background-image: url(../img/main01.jpg);
 }
-.top_page .slider_wrap .slider .slider_item.main02 {
+.front_page .slider_wrap .slider .slider_item.main02 {
 	background-image: url(../img/main02.jpg);
 }
-.top_page .slider_wrap .slider .slider_item.main03 {
+.front_page .slider_wrap .slider .slider_item.main03 {
 	background-image: url(../img/main03.jpg);
 }
-.top_page .slider_wrap .slider .slider_item.main04 {
+.front_page .slider_wrap .slider .slider_item.main04 {
 	background-image: url(../img/xmastop_pc.png);
 }
-.top_page .slider_wrap .slider .slider_item.main05 {
+.front_page .slider_wrap .slider .slider_item.main05 {
 	background-image: url(../img/thankyoutop.png);
 }
-.top_page .slider_wrap .slider .slider_item.main06 {
+.front_page .slider_wrap .slider .slider_item.main06 {
 	background-image: url(../img/valentinetop.png);
 }
-.top_page .slider_wrap .slider .slider_item.main07 {
+.front_page .slider_wrap .slider .slider_item.main07 {
 	background-image: url(../img/whitedaytop.png);
 }
-.top_page .slider_wrap .slider .slider_item.main08 {
+.front_page .slider_wrap .slider .slider_item.main08 {
 	background-image: url(../img/hinamatsuritop.png);
 }
-.top_page .slider_wrap .slider .slider_item.main09 {
+.front_page .slider_wrap .slider .slider_item.main09 {
 	background-image: url(../img/ship_discount_top.png);
 }
-.top_page .slider_wrap .slider .slider_item.main10 {
+.front_page .slider_wrap .slider .slider_item.main10 {
 	background-image: url(../img/kodomonohi_top.png);
 }
-.top_page .slider_wrap .slider .slider_item.main11 {
+.front_page .slider_wrap .slider .slider_item.main11 {
 	background-image: url(../img/mothersday_top.png);
 }
-.top_page .slider_wrap .slider .slider_item.main12 {
+.front_page .slider_wrap .slider .slider_item.main12 {
 	background-image: url(../img/yakiimo_toppc.png);
 }
-.top_page .slider_wrap .slider .slider_item img {
+.front_page .slider_wrap .slider .slider_item img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -582,31 +583,31 @@ $top_page
   height: 100%;
 	max-width: none;
 }
-.top_page section {
+.front_page section {
 	padding: 100px 0;
 }
-.top_page .slider_wrap + section .box .headline {
+.front_page .slider_wrap + section .box .headline {
 	font-size: 30px;
 }
-.top_page .pickup .title {
+.front_page .pickup .title {
 	margin-bottom: 50px;
 }
-.top_page .pickup ul {
+.front_page .pickup ul {
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	width: 100%;
 }
-.top_page .pickup ul li {
+.front_page .pickup ul li {
 	width: 33%;
 }
-.top_page .pickup ul li p {
+.front_page .pickup ul li p {
 	width: 80%;
 	max-width: 270px;
 	min-width: 120px;
 	margin: auto;
 }
-.top_page .pickup ul li p a {
+.front_page .pickup ul li p a {
 	display: block;
 	background: #fff;
 	box-shadow: 0 0 5px rgba(0,0,0,.3);
@@ -619,7 +620,7 @@ $top_page
 	position: relative;
 	margin-top: -27px;
 }
-.top_page .pickup ul li p a::after {
+.front_page .pickup ul li p a::after {
 	content: '';
 	width: 0;
 	height: 0;
@@ -632,7 +633,7 @@ $top_page
 	right: 10px;
 	margin: auto;
 }
-.top_page .news .news_list {
+.front_page .news .news_list {
 	max-width: 900px;
 	width: 100%;
 	margin: 0 auto 30px;;
@@ -655,101 +656,101 @@ $top_page
 	padding: 20px;
 	vertical-align: middle;
 }
-.top_page .news .news_list ul li {
+.front_page .news .news_list ul li {
 	border-bottom: 1px solid #ECECEC;
 }
-.top_page .news .news_list ul li a {
+.front_page .news .news_list ul li a {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	width: 100%;
 	padding: 20px;
 }
-.top_page .news .news_list ul li a span {
+.front_page .news .news_list ul li a span {
 	min-width: 120px;
 }
-.top_page .news .banner_list {
+.front_page .news .banner_list {
 	max-width: 900px;
 	width: 100%;
 	margin: 0 auto 50px;
 }
-.top_page .news .banner_list ul {
+.front_page .news .banner_list ul {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	width: 100%;
 }
-.top_page .news .banner_list ul li {
+.front_page .news .banner_list ul li {
 	width: 48%;
 }
-.top_page .about {
+.front_page .about {
 	background-image: url(../img/top_bg.jpg);
 	background-size: cover;
 	background-position: center;
 }
-.top_page .about div .box {
+.front_page .about div .box {
 	text-align: left;
 }
-.top_page .about div .box .btn {
+.front_page .about div .box .btn {
 	margin-left: 0;
 }
-.top_page .shop>div {
+.front_page .shop>div {
 	padding: 20px;
 	background: #F5F4F9;
 	margin-bottom: 50px;
 }
-.top_page .shop div ul {
+.front_page .shop div ul {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	width: 100%;
 }
-.top_page .shop div ul li {
+.front_page .shop div ul li {
 	width: 49.5%;
 	background: #fff;
 }
-.top_page .shop div ul li div {
+.front_page .shop div ul li div {
 	padding: 20px 50px;
 }
-.top_page .shop div ul li div .name {
+.front_page .shop div ul li div .name {
 	font-size: 18px;
 }
-.top_page .shop div ul li div dl {
+.front_page .shop div ul li div dl {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 }
-.top_page .shop div ul li div dl dt {
+.front_page .shop div ul li div dl dt {
 	width: 100px;
 }
-.top_page .shop div ul li div dl dd {
+.front_page .shop div ul li div dl dd {
 	width: calc(100% - 100px);
 }
-.top_page .sns ul {
+.front_page .sns ul {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	width: 100%;
 }
-.top_page .sns ul li {
+.front_page .sns ul li {
 	width: 32%;
 }
-.top_page .sns ul li .name {
+.front_page .sns ul li .name {
 	text-align: center;
 	font-size: 28px;
 	margin-bottom: 20px;
 }
-.top_page .sns ul li.insta>div {
+.front_page .sns ul li.insta>div {
 	border: none !important;
 	padding: 0 !important;
 }
-.top_page .sns ul li.line>div {
+.front_page .sns ul li.line>div {
 }
-.top_page .sns ul li.line>div p {
+.front_page .sns ul li.line>div p {
 	text-align: center;
 	margin-bottom: 20px;
 }
-.top_page .sns ul li.line>div img {
+.front_page .sns ul li.line>div img {
 	width: 40%;
 	margin: auto;
 	display: block;
@@ -2316,4 +2317,18 @@ div#search h2 {
 
 div#search {
     padding-top: 140px;
+}
+
+@media screen and (max-width: 767px) {
+  	header div nav .header_btn {
+		display:none;
+	}
+	
+	header div nav ul {
+		display:none;
+	}
+}
+
+@media only screen and (min-width: 767px) {
+	
 }
