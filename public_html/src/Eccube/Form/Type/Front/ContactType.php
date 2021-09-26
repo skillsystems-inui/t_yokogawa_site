@@ -76,6 +76,7 @@ class ContactType extends AbstractType
                     new Assert\NotBlank(),
                 ],
             ])
+            /*
             ->add('agree', CheckboxType::class, [
                 'required' => true,
                 'label' => 'admin.common.agree_policy',
@@ -84,6 +85,7 @@ class ContactType extends AbstractType
                     new Assert\NotBlank(['message' => trans('admin.common.check')]),
                 ],
             ])
+            */
             ;
     }
 
