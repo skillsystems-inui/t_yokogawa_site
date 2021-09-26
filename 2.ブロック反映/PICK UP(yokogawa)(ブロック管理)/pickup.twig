@@ -9,37 +9,36 @@ For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 #}
 
-<div class="ec-role">
-    <div class="ec-newItemRole">
-        
-        <h2 class="title"><strong class="agp">PICK UP</strong></h2>
-        
-        <div class="ec-newItemRole__list">
-            
-            <div class="ec-newItemRole__listItem" style="width:calc(100%/3);">
-                <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#pound-cake" style="text-decoration: none;">
-                    <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/mango.JPG">
-                    <p class="ec-newItemRole__listItemTitle" style="color:black; text-align:center;">{{ 'マンゴーのさわやかな'|trans }}<br>{{ 'パウンドケーキなど'|trans }}</p>
-                </a>
-            </div>
-            <div class="ec-newItemRole__listItem" style="width:calc(100%/3);">
-                <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#bakegoods" style="text-decoration: none;">
-                    <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/bakegoods.jpg">
-                    <p class="ec-newItemRole__listItemTitle" style="text-align:center;">{{ 'クッキー・焼き菓子'|trans }}</p>
-                </a>
-            </div>
-            <div class="ec-newItemRole__listItem" style="width:calc(100%/3);">
-                <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#baumkuchen" style="text-decoration: none;">
-                    <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/baumkuchen.jpg">
-                    <p class="ec-newItemRole__listItemTitle" style="text-align:center;">{{ 'バームクーヘン'|trans }}</p>
-                </a>
-            </div>
+<section class="pickup">
+  <h2 class="title"><strong class="agp">PICK UP</strong></h2>
+  <ul class="inner">
 
-        </div>
-        
-        <div class="ec-eyecatchRole">
-            <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}" class="btn">商品一覧</a>
-        </div>
-        
-    </div>
-</div>
+  <li>
+    <span>
+    	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#seasonal">
+    		<img src="https://gigaplus.makeshop.jp/yokogawa/common/img/autumn.jpg" alt="">
+    	</a>
+    </span>
+    <p><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#seasonal">お待たせしました！<br>秋の味覚が揃いました。</a></p>
+  </li>
+  <li>
+    <span>
+    	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#chocolate">
+    		<img src="https://gigaplus.makeshop.jp/yokogawa/common/img/chocolate.jpg" alt="">
+    	</a>
+    </span>
+    <p><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#chocolate">オーナーパティシェ<br>自慢のクオーレ</a></p>
+  </li>
+  <li>
+    <span>
+    	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#halloween">
+    		<img src="https://gigaplus.makeshop.jp/yokogawa/halloween2021/img/halloween_menu_sp.png" alt="">
+    	</a>
+    </span>
+    <p><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#halloween">笑顔あふれる<br>ハロウィンギフト！</a></p>
+  </li>
+
+
+	</ul><br>
+	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}" class="btn">商品一覧</a>
+</section>

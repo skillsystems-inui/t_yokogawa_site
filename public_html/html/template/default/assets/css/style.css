@@ -5371,7 +5371,7 @@ Styleguide 12.5.1
 */
 .ec-topicRole {
   padding: 40px 0;
-  background: #F8F8F8; }
+  background: #FFF; }
 .ec-topicRole .ec-topicRole__list {
     display: flex;
     flex-wrap: wrap; }
@@ -7814,7 +7814,7 @@ Styleguide 22.1
     .ec-newsRole {
       padding: 60px 0 0; }
       .ec-newsRole .ec-newsRole__news {
-        border: 16px solid #F8F8F8;
+        border: 16px solid #fff;
         padding: 20px 30px; }
         .ec-newsRole .ec-newsRole__newsItem:last-of-type {
           margin-bottom: 0; }
