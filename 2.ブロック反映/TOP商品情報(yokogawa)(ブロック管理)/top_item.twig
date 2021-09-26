@@ -9,14 +9,11 @@ For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 #}
 
-<div class="ec-role">
+<div class="ec-role" style="max-width:100%; padding-left:0px; padding-right:0px;">
     <div class="ec-eyecatchRole">
-        <div class="ec-eyecatchRole__image">
+        <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#seasonal" class="ec-eyecatchRole__image">
             <img src="{{ asset('assets/img/top/topitem.png') }}" alt="" role="presentation"/>
-            <!-- 
-            <img src="{{ asset('assets/img/top/jelly_sorbet.png') }}" alt="" role="presentation"/>
-            -->
-        </div>
+        </a>
     </div>
     <!--
     <div class="ec-eyecatchRole">

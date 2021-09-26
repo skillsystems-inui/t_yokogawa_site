@@ -4237,7 +4237,6 @@ Styleguide 11.2
     margin-right: auto;
     margin-left: auto;
     width: 100%;
-    max-width: 1150px;
     display: flex;
     flex-wrap: nowrap; }
 .ec-layoutRole .ec-layoutRole__main {
