@@ -20,105 +20,6 @@ file that was distributed with this source code.
 	            //オプション選択用ポップアップも閉じる
 	            $('.ec-option-modal').hide();
 	        });
-	        
-	        $('.sentaku_tentou').on('click', function() {
-	            //--- 「店頭受付」選択時 ---
-	            var judge = true;
-	            
-	            var item_count = 0;
-	            var item_cnt_id = 'item_cnt_id';
-				if(document.getElementById(item_cnt_id) != null){
-					//件数取得
-					item_count = document.getElementById(item_cnt_id).value;
-				}
-				
-				/** ToDo 20210922 店頭受取orお取り寄せの判断がカテゴリですべき不明のためいったんコメント
-				//「店頭受付」カテゴリを持たない商品があるか
-				for (let i = 0; i < item_count; i++) {
-					var kagosyouhin_product = 'kagosyouhin_product_' + i;
-					//文字色初期値は黒
-					if(document.getElementById(kagosyouhin_product) != null){
-						document.getElementById(kagosyouhin_product).style.color="#000";
-					}
-					
-					var kagosyouhin_type = 'kagosyouhin_type_' + i;
-					if(document.getElementById(kagosyouhin_type) != null){
-						var tar_cat = document.getElementById(kagosyouhin_type).value;
-						if ( tar_cat.indexOf('_tento') == -1) {
-							//含まない場合
-							// エラー判定
-							judge = false;
-							// 該当商品の文字色を赤くする
-							if(document.getElementById(kagosyouhin_product) != null){
-								document.getElementById(kagosyouhin_product).style.color="red";
-							}
-						}
-					}
-				}
-				*/
-	            
-	            //「店頭受付」カテゴリを持たない商品があればエラー表示
-	            if(judge == false){
-	            	alert('カートに店頭受付できない商品が含まれています。');
-	            	//モーダルを閉じる
-	            	$('.ec-option-modal').hide();
-	            }else{
-	            	//モーダルを閉じる
-	            	$('.ec-option-modal').hide();
-	            	//レジに進むボタンを押す
-	            	document.getElementById("go-regi").click();
-	            }
-	        });
-	        
-	        $('.sentaku_otoriyose').on('click', function() {
-	            //--- 「お取り寄せ」選択時 ---
-	            var judge = true;
-	            
-	            var item_count = 0;
-	            var item_cnt_id = 'item_cnt_id';
-				if(document.getElementById(item_cnt_id) != null){
-					//件数取得
-					item_count = document.getElementById(item_cnt_id).value;
-				}
-				
-				/** ToDo 20210922 店頭受取orお取り寄せの判断がカテゴリですべき不明のためいったんコメント
-				//「お取り寄せ」カテゴリを持たない商品があるか
-				for (let i = 0; i < item_count; i++) {
-					var kagosyouhin_product = 'kagosyouhin_product_' + i;
-					//文字色初期値は黒
-					if(document.getElementById(kagosyouhin_product) != null){
-						document.getElementById(kagosyouhin_product).style.color="#000";
-					}
-					
-					var kagosyouhin_type = 'kagosyouhin_type_' + i;
-					if(document.getElementById(kagosyouhin_type) != null){
-						var tar_cat = document.getElementById(kagosyouhin_type).value;
-						if ( tar_cat.indexOf('_toriyose') == -1) {
-							//含まない場合
-							// エラー判定
-							judge = false;
-							// 該当商品の文字色を赤くする
-							if(document.getElementById(kagosyouhin_product) != null){
-								document.getElementById(kagosyouhin_product).style.color="red";
-							}
-						}
-					}
-				}
-				*/
-	            
-	            //「お取り寄せ」カテゴリを持たない商品があればエラー表示
-	            if(judge == false){
-	            	alert('カートにお取り寄せできない商品が含まれています。');
-	            	//モーダルを閉じる
-	            	$('.ec-option-modal').hide();
-	            }else{
-	            	//モーダルを閉じる
-	            	$('.ec-option-modal').hide();
-	            	//レジに進むボタンを押す
-	            	document.getElementById("go-regi").click();
-	            }
-	        });
-	        
         });
 	</script>
 	
@@ -128,6 +29,106 @@ file that was distributed with this source code.
         	event.preventDefault();
             //オプション選択用ポップアップ表示
             $('.ec-option-modal').show();
+        }
+        
+        
+    
+        function sentakuTentou() {
+            //--- 「店頭受付」選択時 ---
+            var judge = true;
+            
+            var item_count = 0;
+            var item_cnt_id = 'item_cnt_id';
+			if(document.getElementById(item_cnt_id) != null){
+				//件数取得
+				item_count = document.getElementById(item_cnt_id).value;
+			}
+			
+			/** ToDo 20210922 店頭受取orお取り寄せの判断がカテゴリですべき不明のためいったんコメント
+			//「店頭受付」カテゴリを持たない商品があるか
+			for (let i = 0; i < item_count; i++) {
+				var kagosyouhin_product = 'kagosyouhin_product_' + i;
+				//文字色初期値は黒
+				if(document.getElementById(kagosyouhin_product) != null){
+					document.getElementById(kagosyouhin_product).style.color="#000";
+				}
+				
+				var kagosyouhin_type = 'kagosyouhin_type_' + i;
+				if(document.getElementById(kagosyouhin_type) != null){
+					var tar_cat = document.getElementById(kagosyouhin_type).value;
+					if ( tar_cat.indexOf('_tento') == -1) {
+						//含まない場合
+						// エラー判定
+						judge = false;
+						// 該当商品の文字色を赤くする
+						if(document.getElementById(kagosyouhin_product) != null){
+							document.getElementById(kagosyouhin_product).style.color="red";
+						}
+					}
+				}
+			}
+			*/
+            
+            //「店頭受付」カテゴリを持たない商品があればエラー表示
+            if(judge == false){
+            	alert('カートに店頭受付できない商品が含まれています。');
+            	//モーダルを閉じる
+            	$('.ec-option-modal').hide();
+            }else{
+            	//モーダルを閉じる
+            	$('.ec-option-modal').hide();
+            	//レジに進むボタンを押す
+            	document.getElementById("go-regi").click();
+            }
+        }
+        
+        function sentakuOtoriyose() {
+            //--- 「お取り寄せ」選択時 ---
+            var judge = true;
+
+            var item_count = 0;
+            var item_cnt_id = 'item_cnt_id';
+			if(document.getElementById(item_cnt_id) != null){
+				//件数取得
+				item_count = document.getElementById(item_cnt_id).value;
+			}
+			
+			/** ToDo 20210922 店頭受取orお取り寄せの判断がカテゴリですべき不明のためいったんコメント
+			//「お取り寄せ」カテゴリを持たない商品があるか
+			for (let i = 0; i < item_count; i++) {
+				var kagosyouhin_product = 'kagosyouhin_product_' + i;
+				//文字色初期値は黒
+				if(document.getElementById(kagosyouhin_product) != null){
+					document.getElementById(kagosyouhin_product).style.color="#000";
+				}
+				
+				var kagosyouhin_type = 'kagosyouhin_type_' + i;
+				if(document.getElementById(kagosyouhin_type) != null){
+					var tar_cat = document.getElementById(kagosyouhin_type).value;
+					if ( tar_cat.indexOf('_toriyose') == -1) {
+						//含まない場合
+						// エラー判定
+						judge = false;
+						// 該当商品の文字色を赤くする
+						if(document.getElementById(kagosyouhin_product) != null){
+							document.getElementById(kagosyouhin_product).style.color="red";
+						}
+					}
+				}
+			}
+			*/
+            
+            //「お取り寄せ」カテゴリを持たない商品があればエラー表示
+            if(judge == false){
+            	alert('カートにお取り寄せできない商品が含まれています。');
+            	//モーダルを閉じる
+            	$('.ec-option-modal').hide();
+            }else{
+            	//モーダルを閉じる
+            	$('.ec-option-modal').hide();
+            	//レジに進むボタンを押す
+            	document.getElementById("go-regi").click();
+            }
         }
     </script>
 {% endblock %}
@@ -445,21 +446,24 @@ file that was distributed with this source code.
         <!-- 受け取り方法選択modal -->
         <div class="ec-option-modal" style="display: none;position: fixed;top: 0;left: 0;z-index: 99999;width: 100%;height: 100%;">
             <div class="ec-option-modal-overlay" style="display: flex;justify-content: center;align-items: center;background-color: rgba(0, 0, 0, 0.3);width: 100%;height: 100%;">
-                <div class="ec-option-modal-wrap" style="position: relative;border-radius: 2px;border: 1px solid #333;background-color: #fff;padding: 40px 10px;margin: 20px auto;">
-                    
-                    <div class="ec-productRole__btn" style="width:100%; text-align:center; font-size:20px;">
-                    	<span><b>受取方法を選択ください</b></span>
-                    </div>
-                    
-                    <button id="sentaku_tentou" class="sentaku_tentou ec-productRole__btn" style="color:#fff; background-color:#e2041b; float:left; font-size:15px; width:200px; text-align:center; margin:20px;">
-                        {{ '店頭受取'|trans }}
-                    </button>
-                    
-                    <button id="sentaku_otoriyose" class="sentaku_otoriyose ec-productRole__btn" style="color:#fff; background-color:#ffa500; float:left; font-size:15px; width:200px; text-align:center; margin:20px;">
-                        {{ 'お取り寄せ'|trans }}
-                    </button>
-                    
-                    <div style="clear:both;"></div>
+                <div class="ec-option-modal-wrap item_index" style="position: relative;border-radius: 2px;border: 1px solid #333;background-color: #fff;padding: 40px 10px;margin: 20px auto;">
+                    <section>
+	                    <div class="ec-productRole__btn" style="width:100%; text-align:center; font-size:20px;">
+	                    	<span><b>受取方法を選択ください</b></span>
+	                    </div>
+	                    
+	                    <div style="clear:both;"></div>
+	                    
+	                    <ul class="item_btn" style="padding-left:10px;">
+			              <li class="btn01" style="width:250px;">
+			              	<a href="javascript:sentakuTentou();" id="sentaku_tentou" style="text-decoration: none;">店頭受取</a>
+			              </li>
+			              <li class="btn03" style="width:250px;">
+			              	<a href="javascript:sentakuOtoriyose();" style="text-decoration: none;">お取り寄せ</a>
+			              </li>
+			            </ul>
+		            
+		            <section>
 
                 </div>
             </div>
