@@ -104,3 +104,15 @@ ALTER TABLE `dtb_customer` ADD `family_relation09` varchar(50) DEFAULT NULL;
 ALTER TABLE `dtb_customer` ADD `family_birth09` datetime DEFAULT NULL;
 ALTER TABLE `dtb_customer` ADD `family_relation10` varchar(50) DEFAULT NULL;	
 ALTER TABLE `dtb_customer` ADD `family_birth10` datetime DEFAULT NULL;
+
+-----â∆ë∞èÓïÒ01-10Å@ñºëO
+ALTER TABLE `dtb_customer` ADD `family_name01` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_name02` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_name03` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_name04` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_name05` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_name06` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_name07` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_name08` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_name09` varchar(50) DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_name10` varchar(50) DEFAULT NULL;

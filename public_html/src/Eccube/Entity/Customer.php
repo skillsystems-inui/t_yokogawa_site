@@ -238,6 +238,13 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * @var string
          *
+         * @ORM\Column(name="family_name01", type="string", length=50)
+         */
+        private $family_name01;
+        
+        /**
+         * @var string
+         *
          * @ORM\Column(name="family_relation01", type="string", length=50)
          */
         private $family_relation01;
@@ -248,7 +255,14 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          * @ORM\Column(name="family_birth01", type="datetimetz", nullable=true)
          */
         private $family_birth01;
-
+		
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_name02", type="string", length=50)
+         */
+        private $family_name02;
+        
         /**
          * @var string
          *
@@ -262,6 +276,13 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          * @ORM\Column(name="family_birth02", type="datetimetz", nullable=true)
          */
         private $family_birth02;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_name03", type="string", length=50)
+         */
+        private $family_name03;
         
         /**
          * @var string
@@ -280,6 +301,13 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * @var string
          *
+         * @ORM\Column(name="family_name04", type="string", length=50)
+         */
+        private $family_name04;
+        
+        /**
+         * @var string
+         *
          * @ORM\Column(name="family_relation04", type="string", length=50)
          */
         private $family_relation04;
@@ -290,6 +318,13 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          * @ORM\Column(name="family_birth04", type="datetimetz", nullable=true)
          */
         private $family_birth04;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_name05", type="string", length=50)
+         */
+        private $family_name05;
         
         /**
          * @var string
@@ -308,6 +343,13 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * @var string
          *
+         * @ORM\Column(name="family_name06", type="string", length=50)
+         */
+        private $family_name06;
+        
+        /**
+         * @var string
+         *
          * @ORM\Column(name="family_relation06", type="string", length=50)
          */
         private $family_relation06;
@@ -318,7 +360,14 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          * @ORM\Column(name="family_birth06", type="datetimetz", nullable=true)
          */
         private $family_birth06;
-
+		
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_name07", type="string", length=50)
+         */
+        private $family_name07;
+        
         /**
          * @var string
          *
@@ -332,6 +381,13 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          * @ORM\Column(name="family_birth07", type="datetimetz", nullable=true)
          */
         private $family_birth07;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_name08", type="string", length=50)
+         */
+        private $family_name08;
         
         /**
          * @var string
@@ -350,6 +406,13 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         /**
          * @var string
          *
+         * @ORM\Column(name="family_name09", type="string", length=50)
+         */
+        private $family_name09;
+        
+        /**
+         * @var string
+         *
          * @ORM\Column(name="family_relation09", type="string", length=50)
          */
         private $family_relation09;
@@ -360,6 +423,13 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          * @ORM\Column(name="family_birth09", type="datetimetz", nullable=true)
          */
         private $family_birth09;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="family_name10", type="string", length=50)
+         */
+        private $family_name10;
         
         /**
          * @var string
@@ -1483,6 +1553,30 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         {
             return $this->mainname;
         }
+                
+        /**
+         * Set family_name01.
+         *
+         * @param string $family_name01
+         *
+         * @return Customer
+         */
+        public function setFamilyName01($family_name01)
+        {
+            $this->family_name01 = $family_name01;
+
+            return $this;
+        }
+
+        /**
+         * Get family_name01.
+         *
+         * @return string
+         */
+        public function getFamilyName01()
+        {
+            return $this->family_name01;
+        }
         
         /**
          * Set family_relation01.
@@ -1533,6 +1627,29 @@ if (!class_exists('\Eccube\Entity\Customer')) {
             return $this->family_birth01;
         }
         
+        /**
+         * Set family_name02.
+         *
+         * @param string $family_name02
+         *
+         * @return Customer
+         */
+        public function setFamilyName02($family_name02)
+        {
+            $this->family_name02 = $family_name02;
+
+            return $this;
+        }
+
+        /**
+         * Get family_name02.
+         *
+         * @return string
+         */
+        public function getFamilyName02()
+        {
+            return $this->family_name02;
+        }
         
         /**
          * Set family_relation02.
@@ -1583,6 +1700,29 @@ if (!class_exists('\Eccube\Entity\Customer')) {
             return $this->family_birth02;
         }
         
+        /**
+         * Set family_name03.
+         *
+         * @param string $family_name03
+         *
+         * @return Customer
+         */
+        public function setFamilyName03($family_name03)
+        {
+            $this->family_name03 = $family_name03;
+
+            return $this;
+        }
+
+        /**
+         * Get family_name03.
+         *
+         * @return string
+         */
+        public function getFamilyName03()
+        {
+            return $this->family_name03;
+        }
         
         /**
          * Set family_relation03.
@@ -1632,6 +1772,29 @@ if (!class_exists('\Eccube\Entity\Customer')) {
             return $this->family_birth03;
         }
         
+        /**
+         * Set family_name04.
+         *
+         * @param string $family_name04
+         *
+         * @return Customer
+         */
+        public function setFamilyName04($family_name04)
+        {
+            $this->family_name04 = $family_name04;
+
+            return $this;
+        }
+
+        /**
+         * Get family_name04.
+         *
+         * @return string
+         */
+        public function getFamilyName04()
+        {
+            return $this->family_name04;
+        }
         
         /**
          * Set family_relation04.
@@ -1682,6 +1845,29 @@ if (!class_exists('\Eccube\Entity\Customer')) {
             return $this->family_birth04;
         }
         
+        /**
+         * Set family_name05.
+         *
+         * @param string $family_name05
+         *
+         * @return Customer
+         */
+        public function setFamilyName05($family_name05)
+        {
+            $this->family_name05 = $family_name05;
+
+            return $this;
+        }
+
+        /**
+         * Get family_name05.
+         *
+         * @return string
+         */
+        public function getFamilyName05()
+        {
+            return $this->family_name05;
+        }
         
         /**
          * Set family_relation05.
@@ -1733,6 +1919,30 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         }
         
         /**
+         * Set family_name06.
+         *
+         * @param string $family_name06
+         *
+         * @return Customer
+         */
+        public function setFamilyName06($family_name06)
+        {
+            $this->family_name06 = $family_name06;
+
+            return $this;
+        }
+
+        /**
+         * Get family_name06.
+         *
+         * @return string
+         */
+        public function getFamilyName06()
+        {
+            return $this->family_name06;
+        }
+        
+        /**
          * Set family_relation06.
          *
          * @param string $family_relation06
@@ -1781,6 +1991,29 @@ if (!class_exists('\Eccube\Entity\Customer')) {
             return $this->family_birth06;
         }
         
+        /**
+         * Set family_name07.
+         *
+         * @param string $family_name07
+         *
+         * @return Customer
+         */
+        public function setFamilyName07($family_name07)
+        {
+            $this->family_name07 = $family_name07;
+
+            return $this;
+        }
+
+        /**
+         * Get family_name07.
+         *
+         * @return string
+         */
+        public function getFamilyName07()
+        {
+            return $this->family_name07;
+        }
         
         /**
          * Set family_relation07.
@@ -1831,6 +2064,29 @@ if (!class_exists('\Eccube\Entity\Customer')) {
             return $this->family_birth07;
         }
         
+        /**
+         * Set family_name08.
+         *
+         * @param string $family_name08
+         *
+         * @return Customer
+         */
+        public function setFamilyName08($family_name08)
+        {
+            $this->family_name08 = $family_name08;
+
+            return $this;
+        }
+
+        /**
+         * Get family_name08.
+         *
+         * @return string
+         */
+        public function getFamilyName08()
+        {
+            return $this->family_name08;
+        }
         
         /**
          * Set family_relation08.
@@ -1880,6 +2136,29 @@ if (!class_exists('\Eccube\Entity\Customer')) {
             return $this->family_birth08;
         }
         
+        /**
+         * Set family_name09.
+         *
+         * @param string $family_name09
+         *
+         * @return Customer
+         */
+        public function setFamilyName09($family_name09)
+        {
+            $this->family_name09 = $family_name09;
+
+            return $this;
+        }
+
+        /**
+         * Get family_name09.
+         *
+         * @return string
+         */
+        public function getFamilyName09()
+        {
+            return $this->family_name09;
+        }
         
         /**
          * Set family_relation09.
@@ -1930,6 +2209,29 @@ if (!class_exists('\Eccube\Entity\Customer')) {
             return $this->family_birth09;
         }
         
+        /**
+         * Set family_name10.
+         *
+         * @param string $family_name10
+         *
+         * @return Customer
+         */
+        public function setFamilyName10($family_name10)
+        {
+            $this->family_name10 = $family_name10;
+
+            return $this;
+        }
+
+        /**
+         * Get family_name10.
+         *
+         * @return string
+         */
+        public function getFamilyName10()
+        {
+            return $this->family_name10;
+        }
         
         /**
          * Set family_relation10.

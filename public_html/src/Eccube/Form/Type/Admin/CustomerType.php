@@ -165,7 +165,7 @@ class CustomerType extends AbstractType
             ])
             
             //家族情報
-            //  1人目
+            //  1～10人
             ->add('family_birth01', BirthdayType::class, [
                 'required' => false,
                 'input' => 'datetime',
@@ -180,7 +180,285 @@ class CustomerType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('family_name01', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
             ->add('family_relation01', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_birth02', BirthdayType::class, [
+                'required' => false,
+                'input' => 'datetime',
+                'years' => range(date('Y'), date('Y') - $this->eccubeConfig['eccube_birth_max']),
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'constraints' => [
+                    new Assert\LessThanOrEqual([
+                        'value' => date('Y-m-d', strtotime('-1 day')),
+                        'message' => 'form_error.select_is_future_or_now_date',
+                    ]),
+                ],
+            ])
+            ->add('family_name02', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_relation02', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_birth03', BirthdayType::class, [
+                'required' => false,
+                'input' => 'datetime',
+                'years' => range(date('Y'), date('Y') - $this->eccubeConfig['eccube_birth_max']),
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'constraints' => [
+                    new Assert\LessThanOrEqual([
+                        'value' => date('Y-m-d', strtotime('-1 day')),
+                        'message' => 'form_error.select_is_future_or_now_date',
+                    ]),
+                ],
+            ])
+            ->add('family_name03', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_relation03', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_birth04', BirthdayType::class, [
+                'required' => false,
+                'input' => 'datetime',
+                'years' => range(date('Y'), date('Y') - $this->eccubeConfig['eccube_birth_max']),
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'constraints' => [
+                    new Assert\LessThanOrEqual([
+                        'value' => date('Y-m-d', strtotime('-1 day')),
+                        'message' => 'form_error.select_is_future_or_now_date',
+                    ]),
+                ],
+            ])
+            ->add('family_name04', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_relation04', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_birth05', BirthdayType::class, [
+                'required' => false,
+                'input' => 'datetime',
+                'years' => range(date('Y'), date('Y') - $this->eccubeConfig['eccube_birth_max']),
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'constraints' => [
+                    new Assert\LessThanOrEqual([
+                        'value' => date('Y-m-d', strtotime('-1 day')),
+                        'message' => 'form_error.select_is_future_or_now_date',
+                    ]),
+                ],
+            ])
+            ->add('family_name05', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_relation05', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_birth06', BirthdayType::class, [
+                'required' => false,
+                'input' => 'datetime',
+                'years' => range(date('Y'), date('Y') - $this->eccubeConfig['eccube_birth_max']),
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'constraints' => [
+                    new Assert\LessThanOrEqual([
+                        'value' => date('Y-m-d', strtotime('-1 day')),
+                        'message' => 'form_error.select_is_future_or_now_date',
+                    ]),
+                ],
+            ])
+            ->add('family_name06', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_relation06', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_birth07', BirthdayType::class, [
+                'required' => false,
+                'input' => 'datetime',
+                'years' => range(date('Y'), date('Y') - $this->eccubeConfig['eccube_birth_max']),
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'constraints' => [
+                    new Assert\LessThanOrEqual([
+                        'value' => date('Y-m-d', strtotime('-1 day')),
+                        'message' => 'form_error.select_is_future_or_now_date',
+                    ]),
+                ],
+            ])
+            ->add('family_name07', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_relation07', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_birth08', BirthdayType::class, [
+                'required' => false,
+                'input' => 'datetime',
+                'years' => range(date('Y'), date('Y') - $this->eccubeConfig['eccube_birth_max']),
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'constraints' => [
+                    new Assert\LessThanOrEqual([
+                        'value' => date('Y-m-d', strtotime('-1 day')),
+                        'message' => 'form_error.select_is_future_or_now_date',
+                    ]),
+                ],
+            ])
+            ->add('family_name08', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_relation08', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_birth09', BirthdayType::class, [
+                'required' => false,
+                'input' => 'datetime',
+                'years' => range(date('Y'), date('Y') - $this->eccubeConfig['eccube_birth_max']),
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'constraints' => [
+                    new Assert\LessThanOrEqual([
+                        'value' => date('Y-m-d', strtotime('-1 day')),
+                        'message' => 'form_error.select_is_future_or_now_date',
+                    ]),
+                ],
+            ])
+            ->add('family_name09', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_relation09', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_birth10', BirthdayType::class, [
+                'required' => false,
+                'input' => 'datetime',
+                'years' => range(date('Y'), date('Y') - $this->eccubeConfig['eccube_birth_max']),
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'constraints' => [
+                    new Assert\LessThanOrEqual([
+                        'value' => date('Y-m-d', strtotime('-1 day')),
+                        'message' => 'form_error.select_is_future_or_now_date',
+                    ]),
+                ],
+            ])
+            ->add('family_name10', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                ],
+            ])
+            ->add('family_relation10', TextType::class, [
                 'required' => false,
                 'constraints' => [
                     new Assert\Length([
