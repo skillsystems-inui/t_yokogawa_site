@@ -1386,6 +1386,7 @@ $item_detail
 }
 .item_index section {
 	width: 100%;
+	margin-top: 72px;
 	margin-bottom: 50px;
 }
 .item_index section .item_main {
