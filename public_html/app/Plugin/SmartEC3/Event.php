@@ -103,6 +103,12 @@ class Event implements EventSubscriberInterface
             SmartRegiEvents::PLG_SMARTREGI_ADMIM_SMART_EDIT_COMPLETE => 'SmartEC3ProductRegister',
             SmartRegiEvents::PLG_SMARTREGI_ADMIM_SMART_EDIT_STORE_CHANGE => 'SmartEC3ProductDelete',
             //EccubeEvents::ADMIN_PRODUCT_DELETE_COMPLETE => 'SmartEC3ProductDelete',
+            
+            //購入完了した時
+            EccubeEvents::FRONT_SHOPPING_COMPLETE_INITIALIZE => 'SmartEC3TransactionUpdate',
+            //最終確認　購入完了した時
+            //EccubeEvents::FRONT_SHOPPING_COMPLETE_INITIALIZE => 'SmartEC3TransactionUpdate',
+            
         ];
     }
 
@@ -362,6 +368,41 @@ class Event implements EventSubscriberInterface
         $msg = "スマレジ： " . $msg;
         $flashbag = $this->session->getFlashBag();
         $flashbag->add('eccube.'.'admin'.'.warning', $msg);
+
+    }
+    
+    public function SmartEC3TransactionUpdate(EventArgs $event){
+log_info(
+            '__testLog1',
+            [
+                'test_val' => 'test1',
+            ]
+        );
+
+        $arguments = $event->getArguments();
+        $transaction = $arguments["Order"];
+
+
+log_info(
+            '__testLog2',
+            [
+                'test2a' => $arguments,
+                'test2b' => $transaction,
+            ]
+        );
+
+
+        $msg = $this->smartRegiService->updateSmartRegiTransaction($transaction);
+        $msg = "スマレジ： " . $msg;
+        $flashbag = $this->session->getFlashBag();
+        $flashbag->add('eccube.'.'admin'.'.warning', $msg);
+
+log_info(
+            '__testLog3',
+            [
+                'test_val' => 'test',
+            ]
+        );
 
     }
 

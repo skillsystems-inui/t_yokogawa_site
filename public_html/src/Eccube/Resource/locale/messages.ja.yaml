@@ -711,7 +711,7 @@ admin.product.unselected_class: 選択されていません
 admin.product.product_csv.product_id_col: 商品ID
 admin.product.product_csv.product_id_description: 新規登録の場合は空にしてください。既存の商品を更新する場合は、商品IDを指定してください。
 admin.product.product_csv.display_status_col: 公開ステータス(ID)
-admin.product.product_csv.display_status_description: ''
+admin.product.product_csv.display_status_description: '1;公開,2:非公開,3:廃止'
 admin.product.product_csv.product_name_col: 商品名
 admin.product.product_csv.product_name_description: ''
 admin.product.product_csv.shop_memo_col: ショップ用メモ欄
@@ -794,7 +794,7 @@ admin.product.category_csv.delete_flag_description: 0:登録 1:削除を指定�
 admin.customer.customer_csv.customer_id_col: 会員ID
 admin.customer.customer_csv.customer_id_description: 新規登録の場合は空にしてください。既存の会員を更新する場合は、会員IDを指定してください。
 admin.customer.customer_csv.display_status_col: 会員ステータス(ID)
-admin.customer.customer_csv.display_status_description: ''
+admin.customer.customer_csv.display_status_description: '1;仮会員,2:本会員,3:退会'
 admin.customer.customer_csv.customer_name01_col: 会員名1
 admin.customer.customer_csv.customer_name01_description: ''
 admin.customer.customer_csv.customer_name02_col: 会員名2

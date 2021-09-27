@@ -7,6 +7,7 @@ use Eccube\Entity\Product;
 use Eccube\Entity\ProductClass;
 use Eccube\Entity\Customer;
 use Eccube\Entity\Category;
+use Eccube\Entity\Order;
 use Plugin\SmartEC3\Entity\Config;
 use Plugin\SmartEC3\Entity\SmartRegi;
 use Plugin\SmartEC3\Entity\SmartRegiImage;
@@ -33,6 +34,7 @@ class SmartRegiService
     const PRODUCT_PARAM = 'product_upd';
     const PRODUCT_IMAGE_PARAM = 'product_image_upd';
     const PRODUCT_STOCK_PARAM = 'stock_upd';
+    const TRANSACTION_PARAM = 'transaction_upd';
 
     // Actions
     const CATEGORY_UPDATE_ACTION = 'CATEGORY_UPDATE';
@@ -43,12 +45,14 @@ class SmartRegiService
     const PRODUCT_IMAGE_ACTION = 'PRODUCT_IMAGE';
     const PRODUCT_STOCK_ACTION = 'PRODUCT_STOCK';
     const PRODUCT_DELETE_ACTION = 'PRODUCT_DELETE';
+    const TRANSACTION_UPDATE_ACTION = 'TRANSACTION_UPDATE';
     
     // LOGS
     const CATEGORY_LOG = 'smartregi_category.log';
     const USER_LOG = 'smartregi_user.log';
     const PRODUCT_LOG = 'smartregi_product.log';
     const PRODUCT_STOCK_LOG = 'smartregi_product_stock.log';
+    const TRANSACTION_LOG = 'smartregi_transaction.log';
 
     /**
      * @var \Doctrine\ORM\EntityManagerInterface
@@ -453,6 +457,80 @@ class SmartRegiService
         
         return $msg;
     }
+    
+    //---------------------------------------------------------------------------------------
+    // 受注
+    //---------------------------------------------------------------------------------------
+    public function updateSmartRegiTransaction(Order $order){
+        
+        log_info(
+            '__testLog04',
+            [
+                'test_val' => $order,
+            ]
+        );
+        
+        $Config = $this->configRepository->find(1);
+        if ($Config->getOrderUpdate()){
+
+log_info(
+            '__testLog05',
+            [
+                'test_val' => $order,
+            ]
+        );
+        
+
+
+            // Connection settings
+            $arrConnect = array();
+            $arrConnect['contract_id'] = $Config->getContractId();
+            $arrConnect['access_token'] = $Config->getAccessToken();
+
+log_info(
+            '__testLog06',
+            [
+                'test_val' => $order,
+            ]
+        );
+        
+
+            // Api Settings
+            $param = self::TRANSACTION_PARAM;
+            $api_url = $Config->getApiURL();
+
+
+log_info(
+            '__testLog07',
+            [
+                'test_val' => $order,
+            ]
+        );
+        
+
+            // Query settings
+            $arrData = $this->smartHelper->setTransactionUpdate($order);
+
+log_info(
+            '__testLog08',
+            [
+                'test_val' => $order,
+            ]
+        );
+        
+
+
+            // Log message and file
+            $arrRet = $this->doRequest($arrConnect,$param,$api_url,$arrData,self::TRANSACTION_UPDATE_ACTION, self::TRANSACTION_LOG);
+
+            $msg = $arrRet == "ok\n" ? "Transaction Updated" : $arrRet;
+        }else{
+            $msg = "Transaction update is off";
+        }
+        
+        return $msg;
+    }
+    
     
     //---------------------------------------------------------------------------------------
     // Requests
