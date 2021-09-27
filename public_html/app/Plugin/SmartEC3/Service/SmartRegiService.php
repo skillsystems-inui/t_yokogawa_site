@@ -46,6 +46,7 @@ class SmartRegiService
     const PRODUCT_STOCK_ACTION = 'PRODUCT_STOCK';
     const PRODUCT_DELETE_ACTION = 'PRODUCT_DELETE';
     const TRANSACTION_UPDATE_ACTION = 'TRANSACTION_UPDATE';
+    const TRANSACTION_DETAIL_UPDATE_ACTION = 'TRANSACTION_DETAIL_UPDATE';
     
     // LOGS
     const CATEGORY_LOG = 'smartregi_category.log';
@@ -463,66 +464,46 @@ class SmartRegiService
     //---------------------------------------------------------------------------------------
     public function updateSmartRegiTransaction(Order $order){
         
-        log_info(
-            '__testLog04',
-            [
-                'test_val' => $order,
-            ]
-        );
-        
         $Config = $this->configRepository->find(1);
         if ($Config->getOrderUpdate()){
-
-log_info(
-            '__testLog05',
-            [
-                'test_val' => $order,
-            ]
-        );
-        
-
 
             // Connection settings
             $arrConnect = array();
             $arrConnect['contract_id'] = $Config->getContractId();
             $arrConnect['access_token'] = $Config->getAccessToken();
 
-log_info(
-            '__testLog06',
-            [
-                'test_val' => $order,
-            ]
-        );
-        
-
             // Api Settings
             $param = self::TRANSACTION_PARAM;
             $api_url = $Config->getApiURL();
-
+          
+          /*  
+            // Query settings 受注詳細データ
+            $arrData2 = $this->smartHelper->setTransactionDetailUpdate($order);
+            // Log message and file
+            $arrRet2 = $this->doRequest($arrConnect,$param,$api_url,$arrData2,self::TRANSACTION_DETAIL_UPDATE_ACTION, self::TRANSACTION_LOG);
 
 log_info(
-            '__testLog07',
+            '__testLog99',
             [
-                'test_val' => $order,
+                'test_val' => $arrRet2,
             ]
         );
-        
+        */
 
-            // Query settings
+            // Query settings 受注データ
             $arrData = $this->smartHelper->setTransactionUpdate($order);
-
-log_info(
-            '__testLog08',
-            [
-                'test_val' => $order,
-            ]
-        );
-        
-
-
             // Log message and file
             $arrRet = $this->doRequest($arrConnect,$param,$api_url,$arrData,self::TRANSACTION_UPDATE_ACTION, self::TRANSACTION_LOG);
 
+
+log_info(
+            '__testLog100',
+            [
+                'test_val' => $arrRet,
+            ]
+        );
+
+            //$msg = $arrRet == "ok\n" ? ($arrRet2 == "ok\n" ? "Transaction Updated" : $arrRet2) : $arrRet;
             $msg = $arrRet == "ok\n" ? "Transaction Updated" : $arrRet;
         }else{
             $msg = "Transaction update is off";

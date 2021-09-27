@@ -26,6 +26,7 @@ class SmartRegiServiceHelper
     const PRODUCT_PRICE_TABLE = 'ProductPrice';
     const PRODUCT_STORE_TABLE = 'ProductStore';
     const TRANSACTION_HEAD = 'TransactionHead';
+    const TRANSACTION_DETAIL = 'TransactionDetail';
     const CALLBACK_URL_REGIST_PRODUCT_IMAGE = '/admin/smareji/callback.php';
     const IMAGE_DIR = '/html/upload/save_image/';
     
@@ -301,21 +302,13 @@ class SmartRegiServiceHelper
 
         $arrData = array();
         
-        log_info(
-            '__testLog',
-            [
-                'test_api' => 'jyutyu_api',
-            ]
-        );
-        
-        /*
+        //端末取引日時(日時)
+        $terminalTranDateTime = $order->getOrderDate()->format('Y-m-d H:i:s');
+        //端末取引日時(日)
+        $terminalTranDate = $order->getOrderDate()->format('Y-m-d');
         
         $arrData['proc_info']['proc_division'] = "U"; // Command settings
         $arrData['data'][0]['table_name'] = self::TRANSACTION_HEAD;
-        
-        //$arrData['data'][0]['rows'][0]['transactionHeadDivision'] = $order->getId();
-        //$arrData['data'][0]['rows'][0]['transactionDateTime'] = $order->getDateTime();
-        //$arrData['data'][0]['rows'][0][''] = ;//
         
         //取引区分(1：通常、2：入金、3：出金、4：預かり金、 5：預かり金返金、6：ポイント加算、　7：ポイント減算、8：ポイント失効、10:取置き、13：マイル加算、14：マイル減算、15：バリューカード入金、16：領収証)
         $arrData['data'][0]['rows'][0]['transactionHeadDivision'] = 1;//取引区分★
@@ -324,31 +317,51 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['rows'][0]['subtotalDiscountPrice']   = 0;//小計値引き
         $arrData['data'][0]['rows'][0]['subtotalDiscountRate']    = 0;//小計割引率
         $arrData['data'][0]['rows'][0]['pointDiscount']           = 0;//ポイント値引き 
-        $arrData['data'][0]['rows'][0]['total']                   = 600;//合計★
-        //$arrData['data'][0]['rows'][0]['taxExclude']              = 0;//外税額
-        //$arrData['data'][0]['rows'][0]['taxInclude']              = 0;//内税額
-        //$arrData['data'][0]['rows'][0]['deposit']                 = 0;//預かり金
-        //$arrData['data'][0]['rows'][0]['depositCash']             = 0;//預かり金現金
-        //$arrData['data'][0]['rows'][0]['depositCredit']           = 0;//預かり金クレジット
-        //$arrData['data'][0]['rows'][0]['charge']                  = 0;//釣銭
-        //$arrData['data'][0]['rows'][0]['newPoint']                = 0;//付与ポイント 
-        //$arrData['data'][0]['rows'][0]['spendPoint']              = 0;//使用ポイント
-        //$arrData['data'][0]['rows'][0]['point']                   = 0;//現在ポイント★
-        //$arrData['data'][0]['rows'][0]['totalPoint']              = 0;//合計ポイント 
-        //$arrData['data'][0]['rows'][0]['earnMile']                = 0;//獲得マイル 
-        //$arrData['data'][0]['rows'][0]['totalMile']               = 0;//合計マイル
-        //$arrData['data'][0]['rows'][0]['adjustmentMile']          = 0;//調整マイル
-        //調整マイル区分  
-        //　1:0マイル　（マイルを付与しない。「調整マイル = -1 * 獲得マイル」）2:マイル指定（指定したマイルにする。「調整マイル = 入力値 - 獲得マイル」）
-        //　3:マイル加算（マイルを加算/減算する。「調整マイル =入力値」）4:マイルｎ倍（指定倍数にする。「調整マイル = 獲得マイル * (n - 1)」
-        //$arrData['data'][0]['rows'][0]['adjustmentMileDivision']  = '1';//調整マイル区分 
-        $arrData['data'][0]['rows'][0]['storeId']                 = 1;//店舗ID★
-        $arrData['data'][0]['rows'][0]['terminalId']              = 1;//端末ID★
-        //$arrData['data'][0]['rows'][0]['customerId']            = 2;//会員ID
-        $arrData['data'][0]['rows'][0]['terminalTranId']          = ;//端末取引ID★
-        $arrData['data'][0]['rows'][0]['terminalTranDateTime']    = '';//端末取引日時★
-        
+        $arrData['data'][0]['rows'][0]['total']                   = 500;//合計★
+        /*
+        $arrData['data'][0]['rows'][0]['sumDivision']                   = 2;//締め区分
+        $arrData['data'][0]['rows'][0]['sumDateTime']                   = $terminalTranDate;//締め日
         */
+        
+        $arrData['data'][0]['rows'][0]['storeId']                 = 1;//店舗ID★
+        $arrData['data'][0]['rows'][0]['terminalId']              = 10;//端末ID★
+        //$arrData['data'][0]['rows'][0]['customerId']            = 2;//会員ID
+        $arrData['data'][0]['rows'][0]['terminalTranId']          = $order->getId();//端末取引ID★
+        $arrData['data'][0]['rows'][0]['terminalTranDateTime']    = $terminalTranDateTime;//端末取引日時★
+        
+        
+        $arrData['data'][1]['table_name'] = self::TRANSACTION_DETAIL;
+        $arrData['data'][1]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）
+        $arrData['data'][1]['rows'][0]['salesPrice'] = 500;//販売単価
+        $arrData['data'][1]['rows'][0]['quantity'] = 1;//数量
+        //$arrData['data'][1]['rows'][0]['quantity'] = $order->getQuantity();//数量
+        /**/
+        
+        return $arrData;
+    }
+    
+    public function setTransactionDetailUpdate(Order $order){
+
+        $arrData = array();
+        
+        //端末取引日時
+        $terminalTranDateTime = $order->getOrderDate()->format('Y-m-d H:i:s');
+        
+        $arrData['proc_info']['proc_division'] = "U"; // Command settings
+        $arrData['data'][0]['table_name'] = self::TRANSACTION_DETAIL;
+        //$arrData['data'][0]['proc_detail_name'] = "register_layaway";
+        log_info(
+            '__testLog00',
+            [
+                'test_val00' => $arrData['data'][0]['table_name'],
+            ]
+        );
+
+        
+        
+        $arrData['data'][0]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）
+        $arrData['data'][0]['rows'][0]['salesPrice'] = $order->getTotalPrice();//販売単価
+        $arrData['data'][0]['rows'][0]['quantity'] = $order->getQuantity();//数量
         
         return $arrData;
     }
