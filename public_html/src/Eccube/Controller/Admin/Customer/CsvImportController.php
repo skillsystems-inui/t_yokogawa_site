@@ -672,6 +672,7 @@ class CsvImportController extends AbstractCsvImportController
                 'description' => 'admin.customer.customer_csv.customer_point_description',
                 'required' => true,
             ],
+            /*
             //家族代表フラグ
             trans('admin.customer.customer_csv.customer_is_family_main_col') => [
                 'id' => 'is_family_main',
@@ -684,7 +685,7 @@ class CsvImportController extends AbstractCsvImportController
                 'description' => 'admin.customer.customer_csv.customer_family_main_customer_id_description',
                 'required' => false,
             ],
-            
+            */
         ];
     }
 }
