@@ -1833,11 +1833,13 @@ class CsvImportController extends AbstractCsvImportController
                 'required' => true,
             ],
             //追加項目　オプション(ID)
+            /*
             trans('admin.product.product_csv.product_option_col') => [
                 'id' => 'product_option',
                 'description' => 'admin.product.product_csv.product_option_description',
                 'required' => false,
             ],
+            */
             //追加項目　内容量
             trans('admin.product.product_csv.capacity_col') => [
                 'id' => 'capacity',
