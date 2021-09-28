@@ -129,3 +129,7 @@ ALTER TABLE `dtb_customer` ADD `family_sex07_id` smallint(5) unsigned DEFAULT NU
 ALTER TABLE `dtb_customer` ADD `family_sex08_id` smallint(5) unsigned DEFAULT NULL;
 ALTER TABLE `dtb_customer` ADD `family_sex09_id` smallint(5) unsigned DEFAULT NULL;
 ALTER TABLE `dtb_customer` ADD `family_sex10_id` smallint(5) unsigned DEFAULT NULL;
+
+
+--—ñ’Ç‰Á(‰ïˆõ)
+ALTER TABLE `dtb_customer` ADD `customer_code` varchar(255) DEFAULT NULL;

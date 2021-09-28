@@ -75,7 +75,7 @@ file that was distributed with this source code.
                         <div class="collapse show ec-cardCollapse" id="ordererInfo">
                             <div class="card-body">
                                 {% if Customer.id %}
-                                    <div class="row mb-2">
+                                    <div class="row mb-2" style="display:none;">
                                         <div class="col-3">
                                             <div class="d-inline-block" data-tooltip="true" data-placement="top"
                                                  title="{{ 'tooltip.customer.customer_id'|trans }}">
@@ -88,6 +88,18 @@ file that was distributed with this source code.
                                         </div>
                                     </div>
                                 {% endif %}
+                                
+                                <!--会員コード -->
+                                <div class="row mb-2">
+                                    <div class="col-3">
+                                        <span>{{ 'admin.customer.customer_id'|trans }}</span>
+                                    </div>
+                                    <div class="col">
+                                        {{ form_widget(form.customer_code) }}
+                                        {{ form_errors(form.customer_code) }}
+                                    </div>
+                                </div>
+                                
                                 <div class="row mb-2">
                                     <div class="col-3">
                                         <span>{{ 'admin.common.name'|trans }}</span>

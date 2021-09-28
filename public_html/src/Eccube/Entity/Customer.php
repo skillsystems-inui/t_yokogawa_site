@@ -235,6 +235,14 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          */
         private $update_date;
         
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="customer_code", type="string", length=255, nullable=true)
+         */
+        private $customer_code;
+        
         /**
          * @var string
          *
@@ -2624,6 +2632,32 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         {
             return $this->family_sex10;
         }
+        
+        
+        /**
+         * Set customer_code.
+         *
+         * @param string|null $customer_code
+         *
+         * @return Customer
+         */
+        public function setCustomerCode($customer_code = null)
+        {
+            $this->customer_code = $customer_code;
+
+            return $this;
+        }
+
+        /**
+         * Get customer_code.
+         *
+         * @return string|null
+         */
+        public function getCustomerCode()
+        {
+            return $this->customer_code;
+        }
+
         
     }
 }

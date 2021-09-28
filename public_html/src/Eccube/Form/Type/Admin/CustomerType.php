@@ -82,6 +82,14 @@ class CustomerType extends AbstractType
             ->add('kana', KanaType::class, [
                 'required' => true,
             ])
+            ->add('customer_code', TextType::class, [
+                'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => $this->eccubeConfig['eccube_stext_len'],
+                    ]),
+                ],
+            ])
             ->add('company_name', TextType::class, [
                 'required' => false,
                 'constraints' => [
