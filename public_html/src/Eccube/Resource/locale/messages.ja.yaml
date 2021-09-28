@@ -826,6 +826,16 @@ admin.customer.customer_csv.customer_is_family_main_description: '0;代表者で
 admin.customer.customer_csv.customer_family_main_customer_id_col: 家族代表会員ID
 admin.customer.customer_csv.customer_family_main_customer_id_description: '家族代表者とする会員IDを指定してください'
 
+admin.customer.customer_csv.customer_family_name01_col:     '家族情報1 名前'
+admin.customer.customer_csv.customer_family_sex01_id_col:   '家族情報1 性別id'
+admin.customer.customer_csv.customer_family_relation01_col: '家族情報1 続柄'
+admin.customer.customer_csv.customer_family_birth01_col:    '家族情報1 誕生日'
+
+admin.customer.customer_csv.customer_family_name01_description:     ''
+admin.customer.customer_csv.customer_family_sex01_id_description:   '1男性:,女性:2'
+admin.customer.customer_csv.customer_family_relation01_description: '父、母、長男、長女、祖父、祖母 など自由に入力してください'
+admin.customer.customer_csv.customer_family_birth01_description:    '例:2021-01-01'
+
 #------------------------------------------------------------------------------------
 # 受注
 #------------------------------------------------------------------------------------

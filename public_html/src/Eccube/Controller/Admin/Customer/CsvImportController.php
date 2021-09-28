@@ -447,6 +447,32 @@ class CsvImportController extends AbstractCsvImportController
                         }
                         */
                         
+                        //-------------------- [家族情報] --------------------
+                        //家族情報1　名前
+                        $Customer->setFamilyName01(StringUtil::trimAll($row[$headerByKey['family_name01']]));
+                        //家族情報1　性別
+                    	$FamilySex01 = $this->sexRepository->find($row[$headerByKey['family_sex01_id']]);
+		                if (!$FamilySex01) {
+		                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex01_id']]);
+		                    $this->addErrors($message);
+		                } else {
+		                    $Customer->setFamilySex01($FamilySex01);
+		                }
+                        //家族情報1　続柄
+                        $Customer->setFamilyRelation01(StringUtil::trimAll($row[$headerByKey['family_relation01']]));
+                        //家族情報1　誕生日
+                        $familyBirthDay01 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth01']]);
+		                if ($familyBirthDay01 == true) {
+		                    $familyBirthDay01->setTime(0, 0, 0);
+                        	$Customer->setFamilyBirth01($familyBirthDay01);
+		                }else{
+		                	// 日付フォーマットが異なる場合はエラー
+		                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth01']]);
+                            $this->addErrors($message);
+		                }
+		                
+		                //-------------------- .[家族情報] --------------------
+                        
                         
                         //メール
                         if (StringUtil::isBlank($row[$headerByKey['email']])) {
@@ -688,33 +714,33 @@ class CsvImportController extends AbstractCsvImportController
             ],
             */
             
-            /*
+            
             //家族情報(名前、性別、続柄、誕生日)1～10
             // 名前
-            trans('admin.customer.customer_csv.customer_family_main_customer_id_col') => [
+            trans('admin.customer.customer_csv.customer_family_name01_col') => [
                 'id' => 'family_name01',
-                'description' => 'admin.customer.customer_csv.customer_family_main_customer_id_description',
+                'description' => 'admin.customer.customer_csv.customer_family_name01_description',
                 'required' => false,
             ],
             // 性別
-            trans('admin.customer.customer_csv.customer_family_main_customer_id_col') => [
+            trans('admin.customer.customer_csv.customer_family_sex01_id_col') => [
                 'id' => 'family_sex01_id',
-                'description' => 'admin.customer.customer_csv.customer_family_main_customer_id_description',
+                'description' => 'admin.customer.customer_csv.customer_family_sex01_id_description',
                 'required' => false,
             ],
             // 続柄
-            trans('admin.customer.customer_csv.customer_family_main_customer_id_col') => [
+            trans('admin.customer.customer_csv.customer_family_relation01_col') => [
                 'id' => 'family_relation01',
-                'description' => 'admin.customer.customer_csv.customer_family_main_customer_id_description',
+                'description' => 'admin.customer.customer_csv.customer_family_relation01_description',
                 'required' => false,
             ],
             // 誕生日
-            trans('admin.customer.customer_csv.customer_family_main_customer_id_col') => [
+            trans('admin.customer.customer_csv.customer_family_birth01_col') => [
                 'id' => 'family_birth01',
-                'description' => 'admin.customer.customer_csv.customer_family_main_customer_id_description',
+                'description' => 'admin.customer.customer_csv.customer_family_birth01_description',
                 'required' => false,
             ],
-            */
+            /**/
         ];
     }
 }
