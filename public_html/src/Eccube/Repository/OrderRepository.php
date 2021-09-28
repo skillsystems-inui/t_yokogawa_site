@@ -426,4 +426,18 @@ class OrderRepository extends AbstractRepository
         $Customer->setFirstBuyDate($FirstOrder->getOrderDate());
         $Customer->setLastBuyDate($LastOrder->getOrderDate());
     }
+    
+    /**
+     * 注文をスマレジIDで検索する.
+     *
+     * @param $smaregi_id
+     *
+     * @return null|Customer 見つからない場合はnullを返す.
+     */
+    public function getRegularCustomerByEmail($smaregi_id)
+    {
+        return $this->findOneBy([
+            'smaregi_id' => $smaregi_id,
+        ]);
+    }
 }

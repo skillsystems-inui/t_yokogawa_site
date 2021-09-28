@@ -464,6 +464,13 @@ if (!class_exists('\Eccube\Entity\Order')) {
          * @ORM\Column(name="currency_code", type="string", nullable=true)
          */
         private $currency_code;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="smaregi_id", type="string", length=20, nullable=true)
+         */
+        private $smaregi_id;
 
         /**
          * 注文完了画面に表示するメッセージ
@@ -1880,5 +1887,30 @@ if (!class_exists('\Eccube\Entity\Order')) {
 
             return $quantity;
         }
+                
+        /**
+         * Set smaregiId.
+         *
+         * @param string|null $smaregiId
+         *
+         * @return Order
+         */
+        public function setSmaregiId($smaregiId = null)
+        {
+            $this->smaregi_id = $smaregiId;
+
+            return $this;
+        }
+
+        /**
+         * Get smaregiId.
+         *
+         * @return string|null
+         */
+        public function getSmaregiId()
+        {
+            return $this->smaregi_id;
+        }
+
     }
 }

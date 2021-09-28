@@ -78,3 +78,7 @@ ALTER TABLE `dtb_order_item` ADD `option_category_name20` varchar(255) DEFAULT N
 
 --オプション選択内容(文字列)
 ALTER TABLE `dtb_order_item` ADD `option_detail` varchar(1024) DEFAULT NULL;
+
+
+--スマレジの取引ID
+ALTER TABLE `dtb_order` ADD `smaregi_id` varchar(20) DEFAULT NULL;

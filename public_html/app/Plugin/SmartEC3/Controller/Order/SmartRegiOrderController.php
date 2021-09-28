@@ -217,10 +217,66 @@ class SmartRegiOrderController extends AbstractController
 
     }
 
-    public function fillOrder($Order, $arrOrder){
+    public function fillOrder($_Order, $arrOrder){
 
         $Config = $this->configRepository->find(1);
         $customerOffset = $Config->getUserOffset();
+        
+        //--- 登録か更新か判定する ---
+        if ( isset($arrOrder['disposeServerTransactionHeadId']) && ($arrOrder['disposeServerTransactionHeadId'] != '0') ){
+        
+        
+        
+        log_info(
+            '__testLog__kousin',
+            [
+                'transactionHeadDivision' => $arrOrder['transactionHeadDivision'],
+                'cancelDivision' => $arrOrder['cancelDivision'],                
+            ]
+        );
+        
+        	//対象の取引IDが指定されている場合、更新モード
+        	
+        	//test 仮に今ある受注IDを指定する
+        	$orderId = $arrOrder['disposeServerTransactionHeadId'];
+        	
+        	$TargetOrder = $this->orderRepository->getRegularCustomerByEmail($orderId);
+        	
+        	log_info(
+	            '__testLog__kousin_orderdata',
+	            [
+	                'TargetOrder' => $TargetOrder,
+	            ]
+	        );
+        
+        
+        	
+        	$Order = $TargetOrder;
+        	//--- ステータスのみを更新する ---
+        	//「新規受付」→「注文取消し」に変更
+        	//「取り置き」→「注文取消し」に変更
+        	
+        	//ステータスを「注文取消し」に変更する
+			$OrderStatus = $this->orderStatusRepository->find(OrderStatus::CANCEL);
+			//ステータスをセット
+        	$Order->setOrderStatus($OrderStatus);
+        	
+        	return $Order;
+        }else{
+        
+        
+        log_info(
+            '__testLog__touroku',
+            [
+                'transactionHeadDivision' => $arrOrder['transactionHeadDivision'],
+                'cancelDivision' => $arrOrder['cancelDivision'],                
+            ]
+        );
+        
+        	//対象の取引IDが指定されていない場合、登録モード
+        	$Order = $_Order;
+        }
+        //--- .登録か更新か判定する ---
         
         // Set Customer Data and Shipping
         //-------------------------------------------------------------------------
@@ -248,7 +304,10 @@ class SmartRegiOrderController extends AbstractController
             $Order->setAddr02($Customer->getAddr02());
             $Order->setPhoneNumber($Customer->getPhoneNumber());
             $Order->setEmail($Customer->getEmail());
-
+            
+            //スマレジの取引IDを登録しておく
+            $smaregiId = $arrOrder['transactionHeadId'];
+            $Order->setSmaregiId($smaregiId);
             
             $Shipping = new Shipping();
             $Shipping->setOrder($Order);
@@ -285,7 +344,11 @@ class SmartRegiOrderController extends AbstractController
             $Order->setAddr01('大阪市北区梅田');
             $Order->setAddr02('123');
             $Order->setEmail('test@gmail.com');
-
+            
+            //スマレジの取引IDを登録しておく
+            $smaregiId = $arrOrder['transactionHeadId'];
+            $Order->setSmaregiId($smaregiId);
+            
             $Shipping = new Shipping();
             $Shipping->setOrder($Order);
             $Shipping->setName01("ゲスト");
@@ -353,34 +416,27 @@ class SmartRegiOrderController extends AbstractController
         //$method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"スマレジ";
         $method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"店舗支払い";
         $Order->setPaymentMethod($method);
-
-        log_info(
-            '__testLog',
-            [
-                'transactionHeadDivision' => $arrOrder['transactionHeadDivision'],
-                
-            ]
-        );
         
         //[transactionHeadDivision]
         //スマレジから通常購入：1
         //スマレジから取り置き：10
         //
         //ECCUBE OrderStatus
-        //新規受付  NEW
-        //取り置き  KEEPED
+        //新規受付   NEW
+        //注文取消し CANCEL
+        //発送済み   DELIVERED
+        //返品       RETURNED
+        //取り置き   KEEPED
 
+        //----- 取り置き以外は発送済みにする -----
         $OrderStatus = $this->orderStatusRepository->find(OrderStatus::DELIVERED);
-        //通常購入の場合
-        /*
-        if($arrOrder['transactionHeadDivision'] == 1){
-        	$OrderStatus = $this->orderStatusRepository->find(OrderStatus::NEW);
-        }
-        */
-        //取り置きの場合
+        
+        //〇取り置きの場合
         if($arrOrder['transactionHeadDivision'] == 10){
         	$OrderStatus = $this->orderStatusRepository->find(OrderStatus::KEEPED);
         }
+        
+        //ステータスをセット
         $Order->setOrderStatus($OrderStatus);
 
         $Order->setCreateDate(new \DateTime($arrOrder['transactionDateTime']));
