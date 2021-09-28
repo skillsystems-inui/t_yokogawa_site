@@ -196,6 +196,9 @@ class CustomerType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('family_sex01', SexType::class, [
+                'required' => false,
+            ])
             ->add('family_birth02', BirthdayType::class, [
                 'required' => false,
                 'input' => 'datetime',
@@ -225,6 +228,9 @@ class CustomerType extends AbstractType
                         'max' => 50,
                     ]),
                 ],
+            ])
+            ->add('family_sex02', SexType::class, [
+                'required' => false,
             ])
             ->add('family_birth03', BirthdayType::class, [
                 'required' => false,
@@ -256,6 +262,9 @@ class CustomerType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('family_sex03', SexType::class, [
+                'required' => false,
+            ])
             ->add('family_birth04', BirthdayType::class, [
                 'required' => false,
                 'input' => 'datetime',
@@ -285,6 +294,9 @@ class CustomerType extends AbstractType
                         'max' => 50,
                     ]),
                 ],
+            ])
+            ->add('family_sex04', SexType::class, [
+                'required' => false,
             ])
             ->add('family_birth05', BirthdayType::class, [
                 'required' => false,
@@ -316,6 +328,9 @@ class CustomerType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('family_sex05', SexType::class, [
+                'required' => false,
+            ])
             ->add('family_birth06', BirthdayType::class, [
                 'required' => false,
                 'input' => 'datetime',
@@ -345,6 +360,9 @@ class CustomerType extends AbstractType
                         'max' => 50,
                     ]),
                 ],
+            ])
+            ->add('family_sex06', SexType::class, [
+                'required' => false,
             ])
             ->add('family_birth07', BirthdayType::class, [
                 'required' => false,
@@ -376,6 +394,9 @@ class CustomerType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('family_sex07', SexType::class, [
+                'required' => false,
+            ])
             ->add('family_birth08', BirthdayType::class, [
                 'required' => false,
                 'input' => 'datetime',
@@ -405,6 +426,9 @@ class CustomerType extends AbstractType
                         'max' => 50,
                     ]),
                 ],
+            ])
+            ->add('family_sex08', SexType::class, [
+                'required' => false,
             ])
             ->add('family_birth09', BirthdayType::class, [
                 'required' => false,
@@ -436,6 +460,9 @@ class CustomerType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('family_sex09', SexType::class, [
+                'required' => false,
+            ])
             ->add('family_birth10', BirthdayType::class, [
                 'required' => false,
                 'input' => 'datetime',
@@ -465,6 +492,9 @@ class CustomerType extends AbstractType
                         'max' => 50,
                     ]),
                 ],
+            ])
+            ->add('family_sex10', SexType::class, [
+                'required' => false,
             ])
             
             ->add('note', TextareaType::class, [

@@ -116,3 +116,16 @@ ALTER TABLE `dtb_customer` ADD `family_name07` varchar(50) DEFAULT NULL;
 ALTER TABLE `dtb_customer` ADD `family_name08` varchar(50) DEFAULT NULL;
 ALTER TABLE `dtb_customer` ADD `family_name09` varchar(50) DEFAULT NULL;
 ALTER TABLE `dtb_customer` ADD `family_name10` varchar(50) DEFAULT NULL;
+
+
+-----â∆ë∞èÓïÒ01-10Å@ê´ï 
+ALTER TABLE `dtb_customer` ADD `family_sex01_id` smallint(5) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_sex02_id` smallint(5) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_sex03_id` smallint(5) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_sex04_id` smallint(5) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_sex05_id` smallint(5) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_sex06_id` smallint(5) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_sex07_id` smallint(5) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_sex08_id` smallint(5) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_sex09_id` smallint(5) unsigned DEFAULT NULL;
+ALTER TABLE `dtb_customer` ADD `family_sex10_id` smallint(5) unsigned DEFAULT NULL;

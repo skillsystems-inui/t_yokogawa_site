@@ -243,6 +243,16 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $family_name01;
         
         /**
+         * @var \Eccube\Entity\Master\Sex
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="family_sex01_id", referencedColumnName="id")
+         * })
+         */
+        private $family_sex01;
+
+        /**
          * @var string
          *
          * @ORM\Column(name="family_relation01", type="string", length=50)
@@ -263,6 +273,16 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          */
         private $family_name02;
         
+        /**
+         * @var \Eccube\Entity\Master\Sex
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="family_sex02_id", referencedColumnName="id")
+         * })
+         */
+        private $family_sex02;
+
         /**
          * @var string
          *
@@ -285,6 +305,16 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $family_name03;
         
         /**
+         * @var \Eccube\Entity\Master\Sex
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="family_sex03_id", referencedColumnName="id")
+         * })
+         */
+        private $family_sex03;
+
+        /**
          * @var string
          *
          * @ORM\Column(name="family_relation03", type="string", length=50)
@@ -305,6 +335,16 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          */
         private $family_name04;
         
+        /**
+         * @var \Eccube\Entity\Master\Sex
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="family_sex04_id", referencedColumnName="id")
+         * })
+         */
+        private $family_sex04;
+
         /**
          * @var string
          *
@@ -327,6 +367,16 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $family_name05;
         
         /**
+         * @var \Eccube\Entity\Master\Sex
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="family_sex05_id", referencedColumnName="id")
+         * })
+         */
+        private $family_sex05;
+
+        /**
          * @var string
          *
          * @ORM\Column(name="family_relation05", type="string", length=50)
@@ -347,6 +397,16 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          */
         private $family_name06;
         
+        /**
+         * @var \Eccube\Entity\Master\Sex
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="family_sex06_id", referencedColumnName="id")
+         * })
+         */
+        private $family_sex06;
+
         /**
          * @var string
          *
@@ -369,6 +429,16 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $family_name07;
         
         /**
+         * @var \Eccube\Entity\Master\Sex
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="family_sex07_id", referencedColumnName="id")
+         * })
+         */
+        private $family_sex07;
+
+        /**
          * @var string
          *
          * @ORM\Column(name="family_relation07", type="string", length=50)
@@ -389,6 +459,16 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          */
         private $family_name08;
         
+        /**
+         * @var \Eccube\Entity\Master\Sex
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="family_sex08_id", referencedColumnName="id")
+         * })
+         */
+        private $family_sex08;
+
         /**
          * @var string
          *
@@ -411,6 +491,16 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         private $family_name09;
         
         /**
+         * @var \Eccube\Entity\Master\Sex
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="family_sex09_id", referencedColumnName="id")
+         * })
+         */
+        private $family_sex09;
+
+        /**
          * @var string
          *
          * @ORM\Column(name="family_relation09", type="string", length=50)
@@ -431,6 +521,16 @@ if (!class_exists('\Eccube\Entity\Customer')) {
          */
         private $family_name10;
         
+        /**
+         * @var \Eccube\Entity\Master\Sex
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\Sex")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="family_sex10_id", referencedColumnName="id")
+         * })
+         */
+        private $family_sex10;
+
         /**
          * @var string
          *
@@ -2280,6 +2380,249 @@ if (!class_exists('\Eccube\Entity\Customer')) {
         public function getFamilyBirth10()
         {
             return $this->family_birth10;
+        }
+        
+        /**
+         * Set family_sex01.
+         *
+         * @param \Eccube\Entity\Master\Sex|null $family_sex01
+         *
+         * @return Customer
+         */
+        public function setFamilySex01(\Eccube\Entity\Master\Sex $family_sex01 = null)
+        {
+            $this->family_sex01 = $family_sex01;
+
+            return $this;
+        }
+
+        /**
+         * Get family_sex01.
+         *
+         * @return \Eccube\Entity\Master\Sex|null
+         */
+        public function getFamilySex01()
+        {
+            return $this->family_sex01;
+        }
+        
+        /**
+         * Set family_sex02.
+         *
+         * @param \Eccube\Entity\Master\Sex|null $family_sex02
+         *
+         * @return Customer
+         */
+        public function setFamilySex02(\Eccube\Entity\Master\Sex $family_sex02 = null)
+        {
+            $this->family_sex02 = $family_sex02;
+
+            return $this;
+        }
+
+        /**
+         * Get family_sex02.
+         *
+         * @return \Eccube\Entity\Master\Sex|null
+         */
+        public function getFamilySex02()
+        {
+            return $this->family_sex02;
+        }
+        
+        /**
+         * Set family_sex03.
+         *
+         * @param \Eccube\Entity\Master\Sex|null $family_sex03
+         *
+         * @return Customer
+         */
+        public function setFamilySex03(\Eccube\Entity\Master\Sex $family_sex03 = null)
+        {
+            $this->family_sex03 = $family_sex03;
+
+            return $this;
+        }
+
+        /**
+         * Get family_sex03.
+         *
+         * @return \Eccube\Entity\Master\Sex|null
+         */
+        public function getFamilySex03()
+        {
+            return $this->family_sex03;
+        }
+        
+        /**
+         * Set family_sex04.
+         *
+         * @param \Eccube\Entity\Master\Sex|null $family_sex04
+         *
+         * @return Customer
+         */
+        public function setFamilySex04(\Eccube\Entity\Master\Sex $family_sex04 = null)
+        {
+            $this->family_sex04 = $family_sex04;
+
+            return $this;
+        }
+
+        /**
+         * Get family_sex04.
+         *
+         * @return \Eccube\Entity\Master\Sex|null
+         */
+        public function getFamilySex04()
+        {
+            return $this->family_sex04;
+        }
+         /**
+         * Set family_sex05.
+         *
+         * @param \Eccube\Entity\Master\Sex|null $family_sex05
+         *
+         * @return Customer
+         */
+        public function setFamilySex05(\Eccube\Entity\Master\Sex $family_sex05 = null)
+        {
+            $this->family_sex05 = $family_sex05;
+
+            return $this;
+        }
+
+        /**
+         * Get family_sex05.
+         *
+         * @return \Eccube\Entity\Master\Sex|null
+         */
+        public function getFamilySex05()
+        {
+            return $this->family_sex05;
+        }
+        
+                     
+        /**
+         * Set family_sex06.
+         *
+         * @param \Eccube\Entity\Master\Sex|null $family_sex06
+         *
+         * @return Customer
+         */
+        public function setFamilySex06(\Eccube\Entity\Master\Sex $family_sex06 = null)
+        {
+            $this->family_sex06 = $family_sex06;
+
+            return $this;
+        }
+
+        /**
+         * Get family_sex06.
+         *
+         * @return \Eccube\Entity\Master\Sex|null
+         */
+        public function getFamilySex06()
+        {
+            return $this->family_sex06;
+        }
+        
+         /**
+         * Set family_sex07.
+         *
+         * @param \Eccube\Entity\Master\Sex|null $family_sex07
+         *
+         * @return Customer
+         */
+        public function setFamilySex07(\Eccube\Entity\Master\Sex $family_sex07 = null)
+        {
+            $this->family_sex07 = $family_sex07;
+
+            return $this;
+        }
+
+        /**
+         * Get family_sex07.
+         *
+         * @return \Eccube\Entity\Master\Sex|null
+         */
+        public function getFamilySex07()
+        {
+            return $this->family_sex07;
+        }
+        
+                       
+        /**
+         * Set family_sex08.
+         *
+         * @param \Eccube\Entity\Master\Sex|null $family_sex08
+         *
+         * @return Customer
+         */
+        public function setFamilySex08(\Eccube\Entity\Master\Sex $family_sex08 = null)
+        {
+            $this->family_sex08 = $family_sex08;
+
+            return $this;
+        }
+
+        /**
+         * Get family_sex08.
+         *
+         * @return \Eccube\Entity\Master\Sex|null
+         */
+        public function getFamilySex08()
+        {
+            return $this->family_sex08;
+        }
+        
+                       
+        /**
+         * Set family_sex09.
+         *
+         * @param \Eccube\Entity\Master\Sex|null $family_sex09
+         *
+         * @return Customer
+         */
+        public function setFamilySex09(\Eccube\Entity\Master\Sex $family_sex09 = null)
+        {
+            $this->family_sex09 = $family_sex09;
+
+            return $this;
+        }
+
+        /**
+         * Get family_sex09.
+         *
+         * @return \Eccube\Entity\Master\Sex|null
+         */
+        public function getFamilySex09()
+        {
+            return $this->family_sex09;
+        }
+        
+                       
+        /**
+         * Set family_sex10.
+         *
+         * @param \Eccube\Entity\Master\Sex|null $family_sex10
+         *
+         * @return Customer
+         */
+        public function setFamilySex10(\Eccube\Entity\Master\Sex $family_sex10 = null)
+        {
+            $this->family_sex10 = $family_sex10;
+
+            return $this;
+        }
+
+        /**
+         * Get family_sex10.
+         *
+         * @return \Eccube\Entity\Master\Sex|null
+         */
+        public function getFamilySex10()
+        {
+            return $this->family_sex10;
         }
         
     }
