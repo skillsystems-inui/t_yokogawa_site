@@ -425,6 +425,7 @@ class CsvImportController extends AbstractCsvImportController
                             $Customer->setPoint(intval(StringUtil::trimAll($row[$headerByKey['point']])));
                         }
                         
+                        /*
                         //家族代表フラグ
                         $Familymain = $this->familymainRepository->find($row[$headerByKey['is_family_main']]);
 		                if (!$Familymain) {
@@ -434,7 +435,7 @@ class CsvImportController extends AbstractCsvImportController
 		                    $Customer->setFamilymain($Familymain);
 		                }
                         
-                        /*
+                        
                         //家族代表会員ID
                         if (StringUtil::isBlank($row[$headerByKey['family_main_customer_id']])) {
                             $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_main_customer_id']]);
@@ -621,7 +622,7 @@ class CsvImportController extends AbstractCsvImportController
             trans('admin.customer.customer_csv.email_col') => [
                 'id' => 'email',
                 'description' => 'admin.customer.customer_csv.email_description',
-                'required' => false,
+                'required' => true,
             ],
             //パスワード
             trans('admin.customer.customer_csv.password_col') => [
@@ -658,19 +659,19 @@ class CsvImportController extends AbstractCsvImportController
             trans('admin.customer.customer_csv.customer_sex_col') => [
                 'id' => 'sex',
                 'description' => 'admin.customer.customer_csv.customer_sex_description',
-                'required' => true,
+                'required' => false,
             ],
             //誕生日
             trans('admin.customer.customer_csv.customer_birth_col') => [
                 'id' => 'birth',
                 'description' => 'admin.customer.customer_csv.customer_birth_description',
-                'required' => true,
+                'required' => false,
             ],
             //ポイント
             trans('admin.customer.customer_csv.customer_point_col') => [
                 'id' => 'point',
                 'description' => 'admin.customer.customer_csv.customer_point_description',
-                'required' => true,
+                'required' => false,
             ],
             /*
             //家族代表フラグ
@@ -682,6 +683,34 @@ class CsvImportController extends AbstractCsvImportController
             //家族代表会員ID
             trans('admin.customer.customer_csv.customer_family_main_customer_id_col') => [
                 'id' => 'family_main_customer_id',
+                'description' => 'admin.customer.customer_csv.customer_family_main_customer_id_description',
+                'required' => false,
+            ],
+            */
+            
+            /*
+            //家族情報(名前、性別、続柄、誕生日)1～10
+            // 名前
+            trans('admin.customer.customer_csv.customer_family_main_customer_id_col') => [
+                'id' => 'family_name01',
+                'description' => 'admin.customer.customer_csv.customer_family_main_customer_id_description',
+                'required' => false,
+            ],
+            // 性別
+            trans('admin.customer.customer_csv.customer_family_main_customer_id_col') => [
+                'id' => 'family_sex01_id',
+                'description' => 'admin.customer.customer_csv.customer_family_main_customer_id_description',
+                'required' => false,
+            ],
+            // 続柄
+            trans('admin.customer.customer_csv.customer_family_main_customer_id_col') => [
+                'id' => 'family_relation01',
+                'description' => 'admin.customer.customer_csv.customer_family_main_customer_id_description',
+                'required' => false,
+            ],
+            // 誕生日
+            trans('admin.customer.customer_csv.customer_family_main_customer_id_col') => [
+                'id' => 'family_birth01',
                 'description' => 'admin.customer.customer_csv.customer_family_main_customer_id_description',
                 'required' => false,
             ],
