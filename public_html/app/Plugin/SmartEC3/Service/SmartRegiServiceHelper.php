@@ -298,7 +298,7 @@ class SmartRegiServiceHelper
     // 受注
     //---------------------------------------------------------------------------------------
 
-    public function setTransactionUpdate(Order $order, int $offset){
+    public function setTransactionUpdate(Order $order, int $p_offset, int $u_offset){
 
         $arrData = array();
         
@@ -322,16 +322,16 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['rows'][0]['carriage']                = intval($order->getDeliveryFeeTotal());//EC連携用送料
         $arrData['data'][0]['rows'][0]['commission']              = 0;//EC連携用手数料
         
-        /*
-        $arrData['data'][0]['rows'][0]['sumDivision']             = 2;//締め区分
-        $arrData['data'][0]['rows'][0]['sumDateTime']             = $terminalTranDate;//締め日
-        */
-        
         $arrData['data'][0]['rows'][0]['storeId']                 = self::DEFAULT_SHOP_ID;;//店舗ID★
         $arrData['data'][0]['rows'][0]['terminalId']              = 10;//端末ID★
-        //$arrData['data'][0]['rows'][0]['customerId']            = 2;//会員ID
         $arrData['data'][0]['rows'][0]['terminalTranId']          = $order->getId();//端末取引ID★
         $arrData['data'][0]['rows'][0]['terminalTranDateTime']    = $terminalTranDateTime;//端末取引日時★
+        
+        //会員情報取得
+        $CustomerInfo = $order->getCustomer();
+        if($CustomerInfo != null){
+        	$arrData['data'][0]['rows'][0]['customerId'] = $CustomerInfo->getId() + $u_offset;//会員ID
+        }
         
         //配送情報取得
         $ShipInfo = $order->getShippings()[0];
@@ -352,27 +352,10 @@ class SmartRegiServiceHelper
 	        //商品規格データ
 	        $productClass = $detail->getProductClass();
 	        //商品ID
-	        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $productClass->getId() + $offset;
-	        //商品コード
-	        //商品名 koko
-	        //$productClass = $this->productClassRepository->find($id);
-	        //$productData[0]['productId'] = $productClass->getId() + $offset;
-    		//$productData[0]['productCode'] = $productClass->getCode();
-        
-            
+	        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $productClass->getId() + $p_offset;
+	        
             $meisaiNo++;
         }
-        
-        
-        
-        
-        /*
-        $arrData['data'][1]['table_name'] = self::TRANSACTION_DETAIL;
-        $arrData['data'][1]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）
-        $arrData['data'][1]['rows'][0]['salesPrice'] = 500;//販売単価
-        $arrData['data'][1]['rows'][0]['quantity'] = 1;//数量
-        //$arrData['data'][1]['rows'][0]['quantity'] = $order->getQuantity();//数量
-        */
         
         return $arrData;
     }

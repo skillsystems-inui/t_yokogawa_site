@@ -466,7 +466,8 @@ class SmartRegiService
         
         $Config = $this->configRepository->find(1);
         if ($Config->getOrderUpdate()){
-            $offset = $Config->getProductOffset();
+            $p_offset = $Config->getProductOffset();
+            $u_offset = $Config->getUserOffset();
             
             // Connection settings
             $arrConnect = array();
@@ -478,7 +479,7 @@ class SmartRegiService
             $api_url = $Config->getApiURL();
           
             // Query settings 受注データ
-            $arrData = $this->smartHelper->setTransactionUpdate($order, $offset);
+            $arrData = $this->smartHelper->setTransactionUpdate($order, $p_offset, $u_offset);
             // Log message and file
             $arrRet = $this->doRequest($arrConnect,$param,$api_url,$arrData,self::TRANSACTION_UPDATE_ACTION, self::TRANSACTION_LOG);
 
