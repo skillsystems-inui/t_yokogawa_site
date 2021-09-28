@@ -466,7 +466,8 @@ class SmartRegiService
         
         $Config = $this->configRepository->find(1);
         if ($Config->getOrderUpdate()){
-
+            $offset = $Config->getProductOffset();
+            
             // Connection settings
             $arrConnect = array();
             $arrConnect['contract_id'] = $Config->getContractId();
@@ -476,32 +477,10 @@ class SmartRegiService
             $param = self::TRANSACTION_PARAM;
             $api_url = $Config->getApiURL();
           
-          /*  
-            // Query settings 受注詳細データ
-            $arrData2 = $this->smartHelper->setTransactionDetailUpdate($order);
-            // Log message and file
-            $arrRet2 = $this->doRequest($arrConnect,$param,$api_url,$arrData2,self::TRANSACTION_DETAIL_UPDATE_ACTION, self::TRANSACTION_LOG);
-
-log_info(
-            '__testLog99',
-            [
-                'test_val' => $arrRet2,
-            ]
-        );
-        */
-
             // Query settings 受注データ
-            $arrData = $this->smartHelper->setTransactionUpdate($order);
+            $arrData = $this->smartHelper->setTransactionUpdate($order, $offset);
             // Log message and file
             $arrRet = $this->doRequest($arrConnect,$param,$api_url,$arrData,self::TRANSACTION_UPDATE_ACTION, self::TRANSACTION_LOG);
-
-
-log_info(
-            '__testLog100',
-            [
-                'test_val' => $arrRet,
-            ]
-        );
 
             //$msg = $arrRet == "ok\n" ? ($arrRet2 == "ok\n" ? "Transaction Updated" : $arrRet2) : $arrRet;
             $msg = $arrRet == "ok\n" ? "Transaction Updated" : $arrRet;

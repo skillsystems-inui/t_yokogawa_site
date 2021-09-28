@@ -298,7 +298,7 @@ class SmartRegiServiceHelper
     // 受注
     //---------------------------------------------------------------------------------------
 
-    public function setTransactionUpdate(Order $order){
+    public function setTransactionUpdate(Order $order, int $offset){
 
         $arrData = array();
         
@@ -327,7 +327,7 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['rows'][0]['sumDateTime']             = $terminalTranDate;//締め日
         */
         
-        $arrData['data'][0]['rows'][0]['storeId']                 = 1;//店舗ID★
+        $arrData['data'][0]['rows'][0]['storeId']                 = self::DEFAULT_SHOP_ID;;//店舗ID★
         $arrData['data'][0]['rows'][0]['terminalId']              = 10;//端末ID★
         //$arrData['data'][0]['rows'][0]['customerId']            = 2;//会員ID
         $arrData['data'][0]['rows'][0]['terminalTranId']          = $order->getId();//端末取引ID★
@@ -343,6 +343,17 @@ class SmartRegiServiceHelper
 	        $arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）
 	        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = intval($detail->getTotalPrice());//販売単価
 	        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = intval($detail->getQuantity());//数量
+	        
+	        //商品規格データ
+	        $productClass = $detail->getProductClass();
+	        //商品ID
+	        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $productClass->getId() + $offset;
+	        //商品コード
+	        //商品名 koko
+	        //$productClass = $this->productClassRepository->find($id);
+	        //$productData[0]['productId'] = $productClass->getId() + $offset;
+    		//$productData[0]['productCode'] = $productClass->getCode();
+        
             
             $meisaiNo++;
         }
