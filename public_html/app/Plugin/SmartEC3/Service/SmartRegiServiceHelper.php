@@ -311,16 +311,20 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['table_name'] = self::TRANSACTION_HEAD;
         
         //取引区分(1：通常、2：入金、3：出金、4：預かり金、 5：預かり金返金、6：ポイント加算、　7：ポイント減算、8：ポイント失効、10:取置き、13：マイル加算、14：マイル減算、15：バリューカード入金、16：領収証)
-        $arrData['data'][0]['rows'][0]['transactionHeadDivision'] = 1;//取引区分★
-        $arrData['data'][0]['rows'][0]['cancelDivision']          = 0;//取消区分★　取引の取消を識別する区分(0:通常、1：取消）
-        $arrData['data'][0]['rows'][0]['subtotal']                = 500;//小計★ 
-        $arrData['data'][0]['rows'][0]['subtotalDiscountPrice']   = 0;//小計値引き
+        $arrData['data'][0]['rows'][0]['transactionHeadDivision'] = 10; //取引区分★　「10:取置き」
+        $arrData['data'][0]['rows'][0]['cancelDivision']          = 0;  //取消区分★　取引の取消を識別する区分(0:通常、1：取消）
+        $arrData['data'][0]['rows'][0]['subtotal']                = intval($order->getSubtotal());//小計★ 
+        $arrData['data'][0]['rows'][0]['subtotalDiscountPrice']   = intval($order->getDiscount());//小計値引き
         $arrData['data'][0]['rows'][0]['subtotalDiscountRate']    = 0;//小計割引率
         $arrData['data'][0]['rows'][0]['pointDiscount']           = 0;//ポイント値引き 
-        $arrData['data'][0]['rows'][0]['total']                   = 500;//合計★
+        $arrData['data'][0]['rows'][0]['total']                   = intval($order->getTotalPrice());//合計★
+        
+        $arrData['data'][0]['rows'][0]['carriage']                = intval($order->getDeliveryFeeTotal());//EC連携用送料
+        $arrData['data'][0]['rows'][0]['commission']              = 0;//EC連携用手数料
+        
         /*
-        $arrData['data'][0]['rows'][0]['sumDivision']                   = 2;//締め区分
-        $arrData['data'][0]['rows'][0]['sumDateTime']                   = $terminalTranDate;//締め日
+        $arrData['data'][0]['rows'][0]['sumDivision']             = 2;//締め区分
+        $arrData['data'][0]['rows'][0]['sumDateTime']             = $terminalTranDate;//締め日
         */
         
         $arrData['data'][0]['rows'][0]['storeId']                 = 1;//店舗ID★
@@ -329,13 +333,30 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['rows'][0]['terminalTranId']          = $order->getId();//端末取引ID★
         $arrData['data'][0]['rows'][0]['terminalTranDateTime']    = $terminalTranDateTime;//端末取引日時★
         
+        //受注詳細をセット
+        $meisaiNo = 1;
         
+        /* @var $detail OrderItem */
+        foreach ($order->getProductOrderItems() as $detail) {
+            
+            $arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;
+	        $arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）
+	        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = intval($detail->getTotalPrice());//販売単価
+	        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = intval($detail->getQuantity());//数量
+            
+            $meisaiNo++;
+        }
+        
+        
+        
+        
+        /*
         $arrData['data'][1]['table_name'] = self::TRANSACTION_DETAIL;
         $arrData['data'][1]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）
         $arrData['data'][1]['rows'][0]['salesPrice'] = 500;//販売単価
         $arrData['data'][1]['rows'][0]['quantity'] = 1;//数量
         //$arrData['data'][1]['rows'][0]['quantity'] = $order->getQuantity();//数量
-        /**/
+        */
         
         return $arrData;
     }
