@@ -333,6 +333,11 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['rows'][0]['terminalTranId']          = $order->getId();//端末取引ID★
         $arrData['data'][0]['rows'][0]['terminalTranDateTime']    = $terminalTranDateTime;//端末取引日時★
         
+        //配送情報取得
+        $ShipInfo = $order->getShippings()[0];
+        //受取予定日 
+        $arrData['data'][0]['rows'][0]['pickUpDate']              = $ShipInfo->getShippingDeliveryDate() == null ? null : $ShipInfo->getShippingDeliveryDate()->format('Y-m-d');
+        
         //受注詳細をセット
         $meisaiNo = 1;
         
