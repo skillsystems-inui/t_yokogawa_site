@@ -793,6 +793,8 @@ admin.product.category_csv.delete_flag_description: 0:登録 1:削除を指定�
 # 会員CSV雛形
 admin.customer.customer_csv.customer_id_col: 会員ID
 admin.customer.customer_csv.customer_id_description: 新規登録の場合は空にしてください。既存の会員を更新する場合は、会員IDを指定してください。
+admin.customer.customer_csv.customer_code_col: 会員番号
+admin.customer.customer_csv.customer_code_description: 会員番号を指定してください。
 admin.customer.customer_csv.display_status_col: 会員ステータス(ID)
 admin.customer.customer_csv.display_status_description: '1;仮会員,2:本会員,3:退会'
 admin.customer.customer_csv.customer_name01_col: 会員名1

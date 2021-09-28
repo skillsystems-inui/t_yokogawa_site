@@ -308,6 +308,9 @@ class CsvImportController extends AbstractCsvImportController
                             }
                         }
 
+                        //会員コード登録
+                        $Customer->setCustomerCode(StringUtil::trimAll($row[$headerByKey['customer_code']]));
+                        
                         //名前01
                         if (StringUtil::isBlank($row[$headerByKey['name01']])) {
                             $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['name01']]);
@@ -858,6 +861,12 @@ class CsvImportController extends AbstractCsvImportController
             trans('admin.customer.customer_csv.customer_id_col') => [
                 'id' => 'id',
                 'description' => 'admin.customer.customer_csv.customer_id_description',
+                'required' => false,
+            ],
+            //会員コード
+            trans('admin.customer.customer_csv.customer_code_col') => [
+                'id' => 'customer_code',
+                'description' => 'admin.customer.customer_csv.customer_code_description',
                 'required' => false,
             ],
             //会員ステータス
