@@ -448,27 +448,274 @@ class CsvImportController extends AbstractCsvImportController
                         */
                         
                         //-------------------- [家族情報] --------------------
-                        //家族情報1　名前
+                        //家族情報01　名前
                         $Customer->setFamilyName01(StringUtil::trimAll($row[$headerByKey['family_name01']]));
-                        //家族情報1　性別
-                    	$FamilySex01 = $this->sexRepository->find($row[$headerByKey['family_sex01_id']]);
-		                if (!$FamilySex01) {
-		                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex01_id']]);
-		                    $this->addErrors($message);
-		                } else {
-		                    $Customer->setFamilySex01($FamilySex01);
-		                }
-                        //家族情報1　続柄
+                        //家族情報01　性別
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_sex01_id']])) {
+	                    	$FamilySex01 = $this->sexRepository->find($row[$headerByKey['family_sex01_id']]);
+			                if (!$FamilySex01) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex01_id']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setFamilySex01($FamilySex01);
+			                }
+			            }
+                        //家族情報01　続柄
                         $Customer->setFamilyRelation01(StringUtil::trimAll($row[$headerByKey['family_relation01']]));
-                        //家族情報1　誕生日
-                        $familyBirthDay01 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth01']]);
-		                if ($familyBirthDay01 == true) {
-		                    $familyBirthDay01->setTime(0, 0, 0);
-                        	$Customer->setFamilyBirth01($familyBirthDay01);
-		                }else{
-		                	// 日付フォーマットが異なる場合はエラー
-		                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth01']]);
-                            $this->addErrors($message);
+                        //家族情報01　誕生日
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_birth01']])) {
+	                        $familyBirthDay01 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth01']]);
+			                if ($familyBirthDay01 == true) {
+			                    $familyBirthDay01->setTime(0, 0, 0);
+	                        	$Customer->setFamilyBirth01($familyBirthDay01);
+			                }else{
+			                	// 日付フォーマットが異なる場合はエラー
+			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth01']]);
+	                            $this->addErrors($message);
+			                }
+		                }
+		                
+						//家族情報02　名前
+                        $Customer->setFamilyName02(StringUtil::trimAll($row[$headerByKey['family_name02']]));
+                        //家族情報02　性別
+                    	if (StringUtil::isNotBlank($row[$headerByKey['family_sex02_id']])) {
+	                    	$FamilySex02 = $this->sexRepository->find($row[$headerByKey['family_sex02_id']]);
+			                if (!$FamilySex02) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex02_id']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setFamilySex02($FamilySex02);
+			                }
+		                }
+                        //家族情報02　続柄
+                        $Customer->setFamilyRelation02(StringUtil::trimAll($row[$headerByKey['family_relation02']]));
+                        //家族情報02　誕生日
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_birth02']])) {
+	                        $familyBirthDay02 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth02']]);
+			                if ($familyBirthDay02 == true) {
+			                    $familyBirthDay02->setTime(0, 0, 0);
+	                        	$Customer->setFamilyBirth02($familyBirthDay02);
+			                }else{
+			                	// 日付フォーマットが異なる場合はエラー
+			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth02']]);
+	                            $this->addErrors($message);
+			                }
+		                }
+		                
+						//家族情報03　名前
+                        $Customer->setFamilyName03(StringUtil::trimAll($row[$headerByKey['family_name03']]));
+                        //家族情報03　性別
+                    	if (StringUtil::isNotBlank($row[$headerByKey['family_sex03_id']])) {
+	                    	$FamilySex03 = $this->sexRepository->find($row[$headerByKey['family_sex03_id']]);
+			                if (!$FamilySex03) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex03_id']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setFamilySex03($FamilySex03);
+			                }
+			            }
+                        //家族情報03　続柄
+                        $Customer->setFamilyRelation03(StringUtil::trimAll($row[$headerByKey['family_relation03']]));
+                        //家族情報03　誕生日
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_birth03']])) {
+	                        $familyBirthDay03 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth03']]);
+			                if ($familyBirthDay03 == true) {
+			                    $familyBirthDay03->setTime(0, 0, 0);
+	                        	$Customer->setFamilyBirth03($familyBirthDay03);
+			                }else{
+			                	// 日付フォーマットが異なる場合はエラー
+			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth03']]);
+	                            $this->addErrors($message);
+			                }
+			            }
+		                
+						//家族情報04　名前
+                        $Customer->setFamilyName04(StringUtil::trimAll($row[$headerByKey['family_name04']]));
+                        //家族情報04　性別
+                    	if (StringUtil::isNotBlank($row[$headerByKey['family_sex04_id']])) {
+	                    	$FamilySex04 = $this->sexRepository->find($row[$headerByKey['family_sex04_id']]);
+			                if (!$FamilySex04) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex04_id']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setFamilySex04($FamilySex04);
+			                }
+			            }
+                        //家族情報04　続柄
+                        $Customer->setFamilyRelation04(StringUtil::trimAll($row[$headerByKey['family_relation04']]));
+                        //家族情報04　誕生日
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_birth04']])) {
+	                        $familyBirthDay04 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth04']]);
+			                if ($familyBirthDay04 == true) {
+			                    $familyBirthDay04->setTime(0, 0, 0);
+	                        	$Customer->setFamilyBirth04($familyBirthDay04);
+			                }else{
+			                	// 日付フォーマットが異なる場合はエラー
+			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth04']]);
+	                            $this->addErrors($message);
+			                }
+		                }
+		                
+						//家族情報05　名前
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_sex05_id']])) {
+                        $Customer->setFamilyName05(StringUtil::trimAll($row[$headerByKey['family_name05']]));
+                        //家族情報05　性別
+                    	$FamilySex05 = $this->sexRepository->find($row[$headerByKey['family_sex05_id']]);
+			                if (!$FamilySex05) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex05_id']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setFamilySex05($FamilySex05);
+			                }
+		                }
+                        //家族情報05　続柄
+                        $Customer->setFamilyRelation05(StringUtil::trimAll($row[$headerByKey['family_relation05']]));
+                        //家族情報05　誕生日
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_birth05']])) {
+	                        $familyBirthDay05 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth05']]);
+			                if ($familyBirthDay05 == true) {
+			                    $familyBirthDay05->setTime(0, 0, 0);
+	                        	$Customer->setFamilyBirth05($familyBirthDay05);
+			                }else{
+			                	// 日付フォーマットが異なる場合はエラー
+			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth05']]);
+	                            $this->addErrors($message);
+			                }
+		                }
+		                
+						//家族情報06　名前
+                        $Customer->setFamilyName06(StringUtil::trimAll($row[$headerByKey['family_name06']]));
+                        //家族情報06　性別
+                    	if (StringUtil::isNotBlank($row[$headerByKey['family_sex06_id']])) {
+	                    	$FamilySex06 = $this->sexRepository->find($row[$headerByKey['family_sex06_id']]);
+			                if (!$FamilySex06) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex06_id']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setFamilySex06($FamilySex06);
+			                }
+		                }
+                        //家族情報06　続柄
+                        $Customer->setFamilyRelation06(StringUtil::trimAll($row[$headerByKey['family_relation06']]));
+                        //家族情報06　誕生日
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_birth06']])) {
+	                        $familyBirthDay06 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth06']]);
+			                if ($familyBirthDay06 == true) {
+			                    $familyBirthDay06->setTime(0, 0, 0);
+	                        	$Customer->setFamilyBirth06($familyBirthDay06);
+			                }else{
+			                	// 日付フォーマットが異なる場合はエラー
+			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth06']]);
+	                            $this->addErrors($message);
+			                }
+		                }
+		                
+						//家族情報07　名前
+                        $Customer->setFamilyName07(StringUtil::trimAll($row[$headerByKey['family_name07']]));
+                        //家族情報07　性別
+                    	if (StringUtil::isNotBlank($row[$headerByKey['family_sex07_id']])) {
+	                    	$FamilySex07 = $this->sexRepository->find($row[$headerByKey['family_sex07_id']]);
+			                if (!$FamilySex07) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex07_id']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setFamilySex07($FamilySex07);
+			                }
+		                }
+                        //家族情報07　続柄
+                        $Customer->setFamilyRelation07(StringUtil::trimAll($row[$headerByKey['family_relation07']]));
+                        //家族情報07　誕生日
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_birth07']])) {
+	                        $familyBirthDay07 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth07']]);
+			                if ($familyBirthDay07 == true) {
+			                    $familyBirthDay07->setTime(0, 0, 0);
+	                        	$Customer->setFamilyBirth07($familyBirthDay07);
+			                }else{
+			                	// 日付フォーマットが異なる場合はエラー
+			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth07']]);
+	                            $this->addErrors($message);
+			                }
+		                }
+		                
+						//家族情報08　名前
+                        $Customer->setFamilyName08(StringUtil::trimAll($row[$headerByKey['family_name08']]));
+                        //家族情報08　性別
+                    	if (StringUtil::isNotBlank($row[$headerByKey['family_sex08_id']])) {
+	                    	$FamilySex08 = $this->sexRepository->find($row[$headerByKey['family_sex08_id']]);
+			                if (!$FamilySex08) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex08_id']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setFamilySex08($FamilySex08);
+			                }
+			            }
+                        //家族情報08　続柄
+                        $Customer->setFamilyRelation08(StringUtil::trimAll($row[$headerByKey['family_relation08']]));
+                        //家族情報08　誕生日
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_birth08']])) {
+	                        $familyBirthDay08 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth08']]);
+			                if ($familyBirthDay08 == true) {
+			                    $familyBirthDay08->setTime(0, 0, 0);
+	                        	$Customer->setFamilyBirth08($familyBirthDay08);
+			                }else{
+			                	// 日付フォーマットが異なる場合はエラー
+			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth08']]);
+	                            $this->addErrors($message);
+			                }
+		                }
+		                
+						//家族情報09　名前
+                        $Customer->setFamilyName09(StringUtil::trimAll($row[$headerByKey['family_name09']]));
+                        //家族情報09　性別
+                    	if (StringUtil::isNotBlank($row[$headerByKey['family_sex09_id']])) {
+	                    	$FamilySex09 = $this->sexRepository->find($row[$headerByKey['family_sex09_id']]);
+			                if (!$FamilySex09) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex09_id']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setFamilySex09($FamilySex09);
+			                }
+			            }
+                        //家族情報09　続柄
+                        $Customer->setFamilyRelation09(StringUtil::trimAll($row[$headerByKey['family_relation09']]));
+                        //家族情報09　誕生日
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_birth09']])) {
+	                        $familyBirthDay09 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth09']]);
+			                if ($familyBirthDay09 == true) {
+			                    $familyBirthDay09->setTime(0, 0, 0);
+	                        	$Customer->setFamilyBirth09($familyBirthDay09);
+			                }else{
+			                	// 日付フォーマットが異なる場合はエラー
+			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth09']]);
+	                            $this->addErrors($message);
+			                }
+		                }
+		                
+						//家族情報10　名前
+                        $Customer->setFamilyName10(StringUtil::trimAll($row[$headerByKey['family_name10']]));
+                        //家族情報10　性別
+                    	if (StringUtil::isNotBlank($row[$headerByKey['family_sex10_id']])) {
+	                    	$FamilySex10 = $this->sexRepository->find($row[$headerByKey['family_sex10_id']]);
+			                if (!$FamilySex10) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['family_sex10_id']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setFamilySex10($FamilySex10);
+			                }
+			            }
+                        //家族情報10　続柄
+                        $Customer->setFamilyRelation10(StringUtil::trimAll($row[$headerByKey['family_relation10']]));
+                        //家族情報10　誕生日
+                        if (StringUtil::isNotBlank($row[$headerByKey['family_birth10']])) {
+	                        $familyBirthDay10 = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['family_birth10']]);
+			                if ($familyBirthDay10 == true) {
+			                    $familyBirthDay10->setTime(0, 0, 0);
+	                        	$Customer->setFamilyBirth10($familyBirthDay10);
+			                }else{
+			                	// 日付フォーマットが異なる場合はエラー
+			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth10']]);
+	                            $this->addErrors($message);
+			                }
 		                }
 		                
 		                //-------------------- .[家族情報] --------------------
@@ -716,6 +963,7 @@ class CsvImportController extends AbstractCsvImportController
             
             
             //家族情報(名前、性別、続柄、誕生日)1～10
+            //01
             // 名前
             trans('admin.customer.customer_csv.customer_family_name01_col') => [
                 'id' => 'family_name01',
@@ -740,7 +988,231 @@ class CsvImportController extends AbstractCsvImportController
                 'description' => 'admin.customer.customer_csv.customer_family_birth01_description',
                 'required' => false,
             ],
-            /**/
+            //02
+            // 名前
+            trans('admin.customer.customer_csv.customer_family_name02_col') => [
+                'id' => 'family_name02',
+                'description' => 'admin.customer.customer_csv.customer_family_name02_description',
+                'required' => false,
+            ],
+            // 性別
+            trans('admin.customer.customer_csv.customer_family_sex02_id_col') => [
+                'id' => 'family_sex02_id',
+                'description' => 'admin.customer.customer_csv.customer_family_sex02_id_description',
+                'required' => false,
+            ],
+            // 続柄
+            trans('admin.customer.customer_csv.customer_family_relation02_col') => [
+                'id' => 'family_relation02',
+                'description' => 'admin.customer.customer_csv.customer_family_relation02_description',
+                'required' => false,
+            ],
+            // 誕生日
+            trans('admin.customer.customer_csv.customer_family_birth02_col') => [
+                'id' => 'family_birth02',
+                'description' => 'admin.customer.customer_csv.customer_family_birth02_description',
+                'required' => false,
+            ],
+            //03
+            // 名前
+            trans('admin.customer.customer_csv.customer_family_name03_col') => [
+                'id' => 'family_name03',
+                'description' => 'admin.customer.customer_csv.customer_family_name03_description',
+                'required' => false,
+            ],
+            // 性別
+            trans('admin.customer.customer_csv.customer_family_sex03_id_col') => [
+                'id' => 'family_sex03_id',
+                'description' => 'admin.customer.customer_csv.customer_family_sex03_id_description',
+                'required' => false,
+            ],
+            // 続柄
+            trans('admin.customer.customer_csv.customer_family_relation03_col') => [
+                'id' => 'family_relation03',
+                'description' => 'admin.customer.customer_csv.customer_family_relation03_description',
+                'required' => false,
+            ],
+            // 誕生日
+            trans('admin.customer.customer_csv.customer_family_birth03_col') => [
+                'id' => 'family_birth03',
+                'description' => 'admin.customer.customer_csv.customer_family_birth03_description',
+                'required' => false,
+            ],
+            //04
+            // 名前
+            trans('admin.customer.customer_csv.customer_family_name04_col') => [
+                'id' => 'family_name04',
+                'description' => 'admin.customer.customer_csv.customer_family_name04_description',
+                'required' => false,
+            ],
+            // 性別
+            trans('admin.customer.customer_csv.customer_family_sex04_id_col') => [
+                'id' => 'family_sex04_id',
+                'description' => 'admin.customer.customer_csv.customer_family_sex04_id_description',
+                'required' => false,
+            ],
+            // 続柄
+            trans('admin.customer.customer_csv.customer_family_relation04_col') => [
+                'id' => 'family_relation04',
+                'description' => 'admin.customer.customer_csv.customer_family_relation04_description',
+                'required' => false,
+            ],
+            // 誕生日
+            trans('admin.customer.customer_csv.customer_family_birth04_col') => [
+                'id' => 'family_birth04',
+                'description' => 'admin.customer.customer_csv.customer_family_birth04_description',
+                'required' => false,
+            ],
+            //05
+            // 名前
+            trans('admin.customer.customer_csv.customer_family_name05_col') => [
+                'id' => 'family_name05',
+                'description' => 'admin.customer.customer_csv.customer_family_name05_description',
+                'required' => false,
+            ],
+            // 性別
+            trans('admin.customer.customer_csv.customer_family_sex05_id_col') => [
+                'id' => 'family_sex05_id',
+                'description' => 'admin.customer.customer_csv.customer_family_sex05_id_description',
+                'required' => false,
+            ],
+            // 続柄
+            trans('admin.customer.customer_csv.customer_family_relation05_col') => [
+                'id' => 'family_relation05',
+                'description' => 'admin.customer.customer_csv.customer_family_relation05_description',
+                'required' => false,
+            ],
+            // 誕生日
+            trans('admin.customer.customer_csv.customer_family_birth05_col') => [
+                'id' => 'family_birth05',
+                'description' => 'admin.customer.customer_csv.customer_family_birth05_description',
+                'required' => false,
+            ],
+            //06
+            // 名前
+            trans('admin.customer.customer_csv.customer_family_name06_col') => [
+                'id' => 'family_name06',
+                'description' => 'admin.customer.customer_csv.customer_family_name06_description',
+                'required' => false,
+            ],
+            // 性別
+            trans('admin.customer.customer_csv.customer_family_sex06_id_col') => [
+                'id' => 'family_sex06_id',
+                'description' => 'admin.customer.customer_csv.customer_family_sex06_id_description',
+                'required' => false,
+            ],
+            // 続柄
+            trans('admin.customer.customer_csv.customer_family_relation06_col') => [
+                'id' => 'family_relation06',
+                'description' => 'admin.customer.customer_csv.customer_family_relation06_description',
+                'required' => false,
+            ],
+            // 誕生日
+            trans('admin.customer.customer_csv.customer_family_birth06_col') => [
+                'id' => 'family_birth06',
+                'description' => 'admin.customer.customer_csv.customer_family_birth06_description',
+                'required' => false,
+            ],
+            //07
+            // 名前
+            trans('admin.customer.customer_csv.customer_family_name07_col') => [
+                'id' => 'family_name07',
+                'description' => 'admin.customer.customer_csv.customer_family_name07_description',
+                'required' => false,
+            ],
+            // 性別
+            trans('admin.customer.customer_csv.customer_family_sex07_id_col') => [
+                'id' => 'family_sex07_id',
+                'description' => 'admin.customer.customer_csv.customer_family_sex07_id_description',
+                'required' => false,
+            ],
+            // 続柄
+            trans('admin.customer.customer_csv.customer_family_relation07_col') => [
+                'id' => 'family_relation07',
+                'description' => 'admin.customer.customer_csv.customer_family_relation07_description',
+                'required' => false,
+            ],
+            // 誕生日
+            trans('admin.customer.customer_csv.customer_family_birth07_col') => [
+                'id' => 'family_birth07',
+                'description' => 'admin.customer.customer_csv.customer_family_birth07_description',
+                'required' => false,
+            ],
+            //08
+            // 名前
+            trans('admin.customer.customer_csv.customer_family_name08_col') => [
+                'id' => 'family_name08',
+                'description' => 'admin.customer.customer_csv.customer_family_name08_description',
+                'required' => false,
+            ],
+            // 性別
+            trans('admin.customer.customer_csv.customer_family_sex08_id_col') => [
+                'id' => 'family_sex08_id',
+                'description' => 'admin.customer.customer_csv.customer_family_sex08_id_description',
+                'required' => false,
+            ],
+            // 続柄
+            trans('admin.customer.customer_csv.customer_family_relation08_col') => [
+                'id' => 'family_relation08',
+                'description' => 'admin.customer.customer_csv.customer_family_relation08_description',
+                'required' => false,
+            ],
+            // 誕生日
+            trans('admin.customer.customer_csv.customer_family_birth08_col') => [
+                'id' => 'family_birth08',
+                'description' => 'admin.customer.customer_csv.customer_family_birth08_description',
+                'required' => false,
+            ],
+            //09
+            // 名前
+            trans('admin.customer.customer_csv.customer_family_name09_col') => [
+                'id' => 'family_name09',
+                'description' => 'admin.customer.customer_csv.customer_family_name09_description',
+                'required' => false,
+            ],
+            // 性別
+            trans('admin.customer.customer_csv.customer_family_sex09_id_col') => [
+                'id' => 'family_sex09_id',
+                'description' => 'admin.customer.customer_csv.customer_family_sex09_id_description',
+                'required' => false,
+            ],
+            // 続柄
+            trans('admin.customer.customer_csv.customer_family_relation09_col') => [
+                'id' => 'family_relation09',
+                'description' => 'admin.customer.customer_csv.customer_family_relation09_description',
+                'required' => false,
+            ],
+            // 誕生日
+            trans('admin.customer.customer_csv.customer_family_birth09_col') => [
+                'id' => 'family_birth09',
+                'description' => 'admin.customer.customer_csv.customer_family_birth09_description',
+                'required' => false,
+            ],
+            //10
+            // 名前
+            trans('admin.customer.customer_csv.customer_family_name10_col') => [
+                'id' => 'family_name10',
+                'description' => 'admin.customer.customer_csv.customer_family_name10_description',
+                'required' => false,
+            ],
+            // 性別
+            trans('admin.customer.customer_csv.customer_family_sex10_id_col') => [
+                'id' => 'family_sex10_id',
+                'description' => 'admin.customer.customer_csv.customer_family_sex10_id_description',
+                'required' => false,
+            ],
+            // 続柄
+            trans('admin.customer.customer_csv.customer_family_relation10_col') => [
+                'id' => 'family_relation10',
+                'description' => 'admin.customer.customer_csv.customer_family_relation10_description',
+                'required' => false,
+            ],
+            // 誕生日
+            trans('admin.customer.customer_csv.customer_family_birth10_col') => [
+                'id' => 'family_birth10',
+                'description' => 'admin.customer.customer_csv.customer_family_birth10_description',
+                'required' => false,
+            ],
         ];
     }
 }
