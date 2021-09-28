@@ -1332,6 +1332,9 @@ class CsvImportController extends AbstractCsvImportController
                 }
             }
         }
+        
+        //発送日数をデフォルト0で登録
+        $ProductClass->setDeliveryDateDays(0);
 
         $Product->addProductClass($ProductClass);
         $ProductStock = new ProductStock();
