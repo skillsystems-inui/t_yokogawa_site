@@ -502,6 +502,9 @@ class ProductController extends AbstractController
                             }
                         }
                     }
+                    //ToDo 発送日数は0固定
+                    $ProductClass->setDeliveryDateDays(0);
+                    
                     $this->entityManager->persist($ProductClass);
 
                     // 在庫情報を作成

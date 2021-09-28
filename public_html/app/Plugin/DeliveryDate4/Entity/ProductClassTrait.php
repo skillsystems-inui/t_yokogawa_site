@@ -23,7 +23,7 @@ trait ProductClassTrait
     /**
      * @var int|null
      *
-     * @ORM\Column(name="delivery_date_days", type="integer", nullable=true)
+     * @ORM\Column(name="delivery_date_days", type="integer", nullable=false, options={"default":0})
      */
     private $delivery_date_days;
 
