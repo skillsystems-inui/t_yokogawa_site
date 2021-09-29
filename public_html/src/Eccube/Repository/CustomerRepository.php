@@ -350,6 +350,20 @@ class CustomerRepository extends AbstractRepository
     }
 
     /**
+     * 会員を商品コードで検索する.
+     *
+     * @param $email
+     *
+     * @return null|Customer 見つからない場合はnullを返す.
+     */
+    public function getRegularCustomerByCustomerCode($customer_code)
+    {
+        return $this->findOneBy([
+            'customer_code' => $customer_code,
+        ]);
+    }
+
+    /**
      * 本会員をリセットキー、またはリセットキーとメールアドレスで検索する.
      *
      * @param $resetKey

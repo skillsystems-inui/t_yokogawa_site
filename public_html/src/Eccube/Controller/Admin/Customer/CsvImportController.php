@@ -324,7 +324,19 @@ class CsvImportController extends AbstractCsvImportController
 
                             return $this->renderWithError($form, $headers);
                         } else {
-                        	$Customer->setCustomerCode(StringUtil::trimAll($row[$headerByKey['customer_code']]));
+                        	//重複チェック
+                        	$SameCustomer = $this->customerRepository->getRegularCustomerByCustomerCode(StringUtil::trimAll($row[$headerByKey['customer_code']]));
+                            if ($SameCustomer != null) {
+                                $message = trans('admin.common.csv_invalid_already_exist_target', [
+		                            '%line%' => $line,
+		                            '%name%' => $headerByKey['customer_code'],
+		                            '%target_name%' => $row[$headerByKey['customer_code']],
+		                        ]);
+                                
+                                $this->addErrors($message);
+                            }else{
+                            	$Customer->setCustomerCode(StringUtil::trimAll($row[$headerByKey['customer_code']]));
+                            }
                         }
                         
                         //名前01
