@@ -25,6 +25,7 @@ use Eccube\Repository\ProductStockRepository;
 use Eccube\Repository\Master\OrderStatusRepository;
 use Eccube\Repository\Master\OrderItemTypeRepository;
 use Eccube\Repository\Master\TaxTypeRepository;
+use Eccube\Repository\Master\PrefRepository;
 
 use Eccube\Service\TaxRuleService;
 
@@ -53,6 +54,11 @@ class SmartRegiOrderController extends AbstractController
      * @var CustomerRepository
      */
     protected $customerRepository;
+
+    /**
+     * @var PrefRepository
+     */
+    protected $prefRepository;
 
     /**
      * @var ProductStockRepository
@@ -100,6 +106,7 @@ class SmartRegiOrderController extends AbstractController
      * @param ConfigRepository $configRepository
      * @param SmartRegiRepository $smartRegiRepository
      * @param CustomerRepository $customerRepository
+     * @param PrefRepository $prefRepository
      * @param ProductStockRepository $productStockRepository
      * @param ProductClassRepository $productClassRepository
      * @param OrderRepository $orderRepository
@@ -113,6 +120,7 @@ class SmartRegiOrderController extends AbstractController
         ConfigRepository $configRepository,
         SmartRegiRepository $smartRegiRepository,
         CustomerRepository $customerRepository,
+        PrefRepository $prefRepository,
         ProductStockRepository $productStockRepository,
         ProductClassRepository $productClassRepository,
         OrderRepository $orderRepository,
@@ -125,6 +133,7 @@ class SmartRegiOrderController extends AbstractController
         $this->configRepository = $configRepository;
         $this->smartRegiRepository = $smartRegiRepository;
         $this->customerRepository = $customerRepository;
+        $this->prefRepository = $prefRepository;
         $this->productStockRepository = $productStockRepository;
         $this->productClassRepository = $productClassRepository;
         $this->orderRepository = $orderRepository;
@@ -369,14 +378,13 @@ class SmartRegiOrderController extends AbstractController
             $Shipping->setKana01("ゲスト");
             $Shipping->setKana02("ゲスト");
             
-            
-            //都道府県取得
-            $prf_customerId = 2;//実在するid
-            $prfCustomer = $this->customerRepository->find($prf_customerId);
+            //都道府県コードも登録する(大阪府)
+            $zip_code = 27;
+            $Pref = $this->prefRepository->find($zip_code);
             //　該当会員がいるならそれをセット
-            if($prfCustomer != null){
-            	$Order->setPref($prfCustomer->getPref());
-            	$Shipping->setPref($prfCustomer->getPref());
+            if($Pref != null){
+            	$Order->setPref($Pref);
+            	$Shipping->setPref($Pref);
             }else{
             	//いないならnullセット
             	$Order->setPref(null);
