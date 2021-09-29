@@ -223,23 +223,12 @@ class SmartRegiOrderController extends AbstractController
         $customerOffset = $Config->getUserOffset();
         
         //--- 登録か更新か判定する ---
+        // 【取り置きキャンセルの場合】disposeServerTransactionHeadIdに取引IDが指定されている
         if ( isset($arrOrder['disposeServerTransactionHeadId']) && ($arrOrder['disposeServerTransactionHeadId'] != '0') ){
-        
-        
-        
-        log_info(
-            '__testLog__kousin',
-            [
-                'transactionHeadDivision' => $arrOrder['transactionHeadDivision'],
-                'cancelDivision' => $arrOrder['cancelDivision'],                
-            ]
-        );
-        
+		    
         	//対象の取引IDが指定されている場合、更新モード
-        	
         	//test 仮に今ある受注IDを指定する
         	$orderId = $arrOrder['disposeServerTransactionHeadId'];
-        	
         	$TargetOrder = $this->orderRepository->getRegularCustomerByEmail($orderId);
         	
         	log_info(
@@ -248,8 +237,6 @@ class SmartRegiOrderController extends AbstractController
 	                'TargetOrder' => $TargetOrder,
 	            ]
 	        );
-        
-        
         	
         	$Order = $TargetOrder;
         	//--- ステータスのみを更新する ---
@@ -262,16 +249,41 @@ class SmartRegiOrderController extends AbstractController
         	$Order->setOrderStatus($OrderStatus);
         	
         	return $Order;
+        }else if ( isset($arrOrder['pickUpTransactionHeadId']) && ($arrOrder['pickUpTransactionHeadId'] > 0) ){
+		    // 【取り置き商品購入の場合】pickUpTransactionHeadIdに対象の取引IDが指定されている
+		    //  2件のデータが来る
+		    //  　1件目　pickUpTransactionHeadId:transactionHeadIdと同じ、     layawayServerTransactionHeadId:取り置き実施したtransactionHeadId、transactionHeadId:オリジナル
+		    //  　2件目　pickUpTransactionHeadId:上記1件目のtransactionHeadId、layawayServerTransactionHeadId:なし、                             transactionHeadId:取り置き実施したtransactionHeadId
+		    
+        	//対象の取引IDが指定されている場合、更新モード
+        	$torioki_orderId = $arrOrder['layawayServerTransactionHeadId'];
+        	if($torioki_orderId > 0){
+        		//ステータスセット
+        		$TargetOrder = $this->orderRepository->getRegularCustomerByEmail($torioki_orderId);
+        	
+	        	$Order = $TargetOrder;
+	        	//--- ステータスのみを更新する ---
+	        	//「取り置き」→「発送済み」に変更
+	        	
+	        	//ステータスをセット
+	        	$OrderStatus = $this->orderStatusRepository->find(OrderStatus::DELIVERED);
+				$Order->setOrderStatus($OrderStatus);
+        	}else{
+        		$torioki_orderId = $arrOrder['transactionHeadId'];
+        		$TargetOrder = $this->orderRepository->getRegularCustomerByEmail($torioki_orderId);
+        		$Order = $TargetOrder;
+        	}
+        	
+        	return $Order;
         }else{
-        
-        
-        log_info(
-            '__testLog__touroku',
-            [
-                'transactionHeadDivision' => $arrOrder['transactionHeadDivision'],
-                'cancelDivision' => $arrOrder['cancelDivision'],                
-            ]
-        );
+
+	        log_info(
+	            '__testLog__touroku',
+	            [
+	                'transactionHeadDivision' => $arrOrder['transactionHeadDivision'],
+	                'cancelDivision' => $arrOrder['cancelDivision'],                
+	            ]
+	        );
         
         	//対象の取引IDが指定されていない場合、登録モード
         	$Order = $_Order;
