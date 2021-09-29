@@ -301,7 +301,7 @@ class Event implements EventSubscriberInterface
 
         $request = $event->getRequest();
         $id = (int) $request->get("id");
-
+		//ToDoinui0930 $requestにcustomer_code来てない？？
         $msg = $this->smartRegiService->deleteSmartRegiUser($id);
         $msg = "スマレジ： " . $msg;
         $flashbag = $this->session->getFlashBag();
