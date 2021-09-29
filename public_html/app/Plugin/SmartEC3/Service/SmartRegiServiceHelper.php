@@ -128,7 +128,7 @@ class SmartRegiServiceHelper
         $arrData = array();
         $arrData['proc_info']['proc_division'] = "D"; // Command settings
         $arrData['data'][0]['table_name'] = self::USER_TABLE;
-        $arrData['data'][0]['rows'][0]['customerId'] = $id + $offset;
+        $arrData['data'][0]['rows'][0]['customerId'] = $id;//スマレジの会員コードをそのまま使うので$offsetは考慮しない
 
         return $arrData;
 
@@ -336,7 +336,7 @@ class SmartRegiServiceHelper
         //会員情報取得
         $CustomerInfo = $order->getCustomer();
         if($CustomerInfo != null){
-        	$arrData['data'][0]['rows'][0]['customerId'] = $CustomerInfo->getId() + $u_offset;//会員ID
+        	$arrData['data'][0]['rows'][0]['customerId'] = $CustomerInfo->getCustomerCode();//会員コード
         }
         
         //配送情報取得
