@@ -71,47 +71,53 @@ class SmartRegiServiceHelper
     public function setUserUpdate(Customer $customer, int $offset){
 
         $arrData = array();
-        $arrData['proc_info']['proc_division'] = "U"; // Command settings
-        $arrData['data'][0]['table_name'] = self::USER_TABLE;
-        $arrData['data'][0]['rows'][0]['customerId'] = $customer->getId() + $offset;
-        $arrData['data'][0]['rows'][0]['customerCode'] = $arrData['data'][0]['rows'][0]['customerId'];
-        $arrData['data'][0]['rows'][0]['lastName'] = $customer->getName01();
-        $arrData['data'][0]['rows'][0]['firstName'] = $customer->getName02();
-        $arrData['data'][0]['rows'][0]['lastKana'] = $customer->getKana01();
-        $arrData['data'][0]['rows'][0]['firstKana'] = $customer->getKana02();
-        $arrData['data'][0]['rows'][0]['postCode'] = $customer->getPostalCode();
         
-        $Pref= $customer->getPref();
-        $PrefName= $Pref->getName();
-        $arrData['data'][0]['rows'][0]['address'] = $PrefName . $customer->getAddr01() . $customer->getAddr02();
-        
-        $arrData['data'][0]['rows'][0]['phoneNumber'] = $customer->getPhoneNumber();
-        $arrData['data'][0]['rows'][0]['faxNumber'] = "";
-        $arrData['data'][0]['rows'][0]['mailAddress'] = $customer->getEmail();
-        $arrData['data'][0]['rows'][0]['mailAddress2'] = "";
-        $arrData['data'][0]['rows'][0]['note'] = $customer->getNote();
-        
-        // No Mail magazine in ECCube 4
-        //$arrData['data'][0]['rows'][0]['mailReceiveFlag'] = 1;
-        
-        // Optional parameters -----------------------------------------------------------------
-        
-        $arrData['data'][0]['rows'][0]['companyName'] = $customer->getCompanyName();
-        $arrData['data'][0]['rows'][0]['point'] = $customer->getPoint();
-        
-        $Sex = $customer->getSex();
-        $arrData['data'][0]['rows'][0]['sex'] = isset($Sex) ? $Sex->getId() : 0;
-        
-        $Birth = $customer->getBirth();
-        if (isset($Birth))
-            $arrData['data'][0]['rows'][0]['birthDate'] = date_format($Birth, 'Y-m-d');
-        
-        // -------------------------------------------------------------------------------------
-        
-        $arrData['data'][0]['rows'][0]['entryDate'] = date_format($customer->getCreateDate(), 'Y-m-d');
+        //会員コードが入っていれば処理実行
+        $customer_code = $customer->getCustomerCode();
+        if($customer_code != null){
+	        $arrData['proc_info']['proc_division'] = "U"; // Command settings
+	        $arrData['data'][0]['table_name'] = self::USER_TABLE;
+	        //会員コードで管理する(もともとは$customer->getId() + $offset)
+	        $arrData['data'][0]['rows'][0]['customerId'] = $customer_code;
+	        $arrData['data'][0]['rows'][0]['customerCode'] = $arrData['data'][0]['rows'][0]['customerId'];
+	        $arrData['data'][0]['rows'][0]['lastName'] = $customer->getName01();
+	        $arrData['data'][0]['rows'][0]['firstName'] = $customer->getName02();
+	        $arrData['data'][0]['rows'][0]['lastKana'] = $customer->getKana01();
+	        $arrData['data'][0]['rows'][0]['firstKana'] = $customer->getKana02();
+	        $arrData['data'][0]['rows'][0]['postCode'] = $customer->getPostalCode();
+	        
+	        $Pref= $customer->getPref();
+	        $PrefName= $Pref->getName();
+	        $arrData['data'][0]['rows'][0]['address'] = $PrefName . $customer->getAddr01() . $customer->getAddr02();
+	        
+	        $arrData['data'][0]['rows'][0]['phoneNumber'] = $customer->getPhoneNumber();
+	        $arrData['data'][0]['rows'][0]['faxNumber'] = "";
+	        $arrData['data'][0]['rows'][0]['mailAddress'] = $customer->getEmail();
+	        $arrData['data'][0]['rows'][0]['mailAddress2'] = "";
+	        $arrData['data'][0]['rows'][0]['note'] = $customer->getNote();
+	        
+	        // No Mail magazine in ECCube 4
+	        //$arrData['data'][0]['rows'][0]['mailReceiveFlag'] = 1;
+	        
+	        // Optional parameters -----------------------------------------------------------------
+	        
+	        $arrData['data'][0]['rows'][0]['companyName'] = $customer->getCompanyName();
+	        $arrData['data'][0]['rows'][0]['point'] = $customer->getPoint();
+	        
+	        $Sex = $customer->getSex();
+	        $arrData['data'][0]['rows'][0]['sex'] = isset($Sex) ? $Sex->getId() : 0;
+	        
+	        $Birth = $customer->getBirth();
+	        if (isset($Birth))
+	            $arrData['data'][0]['rows'][0]['birthDate'] = date_format($Birth, 'Y-m-d');
+	        
+	        // -------------------------------------------------------------------------------------
+	        
+	        $arrData['data'][0]['rows'][0]['entryDate'] = date_format($customer->getCreateDate(), 'Y-m-d');
 
-        $Status = $customer->getStatus();
-        $arrData['data'][0]['rows'][0]['status'] = $Status->getId() == 2? 0 : $Status->getId();
+	        $Status = $customer->getStatus();
+	        $arrData['data'][0]['rows'][0]['status'] = $Status->getId() == 2? 0 : $Status->getId();
+        }
 
         return $arrData;
 
