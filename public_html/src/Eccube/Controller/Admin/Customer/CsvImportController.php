@@ -37,6 +37,7 @@ use Eccube\Repository\Master\FamilymainRepository;
 use Eccube\Repository\Master\ProductStatusRepository;
 use Eccube\Repository\Master\SaleTypeRepository;
 use Eccube\Repository\Master\SexRepository;
+use Eccube\Repository\Master\PrefRepository;
 use Eccube\Repository\ProductRepository;
 use Eccube\Repository\TagRepository;
 use Eccube\Repository\TaxRuleRepository;
@@ -71,6 +72,11 @@ class CsvImportController extends AbstractCsvImportController
      * @var SexRepository
      */
     protected $sexRepository;
+
+    /**
+     * @var PrefRepository
+     */
+    protected $prefRepository;
 
     /**
      * @var TagRepository
@@ -145,6 +151,7 @@ class CsvImportController extends AbstractCsvImportController
      * @param DeliveryDurationRepository $deliveryDurationRepository
      * @param SaleTypeRepository $saleTypeRepository
      * @param SexRepository $sexRepository
+     * @param PrefRepository $prefRepository
      * @param TagRepository $tagRepository
      * @param CategoryRepository $categoryRepository
      * @param CustomerRepository $customerRepository
@@ -164,6 +171,7 @@ class CsvImportController extends AbstractCsvImportController
         DeliveryDurationRepository $deliveryDurationRepository,
         SaleTypeRepository $saleTypeRepository,
         SexRepository $sexRepository,
+        PrefRepository $prefRepository,
         TagRepository $tagRepository,
         CategoryRepository $categoryRepository,
         CustomerRepository $customerRepository,
@@ -181,6 +189,7 @@ class CsvImportController extends AbstractCsvImportController
         $this->deliveryDurationRepository = $deliveryDurationRepository;
         $this->saleTypeRepository = $saleTypeRepository;
         $this->sexRepository = $sexRepository;
+        $this->prefRepository = $prefRepository;
         $this->tagRepository = $tagRepository;
         $this->categoryRepository = $categoryRepository;
         $this->customerRepository = $customerRepository;
@@ -309,93 +318,113 @@ class CsvImportController extends AbstractCsvImportController
                         }
 
                         //会員コード登録
-                        $Customer->setCustomerCode(StringUtil::trimAll($row[$headerByKey['customer_code']]));
-                        
-                        //名前01
-                        if (StringUtil::isBlank($row[$headerByKey['name01']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['name01']]);
+                        if (StringUtil::isBlank($row[$headerByKey['customer_code']])) {
+                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['customer_code']]);
                             $this->addErrors($message);
 
                             return $this->renderWithError($form, $headers);
+                        } else {
+                        	$Customer->setCustomerCode(StringUtil::trimAll($row[$headerByKey['customer_code']]));
+                        }
+                        
+                        //名前01
+                        if (StringUtil::isBlank($row[$headerByKey['name01']])) {
+                            //未指定なら「未登録」
+                            $noname = '未登録';
+                            $Customer->setName01($noname);
                         } else {
                             $Customer->setName01(StringUtil::trimAll($row[$headerByKey['name01']]));
                         }
                         
                         //名前02
                         if (StringUtil::isBlank($row[$headerByKey['name02']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['name02']]);
-                            $this->addErrors($message);
-
-                            return $this->renderWithError($form, $headers);
+                            //未指定なら「会員」
+                            $noname = '会員';
+                            $Customer->setName02($noname);
                         } else {
                             $Customer->setName02(StringUtil::trimAll($row[$headerByKey['name02']]));
                         }
                         
                         //名前01(カナ)
                         if (StringUtil::isBlank($row[$headerByKey['name01_kana']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['name01_kana']]);
-                            $this->addErrors($message);
-
-                            return $this->renderWithError($form, $headers);
+                            //未指定なら「ミトウロク」
+                            $noname = 'ミトウロク';
+                            $Customer->setKana01($noname);
                         } else {
                             $Customer->setKana01(StringUtil::trimAll($row[$headerByKey['name01_kana']]));
                         }
                         
                         //名前02(カナ)
                         if (StringUtil::isBlank($row[$headerByKey['name02_kana']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['name02_kana']]);
-                            $this->addErrors($message);
-
-                            return $this->renderWithError($form, $headers);
+                            //未指定なら「カイイン」
+                            $noname = 'カイイン';
+                            $Customer->setKana02($noname);
                         } else {
                             $Customer->setKana02(StringUtil::trimAll($row[$headerByKey['name02_kana']]));
                         }
                         
                         //郵便番号
                         if (StringUtil::isBlank($row[$headerByKey['postal_code']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['postal_code']]);
-                            $this->addErrors($message);
-
-                            return $this->renderWithError($form, $headers);
+                            //未指定なら「594-1104」
+                            $noname = '594-1104';
+                            $Customer->setPostalcode($noname);
+                            
+                            //都道府県コードも登録する(大阪府)
+                            $zip_code = 27;
+                            $Pref = $this->prefRepository->find($zip_code);
+			                if (!$Pref) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['postal_code']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setPref($Pref);
+			                }
+			                
                         } else {
                             $Customer->setPostalcode(StringUtil::trimAll($row[$headerByKey['postal_code']]));
+                            
+                            //都道府県コードも登録する
+                            $zip_code = $this->prefecture_from_zip($row[$headerByKey['postal_code']]) != null ? $this->prefecture_from_zip($row[$headerByKey['postal_code']]) : 27;
+                            
+                            $Pref = $this->prefRepository->find($zip_code);
+			                if (!$Pref) {
+			                    $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['postal_code']]);
+			                    $this->addErrors($message);
+			                } else {
+			                    $Customer->setPref($Pref);
+			                }
                         }
                         
                         //住所1
                         if (StringUtil::isBlank($row[$headerByKey['addr01']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['addr01']]);
-                            $this->addErrors($message);
-
-                            return $this->renderWithError($form, $headers);
+                            //未指定なら「大阪府和泉市万町」
+                            $noname = '大阪府和泉市万町';
+                            $Customer->setAddr01($noname);
                         } else {
                             $Customer->setAddr01(StringUtil::trimAll($row[$headerByKey['addr01']]));
                         }
                         //住所2
                         if (StringUtil::isBlank($row[$headerByKey['addr02']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['addr02']]);
-                            $this->addErrors($message);
-
-                            return $this->renderWithError($form, $headers);
+                            //未指定なら「268-1」
+                            $noname = '268-1';
+                            $Customer->setAddr02($noname);
                         } else {
                             $Customer->setAddr02(StringUtil::trimAll($row[$headerByKey['addr02']]));
                         }
                         
                         //電話番号
                         if (StringUtil::isBlank($row[$headerByKey['phone_number']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['phone_number']]);
-                            $this->addErrors($message);
-
-                            return $this->renderWithError($form, $headers);
+                            //未指定なら「0600000000」
+                            $noname = '0600000000';
+                            $Customer->setPhoneNumber($noname);
                         } else {
                             $Customer->setPhoneNumber(StringUtil::trimAll($row[$headerByKey['phone_number']]));
                         }
                         
                         //性別
                         if (StringUtil::isBlank($row[$headerByKey['sex']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['sex']]);
-                            $this->addErrors($message);
-
-                            return $this->renderWithError($form, $headers);
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setSex($noname);
                         } else {
 							$Sex = $this->sexRepository->find($row[$headerByKey['sex']]);
 			                if (!$Sex) {
@@ -420,10 +449,8 @@ class CsvImportController extends AbstractCsvImportController
                         
                         //ポイント
                         if (StringUtil::isBlank($row[$headerByKey['point']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['point']]);
-                            $this->addErrors($message);
-
-                            return $this->renderWithError($form, $headers);
+                            //未指定なら0ポイントをセット
+                            $Customer->setPoint(0);
                         } else {
                             $Customer->setPoint(intval(StringUtil::trimAll($row[$headerByKey['point']])));
                         }
@@ -726,10 +753,9 @@ class CsvImportController extends AbstractCsvImportController
                         
                         //メール
                         if (StringUtil::isBlank($row[$headerByKey['email']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['email']]);
-                            $this->addErrors($message);
-
-                            return $this->renderWithError($form, $headers);
+                            //未指定なら「a@a.a」
+                            $noname = 'a@a.a';
+                            $Customer->setEmail($noname);
                         } else {
                             $Customer->setEmail(StringUtil::trimAll($row[$headerByKey['email']]));
                         }
@@ -867,7 +893,7 @@ class CsvImportController extends AbstractCsvImportController
             trans('admin.customer.customer_csv.customer_code_col') => [
                 'id' => 'customer_code',
                 'description' => 'admin.customer.customer_csv.customer_code_description',
-                'required' => false,
+                'required' => true,
             ],
             //会員ステータス
             trans('admin.customer.customer_csv.display_status_col') => [
@@ -1224,4 +1250,63 @@ class CsvImportController extends AbstractCsvImportController
             ],
         ];
     }
+    
+    /**
+     * 郵便番号から都道府県コードを取得する
+     */
+    protected function prefecture_from_zip( $zip ){
+		     if( preg_match( '/^01/',     $zip ) ){ return  5; } // "秋田県";   }
+		else if( preg_match( '/^02/',     $zip ) ){ return  3; } // "岩手県";   }
+		else if( preg_match( '/^03/',     $zip ) ){ return  2; } // "青森県";   }
+		else if( preg_match( '/^0[4-9]/', $zip ) ){ return  1; } // "北海道";   }
+		else if( preg_match( '/^1[0-9]/', $zip ) ){ return 13; } // "東京都";   }
+		// ^20は欠番
+		else if( preg_match( '/^2[1-5]/', $zip ) ){ return 14; } // "神奈川県"; }
+		else if( preg_match( '/^2[679]/', $zip ) ){ return 12; } // "千葉県";   }
+		// ^28は欠番
+		else if( preg_match( '/^3[01]/',  $zip ) ){ return  8; } // "茨城県";   }
+		else if( preg_match( '/^32/',     $zip ) ){ return  9; } // "栃木県";   }
+		else if( preg_match( '/^3[3-6]/', $zip ) ){ return 11; } // "埼玉県";   }
+		else if( preg_match( '/^37/',     $zip ) ){ return 10; } // "群馬県";   }
+		else if( preg_match( '/^3[89]/',  $zip ) ){ return 20; } // "長野県";   }
+		else if( preg_match( '/^40/',     $zip ) ){ return 19; } // "山梨県";   }
+		else if( preg_match( '/^4[1-3]/', $zip ) ){ return 22; } // "静岡県";   }
+		else if( preg_match( '/^4[4-9]/', $zip ) ){ return 23; } // "愛知県";   }
+		else if( preg_match( '/^50/',     $zip ) ){ return 21; } // "岐阜県";   }
+		else if( preg_match( '/^51/',     $zip ) ){ return 24; } // "三重県";   }
+		else if( preg_match( '/^520\-?046[1-5]$/', $zip ) ){ return 26; } // "京都府";   } // 特殊
+		else if( preg_match( '/^52/',     $zip ) ){ return 25; } // "滋賀県";   }
+		else if( preg_match( '/^5[3-9]/', $zip ) ){ return 27; } // "大阪府";   }
+		else if( preg_match( '/^6[0-2]/', $zip ) ){ return 26; } // "京都府"; }
+		else if( preg_match( '/^630\-?027[12]$/',  $zip ) ){ return 27; } // "大阪府"; } // 特殊
+		else if( preg_match( '/^63/',     $zip ) ){ return 29; } // "奈良県"; }
+		else if( preg_match( '/^64/',     $zip ) ){ return 30; } // "和歌山県"; }
+		else if( preg_match( '/^6[5-7]/', $zip ) ){ return 28; } // "兵庫県"; }
+		else if( preg_match( '/^68/',     $zip ) ){ return 31; } // "鳥取県"; }
+		else if( preg_match( '/^69/',     $zip ) ){ return 32; } // "島根県"; }
+		else if( preg_match( '/^7[01]/',  $zip ) ){ return 33; } // "岡山県"; }
+		else if( preg_match( '/^7[23]/',  $zip ) ){ return 34; } // "広島県"; }
+		else if( preg_match( '/^7[45]/',  $zip ) ){ return 35; } // "山口県"; }
+		else if( preg_match( '/^76/',     $zip ) ){ return 37; } // "香川県"; }
+		else if( preg_match( '/^77/',     $zip ) ){ return 36; } // "徳島県"; }
+		else if( preg_match( '/^78/',     $zip ) ){ return 39; } // "高知県"; }
+		else if( preg_match( '/^79/',     $zip ) ){ return 38; } //"愛媛県"; }
+		else if( preg_match( '/^8[0-3]/', $zip ) ){ return 40; } // "福岡県"; }
+		else if( preg_match( '/^84/',     $zip ) ){ return 41; } // "佐賀県"; }
+		else if( preg_match( '/^85/',     $zip ) ){ return 42; } // "長崎県"; }
+		else if( preg_match( '/^86/',     $zip ) ){ return 43; } // "熊本県"; }
+		else if( preg_match( '/^87/',     $zip ) ){ return 44; } //"大分県"; }
+		else if( preg_match( '/^88/',     $zip ) ){ return 45; } // "宮崎県"; }
+		else if( preg_match( '/^89/',     $zip ) ){ return 46; } // "鹿児島県"; }
+		else if( preg_match( '/^90/',     $zip ) ){ return 47; } // "沖縄県"; }
+		else if( preg_match( '/^91/',     $zip ) ){ return 18; } // "福井県"; }
+		else if( preg_match( '/^92/',     $zip ) ){ return 17; } // "石川県"; }
+		else if( preg_match( '/^93/',     $zip ) ){ return 16; } // "富山県"; }
+		else if( preg_match( '/^9[45]/',  $zip ) ){ return 15; } // "新潟県"; }
+		else if( preg_match( '/^9[67]/',  $zip ) ){ return  7; } // "福島県"; }
+		else if( preg_match( '/^98/',     $zip ) ){ return  4; } // "宮城県"; }
+		else if( preg_match( '/^99/',     $zip ) ){ return  6; } // "山形県"; }
+		
+		return null;
+	}
 }
