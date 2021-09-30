@@ -377,8 +377,8 @@ class CsvImportController extends AbstractCsvImportController
                         
                         //郵便番号
                         if (StringUtil::isBlank($row[$headerByKey['postal_code']])) {
-                            //未指定なら「594-1104」
-                            $noname = '594-1104';
+                            //未指定なら「0000000」
+                            $noname = '0000000';
                             $Customer->setPostalcode($noname);
                             
                             //都道府県コードも登録する(大阪府)
@@ -408,16 +408,16 @@ class CsvImportController extends AbstractCsvImportController
                         
                         //住所1
                         if (StringUtil::isBlank($row[$headerByKey['addr01']])) {
-                            //未指定なら「大阪府和泉市万町」
-                            $noname = '大阪府和泉市万町';
+                            //未指定なら「未登録」
+                            $noname = '未登録';
                             $Customer->setAddr01($noname);
                         } else {
                             $Customer->setAddr01(StringUtil::trimAll($row[$headerByKey['addr01']]));
                         }
                         //住所2
                         if (StringUtil::isBlank($row[$headerByKey['addr02']])) {
-                            //未指定なら「268-1」
-                            $noname = '268-1';
+                            //未指定なら「未登録」
+                            $noname = '未登録';
                             $Customer->setAddr02($noname);
                         } else {
                             $Customer->setAddr02(StringUtil::trimAll($row[$headerByKey['addr02']]));
