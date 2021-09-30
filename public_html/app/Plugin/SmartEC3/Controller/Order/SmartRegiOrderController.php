@@ -330,6 +330,9 @@ class SmartRegiOrderController extends AbstractController
             $smaregiId = $arrOrder['transactionHeadId'];
             $Order->setSmaregiId($smaregiId);
             
+            //メモをセット
+            $Order->setNote($arrOrder['memo']);
+            
             $Shipping = new Shipping();
             $Shipping->setOrder($Order);
             $Shipping->setName01($Customer->getName01());
@@ -369,6 +372,9 @@ class SmartRegiOrderController extends AbstractController
             //スマレジの取引IDを登録しておく
             $smaregiId = $arrOrder['transactionHeadId'];
             $Order->setSmaregiId($smaregiId);
+            
+            //メモをセット
+            $Order->setNote($arrOrder['memo']);
             
             $Shipping = new Shipping();
             $Shipping->setOrder($Order);
