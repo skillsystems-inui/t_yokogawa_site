@@ -796,29 +796,29 @@ admin.product.category_csv.delete_flag_description: 0:登録 1:削除を指定�
 
 # 会員CSV雛形
 admin.customer.customer_csv.customer_id_col: 会員ID
-admin.customer.customer_csv.customer_id_description: 新規登録の場合は空にしてください。既存の会員を更新する場合は、会員IDを指定してください。
+admin.customer.customer_csv.customer_id_description: 新規登録の場合は空にしてください。既存の会員を更新する場合は、会員ID(システムID)を指定してください。
 admin.customer.customer_csv.customer_code_col: 会員番号
-admin.customer.customer_csv.customer_code_description: 会員番号を指定してください。
+admin.customer.customer_csv.customer_code_description: ※他会員と重複しないユニークなキーを指定してください。英数字のみ使用できます。
 admin.customer.customer_csv.display_status_col: 会員ステータス(ID)
 admin.customer.customer_csv.display_status_description: '1;仮会員,2:本会員,3:退会'
 admin.customer.customer_csv.customer_name01_col: 会員名1
-admin.customer.customer_csv.customer_name01_description: ''
+admin.customer.customer_csv.customer_name01_description: '指定なしの場合は「未登録」として登録します'
 admin.customer.customer_csv.customer_name02_col: 会員名2
-admin.customer.customer_csv.customer_name02_description: ''
+admin.customer.customer_csv.customer_name02_description: '指定なしの場合は「会員」として登録します'
 admin.customer.customer_csv.email_col: メールアドレス
-admin.customer.customer_csv.email_description: ''
+admin.customer.customer_csv.email_description: '指定なしの場合は「a@a.a」として登録します'
 admin.customer.customer_csv.password_col: パスワード
-admin.customer.customer_csv.password_description: ''
+admin.customer.customer_csv.password_description: '8桁以上、32桁未満の英数字を指定して下さい'
 admin.customer.customer_csv.customer_name01_kana_col: 会員名1(カナ)
-admin.customer.customer_csv.customer_name01_kana_description: ''
+admin.customer.customer_csv.customer_name01_kana_description: '指定なしの場合は「ミトウロク」として登録します'
 admin.customer.customer_csv.customer_name02_kana_col: 会員名2(カナ)
-admin.customer.customer_csv.customer_name02_kana_description: ''
+admin.customer.customer_csv.customer_name02_kana_description: '指定なしの場合は「カイイン」として登録します'
 admin.customer.customer_csv.customer_postal_code_col: 郵便番号
-admin.customer.customer_csv.customer_postal_code_description: ''
+admin.customer.customer_csv.customer_postal_code_description: '指定なしの場合は「0000000」として登録します'
 admin.customer.customer_csv.customer_addr01_col: 住所1
-admin.customer.customer_csv.customer_addr01_description: ''
+admin.customer.customer_csv.customer_addr01_description: '指定なしの場合は「未登録」として登録します'
 admin.customer.customer_csv.customer_addr02_col: 住所2
-admin.customer.customer_csv.customer_addr02_description: ''
+admin.customer.customer_csv.customer_addr02_description: '指定なしの場合は「未登録」として登録します'
 admin.customer.customer_csv.customer_phone_number_col: 電話番号
 admin.customer.customer_csv.customer_phone_number_description: '例:0611112222'
 admin.customer.customer_csv.customer_sex_col: 性別
@@ -1092,6 +1092,7 @@ admin.customer.customer_address_registration: 受け取り先登録
 
 # ラベル/メッセージ
 admin.customer.customer_id: 会員ID
+admin.customer.customer_code: 会員番号
 admin.customer.customer_info: 会員情報
 admin.customer.purchase_history: 注文履歴
 admin.customer.purchase_history__not_found: 注文履歴がありません
@@ -1725,6 +1726,7 @@ tooltip.shipping.csv_upload: 所定の型のCSVデータを用いて出荷情報
 tooltip.shipping.csv_format: 雛形ファイルをダウンロードして編集すれば、簡単に所定の型のCSVデータを作成できます。
 tooltip.customer.multi_search_label: 情報を入力して一覧の絞り込み検索ができます。より詳細な条件を指定するには［詳細検索］を開いてください。
 tooltip.customer.customer_id: 自動的に採番される会員のIDです。
+tooltip.customer.customer_code: ユニークな会員番号です。
 tooltip.customer.customer_address: この会員が登録している受け取り先です。この画面から追加することもできます。
 tooltip.customer.purchase_history: この会員が注文をした履歴が表示されます。
 tooltip.customer.shop_memo: 店舗用のメモ欄です。フロント側には表示されません。

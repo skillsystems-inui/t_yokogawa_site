@@ -83,11 +83,9 @@ class CustomerType extends AbstractType
                 'required' => true,
             ])
             ->add('customer_code', TextType::class, [
-                'required' => false,
+                'required' => true,
                 'constraints' => [
-                    new Assert\Length([
-                        'max' => $this->eccubeConfig['eccube_stext_len'],
-                    ]),
+                    new Assert\NotBlank(),
                 ],
             ])
             ->add('company_name', TextType::class, [
