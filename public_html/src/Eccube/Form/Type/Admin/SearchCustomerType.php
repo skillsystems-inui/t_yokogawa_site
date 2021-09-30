@@ -321,6 +321,39 @@ class SearchCustomerType extends AbstractType
                     'data-toggle' => 'datetimepicker',
                 ],
             ])
+            //家族誕生日
+            ->add('familybirth_month', ChoiceType::class, [
+                'label' => 'admin.customer.familybirth_month',
+                'placeholder' => 'admin.common.select',
+                'required' => false,
+                'choices' => array_combine($months, $months),
+            ])
+            ->add('familybirth_start', BirthdayType::class, [
+                'label' => 'admin.common.familybirth_day__start',
+                'required' => false,
+                'input' => 'datetime',
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'attr' => [
+                    'class' => 'datetimepicker-input',
+                    'data-target' => '#'.$this->getBlockPrefix().'_familybirth_start',
+                    'data-toggle' => 'datetimepicker',
+                ],
+            ])
+            ->add('familybirth_end', BirthdayType::class, [
+                'label' => 'admin.common.familybirth_day__end',
+                'required' => false,
+                'input' => 'datetime',
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'attr' => [
+                    'class' => 'datetimepicker-input',
+                    'data-target' => '#'.$this->getBlockPrefix().'_familybirth_end',
+                    'data-toggle' => 'datetimepicker',
+                ],
+            ])
         ;
     }
 

@@ -152,6 +152,54 @@ class CustomerRepository extends AbstractRepository
                 ->andWhere('c.birth < :birth_end')
                 ->setParameter('birth_end', $date);
         }
+        
+        
+        if (!empty($searchData['familybirth_month']) && $searchData['familybirth_month']) {
+            $qb
+                ->andWhere('EXTRACT(MONTH FROM c.family_birth01) = :familybirth_month01 OR EXTRACT(MONTH FROM c.family_birth02) = :familybirth_month02 OR EXTRACT(MONTH FROM c.family_birth03) = :familybirth_month03 OR EXTRACT(MONTH FROM c.family_birth04) = :familybirth_month04 OR EXTRACT(MONTH FROM c.family_birth05) = :familybirth_month05 OR EXTRACT(MONTH FROM c.family_birth06) = :familybirth_month06 OR EXTRACT(MONTH FROM c.family_birth07) = :familybirth_month07 OR EXTRACT(MONTH FROM c.family_birth08) = :familybirth_month08 OR EXTRACT(MONTH FROM c.family_birth09) = :familybirth_month09 OR EXTRACT(MONTH FROM c.family_birth10) = :familybirth_month10')
+                ->setParameter('familybirth_month01', $searchData['familybirth_month'])
+                ->setParameter('familybirth_month02', $searchData['familybirth_month'])
+                ->setParameter('familybirth_month03', $searchData['familybirth_month'])
+                ->setParameter('familybirth_month04', $searchData['familybirth_month'])
+                ->setParameter('familybirth_month05', $searchData['familybirth_month'])
+                ->setParameter('familybirth_month06', $searchData['familybirth_month'])
+                ->setParameter('familybirth_month07', $searchData['familybirth_month'])
+                ->setParameter('familybirth_month08', $searchData['familybirth_month'])
+                ->setParameter('familybirth_month09', $searchData['familybirth_month'])
+                ->setParameter('familybirth_month10', $searchData['familybirth_month']);
+        }
+
+        // familybirth
+        if (!empty($searchData['familybirth_start']) && $searchData['familybirth_start']) {
+            $qb
+                ->andWhere('c.family_birth01 >= :familybirth_start01 OR c.family_birth02 >= :familybirth_start02 OR c.family_birth03 >= :familybirth_start03 OR c.family_birth04 >= :familybirth_start04 OR c.family_birth05 >= :familybirth_start05 OR c.family_birth06 >= :familybirth_start06 OR c.family_birth07 >= :familybirth_start07 OR c.family_birth08 >= :familybirth_start08 OR c.family_birth09 >= :familybirth_start09 OR c.family_birth10 >= :familybirth_start10')
+                ->setParameter('familybirth_start01', $searchData['familybirth_start'])
+                ->setParameter('familybirth_start02', $searchData['familybirth_start'])
+                ->setParameter('familybirth_start03', $searchData['familybirth_start'])
+                ->setParameter('familybirth_start04', $searchData['familybirth_start'])
+                ->setParameter('familybirth_start05', $searchData['familybirth_start'])
+                ->setParameter('familybirth_start06', $searchData['familybirth_start'])
+                ->setParameter('familybirth_start07', $searchData['familybirth_start'])
+                ->setParameter('familybirth_start08', $searchData['familybirth_start'])
+                ->setParameter('familybirth_start09', $searchData['familybirth_start'])
+                ->setParameter('familybirth_start10', $searchData['familybirth_start']);
+        }
+        if (!empty($searchData['familybirth_end']) && $searchData['familybirth_end']) {
+            $date = clone $searchData['familybirth_end'];
+            $date->modify('+1 days');
+            $qb
+                ->andWhere('c.family_birth01 < :familybirth_end01 OR c.family_birth02 < :familybirth_end02 OR c.family_birth03 < :familybirth_end03 OR c.family_birth04 < :familybirth_end04 OR c.family_birth05 < :familybirth_end05 OR c.family_birth06 < :familybirth_end06 OR c.family_birth07 < :familybirth_end07 OR c.family_birth08 < :familybirth_end08 OR c.family_birth09 < :familybirth_end09 OR c.family_birth10 < :familybirth_end10')
+                ->setParameter('familybirth_end01', $date)
+                ->setParameter('familybirth_end02', $date)
+                ->setParameter('familybirth_end03', $date)
+                ->setParameter('familybirth_end04', $date)
+                ->setParameter('familybirth_end05', $date)
+                ->setParameter('familybirth_end06', $date)
+                ->setParameter('familybirth_end07', $date)
+                ->setParameter('familybirth_end08', $date)
+                ->setParameter('familybirth_end09', $date)
+                ->setParameter('familybirth_end10', $date);
+        }
 
         // tel
         if (isset($searchData['phone_number']) && StringUtil::isNotBlank($searchData['phone_number'])) {

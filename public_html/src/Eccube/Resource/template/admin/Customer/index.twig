@@ -78,6 +78,36 @@ file that was distributed with this source code.
                         showClose: true
                     }
                 });
+                
+                $('input.datetimepicker-input').not('#admin_search_customer_familybirth_start').not('#admin_search_customer_familybirth_end').datetimepicker({
+                    locale: '{{ eccube_config.locale }}',
+                    format: 'YYYY-MM-DD HH:mm:ss',
+                    useCurrent: false,
+                    buttons: {
+                        showToday: true,
+                        showClose: true
+                    },
+                });
+
+                $('#admin_search_customer_familybirth_start').datetimepicker({
+                    locale: '{{ eccube_config.locale }}',
+                    format: 'YYYY-MM-DD',
+                    useCurrent: false,
+                    buttons: {
+                        showToday: true,
+                        showClose: true
+                    }
+                });
+
+                $('#admin_search_customer_familybirth_end').datetimepicker({
+                    locale: '{{ eccube_config.locale }}',
+                    format: 'YYYY-MM-DD',
+                    useCurrent: false,
+                    buttons: {
+                        showToday: true,
+                        showClose: true
+                    }
+                });
 
                 // datetimepicker で value が消えてしまうので更新
                 $('input.datetimepicker-input').each(function() {
@@ -265,6 +295,37 @@ file that was distributed with this source code.
                                 <div class="col">
                                     {{ form_widget(searchForm.last_buy_end) }}
                                     {{ form_errors(searchForm.last_buy_end) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 家族誕生日 -->
+                <div class="row mb-2">
+                    <div class="col">
+                        <div>
+                            <label>{{ 'admin.customer.familybirth_month'|trans }}</label>
+                            <div class="row">
+                                <div class="col-5">
+                                    {{ form_widget(searchForm.familybirth_month) }}
+                                    {{ form_errors(searchForm.familybirth_month) }}
+                                </div>
+                                <div class="col-7"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <label>{{ 'admin.common.familybirth_day'|trans }}</label>
+                            <div class="form-row align-items-center">
+                                <div class="col">
+                                    {{ form_widget(searchForm.familybirth_start) }}
+                                    {{ form_errors(searchForm.familybirth_start) }}
+                                </div>
+                                <div class="col-auto text-center"><span>{{ 'admin.common.separator__range'|trans }}</span></div>
+                                <div class="col">
+                                    {{ form_widget(searchForm.familybirth_end) }}
+                                    {{ form_errors(searchForm.familybirth_end) }}
                                 </div>
                             </div>
                         </div>
