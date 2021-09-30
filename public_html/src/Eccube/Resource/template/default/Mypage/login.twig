@@ -31,7 +31,9 @@ file that was distributed with this source code.
                         </div>
                         <div class="ec-login__input">
                             <div class="ec-input">
-                                {{ form_widget(form.login_email, {'attr': {'style' : 'ime-mode: disabled;', 'placeholder' : 'メールアドレス', 'autofocus': true}}) }}
+                                {{ form_widget(form.customer_code, {'attr': {'style' : 'ime-mode: disabled;', 'placeholder' : '会員番号', 'autofocus': true}}) }}
+                                {# login_emailをコメントアウトする #}
+                                {# {{ form_widget(form.login_email, {'attr': {'style' : 'ime-mode: disabled;', 'placeholder' : 'メールアドレス', 'autofocus': true}}) }} #}
                                 {{ form_widget(form.login_pass,  {'attr': {'placeholder' : 'パスワード' }}) }}
                             </div>
                             {% if BaseInfo.option_remember_me %}

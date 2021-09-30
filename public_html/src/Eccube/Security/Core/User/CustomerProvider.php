@@ -48,7 +48,7 @@ class CustomerProvider implements UserProviderInterface
     public function loadUserByUsername($username)
     {
         $Customer = $this->customerRepository->findOneBy([
-            'email' => $username,
+            'customer_code' => $username,
             'Status' => CustomerStatus::REGULAR,
         ]);
 
@@ -77,7 +77,7 @@ class CustomerProvider implements UserProviderInterface
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
         }
 
-        return $this->loadUserByUsername($user->getUsername());
+        return $this->loadUserByUsername($user->getCustomerCode());
     }
 
     /**

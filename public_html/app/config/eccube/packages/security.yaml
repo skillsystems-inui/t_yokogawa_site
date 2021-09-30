@@ -51,7 +51,8 @@ security:
                 login_path: mypage_login
                 csrf_token_generator: security.csrf.token_manager
                 default_target_path: homepage
-                username_parameter: 'login_email'
+                # username_parameter: 'login_email'
+                username_parameter: 'customer_code'
                 password_parameter: 'login_pass'
                 use_forward: false
                 success_handler: eccube.security.success_handler
