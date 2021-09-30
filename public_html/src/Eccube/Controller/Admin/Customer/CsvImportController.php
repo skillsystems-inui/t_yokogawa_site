@@ -448,16 +448,17 @@ class CsvImportController extends AbstractCsvImportController
                         }
                         
                         //誕生日
-                        /*
-                        if (StringUtil::isBlank($row[$headerByKey['birth']])) {
-                            $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['birth']]);
-                            $this->addErrors($message);
-
-                            return $this->renderWithError($form, $headers);
-                        } else {
-                            $Customer->setBirth(strtotime(StringUtil::trimAll($row[$headerByKey['birth']])));
-                        }
-                        */
+                        if (StringUtil::isNotBlank($row[$headerByKey['birth']])) {
+	                        $BirthDay = \DateTime::createFromFormat('Y-m-d', $row[$headerByKey['birth']]);
+			                if ($BirthDay == true) {
+			                    $BirthDay->setTime(0, 0, 0);
+	                        	$Customer->setBirth($BirthDay);
+			                }else{
+			                	// 日付フォーマットが異なる場合はエラー
+			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['birth']]);
+	                            $this->addErrors($message);
+			                }
+		                }
                         
                         //ポイント
                         if (StringUtil::isBlank($row[$headerByKey['point']])) {
