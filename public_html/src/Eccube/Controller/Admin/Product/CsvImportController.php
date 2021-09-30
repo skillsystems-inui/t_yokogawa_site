@@ -1369,6 +1369,7 @@ class CsvImportController extends AbstractCsvImportController
         $ProductClass->setProduct($Product);
 
         $line = $data->key() + 1;
+        $row[$headerByKey['sale_type']] = 1;//意図的に1
         if ($row[$headerByKey['sale_type']] == '') {
             $message = trans('admin.common.csv_invalid_required', ['%line%' => $line, '%name%' => $headerByKey['sale_type']]);
             $this->addErrors($message);
