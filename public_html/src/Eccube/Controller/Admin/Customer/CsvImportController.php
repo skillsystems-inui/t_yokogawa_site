@@ -902,7 +902,7 @@ class CsvImportController extends AbstractCsvImportController
                 'description' => 'admin.customer.customer_csv.customer_id_description',
                 'required' => false,
             ],
-            //会員コード
+            //会員番号
             trans('admin.customer.customer_csv.customer_code_col') => [
                 'id' => 'customer_code',
                 'description' => 'admin.customer.customer_csv.customer_code_description',
@@ -918,32 +918,32 @@ class CsvImportController extends AbstractCsvImportController
             trans('admin.customer.customer_csv.customer_name01_col') => [
                 'id' => 'name01',
                 'description' => 'admin.customer.customer_csv.customer_name01_description',
-                'required' => true,
+                'required' => false,
             ],
             //会員名2
             trans('admin.customer.customer_csv.customer_name02_col') => [
                 'id' => 'name02',
                 'description' => 'admin.customer.customer_csv.customer_name02_description',
-                'required' => true,
+                'required' => false,
             ],
             //会員名1(カナ)
             trans('admin.customer.customer_csv.customer_name01_kana_col') => [
                 'id' => 'name01_kana',
                 'description' => 'admin.customer.customer_csv.customer_name01_kana_description',
-                'required' => true,
+                'required' => false,
             ],
             //会員名2(カナ)
             trans('admin.customer.customer_csv.customer_name02_kana_col') => [
                 'id' => 'name02_kana',
                 'description' => 'admin.customer.customer_csv.customer_name02_kana_description',
-                'required' => true,
+                'required' => false,
             ],
             
             //メールアドレス
             trans('admin.customer.customer_csv.email_col') => [
                 'id' => 'email',
                 'description' => 'admin.customer.customer_csv.email_description',
-                'required' => true,
+                'required' => false,
             ],
             //パスワード
             trans('admin.customer.customer_csv.password_col') => [
@@ -956,25 +956,25 @@ class CsvImportController extends AbstractCsvImportController
             trans('admin.customer.customer_csv.customer_postal_code_col') => [
                 'id' => 'postal_code',
                 'description' => 'admin.customer.customer_csv.customer_postal_code_description',
-                'required' => true,
+                'required' => false,
             ],
             //住所(住所1)
             trans('admin.customer.customer_csv.customer_addr01_col') => [
                 'id' => 'addr01',
                 'description' => 'admin.customer.customer_csv.customer_addr01_description',
-                'required' => true,
+                'required' => false,
             ],
             //住所(住所2)
             trans('admin.customer.customer_csv.customer_addr02_col') => [
                 'id' => 'addr02',
                 'description' => 'admin.customer.customer_csv.customer_addr02_description',
-                'required' => true,
+                'required' => false,
             ],
             //電話番号
             trans('admin.customer.customer_csv.customer_phone_number_col') => [
                 'id' => 'phone_number',
                 'description' => 'admin.customer.customer_csv.customer_phone_number_description',
-                'required' => true,
+                'required' => false,
             ],
             //性別
             trans('admin.customer.customer_csv.customer_sex_col') => [
