@@ -123,19 +123,14 @@ class SmartRegiServiceHelper
 
     }
 
-    public function setUserDelete(int $id, int $offset ){
+    public function setUserDelete(string $customer_code, int $offset ){
      
         $arrData = array();
-        /*ToDoinui0930 
         $arrData['proc_info']['proc_division'] = "D"; // Command settings
         $arrData['data'][0]['table_name'] = self::USER_TABLE;
-        //$Customer = $this->customerRepository->find($id);//←既に削除されてるので取れない
-        //ToDoinui0930 codeきてない
-        //$customer_code = $Customer->getCustomerCode();
-        $customer_code = $id;
         $arrData['data'][0]['rows'][0]['customerId'] = $customer_code;//スマレジの会員コードをそのまま使うので$offsetは考慮しない
-		*/
-        return $arrData;
+		
+		return $arrData;
 
     }
 

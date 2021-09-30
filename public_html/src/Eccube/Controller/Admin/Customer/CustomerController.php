@@ -256,9 +256,11 @@ class CustomerController extends AbstractController
         $event = new EventArgs(
             [
                 'Customer' => $Customer,
+                'customer_code' => $Customer->getCustomerCode(),
             ],
             $request
         );
+        
         $this->eventDispatcher->dispatch(EccubeEvents::ADMIN_CUSTOMER_DELETE_COMPLETE, $event);
 
         return $this->redirect($this->generateUrl('admin_customer_page',
