@@ -6,174 +6,109 @@
         <div class="item_index inner">
           <h1 class="title"><strong class="agp">PRODUCTS</strong><span>商品一覧</span></h1><!-- .title -->
 
-          <section class="decoration" id="decoration">
+          <!-- 今月のおすすめ -->
+          <section class="recommended" id="recommended">
             <div class="item_main">
-              <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/decoration.jpg" alt="デコレーションケーキ">
+              <a href="{{ url('product_list') }}?category_id=63" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/catelist_season_fall.png" alt="今月のおすすめ">
+              </a>
             </div>
             <div class="category_name">
-              <h2 class="small_title"><strong>デコレーション</strong><span class="agp">Decolation</span></h2>
+              <h2 class="small_title"><strong>今月のおすすめ</strong><span class="agp">Recommended</span></h2>
             </div><!-- .category_name -->
-            <p> T.YOKOGAWAの特別なデコレーションケーキをインターネットからご予約いただけます。<br>お受け取りは店頭にて承ります。
-					</p>
-          <ul class="item_btn">
-            <li class="btn01"><a href="{{ url('product_list') }}?category_id=67" style="text-decoration: none;">店頭受取</a></li>
-          </ul><!-- .item_btn -->
+            <p>季節ごとのおすすめ商品はこちらをチェック！</p>
           </section>
-          <section class="petit-gateau" id="petit-gateau">
+          
+          <section class="cake" id="cake">
             <div class="item_main">
-              <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/petit-gateau.jpg" alt="プチガトー">
+              <a href="{{ url('product_list') }}?category_id=67" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/catelist_cake.png" alt="ケーキ">
+              </a>
             </div>
             <div class="category_name">
-              <h2 class="small_title"><strong>プチガトー</strong><span class="agp">Petit Gateau</span></h2>
+              <h2 class="small_title"><strong>ケーキ</strong><span class="agp">Cake</span></h2>
             </div><!-- .category_name -->
-            <p>季節の魅力あふれる、表情豊かなプチガトー<br>
-            パティシエが丁寧に作り上げた見た目も楽しいケーキたちをぜひ、ご賞味ください。</p>
-            <ul class="item_btn">
-              <li class="btn02"><a href="{{ url('product_list') }}?category_id=67" style="text-decoration: none;">店頭販売のみ</a><span>この商品のオンライン販売はございません</span></li>
-            </ul><!-- .item_btn -->
+            <p>ホールケーキ・ロールケーキ・カットケーキ。様々なシーンでご利用いただけます。</p>
           </section>
-          <section class="swiss-roll" id="swiss-roll">
+          
+          <section class="reitoucake" id="reitoucake">
             <div class="item_main">
-              <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/swiss-roll.jpg" alt="ロールケーキ">
+              <a href="{{ url('product_list') }}?category_id=74" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/catelist_reitoucake.png" alt="冷凍ケーキ">
+              </a>
             </div>
             <div class="category_name">
-              <h2 class="small_title"><strong>ロールケーキ</strong><span class="agp">Swiss Roll</span></h2>
+              <h2 class="small_title"><strong>冷凍ケーキ</strong><span class="agp">Ice cake</span></h2>
             </div><!-- .category_name -->
-            <p>こだわりのクリームやチョコレート、フルーツを贅沢に使用したロールケーキ</p>
-            <ul class="item_btn">
-              <li class="btn02"><a href="{{ url('product_list') }}?category_id=67" style="text-decoration: none;">店頭販売のみ</a><span>この商品のオンライン販売はございません</span></li>
-            </ul><!-- .item_btn -->
+            <p>遠方の方にもT.YOKOGAWAの味をお届けします。冷凍ケーキとして新登場！</p>
+          </section>
+          
+          <section class="gift" id="gift">
+            <div class="item_main">
+              <a href="{{ url('product_list') }}?category_id=75" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/catelist_gift.png" alt="ギフト商品">
+              </a>
+            </div>
+            <div class="category_name">
+              <h2 class="small_title"><strong>ギフト商品</strong><span class="agp">Gift</span></h2>
+            </div><!-- .category_name -->
+            <p>ご進物からご自宅用まで様々なご用途にお答えする商品をご用意しております！</p>
+          </section>
+          
+          <section class="single" id="single">
+            <div class="item_main">
+              <a href="{{ url('product_list') }}?category_id=82" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/catelist_tanpin.png" alt="単品">
+              </a>
+            </div>
+            <div class="category_name">
+              <h2 class="small_title"><strong>単品</strong><span class="agp">Single</span></h2>
+            </div><!-- .category_name -->
+            <p>T.YOKOGAWA自慢のお菓子が1個から購入できるようになりました。</p>
+          </section>
+          
+          <section class="confiture-honey" id="confiture-honey">
+            <div class="item_main">
+              <a href="{{ url('product_list') }}?category_id=91" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/catelist_confile_hatimitu.png" alt="コンフィチュール・ハチミツ">
+              </a>
+            </div>
+            <div class="category_name">
+              <h2 class="small_title"><strong>コンフィチュール・ハチミツ</strong><span class="agp">Confiture/Honey</span></h2>
+            </div><!-- .category_name -->
+            <p>旬のフルーツなどを使用し、じっくりとお砂糖のみで炊き上げました。</p>
           </section>
 
-<section class="seasonal" id="seasonal">
+          <section class="chocolate" id="chocolate">
             <div class="item_main">
-              <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/autumn.jpg" alt="限定スイーツ">
-            </div>
-            <div class="category_name">
-              <h2 class="small_title"><strong>限定スイーツ</strong><span class="agp">Seasonal</span></h2>
-            </div><!-- .category_name -->
-            <p>季節の味覚をたっぷり使用した、T.YOKOGAWAでしか出会えないスイーツです。</p>
-          <ul class="item_btn">
-              <li class="btn01"><a href="{{ url('product_list') }}?category_id=63" style="text-decoration: none;">店頭受取</a></li>
-              <li class="btn03"><a href="{{ url('product_list') }}?category_id=63" style="text-decoration: none;">お取り寄せ</a></li>
-            </ul><!-- .item_btn -->
-          </section>
-
-<section class="chocolate" id="chocolate">
-            <div class="item_main">
-              <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/chocolate.jpg" alt="チョコレート">
+              <a href="{{ url('product_list') }}?category_id=92" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/catelist_chocolate.png" alt="チョコレート">
+              </a>
             </div>
             <div class="category_name">
               <h2 class="small_title"><strong>チョコレート</strong><span class="agp">Chocolate</span></h2>
             </div>
-            <p>職人のこだわりが詰まったT.YOKOGAWA自慢のチョコレートで<br>心も身体もしあわせなひと時を。</p>
-          <ul class="item_btn">
-              <li class="btn01"><a href="{{ url('product_list') }}?category_id=92" style="text-decoration: none;">店頭受取</a></li>
-              <li class="btn03"><a href="{{ url('product_list') }}?category_id=92" style="text-decoration: none;">お取り寄せ</a></li>
-            </ul>
+            <p>職人のこだわりが詰まったT.YOKOGAWA自慢のチョコレートで心も身体もしあわせなひと時を。<br><span style="color:red;">本日分入荷次第、店頭にて</span></p>
           </section>
 
-          <section class="baumkuchen" id="baumkuchen">
+          <section class="Jelly" id="Jelly">
             <div class="item_main">
-              <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/baumkuchen.jpg" alt="バームクーヘン">
+              <a href="{{ url('product_list') }}?category_id=66" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/catelist_jelly.png" alt="ゼリー・ソルベ">
+              </a>
             </div>
             <div class="category_name">
-              <h2 class="small_title"><strong>バームクーヘン</strong><span class="agp">Baumkuchen</span></h2>
+              <h2 class="small_title"><strong>ゼリー・ソルベ</strong><span class="agp">Jelly and Sherbet</span></h2>
             </div><!-- .category_name -->
-            <p>素朴な味わいを大切に、一層一層丁寧に焼き上げたこだわりのバームクーヘン。<br>
-            生地の状態を確かめながら職人の手でじっくりと焼き上げています。</p>
-            <ul class="item_btn">
-              <li class="btn01"><a href="{{ url('product_list') }}?category_id=75" style="text-decoration: none;">店頭受取</a></li>
-              <li class="btn03"><a href="{{ url('product_list') }}?category_id=75" style="text-decoration: none;">お取り寄せ</a></li>
-            </ul><!-- .item_btn -->
+            <p>みずみずしいフルーツをたっぷり使用したT.YOKOGAWA自慢の一品です<br><span style="color:red;">4月下旬から順次販売、8月末まで</span></p>
           </section>
-          <section class="bakegoods" id="bakegoods">
-            <div class="item_main">
-              <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/bakegoods.jpg" alt="クッキー">
-            </div>
-            <div class="category_name">
-              <h2 class="small_title"><strong>クッキー</strong><span class="agp">Bakegoods</span></h2>
-            </div><!-- .category_name -->
-            <p>さっくりとした食感が愛される理由。<br>
-            保存料を一切使用していないからこそ、生きている豊かな風味をお楽しみください。<br><a href="/list_cookie.html">クッキー一覧はこちら</a></p>
-            <ul class="item_btn">
-              <li class="btn01"><a href="{{ url('product_list') }}?category_id=84" style="text-decoration: none;">店頭受取</a></li>
-              <li class="btn03"><a href="{{ url('product_list') }}?category_id=84" style="text-decoration: none;">お取り寄せ</a></li>
-            </ul><!-- .item_btn -->
-          </section>
-          <section class="madeleine-financie" id="madeleine-financie">
-            <div class="item_main">
-              <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/madeleine-financie.jpg" alt="マドレーヌ・フィナンシェ">
-            </div>
-            <div class="category_name">
-              <h2 class="small_title"><strong>マドレーヌ・フィナンシェ</strong><span class="agp">Madeleine/Financier</span></h2>
-            </div><!-- .category_name -->
-            <p>シンプルでやさしい味わいに、ひろがるはちみつの華やかな香り。<br>
-            焼き立てからあらねつが取れた一番美味しい瞬間を香りも一緒に閉じ込めました。</p>
-            <ul class="item_btn">
-              <li class="btn01"><a href="{{ url('product_list') }}?category_id=85" style="text-decoration: none;">店頭受取</a></li>
-              <li class="btn03"><a href="{{ url('product_list') }}?category_id=85" style="text-decoration: none;">お取り寄せ</a></li>
-            </ul><!-- .item_btn -->
-          </section>
+          
           <div class="column2">
-            <section class="pound-cake" id="pound-cake">
-              <div class="item_main">
-                <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/pound-cake.jpg" alt="パウンドケーキ">
-              </div>
-              <div class="category_name">
-                <h2 class="small_title"><strong>パウンドケーキ</strong><span class="agp">Pound Cake</span></h2>
-              </div><!-- .category_name -->
-              <p>バターやチョコレート、フルーツやクルミなど、それぞれの素材に合った製法で焼き上げた<br>
-              それぞれの素材に合った製法で焼き上げた個性豊かなパウンドケーキ。</p>
-              <ul class="item_btn">
-                <li class="btn01"><a href="{{ url('product_list') }}?category_id=87" style="text-decoration: none;">店頭受取</a></li>
-                <li class="btn03"><a href="{{ url('product_list') }}?category_id=87" style="text-decoration: none;">お取り寄せ</a></li>
-              </ul><!-- .item_btn -->
-            </section>
-            <section class="original-products" id="original-products">
-              <div class="item_main">
-                <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/donut-macaron.jpg" alt="要冷蔵菓子">
-              </div>
-              <div class="category_name">
-                <h2 class="small_title"><strong>要冷蔵菓子</strong><span class="agp">Original Products</span></h2>
-              </div><!-- .category_name -->
-              <p>T.YOKOGAWAでしか味わえない、特製のスイーツたち。<br>
-              素材を生かした飽き来ない優しい味わい。</p>
-              <ul class="item_btn">
-                <li class="btn01"><a href="{{ url('product_list') }}?category_id=74" style="text-decoration: none;">店頭受取</a></li>
-                <li class="btn03"><a href="{{ url('product_list') }}?category_id=74" style="text-decoration: none;">お取り寄せ</a></li>
-              </ul><!-- .item_btn -->
-            </section>
-            <section class="donut-macaron" id="donut-macaron">
-              <div class="item_main">
-                <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/donut-kasutera.jpg" alt="ドーナツ・カステラ">
-              </div>
-              <div class="category_name">
-                <h2 class="small_title"><strong>ドーナツ・カステラ</strong><span class="agp">Donut/Castella</span></h2>
-              </div><!-- .category_name -->
-              <p>焼菓子感覚で食べられるヘルシーなドーナツと<br>
-              自然の恵みに感謝して、毎朝焼き上げる焼き立てのカステラ。</p>
-              <ul class="item_btn">
-                <li class="btn01"><a href="{{ url('product_list') }}?category_id=82" style="text-decoration: none;">店頭受取</a></li>
-                <li class="btn03"><a href="{{ url('product_list') }}?category_id=82" style="text-decoration: none;">お取り寄せ</a></li>
-              </ul><!-- .item_btn -->
-            </section>
-            <section class="cinfiture-honey" id="cinfiture-honey">
-              <div class="item_main">
-                <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/item/cinfiture-honey.jpg" alt="コンフィチュール・ハチミツ">
-              </div>
-              <div class="category_name">
-                <h2 class="small_title"><strong>コンフィチュール・ハチミツ</strong><span class="agp">Cinfiture/Honey</span></h2>
-              </div><!-- .category_name -->
-              <p>
-              旬のフルーツなどを使用し、じっくりとお砂糖のみで炊き上げました。</p>
-              <ul class="item_btn">
-                <li class="btn01"><a href="{{ url('product_list') }}?category_id=91" style="text-decoration: none;">店頭受取</a></li>
-                <li class="btn03"><a href="{{ url('product_list') }}?category_id=91" style="text-decoration: none;">お取り寄せ</a></li>
-              </ul><!-- .item_btn -->
-            </section>
           </div><!-- .column2 -->
+          
         </div><!-- .item_index -->
+        
+        <!--
         <nav class="use_nav" id="use">
           <p>用途別でえらぶ</p>
           <dl class="shop">
@@ -190,7 +125,7 @@
             <dd><a href="{{ url('product_list') }}?category_id=19" class="btn">内祝いとして</a></dd>
             <dd><a href="{{ url('product_list') }}?category_id=20" class="btn">法事のお供えとして</a></dd>
           </dl>
-        </nav><!-- .use_nav -->
+        </nav>
         <nav class="price_nav" id="price">
           <p>価格帯からえらぶ</p>
           <dl class="shop">
@@ -205,7 +140,9 @@
             <dd><a href="{{ url('product_list') }}?category_id=28" class="btn">\2,160～3,780</a></dd>
             <dd><a href="{{ url('product_list') }}?category_id=29" class="btn">\3,780～</a></dd>
           </dl>
-        </nav><!-- .price_nav -->
+        </nav>
+        -->
+        
         <nav class="guide_nav">
           <p>ご利用ガイド</p>
           <ul>
