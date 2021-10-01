@@ -142,7 +142,7 @@ file that was distributed with this source code.
             </div><!-- .inner -->
           </li>
           <li class="shop"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "SHOP"}) }}"><span><span class="agp">SHOP</span>店舗</span></a></li>
-          <li class="news"><a href="/new/index.html"><span><span class="agp">NEWS</span>お知らせ</span></a></li>
+          <li class="news"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "osirase"}) }}"><span><span class="agp">NEWS</span>お知らせ</span></a></li>
           <li class="recruit"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "recruit"}) }}"><span><span class="agp">RECRUIT</span>採用情報</span></a></li>
           <li class="cart"><a href="{{ url('cart') }}" class="cart_btn">カートを見る</a></li>
         </ul>
