@@ -1,0 +1,93 @@
+{% extends 'default_frame.twig' %}
+
+{% block main %}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+    <div class="contents">
+      <main>
+        <div class="about inner" style="padding-top:50px;">
+          <h1 class="title"><strong class="agp">OUR BRAND</strong></h1><!-- .title -->
+          <div class="about_wrap">
+            <section>
+              <div class="box">
+                <h2 class="headline">お菓子本来のおいしさを、もっともっと知ってほしいから…</h2>
+                <p>T.YOKOGAWAのお菓子は、どれもシンプル。<br>
+                最高の素材をつかい、最高の製法でつくることで、お菓子の生きたおいしさをおとどけしています。<br>
+                売れるから、流行っているからつくるのではなく、素材や製法、伝統など、<br>
+                つくるお菓子のひとつひとつに主張できるこだわりを大切にしています。<br>
+                お菓子本来のおいしさを、一人でも多くの人に。──<br>
+                そんな想いを込めて、今日もパティシエたちはお菓子づくりに励んでいます。</p>
+              </div><!-- .box -->
+            </section>
+            <img src="/html/user_data/assets/img/about_fsw.png" class="fullscreen_width" style="margin-bottom: 50px;">
+            <section class="president">
+              <div>
+                <span><img src="/html/user_data/assets/img/president.jpg" alt="菓子工房T.YOKOGAWA 社長"></span>
+                <div class="box">
+                  <h2 class="headline"><img src="/html/user_data/assets/img/sign.png" alt="横川哲也"><span>菓子工房T.YOKOGAWA 社長</span>横川哲也</h2><!-- .headline -->
+                  <p>僕とお客様との関係には言葉はいりません、<br>
+一つのお菓子から始まります。<br>
+想いをお菓子に託します。<br>
+そんなお菓子を食べて「おいしかったよ」の一言を聞きたいために。<br>
+その一言が、僕のエネルギーになります。<br>
+その時初めてお客様と信頼関係が結ばれます。<br>
+その信頼を裏切らないために、生きたお菓子を作り続けます。<br>
+・・・だから毎日真剣勝負です。<br><br>
+経歴<br>
+・アンテノール（神戸）<br>
+・ケーキハウス・ツマガリ（西宮）<br>
+・アルプス洋菓子店（東京・成城）:在籍中3ヶ月フランス留学<br>
+（イッサンジョー国立製菓学校／エコール・バローナ（チョコレート）／パティスリーバートラン（ティエール）勤務<br>
+・花とお菓子の工房フランシーズ（大阪・堺）:<br>
+洋菓子部門新規事業立ち上げ、製菓長として就任<br>
+・2000年9月末契約満了により退社</p>
+                </div><!-- .box -->
+              </div>
+            </section><!-- .president -->
+            <section class="about_box">
+              <div>
+                <div class="box">
+                  <h2 class="headline">主なコンクール受賞暦とメディア出演</h2><!-- .headline -->
+                  <p>西日本洋菓子コンクール:厚生大臣賞<br>
+西日本洋菓子コンクール:最優秀賞<br>
+大阪府クリスマスコンクール:厚生大臣賞<br>
+第３回全日本洋菓子コンクール:銀賞<br>
+内海杯（シブナーレ日本卵I）:銀賞<br><br>
+
+TVチャンピオン（TV東京）ケーキ職人大会　第2回:優勝<br>
+TVチャンピオン（TV東京）グランドチャンピオン大会:優勝<br>
+TVチャンピオン（TV東京）日仏大会:優勝<br>
+羽衣学園短期大学:講師<br>
+関西テレビ「よ～いドン！」の「となりの人間国宝さん」:出演(人間国宝に認定！)<br><br>
+
+【著書】お料理塾シリーズ・3「洋菓子塾」:発行：株式会社　グラフ社<br>
+</p>
+                </div><!-- .box -->
+                <span><img src="/html/user_data/assets/img/about01.jpg" alt=""></span>
+              </div>
+            </section><!-- .about_box -->
+            <section class="about_btn">
+              <ul>
+                <li>
+                  <div>
+                    <p>完成品へのこだわり</p>
+                    <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "about_finish"}) }}" class="btn agp">MORE</a>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <p>原産地・原材料へのこだわり</p>
+                    <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "about_material"}) }}" class="btn agp">MORE</a>
+                  </div>
+                </li>
+              </ul>
+            </section><!-- .about_btn -->
+          </div><!-- .about_wrap -->
+        </div><!-- .about -->
+{% endblock %}
