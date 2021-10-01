@@ -97,10 +97,8 @@ file that was distributed with this source code.
 				<form method="get" class="searchform" action="{{ path('product_list') }}">
 					<div class="ec-input">
 						<input type="search" name="name" maxlength="50" class="search-name" placeholder="キーワードを入力" value="">
-						<button class="ec-headerSearch__keywordBtn" type="submit">
-					        <div class="ec-icon">
-					            <img src="{{ asset('assets/icon/search-dark.svg') }}" alt="">
-					        </div>
+						<button class="ec-headerSearch__keywordBtn" style="position:unset; transform:translateY(-20%);" type="submit">
+					    	<img src="{{ asset('assets/icon/search-dark.svg') }}" alt="検索" width="40" height="40">
 					    </button>
 				    </div>
 			    </form>
