@@ -333,6 +333,8 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['rows'][0]['terminalTranId']          = $order->getId();//端末取引ID★
         $arrData['data'][0]['rows'][0]['terminalTranDateTime']    = $terminalTranDateTime;//端末取引日時★
         
+        $arrData['data'][0]['rows'][0]['terminalTranDateTime']    = $order->getNote();//メモをセット
+        
         //会員情報取得
         $CustomerInfo = $order->getCustomer();
         if($CustomerInfo != null){
