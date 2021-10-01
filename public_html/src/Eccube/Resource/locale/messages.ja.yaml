@@ -811,9 +811,9 @@ admin.customer.customer_csv.email_description: '指定なしの場合は「a@a.a
 admin.customer.customer_csv.password_col: パスワード
 admin.customer.customer_csv.password_description: '8桁以上、32桁未満の英数字を指定して下さい'
 admin.customer.customer_csv.customer_name01_kana_col: 会員名1(カナ)
-admin.customer.customer_csv.customer_name01_kana_description: '指定なしの場合は「ミトウロク」として登録します'
+admin.customer.customer_csv.customer_name01_kana_description: '指定なしの場合は「ミトウロク」として登録します ※必ず全角カナを指定してください※'
 admin.customer.customer_csv.customer_name02_kana_col: 会員名2(カナ)
-admin.customer.customer_csv.customer_name02_kana_description: '指定なしの場合は「カイイン」として登録します'
+admin.customer.customer_csv.customer_name02_kana_description: '指定なしの場合は「カイイン」として登録します ※必ず全角カナを指定してください※'
 admin.customer.customer_csv.customer_postal_code_col: 郵便番号
 admin.customer.customer_csv.customer_postal_code_description: '指定なしの場合は「0000000」として登録します'
 admin.customer.customer_csv.customer_addr01_col: 住所1
