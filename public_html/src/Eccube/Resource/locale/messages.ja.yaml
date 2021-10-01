@@ -469,6 +469,7 @@ admin.common.csv_invalid_format_line: '%line%行目のCSVフォーマットが�
 admin.common.csv_invalid_date_format: '%line%行目の%name%の日付フォーマットが異なります'
 admin.common.csv_invalid_not_found: '%line%行目の%name%が存在しません'
 admin.common.csv_invalid_not_found_target: '%line%行目の%name%「%target_name%」が存在しません'
+admin.common.csv_invalid_cannot_change: '%line%行目の%name%は変更できません'
 admin.common.csv_invalid_already_exist_target: '%line%行目の%name%「%target_name%」は既に存在します'
 admin.common.csv_invalid_not_same: '%line%行目の%name1%と%name2%には同じ値を使用できません'
 admin.common.csv_invalid_can_not: '%line%行目の%name%は設定できません'

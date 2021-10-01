@@ -317,25 +317,43 @@ class CsvImportController extends AbstractCsvImportController
                             }
                         }
 
-                        //会員コード登録
+                        //会員番号登録
                         if (StringUtil::isBlank($row[$headerByKey['customer_code']])) {
                             $message = trans('admin.common.csv_invalid_not_found', ['%line%' => $line, '%name%' => $headerByKey['customer_code']]);
                             $this->addErrors($message);
 
                             return $this->renderWithError($form, $headers);
                         } else {
-                        	//重複チェック
-                        	$SameCustomer = $this->customerRepository->getRegularCustomerByCustomerCode(StringUtil::trimAll($row[$headerByKey['customer_code']]));
-                            if ($SameCustomer != null) {
-                                $message = trans('admin.common.csv_invalid_already_exist_target', [
-		                            '%line%' => $line,
-		                            '%name%' => $headerByKey['customer_code'],
-		                            '%target_name%' => $row[$headerByKey['customer_code']],
-		                        ]);
-                                
-                                $this->addErrors($message);
+                        	//[登録時]
+                        	if (!isset($row[$headerByKey['id']]) || StringUtil::isBlank($row[$headerByKey['id']])) {
+	                        	//重複チェック
+	                        	$SameCustomer = $this->customerRepository->getRegularCustomerByCustomerCode(StringUtil::trimAll($row[$headerByKey['customer_code']]));
+	                            if ($SameCustomer != null) {
+	                                $message = trans('admin.common.csv_invalid_already_exist_target', [
+			                            '%line%' => $line,
+			                            '%name%' => $headerByKey['customer_code'],
+			                            '%target_name%' => $row[$headerByKey['customer_code']],
+			                        ]);
+	                                
+	                                $this->addErrors($message);
+	                            }else{
+	                            	$Customer->setCustomerCode(StringUtil::trimAll($row[$headerByKey['customer_code']]));
+	                            }
                             }else{
-                            	$Customer->setCustomerCode(StringUtil::trimAll($row[$headerByKey['customer_code']]));
+                            	//[更新時]
+                            	//現行の会員番号
+                            	$CurrentCustomerCode = $Customer->getCustomerCode();
+                            	//指定の会員番号
+                            	$ImportCustomerCode = StringUtil::trimAll($row[$headerByKey['customer_code']]);
+                            	//指定された会員番号と現行の会員番号の比較
+                            	if($CurrentCustomerCode != $ImportCustomerCode){
+                            		//異なっていればエラー
+                            		$message = trans('admin.common.csv_invalid_cannot_change', ['%line%' => $line, '%name%' => $headerByKey['postal_code']]);
+			                    	$this->addErrors($message);
+                            	}else{
+                            		//一致していれば現行の会員番号をそのままセット
+                            		$Customer->setCustomerCode($CurrentCustomerCode);
+                            	}
                             }
                         }
                         
