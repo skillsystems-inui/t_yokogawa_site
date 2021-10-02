@@ -807,7 +807,7 @@ admin.customer.customer_csv.customer_name01_description: '指定なしの場合�
 admin.customer.customer_csv.customer_name02_col: 会員名2
 admin.customer.customer_csv.customer_name02_description: '指定なしの場合は「会員」として登録します'
 admin.customer.customer_csv.email_col: メールアドレス
-admin.customer.customer_csv.email_description: '指定なしの場合は「a@a.a」として登録します'
+admin.customer.customer_csv.email_description: '指定なしの場合は「a@a.a(会員番号)」として登録します'
 admin.customer.customer_csv.password_col: パスワード
 admin.customer.customer_csv.password_description: '8桁以上、32桁未満の英数字を指定して下さい'
 admin.customer.customer_csv.customer_name01_kana_col: 会員名1(カナ)
@@ -823,7 +823,7 @@ admin.customer.customer_csv.customer_addr02_description: '指定なしの場合�
 admin.customer.customer_csv.customer_phone_number_col: 電話番号
 admin.customer.customer_csv.customer_phone_number_description: '例:0611112222'
 admin.customer.customer_csv.customer_sex_col: 性別
-admin.customer.customer_csv.customer_sex_description: '1男性:,女性:2'
+admin.customer.customer_csv.customer_sex_description: '1男性:,女性:2,その他:3'
 admin.customer.customer_csv.customer_birth_col: 誕生日
 admin.customer.customer_csv.customer_birth_description: '例:2021-01-01'
 admin.customer.customer_csv.customer_point_col: ポイント
@@ -838,7 +838,7 @@ admin.customer.customer_csv.customer_family_sex01_id_col:   '家族情報1 性�
 admin.customer.customer_csv.customer_family_relation01_col: '家族情報1 続柄'
 admin.customer.customer_csv.customer_family_birth01_col:    '家族情報1 誕生日'
 admin.customer.customer_csv.customer_family_name01_description:     ''
-admin.customer.customer_csv.customer_family_sex01_id_description:   '1男性:,女性:2'
+admin.customer.customer_csv.customer_family_sex01_id_description:   '1男性:,女性:2,その他:3'
 admin.customer.customer_csv.customer_family_relation01_description: '父、母、長男、長女、祖父、祖母 など自由に入力してください'
 admin.customer.customer_csv.customer_family_birth01_description:    '例:2021-01-01'
 
@@ -847,7 +847,7 @@ admin.customer.customer_csv.customer_family_sex02_id_col:   '家族情報2 性�
 admin.customer.customer_csv.customer_family_relation02_col: '家族情報2 続柄'
 admin.customer.customer_csv.customer_family_birth02_col:    '家族情報2 誕生日'
 admin.customer.customer_csv.customer_family_name02_description:     ''
-admin.customer.customer_csv.customer_family_sex02_id_description:   '1男性:,女性:2'
+admin.customer.customer_csv.customer_family_sex02_id_description:   '1男性:,女性:2,その他:3'
 admin.customer.customer_csv.customer_family_relation02_description: '父、母、長男、長女、祖父、祖母 など自由に入力してください'
 admin.customer.customer_csv.customer_family_birth02_description:    '例:2021-01-01'
 
@@ -856,7 +856,7 @@ admin.customer.customer_csv.customer_family_sex03_id_col:   '家族情報3 性�
 admin.customer.customer_csv.customer_family_relation03_col: '家族情報3 続柄'
 admin.customer.customer_csv.customer_family_birth03_col:    '家族情報3 誕生日'
 admin.customer.customer_csv.customer_family_name03_description:     ''
-admin.customer.customer_csv.customer_family_sex03_id_description:   '1男性:,女性:2'
+admin.customer.customer_csv.customer_family_sex03_id_description:   '1男性:,女性:2,その他:3'
 admin.customer.customer_csv.customer_family_relation03_description: '父、母、長男、長女、祖父、祖母 など自由に入力してください'
 admin.customer.customer_csv.customer_family_birth03_description:    '例:2021-01-01'
 
@@ -865,7 +865,7 @@ admin.customer.customer_csv.customer_family_sex04_id_col:   '家族情報4 性�
 admin.customer.customer_csv.customer_family_relation04_col: '家族情報4 続柄'
 admin.customer.customer_csv.customer_family_birth04_col:    '家族情報4 誕生日'
 admin.customer.customer_csv.customer_family_name04_description:     ''
-admin.customer.customer_csv.customer_family_sex04_id_description:   '1男性:,女性:2'
+admin.customer.customer_csv.customer_family_sex04_id_description:   '1男性:,女性:2,その他:3'
 admin.customer.customer_csv.customer_family_relation04_description: '父、母、長男、長女、祖父、祖母 など自由に入力してください'
 admin.customer.customer_csv.customer_family_birth04_description:    '例:2021-01-01'
 
@@ -874,7 +874,7 @@ admin.customer.customer_csv.customer_family_sex05_id_col:   '家族情報5 性�
 admin.customer.customer_csv.customer_family_relation05_col: '家族情報5 続柄'
 admin.customer.customer_csv.customer_family_birth05_col:    '家族情報5 誕生日'
 admin.customer.customer_csv.customer_family_name05_description:     ''
-admin.customer.customer_csv.customer_family_sex05_id_description:   '1男性:,女性:2'
+admin.customer.customer_csv.customer_family_sex05_id_description:   '1男性:,女性:2,その他:3'
 admin.customer.customer_csv.customer_family_relation05_description: '父、母、長男、長女、祖父、祖母 など自由に入力してください'
 admin.customer.customer_csv.customer_family_birth05_description:    '例:2021-01-01'
 
@@ -883,7 +883,7 @@ admin.customer.customer_csv.customer_family_sex06_id_col:   '家族情報6 性�
 admin.customer.customer_csv.customer_family_relation06_col: '家族情報6 続柄'
 admin.customer.customer_csv.customer_family_birth06_col:    '家族情報6 誕生日'
 admin.customer.customer_csv.customer_family_name06_description:     ''
-admin.customer.customer_csv.customer_family_sex06_id_description:   '1男性:,女性:2'
+admin.customer.customer_csv.customer_family_sex06_id_description:   '1男性:,女性:2,その他:3'
 admin.customer.customer_csv.customer_family_relation06_description: '父、母、長男、長女、祖父、祖母 など自由に入力してください'
 admin.customer.customer_csv.customer_family_birth06_description:    '例:2021-01-01'
 
@@ -892,7 +892,7 @@ admin.customer.customer_csv.customer_family_sex07_id_col:   '家族情報7 性�
 admin.customer.customer_csv.customer_family_relation07_col: '家族情報7 続柄'
 admin.customer.customer_csv.customer_family_birth07_col:    '家族情報7 誕生日'
 admin.customer.customer_csv.customer_family_name07_description:     ''
-admin.customer.customer_csv.customer_family_sex07_id_description:   '1男性:,女性:2'
+admin.customer.customer_csv.customer_family_sex07_id_description:   '1男性:,女性:2,その他:3'
 admin.customer.customer_csv.customer_family_relation07_description: '父、母、長男、長女、祖父、祖母 など自由に入力してください'
 admin.customer.customer_csv.customer_family_birth07_description:    '例:2021-01-01'
 
@@ -901,7 +901,7 @@ admin.customer.customer_csv.customer_family_sex08_id_col:   '家族情報8 性�
 admin.customer.customer_csv.customer_family_relation08_col: '家族情報8 続柄'
 admin.customer.customer_csv.customer_family_birth08_col:    '家族情報8 誕生日'
 admin.customer.customer_csv.customer_family_name08_description:     ''
-admin.customer.customer_csv.customer_family_sex08_id_description:   '1男性:,女性:2'
+admin.customer.customer_csv.customer_family_sex08_id_description:   '1男性:,女性:2,その他:3'
 admin.customer.customer_csv.customer_family_relation08_description: '父、母、長男、長女、祖父、祖母 など自由に入力してください'
 admin.customer.customer_csv.customer_family_birth08_description:    '例:2021-01-01'
 
@@ -910,7 +910,7 @@ admin.customer.customer_csv.customer_family_sex09_id_col:   '家族情報9 性�
 admin.customer.customer_csv.customer_family_relation09_col: '家族情報9 続柄'
 admin.customer.customer_csv.customer_family_birth09_col:    '家族情報9 誕生日'
 admin.customer.customer_csv.customer_family_name09_description:     ''
-admin.customer.customer_csv.customer_family_sex09_id_description:   '1男性:,女性:2'
+admin.customer.customer_csv.customer_family_sex09_id_description:   '1男性:,女性:2,その他:3'
 admin.customer.customer_csv.customer_family_relation09_description: '父、母、長男、長女、祖父、祖母 など自由に入力してください'
 admin.customer.customer_csv.customer_family_birth09_description:    '例:2021-01-01'
 
@@ -919,7 +919,7 @@ admin.customer.customer_csv.customer_family_sex10_id_col:   '家族情報10 性�
 admin.customer.customer_csv.customer_family_relation10_col: '家族情報10 続柄'
 admin.customer.customer_csv.customer_family_birth10_col:    '家族情報10 誕生日'
 admin.customer.customer_csv.customer_family_name10_description:     ''
-admin.customer.customer_csv.customer_family_sex10_id_description:   '1男性:,女性:2'
+admin.customer.customer_csv.customer_family_sex10_id_description:   '1男性:,女性:2,その他:3'
 admin.customer.customer_csv.customer_family_relation10_description: '父、母、長男、長女、祖父、祖母 など自由に入力してください'
 admin.customer.customer_csv.customer_family_birth10_description:    '例:2021-01-01'
 
