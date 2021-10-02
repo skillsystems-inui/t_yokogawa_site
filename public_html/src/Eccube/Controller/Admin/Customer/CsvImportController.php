@@ -348,7 +348,7 @@ class CsvImportController extends AbstractCsvImportController
                             	//指定された会員番号と現行の会員番号の比較
                             	if($CurrentCustomerCode != $ImportCustomerCode){
                             		//異なっていればエラー
-                            		$message = trans('admin.common.csv_invalid_cannot_change', ['%line%' => $line, '%name%' => $headerByKey['postal_code']]);
+                            		$message = trans('admin.common.csv_invalid_cannot_change', ['%line%' => $line, '%name%' => $headerByKey['customer_code']]);
 			                    	$this->addErrors($message);
                             	}else{
                             		//一致していれば現行の会員番号をそのままセット
@@ -476,6 +476,8 @@ class CsvImportController extends AbstractCsvImportController
 			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['birth']]);
 	                            $this->addErrors($message);
 			                }
+		                }else{
+		                	$Customer->setBirth(null);
 		                }
                         
                         //ポイント
@@ -520,7 +522,12 @@ class CsvImportController extends AbstractCsvImportController
 			                } else {
 			                    $Customer->setFamilySex01($FamilySex01);
 			                }
-			            }
+			            }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilySex01($noname);
+                        }
+                        
                         //家族情報01　続柄
                         $Customer->setFamilyRelation01(StringUtil::trimAll($row[$headerByKey['family_relation01']]));
                         //家族情報01　誕生日
@@ -534,7 +541,11 @@ class CsvImportController extends AbstractCsvImportController
 			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth01']]);
 	                            $this->addErrors($message);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilyBirth01($noname);
+                        }
 		                
 						//家族情報02　名前
                         $Customer->setFamilyName02(StringUtil::trimAll($row[$headerByKey['family_name02']]));
@@ -547,7 +558,12 @@ class CsvImportController extends AbstractCsvImportController
 			                } else {
 			                    $Customer->setFamilySex02($FamilySex02);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilySex02($noname);
+                        }
+                        
                         //家族情報02　続柄
                         $Customer->setFamilyRelation02(StringUtil::trimAll($row[$headerByKey['family_relation02']]));
                         //家族情報02　誕生日
@@ -561,7 +577,11 @@ class CsvImportController extends AbstractCsvImportController
 			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth02']]);
 	                            $this->addErrors($message);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilyBirth02($noname);
+                        }
 		                
 						//家族情報03　名前
                         $Customer->setFamilyName03(StringUtil::trimAll($row[$headerByKey['family_name03']]));
@@ -574,7 +594,12 @@ class CsvImportController extends AbstractCsvImportController
 			                } else {
 			                    $Customer->setFamilySex03($FamilySex03);
 			                }
-			            }
+			            }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilySex03($noname);
+                        }
+                        
                         //家族情報03　続柄
                         $Customer->setFamilyRelation03(StringUtil::trimAll($row[$headerByKey['family_relation03']]));
                         //家族情報03　誕生日
@@ -588,7 +613,11 @@ class CsvImportController extends AbstractCsvImportController
 			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth03']]);
 	                            $this->addErrors($message);
 			                }
-			            }
+			            }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilyBirth03($noname);
+                        }
 		                
 						//家族情報04　名前
                         $Customer->setFamilyName04(StringUtil::trimAll($row[$headerByKey['family_name04']]));
@@ -601,7 +630,12 @@ class CsvImportController extends AbstractCsvImportController
 			                } else {
 			                    $Customer->setFamilySex04($FamilySex04);
 			                }
-			            }
+			            }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilySex04($noname);
+                        }
+                        
                         //家族情報04　続柄
                         $Customer->setFamilyRelation04(StringUtil::trimAll($row[$headerByKey['family_relation04']]));
                         //家族情報04　誕生日
@@ -615,7 +649,11 @@ class CsvImportController extends AbstractCsvImportController
 			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth04']]);
 	                            $this->addErrors($message);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilyBirth04($noname);
+                        }
 		                
 						//家族情報05　名前
                         if (StringUtil::isNotBlank($row[$headerByKey['family_sex05_id']])) {
@@ -628,7 +666,12 @@ class CsvImportController extends AbstractCsvImportController
 			                } else {
 			                    $Customer->setFamilySex05($FamilySex05);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilySex05($noname);
+                        }
+                        
                         //家族情報05　続柄
                         $Customer->setFamilyRelation05(StringUtil::trimAll($row[$headerByKey['family_relation05']]));
                         //家族情報05　誕生日
@@ -642,7 +685,11 @@ class CsvImportController extends AbstractCsvImportController
 			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth05']]);
 	                            $this->addErrors($message);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilyBirth05($noname);
+                        }
 		                
 						//家族情報06　名前
                         $Customer->setFamilyName06(StringUtil::trimAll($row[$headerByKey['family_name06']]));
@@ -655,7 +702,12 @@ class CsvImportController extends AbstractCsvImportController
 			                } else {
 			                    $Customer->setFamilySex06($FamilySex06);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilySex06($noname);
+                        }
+                        
                         //家族情報06　続柄
                         $Customer->setFamilyRelation06(StringUtil::trimAll($row[$headerByKey['family_relation06']]));
                         //家族情報06　誕生日
@@ -669,7 +721,11 @@ class CsvImportController extends AbstractCsvImportController
 			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth06']]);
 	                            $this->addErrors($message);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilyBirth06($noname);
+                        }
 		                
 						//家族情報07　名前
                         $Customer->setFamilyName07(StringUtil::trimAll($row[$headerByKey['family_name07']]));
@@ -682,7 +738,12 @@ class CsvImportController extends AbstractCsvImportController
 			                } else {
 			                    $Customer->setFamilySex07($FamilySex07);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilySex07($noname);
+                        }
+                        
                         //家族情報07　続柄
                         $Customer->setFamilyRelation07(StringUtil::trimAll($row[$headerByKey['family_relation07']]));
                         //家族情報07　誕生日
@@ -696,7 +757,11 @@ class CsvImportController extends AbstractCsvImportController
 			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth07']]);
 	                            $this->addErrors($message);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilyBirth07($noname);
+                        }
 		                
 						//家族情報08　名前
                         $Customer->setFamilyName08(StringUtil::trimAll($row[$headerByKey['family_name08']]));
@@ -709,7 +774,12 @@ class CsvImportController extends AbstractCsvImportController
 			                } else {
 			                    $Customer->setFamilySex08($FamilySex08);
 			                }
-			            }
+			            }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilySex08($noname);
+                        }
+                        
                         //家族情報08　続柄
                         $Customer->setFamilyRelation08(StringUtil::trimAll($row[$headerByKey['family_relation08']]));
                         //家族情報08　誕生日
@@ -723,7 +793,11 @@ class CsvImportController extends AbstractCsvImportController
 			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth08']]);
 	                            $this->addErrors($message);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilyBirth08($noname);
+                        }
 		                
 						//家族情報09　名前
                         $Customer->setFamilyName09(StringUtil::trimAll($row[$headerByKey['family_name09']]));
@@ -736,7 +810,12 @@ class CsvImportController extends AbstractCsvImportController
 			                } else {
 			                    $Customer->setFamilySex09($FamilySex09);
 			                }
-			            }
+			            }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilySex09($noname);
+                        }
+                        
                         //家族情報09　続柄
                         $Customer->setFamilyRelation09(StringUtil::trimAll($row[$headerByKey['family_relation09']]));
                         //家族情報09　誕生日
@@ -750,7 +829,11 @@ class CsvImportController extends AbstractCsvImportController
 			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth09']]);
 	                            $this->addErrors($message);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilyBirth09($noname);
+                        }
 		                
 						//家族情報10　名前
                         $Customer->setFamilyName10(StringUtil::trimAll($row[$headerByKey['family_name10']]));
@@ -763,7 +846,12 @@ class CsvImportController extends AbstractCsvImportController
 			                } else {
 			                    $Customer->setFamilySex10($FamilySex10);
 			                }
-			            }
+			            }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilySex10($noname);
+                        }
+                        
                         //家族情報10　続柄
                         $Customer->setFamilyRelation10(StringUtil::trimAll($row[$headerByKey['family_relation10']]));
                         //家族情報10　誕生日
@@ -777,15 +865,19 @@ class CsvImportController extends AbstractCsvImportController
 			                	$message = trans('admin.common.csv_invalid_date_format', ['%line%' => $line, '%name%' => $headerByKey['family_birth10']]);
 	                            $this->addErrors($message);
 			                }
-		                }
+		                }else{
+                            //未指定ならnull
+                            $noname = null;
+                            $Customer->setFamilyBirth10($noname);
+                        }
 		                
 		                //-------------------- .[家族情報] --------------------
                         
                         
                         //メール
                         if (StringUtil::isBlank($row[$headerByKey['email']])) {
-                            //未指定なら「a@a.a」
-                            $noname = 'a@a.a';
+                            //未指定なら「a@a.a(会員番号)」
+                            $noname = 'a@a.a'.(StringUtil::trimAll($row[$headerByKey['customer_code']]));
                             $Customer->setEmail($noname);
                         } else {
                             $Customer->setEmail(StringUtil::trimAll($row[$headerByKey['email']]));
