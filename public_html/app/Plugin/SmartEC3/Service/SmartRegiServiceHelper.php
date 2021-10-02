@@ -333,7 +333,7 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['rows'][0]['terminalTranId']          = $order->getId();//端末取引ID★
         $arrData['data'][0]['rows'][0]['terminalTranDateTime']    = $terminalTranDateTime;//端末取引日時★
         
-        $arrData['data'][0]['rows'][0]['terminalTranDateTime']    = $order->getNote();//メモをセット
+        $arrData['data'][0]['rows'][0]['memo']    = $order->getNote();//メモをセット
         
         //会員情報取得
         $CustomerInfo = $order->getCustomer();
@@ -345,6 +345,14 @@ class SmartRegiServiceHelper
         $ShipInfo = $order->getShippings()[0];
         //受取予定日 
         $arrData['data'][0]['rows'][0]['pickUpDate']              = $ShipInfo->getShippingDeliveryDate() == null ? null : $ShipInfo->getShippingDeliveryDate()->format('Y-m-d');
+        
+        
+        log_info(
+            'SmartRegiHerper_TransactionUpdate_arrData',
+            [
+                'arrData' => $arrData['data'][0]['rows'][0],
+            ]
+        );
         
         //受注詳細をセット
         $meisaiNo = 1;
@@ -390,6 +398,13 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）
         $arrData['data'][0]['rows'][0]['salesPrice'] = $order->getTotalPrice();//販売単価
         $arrData['data'][0]['rows'][0]['quantity'] = $order->getQuantity();//数量
+        
+        log_info(
+            'SmartRegiHerper_TransactionDetailUpdate_arrData',
+            [
+                'arrData' => $arrData['data'][0]['rows'][0],
+            ]
+        );
         
         return $arrData;
     }
