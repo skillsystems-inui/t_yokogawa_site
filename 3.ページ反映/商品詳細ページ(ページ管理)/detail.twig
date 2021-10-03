@@ -1117,6 +1117,17 @@ file that was distributed with this source code.
 			document.body.scrollTop = document.documentElement.scrollTop = 0;
         });
         
+        //包装方法選択で熨斗を選ばれた場合、熨斗の指定方法を表示する
+        $('[name="housouselect"]:radio').change( function() {
+    		if($('[id=housouselect_3]').prop('checked')){
+		        //包装方法「熨斗」をチェックされたら熨斗選択メニューを表示する
+		        document.getElementById('noshi_menu').style.display="block";
+		    }else{
+		    	//包装方法「熨斗」をチェックされたら熨斗選択メニューを非表示にする
+		        document.getElementById('noshi_menu').style.display="none";
+		    }
+	    });
+        
         //プレートを追加する(2枚目)
         $('.additionplate2_plus').on('click', function() {
             //追加プレートを表示する
@@ -2048,27 +2059,27 @@ file that was distributed with this source code.
 					                                        		<div class="form-check">
 					                                        			<input type="radio" id="housouselect_0" name="housouselect"  class="form-check-input" value="包装">
 																        <label class="form-check-label required" for="housouselect_0">包装</label>
-																        <div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gift_housou.png') }})">
+																        <div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gifttype_normal.png') }})">
 					                                        			</div>
 															    	</div>
 															    </div>
 															    <div class="form-check" style="float: left; width: 50%;">
 															    	<input type="radio" id="housouselect_1" name="housouselect" class="form-check-input" value="自宅用">
 															        <label class="form-check-label required" for="housouselect_1">自宅用</label>
-															        <div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gift_jitaku.png') }})">
+															        <div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gifttype_jitaku_you.png') }})">
 															    	</div>
 														    	</div>
 														    	<div style="clear:both;"></div>
 														        <div class="form-check" style="float: left; width: 50%;">
 														        	<input type="radio" id="housouselect_2" name="housouselect" class="form-check-input" value="リボン">
 														        	<label class="form-check-label required" for="housouselect_2">リボン</label>
-														        	<div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gift_ribon.png') }})">
+														        	<div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gifttype_ribon.png') }})">
 														        	</div>
 														    	</div>
 														    	<div class="form-check" style="float: left; width: 50%;">
 														        	<input type="radio" id="housouselect_3" name="housouselect" class="form-check-input" value="熨斗">
 														        	<label class="form-check-label required" for="housouselect_3">熨斗</label>
-														        	<div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gift_noshi.png') }})">
+														        	<div style="width: 164px; height: 164px; background-image: url({{ asset('assets/img/option/opt_gifttype_noshi.png') }})">
 														        	</div>
 														    	</div>
 														    	<div style="clear:both;"></div>
@@ -2076,151 +2087,153 @@ file that was distributed with this source code.
 				                                    	</div>
 				                                    	<!-- .包装選択 -->
 				                                    	
-				                                    	<!-- 熨斗の掛け方 -->
-											            <div class="ec-rectHeading" style="font-size:14px;">
-					                                    	<b>①熨斗の掛け方を選択</b>
-					                                    </div>
-														<div class="" style="padding-bottom:20px;">
-					                                        <div id="noshikakekata_wdg" style="display:block;">
-					                                        	<div id="noshikakekata" style="float: left; width: 50%;">
-					                                        		<div class="form-check">
-					                                        			<input type="radio" id="noshikakekata_0" name="noshikakekata"  class="form-check-input" value="内熨斗">
-																        <label class="form-check-label required" for="noshikakekata_0">内熨斗</label>
+				                                    	<!-- 熨斗選択メニュー -->
+				                                    	<div id="noshi_menu" style="display:none;">
+					                                    	<!-- 熨斗の掛け方 -->
+												            <div class="ec-rectHeading" style="font-size:14px;">
+						                                    	<b>①熨斗の掛け方を選択</b>
+						                                    </div>
+															<div class="" style="padding-bottom:20px;">
+						                                        <div id="noshikakekata_wdg" style="display:block;">
+						                                        	<div id="noshikakekata" style="float: left; width: 50%;">
+						                                        		<div class="form-check">
+						                                        			<input type="radio" id="noshikakekata_0" name="noshikakekata"  class="form-check-input" value="内熨斗">
+																	        <label class="form-check-label required" for="noshikakekata_0">内熨斗</label>
+																    	</div>
+																    </div>
+																    <div class="form-check" style="float: left; width: 50%;">
+																    	<input type="radio" id="noshikakekata_1" name="noshikakekata" class="form-check-input" value="外熨斗">
+																        <label class="form-check-label required" for="noshikakekata_1">外熨斗</label>
 															    	</div>
-															    </div>
-															    <div class="form-check" style="float: left; width: 50%;">
-															    	<input type="radio" id="noshikakekata_1" name="noshikakekata" class="form-check-input" value="外熨斗">
-															        <label class="form-check-label required" for="noshikakekata_1">外熨斗</label>
-														    	</div>
-														    	<div style="clear:both;"></div>
-															</div>
-															<!-- 下矢印 -->
-								                            <div class="ec-productRole__profile" style="width:100%; margin-left: 0px;">
-											                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/option/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
-									                            </div>
+															    	<div style="clear:both;"></div>
+																</div>
+																<!-- 下矢印 -->
+									                            <div class="ec-productRole__profile" style="width:100%; margin-left: 0px;">
+												                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/option/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+										                            </div>
+												                </div>
+					                                    	</div>
+					                                    	<!-- .熨斗の掛け方 -->
+					                                    	
+					                                    	<!-- 掛け紙・包装の種類 -->
+												            <div class="ec-rectHeading" style="font-size:14px;">
+						                                    	<b>②掛け紙・包装の種類を選択</b>
+						                                    </div>
+															<div class="" style="padding-bottom:20px;">
+						                                        <div id="kakehousousyurui_wdg" style="display:block;">
+					                                        		<div class="form-check" style="width: 100%;">
+					                                        			<input type="radio" id="kakehousousyurui_0" name="kakehousousyurui" class="form-check-input" value="紅白蝶結び（慶事用）">
+																        <label class="form-check-label required" for="kakehousousyurui_0">紅白蝶結び（慶事用）</label>
+															    	</div>
+																    <div class="form-check" style="width: 100%;">
+																    	<input type="radio" id="kakehousousyurui_1" name="kakehousousyurui" class="form-check-input" value="紅白結切り10本（婚礼用）">
+																        <label class="form-check-label required" for="kakehousousyurui_1">紅白結切り10本（婚礼用）</label>
+															    	</div>
+															    	<div class="form-check" style="width: 100%;">
+					                                        			<input type="radio" id="kakehousousyurui_2" name="kakehousousyurui" class="form-check-input" value="紅白結切り5本（お見舞用）">
+																        <label class="form-check-label required" for="kakehousousyurui_2">紅白結切り5本（お見舞用）</label>
+															    	</div>
+																    <div class="form-check" style="width: 100%;">
+																    	<input type="radio" id="kakehousousyurui_3" name="kakehousousyurui" class="form-check-input" value="紅白結切り5本（快気祝用）">
+																        <label class="form-check-label required" for="kakehousousyurui_3">紅白結切り5本（快気祝用）</label>
+															    	</div>
+															    	<div class="form-check" style="width: 100%;">
+					                                        			<input type="radio" id="kakehousousyurui_4" name="kakehousousyurui" class="form-check-input" value="黄白（弔事用）">
+																        <label class="form-check-label required" for="kakehousousyurui_4">黄白（弔事用）</label>
+															    	</div>
+																</div>
+																<!-- 下矢印 -->
+									                            <div class="ec-productRole__profile" style="width:100%; margin-left: 0px;">
+												                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/option/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+										                            </div>
+												                </div>
+					                                    	</div>
+					                                    	<!-- .掛け紙・包装の種類 -->
+					                                    			
+					                                    	<!-- 上書きの種類 -->
+												            <div class="ec-rectHeading" style="font-size:14px;">
+						                                    	<b>③上書きの種類を選択</b>
+						                                    </div>
+															<div class="" style="padding-bottom:20px;">
+						                                        <div id="uwagakisentaku_wdg" style="display:block;">
+					                                        		<div class="form-check" style="float: left; width: 50%;">
+					                                        			<input type="radio" id="uwagakisentaku_0" name="uwagakisentaku" class="form-check-input" value="御礼">
+																        <label class="form-check-label required" for="uwagakisentaku_0">御礼</label>
+															    	</div>
+																    <div class="form-check" style="float: left; width: 50%;">
+																    	<input type="radio" id="uwagakisentaku_1" name="uwagakisentaku" class="form-check-input" value="御見舞">
+																        <label class="form-check-label required" for="uwagakisentaku_1">御見舞</label>
+															    	</div>
+															    	<div style="clear:both;"></div>
+															    	
+															    	<div class="form-check" style="float: left; width: 50%;">
+					                                        			<input type="radio" id="uwagakisentaku_2" name="uwagakisentaku" class="form-check-input" value="御祝">
+																        <label class="form-check-label required" for="uwagakisentaku_2">御祝</label>
+															    	</div>
+																    <div class="form-check" style="float: left; width: 50%;">
+																    	<input type="radio" id="uwagakisentaku_3" name="uwagakisentaku" class="form-check-input" value="快気祝">
+																        <label class="form-check-label required" for="uwagakisentaku_3">快気祝</label>
+															    	</div>
+															    	<div style="clear:both;"></div>
+															    	
+															    	<div class="form-check" style="float: left; width: 50%;">
+					                                        			<input type="radio" id="uwagakisentaku_4" name="uwagakisentaku" class="form-check-input" value="内祝">
+																        <label class="form-check-label required" for="uwagakisentaku_4">内祝</label>
+															    	</div>
+																    <div class="form-check" style="float: left; width: 50%;">
+																    	<input type="radio" id="uwagakisentaku_5" name="uwagakisentaku" class="form-check-input" value="御供">
+																        <label class="form-check-label required" for="uwagakisentaku_5">御供</label>
+															    	</div>
+															    	<div style="clear:both;"></div>
+															    	
+															    	<div class="form-check" style="float: left; width: 50%;">
+					                                        			<input type="radio" id="uwagakisentaku_6" name="uwagakisentaku" class="form-check-input" value="御挨拶">
+																        <label class="form-check-label required" for="uwagakisentaku_6">御挨拶</label>
+															    	</div>
+																    <div class="form-check" style="float: left; width: 50%;">
+																    	<input type="radio" id="uwagakisentaku_7" name="uwagakisentaku" class="form-check-input" value="粗供養">
+																        <label class="form-check-label required" for="uwagakisentaku_7">粗供養</label>
+															    	</div>
+															    	<div style="clear:both;"></div>
+															    	
+															    	<div class="form-check" style="float: left; width: 50%;">
+					                                        			<input type="radio" id="uwagakisentaku_8" name="uwagakisentaku" class="form-check-input" value="御中元">
+																        <label class="form-check-label required" for="uwagakisentaku_8">御中元</label>
+															    	</div>
+																    <div class="form-check" style="float: left; width: 50%;">
+																    	<input type="radio" id="uwagakisentaku_9" name="uwagakisentaku" class="form-check-input" value="志">
+																        <label class="form-check-label required" for="uwagakisentaku_9">志</label>
+															    	</div>
+															    	<div style="clear:both;"></div>
+															    	
+															    	<div class="form-check" style="float: left; width: 50%;">
+					                                        			<input type="radio" id="uwagakisentaku_10" name="uwagakisentaku" class="form-check-input" value="御歳暮">
+																        <label class="form-check-label required" for="uwagakisentaku_10">御歳暮</label>
+															    	</div>
+															    	<div style="clear:both;"></div>
+															    	
+																</div>
+																<!-- 下矢印 -->
+									                            <div class="ec-productRole__profile" style="width:100%; margin-left: 0px;">
+												                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/option/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
+										                            </div>
+												                </div>
+					                                    	</div>
+					                                    	<!-- .上書きの種類 -->
+					                                    	    
+						                                    <!--    名入れ(熨斗)    -->
+									                        <div id="printname_noshi_block" style="display:block;" style="padding-bottom:20px;">
+								                                <div class="ec-rectHeading" style="font-size:14px;">
+												                    <b>④熨斗の名入れ希望はこちらへ<br>　(ふりがなもご記入頂ければ対応可能です)</b>
+												                </div>
+								                                <div class="ec-input">
+												                    <textarea id="printname_noshi" name="printname_noshi" rows="5" style="min-height : 20px" class="form-control"></textarea>
+												                </div>
 											                </div>
-				                                    	</div>
-				                                    	<!-- .熨斗の掛け方 -->
-				                                    	
-				                                    	<!-- 掛け紙・包装の種類 -->
-											            <div class="ec-rectHeading" style="font-size:14px;">
-					                                    	<b>②掛け紙・包装の種類を選択</b>
-					                                    </div>
-														<div class="" style="padding-bottom:20px;">
-					                                        <div id="kakehousousyurui_wdg" style="display:block;">
-				                                        		<div class="form-check" style="width: 100%;">
-				                                        			<input type="radio" id="kakehousousyurui_0" name="kakehousousyurui" class="form-check-input" value="紅白蝶結び（慶事用）">
-															        <label class="form-check-label required" for="kakehousousyurui_0">紅白蝶結び（慶事用）</label>
-														    	</div>
-															    <div class="form-check" style="width: 100%;">
-															    	<input type="radio" id="kakehousousyurui_1" name="kakehousousyurui" class="form-check-input" value="紅白結切り10本（婚礼用）">
-															        <label class="form-check-label required" for="kakehousousyurui_1">紅白結切り10本（婚礼用）</label>
-														    	</div>
-														    	<div class="form-check" style="width: 100%;">
-				                                        			<input type="radio" id="kakehousousyurui_2" name="kakehousousyurui" class="form-check-input" value="紅白結切り5本（お見舞用）">
-															        <label class="form-check-label required" for="kakehousousyurui_2">紅白結切り5本（お見舞用）</label>
-														    	</div>
-															    <div class="form-check" style="width: 100%;">
-															    	<input type="radio" id="kakehousousyurui_3" name="kakehousousyurui" class="form-check-input" value="紅白結切り5本（快気祝用）">
-															        <label class="form-check-label required" for="kakehousousyurui_3">紅白結切り5本（快気祝用）</label>
-														    	</div>
-														    	<div class="form-check" style="width: 100%;">
-				                                        			<input type="radio" id="kakehousousyurui_4" name="kakehousousyurui" class="form-check-input" value="黄白（弔事用）">
-															        <label class="form-check-label required" for="kakehousousyurui_4">黄白（弔事用）</label>
-														    	</div>
-															</div>
-															<!-- 下矢印 -->
-								                            <div class="ec-productRole__profile" style="width:100%; margin-left: 0px;">
-											                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/option/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
-									                            </div>
-											                </div>
-				                                    	</div>
-				                                    	<!-- .掛け紙・包装の種類 -->
-				                                    			
-				                                    	<!-- 上書きの種類 -->
-											            <div class="ec-rectHeading" style="font-size:14px;">
-					                                    	<b>③上書きの種類を選択</b>
-					                                    </div>
-														<div class="" style="padding-bottom:20px;">
-					                                        <div id="uwagakisentaku_wdg" style="display:block;">
-				                                        		<div class="form-check" style="float: left; width: 50%;">
-				                                        			<input type="radio" id="uwagakisentaku_0" name="uwagakisentaku" class="form-check-input" value="御礼">
-															        <label class="form-check-label required" for="uwagakisentaku_0">御礼</label>
-														    	</div>
-															    <div class="form-check" style="float: left; width: 50%;">
-															    	<input type="radio" id="uwagakisentaku_1" name="uwagakisentaku" class="form-check-input" value="御見舞">
-															        <label class="form-check-label required" for="uwagakisentaku_1">御見舞</label>
-														    	</div>
-														    	<div style="clear:both;"></div>
-														    	
-														    	<div class="form-check" style="float: left; width: 50%;">
-				                                        			<input type="radio" id="uwagakisentaku_2" name="uwagakisentaku" class="form-check-input" value="御祝">
-															        <label class="form-check-label required" for="uwagakisentaku_2">御祝</label>
-														    	</div>
-															    <div class="form-check" style="float: left; width: 50%;">
-															    	<input type="radio" id="uwagakisentaku_3" name="uwagakisentaku" class="form-check-input" value="快気祝">
-															        <label class="form-check-label required" for="uwagakisentaku_3">快気祝</label>
-														    	</div>
-														    	<div style="clear:both;"></div>
-														    	
-														    	<div class="form-check" style="float: left; width: 50%;">
-				                                        			<input type="radio" id="uwagakisentaku_4" name="uwagakisentaku" class="form-check-input" value="内祝">
-															        <label class="form-check-label required" for="uwagakisentaku_4">内祝</label>
-														    	</div>
-															    <div class="form-check" style="float: left; width: 50%;">
-															    	<input type="radio" id="uwagakisentaku_5" name="uwagakisentaku" class="form-check-input" value="御供">
-															        <label class="form-check-label required" for="uwagakisentaku_5">御供</label>
-														    	</div>
-														    	<div style="clear:both;"></div>
-														    	
-														    	<div class="form-check" style="float: left; width: 50%;">
-				                                        			<input type="radio" id="uwagakisentaku_6" name="uwagakisentaku" class="form-check-input" value="御挨拶">
-															        <label class="form-check-label required" for="uwagakisentaku_6">御挨拶</label>
-														    	</div>
-															    <div class="form-check" style="float: left; width: 50%;">
-															    	<input type="radio" id="uwagakisentaku_7" name="uwagakisentaku" class="form-check-input" value="粗供養">
-															        <label class="form-check-label required" for="uwagakisentaku_7">粗供養</label>
-														    	</div>
-														    	<div style="clear:both;"></div>
-														    	
-														    	<div class="form-check" style="float: left; width: 50%;">
-				                                        			<input type="radio" id="uwagakisentaku_8" name="uwagakisentaku" class="form-check-input" value="御中元">
-															        <label class="form-check-label required" for="uwagakisentaku_8">御中元</label>
-														    	</div>
-															    <div class="form-check" style="float: left; width: 50%;">
-															    	<input type="radio" id="uwagakisentaku_9" name="uwagakisentaku" class="form-check-input" value="志">
-															        <label class="form-check-label required" for="uwagakisentaku_9">志</label>
-														    	</div>
-														    	<div style="clear:both;"></div>
-														    	
-														    	<div class="form-check" style="float: left; width: 50%;">
-				                                        			<input type="radio" id="uwagakisentaku_10" name="uwagakisentaku" class="form-check-input" value="御歳暮">
-															        <label class="form-check-label required" for="uwagakisentaku_10">御歳暮</label>
-														    	</div>
-														    	<div style="clear:both;"></div>
-														    	
-															</div>
-															<!-- 下矢印 -->
-								                            <div class="ec-productRole__profile" style="width:100%; margin-left: 0px;">
-											                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/option/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
-									                            </div>
-											                </div>
-				                                    	</div>
-				                                    	<!-- .上書きの種類 -->
-				                                    	
-				                                    	
-				                                    	
-					                                        
-					                                    <!--    名入れ(熨斗)    -->
-								                        <div id="printname_noshi_block" style="display:block;" style="padding-bottom:20px;">
-							                                <div class="ec-rectHeading" style="font-size:14px;">
-											                    <b>④熨斗の名入れ希望はこちらへ<br>　(ふりがなもご記入頂ければ対応可能です)</b>
-											                </div>
-							                                <div class="ec-input">
-											                    <textarea id="printname_noshi" name="printname_noshi" rows="5" style="min-height : 20px" class="form-control"></textarea>
-											                </div>
-										                </div>
-										            	<!--    .名入れ(熨斗)    -->
+											            	<!--    .名入れ(熨斗)    -->
+										            	</div>
+										            	<!-- .熨斗選択メニュー -->
+										            	
 				                                	</div>
 				                                	<!-- .入力エリア(包装方法) -->
 				                                </div>
