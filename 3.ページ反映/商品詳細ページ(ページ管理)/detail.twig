@@ -1348,6 +1348,18 @@ file that was distributed with this source code.
                     {% set is_tentouuketorika = false  %}
                     {% set is_toriyoseka = false  %}
                     
+                    <!-- 有料オプション金額 -->
+                    {% set price_no_candle_1 = '130'  %}
+                    {% set price_no_candle_2 = '130'  %}
+                    {% set price_no_candle_3 = '130'  %}
+                    {% set price_addoption_ichigo_up    = '400'  %}
+                    {% set price_addoption_fruit_up     = '400'  %}
+                    {% set price_addoption_namachoco_up = '400'  %}
+                    {% set price_addoption_echoco_up    = '800'  %}
+                    {% set price_poribukuro_cyu = '10'  %}
+                    {% set price_poribukuro_dai = '10'  %}
+                    {% set price_poribukuro_tokudai = '30'  %}
+                    
                     {% if Product.ProductCategories is not empty %}
                         {% for ProductCategory in Product.ProductCategories %}
                                 {% for Category in ProductCategory.Category.path %}
@@ -1629,7 +1641,7 @@ file that was distributed with this source code.
 															<div style="display:block;">
 																<div id="candle_no1_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
 																<div style="">
-																	<div style="padding:8px;">Noキャンドル<span style="padding:8px; color:red;">(+130円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																	<div style="padding:8px;">Noキャンドル<span style="padding:8px; color:red;">(+{{price_no_candle_1}}円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 																</div>
 							                                </div>
 							                                <!-- .オプション項目名 -->
@@ -1885,7 +1897,7 @@ file that was distributed with this source code.
 					                                        <div id="ichigo_check" style="display:block; font-size:12px;">
 					                                        	<input type="checkbox" id="ichigo_chk" name="ichigo_chk" value="">
 					                                        	<label for="ichigo_chk">
-																	<div style="padding:1px;">いちごUP<span style="padding:1px; color:red;">(+400円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																	<div style="padding:1px;">いちごUP<span style="padding:1px; color:red;">(+{{price_addoption_ichigo_up}}円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 																</label>
 					                                        </div>
 					                                        
@@ -1905,7 +1917,7 @@ file that was distributed with this source code.
 					                                        <div id="fruit_check" style="display:block; font-size:12px;">
 					                                        	<input type="checkbox" id="fruit_chk" name="fruit_chk" value="">
 					                                        	<label for="fruit_chk">
-																	<div style="padding:1px;">フルーツUP<span style="padding:1px; color:red;">(+400円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																	<div style="padding:1px;">フルーツUP<span style="padding:1px; color:red;">(+{{price_addoption_fruit_up}}円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 																</label>
 					                                        </div>
 					                                        
@@ -1926,7 +1938,7 @@ file that was distributed with this source code.
 					                                        <div id="namachoko_check" style="display:block; font-size:12px;">
 					                                        	<input type="checkbox" id="namachoko_chk" name="namachoko_chk" value="">
 					                                        	<label for="namachoko_chk">
-																	<div style="padding:1px;">生チョコUP<span style="padding:1px; color:red;">(+400円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																	<div style="padding:1px;">生チョコUP<span style="padding:1px; color:red;">(+{{price_addoption_namachoco_up}}円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 																</label>
 					                                        </div>
 					                                    </div>
@@ -1945,7 +1957,7 @@ file that was distributed with this source code.
 					                                        <div id="echoko_check" style="display:block; font-size:11px;">
 					                                        	<input type="checkbox" id="echoko_chk" name="echoko_chk" value="">
 					                                        	<label for="echoko_chk">
-																	<div style="padding:1px;">絵チョコ(4号)<span style="padding:1px; color:red;">(+800円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																	<div style="padding:1px;">絵チョコ(4号)<span style="padding:1px; color:red;">(+{{price_addoption_echoco_up}}円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 																</label>
 					                                        </div>
 					                                    </div>
@@ -1996,7 +2008,7 @@ file that was distributed with this source code.
 						                                        	<input type="checkbox" id="pori_cyu_chk" name="pori_cyu_chk" value="">
 						                                        	<label for="pori_cyu_chk">
 																		<div style="padding:8px;">ポリ袋 中
-																			<span style="padding:8px; color:red;">(+10円)</span>
+																			<span style="padding:8px; color:red;">(+{{price_poribukuro_cyu}}円)</span>
 																			<span style="padding:1px; background-color:red; color:#fff;">有料</span>
 																		</div>
 																	</label>
@@ -2005,7 +2017,7 @@ file that was distributed with this source code.
 						                                        	<input type="checkbox" id="pori_dai_chk" name="pori_dai_chk" value="">
 						                                        	<label for="pori_dai_chk">
 																		<div style="padding:8px;">ポリ袋 大
-																			<span style="padding:8px; color:red;">(+10円)</span>
+																			<span style="padding:8px; color:red;">(+{{price_poribukuro_dai}}円)</span>
 																			<span style="padding:1px; background-color:red; color:#fff;">有料</span>
 																		</div>
 																	</label>
@@ -2014,7 +2026,7 @@ file that was distributed with this source code.
 						                                        	<input type="checkbox" id="pori_tokudai_chk" name="pori_tokudai_chk" value="">
 						                                        	<label for="pori_tokudai_chk">
 																		<div style="padding:8px;">ポリ袋 特大
-																			<span style="padding:8px; color:red;">(+30円)</span>
+																			<span style="padding:8px; color:red;">(+{{price_poribukuro_tokudai}}円)</span>
 																			<span style="padding:1px; background-color:red; color:#fff;">有料</span>
 																		</div>
 																	</label>
