@@ -144,7 +144,11 @@ class ShoppingService
             );
 
             foreach ($period as $day) {
-                $deliveryDates[$day->format('Y/m/d')] = $day->format('Y/m/d').'('.$dateFormatter->format($day).')';
+                //[カスタマイズ]休日でなければ含む(休日は含まない)
+                if(!($this->holidayRepository->checkHoliday($day))){
+                    //休日でなければ含む
+					$deliveryDates[$day->format('Y/m/d')] = $day->format('Y/m/d').'('.$dateFormatter->format($day).')';
+                }
             }
 
             $event = new EventArgs(
