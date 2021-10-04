@@ -321,13 +321,13 @@ file that was distributed with this source code.
 					//フルーツUP
 					const fruit_chk = document.getElementById("fruit_chk");
 					//生チョコUP
-					const namachoko_chk = document.getElementById("namachoko_chk");
+					const namachoco_chk = document.getElementById("namachoco_chk");
 					//絵チョコ(4号)
-					const echoko_chk = document.getElementById("echoko_chk");
+					const echoco_chk = document.getElementById("echoco_chk");
 					if(ichigo_chk.checked == false &&
 						fruit_chk.checked == false &&
-						namachoko_chk.checked == false &&
-						echoko_chk.checked == false 
+						namachoco_chk.checked == false &&
+						echoco_chk.checked == false 
 					){
 						//アラート
 			            alert('デコレーション追加を選択してください');
@@ -494,11 +494,11 @@ file that was distributed with this source code.
         //  フルーツUP
         var $deco_fluit_up        = 400;
         //  生チョコUP
-        var $deco_namachoko_up    = 400;
+        var $deco_namachoco_up    = 400;
         //  追加プレート(2枚目から)
         var $deco_tuika_plate     = 60;
         //  絵チョコ(4号)
-        var $deco_echoko_yongou   = 800;
+        var $deco_echoco_yongou   = 800;
         
         //【キャンドルオプション】
         //  Noキャンドル
@@ -747,22 +747,22 @@ file that was distributed with this source code.
 						optionselect_deco = optionselect_deco + '\n';
 					}
 					//生チョコUP
-					const namachoko_chk = document.getElementById("namachoko_chk");
-					if(namachoko_chk.checked){
+					const namachoco_chk = document.getElementById("namachoco_chk");
+					if(namachoco_chk.checked){
 						
 						//追加料金セット
-						$addprice = $addprice + ($deco_namachoko_up);
+						$addprice = $addprice + ($deco_namachoco_up);
 						
 						//チェックあり
 						optionselect_deco = optionselect_deco + ' デコレーション追加: 生チョコUP (+400円)' 
 						optionselect_deco = optionselect_deco + '\n';
 					}
 					//絵チョコ(4号)
-					const echoko_chk = document.getElementById("echoko_chk");
-					if(echoko_chk.checked){
+					const echoco_chk = document.getElementById("echoco_chk");
+					if(echoco_chk.checked){
 						
 						//追加料金セット
-						$addprice = $addprice + ($deco_echoko_yongou);
+						$addprice = $addprice + ($deco_echoco_yongou);
 						
 						//チェックあり
 						optionselect_deco = optionselect_deco + ' デコレーション追加: 絵チョコ(4号) (+800円)' 
@@ -1042,16 +1042,16 @@ file that was distributed with this source code.
 						$yuryou_price = $yuryou_price + ($deco_fluit_up);
 					}
 					//生チョコUP
-					const namachoko_chk = document.getElementById("namachoko_chk");
-					if(namachoko_chk.checked){
+					const namachoco_chk = document.getElementById("namachoco_chk");
+					if(namachoco_chk.checked){
 						//追加料金セット
-						$yuryou_price = $yuryou_price + ($deco_namachoko_up);
+						$yuryou_price = $yuryou_price + ($deco_namachoco_up);
 					}
 					//絵チョコ(4号)
-					const echoko_chk = document.getElementById("echoko_chk");
-					if(echoko_chk.checked){
+					const echoco_chk = document.getElementById("echoco_chk");
+					if(echoco_chk.checked){
 						//追加料金セット
-						$yuryou_price = $yuryou_price + ($deco_echoko_yongou);
+						$yuryou_price = $yuryou_price + ($deco_echoco_yongou);
 					}
 				}
 			}
@@ -1094,7 +1094,7 @@ file that was distributed with this source code.
             $goukei_price = Number($yuryou_price) + Number($normal_price);
             
             //オプション含めた合計金額
-            var $additional_total_price = "￥" + $goukei_price;
+            var $additional_total_price = "￥" + $goukei_price.toLocaleString();
             //var $additional_total_price = "￥" + $normal_price;
 		  	var $addTotalPrice = $form.parent().find('.additional-total-price-default').first();
             $addTotalPrice.text($additional_total_price);
@@ -1205,6 +1205,87 @@ file that was distributed with this source code.
 	      }else{
 	      	//オプション非表示
 		  	document.getElementById('ichigo_up_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //[デコレーション追加]フルーツUPの有料金額をセットする
+        function SetDecoFruitUp() {
+          //有料オプション金額を表示して合算する
+		  const fruit_chk = document.getElementById("fruit_chk");
+		  
+		  if(fruit_chk.checked == true){
+		  	//オプション表示
+		  	document.getElementById('fruit_up_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var lbl_name = "フルーツUP (税込)";
+		  	var $fruit_up_label = $form.parent().find('.fruit-up-label-default').first();
+	        $fruit_up_label.text(lbl_name);
+	        
+	        //オプション金額
+	        var fruit_price = "￥" + per_price_fruit_up + "";
+		  	var $fruit_up_price = $form.parent().find('.fruit-up-price-default').first();
+	        $fruit_up_price.text(fruit_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('fruit_up_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //[デコレーション追加]生チョコUPの有料金額をセットする
+        function SetDecoNamachocoUp() {
+          //有料オプション金額を表示して合算する
+		  const namachoco_chk = document.getElementById("namachoco_chk");
+		  
+		  if(namachoco_chk.checked == true){
+		  	//オプション表示
+		  	document.getElementById('namachoco_up_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var lbl_name = "生チョコUP (税込)";
+		  	var $namachoco_up_label = $form.parent().find('.namachoco-up-label-default').first();
+	        $namachoco_up_label.text(lbl_name);
+	        
+	        //オプション金額
+	        var namachoco_price = "￥" + per_price_namachoco_up + "";
+		  	var $namachoco_up_price = $form.parent().find('.namachoco-up-price-default').first();
+	        $namachoco_up_price.text(namachoco_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('namachoco_up_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //[デコレーション追加]絵チョコ(4号)の有料金額をセットする
+        function SetDecoEchocoUp() {
+          //有料オプション金額を表示して合算する
+		  const echoco_chk = document.getElementById("echoco_chk");
+		  
+		  if(echoco_chk.checked == true){
+		  	//オプション表示
+		  	document.getElementById('echoco_up_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var lbl_name = "絵チョコ(4号) (税込)";
+		  	var $echoco_up_label = $form.parent().find('.echoco-up-label-default').first();
+	        $echoco_up_label.text(lbl_name);
+	        
+	        //オプション金額
+	        var echoco_price = "￥" + per_price_echoco_yongou + "";
+		  	var $echoco_up_price = $form.parent().find('.echoco-up-price-default').first();
+	        $echoco_up_price.text(echoco_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('echoco_up_price').style.display="none";
 	      }
 	      
 	      //指定されたオプション有料金額を含めた合計金額をセットする
@@ -1424,13 +1505,13 @@ file that was distributed with this source code.
 		//  いちごUP
         const per_price_ichigo_up       = 400;
         //  フルーツUP
-        const per_price_fluit_up        = 400;
+        const per_price_fruit_up        = 400;
         //  生チョコUP
-        const per_price_namachoko_up    = 400;
+        const per_price_namachoco_up    = 400;
         //  追加プレート(2枚目から)
         const per_price_tuika_plate     = 60;
         //  絵チョコ(4号)
-        const per_price_echoko_yongou   = 800;
+        const per_price_echoco_yongou   = 800;
 	    
 	    
 	    //Noキャンドル(1つめ)のNoが変更されたとき金額を反映する
@@ -1470,6 +1551,24 @@ file that was distributed with this source code.
 	    document.getElementById("ichigo_chk").onchange = function() {
 		  //有料金額反映
 		  SetDecoIchigoUp();
+		};
+		
+		//フルーツUPのチェックが変更されたとき金額を反映する
+	    document.getElementById("fruit_chk").onchange = function() {
+		  //有料金額反映
+		  SetDecoFruitUp();
+		};
+		
+		//生チョコUPのチェックが変更されたとき金額を反映する
+	    document.getElementById("namachoco_chk").onchange = function() {
+		  //有料金額反映
+		  SetDecoNamachocoUp();
+		};
+		
+		//絵チョコ(4号)のチェックが変更されたとき金額を反映する
+	    document.getElementById("echoco_chk").onchange = function() {
+		  //有料金額反映
+		  SetDecoEchocoUp();
 		};
         
         //プレートを追加する(2枚目)
@@ -2295,7 +2394,7 @@ file that was distributed with this source code.
 				                                	<!-- .フルーツUP -->
 				                                	
 				                                    <!-- 生チョコUP -->
-													<div id="namachoko_blk" style="float: left; width: 50%;">
+													<div id="namachoco_blk" style="float: left; width: 50%;">
 					                                    <!-- 入力エリア -->
 					                                    <div class="">
 					                                        <!-- 登録オプション名 -->
@@ -2303,9 +2402,9 @@ file that was distributed with this source code.
 					                                        <div style="width: 0px; height: 0px; background-image: url(&quot;&quot;);"></div>
 					                                        
 					                                        <!-- 入力欄：チェック -->			                                        
-					                                        <div id="namachoko_check" style="display:block; font-size:12px;">
-					                                        	<input type="checkbox" id="namachoko_chk" name="namachoko_chk" value="">
-					                                        	<label for="namachoko_chk">
+					                                        <div id="namachoco_check" style="display:block; font-size:12px;">
+					                                        	<input type="checkbox" id="namachoco_chk" name="namachoco_chk" value="">
+					                                        	<label for="namachoco_chk">
 																	<div style="padding:1px;">生チョコUP<span style="padding:1px; color:red;">(+{{price_addoption_namachoco_up}}円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 																</label>
 					                                        </div>
@@ -2314,7 +2413,7 @@ file that was distributed with this source code.
 				                                	<!-- .生チョコUP -->
 				                                	
 				                                    <!-- 絵チョコ(4号) -->
-													<div id="echoko_blk" style="float: left; width: 50%;">
+													<div id="echoco_blk" style="float: left; width: 50%;">
 						                                <!-- 入力エリア -->
 					                                    <div class="">
 					                                    	<!-- デコレーション追加画像 -->
@@ -2322,9 +2421,9 @@ file that was distributed with this source code.
 					                                        <!-- .デコレーション追加画像 -->
 					                                        
 					                                        <!-- 入力欄：チェック -->			                                        
-					                                        <div id="echoko_check" style="display:block; font-size:11px;">
-					                                        	<input type="checkbox" id="echoko_chk" name="echoko_chk" value="">
-					                                        	<label for="echoko_chk">
+					                                        <div id="echoco_check" style="display:block; font-size:11px;">
+					                                        	<input type="checkbox" id="echoco_chk" name="echoco_chk" value="">
+					                                        	<label for="echoco_chk">
 																	<div style="padding:1px;">絵チョコ(4号)<span style="padding:1px; color:red;">(+{{price_addoption_echoco_up}}円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 																</label>
 					                                        </div>
@@ -2334,7 +2433,7 @@ file that was distributed with this source code.
 					                            	<!-- .絵チョコ(4号) -->
 					                            	
 					                            	<!-- 絵チョコ(4号)説明 -->
-					                            	<div id="echoko_blk">
+					                            	<div id="echoco_blk">
 					                            		<div class="">
 					                                    	<!-- デコレーション追加画像 -->
 					                                    	<div style="width: 350px; height: 200px; background-image: url({{ asset('assets/img/option/setumei_choko_nama.png') }})"></div>
@@ -2755,7 +2854,7 @@ file that was distributed with this source code.
 			                                        <span class="fruit-up-label-default" style="margin-right:0%;">
 				                                    	{{ ''|trans }}
 				                                    </span>
-				                                    <span class="ec-price__price fruit-up-price-default" style="margin-left: 48%;">
+				                                    <span class="ec-price__price fruit-up-price-default" style="margin-left: 44%;">
 				                                    	{{ 0|price }}
 				                                    </span>
 				                                </div>
@@ -2764,7 +2863,7 @@ file that was distributed with this source code.
 			                                        <span class="namachoco-up-label-default" style="margin-right:0%;">
 				                                    	{{ ''|trans }}
 				                                    </span>
-				                                    <span class="ec-price__price namachoco-up-price-default" style="margin-left: 48%;">
+				                                    <span class="ec-price__price namachoco-up-price-default" style="margin-left: 44%;">
 				                                    	{{ 0|price }}
 				                                    </span>
 				                                </div>
@@ -2773,7 +2872,7 @@ file that was distributed with this source code.
 			                                        <span class="echoco-up-label-default" style="margin-right:0%;">
 				                                    	{{ ''|trans }}
 				                                    </span>
-				                                    <span class="ec-price__price echoco-up-price-default" style="margin-left: 48%;">
+				                                    <span class="ec-price__price echoco-up-price-default" style="margin-left: 40%;">
 				                                    	{{ 0|price }}
 				                                    </span>
 				                                </div>
