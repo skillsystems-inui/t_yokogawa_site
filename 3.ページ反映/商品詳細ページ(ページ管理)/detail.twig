@@ -446,89 +446,90 @@ file that was distributed with this source code.
         }
     </script>
     <script>
+        /*
+        * ※は有料
+        * <キャンドルオプション>
+        *  キャンドル大×数
+        *  キャンドル小×数
+        *  Noキャンドル×数 (1つめ) ※
+        *  Noキャンドル×数 (2つめ) ※
+        *  Noキャンドル×数 (3つめ) ※
+        * <デコオプション>
+        *  メッセージプレート種類
+        *  メッセージ入力(1つめ)
+        *  メッセージ入力(2つめ)※
+        *  メッセージ入力(3つめ)※
+        *  メッセージ入力(4つめ)※
+        *  メッセージ入力(5つめ)※
+        *  いちごUP      ※
+        *  フルーツUP    ※
+        *  生チョコUP    ※
+        *  絵チョコ(4号) ※
+        * <ギフト>
+        * 包装方法
+        * 熨斗紙の掛け方
+        * 掛け紙・熨斗の種類
+        * 上書き
+        * 熨斗の名入れ入力
+        * <袋オプション>
+        * ポリ袋 中   ※
+        * ポリ袋 大   ※
+        * ポリ袋 特大 ※
+        */
+        
+        var optionselect_all    = '';
+        var optionselect_candle = '';
+        var optionselect_message= '';
+        var optionselect_deco   = '';
+        var optionselect_gift   = '';
+        var optionselect_bag    = '';
+        
+        //オプションによる追加料金
+        var $addprice = 0;//初期値0円
+        
+        //----- 有料オプション価格 -----
+        //【デコオプション】
+        //  いちごUP
+        var $deco_ichigo_up       = 400;
+        //  フルーツUP
+        var $deco_fluit_up        = 400;
+        //  生チョコUP
+        var $deco_namachoko_up    = 400;
+        //  追加プレート(2枚目から)
+        var $deco_tuika_plate     = 60;
+        //  絵チョコ(4号)
+        var $deco_echoko_yongou   = 800;
+        
+        //【キャンドルオプション】
+        //  Noキャンドル
+        var $no_candle       = 130;
+        
+        //【袋オプション】
+        //  紙袋特小 目安:焼き菓子小分け用
+        var $bag_kami_tokusyo   = 10;
+        //  紙袋小   
+        var $bag_kami_syo       = 50;
+        //  紙袋中
+        var $bag_kami_cyu       = 50;
+        //  紙袋大
+        var $bag_kami_dai       = 100;
+        //  紙袋バーム用
+        var $bag_kami_baum      = 50;
+        //  ポリ特小 目安:焼き菓子小分け用
+        var $bag_poli_tokusyo   = 10;
+        //  ポリ中 目安:ケーキ4号・5号サイズ
+        var $bag_poli_cyu       = 10;
+        //  ポリ大 目安:ケーキ6号サイズ
+        var $bag_poli_dai       = 10;
+        //  ポリ特大 目安:ケーキ5号サイズ2つ
+        var $bag_poli_tokudai   = 30;
+        //  オリジナル保冷バッグ 目安:ホールケーキ
+        var $bag_horei_original  = 350;
+        //  保冷BAG小 目安:ロールケーキ1個
+        var $bag_horei_syo       = 180;
+        
         // オプション選択内容をセットする
         function inputOptionDetail() {
-            /*
-            * ※は有料
-            * <キャンドルオプション>
-            *  キャンドル大×数
-            *  キャンドル小×数
-            *  Noキャンドル×数 (1つめ) ※
-            *  Noキャンドル×数 (2つめ) ※
-            *  Noキャンドル×数 (3つめ) ※
-            * <デコオプション>
-            *  メッセージプレート種類
-            *  メッセージ入力(1つめ)
-            *  メッセージ入力(2つめ)※
-            *  メッセージ入力(3つめ)※
-            *  メッセージ入力(4つめ)※
-            *  メッセージ入力(5つめ)※
-            *  いちごUP      ※
-            *  フルーツUP    ※
-            *  生チョコUP    ※
-            *  絵チョコ(4号) ※
-            * <ギフト>
-            * 包装方法
-            * 熨斗紙の掛け方
-            * 掛け紙・熨斗の種類
-            * 上書き
-            * 熨斗の名入れ入力
-            * <袋オプション>
-            * ポリ袋 中   ※
-            * ポリ袋 大   ※
-            * ポリ袋 特大 ※
-            */
-            
-            var optionselect_all    = '';
-            var optionselect_candle = '';
-            var optionselect_message= '';
-            var optionselect_deco   = '';
-            var optionselect_gift   = '';
-            var optionselect_bag    = '';
-            
-            //オプションによる追加料金
-            var $addprice = 0;//初期値0円
-            
-            //----- 有料オプション価格 -----
-            //【デコオプション】
-            //  いちごUP
-            var $deco_ichigo_up       = 400;
-            //  フルーツUP
-            var $deco_fluit_up        = 400;
-            //  生チョコUP
-            var $deco_namachoko_up    = 400;
-            //  追加プレート(2枚目から)
-            var $deco_tuika_plate     = 60;
-            //  絵チョコ(4号)
-            var $deco_echoko_yongou   = 800;
-            
-            //【キャンドルオプション】
-            //  Noキャンドル
-            var $no_candle       = 120;
-            
-            //【袋オプション】
-            //  紙袋特小 目安:焼き菓子小分け用
-            var $bag_kami_tokusyo   = 10;
-            //  紙袋小   
-            var $bag_kami_syo       = 50;
-            //  紙袋中
-            var $bag_kami_cyu       = 50;
-            //  紙袋大
-            var $bag_kami_dai       = 100;
-            //  紙袋バーム用
-            var $bag_kami_baum      = 50;
-            //  ポリ特小 目安:焼き菓子小分け用
-            var $bag_poli_tokusyo   = 10;
-            //  ポリ中 目安:ケーキ4号・5号サイズ
-            var $bag_poli_cyu       = 10;
-            //  ポリ大 目安:ケーキ6号サイズ
-            var $bag_poli_dai       = 10;
-            //  ポリ特大 目安:ケーキ5号サイズ2つ
-            var $bag_poli_tokudai   = 30;
-            //  オリジナル保冷バッグ 目安:ホールケーキ
-            var $bag_horei_original  = 350;
-            //  保冷BAG小 目安:ロールケーキ1個
-            var $bag_horei_syo       = 180;
             
             //---キャンドル---
 			var option_form_candle = 'option_form_candle';
@@ -576,8 +577,8 @@ file that was distributed with this source code.
 						var $plus_price_cn1 = candle_no1_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn1;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル(1):'
-						optionselect_candle = optionselect_candle + ' No.' + candle_no1_no.value;
+						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' 「' + candle_no1_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no1_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn1 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
@@ -591,8 +592,8 @@ file that was distributed with this source code.
 						var $plus_price_cn2 = candle_no2_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn2;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル(2):'
-						optionselect_candle = optionselect_candle + ' No.' + candle_no2_no.value;
+						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' 「' + candle_no2_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no2_num.value + '本'; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn2 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
@@ -605,8 +606,8 @@ file that was distributed with this source code.
 						var $plus_price_cn3 = candle_no3_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn3;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル(3):'
-						optionselect_candle = optionselect_candle + ' No.' + candle_no3_no.value;
+						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' 「' + candle_no3_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no3_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn3 + '円) '; 
 						optionselect_candle = optionselect_candle + '\n';
@@ -927,8 +928,263 @@ file that was distributed with this source code.
             
             //オプション選択内容テキストエリアに出力する
             document.getElementById("option_detail").textContent = optionselect_all;
-           
         }
+        
+        
+        
+        // 指定されたオプション有料金額を含めた合計金額をセットする
+        function setOptionTotalPrice() {
+            
+            //有料オプション総額
+            $yuryou_price = 0;
+            
+            //---キャンドル---
+			var option_form_candle = 'option_form_candle';
+			if(document.getElementById(option_form_candle) != null){
+				//キャンドルオプションがある場合
+				// Noキャンドル 1つめ
+				const candle_no1_no  = document.getElementById("candle_no1_no");
+				const candle_no1_num = document.getElementById("candle_no1_num");
+				// Noキャンドル 2つめ
+				const candle_no2_no  = document.getElementById("candle_no2_no");
+				const candle_no2_num = document.getElementById("candle_no2_num");
+				// Noキャンドル 3つめ
+				const candle_no3_no  = document.getElementById("candle_no3_no");
+				const candle_no3_num = document.getElementById("candle_no3_num");
+				
+				//キャンドルの不要チェック
+				const chk_candle_nosel = document.getElementById("chk_candle_nosel");
+				if(chk_candle_nosel.checked != true){
+					//・キャンドル指定あり
+					//Noキャンドル(1)
+					if(candle_no1_no.value != '' && candle_no1_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn1 = candle_no1_num.value*$no_candle;
+						$yuryou_price = $yuryou_price + $plus_price_cn1;
+					}
+					
+					//Noキャンドル(2)
+					if(candle_no2_no.value != '' && candle_no2_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn2 = candle_no2_num.value*$no_candle;
+						$yuryou_price = $yuryou_price + $plus_price_cn2;
+					}
+					
+					//Noキャンドル(3)
+					if(candle_no3_no.value != '' && candle_no3_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn3 = candle_no3_num.value*$no_candle;
+						$yuryou_price = $yuryou_price + $plus_price_cn3;
+					}
+				}
+			}
+            
+            //--- メッセージプレート ---
+			var option_form_option = 'option_form_option';
+			if( (document.getElementById(option_form_option) != null) ){
+				//・メッセージプレートがある場合
+				//メッセージプレートの不要チェック
+				const chk_message_nosel = document.getElementById("chk_message_nosel");
+				if(chk_message_nosel.checked != true){
+					//メッセージ2
+					if(document.getElementById("printname_plate_2") != null){
+						const p_message = document.getElementById("printname_plate_2").value;
+						if(p_message != ''){
+							//追加料金セット
+							$yuryou_price = $yuryou_price + ($deco_tuika_plate);
+						}
+					}
+					
+					//メッセージ3
+					if(document.getElementById("printname_plate_3") != null){
+						const p_message = document.getElementById("printname_plate_3").value;
+						if(p_message != ''){
+							//追加料金セット
+							$yuryou_price = $yuryou_price + ($deco_tuika_plate);
+						}
+					}
+					//メッセージ4
+					if(document.getElementById("printname_plate_4") != null){
+						const p_message = document.getElementById("printname_plate_4").value;
+						if(p_message != ''){
+							//追加料金セット
+							$yuryou_price = $yuryou_price + ($deco_tuika_plate);
+						}
+					}
+					//メッセージ5
+					if(document.getElementById("printname_plate_5") != null){
+						const p_message = document.getElementById("printname_plate_5").value;
+						if(p_message != ''){
+							//追加料金セット
+							$yuryou_price = $yuryou_price + ($deco_tuika_plate);
+						}
+					}
+				}
+			}		
+					
+			//--- デコオプション ---
+			var option_form_deco = 'option_form_deco';
+			if( (document.getElementById(option_form_deco) != null) ){
+				//・デコオプションがある場合
+				//デコオプションの不要チェック
+				const chk_deco_nosel = document.getElementById("chk_deco_nosel");
+				if(chk_deco_nosel.checked != true){	
+					//--- デコレーション追加 ---
+					//いちごUP
+					const ichigo_chk = document.getElementById("ichigo_chk");
+					if(ichigo_chk.checked){
+						//追加料金セット
+						$yuryou_price = $yuryou_price + ($deco_ichigo_up);
+					}
+					//フルーツUP
+					const fruit_chk = document.getElementById("fruit_chk");
+					if(fruit_chk.checked){
+						//追加料金セット
+						$yuryou_price = $yuryou_price + ($deco_fluit_up);
+					}
+					//生チョコUP
+					const namachoko_chk = document.getElementById("namachoko_chk");
+					if(namachoko_chk.checked){
+						//追加料金セット
+						$yuryou_price = $yuryou_price + ($deco_namachoko_up);
+					}
+					//絵チョコ(4号)
+					const echoko_chk = document.getElementById("echoko_chk");
+					if(echoko_chk.checked){
+						//追加料金セット
+						$yuryou_price = $yuryou_price + ($deco_echoko_yongou);
+					}
+				}
+			}
+            //--- 袋オプション ---
+			var option_form_bag = 'option_form_bag';
+			if( (document.getElementById(option_form_bag) != null) ){
+				//・袋オプションがある場合
+				//持ち帰りポリ袋の不要チェック
+				const chk_hukuro_nosel = document.getElementById("chk_hukuro_nosel");
+				if(chk_hukuro_nosel.checked != true){
+					//--- 持ち帰りポリ袋 ---
+					//ポリ袋 中
+					const pori_cyu_chk = document.getElementById("pori_cyu_chk");
+					if(pori_cyu_chk.checked){
+						//追加料金セット
+						$yuryou_price = $yuryou_price + ($bag_kami_cyu);
+					}
+					//ポリ袋 大
+					const pori_dai_chk = document.getElementById("pori_dai_chk");
+					if(pori_dai_chk.checked){
+						//追加料金セット
+						$yuryou_price = $yuryou_price + ($bag_kami_dai);
+					}
+					//ポリ袋 特大
+					const pori_tokudai_chk = document.getElementById("pori_tokudai_chk");
+					if(pori_tokudai_chk.checked){
+						//追加料金セット
+						$yuryou_price = $yuryou_price + ($bag_poli_tokudai);
+					}
+				}
+			}
+            
+            //合計金額をセット
+            //通常価格(有料オプションなし)
+            var $normal_base = document.getElementById('p02');
+            var $normal_price = 0;
+            if($normal_base != null){
+            	$normal_price = $normal_base.value
+            }
+            $goukei_price = Number($yuryou_price) + Number($normal_price);
+            
+            //オプション含めた合計金額
+            var $additional_total_price = "￥" + $goukei_price;
+            //var $additional_total_price = "￥" + $normal_price;
+		  	var $addTotalPrice = $form.parent().find('.additional-total-price-default').first();
+            $addTotalPrice.text($additional_total_price);
+        }
+        
+        //Noキャンドル(1つめ)の有料金額をセットする
+        function SetCandleNo1Price() {
+          //有料オプション金額を表示して合算する
+		  const candle_no1_no  = document.getElementById("candle_no1_no").value;
+		  const candle_no1_num = document.getElementById("candle_no1_num").value;
+		  
+		  if(candle_no1_no != '' && candle_no1_num != ''){
+		  	//オプション表示
+		  	document.getElementById('no_candle1_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var no1_lbl = "Noキャンドル「" + candle_no1_no + "」×" + candle_no1_num + "本 (税込)";
+		  	var $no_candle_1_label = $form.parent().find('.no-candle-1-label-default').first();
+	        $no_candle_1_label.text(no1_lbl);
+	        
+	        //オプション金額
+	        var no1_price = "￥" + candle_no1_num*per_price_candle_no + "";
+		  	var $no_candle_1_price = $form.parent().find('.no-candle-1-price-default').first();
+	        $no_candle_1_price.text(no1_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('no_candle1_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //Noキャンドル(2つめ)の有料金額をセットする
+        function SetCandleNo2Price() {
+          //有料オプション金額を表示して合算する
+		  const candle_no2_no  = document.getElementById("candle_no2_no").value;
+		  const candle_no2_num = document.getElementById("candle_no2_num").value;
+		  
+		  if(candle_no2_no != '' && candle_no2_num != ''){
+		  	//オプション表示
+		  	document.getElementById('no_candle2_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var no2_lbl = "Noキャンドル「" + candle_no2_no + "」×" + candle_no2_num + "本 (税込)";
+		  	var $no_candle_2_label = $form.parent().find('.no-candle-2-label-default').first();
+	        $no_candle_2_label.text(no2_lbl);
+	        
+	        //オプション金額
+	        var no2_price = "￥" + candle_no2_num*per_price_candle_no + "";
+		  	var $no_candle_2_price = $form.parent().find('.no-candle-2-price-default').first();
+	        $no_candle_2_price.text(no2_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('no_candle2_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //Noキャンドル(3つめ)の有料金額をセットする
+        function SetCandleNo3Price() {
+          //有料オプション金額を表示して合算する
+		  const candle_no3_no  = document.getElementById("candle_no3_no").value;
+		  const candle_no3_num = document.getElementById("candle_no3_num").value;
+		  
+		  if(candle_no3_no != '' && candle_no3_num != ''){
+		  	//オプション表示
+		  	document.getElementById('no_candle3_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var no3_lbl = "Noキャンドル「" + candle_no3_no + "」×" + candle_no3_num + "本 (税込)";
+		  	var $no_candle_3_label = $form.parent().find('.no-candle-3-label-default').first();
+	        $no_candle_3_label.text(no3_lbl);
+	        
+	        //オプション金額
+	        var no3_price = "￥" + candle_no3_num*per_price_candle_no + "";
+		  	var $no_candle_3_price = $form.parent().find('.no-candle-3-price-default').first();
+	        $no_candle_3_price.text(no3_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('no_candle3_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
     </script>
     
     <script>
@@ -1127,6 +1383,63 @@ file that was distributed with this source code.
 		        document.getElementById('noshi_menu').style.display="none";
 		    }
 	    });
+	    
+	    //【有料オプション金額】
+	    // Noキャンドル
+		const per_price_candle_no  = 130;
+		
+		//ポリ中
+		const per_price_bag_poli_cyu = 10;
+		//ポリ大
+		const per_price_bag_poli_dai = 10;
+		//ポリ特大
+		const per_price_bag_poli_tokudai = 30;
+		
+		//  いちごUP
+        const per_price_ichigo_up       = 400;
+        //  フルーツUP
+        const per_price_fluit_up        = 400;
+        //  生チョコUP
+        const per_price_namachoko_up    = 400;
+        //  追加プレート(2枚目から)
+        const per_price_tuika_plate     = 60;
+        //  絵チョコ(4号)
+        const per_price_echoko_yongou   = 800;
+	    
+	    
+	    //Noキャンドル(1つめ)のNoが変更されたとき金額を反映する
+	    document.getElementById("candle_no1_no").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo1Price();
+		};
+		//Noキャンドル(1つめ)の本数が変更されたとき金額を反映する
+	    document.getElementById("candle_no1_num").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo1Price();
+		};
+        
+	    //Noキャンドル(2つめ)のNoが変更されたとき金額を反映する
+	    document.getElementById("candle_no2_no").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo2Price();
+		};
+		//Noキャンドル(2つめ)の本数が変更されたとき金額を反映する
+	    document.getElementById("candle_no2_num").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo2Price();
+		};
+        
+	    //Noキャンドル(3つめ)のNoが変更されたとき金額を反映する
+	    document.getElementById("candle_no3_no").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo3Price();
+		};
+		//Noキャンドル(3つめ)の本数が変更されたとき金額を反映する
+	    document.getElementById("candle_no3_num").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo3Price();
+		};
+        
         
         //プレートを追加する(2枚目)
         $('.additionplate2_plus').on('click', function() {
@@ -1349,9 +1662,7 @@ file that was distributed with this source code.
                     {% set is_toriyoseka = false  %}
                     
                     <!-- 有料オプション金額 -->
-                    {% set price_no_candle_1 = '130'  %}
-                    {% set price_no_candle_2 = '130'  %}
-                    {% set price_no_candle_3 = '130'  %}
+                    {% set price_no_candle = '130'  %}
                     {% set price_addoption_ichigo_up    = '400'  %}
                     {% set price_addoption_fruit_up     = '400'  %}
                     {% set price_addoption_namachoco_up = '400'  %}
@@ -1359,6 +1670,29 @@ file that was distributed with this source code.
                     {% set price_poribukuro_cyu = '10'  %}
                     {% set price_poribukuro_dai = '10'  %}
                     {% set price_poribukuro_tokudai = '30'  %}
+                    
+                    <!-- 有料オプションラベル -->
+                    {% set price_no_candle_1_label = ''  %}
+                    {% set price_no_candle_2_label = ''  %}
+                    {% set price_no_candle_3_label = ''  %}
+                    {% set price_addoption_ichigo_up_label    = ''  %}
+                    {% set price_addoption_fruit_up_label     = ''  %}
+                    {% set price_addoption_namachoco_up_label = ''  %}
+                    {% set price_addoption_echoco_up_label    = ''  %}
+                    {% set price_poribukuro_cyu_label = ''  %}
+                    {% set price_poribukuro_dai_label = ''  %}
+                    {% set price_poribukuro_tokudai_label = ''  %}
+                    
+                    {% set price_no_candle_1_price = ''  %}
+                    {% set price_no_candle_2_price = ''  %}
+                    {% set price_no_candle_3_price = ''  %}
+                    {% set price_addoption_ichigo_up_price    = ''  %}
+                    {% set price_addoption_fruit_up_price     = ''  %}
+                    {% set price_addoption_namachoco_up_price = ''  %}
+                    {% set price_addoption_echoco_up_price    = ''  %}
+                    {% set price_poribukuro_cyu_price = ''  %}
+                    {% set price_poribukuro_dai_price = ''  %}
+                    {% set price_poribukuro_tokudai_price = ''  %}
                     
                     {% if Product.ProductCategories is not empty %}
                         {% for ProductCategory in Product.ProductCategories %}
@@ -1509,6 +1843,9 @@ file that was distributed with this source code.
 			                                </span>
 			                            </div>
 			                        {% endif %}
+			                        
+	                                <input id="p02" name="p02" type="hidden" value="{{ Product.getPrice02IncTaxMin }}">
+	                                
 			                    </div>
 			                    <div class="" style="clear:both;"></div>
                             </div>
@@ -1559,7 +1896,7 @@ file that was distributed with this source code.
 				                            <div id="option_form_candle" class="ec-productRole__actions">
 				                                	
 				                                	<!-- 大オプションラベル:キャンドルを選択 -->
-				                                    <div style="background-color:lightblue; font-size:21px;">
+				                                    <div style="background-color:lightblue; font-size:18px;">
 				                                    	<div class="" style="float:left; width:80%; padding:8px;">
 				                                    		<b>キャンドルを選択</b>
 				                                    	</div>
@@ -1641,7 +1978,7 @@ file that was distributed with this source code.
 															<div style="display:block;">
 																<div id="candle_no1_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
 																<div style="">
-																	<div style="padding:8px;">Noキャンドル<span style="padding:8px; color:red;">(+{{price_no_candle_1}}円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																	<div style="padding:8px;">Noキャンドル<span style="padding:8px; color:red;">(+{{price_no_candle}}円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
 																</div>
 							                                </div>
 							                                <!-- .オプション項目名 -->
@@ -2345,49 +2682,45 @@ file that was distributed with this source code.
 				                                </div>
 				                                -->
 				                                {# オプション #}
-						                        <!-- ToDo　有料オプションを出す -->
-						                        <!--
-						                        <div class="ec-price" style=" font-size:13px;">
-				                                    <span style="margin-right:50%;">
-				                                    	{{ '☆オプション名'|trans }}
+						                        <!-- Noキャンドル1 -->
+				                                <div id="no_candle1_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="no-candle-1-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
 				                                    </span>
-				                                    <span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">
-				                                    	{{ 100|price }}
+				                                    <span class="ec-price__price no-candle-1-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
 				                                    </span>
 				                                </div>
-				                                -->
+				                                <!-- Noキャンドル2 -->
+				                                <div id="no_candle2_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="no-candle-2-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price no-candle-2-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- Noキャンドル3 -->
+				                                <div id="no_candle3_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="no-candle-3-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price no-candle-3-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                
 						                    </div>
 						                    <div class="ec-productRole__price" style="font-size:20px; color:#000;">
 						                    	{# 合計 #}
-						                        <!-- ToDo　合計を出す -->
-						                        {% if Product.hasProductClass -%}
-						                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
-						                                <div class="ec-price" style=" font-size:13px;">
-						                                    <span style="margin-right:50%;">
-						                                    	{{ '合計　　　　　'|trans }}
-						                                    </span>
-						                                    <span class="ec-price__price price02-default">
-						                                    	{{ Product.getPrice02IncTaxMin|price }}
-						                                    </span>
-						                                </div>
-						                            {% else %}
-						                                <div class="ec-price" style=" font-size:13px;">
-						                                    <span style="margin-right:50%;">
-						                                    	{{ '合計　　　　　'|trans }}
-						                                    </span>
-						                                    <span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">
-						                                    	{{ Product.getPrice02IncTaxMin|price }}
-						                                    </span>
-						                                </div>
-						                            {% endif %}
-						                        {% else %}
-						                            <div class="ec-price" style=" font-size:13px;">
-						                                <span style="margin-right:50%;">
-						                                	{{ '合計　　　　　'|trans }}
-						                                </span>
-						                                <span class="ec-price__price">{{ Product.getPrice02IncTaxMin|price }}</span>
-						                            </div>
-						                        {% endif %}
+				                                <div class="ec-price" style=" font-size:13px;">
+				                                    <span style="margin-right:50%;">
+				                                    	{{ '合計　　　　　'|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price additional-total-price-default">
+				                                    	{{ Product.getPrice02IncTaxMin|price }}
+				                                    </span>
+				                                </div>
 						                    </div>
 						                    
 						                </div>
