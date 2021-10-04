@@ -994,7 +994,6 @@ file that was distributed with this source code.
 							$yuryou_price = $yuryou_price + ($deco_tuika_plate);
 						}
 					}
-					
 					//メッセージ3
 					if(document.getElementById("printname_plate_3") != null){
 						const p_message = document.getElementById("printname_plate_3").value;
@@ -1179,6 +1178,33 @@ file that was distributed with this source code.
 	      }else{
 	      	//オプション非表示
 		  	document.getElementById('no_candle3_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //[デコレーション追加]いちごUPの有料金額をセットする
+        function SetDecoIchigoUp() {
+          //有料オプション金額を表示して合算する
+		  const ichigo_chk = document.getElementById("ichigo_chk");
+		  
+		  if(ichigo_chk.checked == true){
+		  	//オプション表示
+		  	document.getElementById('ichigo_up_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var lbl_name = "いちごUP (税込)";
+		  	var $ichigo_up_label = $form.parent().find('.ichigo-up-label-default').first();
+	        $ichigo_up_label.text(lbl_name);
+	        
+	        //オプション金額
+	        var ichigo_price = "￥" + per_price_ichigo_up + "";
+		  	var $ichigo_up_price = $form.parent().find('.ichigo-up-price-default').first();
+	        $ichigo_up_price.text(ichigo_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('ichigo_up_price').style.display="none";
 	      }
 	      
 	      //指定されたオプション有料金額を含めた合計金額をセットする
@@ -1440,6 +1466,11 @@ file that was distributed with this source code.
 		  SetCandleNo3Price();
 		};
         
+        //いちごUPのチェックが変更されたとき金額を反映する
+	    document.getElementById("ichigo_chk").onchange = function() {
+		  //有料金額反映
+		  SetDecoIchigoUp();
+		};
         
         //プレートを追加する(2枚目)
         $('.additionplate2_plus').on('click', function() {
@@ -2706,6 +2737,43 @@ file that was distributed with this source code.
 				                                    	{{ ''|trans }}
 				                                    </span>
 				                                    <span class="ec-price__price no-candle-3-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                
+				                                <!-- いちごUP -->
+				                                <div id="ichigo_up_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="ichigo-up-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price ichigo-up-price-default" style="margin-left: 48%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- フルーツUP -->
+				                                <div id="fruit_up_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="fruit-up-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price fruit-up-price-default" style="margin-left: 48%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- 生チョコUP -->
+				                                <div id="namachoco_up_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="namachoco-up-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price namachoco-up-price-default" style="margin-left: 48%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- 絵チョコ -->
+				                                <div id="echoco_up_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="echoco-up-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price echoco-up-price-default" style="margin-left: 48%;">
 				                                    	{{ 0|price }}
 				                                    </span>
 				                                </div>
