@@ -880,7 +880,7 @@ file that was distributed with this source code.
 					if(pori_cyu_chk.checked){
 						
 						//追加料金セット
-						$addprice = $addprice + ($bag_kami_cyu);
+						$addprice = $addprice + ($bag_poli_cyu);
 						
 						//チェックあり
 						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 中 (+10円)' 
@@ -891,7 +891,7 @@ file that was distributed with this source code.
 					if(pori_dai_chk.checked){
 						
 						//追加料金セット
-						$addprice = $addprice + ($bag_kami_dai);
+						$addprice = $addprice + ($bag_poli_dai);
 						
 						//チェックあり
 						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 大 (+10円)' 
@@ -1067,13 +1067,13 @@ file that was distributed with this source code.
 					const pori_cyu_chk = document.getElementById("pori_cyu_chk");
 					if(pori_cyu_chk.checked){
 						//追加料金セット
-						$yuryou_price = $yuryou_price + ($bag_kami_cyu);
+						$yuryou_price = $yuryou_price + ($bag_poli_cyu);
 					}
 					//ポリ袋 大
 					const pori_dai_chk = document.getElementById("pori_dai_chk");
 					if(pori_dai_chk.checked){
 						//追加料金セット
-						$yuryou_price = $yuryou_price + ($bag_kami_dai);
+						$yuryou_price = $yuryou_price + ($bag_poli_dai);
 					}
 					//ポリ袋 特大
 					const pori_tokudai_chk = document.getElementById("pori_tokudai_chk");
@@ -1399,6 +1399,88 @@ file that was distributed with this source code.
 	      //指定されたオプション有料金額を含めた合計金額をセットする
 	      setOptionTotalPrice();
         }
+        
+        //ポリ袋(中)の有料金額をセットする
+        function SetPoriCyu() {
+          //有料オプション金額を表示して合算する
+		  const pori_cyu_chk = document.getElementById("pori_cyu_chk");
+		  
+		  if(pori_cyu_chk.checked == true){
+		  	//オプション表示
+		  	document.getElementById('pori_cyu_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var lbl_name = "ポリ袋 中 (税込)";
+		  	var $pori_cyu_label = $form.parent().find('.pori-cyu-label-default').first();
+	        $pori_cyu_label.text(lbl_name);
+	        
+	        //オプション金額
+	        var pori_cyu_price = "￥" + per_price_bag_poli_cyu + "";
+		  	var $pori_cyu_price = $form.parent().find('.pori-cyu-price-default').first();
+	        $pori_cyu_price.text(pori_cyu_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('pori_cyu_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //ポリ袋(大)の有料金額をセットする
+        function SetPoriDai() {
+          //有料オプション金額を表示して合算する
+		  const pori_dai_chk = document.getElementById("pori_dai_chk");
+		  
+		  if(pori_dai_chk.checked == true){
+		  	//オプション表示
+		  	document.getElementById('pori_dai_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var lbl_name = "ポリ袋 大 (税込)";
+		  	var $pori_dai_label = $form.parent().find('.pori-dai-label-default').first();
+	        $pori_dai_label.text(lbl_name);
+	        
+	        //オプション金額
+	        var pori_dai_price = "￥" + per_price_bag_poli_dai + "";
+		  	var $pori_dai_price = $form.parent().find('.pori-dai-price-default').first();
+	        $pori_dai_price.text(pori_dai_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('pori_dai_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //ポリ袋(特大)の有料金額をセットする
+        function SetPoriTokudai() {
+          //有料オプション金額を表示して合算する
+		  const pori_tokudai_chk = document.getElementById("pori_tokudai_chk");
+		  
+		  if(pori_tokudai_chk.checked == true){
+		  	//オプション表示
+		  	document.getElementById('pori_tokudai_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var lbl_name = "ポリ袋 特大 (税込)";
+		  	var $pori_tokudai_label = $form.parent().find('.pori-tokudai-label-default').first();
+	        $pori_tokudai_label.text(lbl_name);
+	        
+	        //オプション金額
+	        var pori_tokudai_price = "￥" + per_price_bag_poli_tokudai + "";
+		  	var $pori_tokudai_price = $form.parent().find('.pori-tokudai-price-default').first();
+	        $pori_tokudai_price.text(pori_tokudai_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('pori_tokudai_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
     </script>
     
     <script>
@@ -1704,6 +1786,22 @@ file that was distributed with this source code.
 	    document.getElementById("printname_plate_5").onchange = function() {
 		  //有料金額反映
 		  SetAdditionalPlate5();
+		};
+		
+		//ポリ袋(中)のチェックが変更されたとき金額を反映する
+	    document.getElementById("pori_cyu_chk").onchange = function() {
+		  //有料金額反映
+		  SetPoriCyu();
+		};
+		//ポリ袋(大)のチェックが変更されたとき金額を反映する
+	    document.getElementById("pori_dai_chk").onchange = function() {
+		  //有料金額反映
+		  SetPoriDai();
+		};
+		//ポリ袋(特大)のチェックが変更されたとき金額を反映する
+	    document.getElementById("pori_tokudai_chk").onchange = function() {
+		  //有料金額反映
+		  SetPoriTokudai();
 		};
 		
         //プレートを追加する(2枚目)
@@ -2921,31 +3019,6 @@ file that was distributed with this source code.
 						                            </div>
 						                        {% endif %}
 						                        
-						                        
-						                        {# 送料 #}
-						                        <!-- ToDo　配送地域によって異なるので標準を出す？？ -->
-						                        <!--
-						                        <div class="ec-price" style=" font-size:13px;">
-				                                    <span style="margin-right:50%;">
-				                                    	{{ '送料(税込)　　'|trans }}
-				                                    </span>
-				                                    <span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">
-				                                    	{{ 0|price }}
-				                                    </span>
-				                                </div>
-				                                -->
-						                        {# 消費税 #}
-						                        <!-- ToDo　規格価格から税率で割り出す -->
-						                        <!--
-						                        <div class="ec-price" style=" font-size:13px;">
-				                                    <span style="margin-right:50%;">
-				                                    	{{ '消費税　　　　'|trans }}
-				                                    </span>
-				                                    <span class="ec-price__price price02-default" style="padding-left:0px;font-weight: normal;;">
-				                                    	{{ 0|price }}
-				                                    </span>
-				                                </div>
-				                                -->
 				                                {# オプション #}
 						                        <!-- Noキャンドル1 -->
 				                                <div id="no_candle1_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
@@ -3008,6 +3081,34 @@ file that was distributed with this source code.
 				                                    	{{ ''|trans }}
 				                                    </span>
 				                                    <span class="ec-price__price printname-plate-5-price-default" style="margin-left: 42%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                
+				                                <!-- ポリ袋 中-->
+				                                <div id="pori_cyu_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="pori-cyu-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price pori-cyu-price-default" style="margin-left: 48%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- ポリ袋 大 -->
+				                                <div id="pori_dai_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="pori-dai-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price pori-dai-price-default" style="margin-left: 48%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- ポリ袋 特大 -->
+				                                <div id="pori_tokudai_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="pori-tokudai-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price pori-tokudai-price-default" style="margin-left: 45%;">
 				                                    	{{ 0|price }}
 				                                    </span>
 				                                </div>
