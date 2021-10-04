@@ -1292,6 +1292,113 @@ file that was distributed with this source code.
 	      setOptionTotalPrice();
         }
         
+        //追加プレートの有料金額をセットする
+        function SetAdditionalPlate2() {
+          //有料オプション金額を表示して合算する
+		  const printname_plate_2_val = document.getElementById("printname_plate_2").value;
+		  
+		  if(printname_plate_2_val != ''){
+		  	//オプション表示
+		  	document.getElementById('printname_plate_2_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var lbl_name = "追加プレート (税込)";
+		  	var $printname_plate_2_label = $form.parent().find('.printname-plate-2-label-default').first();
+	        $printname_plate_2_label.text(lbl_name);
+	        
+	        //オプション金額
+	        var printname_plate_2_price = "￥" + per_price_add_plate + "";
+		  	var $printname_plate_2_price = $form.parent().find('.printname-plate-2-price-default').first();
+	        $printname_plate_2_price.text(printname_plate_2_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('printname_plate_2_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //追加プレートの有料金額をセットする
+        function SetAdditionalPlate3() {
+          //有料オプション金額を表示して合算する
+		  const printname_plate_3_val = document.getElementById("printname_plate_3").value;
+		  
+		  if(printname_plate_3_val != ''){
+		  	//オプション表示
+		  	document.getElementById('printname_plate_3_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var lbl_name = "追加プレート (税込)";
+		  	var $printname_plate_3_label = $form.parent().find('.printname-plate-3-label-default').first();
+	        $printname_plate_3_label.text(lbl_name);
+	        
+	        //オプション金額
+	        var printname_plate_3_price = "￥" + per_price_add_plate + "";
+		  	var $printname_plate_3_price = $form.parent().find('.printname-plate-3-price-default').first();
+	        $printname_plate_3_price.text(printname_plate_3_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('printname_plate_3_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //追加プレートの有料金額をセットする
+        function SetAdditionalPlate4() {
+          //有料オプション金額を表示して合算する
+		  const printname_plate_4_val = document.getElementById("printname_plate_4").value;
+		  
+		  if(printname_plate_4_val != ''){
+		  	//オプション表示
+		  	document.getElementById('printname_plate_4_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var lbl_name = "追加プレート (税込)";
+		  	var $printname_plate_4_label = $form.parent().find('.printname-plate-4-label-default').first();
+	        $printname_plate_4_label.text(lbl_name);
+	        
+	        //オプション金額
+	        var printname_plate_4_price = "￥" + per_price_add_plate + "";
+		  	var $printname_plate_4_price = $form.parent().find('.printname-plate-4-price-default').first();
+	        $printname_plate_4_price.text(printname_plate_4_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('printname_plate_4_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //追加プレートの有料金額をセットする
+        function SetAdditionalPlate5() {
+          //有料オプション金額を表示して合算する
+		  const printname_plate_5_val = document.getElementById("printname_plate_5").value;
+		  
+		  if(printname_plate_5_val != ''){
+		  	//オプション表示
+		  	document.getElementById('printname_plate_5_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var lbl_name = "追加プレート (税込)";
+		  	var $printname_plate_5_label = $form.parent().find('.printname-plate-5-label-default').first();
+	        $printname_plate_5_label.text(lbl_name);
+	        
+	        //オプション金額
+	        var printname_plate_5_price = "￥" + per_price_add_plate + "";
+		  	var $printname_plate_5_price = $form.parent().find('.printname-plate-5-price-default').first();
+	        $printname_plate_5_price.text(printname_plate_5_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('printname_plate_5_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
     </script>
     
     <script>
@@ -1512,6 +1619,9 @@ file that was distributed with this source code.
         const per_price_tuika_plate     = 60;
         //  絵チョコ(4号)
         const per_price_echoco_yongou   = 800;
+        
+        //追加プレート
+        const per_price_add_plate       = 60;
 	    
 	    
 	    //Noキャンドル(1つめ)のNoが変更されたとき金額を反映する
@@ -1570,7 +1680,32 @@ file that was distributed with this source code.
 		  //有料金額反映
 		  SetDecoEchocoUp();
 		};
-        
+		
+		//kokoko
+        //追加プレート(2)のチェックが変更されたとき金額を反映する
+	    document.getElementById("printname_plate_2").onchange = function() {
+		  //有料金額反映
+		  SetAdditionalPlate2();
+		};
+		
+		//追加プレート(3)のチェックが変更されたとき金額を反映する
+	    document.getElementById("printname_plate_3").onchange = function() {
+		  //有料金額反映
+		  SetAdditionalPlate3();
+		};
+		
+		//追加プレート(4)のチェックが変更されたとき金額を反映する
+	    document.getElementById("printname_plate_4").onchange = function() {
+		  //有料金額反映
+		  SetAdditionalPlate4();
+		};
+		
+		//追加プレート(5)のチェックが変更されたとき金額を反映する
+	    document.getElementById("printname_plate_5").onchange = function() {
+		  //有料金額反映
+		  SetAdditionalPlate5();
+		};
+		
         //プレートを追加する(2枚目)
         $('.additionplate2_plus').on('click', function() {
             //追加プレートを表示する
@@ -2836,6 +2971,43 @@ file that was distributed with this source code.
 				                                    	{{ ''|trans }}
 				                                    </span>
 				                                    <span class="ec-price__price no-candle-3-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                
+				                                <!-- 追加プレート(2) -->
+				                                <div id="printname_plate_2_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="printname-plate-2-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price printname-plate-2-price-default" style="margin-left: 42%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- 追加プレート(3) -->
+				                                <div id="printname_plate_3_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="printname-plate-3-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price printname-plate-3-price-default" style="margin-left: 42%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- 追加プレート(4) -->
+				                                <div id="printname_plate_4_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="printname-plate-4-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price printname-plate-4-price-default" style="margin-left: 42%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- 追加プレート(5) -->
+				                                <div id="printname_plate_5_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="printname-plate-5-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price printname-plate-5-price-default" style="margin-left: 42%;">
 				                                    	{{ 0|price }}
 				                                    </span>
 				                                </div>
