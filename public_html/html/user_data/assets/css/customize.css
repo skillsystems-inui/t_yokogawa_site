@@ -3047,7 +3047,7 @@ $common
 		margin-bottom: 0;
 	}
 	.front_page .about {
-		padding: 15% 0;
+		/* padding: 15% 0; */
 		background-image: url(../img/top_bg_sp.jpg);
 		background-size: cover;
 		background-position: center;
@@ -4583,17 +4583,5 @@ $common
 		margin-inline-start: 0px;
 		margin-inline-end: 0px;
 		padding-inline-start: 0px;
-	}
-}
-
-
-
-@media screen and (max-width: 767px) {
-  	header div nav .header_btn {
-		display:none;
-	}
-	
-	header div nav ul {
-		display:none;
 	}
 }
