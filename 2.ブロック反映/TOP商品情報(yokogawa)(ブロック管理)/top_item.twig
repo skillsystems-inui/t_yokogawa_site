@@ -9,17 +9,29 @@ For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 #}
 
-<div class="ec-role" style="max-width:100%; padding-left:0px; padding-right:0px;">
-    <div class="ec-eyecatchRole">
-        <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#seasonal" class="ec-eyecatchRole__image">
-            <img src="{{ asset('assets/img/top/topitem.png') }}" alt="" role="presentation"/>
-        </a>
-    </div>
-    <!--
-    <div class="ec-eyecatchRole">
-        <div class="ec-eyecatchRole__intro">
-            <a class="ec-blockBtn--top" href="{{ url('product_list') }}?category_id=4">{{ 'Ç≤çwì¸ÇÕÇ±ÇøÇÁÇ©ÇÁ'|trans }}</a>
-        </div>
-    </div>
-    -->
+<div class="slider_wrap" style="position:relative;">
+	<div class="slider slick-initialized slick-slider">
+		<div class="slick-list draggable">
+			
+			<div class="slick-track slick-track-list" style="opacity: 1; width: 100%;">
+				<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#seasonal"  class="slick-slide">
+					<div class="slider_item main12"></div>
+				</a>
+			</div>
+			
+			<!-- ÉXÉâÉCÉhÇ†ÇË
+			<div class="slick-track slick-track-list" style="opacity: 1; width: 100%;">
+				<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#seasonal"  class="slick-slide">
+					<div class="slider_item main12"></div>
+				</a>
+				<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#chocolate" class="slick-slide">
+					<div class="slider_item main13"></div>
+				</a>
+				<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}"        class="slick-slide">
+					<div class="slider_item main14"></div>
+				</a>
+			</div>
+			-->
+		</div>
+	</div><!-- .slider -->
 </div>
