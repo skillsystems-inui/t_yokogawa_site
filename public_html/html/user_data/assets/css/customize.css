@@ -2276,7 +2276,7 @@ $common
 	section.shop_calendar div.inner div.shop_calendar_bx_wrap div.shop_calendar_bx table tr td.sat {
 		background-color: rgba(113, 203, 201, 0.5);
 	}
-	section.shop_calendar div.inner div.shop_calendar_bx_wrap div.shop_calendar_bx table tr td.close {
+	section.shop_calendar div.inner div.shop_calendar_bx_wrap div.shop_calendar_bx table tr td.closeday {
 		background-color: #FECC00;
 	}
 	section.shop_calendar div.inner div.shop_calendar_caption {
@@ -2886,9 +2886,9 @@ $common
 	}
 
 	/*==================================================
-	$top_page
+	$front_page
 	==================================================*/
-	.top_page .slider_wrap .slider .slider_item {
+	.front_page .slider_wrap .slider .slider_item {
 		width: 100%;
 		/* height: 80vh; */
 		height: 500px;
@@ -2897,49 +2897,49 @@ $common
 		background-position: center;
 		background-size: cover;
 	}
-	.top_page .slider_wrap .slider .slider_item.main01 {
+	.front_page .slider_wrap .slider .slider_item.main01 {
 		background-image: url(../img/main01_sp.jpg);
 	}
-	.top_page .slider_wrap .slider .slider_item.main02 {
+	.front_page .slider_wrap .slider .slider_item.main02 {
 		background-image: url(../img/main02_sp.jpg);
 	}
-	.top_page .slider_wrap .slider .slider_item.main03 {
+	.front_page .slider_wrap .slider .slider_item.main03 {
 		background-image: url(../img/main03_sp.jpg);
 	}
-	.top_page .slider_wrap .slider .slider_item.main04 {
+	.front_page .slider_wrap .slider .slider_item.main04 {
 		background-image: url(../img/xmastop_sp.png);
 	}
-	.top_page .slider_wrap .slider .slider_item.main05 {
+	.front_page .slider_wrap .slider .slider_item.main05 {
 		background-image: url(../img/thankyoutop_sp.png);
 	}
-	.top_page .slider_wrap .slider .slider_item.main06 {
+	.front_page .slider_wrap .slider .slider_item.main06 {
 		background-image: url(../img/valentinetop_sp.png);
 	}
-	.top_page .slider_wrap .slider .slider_item.main07 {
+	.front_page .slider_wrap .slider .slider_item.main07 {
 		background-image: url(../img/whitedaytop_sp.png);
 	}
-	.top_page .slider_wrap .slider .slider_item.main08 {
+	.front_page .slider_wrap .slider .slider_item.main08 {
 		background-image: url(../img/hinamatsuritop_sp.png);
 	}
-	.top_page .slider_wrap .slider .slider_item.main09 {
+	.front_page .slider_wrap .slider .slider_item.main09 {
 		background-image: url(../img/ship_discount_top_sp.png);
 	}
-	.top_page .slider_wrap .slider .slider_item.main10 {
+	.front_page .slider_wrap .slider .slider_item.main10 {
 		background-image: url(../img/kodomonohi_top_sp.png);
 	}
-	.top_page .slider_wrap .slider .slider_item.main11 {
+	.front_page .slider_wrap .slider .slider_item.main11 {
 		background-image: url(../img/mothersday_top_sp.png);
 	}
-	.top_page .slider_wrap .slider .slider_item.main12 {
+	.front_page .slider_wrap .slider .slider_item.main12 {
 		background-image: url(../img/yakiimo_topsp.png);
 	}
-	.top_page .slider_wrap .slider .slider_item.main13 {
+	.front_page .slider_wrap .slider .slider_item.main13 {
 		background-image: url(../img/cuore_topsp.png);
 	}
-	.top_page .slider_wrap .slider .slider_item.main14 {
+	.front_page .slider_wrap .slider .slider_item.main14 {
 		background-image: url(../img/halloween_topsp.jpg);
 	}
-	.top_page .slider_wrap .slider .slider_item img {
+	.front_page .slider_wrap .slider .slider_item img {
 	  position: absolute;
 	  top: 50%;
 	  left: 50%;
@@ -2950,42 +2950,42 @@ $common
 	  height: 100%;
 		max-width: none;
 	}
-	.top_page section {
+	.front_page section {
 		padding: 10% 0;
 	}
-	.top_page .slider_wrap + section .box {
+	.front_page .slider_wrap + section .box {
 		padding: 0 5%;
 		text-align: left;
 	}
-	.top_page .slider_wrap + section .box .headline {
+	.front_page .slider_wrap + section .box .headline {
 		font-size: 20px;
 	}
-	.top_page .slider_wrap + section .box .headline br {
+	.front_page .slider_wrap + section .box .headline br {
 		display: none;
 	}
-	.top_page .pickup .title {
+	.front_page .pickup .title {
 		margin-bottom: 10%;
 	}
-	.top_page .pickup ul {
+	.front_page .pickup ul {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		width: 100%;
 	}
-	.top_page .pickup ul li {
+	.front_page .pickup ul li {
 		width: 100%;
 		margin-bottom: 5%;
 	}
-	.top_page .pickup ul li:last-child {
+	.front_page .pickup ul li:last-child {
 		margin-bottom: 0;
 	}
-	.top_page .pickup ul li p {
+	.front_page .pickup ul li p {
 		width: 80%;
 		max-width: 270px;
 		min-width: 120px;
 		margin: auto;
 	}
-	.top_page .pickup ul li p a {
+	.front_page .pickup ul li p a {
 		display: block;
 		background: #fff;
 		box-shadow: 0 0 5px rgba(0,0,0,.3);
@@ -2998,7 +2998,7 @@ $common
 		position: relative;
 		margin-top: -27px;
 	}
-	.top_page .pickup ul li p a::after {
+	.front_page .pickup ul li p a::after {
 		content: '';
 		width: 0;
 		height: 0;
@@ -3027,98 +3027,98 @@ $common
 		width: 100%;
 		display: block;
 	}
-	.top_page .news .banner_list {
+	.front_page .news .banner_list {
 		width: 90%;
 		margin: 0 auto 10%;
 	}
-	.top_page .news .banner_list ul {
+	.front_page .news .banner_list ul {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		width: 100%;
 	}
-	.top_page .news .banner_list ul li {
+	.front_page .news .banner_list ul li {
 		width: 100%;
 		margin-bottom: 3%;
 	}
-	.top_page .news .banner_list ul li:last-child {
+	.front_page .news .banner_list ul li:last-child {
 		margin-bottom: 0;
 	}
-	.top_page .about {
+	.front_page .about {
 		padding: 15% 0;
 		background-image: url(../img/top_bg_sp.jpg);
 		background-size: cover;
 		background-position: center;
 	}
-	.top_page .about div .box {
+	.front_page .about div .box {
 		text-align: left;
 	}
-	.top_page .shop>div {
+	.front_page .shop>div {
 		padding: 20px;
 		background: #F5F4F9;
 		margin-bottom: 50px;
 	}
-	.top_page .shop div ul {
+	.front_page .shop div ul {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		width: 100%;
 	}
-	.top_page .shop div ul li {
+	.front_page .shop div ul li {
 		width: 100%;
 		background: #fff;
 		padding-bottom: 3%;
 	}
-	.top_page .shop div ul li:last-child {
+	.front_page .shop div ul li:last-child {
 		padding-bottom: 0;
 	}
-	.top_page .shop div ul li div {
+	.front_page .shop div ul li div {
 		padding: 5%;
 	}
-	.top_page .shop div ul li div .name {
+	.front_page .shop div ul li div .name {
 		font-size: 18px;
 	}
-	.top_page .shop div ul li div dl {
+	.front_page .shop div ul li div dl {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: flex-start;
 	}
-	.top_page .shop div ul li div dl dt {
+	.front_page .shop div ul li div dl dt {
 		width: 80px;
 	}
-	.top_page .shop div ul li div dl dd {
+	.front_page .shop div ul li div dl dd {
 		width: calc(100% - 80px);
 	}
-	.top_page .sns ul {
+	.front_page .sns ul {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		width: 90%;
 	}
-	.top_page .sns ul li {
+	.front_page .sns ul li {
 		width: 100%;
 		margin-bottom: 50px;
 		overflow: hidden;
 	}
-	.top_page .sns ul li:last-child {
+	.front_page .sns ul li:last-child {
 		margin-bottom: 0;
 	}
-	.top_page .sns ul li .name {
+	.front_page .sns ul li .name {
 		text-align: center;
 		font-size: 20px;
 		margin-bottom: 20px;
 	}
-	.top_page .sns ul li.insta>div {
+	.front_page .sns ul li.insta>div {
 		border: none !important;
 		padding: 0 !important;
 	}
-	.top_page .sns ul li.line>div {
+	.front_page .sns ul li.line>div {
 	}
-	.top_page .sns ul li.line>div p {
+	.front_page .sns ul li.line>div p {
 		text-align: center;
 		margin-bottom: 20px;
 	}
-	.top_page .sns ul li.line>div img {
+	.front_page .sns ul li.line>div img {
 		width: 40%;
 		margin: auto;
 		display: block;
@@ -4552,7 +4552,7 @@ $common
 	section.shop_calendar div.inner div.shop_calendar_bx_wrap div.shop_calendar_bx table tr td.sat {
 		background-color: rgba(113, 203, 201, 0.5);
 	}
-	section.shop_calendar div.inner div.shop_calendar_bx_wrap div.shop_calendar_bx table tr td.close {
+	section.shop_calendar div.inner div.shop_calendar_bx_wrap div.shop_calendar_bx table tr td.closeday {
 		background-color: #FECC00;
 	}
 	section.shop_calendar div.inner div.shop_calendar_caption {
