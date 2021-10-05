@@ -10,164 +10,135 @@
 
 <!--営業日カレンダー-->
 <style>
-#businessday_calendar {
-    width: 100%;
-    max-width: 1150px;
-    margin: 0 auto;
-    padding: 60px 0;
-}
-
-#businessday_calendar .calendar_title {
-    text-align: center;
-    font-size: 24px;
-    background: #f8f8f8;
-    color: #525263;
-    line-height: 3.3;
-    margin-bottom: 20px;
-    border-bottom: 1px dotted #ccc;
-}
-#businessday_calendar .note {
-    margin-bottom: 30px;
-}
-#businessday_calendar .note span {
-  display: inline-block;
-  width: 2.5em;
-  background: #FECC00;
-  height: 1em;
-  margin-right: 5px;
-}
-#businessday_calendar .note span + span {
-  background: #fff;
-  border: 2px solid #000;
-}
-#businessday_calendar table {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 0;
-    empty-cells: show;
-}
-#businessday_calendar table caption {
-  margin-bottom: 10px;
-}
-#businessday_calendar th {
-    text-align: center;
-    background: #f8f8f8;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-}
-#businessday_calendar th#saturday {
-    color: #fff;
-}
-#businessday_calendar th#sunday {
-    color: #fff;
-}
-#businessday_calendar td {
-    text-align: center;
-    border-bottom: 1px dotted #ccc;
-    background: #fff;
-    color: #333;
-}
-#businessday_calendar .today {
-    background: #fff;
-    color: #000;
-    font-weight: bold;
-    border: 2px solid #000;
-}
-#businessday_calendar .holiday {
-    background: #FECC00;
-    color: #000;
-}
-#businessday_calendar .sundaydate {
-    background-color: rgba(230, 137, 113, 0.5);
-    color: #000;
-}
-#businessday_calendar .satdaydate {
-    background-color: rgba(113, 203, 201, 0.5);
-    color: #000;
-}
-#businessday_calendar .weekdaydate {
-    background-color: #EEEEEE;
-    color: #000;
-}
-
-
 </style>
 
-<div id="businessday_calendar">
+<section class="shop_calendar">
     <h2 class="title"><strong class="agp">CALENDAR</strong></h2>
+	<div class="inner">
+	    <div class="shop_calendar_bx_wrap">
     
-    
-    {% set year = 'now'|date('Y') %}
-    {% for month, monthitem in Date %}
-        {% if loop.index0 > 0 and month == '1' %}
-            {% set year = year+1 %}
-        {% endif %}
-        
-        <div class="shop_calendar_bx" style="width:45%; margin-left:3%; margin-right:1%; float:left;">
-        	<p class="caTop" style="font-size: 18px; font-weight: bold; margin-left: 2px;">{{ year }}.{{ month }}</p>
-        
-	        <table>
-	            <!-- ヘッダー部 -->
-	            <thead>
-	            	<tr style="height:50px;">
-	            		<th id="sunday" style="background-color:#E68971; border:1px solid #fff;" scope="col">SUN</th>
-	            		<th style="border:1px solid #fff; color: #fff; background-color:#DDDDDD;">MON</th>
-	            		<th style="border:1px solid #fff; color: #fff; background-color:#DDDDDD;">TUE</th>
-	            		<th style="border:1px solid #fff; color: #fff; background-color:#DDDDDD;">WED</th>
-	            		<th style="border:1px solid #fff; color: #fff; background-color:#DDDDDD;">THU</th>
-	            		<th style="border:1px solid #fff; color: #fff; background-color:#DDDDDD;">FRI</th>
-	            		<th id="saturday" style="background-color:#71CBC9; border:1px solid #fff;" scope="col">SAT</th>
-	            	</tr>
-	            </thead>
-	            
-	            <!-- データ部 -->
-	            <tbody>
-	                
-	                
-	                {% for dayitem in monthitem %}
-	                    {% set day = dayitem.day %}
-	                    {% if day|date('j') == '1' %}
-	                        <tr style="height:50px;">
-	                        {% if day|date('w') != '0' %}
-	                            {% for i in 1..day|date('w') %}
-	                                <td style="border:1px solid #fff;"></td>
-	                            {% endfor %}
-	                        {% endif %}
-	                    {% elseif day|date('w') == 0 %}
-	                        <tr style="height:50px;">
-	                    {% endif %}
-	                    {% set class = '' %}
-	                    {% if dayitem.is_holiday %}
-	                        {% set class = class ~ ' holiday' %}
-	                    {% elseif day|date('w') == 0 %}
-	                        {% set class = class ~ ' sundaydate' %}
-	                    {% elseif day|date('w') == 6 %}
-	                        {% set class = class ~ ' satdaydate' %}
-	                    {% else %}
-	                        {% set class = class ~ ' weekdaydate' %}
-	                    {% endif %}
-	                        
-	                        <!-- 日付表示指定あり -->
-	                        <!-- 指定方法: month == '指定月' and day|date('j') == '指定日' -->
-	                        {% if month == '10' and day|date('j') == '3' %}
-	                        <td style="border:1px solid #fff;" {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ day|date('j') }}<br><small style="font-size:2px;">18時閉店</small></span></td>
-	                    	{% else %}
-	                    	<td style="border:1px solid #fff;" {% if class != '' %} class="{{ class }}" {% endif %}>{{ day|date('j') }}</td>
-	                    	{% endif %}
-	                    {% if day|date('w') == 6 or loop.last %}
-	                        </tr>
-	                    {% endif %}
-	                {% endfor %}
-	                
-	                
-	            </tbody>
-	        </table>
+	    
+	    
+	    
+	    {% set year = 'now'|date('Y') %}
+	    {% for month, monthitem in Date %}
+	        {% if loop.index0 > 0 and month == '1' %}
+	            {% set year = year+1 %}
+	        {% endif %}
+	        
+	        <div class="shop_calendar_bx">
+	        	<p class="caTop">{{ year }}.{{ month }}</p>
+	        	
+		        <table style="position: relative;">
+		            <!-- ヘッダー部 -->
+		            <thead>
+		            	<tr>
+		            		<th width="26" style="background-color:#E68971" scope="col">SUN</th>
+                            <th width="26" scope="col">MON</th>
+                            <th width="26" scope="col">TUE</th>
+                            <th width="26" scope="col">WED</th>
+                            <th width="26" scope="col">THU</th>
+                            <th width="26" scope="col">FRI</th>
+                            <th width="26" style="background-color:#71CBC9" scope="col">SAT</th>
+		            	</tr>
+		            </thead>
+		            
+		            <!-- データ部 -->
+		            <tbody>
+		                
+		                <!-- 週のカウント(5週まで表示する(2月は4週の月もあり得る)) -->
+		                {% set week_cnt = 0 %}
+		                
+		                <!-- 月の最終日 -->
+		                {% set month_last_day = 0 %}
+		                {% for lastdayitem in monthitem %}
+		                	{% set lastday = lastdayitem.day %}
+		                	{% set month_last_day = lastday|date('j') %}
+		                {% endfor %}
+		                
+		                {% for dayitem in monthitem %}
+		                    
+		                    <!-- 4週以内なら表示する -->
+		                    {% if week_cnt <= 4 %}
+		                    
+			                    {% set day = dayitem.day %}
+			                    {% if day|date('j') == '1' %}
+			                        <tr>
+			                        {% if day|date('w') != '0' %}
+			                            {% for i in 1..day|date('w') %}
+			                                {% if i == 1 %}
+			                                	<td class=" sun"><span></span></td>
+			                                {% else %}
+			                                	<td><span></span></td>
+			                                {% endif %}
+			                            {% endfor %}
+			                        {% endif %}
+			                    {% elseif day|date('w') == 0 %}
+			                        <tr>
+			                    {% endif %}
+			                    {% set class = '' %}
+			                    {% if dayitem.is_holiday %}
+			                        {% set class = class ~ ' closeday' %}
+			                    {% elseif day|date('w') == 0 %}
+			                        {% set class = class ~ ' sun' %}
+			                    {% elseif day|date('w') == 6 %}
+			                        {% set class = class ~ ' sat' %}
+			                    {% endif %}
+			                        
+			                        <!-- 6週目がある場合、5週目での翌週の日付も表示する -->
+			                        {% set dayview = day|date('j') %}
+			                        {% if week_cnt == 4 %}
+			                        	<!-- 翌週の日付が付きの最終日以内なら表示する -->
+			                        	{% set nextweekday = day|date('j') + 7 %}
+			                        	{% if nextweekday <= month_last_day %}
+			                        		{% set dayview = dayview~'/'~nextweekday %}
+			                        	{% endif %}
+			                        {% endif %}
+			                        
+			                        <!-- 日付表示指定あり -->
+			                        <!-- ※指定方法: month == '指定月' and day|date('j') == '指定日' -->
+			                        {% if month == '10' and day|date('j') == '3' %}
+			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">18時閉店</small></span></td>
+			                    	{% else %}
+			                    		<!-- 日付表示指なし -->
+			                    		<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}</span></td>
+			                    	{% endif %}
+			                    {% if day|date('w') == 6 or loop.last %}
+			                    
+			                        <!-- 最終週が土曜までなければ補填する -->
+			                        {% if loop.last %}
+			                        	{% for i in (day|date('w')+1)..6 %}
+			                                {% if i == 6 %}
+			                                	<td class=" sat"><span></span></td>
+			                                {% else %}
+			                                	<td><span></span></td>
+			                                {% endif %}
+			                            {% endfor %}
+			                        {% endif %}
+			                        
+			                        </tr>
+			                        
+			                        {% set week_cnt = week_cnt + 1 %}
+			                    {% endif %}
+			                
+			                {% endif %}
+		                    <!-- .5週以内なら表示する -->
+		                    
+		                {% endfor %}
+		                
+		            </tbody>
+		        </table>
+	        </div>
+	        
+	    {% endfor %}
+	    </div>
+	    
+	    <p style="text-align:right;margin-bottom:10px;">※コロナウイルスの影響により、予告なしに営業時間の短縮または臨時休業を行う可能性がございます。</p>
+        <div class="shop_calendar_caption">
+          <div></div>
+          <p>休業日</p>
         </div>
-        
-    {% endfor %}
-    <div style="clear:both;"></div>
-    
-    <p style="text-align:right;margin-bottom:10px;">※コロナウイルスの影響により、予告なしに営業時間の短縮または臨時休業を行う可能性がございます。</p>
-    <div class="note" style="text-align:right;"><span></span>休業日</div>
-
-</div>
+		
+    </div>
+	
+</section>
