@@ -212,19 +212,8 @@ file that was distributed with this source code.
 					   candle_no3_no.value == '' &&
 					   candle_no3_num.value == ''
 					){
-						//アラート
-		                alert('キャンドルを選択してください');
-		                
-		                /* ToDo あとで全部反映
-		                //サイズ選択欄の背景色を赤にする
-		                var candle_sentaku_id = 'option_form_candle';
-			    		
-			    		if(document.getElementById(candle_sentaku_id) != null){
-							document.getElementById(candle_sentaku_id).style.color="red";
-						}
-						*/
-						
-						return false;
+						alert('キャンドルを選択してください');
+		                return false;
 					}
 					
 					
@@ -232,37 +221,15 @@ file that was distributed with this source code.
 					if((candle_no1_no.value != '' && candle_no1_num.value == '') ||
 					   (candle_no1_no.value == '' && candle_no1_num.value != '')
 					){
-						//アラート
-		                alert('NoキャンドルはNoと本数を選択してください');
-		                
-		                /* ToDo あとで全部反映
-		                //サイズ選択欄の背景色を赤にする
-		                var candle_no1_sentaku_id = 'candle_no1_nyuryoku';
-			    		
-			    		if(document.getElementById(candle_no1_sentaku_id) != null){
-							document.getElementById(candle_no1_sentaku_id).style.color="red";
-						}
-						*/
-						
-						return false;
+						alert('NoキャンドルはNoと本数を選択してください');
+		                return false;
 					}
 					
 					//NoキャンドルのNoか本数が未選択ならアラート表示(2)
 					if((candle_no2_no.value != '' && candle_no2_num.value == '') ||
 					   (candle_no2_no.value == '' && candle_no2_num.value != '')
 					){
-						//アラート
-		                alert('NoキャンドルはNoと本数を選択してください');
-		                
-		                /* ToDo あとで全部反映
-		                //サイズ選択欄の背景色を赤にする
-		                var candle_no2_sentaku_id = 'candle_no2_nyuryoku';
-			    		
-			    		if(document.getElementById(candle_no2_sentaku_id) != null){
-							document.getElementById(candle_no2_sentaku_id).style.color="red";
-						}
-						*/
-						
+						alert('NoキャンドルはNoと本数を選択してください');
 						return false;
 					}
 					
@@ -270,17 +237,8 @@ file that was distributed with this source code.
 					if((candle_no3_no.value != '' && candle_no3_num.value == '') ||
 					   (candle_no3_no.value == '' && candle_no3_num.value != '')
 					){
-						//アラート
-		                alert('NoキャンドルはNoと本数を選択してください');
-		                
-		                //サイズ選択欄の背景色を赤にする
-		                var candle_no3_sentaku_id = 'candle_no3_nyuryoku';
-			    		
-			    		if(document.getElementById(candle_no3_sentaku_id) != null){
-							document.getElementById(candle_no3_sentaku_id).style.color="red";
-						}
-						
-						return false;
+						alert('NoキャンドルはNoと本数を選択してください');
+		                return false;
 					}
 				}
 			}
@@ -295,8 +253,6 @@ file that was distributed with this source code.
 				const chk_message_nosel = document.getElementById("chk_message_nosel");
 				if(chk_message_nosel.checked != true){
 					//・メッセージプレート指定あり
-					
-					//メッセージプレート選択
 					let PlateSelElms = document.getElementsByName('messageplate');
 					let plend = PlateSelElms.length;
 					let checkPlate = '';
@@ -306,9 +262,7 @@ file that was distributed with this source code.
 					    }
 					}
 					if(checkPlate == ''){
-						
-						//アラート
-			            alert('メッセージプレートを選択してください');
+						alert('メッセージプレートを選択してください');
 			            return false;
 					}
 				}
@@ -329,8 +283,7 @@ file that was distributed with this source code.
 						namachoco_chk.checked == false &&
 						echoco_chk.checked == false 
 					){
-						//アラート
-			            alert('デコレーション追加を選択してください');
+						alert('デコレーション追加を選択してください');
 			            return false;
 					}
 				}
@@ -356,8 +309,7 @@ file that was distributed with this source code.
 					    }
 					}
 					if(checkHaiso == ''){
-						//アラート
-			            alert('包装方法を選択してください');
+						alert('包装方法を選択してください');
 			            return false;
 					}
 					
@@ -374,8 +326,7 @@ file that was distributed with this source code.
 						    }
 						}
 						if(checkHKakekata == ''){
-							//アラート
-				            alert('熨斗紙の掛け方を選択してください');
+							alert('熨斗紙の掛け方を選択してください');
 				            return false;
 						}
 						
@@ -389,8 +340,7 @@ file that was distributed with this source code.
 						    }
 						}
 						if(checkSyurui == ''){
-							//アラート
-				            alert('掛け紙・包装の種類を選択してください');
+							alert('掛け紙・包装の種類を選択してください');
 				            return false;
 						}
 						
@@ -404,8 +354,7 @@ file that was distributed with this source code.
 						    }
 						}
 						if(checkUwagaki == ''){
-							//アラート
-				            alert('上書きを選択してください');
+							alert('上書きを選択してください');
 				            return false;
 						}
 					}
@@ -433,50 +382,17 @@ file that was distributed with this source code.
 					   pori_dai_chk.checked == false &&
 					   pori_tokudai_chk.checked == false
 					   ){
-						//アラート
-			            alert('持ち帰りポリ袋を選択してください');
+						alert('持ち帰りポリ袋を選択してください');
 			            return false;
 					}
 				}
 			}
            
-            
             //チェックに不備がなければtrue
 			return true;
         }
     </script>
     <script>
-        /*
-        * ※は有料
-        * <キャンドルオプション>
-        *  キャンドル大×数
-        *  キャンドル小×数
-        *  Noキャンドル×数 (1つめ) ※
-        *  Noキャンドル×数 (2つめ) ※
-        *  Noキャンドル×数 (3つめ) ※
-        * <デコオプション>
-        *  メッセージプレート種類
-        *  メッセージ入力(1つめ)
-        *  メッセージ入力(2つめ)※
-        *  メッセージ入力(3つめ)※
-        *  メッセージ入力(4つめ)※
-        *  メッセージ入力(5つめ)※
-        *  いちごUP      ※
-        *  フルーツUP    ※
-        *  生チョコUP    ※
-        *  絵チョコ(4号) ※
-        * <ギフト>
-        * 包装方法
-        * 熨斗紙の掛け方
-        * 掛け紙・熨斗の種類
-        * 上書き
-        * 熨斗の名入れ入力
-        * <袋オプション>
-        * ポリ袋 中   ※
-        * ポリ袋 大   ※
-        * ポリ袋 特大 ※
-        */
-        
         var optionselect_all    = '';
         var optionselect_candle = '';
         var optionselect_message= '';
@@ -534,7 +450,6 @@ file that was distributed with this source code.
             //---キャンドル---
 			var option_form_candle = 'option_form_candle';
 			if(document.getElementById(option_form_candle) != null){
-				//キャンドルオプションがある場合
 				// キャンドル大
 				const candle_dai_num = document.getElementById("candle_dai_num");
 				// キャンドル小
@@ -552,11 +467,8 @@ file that was distributed with this source code.
 				//キャンドルの不要チェック
 				const chk_candle_nosel = document.getElementById("chk_candle_nosel");
 				if(chk_candle_nosel.checked != true){
-					//・キャンドル指定あり
-					
 					//キャンドル大
 					if(candle_dai_num.value != ''){
-						
 						optionselect_candle = optionselect_candle + ' キャンドル大:'
 						optionselect_candle = optionselect_candle + ' ' + candle_dai_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + '\n';
@@ -564,7 +476,6 @@ file that was distributed with this source code.
 					
 					//キャンドル小
 					if(candle_syo_num.value != ''){
-						
 						optionselect_candle = optionselect_candle + ' キャンドル小:'
 						optionselect_candle = optionselect_candle + ' ' + candle_syo_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + '\n';
@@ -572,7 +483,6 @@ file that was distributed with this source code.
 					
 					//Noキャンドル(1)
 					if(candle_no1_no.value != '' && candle_no1_num.value != ''){
-						
 						//追加料金セット
 						var $plus_price_cn1 = candle_no1_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn1;
@@ -587,7 +497,6 @@ file that was distributed with this source code.
 					
 					//Noキャンドル(2)
 					if(candle_no2_no.value != '' && candle_no2_num.value != ''){
-						
 						//追加料金セット
 						var $plus_price_cn2 = candle_no2_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn2;
@@ -601,7 +510,6 @@ file that was distributed with this source code.
 					
 					//Noキャンドル(3)
 					if(candle_no3_no.value != '' && candle_no3_num.value != ''){
-						
 						//追加料金セット
 						var $plus_price_cn3 = candle_no3_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn3;
@@ -624,13 +532,9 @@ file that was distributed with this source code.
             //--- メッセージプレート ---
 			var option_form_option = 'option_form_option';
 			if( (document.getElementById(option_form_option) != null) ){
-				//メッセージプレートがある場合
-				
 				//メッセージプレートの不要チェック
 				const chk_message_nosel = document.getElementById("chk_message_nosel");
 				if(chk_message_nosel.checked != true){
-					//・メッセージプレート指定あり
-					
 					//メッセージプレート選択
 					let PlateSelElms = document.getElementsByName('messageplate');
 					let plend = PlateSelElms.length;
@@ -659,7 +563,6 @@ file that was distributed with this source code.
 					if(document.getElementById("printname_plate_2") != null){
 						const p_message = document.getElementById("printname_plate_2").value;
 						if(p_message != ''){
-							
 							//追加料金セット
 							$addprice = $addprice + ($deco_tuika_plate);
 							
@@ -673,7 +576,6 @@ file that was distributed with this source code.
 					if(document.getElementById("printname_plate_3") != null){
 						const p_message = document.getElementById("printname_plate_3").value;
 						if(p_message != ''){
-							
 							//追加料金セット
 							$addprice = $addprice + ($deco_tuika_plate);
 							
@@ -686,7 +588,6 @@ file that was distributed with this source code.
 					if(document.getElementById("printname_plate_4") != null){
 						const p_message = document.getElementById("printname_plate_4").value;
 						if(p_message != ''){
-							
 							//追加料金セット
 							$addprice = $addprice + ($deco_tuika_plate);
 							
@@ -699,7 +600,6 @@ file that was distributed with this source code.
 					if(document.getElementById("printname_plate_5") != null){
 						const p_message = document.getElementById("printname_plate_5").value;
 						if(p_message != ''){
-							
 							//追加料金セット
 							$addprice = $addprice + ($deco_tuika_plate);
 							
@@ -719,11 +619,9 @@ file that was distributed with this source code.
 			//--- デコオプション ---
 			var option_form_deco = 'option_form_deco';
 			if( (document.getElementById(option_form_deco) != null) ){
-				//デコオプションがある場合
-				//デコオプションの不要チェック　koko
+				//デコオプションの不要チェック
 				const chk_deco_nosel = document.getElementById("chk_deco_nosel");
 				if(chk_deco_nosel.checked != true){	
-					//--- デコレーション追加 ---
 					//いちごUP
 					const ichigo_chk = document.getElementById("ichigo_chk");
 					if(ichigo_chk.checked){
@@ -779,13 +677,9 @@ file that was distributed with this source code.
             //--- ギフト ---
             var option_form_noshi = 'option_form_noshi';
 			if( (document.getElementById(option_form_noshi) != null) ){
-				//ギフトがある場合
-				
 				//包装方法の不要チェック
 				const chk_haiso_nosel = document.getElementById("chk_haiso_nosel");
 				if(chk_haiso_nosel.checked != true){
-					//・包装方法指定あり
-					
 					//包装方法選択
 					let HaisoSelElms = document.getElementsByName('housouselect');
 					let pleng = HaisoSelElms.length;
@@ -796,7 +690,6 @@ file that was distributed with this source code.
 					    }
 					}
 					if(checkHaiso != ''){
-						
 						optionselect_gift = optionselect_gift + ' 包装方法を選択:'
 						optionselect_gift = optionselect_gift + ' ' + checkHaiso + ' '; 
 						optionselect_gift = optionselect_gift + '\n';
@@ -867,18 +760,13 @@ file that was distributed with this source code.
             //--- 袋オプション ---
 			var option_form_bag = 'option_form_bag';
 			if( (document.getElementById(option_form_bag) != null) ){
-				//袋オプションがある場合
-				
 				//持ち帰りポリ袋の不要チェック
 				const chk_hukuro_nosel = document.getElementById("chk_hukuro_nosel");
 				if(chk_hukuro_nosel.checked != true){
-					//・持ち帰りポリ袋指定あり
-					
 					//--- 持ち帰りポリ袋 ---
 					//ポリ袋 中
 					const pori_cyu_chk = document.getElementById("pori_cyu_chk");
 					if(pori_cyu_chk.checked){
-						
 						//追加料金セット
 						$addprice = $addprice + ($bag_poli_cyu);
 						
@@ -889,7 +777,6 @@ file that was distributed with this source code.
 					//ポリ袋 大
 					const pori_dai_chk = document.getElementById("pori_dai_chk");
 					if(pori_dai_chk.checked){
-						
 						//追加料金セット
 						$addprice = $addprice + ($bag_poli_dai);
 						
@@ -900,7 +787,6 @@ file that was distributed with this source code.
 					//ポリ袋 特大
 					const pori_tokudai_chk = document.getElementById("pori_tokudai_chk");
 					if(pori_tokudai_chk.checked){
-						
 						//追加料金セット
 						$addprice = $addprice + ($bag_poli_tokudai);
 						
@@ -931,10 +817,8 @@ file that was distributed with this source code.
         }
         
         
-        
         // 指定されたオプション有料金額を含めた合計金額をセットする
         function setOptionTotalPrice() {
-            
             //有料オプション総額
             $yuryou_price = 0;
             
@@ -982,7 +866,6 @@ file that was distributed with this source code.
             //--- メッセージプレート ---
 			var option_form_option = 'option_form_option';
 			if( (document.getElementById(option_form_option) != null) ){
-				//・メッセージプレートがある場合
 				//メッセージプレートの不要チェック
 				const chk_message_nosel = document.getElementById("chk_message_nosel");
 				if(chk_message_nosel.checked != true){
@@ -1024,11 +907,9 @@ file that was distributed with this source code.
 			//--- デコオプション ---
 			var option_form_deco = 'option_form_deco';
 			if( (document.getElementById(option_form_deco) != null) ){
-				//・デコオプションがある場合
 				//デコオプションの不要チェック
 				const chk_deco_nosel = document.getElementById("chk_deco_nosel");
 				if(chk_deco_nosel.checked != true){	
-					//--- デコレーション追加 ---
 					//いちごUP
 					const ichigo_chk = document.getElementById("ichigo_chk");
 					if(ichigo_chk.checked){
@@ -1058,7 +939,6 @@ file that was distributed with this source code.
             //--- 袋オプション ---
 			var option_form_bag = 'option_form_bag';
 			if( (document.getElementById(option_form_bag) != null) ){
-				//・袋オプションがある場合
 				//持ち帰りポリ袋の不要チェック
 				const chk_hukuro_nosel = document.getElementById("chk_hukuro_nosel");
 				if(chk_hukuro_nosel.checked != true){
@@ -1095,8 +975,7 @@ file that was distributed with this source code.
             
             //オプション含めた合計金額
             var $additional_total_price = "￥" + $goukei_price.toLocaleString();
-            //var $additional_total_price = "￥" + $normal_price;
-		  	var $addTotalPrice = $form.parent().find('.additional-total-price-default').first();
+            var $addTotalPrice = $form.parent().find('.additional-total-price-default').first();
             $addTotalPrice.text($additional_total_price);
         }
         
@@ -1691,15 +1570,13 @@ file that was distributed with this source code.
 		//ポリ特大
 		const per_price_bag_poli_tokudai = 30;
 		
-		//  いちごUP
+		//いちごUP
         const per_price_ichigo_up       = 400;
-        //  フルーツUP
+        //フルーツUP
         const per_price_fruit_up        = 400;
-        //  生チョコUP
+        //生チョコUP
         const per_price_namachoco_up    = 400;
-        //  追加プレート(2枚目から)
-        const per_price_tuika_plate     = 60;
-        //  絵チョコ(4号)
+        //絵チョコ(4号)
         const per_price_echoco_yongou   = 800;
         
         //追加プレート
@@ -1763,25 +1640,21 @@ file that was distributed with this source code.
 		  SetDecoEchocoUp();
 		};
 		
-		//kokoko
         //追加プレート(2)のチェックが変更されたとき金額を反映する
 	    document.getElementById("printname_plate_2").onchange = function() {
 		  //有料金額反映
 		  SetAdditionalPlate2();
 		};
-		
 		//追加プレート(3)のチェックが変更されたとき金額を反映する
 	    document.getElementById("printname_plate_3").onchange = function() {
 		  //有料金額反映
 		  SetAdditionalPlate3();
 		};
-		
 		//追加プレート(4)のチェックが変更されたとき金額を反映する
 	    document.getElementById("printname_plate_4").onchange = function() {
 		  //有料金額反映
 		  SetAdditionalPlate4();
 		};
-		
 		//追加プレート(5)のチェックが変更されたとき金額を反映する
 	    document.getElementById("printname_plate_5").onchange = function() {
 		  //有料金額反映
@@ -2061,15 +1934,16 @@ file that was distributed with this source code.
                         {% for ProductCategory in Product.ProductCategories %}
                                 {% for Category in ProductCategory.Category.path %}
                                     
-                                    <!-- デコオプションと判定 -->
+                                    <!-- カテゴリから判定する -->
                                     {% if Category.name == 'デコオプション' %}
                                     	{% set is_deco_option = true  %}
                                     	{% set is_candle_option = true  %}
                                     {% endif %}
-                                    <!-- と判定 -->
+                                    
                                     {% if Category.name == 'ギフト' %}
                                     	{% set is_gift = true  %}
                                     {% endif %}
+                                    
                                     {% if Category.name == '袋オプション' %}
                                     	{% set is_bag_option = true  %}
                                     {% endif %}
@@ -2083,6 +1957,7 @@ file that was distributed with this source code.
                                     
                                     {%- if loop.last == false %}
                                     {% endif -%}
+                                    
                                 {% endfor %}
                         {% endfor %}
                     {% endif %}
@@ -2114,34 +1989,6 @@ file that was distributed with this source code.
 	                    	
 	                    <div class="ec-productRole__description" style="padding-top:10px;">
 	                    
-	                    {# 商品コード #}
-	                    <!--
-	                    {% if Product.code_min is not empty %}
-	                        <div class="ec-productRole__code">
-	                            {{ '商品コード'|trans }}： <span class="product-code-default">{{ Product.code_min }}{% if Product.code_min != Product.code_max %} ～ {{ Product.code_max }}{% endif %}</span>
-	                        </div>
-	                    {% endif %}
-	                    -->
-	                    {# 関連カテゴリ #}
-	                    <!--
-	                    {% if Product.ProductCategories is not empty %}
-	                        <div class="ec-productRole__category">
-	                            <div>{{ '関連カテゴリ'|trans }}</div>
-	                            {% for ProductCategory in Product.ProductCategories %}
-	                                <ul>
-	                                    <li>
-	                                        {% for Category in ProductCategory.Category.path %}
-	                                            <a href="{{ url('product_list') }}?category_id={{ Category.id }}">{{ Category.name }}</a> {%- if loop.last == false %}
-	                                            <span>＞</span>{% endif -%}
-	                                        {% endfor %}
-	                                    </li>
-	                                </ul>
-	                            {% endfor %}
-	                        </div>
-	                    {% endif %}
-	                    -->
-	                
-                    
                         {% if Product.stock_find %}
                          <div id="blk_syohin_main" style="display:block;">   
                             <!-- サイズ -->
@@ -3210,9 +3057,6 @@ file that was distributed with this source code.
                     </div>
                 </div>
             </div>
-            
-            
-            
             
         </div>
               
