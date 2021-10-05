@@ -53,6 +53,19 @@ file that was distributed with this source code.
 		   document.getElementById('itsp').classList.remove('active');
 		}, false);
 		
+		
+		const burger_btn = document.getElementById('burger_btn');
+		burger_btn.addEventListener('click', () => {
+		   
+		   if(burger_btn.classList.contains('active') == true){
+		   	   //バーガー表示中ならバーガーを非表示にする
+			   document.getElementById('burger_btn').classList.remove('active');
+		   }else{
+			   //バーガー非表示ならバーガーを表示する
+			   document.getElementById('burger_btn').classList.add('active');
+		   }
+		}, false);
+		
     });
 </script>
 
@@ -60,7 +73,7 @@ file that was distributed with this source code.
 <header id="topheader"  class="{% if Page.url == 'homepage' %}top_header{% endif %}">
     <div class="inner">
       <p class="logo"><a href="/"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo.png" alt="菓子工房T.YOKOGAWA"></a></p><!-- .logo -->
-      <span class="burger"><span></span><span></span><span></span></span>
+      <span id="burger_btn" class="burger"><span></span><span></span><span></span></span>
       <nav>
         <span class="logo_sp">
         	<a href="/">
@@ -76,6 +89,7 @@ file that was distributed with this source code.
         	<a href="{{ url('entry') }}" class="member">新規会員登録</a> 
         	<a href="{{ url('mypage_login') }}" class="M_loginBtn">ログイン</a>
         {% endif %}
+        	<a href="{{ url('mypage') }}" class="mypage"></a>
         	<a href="https://www.instagram.com/cake_yokogawa/" rel="noopener noreferrer" target="_blank" class="insta"></a>
         	<a href="https://line.me/R/ti/p/%40854fgmlr" rel="noopener noreferrer" target="_blank" class="line"></a>
         </div>
@@ -93,17 +107,25 @@ file that was distributed with this source code.
             <div class="inner">
             <p><span class="agp">PRODUCTS</span>商品からえらぶ</p>
             
-			<div class="ec-headerSearch">
+            <div class="search">
+            	<input type="text" id="MakeShopTopSearchInput" placeholder="キーワード検索">
+            	<a href="javascript:void(0)" id="MakeShopTopSearchButton" >検索</a>
+            	<script>$(function(){$('#MakeShopTopSearchInput').attr('placeholder','キーワード検索');});</script>
+            </div>
+            
+			<div style="display:none;">
 				<form method="get" class="searchform" action="{{ path('product_list') }}">
 					<div class="ec-input">
-						<input type="search" name="name" maxlength="50" class="search-name" placeholder="キーワードを入力" value="">
+						<input type="search" name="name" maxlength="50" class="search-name" placeholder="キーワード検索" value="">
 						<button class="ec-headerSearch__keywordBtn" style="position:unset; transform:translateY(-20%);" type="submit">
 					    	<img src="{{ asset('assets/icon/search-dark.svg') }}" alt="検索" width="40" height="40">
 					    </button>
 				    </div>
 			    </form>
 			</div>
+			
             <a href="{{ url('cart') }}" class="cart_btn">カートを見る</a>
+            
             <dl class="category">
               <dt>商品一覧</dt>
               <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#decoration"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav01.jpg" alt=""><span>デコレーション</span></a></dd>
