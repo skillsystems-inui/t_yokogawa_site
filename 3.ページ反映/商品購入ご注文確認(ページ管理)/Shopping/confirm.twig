@@ -80,7 +80,11 @@ file that was distributed with this source code.
             </div>
             <div class="ec-orderDelivery">
                 <div class="ec-rectHeading">
+                    {% if Order.uketori_type == 2 %}
+                    <h2>{{ 'お取り寄せ情報'|trans }}</h2>
+                    {% else %}
                     <h2>{{ '受け取り情報'|trans }}</h2>
+                    {% endif %}
                 </div>
                 {% for shipping in Order.shippings %}
                     {% set idx = loop.index0 %}
@@ -158,7 +162,11 @@ file that was distributed with this source code.
                     <div class="ec-orderDelivery__actions">
                         <div class="ec-selects">
                             <div class="ec-select">
+                                {% if Order.uketori_type == 2 %}
+                                <label>{{ 'お取り寄せ方法'|trans }}</label>
+                                {% else %}
                                 <label>{{ '受け取り方法'|trans }}</label>
+		                        {% endif %}
                                 {% set delivery_fee = 0 %}
                                 {% for item in shipping.order_items if item.isDeliveryFee %}
                                     {% set delivery_fee = item.total_price %}
@@ -166,11 +174,19 @@ file that was distributed with this source code.
                                 {{ Order.Shippings[idx].Delivery }}({{ delivery_fee|price }})
                             </div>
                             <div class="ec-select ec-select__delivery">
+                                {% if Order.uketori_type == 2 %}
+                                <label>{{ '配送日'|trans }}</label>
+		                        {% else %}
                                 <label>{{ '受け取り日'|trans }}</label>
+		                        {% endif %}
                                 {{ Order.Shippings[idx].shipping_delivery_date? Order.Shippings[idx].shipping_delivery_date|date_day_with_weekday : '指定なし'|trans }}
                             </div>
                             <div class="ec-select ec-select__time">
+                                {% if Order.uketori_type == 2 %}
+                                <label>{{ '配送時間'|trans }}</label>
+		                        {% else %}
                                 <label>{{ '受け取り時間'|trans }}</label>
+		                        {% endif %}
                                 {{ Order.Shippings[idx].shipping_delivery_time?: '指定なし'|trans }}
                             </div>
                         </div>
