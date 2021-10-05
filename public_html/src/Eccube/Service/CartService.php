@@ -489,6 +489,18 @@ class CartService
 
         return $this;
     }
+    
+    /**
+     * @param  string $uketori_type
+     *
+     * @return \Eccube\Service\CartService
+     */
+    public function setUketoriType($uketori_type)
+    {
+        $this->getCart()->setUketoriType($uketori_type);
+
+        return $this;
+    }
 
     /**
      * @return null|string

@@ -118,6 +118,13 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         private $update_date;
 
         /**
+         * @var string|null
+         *
+         * @ORM\Column(name="uketori_type", type="string", length=20, nullable=true)
+         */
+        private $uketori_type;
+
+        /**
          * @var InvalidItemException[]
          */
         private $errors = [];
@@ -458,5 +465,30 @@ if (!class_exists('\Eccube\Entity\Cart')) {
         {
             // TODO quiet
         }
+        
+        /**
+         * Set uketoriType.
+         *
+         * @param string|null $uketoriType
+         *
+         * @return Order
+         */
+        public function setUketoriType($uketoriType = null)
+        {
+            $this->uketori_type = $uketoriType;
+
+            return $this;
+        }
+
+        /**
+         * Get uketoriType.
+         *
+         * @return string|null
+         */
+        public function getUketoriType()
+        {
+            return $this->uketori_type;
+        }
+        
     }
 }

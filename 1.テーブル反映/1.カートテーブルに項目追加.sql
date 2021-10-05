@@ -38,3 +38,6 @@ ALTER TABLE `dtb_cart_item` ADD `option_class_category_id20` int(10) unsigned DE
 
 --オプション選択内容(文字列)
 ALTER TABLE `dtb_cart_item` ADD `option_detail` varchar(1024) DEFAULT NULL;
+
+--受取方法 (tentou:店頭受取、toriyose:お取り寄せ)
+ALTER TABLE `dtb_cart` ADD `uketori_type` varchar(20) DEFAULT NULL;

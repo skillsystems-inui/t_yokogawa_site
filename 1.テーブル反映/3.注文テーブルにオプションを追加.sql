@@ -82,3 +82,6 @@ ALTER TABLE `dtb_order_item` ADD `option_detail` varchar(1024) DEFAULT NULL;
 
 --スマレジの取引ID
 ALTER TABLE `dtb_order` ADD `smaregi_id` varchar(20) DEFAULT NULL;
+
+--受取方法 (tentou:店頭受取、toriyose:お取り寄せ)
+ALTER TABLE `dtb_order` ADD `uketori_type` varchar(20) DEFAULT NULL;

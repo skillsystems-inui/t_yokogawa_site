@@ -231,7 +231,7 @@ class CartController extends AbstractController
     }
 
     /**
-     * カートをロック状態に設定し、購入確認画面へ遷移する.
+     * カートをロック状態に設定し、購入確認画面へ遷移する.(お取り寄せ)
      *
      * @Route("/cart/buystep/{cart_key}", name="cart_buystep", requirements={"cart_key" = "[a-zA-Z0-9]+[_][\x20-\x7E]+"})
      */
@@ -247,7 +247,48 @@ class CartController extends AbstractController
             $request
         );
         $this->eventDispatcher->dispatch(EccubeEvents::FRONT_CART_BUYSTEP_INITIALIZE, $event);
+		
+		//受け取り方法セット 1:店頭受け取り,2:お取り寄せ
+		$this->cartService->setUketoriType(2);
+		
+        $this->cartService->setPrimary($cart_key);
+        $this->cartService->save();
 
+        // FRONT_CART_BUYSTEP_COMPLETE
+        $event = new EventArgs(
+            [],
+            $request
+        );
+        $this->eventDispatcher->dispatch(EccubeEvents::FRONT_CART_BUYSTEP_COMPLETE, $event);
+
+        if ($event->hasResponse()) {
+            return $event->getResponse();
+        }
+
+        return $this->redirectToRoute('shopping');
+    }
+    
+    /**
+     * カートをロック状態に設定し、購入確認画面へ遷移する.(店頭受け取り)
+     *
+     * @Route("/cart/buysteptentou/{cart_key}", name="cart_buysteptentou", requirements={"cart_key" = "[a-zA-Z0-9]+[_][\x20-\x7E]+"})
+     */
+    public function buysteptentou(Request $request, $cart_key)
+    {
+        $Carts = $this->cartService->getCart();
+        if (!is_object($Carts)) {
+            return $this->redirectToRoute('cart');
+        }
+        // FRONT_CART_BUYSTEP_INITIALIZE
+        $event = new EventArgs(
+            [],
+            $request
+        );
+        $this->eventDispatcher->dispatch(EccubeEvents::FRONT_CART_BUYSTEP_INITIALIZE, $event);
+		
+		//受け取り方法セット 1:店頭受け取り,2:お取り寄せ
+		$this->cartService->setUketoriType(1);
+		
         $this->cartService->setPrimary($cart_key);
         $this->cartService->save();
 

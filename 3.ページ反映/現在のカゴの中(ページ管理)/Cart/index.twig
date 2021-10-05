@@ -77,7 +77,7 @@ file that was distributed with this source code.
             	//モーダルを閉じる
             	$('.ec-option-modal').hide();
             	//レジに進むボタンを押す
-            	document.getElementById("go-regi").click();
+            	document.getElementById("go-regi-tentou").click();
             }
         }
         
@@ -408,6 +408,8 @@ file that was distributed with this source code.
                         <a class="ec-blockBtn--action select-options" id="to-regi" onclick="checkTypeRegi()">{{ 'レジに進む'|trans }}</a>
                         <!-- レジに進むボタン(実施)-->
                         <a class="ec-blockBtn--action" style="display:none;" id="go-regi" href="{{ path('cart_buystep', {'cart_key':cartKey}) }}">{{ 'レジに進む実施'|trans }}</a>
+                        <!-- レジに進むボタン(実施)(店頭受取)-->
+                        <a class="ec-blockBtn--action" style="display:none;" id="go-regi-tentou" href="{{ path('cart_buysteptentou', {'cart_key':cartKey}) }}">{{ 'レジに進む実施(店頭受取)'|trans }}</a>
                         
                         {% if loop.last %}
                             <a class="ec-blockBtn--cancel" href="{{ path('homepage') }}">{{ 'お買い物を続ける'|trans }}</a>
