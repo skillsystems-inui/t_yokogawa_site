@@ -160,17 +160,21 @@ class OrderHelper
 
         $this->setDefaultPayment($Order);
         
-        //オプション指定情報をメモに登録する koko
         $OptionMemo = $this->createOrderMemoFromOrderItems($Order);
-        $Order->setNote($OptionMemo);
-
+        $UketoriType = $Cart->getUketoriType();
         
 		log_info(
-            'OptionMemo',
+            'OptionMemo_UketoriType',
             [
                 'OptionMemo' => $OptionMemo,
+                'UketoriType' => $UketoriType,
             ]
         );
+        
+        //オプション指定情報をメモに登録する
+        $Order->setNote($OptionMemo);
+        //受け取り方法を注文に反映する
+        $Order->setUketoriType($UketoriType);
 
         $this->entityManager->persist($Order);
 

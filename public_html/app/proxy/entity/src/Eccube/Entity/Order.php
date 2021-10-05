@@ -473,6 +473,13 @@ use Eccube\Service\PurchaseFlow\ItemCollection;
         private $smaregi_id;
 
         /**
+         * @var string|null
+         *
+         * @ORM\Column(name="uketori_type", type="string", length=20, nullable=true)
+         */
+        private $uketori_type;
+
+        /**
          * 注文完了画面に表示するメッセージ
          *
          * プラグインから注文完了時にメッセージを表示したい場合, このフィールドにセットすることで, 注文完了画面で表示されます。
@@ -1910,6 +1917,30 @@ use Eccube\Service\PurchaseFlow\ItemCollection;
         public function getSmaregiId()
         {
             return $this->smaregi_id;
+        }
+                
+        /**
+         * Set uketoriType.
+         *
+         * @param string|null $uketoriType
+         *
+         * @return Order
+         */
+        public function setUketoriType($uketoriType = null)
+        {
+            $this->uketori_type = $uketoriType;
+
+            return $this;
+        }
+
+        /**
+         * Get uketoriType.
+         *
+         * @return string|null
+         */
+        public function getUketoriType()
+        {
+            return $this->uketori_type;
         }
 
     }
