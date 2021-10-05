@@ -3661,7 +3661,7 @@ $common
 		content: '';
 		width: 1.5em;
 		height: 1.5em;
-		background: url(../img/ico_beginner.svg) no-repeat center;
+		background: url(../img/common/user_guide/ico_beginner.svg) no-repeat center;
 		background-size: contain;
 		display: inline-block;
 		vertical-align: sub;
@@ -3711,25 +3711,25 @@ $common
 		margin: auto;
 	}
 	.guide_nav ul li.howto a::before {
-		background-image: url(../img/ico_question.svg);
+		background-image: url(../img/common/user_guide/ico_question.svg);
 	}
 	.guide_nav ul li.purse a::before {
-		background-image: url(../img/ico_purse.svg);
+		background-image: url(../img/common/user_guide/ico_purse.svg);
 	}
 	.guide_nav ul li.cancel a::before {
-		background-image: url(../img/ico_x.svg);
+		background-image: url(../img/common/user_guide/ico_x.svg);
 	}
 	.guide_nav ul li.wrapping a::before {
-		background-image: url(../img/ico_present.svg);
+		background-image: url(../img/common/user_guide/ico_present.svg);
 	}
 	.guide_nav ul li.postage a::before {
-		background-image: url(../img/ico_truck.svg);
+		background-image: url(../img/common/user_guide/ico_truck.svg);
 	}
 	.guide_nav ul li.shopfront a::before {
-		background-image: url(../img/ico_shop.svg);
+		background-image: url(../img/common/user_guide/ico_shop.svg);
 	}
 	.guide_nav ul li.point a::before {
-		background-image: url(../img/ico_point.svg);
+		background-image: url(../img/common/user_guide/ico_point.svg);
 	}
 	.item_main {
 		width: 100%;
