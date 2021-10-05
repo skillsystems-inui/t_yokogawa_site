@@ -9,35 +9,35 @@ For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 #}
 
-<div class="ec-role">
-    <div class="ec-newItemRole">
-        
-        <h2 class="title"><strong class="agp">SHOP</strong></h2>
-        
-        <div class="ec-newItemRole__list">
-            
-            <div class="ec-newItemRole__listItem" style="width:calc(100%/2);">
-                    <img src="{{ asset('assets/img/top/shop_honten01.jpg') }}">
-                    <div style="margin-left:50px;">
-                      <p class="ec-newItemRole__listItemTitle" style="color:black; text-align:left; font-size:18px;">{{ 'T.YOKOGAWA ˜aò’†‰›–{“X'|trans }}</p>
-                      <p class="ec-newItemRole__listItemTitle" style="color:black; text-align:left; font-size:13px;margin-top:0px;">{{ 'Address'|trans }}&emsp;{{ '§594-1104@‘åã•{˜aòs–œ’¬268-1'|trans }}</p>
-                      <p class="ec-newItemRole__listItemTitle" style="color:black; text-align:left; font-size:13px;margin-top:0px;">{{ 'Tel'|trans }}&emsp;&emsp;&emsp;&emsp;{{ '0725-57-2888'|trans }}</p>
-                    </div>
-            </div>
-            <div class="ec-newItemRole__listItem" style="width:calc(100%/2);">
-                    <img src="{{ asset('assets/img/top/shop_kishiwada01.jpg') }}">
-                    <div style="margin-left:50px;">
-                      <p class="ec-newItemRole__listItemTitle" style="color:black; text-align:left; font-size:18px;">{{ 'T.YOKOGAWA Šİ˜a“c“X'|trans }}</p>
-                      <p class="ec-newItemRole__listItemTitle" style="color:black; text-align:left; font-size:13px;margin-top:0px;">{{ 'Address'|trans }}&emsp;{{ '§596-0044 ‘åã•{Šİ˜a“cs¼”V“à’¬5-7'|trans }}</p>
-                      <p class="ec-newItemRole__listItemTitle" style="color:black; text-align:left; font-size:13px;margin-top:0px;">{{ 'Tel'|trans }}&emsp;&emsp;&emsp;&emsp;{{ '072-447-8801'|trans }}</p>
-                    </div>
-            </div>
-
-        </div>
-        
-        <div class="ec-eyecatchRole">
-            <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "SHOP"}) }}" class="btn">“X•Üî•ñ</a>
-        </div>
-    
-    </div>
-</div>
+<section class="shop">
+	<h2 class="title"><strong class="agp">SHOP</strong></h2>
+	<div class="inner">
+	  <ul>
+	    <li>
+	      <span><img src="{{ asset('assets/img/top/shop_honten01.jpg') }}" alt=""></span>
+	      <div>
+	        <h3 class="name">T.YOKOGAWA ˜aò’†‰›–{“X</h3>
+	        <dl>
+	          <dt>Address</dt>
+	          <dd>§594-1104@‘åã•{˜aòs–œ’¬268-1</dd>
+	          <dt>Tel</dt>
+	          <dd><a href="tel:0725-57-2888">0725-57-2888</a></dd>
+	        </dl>
+	      </div>
+	    </li>
+	    <li>
+	      <span><img src="{{ asset('assets/img/top/shop_kishiwada01.jpg') }}" alt=""></span>
+	      <div>
+	        <h3 class="name">T.YOKOGAWA Šİ˜a“c“X</h3>
+	        <dl>
+	          <dt>Address</dt>
+	          <dd>§596-0044 ‘åã•{Šİ˜a“cs¼”V“à’¬5-7</dd>
+	          <dt>Tel</dt>
+	          <dd><a href="tel:072-447-8801">072-447-8801</a></dd>
+	        </dl>
+	      </div>
+	    </li>
+	  </ul>
+	</div>
+	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "SHOP"}) }}" class="btn">“X•Üî•ñ</a>
+</section>
