@@ -9,35 +9,14 @@ For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 #}
 
-<div class="ec-role">
-    <div class="ec-newItemRole" style="padding-bottom:5px;">
-        
-        <div class="ec-newItemRole__list">
-            
-            <div class="ec-newItemRole__listItem" style="width:calc(100%/3);">
-                <a href="{{ url('help_guide') }}" style="color:#000; height: 100px; display: flex;flex-wrap: wrap; justify-content: center; align-items: center; border: 1px solid #ECECEC; font-size: 16px; text-decoration: none;">
-                    <span>初めての方へ<span style="display: block; text-align: center; font-size: 12px;">Guide</span>
-                    </span>
-                </a>
-            </div>
-
-            <div class="ec-newItemRole__listItem" style="width:calc(100%/3);">
-                <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "faq"}) }}" style="color:#000; height: 100px; display: flex;flex-wrap: wrap; justify-content: center; align-items: center; border: 1px solid #ECECEC; font-size: 16px; text-decoration: none;">
-                    <span>よくある質問<span style="display: block; text-align: center; font-size: 12px;">FAQ</span>
-                    </span>
-                </a>
-            </div>
-            
-            <div class="ec-newItemRole__listItem" style="width:calc(100%/3);">
-                <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#decoration" style="color:#000; height: 100px; display: flex;flex-wrap: wrap; justify-content: center; align-items: center; border: 1px solid #ECECEC; font-size: 16px; text-decoration: none;">
-                    <span>デコレーション予約<span style="display: block; text-align: center; font-size: 12px;">Reservation</span>
-                    </span>
-                </a>
-            </div>
-
-
-        </div>
-        
-    
-    </div>
-</div>
+<section class="top_btn_area">
+	<ul class="inner">
+	  <li><a href="{{ url('help_guide') }}" class="btn02"><span>初めての方へ<span class="agp">Guide</span></span></a></li>
+	  <li><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "faq"}) }}" class="btn02"><span>よくある質問<span class="agp">FAQ</span></span></a></li>
+	  <li><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#cake" class="btn02"><span>デコレーション予約<span class="agp">Reservation</span></span></a></li>
+	</ul>
+	<div class="recruit_btn">
+	  <span><img src="{{ asset('assets/img/top/recruit_b02.jpg') }}" alt=""></span>
+	  <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "recruit"}) }}">採用情報について</a>
+	</div><!-- .recruit_btn -->
+</section>
