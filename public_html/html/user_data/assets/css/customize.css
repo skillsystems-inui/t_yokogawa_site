@@ -2323,8 +2323,12 @@ $common
 	div#search {
 	    padding-top: 140px;
 	}
+	
+	.uketori_houhou {
+		margin: 20px auto;
+	}
 }
-
+/*.PC*/
 
 
 /*SP*/
@@ -4574,7 +4578,6 @@ $common
 	    font-weight: bold;
 	    width: 98%;
 	}
-	
 	ul {
 		display: block;
 		list-style-type: none;
@@ -4584,4 +4587,9 @@ $common
 		margin-inline-end: 0px;
 		padding-inline-start: 0px;
 	}
+	
+	.uketori_houhou {
+		width: 100%;
+	}
 }
+/*.SP*/
