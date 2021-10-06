@@ -4622,6 +4622,30 @@ $common
 }
 /*.SP*/
 
+/*PC and SP*/
+.amikake {
+  position: relative;
+}
+
+.amikake p {
+  position: absolute;
+  width: 150px;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  text-align: center;
+  color: #000;
+  
+}
+
+.amikake img {
+  width: 100%;
+}
+
 
 
 /* Slider */
@@ -4743,3 +4767,5 @@ $common
 .slick-arrow.slick-hidden {
     display: none;
 }
+
+/*.PC and SP*/
