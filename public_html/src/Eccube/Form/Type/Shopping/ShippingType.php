@@ -83,6 +83,13 @@ class ShippingType extends AbstractType
                 if (is_null($Shipping) || !$Shipping->getId()) {
                     return;
                 }
+                
+                //注文情報の受け取り方法を取得
+                $ShipOrder = $Shipping->getOrder();
+                if (is_null($ShipOrder) || !$ShipOrder->getId()) {
+                    return;
+                }
+                $uketori_type = $ShipOrder->getUketoriType();
 
                 // 配送商品に含まれる販売種別を抽出.
                 $OrderItems = $Shipping->getProductOrderItems();
@@ -94,7 +101,14 @@ class ShippingType extends AbstractType
                 }
 
                 // 販売種別に紐づく配送業者を取得.
-                $Deliveries = $this->deliveryRepository->getDeliveries($SaleTypes);
+                //$Deliveries = $this->deliveryRepository->getDeliveries($SaleTypes);
+                if($uketori_type != 2){
+                	//ヤマト以外
+                	$Deliveries = $this->deliveryRepository->getDeliveriesTentou();
+                }else{
+                	//ヤマト指定
+                	$Deliveries = $this->deliveryRepository->getDeliveriesYamato();
+                }
 
                 // 配送業者のプルダウンにセット.
                 $form = $event->getForm();

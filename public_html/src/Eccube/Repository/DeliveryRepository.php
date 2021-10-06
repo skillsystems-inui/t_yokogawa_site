@@ -50,6 +50,48 @@ class DeliveryRepository extends AbstractRepository
 
         return $deliveries;
     }
+    
+    /**
+     * 配送業者を取得(ヤマト)
+     *
+     *
+     * @return array
+     */
+    public function getDeliveriesYamato()
+    {
+        $uketorikey = '配送:ヤマト運輸'; 
+        $deliveries = $this->createQueryBuilder('d')
+            ->where('d.name = :name')
+            ->andWhere('d.visible = :visible')
+            ->setParameter('name', $uketorikey)
+            ->setParameter('visible', true)
+            ->orderBy('d.sort_no', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        return $deliveries;
+    }
+    
+    /**
+     * 配送業者を取得(店頭受取)
+     *
+     *
+     * @return array
+     */
+    public function getDeliveriesTentou()
+    {
+        $uketorikey = '配送:ヤマト運輸'; 
+        $deliveries = $this->createQueryBuilder('d')
+            ->where('d.name != :name')
+            ->andWhere('d.visible = :visible')
+            ->setParameter('name', $uketorikey)
+            ->setParameter('visible', true)
+            ->orderBy('d.sort_no', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        return $deliveries;
+    }
 
     /**
      * 選択可能な配送業者を取得
