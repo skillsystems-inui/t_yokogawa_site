@@ -1,0 +1,48 @@
+{% extends 'default_frame.twig' %}
+
+{% block main %}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+    <div class="contents">
+      <main>
+        <div class="recruit" style="padding-top:50px;">
+          <h1 class="title"><strong class="agp">RECRUIT</strong></h1><!-- .title -->
+          <div class="box">
+            <strong class="headline">一緒に働くスタッフを募集しています。</strong>
+            <p>T.Yokogawaはスタッフとして共に働く仲間を募集しています。<br>
+お菓子作りに興味がある方、人と話すことが好きな方、私たちと一緒に成長しませんか？</p>
+            <a href=[EMAIL] class="btn">お問い合わせはこちら</a>
+          </div><!-- .box -->
+          <div class="recruit_link">
+            <ul class="inner">
+              <li class="r01">
+                <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "recruit_a"}) }}">
+                  <div>
+先輩インタビュー<br><br>
+                    <span>販売・ラッピング　2018年入社</span>
+                    <strong>脇山　朋子<span>Tomoko Wakiyama</span></strong>
+                    <p>常にお客様に寄り添った接客を心がけています。</p>
+                  </div>
+                </a>
+              </li>
+              <li class="r02">
+                <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "recruit_b"}) }}">
+                  <div>先輩インタビュー<br><br>
+                    <span>製造　2017年入社</span>
+                    <strong>藤原　琢也<span>Takuya Fujiwara</span></strong>
+                    <p>いろんなお店へ食べ歩き、「ここのパティシエになりたい！！」と思ったのがきっかけです。</p>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div><!-- .recruit_link -->
+        </div><!-- .recruit -->
+      </main>
+    </div><!-- .contents -->
+{% endblock %}
