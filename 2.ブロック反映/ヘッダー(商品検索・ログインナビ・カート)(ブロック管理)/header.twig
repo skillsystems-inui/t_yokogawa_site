@@ -66,6 +66,19 @@ file that was distributed with this source code.
 		   }
 		}, false);
 		
+		//検索ボタンを押したら検索を実行する
+		document.getElementById('MakeShopTopSearchButton').addEventListener('click', function(){
+			//表示上のテキストボックスの内容を実質のテキストボックスにコピーする
+			const view_search_text = document.getElementById('MakeShopTopSearchInput')
+			const view_search_value = view_search_text.value
+			
+			document.getElementById('back_search_text').value = view_search_value;
+			
+			//実質の検索ボタンをクリックする
+			var back_search_btn = document.getElementById('back_search_btn') ;
+			back_search_btn.click() ;
+		});
+		
     });
 </script>
 
@@ -116,8 +129,8 @@ file that was distributed with this source code.
 			<div style="display:none;">
 				<form method="get" class="searchform" action="{{ path('product_list') }}">
 					<div class="ec-input">
-						<input type="search" name="name" maxlength="50" class="search-name" placeholder="キーワード検索" value="">
-						<button class="ec-headerSearch__keywordBtn" style="position:unset; transform:translateY(-20%);" type="submit">
+						<input type="search" id="back_search_text" name="name" maxlength="50" class="search-name" placeholder="キーワード検索" value="">
+						<button class="ec-headerSearch__keywordBtn" style="position:unset; transform:translateY(-20%);"  id="back_search_btn" type="submit">
 					    	<img src="{{ asset('assets/icon/search-dark.svg') }}" alt="検索" width="40" height="40">
 					    </button>
 				    </div>
