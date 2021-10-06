@@ -128,36 +128,78 @@ file that was distributed with this source code.
             
             <dl class="category">
               <dt>商品一覧</dt>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#decoration"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav01.jpg" alt=""><span>デコレーション</span></a></dd>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#petit-gateau"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav02.jpg" alt=""><span>プチガトー</span></a></dd>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#swiss-roll"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav03.jpg" alt=""><span>ロールケーキ</span></a></dd>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#seasonal"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav15.jpg" alt=""><span>限定スイーツ</span></a></dd>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#chocolate"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav12.jpg" alt=""><span>チョコレート</span></a></dd>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#baumkuchen"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav04.jpg" alt=""><span>バームクーヘン</span></a></dd>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#bakegoods"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav07.jpg" alt=""><span>クッキー</span></a></dd>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#madeleine-financie"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav05.jpg" alt=""><span>マドレーヌ・<br>フィナンシェ</span></a></dd>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#pound-cake"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav06.jpg" alt=""><span>パウンドケーキ</span></a></dd>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#original-products"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav10.jpg" alt=""><span>要冷蔵菓子</span></a></dd>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#donut-macaron"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav08.jpg" alt=""><span>ドーナツ・<br>カステラ</span></a></dd>
-              <dd><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#cinfiture-honey"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/nav09.jpg" alt=""><span>ジャム・<br>ハチミツ</span></a></dd>
+              
+              <dd>
+              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#recommended">
+              		<img src="/html/user_data/assets/img/cat_recommended.png" alt="">
+              		<span>今月のおすすめ</span>
+              	</a>
+              </dd>
+              
+              <dd>
+              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#cake">
+              		<img src="/html/user_data/assets/img/cat_cake.png" alt="">
+              		<span>ケーキ</span>
+              	</a>
+              </dd>
+              
+              <dd>
+              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#reitoucake">
+              		<img src="/html/user_data/assets/img/cat_reitoucake.png" alt="">
+              		<span>冷凍ケーキ</span>
+              	</a>
+              </dd>
+              
+              <dd>
+              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#gift">
+              		<img src="/html/user_data/assets/img/cat_gift.png" alt="">
+              		<span>ギフト商品</span>
+              	</a>
+              </dd>
+              
+              <dd>
+              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#single">
+              		<img src="/html/user_data/assets/img/cat_single.png" alt="">
+              		<span>単品</span>
+              	</a>
+              </dd>
+              
+              <dd>
+              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#confiture-honey">
+              		<img src="/html/user_data/assets/img/cat_confiture-honey.png" alt="">
+              		<span>ジャム・ハチミツ</span>
+              	</a>
+              </dd>
+              
+              <dd>
+              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#chocolate">
+              		<img src="/html/user_data/assets/img/cat_chocolate.png" alt="">
+              		<span>チョコレート</span>
+              	</a>
+              </dd>
+              
             </dl><!-- .category -->
 
 
             <dl class="use">
               <dt>用途別でえらぶ</dt>
-              <dd><a href="{{ url('product_list') }}?category_id=17">【お取り寄せ】身近な人へのお礼として</a></dd>
-              <dd><a href="{{ url('product_list') }}?category_id=18">【お取り寄せ】お中元・お歳暮として</a></dd>
-              <dd><a href="{{ url('product_list') }}?category_id=19">【お取り寄せ】内祝いとして</a></dd>
-              <dd><a href="{{ url('product_list') }}?category_id=20">【お取り寄せ】法事のお供えとして</a></dd>
-              <dd><a href="{{ url('product_list') }}?category_id=22">【店頭受取】身近な人へのお礼として</a></dd>
-              <dd><a href="{{ url('product_list') }}?category_id=23">【店頭受取】お中元・お歳暮として</a></dd>
-              <dd><a href="{{ url('product_list') }}?category_id=24">【店頭受取】内祝いとして</a></dd>
-              <dd><a href="{{ url('product_list') }}?category_id=25">【店頭受取】法事のお供えとして</a></dd>
+              <dd><a href="{{ url('product_list') }}?category_id=17">身近な人へのお礼として</a></dd>
+              <dd><a href="{{ url('product_list') }}?category_id=18">お中元・お歳暮として</a></dd>
+              <dd><a href="{{ url('product_list') }}?category_id=19">内祝いとして</a></dd>
+              <dd><a href="{{ url('product_list') }}?category_id=20">法事のお彼岸として</a></dd>
+              <!--
               <dd class="outer"><a href="/item_all.html#use">詳しく見る</a></dd>
+              -->
             </dl><!-- .use -->
             <dl class="price">
               <dt>価格別でえらぶ</dt>
+              <dd><a href="{{ url('product_list') }}?category_id=20">～2,160円</a></dd>
+              <dd><a href="{{ url('product_list') }}?category_id=20">2,160円～3,780円</a></dd>
+              <dd><a href="{{ url('product_list') }}?category_id=20">3,780円～</a></dd>
+              
+              <!--
               <dd><a href="{{ url('product_list') }}">詳しく見る</a></dd>
+              -->
             </dl><!-- .price -->
             </div><!-- .inner -->
           </li>
