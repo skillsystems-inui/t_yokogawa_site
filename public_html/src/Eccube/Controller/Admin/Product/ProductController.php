@@ -22,7 +22,6 @@ use Eccube\Entity\Master\CsvType;
 use Eccube\Entity\Master\ProductStatus;
 use Eccube\Entity\Product;
 use Eccube\Entity\ProductCategory;
-use Eccube\Entity\ProductSmartCategory;
 use Eccube\Entity\ProductClassCategory;
 use Eccube\Entity\ProductClassName;
 use Eccube\Entity\ProductClass;
@@ -449,15 +448,6 @@ class ProductController extends AbstractController
         }
 
         $form['Category']->setData($categories);
-        
-        //スマレジ用カテゴリ
-		$smart_categories = [];
-        $ProductSmartCategories = $Product->getProductSmartCategories();
-        foreach ($ProductSmartCategories as $ProductSmartCategory) {
-            /* @var $ProductSmartCategory \Eccube\Entity\ProductSmartCategory */
-            $smart_categories[] = $ProductSmartCategory->getCategory();
-        }
-        $form['SmartCategory']->setData($smart_categories);
 
         $Tags = $Product->getTags();
         $form['Tag']->setData($Tags);
@@ -560,42 +550,6 @@ class ProductController extends AbstractController
                         /* @var $Product \Eccube\Entity\Product */
                         $Product->addProductCategory($ProductCategory);
                         $categoriesIdList[$ParentCategory->getId()] = true;
-                    }
-                }
-                
-                // スマレジ用カテゴリの登録
-                // 一度クリア
-                /* @var $Product \Eccube\Entity\Product */
-                foreach ($Product->getProductSmartCategories() as $ProductSmartCategory) {
-                    $Product->removeProductSmartCategory($ProductSmartCategory);
-                    $this->entityManager->remove($ProductSmartCategory);
-                }
-                $this->entityManager->persist($Product);
-                $this->entityManager->flush();
-
-                $count = 1;
-                $SmartCategories = $form->get('SmartCategory')->getData();
-                $smartCategoriesIdList = [];
-                foreach ($SmartCategories as $SmartCategory) {
-                    
-                    foreach ($SmartCategory->getPath() as $ParentSmartCategory) {
-                        
-                        if (!isset($smartCategoriesIdList[$ParentSmartCategory->getId()])) {
-                            $ProductSmartCategory = $this->createProductSmartCategory($Product, $ParentSmartCategory, $count);
-                            $this->entityManager->persist($ProductSmartCategory);
-                            $count++;
-                            /* @var $Product \Eccube\Entity\Product */
-                            $Product->addProductSmartCategory($ProductSmartCategory);
-                            $smartCategoriesIdList[$ParentSmartCategory->getId()] = true;
-                        }
-                    }
-                    if (!isset($smartCategoriesIdList[$SmartCategory->getId()])) {
-                        $ProductSmartCategory = $this->createProductSmartCategory($Product, $SmartCategory, $count);
-                        $this->entityManager->persist($ProductSmartCategory);
-                        $count++;
-                        /* @var $Product \Eccube\Entity\Product */
-                        $Product->addProductSmartCategory($ProductSmartCategory);
-                        $smartCategoriesIdList[$ParentSmartCategory->getId()] = true;
                     }
                 }
                 
@@ -1176,26 +1130,6 @@ class ProductController extends AbstractController
         $ProductCategory->setCategoryId($Category->getId());
 
         return $ProductCategory;
-    }
-    
-     /**
-     * ProductSmartCategory作成
-     *
-     * @param \Eccube\Entity\Product $Product
-     * @param \Eccube\Entity\Category $Category
-     * @param integer $count
-     *
-     * @return \Eccube\Entity\ProductSmartCategory
-     */
-    private function createProductSmartCategory($Product, $Category, $count)
-    {
-        $ProductSmartCategory = new ProductSmartCategory();
-        $ProductSmartCategory->setProduct($Product);
-        $ProductSmartCategory->setProductId($Product->getId());
-        $ProductSmartCategory->setCategory($Category);
-        $ProductSmartCategory->setCategoryId($Category->getId());
-
-        return $ProductSmartCategory;
     }
     
     

@@ -538,6 +538,7 @@ admin.common.expiry_date: 賞味期限
 admin.common.expiration_date: 消費期限
 admin.common.material: 原材料
 admin.common.please_read: お読みください
+admin.common.smart_category_id: スマレジ用カテゴリID(1つまで)
 #------------------------------------------------------------------------------------
 # ホーム
 #------------------------------------------------------------------------------------

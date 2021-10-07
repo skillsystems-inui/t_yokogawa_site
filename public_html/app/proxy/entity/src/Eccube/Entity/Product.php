@@ -1140,6 +1140,13 @@ use Doctrine\ORM\Mapping as ORM;
         /**
          * @var string|null
          *
+         * @ORM\Column(name="smart_category_id", type="string", length=5, nullable=true)
+         */
+        private $smart_category_id;
+        
+        /**
+         * @var string|null
+         *
          * @ORM\Column(name="material", type="string", length=510, nullable=true)
          */
         private $material;
@@ -2013,6 +2020,32 @@ use Doctrine\ORM\Mapping as ORM;
         {
             return $this->capacity;
         }
+        
+        
+        /**
+         * Set smart_category_id.
+         *
+         * @param string|null $smart_category_id
+         *
+         * @return Product
+         */
+        public function setSmartCategoryId($smart_category_id = null)
+        {
+            $this->smart_category_id = $smart_category_id;
+
+            return $this;
+        }
+
+        /**
+         * Get smart_category_id.
+         *
+         * @return string|null
+         */
+        public function getSmartCategoryId()
+        {
+            return $this->smart_category_id;
+        }
+        
         
         /**
          * Set material.

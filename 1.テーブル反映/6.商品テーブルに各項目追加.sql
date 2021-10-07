@@ -8,6 +8,8 @@ ALTER TABLE `dtb_product` ADD `expiration_date` varchar(510) DEFAULT NULL;
 ALTER TABLE `dtb_product` ADD `material` varchar(510) DEFAULT NULL;
 ALTER TABLE `dtb_product` ADD `please_read` longtext;
 
+ALTER TABLE `dtb_product` ADD `smart_category_id` varchar(5) DEFAULT NULL;
+
 --スマレジ用カテゴリ--
 CREATE TABLE IF NOT EXISTS `dtb_product_smart_category` (
   `product_id` int(10) unsigned NOT NULL,
