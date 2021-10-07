@@ -64,6 +64,7 @@
      */
     var price02_origin = [];
     var price02_orgkikaku = [];
+    var price02_orggoukei = [];
     eccube.checkStock = function($form, product_id, classcat_id1, classcat_id2, option_id1 = null, option_id2 = null, option_id3 = null, option_id4 = null, option_id5 = null, option_id6 = null, option_id7 = null, option_id8 = null, option_id9 = null, option_id10 = null) {
 
         classcat_id2 = classcat_id2 ? classcat_id2 : '';
@@ -127,6 +128,15 @@
                 price02_orgkikaku[product_id] = $price02_kikaku.text();
             }
             $price02_kikaku.text(price02_orgkikaku[product_id]);
+            
+            // 販売価格(合計)
+            var $price02_orggoukei = $form.parent().find('.additional-total-price-default').first();
+            if (typeof price02_orggoukei[product_id] === 'undefined') {
+                // 初期値を保持しておく
+                price02_orggoukei[product_id] = $price02_orggoukei.text();
+            }
+            //$price02_orggoukei.text(price02_orggoukei[product_id]);
+            $price02_orggoukei.text('000');
 
             // 商品規格
             var $product_class_id_dynamic = $form.find('[id^=ProductClass]');
@@ -222,6 +232,37 @@
             	//画面表示時の価格(1,000～3,000など)
                 $price02_kikaku.text(price02_orgkikaku[product_id]);
             }
+            
+            // 販売価格(合計)
+            var $price02_goukei = $form.parent().find('.additional-total-price-default').first();
+            if (typeof price02_orggoukei[product_id] === 'undefined') {
+                // 初期値を保持しておく
+                price02_orggoukei[product_id] = $price02_goukei.text();
+            }
+            if (classcat2 && typeof classcat2.price02_inc_tax !== 'undefined' && String(classcat2.price02_inc_tax).length >= 1) {                
+                //合計価格(1,000など)
+                s_price2 = String(num_price2);
+                $price02_goukei.text('￥' + s_price2);
+                
+                //通常価格(有料オプションなし)
+	            var $normal_base_ = document.getElementById('p02');
+	            var $normal_price_ = 0;
+	            if($normal_base_ != null){
+	            	$normal_base_.value = s_price2;
+	            }
+	            
+            } else {
+            	//画面表示時の価格(1,000～3,000など)
+                $price02_goukei.text(price02_orggoukei[product_id]);
+                
+                //通常価格(有料オプションなし)
+	            var $normal_base_ = document.getElementById('p02');
+	            var $normal_price_ = 0;
+	            if($normal_base_ != null){
+	            	$normal_base_.value = price02_orggoukei[product_id];
+	            }
+            }
+
 
             // ポイント
             var $point_default = $form.find('[id^=point_default]');
