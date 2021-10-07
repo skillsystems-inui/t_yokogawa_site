@@ -1896,6 +1896,7 @@ file that was distributed with this source code.
                     {% set is_bag_option = false  %}
                     {% set is_tentouuketorika = false  %}
                     {% set is_toriyoseka = false  %}
+                    {% set is_reitou = false  %}
                     
                     <!-- 有料オプション金額 -->
                     {% set price_no_candle = '130'  %}
@@ -1955,6 +1956,13 @@ file that was distributed with this source code.
                                     	{% set is_toriyoseka = true  %}
                                     {% endif %}
                                     
+                                    {% if Category.name == '冷凍' %}
+                                    	{% set is_reitou = true  %}
+                                    {% endif %}
+                                    {% if Category.name == '冷凍商品' %}
+                                    	{% set is_reitou = true  %}
+                                    {% endif %}
+                                    
                                     {%- if loop.last == false %}
                                     {% endif -%}
                                     
@@ -1975,6 +1983,13 @@ file that was distributed with this source code.
 	                    		<div style="float:left; width: 86px; height: 72px; background-image: url({{ asset('assets/img/icon_toriyose.png') }})"></div>
 	                    	{% endif %}
 	                        <!-- .取り寄せ可 -->
+	                        <div style="clear:both;"></div>
+	                        
+	                        <!-- 冷凍商品 -->
+	                    	{% if is_reitou == true %}
+	                    		<div style="float:left; width: 81px; height: 27px; margin-top:20px; margin-bottom:0px; background-image: url({{ asset('assets/img/icon_reizouhaisou.png') }})"></div>
+	                    	{% endif %}
+	                        <!-- .冷凍商品 -->
 	                        <div style="clear:both;"></div>
 	                    </div>
 	                    
