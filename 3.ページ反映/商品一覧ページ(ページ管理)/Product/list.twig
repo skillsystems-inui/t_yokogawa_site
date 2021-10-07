@@ -126,43 +126,27 @@ file that was distributed with this source code.
                             <!-- カテゴリ画像を表示する -->
                             <!--  デコレーション  -->
                             {% set image_pass = '' %}
-                            {% if 'デコレーション' in Path.name %}
+                            {% if 'ケーキ' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000002_deco.gif' %}
                             {% endif %}
-                            {% if 'プチガトー' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000003_puchigato.gif' %}
+                            {% if '冷凍商品' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/1_000000000011.png' %}
                             {% endif %}
-                            {% if 'ロールケーキ' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000004_rollcake.gif' %}
-                            {% endif %}
-                            {% if 'バームクーヘン' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000005_baum.gif' %}
-                            {% endif %}
-                            {% if 'マドレーヌ' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000006_madorenu.gif' %}
-                            {% endif %}
-                            {% if 'パウンド' in Path.name %}
+                            {% if 'ギフト' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000007_paundocake.gif' %}
                             {% endif %}
-                            {% if 'クッキー' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000008_cookie.gif' %}
+                            {% if '単品' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000005_baum.gif' %}
                             {% endif %}
-                            {% if '要冷蔵' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000009_youreizoukasi.gif' %}
-                            {% endif %}
-                            {% if 'コンフ' in Path.name %}
+                            {% if 'コンフィチュール' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000010_conficyuru.gif' %}
-                            {% endif %}
-                            {% if 'ドーナツ' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000011_dounatscastera.gif' %}
                             {% endif %}
                             {% if 'チョコレート' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000043_chocolate.gif' %}
                             {% endif %}
-                            {% if '限定スイーツ' in Path.name %}
+                            {% if '季節のおすすめ' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000045_genteisweets.gif' %}
                             {% endif %}
-                            
                             
                             <!-- 画像表示 -->
                             {% if image_pass != '' %}
@@ -172,14 +156,31 @@ file that was distributed with this source code.
                             {% endif %}
                             
                             <!-- カテゴリ名を表示する -->
-	                        <h1 class="small_title"><strong>{{ Path.name }}</strong></h1>
+	                        <h1 class="small_title">
+	                        	<strong>{{ Path.name }}</strong>
+	                        	{% if 'ケーキ' in Path.name %}
+                            		<span class="">Cake</span>
+	                            {% endif %}
+	                            {% if '冷凍商品' in Path.name %}
+	                            	<span class="">Ice items</span>
+	                            {% endif %}
+	                            {% if 'ギフト' in Path.name %}
+	                            	<span class="">Gift</span>
+	                            {% endif %}
+	                            {% if '単品' in Path.name %}
+	                            	<span class="">Single</span>
+	                            {% endif %}
+	                            {% if 'コンフィチュール' in Path.name %}
+	                            	<span class="">Confiture</span>
+	                            {% endif %}
+	                            {% if 'チョコレート' in Path.name %}
+	                            	<span class="">Chocolate</span>
+	                            {% endif %}
+	                            {% if '季節のおすすめ' in Path.name %}
+	                            	<span class="">Recommended</span>
+	                            {% endif %}
+	                        </h1>
 	                        
-                            <!-- 非表示
-                            <li class="ec-topicpath__divider">|</li>
-                            <li class="ec-topicpath__item{% if loop.last %}--active{% endif %}"><a
-                                        href="{{ url('product_list') }}?category_id={{ Path.id }}">{{ Path.name }}</a>
-                            </li>
-                            -->
                         {% endfor %}
                         
                     {% endif %}
@@ -191,26 +192,18 @@ file that was distributed with this source code.
                 </ol>
             </div>
             
-            <!-- 非表示
             <div class="ec-searchnavRole__infos">
                 <div class="ec-searchnavRole__counter">
-                    {% if pagination.totalItemCount > 0 %}
-                        {{ '<span class="ec-font-bold">%count%件</span><span>の商品が見つかりました</span>'|trans({ '%count%': pagination.totalItemCount })|raw }}
-                    {% else %}
-                        <span>{{ 'お探しの商品は見つかりませんでした'|trans }}</span>
-                    {% endif %}
+                    <span></span>
                 </div>
                 {% if pagination.totalItemCount > 0 %}
                     <div class="ec-searchnavRole__actions">
                         <div class="ec-select">
-                            {{ form_widget(disp_number_form, {'id': '', 'attr': {'class': 'disp-number'}}) }}
-                            {{ form_widget(order_by_form, {'id': '', 'attr': {'class': 'order-by'}}) }}
+                            <span>表示件数: </span>{{ form_widget(disp_number_form, {'id': '', 'attr': {'class': 'disp-number'}}) }}
                         </div>
                     </div>
                 {% endif %}
             </div>
-            -->
-            
         </div>
         {% if pagination.totalItemCount > 0 %}
             <div class="ec-shelfRole">
@@ -222,82 +215,12 @@ file that was distributed with this source code.
                                     <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
                                 </p>
                                 <p>{{ Product.name }}</p>
-                                
-                                <!-- 有料手提げ袋(紙袋)なら表示 -->
-	                            {% if "紙袋" in Product.name %}
-                                
-	                                {% if Product.description_list %}
-	                                    <p>{{ Product.description_list|raw|nl2br }}</p>
-	                                {% endif %}
-	                                <p class="price02-default">
-	                                    {% if Product.hasProductClass %}
-	                                        {% if Product.getPrice02Min == Product.getPrice02Max %}
-	                                            {{ Product.getPrice02IncTaxMin|price }}
-	                                        {% else %}
-	                                            {{ Product.getPrice02IncTaxMin|price }} ～ {{ Product.getPrice02IncTaxMax|price }}
-	                                        {% endif %}
-	                                    {% else %}
-	                                        {{ Product.getPrice02IncTaxMin|price }}
-	                                    {% endif %}
-	                                </p>
-                                
-                                {% endif %}
-                                <!-- .有料手提げ袋(紙袋)なら表示 -->
-                                
                             </a>
-
-                            
-                            <!-- 有料手提げ袋(紙袋)なら表示 -->
-	                        {% if "紙袋" in Product.name %}
-	                            
-	                            
-	                            {% if Product.stock_find %}
-	                                {% set form = forms[Product.id] %}
-	                                <form name="form{{ Product.id }}" id="productForm{{ Product.id }}" action="{{ url('product_add_cart', {id:Product.id}) }}" method="post">
-	                                    <div class="ec-productRole__actions">
-	                                        {% if form.classcategory_id1 is defined %}
-	                                            <div class="ec-select">
-	                                                {{ form_widget(form.classcategory_id1) }}
-	                                                {{ form_errors(form.classcategory_id1) }}
-	                                            </div>
-	                                            {% if form.classcategory_id2 is defined %}
-	                                                <div class="ec-select">
-	                                                    {{ form_widget(form.classcategory_id2) }}
-	                                                    {{ form_errors(form.classcategory_id2) }}
-	                                                </div>
-	                                            {% endif %}
-	                                        {% endif %}
-	                                        <div class="ec-numberInput"><span>{{ '数量'|trans }}</span>
-	                                            {{ form_widget(form.quantity, {'attr': {'class': 'quantity'}}) }}
-	                                            {{ form_errors(form.quantity) }}
-	                                        </div>
-	                                    </div>
-	                                    
-	                                    <div style="display:none;">
-	                                    {{ form_rest(form) }}
-	                                    </div>
-	                                    
-	                                </form>
-	                                <div class="ec-productRole__btn">
-	                                    <button type="submit" class="ec-blockBtn--action add-cart" data-cartid="{{ Product.id }}" form="productForm{{ Product.id }}">
-	                                        {{ 'カートに入れる'|trans }}
-	                                    </button>
-	                                </div>
-	                            {% else %}
-	                                <div class="ec-productRole__btn">
-	                                    <button type="button" class="ec-blockBtn--action" disabled="disabled">
-	                                        {{ 'ただいま品切れ中です。'|trans }}
-	                                    </button>
-	                                </div>
-	                            {% endif %}
-                            
-                            {% endif %}
-                            <!-- .有料手提げ袋(紙袋)なら表示 -->
-                            
                         </li>
                     {% endfor %}
                 </ul>
             </div>
+            
             <div class="ec-modal">
                 <div class="ec-modal-overlay">
                     <div class="ec-modal-wrap">
@@ -315,6 +238,13 @@ file that was distributed with this source code.
             <div class="ec-pagerRole">
                 {% include "pager.twig" with {'pages': pagination.paginationData} %}
             </div>
+            
+            
         {% endif %}
+        
     {% endif %}
+    <div style="padding-bottom:20px;">
+		<a href="http://t-yokogawa-com.check-xserver.jp/user_data/product_lineup" class="btn">商品一覧に戻る</a>
+    </div>
+
 {% endblock %}
