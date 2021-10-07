@@ -54,6 +54,12 @@ class ShoppingService
             $ProductClass = $orderItem->getProductClass();
             if(is_null($ProductClass))continue;
             $days = $ProductClass->getDeliveryDateDays();
+            
+            //なければお届け日選択肢が出ないのでなければ意図的に0日を入れる
+            if(is_null($days)){
+            	$days = 0;
+            }
+            
             if (!is_null($days)) {
                 if ($minDate < $days) {
                     $minDate = $days;
