@@ -993,6 +993,13 @@ use Doctrine\ORM\Mapping as ORM;
         /**
          * @var \Doctrine\Common\Collections\Collection
          *
+         * @ORM\OneToMany(targetEntity="Eccube\Entity\ProductSmartCategory", mappedBy="Product", cascade={"persist","remove"})
+         */
+        private $ProductSmartCategories;
+
+        /**
+         * @var \Doctrine\Common\Collections\Collection
+         *
          * @ORM\OneToMany(targetEntity="Eccube\Entity\ProductClassCategory", mappedBy="Product", cascade={"persist","remove"})
          */
         private $ProductClassCategories;
@@ -1429,7 +1436,33 @@ use Doctrine\ORM\Mapping as ORM;
         {
             return $this->ProductCategories->removeElement($productCategory);
         }
-        
+
+        /**
+         * Add productSmartCategory.
+         *
+         * @param \Eccube\Entity\ProductSmartCategory $productSmartCategory
+         *
+         * @return Product
+         */
+        public function addProductSmartCategory(\Eccube\Entity\ProductSmartCategory $productSmartCategory)
+        {
+            $this->ProductSmartCategories[] = $productSmartCategory;
+
+            return $this;
+        }
+
+        /**
+         * Remove productSmartCategory.
+         *
+         * @param \Eccube\Entity\ProductSmartCategory $productSmartCategory
+         *
+         * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+         */
+        public function removeProductSmartCategory(\Eccube\Entity\ProductSmartCategory $productSmartCategory)
+        {
+            return $this->ProductSmartCategories->removeElement($productSmartCategory);
+        }
+          
         /**
          * Add productClassCategory.
          *
