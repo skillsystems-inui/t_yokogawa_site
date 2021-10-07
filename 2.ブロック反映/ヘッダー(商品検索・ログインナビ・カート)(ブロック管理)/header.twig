@@ -40,7 +40,7 @@ file that was distributed with this source code.
 		    }
 		});
 		
-		
+		/* ホバーは出さない
 		const item_head = document.getElementById('item_head');
 		const itsp = document.getElementById('itsp');
 		item_head.addEventListener('mouseover', () => {
@@ -52,7 +52,7 @@ file that was distributed with this source code.
 		   //商品一覧ヘッダーからマウスが離れたらメニューを非表示にする
 		   document.getElementById('itsp').classList.remove('active');
 		}, false);
-		
+		*/
 		
 		const burger_btn = document.getElementById('burger_btn');
 		burger_btn.addEventListener('click', () => {
@@ -143,49 +143,49 @@ file that was distributed with this source code.
               <dt>商品一覧</dt>
               
               <dd class="topcat">
-              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#recommended">
+              	<a href="{{ url('product_list') }}?category_id=63">
               		<img src="/html/user_data/assets/img/cat_recommended.png" alt="">
               		<span>今月のおすすめ</span>
               	</a>
               </dd>
               
               <dd>
-              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#cake">
+              	<a href="{{ url('product_list') }}?category_id=67">
               		<img src="/html/user_data/assets/img/cat_cake.png" alt="">
               		<span>ケーキ</span>
               	</a>
               </dd>
               
               <dd>
-              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#reitoucake">
+              	<a href="{{ url('product_list') }}?category_id=74">
               		<img src="/html/user_data/assets/img/cat_reitoucake.png" alt="">
               		<span>冷凍ケーキ</span>
               	</a>
               </dd>
               
               <dd>
-              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#gift">
+              	<a href="{{ url('product_list') }}?category_id=75">
               		<img src="/html/user_data/assets/img/cat_gift.png" alt="">
               		<span>ギフト商品</span>
               	</a>
               </dd>
               
               <dd>
-              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#single">
+              	<a href="{{ url('product_list') }}?category_id=82">
               		<img src="/html/user_data/assets/img/cat_single.png" alt="">
               		<span>単品</span>
               	</a>
               </dd>
               
               <dd>
-              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#confiture-honey">
+              	<a href="{{ url('product_list') }}?category_id=91">
               		<img src="/html/user_data/assets/img/cat_confiture-honey.png" alt="">
-              		<span>ジャム・ハチミツ</span>
+              		<span>コンフィチュール</span>
               	</a>
               </dd>
               
               <dd>
-              	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}#chocolate">
+              	<a href="{{ url('product_list') }}?category_id=92">
               		<img src="/html/user_data/assets/img/cat_chocolate.png" alt="">
               		<span>チョコレート</span>
               	</a>
