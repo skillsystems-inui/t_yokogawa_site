@@ -1152,6 +1152,7 @@ use Doctrine\ORM\Mapping as ORM;
         public function __construct()
         {
             $this->ProductCategories = new \Doctrine\Common\Collections\ArrayCollection();
+            $this->ProductSmartCategories = new \Doctrine\Common\Collections\ArrayCollection();
             $this->ProductClassCategories = new \Doctrine\Common\Collections\ArrayCollection();
             $this->ProductClassNames = new \Doctrine\Common\Collections\ArrayCollection();
             $this->ProductClasses = new \Doctrine\Common\Collections\ArrayCollection();
@@ -1525,6 +1526,17 @@ use Doctrine\ORM\Mapping as ORM;
         public function getProductCategories()
         {
             return $this->ProductCategories;
+        }
+        
+        
+        /**
+         * Get productSmartCategories.
+         *
+         * @return \Doctrine\Common\Collections\Collection
+         */
+        public function getProductSmartCategories()
+        {
+            return $this->ProductSmartCategories;
         }
 
         /**

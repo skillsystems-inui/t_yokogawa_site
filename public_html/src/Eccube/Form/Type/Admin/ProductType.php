@@ -133,6 +133,18 @@ class ProductType extends AbstractType
                 },
             ])
             
+            //スマレジ用カテゴリ
+            ->add('SmartCategory', ChoiceType::class, [
+                'choice_label' => 'Name',
+                'multiple' => true,
+                'mapped' => false,
+                'expanded' => true,
+                'choices' => $this->categoryRepository->getList(null, true),
+                'choice_value' => function (Category $Category = null) {
+                    return $Category ? $Category->getId() : null;
+                },
+            ])
+            
             //商品オプション
             ->add('ClassName', ChoiceType::class, [
                 'choice_label' => 'Name',
