@@ -183,7 +183,19 @@ class SmartRegiServiceHelper
         if(count($productCategories) > 0){
             // Problem with offset, it sometimes starts at 1, to avoid this we use first. 
             // Collections are not behaving as expected
-    	    $productData[0]['categoryId'] = $productCategories->first()->getCategoryId() + $offset;
+    	    //カテゴリの1番目ではなくスマレジ用カテゴリを登録する
+    	    //$productData[0]['categoryId'] = $productCategories->first()->getCategoryId() + $offset;
+    	    $smart_category_id = $product->getSmartCategoryId();
+    	    if($smart_category_id != null && is_numeric($smart_category_id)){
+    	    	$productData[0]['categoryId'] = intval($smart_category_id) + $offset;
+    	    	
+    	    	log_info(
+		            '__testLog0',
+		            [
+		                'smart_category_id' => $smart_category_id,
+		            ]
+		        );
+    	    }
         }
 
         $productData[0]['productName'] = $productClass->formattedProductName();
