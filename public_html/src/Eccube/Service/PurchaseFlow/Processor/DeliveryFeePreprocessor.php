@@ -24,6 +24,7 @@ use Eccube\Entity\Order;
 use Eccube\Entity\OrderItem;
 use Eccube\Entity\Shipping;
 use Eccube\Repository\BaseInfoRepository;
+use Eccube\Repository\DeliveryRepository;
 use Eccube\Repository\DeliveryFeeRepository;
 use Eccube\Repository\TaxRuleRepository;
 use Eccube\Service\PurchaseFlow\ItemHolderPreprocessor;
@@ -48,6 +49,11 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
     protected $taxRuleRepository;
 
     /**
+     * @var DeliveryRepository
+     */
+    protected $deliveryRepository;
+    
+    /**
      * @var DeliveryFeeRepository
      */
     protected $deliveryFeeRepository;
@@ -58,17 +64,20 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
      * @param BaseInfoRepository $baseInfoRepository
      * @param EntityManagerInterface $entityManager
      * @param TaxRuleRepository $taxRuleRepository
+     * @param DeliveryRepository $deliveryRepository
      * @param DeliveryFeeRepository $deliveryFeeRepository
      */
     public function __construct(
         BaseInfoRepository $baseInfoRepository,
         EntityManagerInterface $entityManager,
         TaxRuleRepository $taxRuleRepository,
+        DeliveryRepository $deliveryRepository,
         DeliveryFeeRepository $deliveryFeeRepository
     ) {
         $this->BaseInfo = $baseInfoRepository->get();
         $this->entityManager = $entityManager;
         $this->taxRuleRepository = $taxRuleRepository;
+        $this->deliveryRepository = $deliveryRepository;
         $this->deliveryFeeRepository = $deliveryFeeRepository;
     }
 
@@ -127,11 +136,48 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
                 }
             }
 
-            /** @var DeliveryFee $DeliveryFee */
-            $DeliveryFee = $this->deliveryFeeRepository->findOneBy([
-                'Delivery' => $Shipping->getDelivery(),
-                'Pref' => $Shipping->getPref(),
-            ]);
+            /*koko 配送がヤマトの場合、合計金額によって配送タイプを選択する
+            * 
+            * 2000円未満             ： 配送:ヤマト運輸
+            * 2000円以上、5000円未満 ： 配送:ヤマト運輸2
+            * 5000円以上、10000円未満： 配送:ヤマト運輸3
+            * 10000円以上            ： 配送:ヤマト運輸4
+            */
+            $deliv_id1 = 1;//ヤマト運輸
+            $deliv_id2 = 5;//ヤマト運輸2
+            $deliv_id3 = 6;//ヤマト運輸3
+            $deliv_id4 = 7;//ヤマト運輸4
+            
+            //ヤマトかどうか
+            if($Shipping->getShippingDeliveryName() == '配送:ヤマト運輸'){
+	            //--ヤマトの場合--
+	            
+	            //合計金額
+	            $targetSubTotal = $Shipping->getOrder()->getSubtotal();
+	            //どの区画に入るか
+	            if($targetSubTotal < 2000){
+	            	$TargetDelivery = $this->deliveryRepository->find($deliv_id1);
+	            }else if(2000 <= $targetSubTotal && $targetSubTotal < 5000){
+	            	$TargetDelivery = $this->deliveryRepository->find($deliv_id2);
+	            }else if(5000 <= $targetSubTotal && $targetSubTotal < 10000){
+	            	$TargetDelivery = $this->deliveryRepository->find($deliv_id3);
+	            }else{
+	            	$TargetDelivery = $this->deliveryRepository->find($deliv_id4);
+	            }
+	            
+	            //配送方法セット
+	            /** @var DeliveryFee $DeliveryFee */
+	            $DeliveryFee = $this->deliveryFeeRepository->findOneBy([
+	                'Delivery' => $TargetDelivery,
+	                'Pref' => $Shipping->getPref(),
+	            ]);
+            }else{
+	            /** @var DeliveryFee $DeliveryFee */
+	            $DeliveryFee = $this->deliveryFeeRepository->findOneBy([
+	                'Delivery' => $Shipping->getDelivery(),
+	                'Pref' => $Shipping->getPref(),
+	            ]);
+            }
 
             $OrderItem = new OrderItem();
             $OrderItem->setProductName($DeliveryFeeType->getName())
