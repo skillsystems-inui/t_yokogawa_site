@@ -114,6 +114,8 @@ file that was distributed with this source code.
                     </li>
                     -->
                     
+                    {% set cate_type = '' %}
+                    
                     {% if Category is not null %}
                         
                         {% for Path in Category.path %}
@@ -128,24 +130,31 @@ file that was distributed with this source code.
                             {% set image_pass = '' %}
                             {% if 'ケーキ' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000002_deco.gif' %}
+                            	{% set cate_type = Path.name %}
                             {% endif %}
                             {% if '冷凍商品' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/1_000000000011.png' %}
+                            	{% set cate_type = Path.name %}
                             {% endif %}
                             {% if 'ギフト' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000007_paundocake.gif' %}
+                            	{% set cate_type = Path.name %}
                             {% endif %}
                             {% if '単品' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000005_baum.gif' %}
+                            	{% set cate_type = Path.name %}
                             {% endif %}
                             {% if 'コンフィチュール' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000010_conficyuru.gif' %}
+                            	{% set cate_type = Path.name %}
                             {% endif %}
                             {% if 'チョコレート' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000043_chocolate.gif' %}
+                            	{% set cate_type = Path.name %}
                             {% endif %}
                             {% if '季節のおすすめ' in Path.name %}
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000045_genteisweets.gif' %}
+                            	{% set cate_type = Path.name %}
                             {% endif %}
                             
                             <!-- 画像表示 -->
@@ -206,20 +215,104 @@ file that was distributed with this source code.
             </div>
         </div>
         {% if pagination.totalItemCount > 0 %}
-            <div class="ec-shelfRole">
-                <ul class="ec-shelfGrid">
-                    {% for Product in pagination %}
-                        <li class="ec-shelfGrid__item">
-                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
-                                <p class="ec-shelfGrid__item-image">
-                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
-                                </p>
-                                <p>{{ Product.name }}</p>
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+        
+        	<!-- カテゴリ：ケーキの場合 -->
+            {% if 'ケーキ' in cate_type %}
+                <div class="ec-shelfRole">
+		            <!-- カットケーキの場合 -->
+		            <div style="background-color:lightblue; font-size:18px;">
+		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
+		            		<b>カットケーキ</b>
+		            	</div>
+		            </div>
+	                <ul class="ec-shelfGrid">
+	                    {% for Product in pagination %}
+	                        
+	                        {% for p_cat in Product.getProductCategories() %}
+	                        	{% if 'カットケーキ' in p_cat.Category.name %}
+				            		<li class="ec-shelfGrid__item">
+			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
+			                                <p class="ec-shelfGrid__item-image">
+			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
+			                                </p>
+			                                <p>{{ Product.name }}</p>
+			                            </a>
+			                        </li>
+				                {% endif %}
+			                {% endfor %}
+	                        
+	                    {% endfor %}
+	                </ul>                
+	            </div>
+	            <div class="ec-shelfRole">
+		            <!-- ロールケーキの場合 -->
+		            <div style="background-color:lightblue; font-size:18px;">
+		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
+		            		<b>ロールケーキ</b>
+		            	</div>
+		            </div>
+	                <ul class="ec-shelfGrid">
+	                    {% for Product in pagination %}
+	                        
+	                        {% for p_cat in Product.getProductCategories() %}
+	                        	{% if 'ロールケーキ' in p_cat.Category.name %}
+				            		<li class="ec-shelfGrid__item">
+			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
+			                                <p class="ec-shelfGrid__item-image">
+			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
+			                                </p>
+			                                <p>{{ Product.name }}</p>
+			                            </a>
+			                        </li>
+				                {% endif %}
+			                {% endfor %}
+	                        
+	                    {% endfor %}
+	                </ul>                
+	            </div>
+	            <div class="ec-shelfRole">
+		            <!-- デコレーションの場合 -->
+		            <div style="background-color:lightblue; font-size:18px;">
+		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
+		            		<b>デコレーション</b>
+		            	</div>
+		            </div>
+	                <ul class="ec-shelfGrid">
+	                    {% for Product in pagination %}
+	                        
+	                        {% for p_cat in Product.getProductCategories() %}
+	                        	{% if 'デコレーション' in p_cat.Category.name %}
+				            		<li class="ec-shelfGrid__item">
+			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
+			                                <p class="ec-shelfGrid__item-image">
+			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
+			                                </p>
+			                                <p>{{ Product.name }}</p>
+			                            </a>
+			                        </li>
+				                {% endif %}
+			                {% endfor %}
+	                        
+	                    {% endfor %}
+	                </ul>                
+	            </div>
+            {% else %}
+            	<!-- 上記以外の場合 -->
+            	<div class="ec-shelfRole">
+		            <ul class="ec-shelfGrid">
+	                    {% for Product in pagination %}
+	                        <li class="ec-shelfGrid__item">
+	                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
+	                                <p class="ec-shelfGrid__item-image">
+	                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
+	                                </p>
+	                                <p>{{ Product.name }}</p>
+	                            </a>
+	                        </li>
+	                    {% endfor %}
+	                </ul>                
+	            </div>
+            {% endif %}
             
             <div class="ec-modal">
                 <div class="ec-modal-overlay">
