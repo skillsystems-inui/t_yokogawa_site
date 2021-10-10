@@ -178,10 +178,77 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	                'Pref' => $Shipping->getPref(),
 	            ]);
             }
+            
+            //配送タイプ判定(常温・冷蔵・冷凍)
+            // 常温：追加料金 0円
+            // 冷蔵：追加料金 220円
+            // 冷凍：追加料金 220円
+            //----------------------
+            //注文に含まれる商品から追加料金を取得する
+			$include_reiZou = false;//冷蔵が含まれる
+			$include_reiTou = false;//冷凍が含まれる
+			$include_Jouon = false;//常温が含まれる
+			foreach ($Shipping->getOrderItems() as $p_item) {
+                if (!$p_item->isProduct()) {
+                    continue;
+                }
+                //商品が持つカテゴリから判断する
+                foreach ($p_item->getProduct()->getProductCategories() as $p_category) {
+                	//冷蔵配送の場合　カテゴリ：「ゼリーソルベ」id:97
+                	if($p_category->getCategoryId() == 97){
+                		$include_reiZou = true;
+                	}else if($p_category->getCategoryId() == 74){
+                		//冷凍配送の場合　カテゴリ：「冷凍商品」id:74
+                		$include_reiTou = true;
+                	}else{
+                		//常温の場合　それ以外
+                		$include_Jouon = true;
+                	}
+                }
+            }
+            
+            //配送タイプがバラバラになったときの追加の送料
+            $include_type_addition_fee = 0;
+            $plus_reizou = 220;
+            $plus_reitou = 220;
+            if($include_reiZou == true && $include_reiTou == true && $include_Jouon == true){
+            	//+2送料分+冷凍追加分+冷蔵追加分
+            	$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee() + $DeliveryFee->getFee() + $plus_reizou + $plus_reitou;
+            }else if($include_reiZou == true && $include_reiTou == true && $include_Jouon == false){
+            	//+1送料分+冷凍追加分+冷蔵追加分
+            	$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee() + $plus_reizou + $plus_reitou;
+            }else if($include_reiZou == true && $include_reiTou == false && $include_Jouon == true){
+            	//+1送料分+冷蔵追加分
+            	$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee() + $plus_reizou;
+            }else if($include_reiZou == false && $include_reiTou == true && $include_Jouon == true){
+            	//+1送料分+冷凍追加分
+            	$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee()  + $plus_reitou;
+            }else if($include_reiZou == false && $include_reiTou == false && $include_Jouon == true){
+            	//+なし
+            }else if($include_reiZou == false && $include_reiTou == true && $include_Jouon == false){
+            	//+冷凍追加分
+            	$include_type_addition_fee = $include_type_addition_fee + $plus_reitou;
+            }else if($include_reiZou == true && $include_reiTou == false && $include_Jouon == false){
+            	//+冷蔵追加分
+            	$include_type_addition_fee = $include_type_addition_fee + $plus_reizou;
+            }
+            
+            //会員の場合は割引を行う(ゲストは対象外)
+            //割引額
+            $user_sub_price = 0;
+            // user_appを取得
+			$user_app = \Eccube\Application::getInstance();
+			// user情報を取得
+			$user_info = $user_app['user'];
+			// ゲストユーザは"anon."が格納される
+			if ($user_info != "anon.") {
+			  //会員の場合割引する　100円
+			  $user_sub_price = 100;
+			}
 
             $OrderItem = new OrderItem();
             $OrderItem->setProductName($DeliveryFeeType->getName())
-                ->setPrice($DeliveryFee->getFee() + $deliveryFeeProduct)
+                ->setPrice($DeliveryFee->getFee() + $include_type_addition_fee - $user_sub_price + $deliveryFeeProduct)
                 ->setQuantity(1)
                 ->setOrderItemType($DeliveryFeeType)
                 ->setShipping($Shipping)
