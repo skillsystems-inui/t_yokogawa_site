@@ -1568,6 +1568,15 @@ $common
 		margin: 0 auto 100px;
 		display: block;
 	}
+	
+	.item_pc {
+		display: block;
+	}
+	
+	.item_sp {
+	  display: none;
+	}
+	
 	.item_main>img {
 	  position: absolute;
 	  top: 50%;
@@ -4154,6 +4163,15 @@ $common
 		margin: 0 auto 10%;
 		display: block;
 	}
+	
+	.item_pc {
+		display: none;
+	}
+	
+	.item_sp {
+	  display: block;
+	}
+	
 	.item_main>img {
 	  position: absolute;
 	  top: 50%;
