@@ -1897,6 +1897,8 @@ file that was distributed with this source code.
                     {% set is_tentouuketorika = false  %}
                     {% set is_toriyoseka = false  %}
                     {% set is_reitou = false  %}
+                    <!-- 販売なしカテゴリ-->
+                    {% set is_no_sale_category = false  %}
                     
                     <!-- 有料オプション金額 -->
                     {% set price_no_candle = '130'  %}
@@ -1962,6 +1964,17 @@ file that was distributed with this source code.
                                     {% if Category.name == '冷凍商品' %}
                                     	{% set is_reitou = true  %}
                                     {% endif %}
+                                    
+                                    <!-- 販売なしカテゴリ-->
+                                    {% if Category.name == 'カットケーキ' %}
+                                    	{% set is_deco_option = true  %}
+                                    	{% set is_no_sale_category = true  %}
+                                    {% endif %}
+                                    {% if Category.name == 'ロールケーキ' %}
+                                    	{% set is_deco_option = true  %}
+                                    	{% set is_no_sale_category = true  %}
+                                    {% endif %}
+                                    <!-- .販売なしカテゴリ-->
                                     
                                     {%- if loop.last == false %}
                                     {% endif -%}
@@ -2078,7 +2091,7 @@ file that was distributed with this source code.
                             <!-- 金額(サイズのみ) -->
                             
                             <!-- 詳細を指定するボタン -->
-                            <div class="ec-productRole__btn" style="padding-top:10px;width:100%;">
+                            <div class="ec-productRole__btn" style="padding-top:10px;width:100%; {% if is_no_sale_category == true %}display:none;{% endif %}">
                                 <button type="button" class="select-options syosai_go_btn">　カートに入れる</button>
                             </div>
                             
