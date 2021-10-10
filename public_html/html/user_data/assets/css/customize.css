@@ -85,6 +85,56 @@ $common
 	.cart_btn.sold::after {
 		display: none;
 	}
+	
+	.syosai_label {
+		font-size: 18px;
+		font-weight: bold;
+		color: #000 !important;
+		background: #FFF;
+		border: 1px solid #FFF;
+		text-align: left;
+		width: 100%;
+		max-width: 265px;
+		cursor: pointer;
+		display: block;
+		padding: 5px 0px;
+		position: relative;
+		pointer-events: none;
+	}
+	.syosai_label::before {
+		content: '';
+		width: 1.5em;
+		height: 1.5em;
+		background: url(../img/ico_product_syosai.png) no-repeat center;
+		background-size: contain;
+		display: inline-block;
+		vertical-align: sub;
+		margin-right: 10px;
+	}
+	.syosai_label::after {
+		content: '';
+		width: 0;
+		height: 0;
+		border-style: none;
+		border-width: 5px 0 5px 5px;
+		border-color: transparent transparent transparent #000;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 10px;
+		margin: auto;
+	}
+	.syosai_label.sold {
+		background: #858585;
+		border: 1px solid #858585;
+		pointer-events: none;
+		cursor: auto;
+	}
+	.syosai_label.sold::before,
+	.syosai_label.sold::after {
+		display: none;
+	}
+	
 	.title {
 		display: block;
 		text-align: center;
@@ -2408,6 +2458,55 @@ $common
 	.cart_btn.sold::after {
 		display: none;
 	}
+	
+	.syosai_label {
+		font-size: 18px;
+		font-weight: bold;
+		color: #000 !important;
+		background: #FFF;
+		border: 1px solid #FFF;
+		text-align: center;
+		width: 100%;
+		cursor: pointer;
+		display: block;
+		padding: 5px 10px;
+		position: relative;
+		pointer-events: none;
+	}
+	.syosai_label::before {
+		content: '';
+		width: 1.5em;
+		height: 1.5em;
+		background: url(../img/ico_product_syosai.png) no-repeat center;
+		background-size: contain;
+		display: inline-block;
+		vertical-align: sub;
+		margin-right: 10px;
+	}
+	.syosai_label::after {
+		content: '';
+		width: 0;
+		height: 0;
+		border-style: none;
+		border-width: 5px 0 5px 5px;
+		border-color: transparent transparent transparent #000;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 10px;
+		margin: auto;
+	}
+	.syosai_label.sold {
+		background: #858585;
+		border: 1px solid #858585;
+		pointer-events: none;
+		cursor: auto;
+	}
+	.syosai_label.sold::before,
+	.syosai_label.sold::after {
+		display: none;
+	}
+	
 	.title {
 		display: block;
 		text-align: center;
