@@ -1660,22 +1660,28 @@ file that was distributed with this source code.
 		  //有料金額反映
 		  SetAdditionalPlate5();
 		};
-		
+
 		//ポリ袋(中)のチェックが変更されたとき金額を反映する
-	    document.getElementById("pori_cyu_chk").onchange = function() {
-		  //有料金額反映
-		  SetPoriCyu();
-		};
+	    if(document.getElementById("pori_cyu_chk") != null){
+		    document.getElementById("pori_cyu_chk").onchange = function() {
+			  //有料金額反映
+			  SetPoriCyu();
+			};
+		}
 		//ポリ袋(大)のチェックが変更されたとき金額を反映する
-	    document.getElementById("pori_dai_chk").onchange = function() {
-		  //有料金額反映
-		  SetPoriDai();
-		};
+	    if(document.getElementById("pori_dai_chk") != null){
+		    document.getElementById("pori_dai_chk").onchange = function() {
+			  //有料金額反映
+			  SetPoriDai();
+			};
+		}
 		//ポリ袋(特大)のチェックが変更されたとき金額を反映する
-	    document.getElementById("pori_tokudai_chk").onchange = function() {
-		  //有料金額反映
-		  SetPoriTokudai();
-		};
+	    if(document.getElementById("pori_tokudai_chk") != null){
+		    document.getElementById("pori_tokudai_chk").onchange = function() {
+			  //有料金額反映
+			  SetPoriTokudai();
+			};
+		}
 		
         //プレートを追加する(2枚目)
         $('.additionplate2_plus').on('click', function() {
@@ -2146,207 +2152,210 @@ file that was distributed with this source code.
 				                                    </div>
 				                                    <!-- .大オプションラベル:キャンドルを選択 -->
 				                                    
-				                                    <!-- キャンドル　大 -->
-													<div id="candle_dai_blk" style="float: left; width: 50%;">
-					                                    <!-- オプション画像 -->
-					                                    <div style="width: 160px; height: 160px; background-image: url({{ asset('assets/img/option/opt_candle_big.png') }})"></div>
-					                                    <!-- 入力エリア -->
-					                                	<div style="font-size:14px;">
-					                                        <!-- オプション項目名 -->
-															<div style="display:block; font-size:14px;">
-																<div id="candle_dai_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
-																<div style="">
-																	<div style="float:left; padding:8px;">キャンドル　大</div>
+				                                    <!-- キャンドル枠 -->
+				                                    <div style="background-color:#f5f5f5;">
+					                                    <!-- キャンドル　大 -->
+														<div id="candle_dai_blk" style="float: left; width: 50%;">
+						                                    <!-- オプション画像 -->
+						                                    <div style="width:160px; height:160px; margin-left:auto; margin-right:auto; display:block; background-image: url({{ asset('assets/img/option/opt_candle_big.png') }})"></div>
+						                                    <!-- 入力エリア -->
+						                                	<div style="width:160px; margin-left:auto; margin-right:auto; display:block; font-size:14px;">
+						                                        <!-- オプション項目名 -->
+																<div style="width:120px; margin-left:auto; margin-right:auto; display:block; font-size:14px;">
+																	<div id="candle_dai_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																	<div style="">
+																		<div style="float:left; padding:8px;">キャンドル　大</div>
+																		<div style="clear:both;"></div>
+																	</div>
+								                                </div>
+								                                <!-- .オプション項目名 -->
+						                                        <!-- 入力欄：数字入力(本数) -->
+						                                        <div id="candle_dai_nyuryoku" style="width:150px; margin-left:auto; margin-right:auto; display:block;">
+																	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_dai_num" name="candle_dai_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
 																	<div style="clear:both;"></div>
-																</div>
-							                                </div>
-							                                <!-- .オプション項目名 -->
-					                                        <!-- 入力欄：数字入力(本数) -->
-					                                        <div id="candle_dai_nyuryoku" style="display: block;">
-																<div class="ec-numberInput" style="float:left">
-																	<span>本数:</span>
-																	<input type="number" id="candle_dai_num" name="candle_dai_num" min="1" max="10" maxlength="2" class="form-control" value="">
-																	<span>本</span>
-																</div>
-																<div style="clear:both;"></div>
-					                                        </div>
-					                                        <!-- .入力欄：数字入力(本数) -->
-					                                    </div>
-					                            	</div>
-				                                	<!-- .キャンドル　大 -->
-				                                	
-													<!-- キャンドル　小 -->
-													<div id="candle_syo_blk" style="float: left; width: 50%; font-size:14px;">
-					                                    <!-- オプション画像 -->
-					                                    <div style="width: 160px; height: 160px; background-image: url({{ asset('assets/img/option/opt_candle_small.png') }})"></div>
-					                                    <div id="candle_syo_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
-					                                    <!-- 入力エリア -->
-					                                    <div style="font-size:14px;">
-					                                    	<!-- オプション項目名 -->
-															<div style="display:block;">
-																<div id="candle_syo_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
-																<div style="">
-																	<div style="float:left; padding:8px;">キャンドル　小</div>
+						                                        </div>
+						                                        <!-- .入力欄：数字入力(本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .キャンドル　大 -->
+					                                	
+														<!-- キャンドル　小 -->
+														<div id="candle_syo_blk" style="float: left; width: 50%; font-size:14px;">
+						                                    <!-- オプション画像 -->
+						                                    <div style="width:160px; height:160px; margin-left:auto; margin-right:auto; display:block; background-image: url({{ asset('assets/img/option/opt_candle_small.png') }})"></div>
+						                                    <div id="candle_syo_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+						                                    <!-- 入力エリア -->
+						                                    <div style="font-size:14px;">
+						                                    	<!-- オプション項目名 -->
+																<div style="width:120px; margin-left:auto; margin-right:auto; display:block; font-size:14px;">
+																	<div id="candle_syo_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																	<div style="">
+																		<div style="float:left; padding:8px;">キャンドル　小</div>
+																		<div style="clear:both;"></div>
+																	</div>
+								                                </div>
+								                                <!-- .オプション項目名 -->
+								                                <!-- 入力欄：数字入力(本数) -->
+						                                        <div id="candle_syo_nyuryoku" style="width:150px; margin-left:auto; margin-right:auto; display:block;">
+						                                        	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_syo_num" name="candle_syo_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
 																	<div style="clear:both;"></div>
-																</div>
-							                                </div>
-							                                <!-- .オプション項目名 -->
-							                                <!-- 入力欄：数字入力(本数) -->
-					                                        <div id="candle_syo_nyuryoku" style="display: block;">
-					                                        	<div class="ec-numberInput" style="float:left">
-																	<span>本数:</span>
-																	<input type="number" id="candle_syo_num" name="candle_syo_num" min="1" max="10" maxlength="2" class="form-control" value="">
-																	<span>本</span>
-																</div>
-																<div style="clear:both;"></div>
-					                                        </div>
-					                                        <!-- ,入力欄：数字入力(本数) -->
-					                                    </div>
-					                            	</div>
-				                                	<!-- .キャンドル　小 -->
-				                                    
-				                                    <!-- Noキャンドル 1つめ -->
-													<div id="candle_no1_blk" style="clear: both; width: 100%; font-size:14px;">
-						                                <!-- オプション画像 -->
-					                                    <div style="width: 280px; height: 155px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
-					                                    <div id="candle_no1_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
-					                                    <!-- 入力エリア -->
-					                                    <div class="">
-					                                        <!-- オプション項目名 -->
-															<div style="display:block;">
-																<div id="candle_no1_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
-																<div style="">
-																	<div style="padding:8px;">Noキャンドル<span style="padding:8px; color:red;">(+{{price_no_candle}}円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
-																</div>
-							                                </div>
-							                                <!-- .オプション項目名 -->
-					                                        <!-- 入力欄：数字入力(No,本数) -->
-					                                        <div id="candle_no1_nyuryoku" style="display: block;">
-					                                        	<div id="candle_no1_numtext" class="ec-numberInput" style="float: left; display: block;">
-																	<span>No:</span>
-																	<select id="candle_no1_no" name="candle_no1_no" style="display:inline-block; max-width:100px; width:auto;">
-																		<option value="">--</option>
-																		<option value="1">1</option>
-																		<option value="2">2</option>
-																		<option value="3">3</option>
-																		<option value="4">4</option>
-																		<option value="5">5</option>
-																		<option value="6">6</option>
-																		<option value="7">7</option>
-																		<option value="8">8</option>
-																		<option value="9">9</option>
-																		<option value="0">0</option>
-																	</select>
-																	<!--
-																	<input type="number" id="candle_no1_no" name="candle_no1_no" min="1" max="10" maxlength="2" class="form-control" value="">
-																	-->
-																</div>
-					                                        	<div class="ec-numberInput" style="float:left">
-																	<span>本数:</span>
-																	<input type="number" id="candle_no1_num" name="candle_no1_num" min="1" max="10" maxlength="2" class="form-control" value="">
-																	<span>本</span>
-																</div>
-																<div style="clear:both;"></div>
-					                                        </div>
-					                                        <!-- .入力欄：数字入力(No,本数) -->
-					                                    </div>
-					                            	</div>
-				                                	<!-- .Noキャンドル 1つめ -->
-				                                	
-				                                    <!-- Noキャンドル 2つめ -->
-													<div id="candle_no2_blk" style="clear: both; width: 100%; font-size:14px;">
-							                            <!-- オプション画像 -->
-					                                    <div style="width: 0px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
-					                                    <div id="candle_no2_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
-					                                    <!-- 入力エリア -->
-					                                    <div class="">
-					                                    	<!-- オプション項目名 -->
-															<div style="display:block;">
-																<div id="candle_no2_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div><div style=""><div style="clear:both;"></div></div>
-							                                    <!-- アイコン -->
-							                                    <div id="candle_no2_icon"></div>
-							                                </div>
-					                                        <!-- 入力欄：数字入力(No,本数) -->
-					                                        <div id="candle_no2_nyuryoku" style="display: block;">
-					                                        	<div id="candle_no2_numtext" class="ec-numberInput" style="float: left; display: block;">
-																	<span>No:</span>
-																	<select id="candle_no2_no" name="candle_no2_no" style="display:inline-block; max-width:100px; width:auto;">
-																		<option value="">--</option>
-																		<option value="1">1</option>
-																		<option value="2">2</option>
-																		<option value="3">3</option>
-																		<option value="4">4</option>
-																		<option value="5">5</option>
-																		<option value="6">6</option>
-																		<option value="7">7</option>
-																		<option value="8">8</option>
-																		<option value="9">9</option>
-																		<option value="0">0</option>
-																	</select>
-																	<!--
-																	<input type="number" id="candle_no2_no" name="candle_no2_no" min="1" max="10" maxlength="2" class="form-control" value="">
-																	-->
-																</div>
-					                                        	<div class="ec-numberInput" style="float:left">
-																	<span>本数:</span>
-																	<input type="number" id="candle_no2_num" name="candle_no2_num" min="1" max="10" maxlength="2" class="form-control" value="">
-																	<span>本</span>
-																</div>
-																<div style="clear:both;"></div>
-					                                        </div>
-					                                        <!-- .入力欄：数字入力(No,本数) -->
-					                                    </div>
-					                            	</div>
-				                                	<!-- .Noキャンドル 2つめ -->
-				                                	
-				                                    <!-- Noキャンドル 3つめ -->
-													<div id="candle_no3_blk" style="clear: both; width: 100%; font-size:14px;">
-					                                    <!-- オプション画像 -->
-					                                    <div style="width: 0px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
-					                                    <div id="candle_no3_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
-					                                    <!-- 入力エリア -->
-					                                    <div class="">
-					                                        <!-- オプション項目名 -->
-															<div style="display:block;">
-																<div id="candle_no3_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
-																<div style="">
+						                                        </div>
+						                                        <!-- ,入力欄：数字入力(本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .キャンドル　小 -->
+					                                    
+					                                    <!-- Noキャンドル 1つめ -->
+														<div id="candle_no1_blk" style="clear: both; width: 100%; font-size:14px;">
+							                                <!-- オプション画像 -->
+						                                    <div style="width: 280px; height: 155px; margin-left:auto; margin-right:auto; display:block; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
+						                                    <div id="candle_no1_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+						                                    <!-- 入力エリア -->
+						                                    <div class="">
+						                                        <!-- オプション項目名 -->
+																<div style="width:300px; margin-left:auto; margin-right:auto; display:block; text-align:center;">
+																	<div id="candle_no1_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																	<div style="">
+																		<div style="padding:8px;">Noキャンドル<span style="padding:8px; color:red;">(+{{price_no_candle}}円)</span><span style="padding:1px; background-color:red; color:#fff;">有料</span></div>
+																	</div>
+								                                </div>
+								                                <!-- .オプション項目名 -->
+						                                        <!-- 入力欄：数字入力(No,本数) -->
+						                                        <div id="candle_no1_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
+						                                        	<div id="candle_no1_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
+																		<span>No:</span>
+																		<select id="candle_no1_no" name="candle_no1_no" style="display:inline-block; max-width:100px; width:auto;">
+																			<option value="">--</option>
+																			<option value="1">1</option>
+																			<option value="2">2</option>
+																			<option value="3">3</option>
+																			<option value="4">4</option>
+																			<option value="5">5</option>
+																			<option value="6">6</option>
+																			<option value="7">7</option>
+																			<option value="8">8</option>
+																			<option value="9">9</option>
+																			<option value="0">0</option>
+																		</select>
+																		<!--
+																		<input type="number" id="candle_no1_no" name="candle_no1_no" min="1" max="10" maxlength="2" class="form-control" value="">
+																		-->
+																	</div>
+						                                        	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_no1_num" name="candle_no1_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
 																	<div style="clear:both;"></div>
-																</div>
-							                                </div>
-					                                        <!-- .オプション項目名 -->
-					                                        <!-- 入力欄：数字入力(No,本数) -->
-					                                        <div id="candle_no3_nyuryoku" style="display: block;">
-					                                        	<div id="candle_no3_numtext" class="ec-numberInput" style="float: left; display: block;">
-																	<span>No:</span>
-																	<select id="candle_no3_no" name="candle_no3_no" style="display:inline-block; max-width:100px; width:auto;">
-																		<option value="">--</option>
-																		<option value="1">1</option>
-																		<option value="2">2</option>
-																		<option value="3">3</option>
-																		<option value="4">4</option>
-																		<option value="5">5</option>
-																		<option value="6">6</option>
-																		<option value="7">7</option>
-																		<option value="8">8</option>
-																		<option value="9">9</option>
-																		<option value="0">0</option>
-																	</select>
-																	<!--
-																	<input type="number" id="candle_no3_no" name="candle_no3_no" min="1" max="10" maxlength="2" class="form-control" value="">
-																	-->
-																</div>
-					                                        	<div class="ec-numberInput" style="float:left">
-																	<span>本数:</span>
-																	<input type="number" id="candle_no3_num" name="candle_no3_num" min="1" max="10" maxlength="2" class="form-control" value="">
-																	<span>本</span>
-																</div>
-																<div style="clear:both;"></div>
-					                                        </div>
-					                                        <!-- .入力欄：数字入力(No,本数) -->
-					                                    </div>
-					                            	</div>
-				                                	<!-- .Noキャンドル 3つめ -->
-				                                	
+						                                        </div>
+						                                        <!-- .入力欄：数字入力(No,本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .Noキャンドル 1つめ -->
+					                                	
+					                                    <!-- Noキャンドル 2つめ -->
+														<div id="candle_no2_blk" style="clear: both; width: 100%; font-size:14px;">
+								                            <!-- オプション画像 -->
+						                                    <div style="width: 0px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
+						                                    <div id="candle_no2_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+						                                    <!-- 入力エリア -->
+						                                    <div class="">
+						                                    	<!-- オプション項目名 -->
+																<div style="width:300px; margin-left:auto; margin-right:auto; display:block; text-align:center;">
+																	<div id="candle_no2_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div><div style=""><div style="clear:both;"></div></div>
+								                                    <!-- アイコン -->
+								                                    <div id="candle_no2_icon"></div>
+								                                </div>
+						                                        <!-- 入力欄：数字入力(No,本数) -->
+						                                        <div id="candle_no2_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
+						                                        	<div id="candle_no2_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
+																		<span>No:</span>
+																		<select id="candle_no2_no" name="candle_no2_no" style="display:inline-block; max-width:100px; width:auto;">
+																			<option value="">--</option>
+																			<option value="1">1</option>
+																			<option value="2">2</option>
+																			<option value="3">3</option>
+																			<option value="4">4</option>
+																			<option value="5">5</option>
+																			<option value="6">6</option>
+																			<option value="7">7</option>
+																			<option value="8">8</option>
+																			<option value="9">9</option>
+																			<option value="0">0</option>
+																		</select>
+																		<!--
+																		<input type="number" id="candle_no2_no" name="candle_no2_no" min="1" max="10" maxlength="2" class="form-control" value="">
+																		-->
+																	</div>
+						                                        	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_no2_num" name="candle_no2_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
+																	<div style="clear:both;"></div>
+						                                        </div>
+						                                        <!-- .入力欄：数字入力(No,本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .Noキャンドル 2つめ -->
+					                                	
+					                                    <!-- Noキャンドル 3つめ -->
+														<div id="candle_no3_blk" style="clear: both; width: 100%; font-size:14px;">
+						                                    <!-- オプション画像 -->
+						                                    <div style="width: 0px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
+						                                    <div id="candle_no3_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+						                                    <!-- 入力エリア -->
+						                                    <div class="">
+						                                        <!-- オプション項目名 -->
+																<div style="width:300px; margin-left:auto; margin-right:auto; display:block; text-align:center;">
+																	<div id="candle_no3_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																	<div style="">
+																		<div style="clear:both;"></div>
+																	</div>
+								                                </div>
+						                                        <!-- .オプション項目名 -->
+						                                        <!-- 入力欄：数字入力(No,本数) -->
+						                                        <div id="candle_no3_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
+						                                        	<div id="candle_no3_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
+																		<span>No:</span>
+																		<select id="candle_no3_no" name="candle_no3_no" style="display:inline-block; max-width:100px; width:auto;">
+																			<option value="">--</option>
+																			<option value="1">1</option>
+																			<option value="2">2</option>
+																			<option value="3">3</option>
+																			<option value="4">4</option>
+																			<option value="5">5</option>
+																			<option value="6">6</option>
+																			<option value="7">7</option>
+																			<option value="8">8</option>
+																			<option value="9">9</option>
+																			<option value="0">0</option>
+																		</select>
+																		<!--
+																		<input type="number" id="candle_no3_no" name="candle_no3_no" min="1" max="10" maxlength="2" class="form-control" value="">
+																		-->
+																	</div>
+						                                        	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_no3_num" name="candle_no3_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
+																	<div style="clear:both;"></div>
+						                                        </div>
+						                                        <!-- .入力欄：数字入力(No,本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .Noキャンドル 3つめ -->
+				                                	</div>
+				                                	<!-- .キャンドル枠 -->
 				                            </div>
 				                            {% endif %}
 				                            <!-- .〇キャンドルオプション -->
@@ -2367,9 +2376,9 @@ file that was distributed with this source code.
 			                                    </div>
 			                                    <!-- .大カテゴリ表示(メッセージ) -->
 			                                    
-			                                    <div style="background-color:#f5f5f5">
+			                                    <div style="background-color:#f5f5f5; padding:20px;">
 				                                    <!-- 入力エリア(メッセージ) -->
-				                                    <div class="ec-rectHeading" style="font-size:14px;">
+				                                    <div class="ec-rectHeading" style="font-size:14px; padding-bottom:15px;">
 				                                    	<b>①メッセージプレートを選択</b>
 				                                    </div>
 				                                    <div id="messageplate_blk">
@@ -2416,7 +2425,7 @@ file that was distributed with this source code.
 											                    <div style="margin-left:auto; margin-right:auto; background: url({{ asset('assets/img/option/shita_yajirusi.png') }}) no-repeat scroll 0 0; border-color:#fff;min-height:100px; height:auto; outline:none;">
 									                            </div>
 											                </div>
-							                                <div class="ec-rectHeading" style="font-size:14px;">
+							                                <div class="ec-rectHeading" style="font-size:14px; padding-bottom:15px;">
 											                    <b>②メッセージを入力 (○○文字以内)</b>
 											                </div>
 							                                <div class="ec-input">
@@ -2509,8 +2518,8 @@ file that was distributed with this source code.
 				                                    <div style="clear:both;"></div>
 						                      	</div>
 						                        
-						                        <div style="background-color:#f5f5f5">
-							                        <div class="ec-rectHeading" style="font-size:14px; color:red;">
+						                        <div class="option_decotuika_frame" style="background-color:#f5f5f5;">
+							                        <div class="ec-rectHeading" style="font-size:14px; color:red; padding-bottom:15px;">
 					                              		<b>※写真はイメージです。実物と異なる場合があります。</b>
 					                              	</div>
 
@@ -2596,10 +2605,11 @@ file that was distributed with this source code.
 					                            	
 					                            	<!-- 絵チョコ(4号)説明 -->
 					                            	<div id="echoco_blk">
-					                            		<div class="">
-					                                    	<!-- デコレーション追加画像 -->
-					                                    	<div style="width: 350px; height: 200px; background-image: url({{ asset('assets/img/option/setumei_choko_nama.png') }})"></div>
-					                                        <!-- .デコレーション追加画像 -->
+					                            		<div style="background-color:#fff; padding:20px;">
+					                                    	<span style="font-size:16px; font-weight:bold;">絵チョコ（4号）について</span><br>
+					                                        <span style="font-size:12px;">イラストをチョコレートにしてお作りいたします。</span><br>
+					                                        <span style="font-size:12px;">①ケーキをご注文後、「ご注文完了メール」を登録のメールアドレスへ送付致します</span><br>
+					                                        <span style="font-size:12px;">②「ご注文完了メール」に記載のイラスト・キャラクターのイメージ画像を添付の上お送りください</span>
 					                                    </div>
 					                            	</div>
 					                            	<!-- .絵チョコ(4号)説明 -->
@@ -2627,7 +2637,7 @@ file that was distributed with this source code.
 			                                    <!-- .大カテゴリ表示(持ち帰りポリ袋) -->
 			                                    
 												<!-- ブロック -->
-												<div id="hukuro_blk" style="background-color:#f5f5f5">
+												<div id="hukuro_blk" style="background-color:#f5f5f5; padding:20px;">
 				                                    <!-- 入力エリア -->
 				                                    <div class="">				                                        
 				                                        <div id="hukuro_wdg" style="display:block;">
@@ -2687,9 +2697,9 @@ file that was distributed with this source code.
 			                                    </div>
 			                                    <!-- .大カテゴリ表示(包装方法) -->
 			                                    
-			                                    <div style="background-color:#f5f5f5">
+			                                    <div style="background-color:#f5f5f5; padding:20px;">
 				                                    <!-- 入力エリア(包装方法) -->
-				                                    <div class="ec-rectHeading" style="font-size:14px;">
+				                                    <div class="ec-rectHeading" style="font-size:14px; padding-bottom:15px;">
 				                                    	<b>①包装方法プレートを選択</b>
 				                                    </div>
 				                                    <div id="housouselect_blk" style="padding-bottom:20px;">
@@ -2731,7 +2741,7 @@ file that was distributed with this source code.
 				                                    	<!-- 熨斗選択メニュー -->
 				                                    	<div id="noshi_menu" style="display:none;">
 					                                    	<!-- 熨斗の掛け方 -->
-												            <div class="ec-rectHeading" style="font-size:14px;">
+												            <div class="ec-rectHeading" style="font-size:14px; padding-bottom:15px;">
 						                                    	<b>①熨斗の掛け方を選択</b>
 						                                    </div>
 															<div class="" style="padding-bottom:20px;">
@@ -2757,7 +2767,7 @@ file that was distributed with this source code.
 					                                    	<!-- .熨斗の掛け方 -->
 					                                    	
 					                                    	<!-- 掛け紙・包装の種類 -->
-												            <div class="ec-rectHeading" style="font-size:14px;">
+												            <div class="ec-rectHeading" style="font-size:14px; padding-bottom:15px;">
 						                                    	<b>②掛け紙・包装の種類を選択</b>
 						                                    </div>
 															<div class="" style="padding-bottom:20px;">
@@ -2792,7 +2802,7 @@ file that was distributed with this source code.
 					                                    	<!-- .掛け紙・包装の種類 -->
 					                                    			
 					                                    	<!-- 上書きの種類 -->
-												            <div class="ec-rectHeading" style="font-size:14px;">
+												            <div class="ec-rectHeading" style="font-size:14px; padding-bottom:15px;">
 						                                    	<b>③上書きの種類を選択</b>
 						                                    </div>
 															<div class="" style="padding-bottom:20px;">
@@ -2864,7 +2874,7 @@ file that was distributed with this source code.
 					                                    	    
 						                                    <!--    名入れ(熨斗)    -->
 									                        <div id="printname_noshi_block" style="display:block;" style="padding-bottom:20px;">
-								                                <div class="ec-rectHeading" style="font-size:14px;">
+								                                <div class="ec-rectHeading" style="font-size:14px; padding-bottom:15px;">
 												                    <b>④熨斗の名入れ希望はこちらへ<br>　(ふりがなもご記入頂ければ対応可能です)</b>
 												                </div>
 								                                <div class="ec-input">
