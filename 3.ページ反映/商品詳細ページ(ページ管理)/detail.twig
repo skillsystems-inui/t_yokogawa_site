@@ -197,6 +197,27 @@ file that was distributed with this source code.
 				// Noキャンドル 3つめ
 				const candle_no3_no  = document.getElementById("candle_no3_no");
 				const candle_no3_num = document.getElementById("candle_no3_num");
+				// Noキャンドル 4つめ
+				const candle_no4_no  = document.getElementById("candle_no4_no");
+				const candle_no4_num = document.getElementById("candle_no4_num");
+				// Noキャンドル 5つめ
+				const candle_no5_no  = document.getElementById("candle_no5_no");
+				const candle_no5_num = document.getElementById("candle_no5_num");
+				// Noキャンドル 6つめ
+				const candle_no6_no  = document.getElementById("candle_no6_no");
+				const candle_no6_num = document.getElementById("candle_no6_num");
+				// Noキャンドル 7つめ
+				const candle_no7_no  = document.getElementById("candle_no7_no");
+				const candle_no7_num = document.getElementById("candle_no7_num");
+				// Noキャンドル 8つめ
+				const candle_no8_no  = document.getElementById("candle_no8_no");
+				const candle_no8_num = document.getElementById("candle_no8_num");
+				// Noキャンドル 9つめ
+				const candle_no9_no  = document.getElementById("candle_no9_no");
+				const candle_no9_num = document.getElementById("candle_no9_num");
+				// Noキャンドル 0つめ
+				const candle_no0_no  = document.getElementById("candle_no0_no");
+				const candle_no0_num = document.getElementById("candle_no0_num");
 				
 				//キャンドルの不要チェックがついていない場合、入力チェックを行う
 				const chk_candle_nosel = document.getElementById("chk_candle_nosel");
@@ -210,13 +231,27 @@ file that was distributed with this source code.
 					   candle_no2_no.value == '' &&
 					   candle_no2_num.value == '' &&
 					   candle_no3_no.value == '' &&
-					   candle_no3_num.value == ''
+					   candle_no3_num.value == '' &&
+					   candle_no4_no.value == '' &&
+					   candle_no4_num.value == '' &&
+					   candle_no5_no.value == '' &&
+					   candle_no5_num.value == '' &&
+					   candle_no6_no.value == '' &&
+					   candle_no6_num.value == '' &&
+					   candle_no7_no.value == '' &&
+					   candle_no7_num.value == '' &&
+					   candle_no8_no.value == '' &&
+					   candle_no8_num.value == '' &&
+					   candle_no9_no.value == '' &&
+					   candle_no9_num.value == '' &&
+					   candle_no0_no.value == '' &&
+					   candle_no0_num.value == ''
 					){
 						alert('キャンドルを選択してください');
 		                return false;
 					}
 					
-					
+					/* 本数が入っているものを選択とする
 					//NoキャンドルのNoか本数が未選択ならアラート表示(1)
 					if((candle_no1_no.value != '' && candle_no1_num.value == '') ||
 					   (candle_no1_no.value == '' && candle_no1_num.value != '')
@@ -240,6 +275,7 @@ file that was distributed with this source code.
 						alert('NoキャンドルはNoと本数を選択してください');
 		                return false;
 					}
+					*/
 				}
 			}
             
@@ -463,6 +499,27 @@ file that was distributed with this source code.
 				// Noキャンドル 3つめ
 				const candle_no3_no  = document.getElementById("candle_no3_no");
 				const candle_no3_num = document.getElementById("candle_no3_num");
+				// Noキャンドル 4つめ
+				const candle_no4_no  = document.getElementById("candle_no4_no");
+				const candle_no4_num = document.getElementById("candle_no4_num");
+				// Noキャンドル 5つめ
+				const candle_no5_no  = document.getElementById("candle_no5_no");
+				const candle_no5_num = document.getElementById("candle_no5_num");
+				// Noキャンドル 6つめ
+				const candle_no6_no  = document.getElementById("candle_no6_no");
+				const candle_no6_num = document.getElementById("candle_no6_num");
+				// Noキャンドル 7つめ
+				const candle_no7_no  = document.getElementById("candle_no7_no");
+				const candle_no7_num = document.getElementById("candle_no7_num");
+				// Noキャンドル 8つめ
+				const candle_no8_no  = document.getElementById("candle_no8_no");
+				const candle_no8_num = document.getElementById("candle_no8_num");
+				// Noキャンドル 9つめ
+				const candle_no9_no  = document.getElementById("candle_no9_no");
+				const candle_no9_num = document.getElementById("candle_no9_num");
+				// Noキャンドル 0つめ
+				const candle_no0_no  = document.getElementById("candle_no0_no");
+				const candle_no0_num = document.getElementById("candle_no0_num");
 				
 				//キャンドルの不要チェック
 				const chk_candle_nosel = document.getElementById("chk_candle_nosel");
@@ -518,6 +575,97 @@ file that was distributed with this source code.
 						optionselect_candle = optionselect_candle + ' 「' + candle_no3_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no3_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn3 + '円) '; 
+						optionselect_candle = optionselect_candle + '\n';
+					}
+					//Noキャンドル(4)
+					if(candle_no4_no.value != '' && candle_no4_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn4 = candle_no4_num.value*$no_candle;
+						$addprice = $addprice + $plus_price_cn4;
+						
+						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' 「' + candle_no4_no.value + '」';
+						optionselect_candle = optionselect_candle + ' ' + candle_no4_num.value + '本 '; 
+						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn4 + '円) ';
+						optionselect_candle = optionselect_candle + '\n';
+						
+					}
+					
+					//Noキャンドル(5)
+					if(candle_no5_no.value != '' && candle_no5_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn5 = candle_no5_num.value*$no_candle;
+						$addprice = $addprice + $plus_price_cn5;
+						
+						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' 「' + candle_no5_no.value + '」';
+						optionselect_candle = optionselect_candle + ' ' + candle_no5_num.value + '本'; 
+						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn5 + '円) ';
+						optionselect_candle = optionselect_candle + '\n';
+					}
+					
+					//Noキャンドル(6)
+					if(candle_no6_no.value != '' && candle_no6_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn6 = candle_no6_num.value*$no_candle;
+						$addprice = $addprice + $plus_price_cn6;
+						
+						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' 「' + candle_no6_no.value + '」';
+						optionselect_candle = optionselect_candle + ' ' + candle_no6_num.value + '本 '; 
+						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn6 + '円) '; 
+						optionselect_candle = optionselect_candle + '\n';
+					}
+					
+					//Noキャンドル(7)
+					if(candle_no7_no.value != '' && candle_no7_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn7 = candle_no7_num.value*$no_candle;
+						$addprice = $addprice + $plus_price_cn7;
+						
+						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' 「' + candle_no7_no.value + '」';
+						optionselect_candle = optionselect_candle + ' ' + candle_no7_num.value + '本'; 
+						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn7 + '円) ';
+						optionselect_candle = optionselect_candle + '\n';
+					}
+					
+					//Noキャンドル(8)
+					if(candle_no8_no.value != '' && candle_no8_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn8 = candle_no8_num.value*$no_candle;
+						$addprice = $addprice + $plus_price_cn8;
+						
+						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' 「' + candle_no8_no.value + '」';
+						optionselect_candle = optionselect_candle + ' ' + candle_no8_num.value + '本 '; 
+						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn8 + '円) '; 
+						optionselect_candle = optionselect_candle + '\n';
+					}
+					//Noキャンドル(9)
+					if(candle_no9_no.value != '' && candle_no9_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn9 = candle_no9_num.value*$no_candle;
+						$addprice = $addprice + $plus_price_cn9;
+						
+						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' 「' + candle_no9_no.value + '」';
+						optionselect_candle = optionselect_candle + ' ' + candle_no9_num.value + '本 '; 
+						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn9 + '円) ';
+						optionselect_candle = optionselect_candle + '\n';
+						
+					}
+					
+					//Noキャンドル(0)
+					if(candle_no0_no.value != '' && candle_no0_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn0 = candle_no0_num.value*$no_candle;
+						$addprice = $addprice + $plus_price_cn0;
+						
+						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' 「' + candle_no0_no.value + '」';
+						optionselect_candle = optionselect_candle + ' ' + candle_no0_num.value + '本'; 
+						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn0 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
 					}
 				}else{
@@ -835,6 +983,27 @@ file that was distributed with this source code.
 				// Noキャンドル 3つめ
 				const candle_no3_no  = document.getElementById("candle_no3_no");
 				const candle_no3_num = document.getElementById("candle_no3_num");
+				// Noキャンドル 4つめ
+				const candle_no4_no  = document.getElementById("candle_no4_no");
+				const candle_no4_num = document.getElementById("candle_no4_num");
+				// Noキャンドル 5つめ
+				const candle_no5_no  = document.getElementById("candle_no5_no");
+				const candle_no5_num = document.getElementById("candle_no5_num");
+				// Noキャンドル 6つめ
+				const candle_no6_no  = document.getElementById("candle_no6_no");
+				const candle_no6_num = document.getElementById("candle_no6_num");
+				// Noキャンドル 7つめ
+				const candle_no7_no  = document.getElementById("candle_no7_no");
+				const candle_no7_num = document.getElementById("candle_no7_num");
+				// Noキャンドル 8つめ
+				const candle_no8_no  = document.getElementById("candle_no8_no");
+				const candle_no8_num = document.getElementById("candle_no8_num");
+				// Noキャンドル 9つめ
+				const candle_no9_no  = document.getElementById("candle_no9_no");
+				const candle_no9_num = document.getElementById("candle_no9_num");
+				// Noキャンドル 0つめ
+				const candle_no0_no  = document.getElementById("candle_no0_no");
+				const candle_no0_num = document.getElementById("candle_no0_num");
 				
 				//キャンドルの不要チェック
 				const chk_candle_nosel = document.getElementById("chk_candle_nosel");
@@ -859,6 +1028,54 @@ file that was distributed with this source code.
 						//追加料金セット
 						var $plus_price_cn3 = candle_no3_num.value*$no_candle;
 						$yuryou_price = $yuryou_price + $plus_price_cn3;
+					}
+
+					//Noキャンドル(4)
+					if(candle_no4_no.value != '' && candle_no4_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn4 = candle_no4_num.value*$no_candle;
+						$yuryou_price = $yuryou_price + $plus_price_cn4;
+					}
+					
+					//Noキャンドル(5)
+					if(candle_no5_no.value != '' && candle_no5_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn5 = candle_no5_num.value*$no_candle;
+						$yuryou_price = $yuryou_price + $plus_price_cn5;
+					}
+					
+					//Noキャンドル(6)
+					if(candle_no6_no.value != '' && candle_no6_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn6 = candle_no6_num.value*$no_candle;
+						$yuryou_price = $yuryou_price + $plus_price_cn6;
+					}
+					//Noキャンドル(7)
+					if(candle_no7_no.value != '' && candle_no7_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn7 = candle_no7_num.value*$no_candle;
+						$yuryou_price = $yuryou_price + $plus_price_cn7;
+					}
+					
+					//Noキャンドル(8)
+					if(candle_no8_no.value != '' && candle_no8_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn8 = candle_no8_num.value*$no_candle;
+						$yuryou_price = $yuryou_price + $plus_price_cn8;
+					}
+					
+					//Noキャンドル(9)
+					if(candle_no9_no.value != '' && candle_no9_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn9 = candle_no9_num.value*$no_candle;
+						$yuryou_price = $yuryou_price + $plus_price_cn9;
+					}
+					
+					//Noキャンドル(0)
+					if(candle_no0_no.value != '' && candle_no0_num.value != ''){
+						//追加料金セット
+						var $plus_price_cn0 = candle_no0_num.value*$no_candle;
+						$yuryou_price = $yuryou_price + $plus_price_cn0;
 					}
 				}
 			}
@@ -1062,6 +1279,207 @@ file that was distributed with this source code.
 	      //指定されたオプション有料金額を含めた合計金額をセットする
 	      setOptionTotalPrice();
         }
+        
+        
+        //Noキャンドル(4つめ)の有料金額をセットする
+        function SetCandleNo4Price() {
+          //有料オプション金額を表示して合算する
+		  const candle_no4_no  = document.getElementById("candle_no4_no").value;
+		  const candle_no4_num = document.getElementById("candle_no4_num").value;
+		  
+		  if(candle_no4_no != '' && candle_no4_num != ''){
+		  	//オプション表示
+		  	document.getElementById('no_candle4_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var no4_lbl = "Noキャンドル「" + candle_no4_no + "」×" + candle_no4_num + "本 (税込)";
+		  	var $no_candle_4_label = $form.parent().find('.no-candle-4-label-default').first();
+	        $no_candle_4_label.text(no4_lbl);
+	        
+	        //オプション金額
+	        var no4_price = "￥" + candle_no4_num*per_price_candle_no + "";
+		  	var $no_candle_4_price = $form.parent().find('.no-candle-4-price-default').first();
+	        $no_candle_4_price.text(no4_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('no_candle4_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //Noキャンドル(5つめ)の有料金額をセットする
+        function SetCandleNo5Price() {
+          //有料オプション金額を表示して合算する
+		  const candle_no5_no  = document.getElementById("candle_no5_no").value;
+		  const candle_no5_num = document.getElementById("candle_no5_num").value;
+		  
+		  if(candle_no5_no != '' && candle_no5_num != ''){
+		  	//オプション表示
+		  	document.getElementById('no_candle5_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var no5_lbl = "Noキャンドル「" + candle_no5_no + "」×" + candle_no5_num + "本 (税込)";
+		  	var $no_candle_5_label = $form.parent().find('.no-candle-5-label-default').first();
+	        $no_candle_5_label.text(no5_lbl);
+	        
+	        //オプション金額
+	        var no5_price = "￥" + candle_no5_num*per_price_candle_no + "";
+		  	var $no_candle_5_price = $form.parent().find('.no-candle-5-price-default').first();
+	        $no_candle_5_price.text(no5_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('no_candle5_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //Noキャンドル(6つめ)の有料金額をセットする
+        function SetCandleNo6Price() {
+          //有料オプション金額を表示して合算する
+		  const candle_no6_no  = document.getElementById("candle_no6_no").value;
+		  const candle_no6_num = document.getElementById("candle_no6_num").value;
+		  
+		  if(candle_no6_no != '' && candle_no6_num != ''){
+		  	//オプション表示
+		  	document.getElementById('no_candle6_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var no6_lbl = "Noキャンドル「" + candle_no6_no + "」×" + candle_no6_num + "本 (税込)";
+		  	var $no_candle_6_label = $form.parent().find('.no-candle-6-label-default').first();
+	        $no_candle_6_label.text(no6_lbl);
+	        
+	        //オプション金額
+	        var no6_price = "￥" + candle_no6_num*per_price_candle_no + "";
+		  	var $no_candle_6_price = $form.parent().find('.no-candle-6-price-default').first();
+	        $no_candle_6_price.text(no6_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('no_candle6_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        
+        //Noキャンドル(7つめ)の有料金額をセットする
+        function SetCandleNo7Price() {
+          //有料オプション金額を表示して合算する
+		  const candle_no7_no  = document.getElementById("candle_no7_no").value;
+		  const candle_no7_num = document.getElementById("candle_no7_num").value;
+		  
+		  if(candle_no7_no != '' && candle_no7_num != ''){
+		  	//オプション表示
+		  	document.getElementById('no_candle7_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var no7_lbl = "Noキャンドル「" + candle_no7_no + "」×" + candle_no7_num + "本 (税込)";
+		  	var $no_candle_7_label = $form.parent().find('.no-candle-7-label-default').first();
+	        $no_candle_7_label.text(no7_lbl);
+	        
+	        //オプション金額
+	        var no7_price = "￥" + candle_no7_num*per_price_candle_no + "";
+		  	var $no_candle_7_price = $form.parent().find('.no-candle-7-price-default').first();
+	        $no_candle_7_price.text(no7_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('no_candle7_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //Noキャンドル(8つめ)の有料金額をセットする
+        function SetCandleNo8Price() {
+          //有料オプション金額を表示して合算する
+		  const candle_no8_no  = document.getElementById("candle_no8_no").value;
+		  const candle_no8_num = document.getElementById("candle_no8_num").value;
+		  
+		  if(candle_no8_no != '' && candle_no8_num != ''){
+		  	//オプション表示
+		  	document.getElementById('no_candle8_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var no8_lbl = "Noキャンドル「" + candle_no8_no + "」×" + candle_no8_num + "本 (税込)";
+		  	var $no_candle_8_label = $form.parent().find('.no-candle-8-label-default').first();
+	        $no_candle_8_label.text(no8_lbl);
+	        
+	        //オプション金額
+	        var no8_price = "￥" + candle_no8_num*per_price_candle_no + "";
+		  	var $no_candle_8_price = $form.parent().find('.no-candle-8-price-default').first();
+	        $no_candle_8_price.text(no8_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('no_candle8_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        
+        //Noキャンドル(9つめ)の有料金額をセットする
+        function SetCandleNo9Price() {
+          //有料オプション金額を表示して合算する
+		  const candle_no9_no  = document.getElementById("candle_no9_no").value;
+		  const candle_no9_num = document.getElementById("candle_no9_num").value;
+		  
+		  if(candle_no9_no != '' && candle_no9_num != ''){
+		  	//オプション表示
+		  	document.getElementById('no_candle9_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var no9_lbl = "Noキャンドル「" + candle_no9_no + "」×" + candle_no9_num + "本 (税込)";
+		  	var $no_candle_9_label = $form.parent().find('.no-candle-9-label-default').first();
+	        $no_candle_9_label.text(no9_lbl);
+	        
+	        //オプション金額
+	        var no9_price = "￥" + candle_no9_num*per_price_candle_no + "";
+		  	var $no_candle_9_price = $form.parent().find('.no-candle-9-price-default').first();
+	        $no_candle_9_price.text(no9_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('no_candle9_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
+        //Noキャンドル(0つめ)の有料金額をセットする
+        function SetCandleNo0Price() {
+          
+          //有料オプション金額を表示して合算する
+		  const candle_no0_no  = document.getElementById("candle_no0_no").value;
+		  const candle_no0_num = document.getElementById("candle_no0_num").value;
+		  
+		  if(candle_no0_no != '' && candle_no0_num != ''){
+		  	//オプション表示
+		  	document.getElementById('no_candle0_price').style.display="block";
+		  	
+		  	//オプション名
+		  	var no0_lbl = "Noキャンドル「" + candle_no0_no + "」×" + candle_no0_num + "本 (税込)";
+		  	var $no_candle_0_label = $form.parent().find('.no-candle-0-label-default').first();
+	        $no_candle_0_label.text(no0_lbl);
+	        
+	        //オプション金額
+	        var no0_price = "￥" + candle_no0_num*per_price_candle_no + "";
+		  	var $no_candle_0_price = $form.parent().find('.no-candle-0-price-default').first();
+	        $no_candle_0_price.text(no0_price);
+	      }else{
+	      	//オプション非表示
+		  	document.getElementById('no_candle0_price').style.display="none";
+	      }
+	      
+	      //指定されたオプション有料金額を含めた合計金額をセットする
+	      setOptionTotalPrice();
+        }
+        
         
         //[デコレーション追加]いちごUPの有料金額をセットする
         function SetDecoIchigoUp() {
@@ -1615,6 +2033,84 @@ file that was distributed with this source code.
 		  //有料金額反映
 		  SetCandleNo3Price();
 		};
+        
+	    //Noキャンドル(4つめ)のNoが変更されたとき金額を反映する
+	    document.getElementById("candle_no4_no").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo4Price();
+		};
+		//Noキャンドル(4つめ)の本数が変更されたとき金額を反映する
+	    document.getElementById("candle_no4_num").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo4Price();
+		};
+        
+	    //Noキャンドル(5つめ)のNoが変更されたとき金額を反映する
+	    document.getElementById("candle_no5_no").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo5Price();
+		};
+		//Noキャンドル(5つめ)の本数が変更されたとき金額を反映する
+	    document.getElementById("candle_no5_num").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo5Price();
+		};
+        
+	    //Noキャンドル(6つめ)のNoが変更されたとき金額を反映する
+	    document.getElementById("candle_no6_no").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo6Price();
+		};
+		//Noキャンドル(6つめ)の本数が変更されたとき金額を反映する
+	    document.getElementById("candle_no6_num").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo6Price();
+		};
+        
+	    //Noキャンドル(7つめ)のNoが変更されたとき金額を反映する
+	    document.getElementById("candle_no7_no").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo7Price();
+		};
+		//Noキャンドル(7つめ)の本数が変更されたとき金額を反映する
+	    document.getElementById("candle_no7_num").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo7Price();
+		};
+        
+	    //Noキャンドル(8つめ)のNoが変更されたとき金額を反映する
+	    document.getElementById("candle_no8_no").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo8Price();
+		};
+		//Noキャンドル(8つめ)の本数が変更されたとき金額を反映する
+	    document.getElementById("candle_no8_num").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo8Price();
+		};
+        
+	    //Noキャンドル(9つめ)のNoが変更されたとき金額を反映する
+	    document.getElementById("candle_no9_no").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo9Price();
+		};
+		//Noキャンドル(9つめ)の本数が変更されたとき金額を反映する
+	    document.getElementById("candle_no9_num").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo9Price();
+		};
+        
+	    //Noキャンドル(0つめ)のNoが変更されたとき金額を反映する
+	    document.getElementById("candle_no0_no").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo0Price();
+		};
+		//Noキャンドル(0つめ)の本数が変更されたとき金額を反映する
+	    document.getElementById("candle_no0_num").onchange = function() {
+		  //有料金額反映
+		  SetCandleNo0Price();
+		};
+        
         
         //いちごUPのチェックが変更されたとき金額を反映する
 	    document.getElementById("ichigo_chk").onchange = function() {
@@ -2231,23 +2727,12 @@ file that was distributed with this source code.
 						                                        <!-- 入力欄：数字入力(No,本数) -->
 						                                        <div id="candle_no1_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
 						                                        	<div id="candle_no1_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
-																		<span>No:</span>
-																		<select id="candle_no1_no" name="candle_no1_no" style="display:inline-block; max-width:100px; width:auto;">
-																			<option value="">--</option>
+																		<div style="margin-top:10px;">
+																			<span>No.1:　</span>
+																		</div>
+																		<select id="candle_no1_no" name="candle_no1_no" style="display:none; max-width:100px; width:auto;">
 																			<option value="1">1</option>
-																			<option value="2">2</option>
-																			<option value="3">3</option>
-																			<option value="4">4</option>
-																			<option value="5">5</option>
-																			<option value="6">6</option>
-																			<option value="7">7</option>
-																			<option value="8">8</option>
-																			<option value="9">9</option>
-																			<option value="0">0</option>
 																		</select>
-																		<!--
-																		<input type="number" id="candle_no1_no" name="candle_no1_no" min="1" max="10" maxlength="2" class="form-control" value="">
-																		-->
 																	</div>
 						                                        	<div class="ec-numberInput" style="float:left">
 																		<span>本数:</span>
@@ -2277,23 +2762,12 @@ file that was distributed with this source code.
 						                                        <!-- 入力欄：数字入力(No,本数) -->
 						                                        <div id="candle_no2_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
 						                                        	<div id="candle_no2_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
-																		<span>No:</span>
-																		<select id="candle_no2_no" name="candle_no2_no" style="display:inline-block; max-width:100px; width:auto;">
-																			<option value="">--</option>
-																			<option value="1">1</option>
+																		<div style="margin-top:10px;">
+																			<span>No.2:　</span>
+																		</div>
+																		<select id="candle_no2_no" name="candle_no2_no" style="display:none; max-width:100px; width:auto;">
 																			<option value="2">2</option>
-																			<option value="3">3</option>
-																			<option value="4">4</option>
-																			<option value="5">5</option>
-																			<option value="6">6</option>
-																			<option value="7">7</option>
-																			<option value="8">8</option>
-																			<option value="9">9</option>
-																			<option value="0">0</option>
 																		</select>
-																		<!--
-																		<input type="number" id="candle_no2_no" name="candle_no2_no" min="1" max="10" maxlength="2" class="form-control" value="">
-																		-->
 																	</div>
 						                                        	<div class="ec-numberInput" style="float:left">
 																		<span>本数:</span>
@@ -2325,23 +2799,12 @@ file that was distributed with this source code.
 						                                        <!-- 入力欄：数字入力(No,本数) -->
 						                                        <div id="candle_no3_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
 						                                        	<div id="candle_no3_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
-																		<span>No:</span>
-																		<select id="candle_no3_no" name="candle_no3_no" style="display:inline-block; max-width:100px; width:auto;">
-																			<option value="">--</option>
-																			<option value="1">1</option>
-																			<option value="2">2</option>
+																		<div style="margin-top:10px;">
+																			<span>No.3:　</span>
+																		</div>
+																		<select id="candle_no3_no" name="candle_no3_no" style="display:none; max-width:100px; width:auto;">
 																			<option value="3">3</option>
-																			<option value="4">4</option>
-																			<option value="5">5</option>
-																			<option value="6">6</option>
-																			<option value="7">7</option>
-																			<option value="8">8</option>
-																			<option value="9">9</option>
-																			<option value="0">0</option>
 																		</select>
-																		<!--
-																		<input type="number" id="candle_no3_no" name="candle_no3_no" min="1" max="10" maxlength="2" class="form-control" value="">
-																		-->
 																	</div>
 						                                        	<div class="ec-numberInput" style="float:left">
 																		<span>本数:</span>
@@ -2354,6 +2817,266 @@ file that was distributed with this source code.
 						                                    </div>
 						                            	</div>
 					                                	<!-- .Noキャンドル 3つめ -->
+					                                	
+					                                	<!-- Noキャンドル 4つめ -->
+														<div id="candle_no4_blk" style="clear: both; width: 100%; font-size:14px;">
+						                                    <!-- オプション画像 -->
+						                                    <div style="width: 0px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
+						                                    <div id="candle_no4_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+						                                    <!-- 入力エリア -->
+						                                    <div class="">
+						                                        <!-- オプション項目名 -->
+																<div style="width:300px; margin-left:auto; margin-right:auto; display:block; text-align:center;">
+																	<div id="candle_no4_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																	<div style="">
+																		<div style="clear:both;"></div>
+																	</div>
+								                                </div>
+						                                        <!-- .オプション項目名 -->
+						                                        <!-- 入力欄：数字入力(No,本数) -->
+						                                        <div id="candle_no4_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
+						                                        	<div id="candle_no4_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
+																		<div style="margin-top:10px;">
+																			<span>No.4:　</span>
+																		</div>
+																		<select id="candle_no4_no" name="candle_no4_no" style="display:none; max-width:100px; width:auto;">
+																			<option value="4">4</option>
+																		</select>
+																	</div>
+						                                        	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_no4_num" name="candle_no4_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
+																	<div style="clear:both;"></div>
+						                                        </div>
+						                                        <!-- .入力欄：数字入力(No,本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .Noキャンドル 4つめ -->
+					                                	
+					                                	<!-- Noキャンドル 5つめ -->
+														<div id="candle_no5_blk" style="clear: both; width: 100%; font-size:14px;">
+						                                    <!-- オプション画像 -->
+						                                    <div style="width: 0px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
+						                                    <div id="candle_no5_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+						                                    <!-- 入力エリア -->
+						                                    <div class="">
+						                                        <!-- オプション項目名 -->
+																<div style="width:300px; margin-left:auto; margin-right:auto; display:block; text-align:center;">
+																	<div id="candle_no5_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																	<div style="">
+																		<div style="clear:both;"></div>
+																	</div>
+								                                </div>
+						                                        <!-- .オプション項目名 -->
+						                                        <!-- 入力欄：数字入力(No,本数) -->
+						                                        <div id="candle_no5_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
+						                                        	<div id="candle_no5_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
+																		<div style="margin-top:10px;">
+																			<span>No.5:　</span>
+																		</div>
+																		<select id="candle_no5_no" name="candle_no5_no" style="display:none; max-width:100px; width:auto;">
+																			<option value="5">5</option>
+																		</select>
+																	</div>
+						                                        	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_no5_num" name="candle_no5_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
+																	<div style="clear:both;"></div>
+						                                        </div>
+						                                        <!-- .入力欄：数字入力(No,本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .Noキャンドル 5つめ -->
+					                                	
+					                                	<!-- Noキャンドル 6つめ -->
+														<div id="candle_no6_blk" style="clear: both; width: 100%; font-size:14px;">
+						                                    <!-- オプション画像 -->
+						                                    <div style="width: 0px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
+						                                    <div id="candle_no6_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+						                                    <!-- 入力エリア -->
+						                                    <div class="">
+						                                        <!-- オプション項目名 -->
+																<div style="width:300px; margin-left:auto; margin-right:auto; display:block; text-align:center;">
+																	<div id="candle_no6_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																	<div style="">
+																		<div style="clear:both;"></div>
+																	</div>
+								                                </div>
+						                                        <!-- .オプション項目名 -->
+						                                        <!-- 入力欄：数字入力(No,本数) -->
+						                                        <div id="candle_no6_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
+						                                        	<div id="candle_no6_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
+																		<div style="margin-top:10px;">
+																			<span>No.6:　</span>
+																		</div>
+																		<select id="candle_no6_no" name="candle_no6_no" style="display:none; max-width:100px; width:auto;">
+																			<option value="6">6</option>
+																		</select>
+																	</div>
+						                                        	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_no6_num" name="candle_no6_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
+																	<div style="clear:both;"></div>
+						                                        </div>
+						                                        <!-- .入力欄：数字入力(No,本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .Noキャンドル 6つめ -->
+					                                	
+					                                	<!-- Noキャンドル 7つめ -->
+														<div id="candle_no7_blk" style="clear: both; width: 100%; font-size:14px;">
+						                                    <!-- オプション画像 -->
+						                                    <div style="width: 0px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
+						                                    <div id="candle_no7_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+						                                    <!-- 入力エリア -->
+						                                    <div class="">
+						                                        <!-- オプション項目名 -->
+																<div style="width:300px; margin-left:auto; margin-right:auto; display:block; text-align:center;">
+																	<div id="candle_no7_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																	<div style="">
+																		<div style="clear:both;"></div>
+																	</div>
+								                                </div>
+						                                        <!-- .オプション項目名 -->
+						                                        <!-- 入力欄：数字入力(No,本数) -->
+						                                        <div id="candle_no7_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
+						                                        	<div id="candle_no7_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
+																		<div style="margin-top:10px;">
+																			<span>No.7:　</span>
+																		</div>
+																		<select id="candle_no7_no" name="candle_no7_no" style="display:none; max-width:100px; width:auto;">
+																			<option value="7">7</option>
+																		</select>
+																	</div>
+						                                        	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_no7_num" name="candle_no7_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
+																	<div style="clear:both;"></div>
+						                                        </div>
+						                                        <!-- .入力欄：数字入力(No,本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .Noキャンドル 7つめ -->
+					                                	
+					                                	<!-- Noキャンドル 8つめ -->
+														<div id="candle_no8_blk" style="clear: both; width: 100%; font-size:14px;">
+						                                    <!-- オプション画像 -->
+						                                    <div style="width: 0px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
+						                                    <div id="candle_no8_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+						                                    <!-- 入力エリア -->
+						                                    <div class="">
+						                                        <!-- オプション項目名 -->
+																<div style="width:300px; margin-left:auto; margin-right:auto; display:block; text-align:center;">
+																	<div id="candle_no8_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																	<div style="">
+																		<div style="clear:both;"></div>
+																	</div>
+								                                </div>
+						                                        <!-- .オプション項目名 -->
+						                                        <!-- 入力欄：数字入力(No,本数) -->
+						                                        <div id="candle_no8_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
+						                                        	<div id="candle_no8_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
+																		<div style="margin-top:10px;">
+																			<span>No.8:　</span>
+																		</div>
+																		<select id="candle_no8_no" name="candle_no8_no" style="display:none; max-width:100px; width:auto;">
+																			<option value="8">8</option>
+																		</select>
+																	</div>
+						                                        	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_no8_num" name="candle_no8_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
+																	<div style="clear:both;"></div>
+						                                        </div>
+						                                        <!-- .入力欄：数字入力(No,本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .Noキャンドル 8つめ -->
+					                                	
+					                                	<!-- Noキャンドル 9つめ -->
+														<div id="candle_no9_blk" style="clear: both; width: 100%; font-size:14px;">
+						                                    <!-- オプション画像 -->
+						                                    <div style="width: 0px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
+						                                    <div id="candle_no9_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+						                                    <!-- 入力エリア -->
+						                                    <div class="">
+						                                        <!-- オプション項目名 -->
+																<div style="width:300px; margin-left:auto; margin-right:auto; display:block; text-align:center;">
+																	<div id="candle_no9_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																	<div style="">
+																		<div style="clear:both;"></div>
+																	</div>
+								                                </div>
+						                                        <!-- .オプション項目名 -->
+						                                        <!-- 入力欄：数字入力(No,本数) -->
+						                                        <div id="candle_no9_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
+						                                        	<div id="candle_no9_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
+																		<div style="margin-top:10px;">
+																			<span>No.9:　</span>
+																		</div>
+																		<select id="candle_no9_no" name="candle_no9_no" style="display:none; max-width:100px; width:auto;">
+																			<option value="9">9</option>
+																		</select>
+																	</div>
+						                                        	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_no9_num" name="candle_no9_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
+																	<div style="clear:both;"></div>
+						                                        </div>
+						                                        <!-- .入力欄：数字入力(No,本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .Noキャンドル 9つめ -->
+					                                	
+					                                	<!-- Noキャンドル 0つめ -->
+														<div id="candle_no0_blk" style="clear: both; width: 100%; font-size:14px;">
+						                                    <!-- オプション画像 -->
+						                                    <div style="width: 0px; background-image: url({{ asset('assets/img/option/opt_candle_no.png') }})"></div>
+						                                    <div id="candle_no0_gazou" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+						                                    <!-- 入力エリア -->
+						                                    <div class="">
+						                                        <!-- オプション項目名 -->
+																<div style="width:300px; margin-left:auto; margin-right:auto; display:block; text-align:center;">
+																	<div id="candle_no0_koumokumei" style="width: 80%; margin: 0px auto; text-align: center;"></div>
+																	<div style="">
+																		<div style="clear:both;"></div>
+																	</div>
+								                                </div>
+						                                        <!-- .オプション項目名 -->
+						                                        <!-- 入力欄：数字入力(No,本数) -->
+						                                        <div id="candle_no0_nyuryoku" style="width:300px; margin-left:auto; margin-right:auto; display:block;">
+						                                        	<div id="candle_no0_numtext" class="ec-numberInput" style="float:left; display:block; margin-left:15%;">
+																		<div style="margin-top:10px;">
+																			<span>No.0:　</span>
+																		</div>
+																		<select id="candle_no0_no" name="candle_no0_no" style="display:none; max-width:100px; width:auto;">
+																			<option value="0">0</option>
+																		</select>
+																	</div>
+						                                        	<div class="ec-numberInput" style="float:left">
+																		<span>本数:</span>
+																		<input type="number" id="candle_no0_num" name="candle_no0_num" min="1" max="10" maxlength="2" class="form-control" value="">
+																		<span>本</span>
+																	</div>
+																	<div style="clear:both;"></div>
+						                                        </div>
+						                                        <!-- .入力欄：数字入力(No,本数) -->
+						                                    </div>
+						                            	</div>
+					                                	<!-- .Noキャンドル 0つめ -->
+					                                	
 				                                	</div>
 				                                	<!-- .キャンドル枠 -->
 				                            </div>
@@ -2983,6 +3706,69 @@ file that was distributed with this source code.
 				                                    	{{ ''|trans }}
 				                                    </span>
 				                                    <span class="ec-price__price no-candle-3-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- Noキャンドル4 -->
+				                                <div id="no_candle4_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="no-candle-4-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price no-candle-4-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- Noキャンドル5 -->
+				                                <div id="no_candle5_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="no-candle-5-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price no-candle-5-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- Noキャンドル6 -->
+				                                <div id="no_candle6_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="no-candle-6-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price no-candle-6-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- Noキャンドル7 -->
+				                                <div id="no_candle7_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="no-candle-7-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price no-candle-7-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- Noキャンドル8 -->
+				                                <div id="no_candle8_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="no-candle-8-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price no-candle-8-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- Noキャンドル9 -->
+				                                <div id="no_candle9_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="no-candle-9-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price no-candle-9-price-default" style="margin-left: 21%;">
+				                                    	{{ 0|price }}
+				                                    </span>
+				                                </div>
+				                                <!-- Noキャンドル0 -->
+				                                <div id="no_candle0_price" class="ec-price" style=" font-size:13px; color:red; display:none;">
+			                                        <span class="no-candle-0-label-default" style="margin-right:0%;">
+				                                    	{{ ''|trans }}
+				                                    </span>
+				                                    <span class="ec-price__price no-candle-0-price-default" style="margin-left: 21%;">
 				                                    	{{ 0|price }}
 				                                    </span>
 				                                </div>
