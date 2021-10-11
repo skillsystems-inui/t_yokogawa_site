@@ -2548,6 +2548,70 @@ $common
 		float:left;
 		width:50%;
 	}
+	
+	.option_candle_label_left {
+		float:left;
+		width:80%;
+		padding:8px;
+	}
+	.option_candle_label_right {
+		float:left;
+		width:20%;
+		padding:8px;
+		font-size:16px;
+	}
+	
+	.option_decolation_label_left {
+		float:left;
+		width:80%;
+		padding:8px;
+	}
+	.option_decolation_label_right {
+		float:left;
+		width:20%;
+		padding:8px;
+		font-size:16px;
+	}
+	
+	.option_decotuika_label_left {
+		float:left;
+		width:80%;
+		padding:8px;
+	}
+	.option_decotuika_label_right {
+		float:left;
+		width:20%;
+		padding:8px;
+		font-size:16px;
+	}
+	
+	.option_bag_label_left {
+		float:left;
+		width:80%;
+		padding:8px;
+	}
+	.option_bag_label_right {
+		float:left;
+		width:20%;
+		padding:8px;
+		font-size:16px;
+	}
+	
+	.option_gift_label_left {
+		float:left;
+		width:80%;
+		padding:8px;
+	}
+	.option_gift_label_right {
+		float:left;
+		width:20%;
+		padding:8px;
+		font-size:16px;
+	}
+	
+	.goukei_price {
+		margin-right:50%;
+	}
 }
 /*.PC*/
 
@@ -5046,6 +5110,70 @@ $common
 	}
 	.product_detail_price {
 		width: 100%;
+	}
+	
+	.option_candle_label_left {
+		float:left;
+		width:70%;
+		padding:8px;
+	}
+	.option_candle_label_right {
+		float:left;
+		width:30%;
+		padding:8px;
+		font-size:16px;
+	}
+	
+	.option_decolation_label_left {
+		float:left;
+		width:70%;
+		padding:8px;
+	}
+	.option_decolation_label_right {
+		float:left;
+		width:30%;
+		padding:8px;
+		font-size:16px;
+	}
+	
+	.option_decotuika_label_left {
+		float:left;
+		width:70%;
+		padding:8px;
+	}
+	.option_decotuika_label_right {
+		float:left;
+		width:30%;
+		padding:8px;
+		font-size:16px;
+	}
+	
+	.option_bag_label_left {
+		float:left;
+		width:70%;
+		padding:8px;
+	}
+	.option_bag_label_right {
+		float:left;
+		width:30%;
+		padding:8px;
+		font-size:16px;
+	}
+	
+	.option_gift_label_left {
+		float:left;
+		width:70%;
+		padding:8px;
+	}
+	.option_gift_label_right {
+		float:left;
+		width:30%;
+		padding:8px;
+		font-size:16px;
+	}
+	
+	.goukei_price {
+		margin-right:48%;
 	}
 }
 /*.SP*/

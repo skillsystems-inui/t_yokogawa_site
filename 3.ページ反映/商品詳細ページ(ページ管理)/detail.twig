@@ -2135,10 +2135,10 @@ file that was distributed with this source code.
 				                                	
 				                                	<!-- 大オプションラベル:キャンドルを選択 -->
 				                                    <div style="background-color:lightblue; font-size:18px;">
-				                                    	<div class="" style="float:left; width:80%; padding:8px;">
+				                                    	<div class="option_candle_label_left">
 				                                    		<b>キャンドルを選択</b>
 				                                    	</div>
-				                                    	<div style="float:left; width:20%; padding:8px; font-size:16px;">
+				                                    	<div class="option_candle_label_right">
 				                                    		<input type="checkbox" id="chk_candle_nosel" name="chk_candle_nosel">
 				                                    		<label for="chk_candle_nosel">不要</label>
 				                                    	</div>
@@ -2356,10 +2356,10 @@ file that was distributed with this source code.
 			                            	<div id="option_form_option" class="ec-productRole__actions">
 			                                    <!-- 大カテゴリ表示(メッセージ) -->
 			                                    <div style="background-color:lightblue; font-size:21px;">
-			                                    	<div class="" style="float:left; width:80%; padding:8px;">
+			                                    	<div class="option_decolation_label_left">
 			                                    		<b>メッセージを入力</b>
 			                                    	</div>
-				                                    <div style="float:left; width:20%; padding:8px; font-size:16px;">
+				                                    <div class="option_decolation_label_right">
 				                                    	<input type="checkbox" id="chk_message_nosel" name="chk_message_nosel">
 				                                    	<label for="chk_message_nosel">不要</label>
 				                                    </div>
@@ -2499,10 +2499,10 @@ file that was distributed with this source code.
 			                                <!-- 〇デコレーション追加オプション -->
 			                            	<div id="option_form_deco" class="ec-productRole__actions">
 			                                    <div style="background-color:lightblue; font-size:21px;">
-			                                    	<div class="" style="float:left; width:80%; padding:8px;">
+			                                    	<div class="option_decotuika_label_left">
 			                                    		<b>デコレーション追加</b>
 			                                    	</div>
-				                                    <div style="float:left; width:20%; padding:8px; font-size:16px;">
+				                                    <div class="option_decotuika_label_right">
 				                                    	<input type="checkbox" id="chk_deco_nosel" name="chk_deco_nosel">
 				                                    	<label for="chk_deco_nosel">不要</label>
 				                                    </div>
@@ -2615,10 +2615,10 @@ file that was distributed with this source code.
 			                                	
 			                                	<!-- 大カテゴリ表示(持ち帰りポリ袋) -->
 			                                    <div style="background-color:lightblue; font-size:21px;">
-			                                    	<div class="" style="float:left; width:80%; padding:8px;">
+			                                    	<div class="option_bag_label_left">
 			                                    		<b>持ち帰りポリ袋</b>
 			                                    	</div>
-				                                    <div style="float:left; width:20%; padding:8px; font-size:16px;">
+				                                    <div class="option_bag_label_right">
 				                                    	<input type="checkbox" id="chk_hukuro_nosel" name="chk_hukuro_nosel">
 				                                    	<label for="chk_hukuro_nosel">不要</label>
 				                                    </div>
@@ -2676,10 +2676,10 @@ file that was distributed with this source code.
 			                            	<div id="option_form_noshi" class="ec-productRole__actions">
 			                                    <!-- 大カテゴリ表示(包装方法) -->
 			                                    <div style="background-color:lightblue; font-size:21px;">
-			                                    	<div class="" style="float:left; width:80%; padding:8px;">
+			                                    	<div class="option_gift_label_left">
 			                                    		<b>包装方法を選択</b>
 			                                    	</div>
-				                                    <div style="float:left; width:20%; padding:8px; font-size:16px;">
+				                                    <div class="option_gift_label_right">
 				                                    	<input type="checkbox" id="chk_haiso_nosel" name="chk_haiso_nosel">
 				                                    	<label for="chk_haiso_nosel">不要</label>
 				                                    </div>
@@ -2922,7 +2922,7 @@ file that was distributed with this source code.
 						                        {% if Product.hasProductClass -%}
 						                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
 						                                <div class="ec-price" style=" font-size:13px;">
-						                                    <span style="margin-right:50%;">
+						                                    <span class="margin-right:50%;">
 						                                    	{{ '商品小計(税込)'|trans }}
 						                                    </span>
 						                                    <span class="ec-price__price price02-default">
@@ -3083,7 +3083,7 @@ file that was distributed with this source code.
 						                    <div class="ec-productRole__price" style="font-size:20px; color:#000;">
 						                    	{# 合計 #}
 				                                <div class="ec-price" style=" font-size:13px;">
-				                                    <span style="margin-right:50%;">
+				                                    <span class="goukei_price">
 				                                    	{{ '合計　　　　　'|trans }}
 				                                    </span>
 				                                    <span class="ec-price__price additional-total-price-default">
