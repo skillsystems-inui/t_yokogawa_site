@@ -110,6 +110,7 @@ class AddCartType extends AbstractType
                     'attr' => [
                         'min' => 1,
                         'maxlength' => $this->config['eccube_int_len'],
+                        'style' => 'width: 70px;',
                     ],
                     'constraints' => [
                         new Assert\NotBlank(),

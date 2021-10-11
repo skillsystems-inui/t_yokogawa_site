@@ -1985,7 +1985,7 @@ file that was distributed with this source code.
                     <!-- .カテゴリの判定 -->
                     
 		                {# 店頭受取可、取り寄せ可 #}
-	                    <div id="top_syohin_main01" class="" style="padding-bottom:20px;">
+	                    <div id="top_syohin_main01" class="" style="padding-top:20px; padding-bottom:20px;">
 	                    	<!-- 店頭受取可 -->
 	                    	{% if is_tentouuketorika == true %}
 	                    		<div style="float:left; width: 86px; height: 72px; background-image: url({{ asset('assets/img/icon_tentouuketori.png') }})"></div>
@@ -2011,14 +2011,14 @@ file that was distributed with this source code.
 	                        <h2 class="ec-headingTitle"><b>{{ Product.name }}</b></h2>
 	                    </div>
 	                    {# 商品説明 #}
-	                    <div id="top_syohin_main03" class="ec-productRole__description product_detail_right" style="padding-top:10px; ">
+	                    <div id="top_syohin_main03" class="ec-productRole__description product_detail_right" style="padding-top:10px; padding-bottom:10px; border-top:1px solid #ECECEC;">
 	                    	{{ Product.description_detail|raw|nl2br }}
 	                    </div>	
 	                    	
 	                    <div class="ec-productRole__description" style="padding-top:10px;">
 	                    
                         {% if Product.stock_find %}
-                         <div id="blk_syohin_main" style="display:block;">   
+                         <div id="blk_syohin_main" style="display:block; border-top:1px solid #ECECEC; padding-top:10px; padding-bottom:10px;">   
                             <!-- サイズ -->
                             {% if form.classcategory_id1 is defined %}
                                 <div class="">
@@ -2034,14 +2034,14 @@ file that was distributed with this source code.
                             {% endif %}
                             
                             <!-- 個数(サイズのみ) -->
-                            <div class="ec-numberInput" style="margin-top:20px;">
-                            	<div style="float:left; width:35%;">
+                            <div class="ec-numberInput" style="margin-top:10px; padding-top:20px; border-top:1px solid #ECECEC; border-bottom:1px solid #ECECEC;">
+                            	<div class="product_detail_quantity">
 	                            	<span>{{ '個数:'|trans }}</span>
-	                                {{ form_widget(form.quantity) }}
+	                            	{{ form_widget(form.quantity) }}
 	                                {{ form_errors(form.quantity) }}
 	                                <span>{{ '個'|trans }}</span>
                                 </div>
-                                <div class="" style="font-size:20px; float:left; width:50%; padding:2px;">
+                                <div class="product_detail_price" style="font-size:20px; padding:2px;">
 			                        {% if Product.hasProductClass -%}
 			                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
 			                                <div class="ec-price">
@@ -2081,6 +2081,8 @@ file that was distributed with this source code.
 			                                </span>
 			                            </div>
 			                        {% endif %}
+			                        <!-- 獲得ポイント -->
+			                        <div style="font-size:8px; color:#C0C0C0;">獲得ポイント : 0pt</div>
 			                        
 	                                <input id="p02" name="p02" type="hidden" value="{{ Product.getPrice02IncTaxMin }}">
 	                                

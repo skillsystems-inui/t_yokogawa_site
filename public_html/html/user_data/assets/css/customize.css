@@ -2539,6 +2539,15 @@ $common
 	.product_detail_right {
 		width: 500px;
 	}
+	
+	.product_detail_quantity {
+		float:left;
+		width:35%;
+	}
+	.product_detail_price {
+		float:left;
+		width:50%;
+	}
 }
 /*.PC*/
 
@@ -5029,6 +5038,13 @@ $common
 	}
 	
 	.product_detail_right {
+		width: 100%;
+	}
+	
+	.product_detail_quantity {
+		width: 100%;
+	}
+	.product_detail_price {
 		width: 100%;
 	}
 }
