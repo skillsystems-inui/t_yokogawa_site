@@ -5242,6 +5242,26 @@ $common
 		opacity: 0.9;
 	}
 	
+	.slider_item.app_top_item {
+		background-image: url(../img/catelist_jelly_sp.png);
+	}
+	
+	.app_toppage_item {
+		margin-top:110px;
+	}
+	
+	.app_toppage_item img {
+		width:100%;
+		height:auto;
+	}
+	
+	.app_item_main {
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+		max-width: 1600px;
+		display: block;
+	}
 	
 }
 /*.SP*/
