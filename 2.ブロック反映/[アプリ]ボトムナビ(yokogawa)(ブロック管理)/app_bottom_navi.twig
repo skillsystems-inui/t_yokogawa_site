@@ -10,22 +10,22 @@ file that was distributed with this source code.
 #}
 <ul class="app_bottom_navi">
 	<li>
-		<a href="">
+		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_osirase"}) }}">
 			<i class="fa fa-comment" aria-hidden="true"></i><br>お知らせ
 		</a>
 	</li>
 	<li>
-		<a href="">
+		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_mypage"}) }}">
 			<i class="fa fa-user" aria-hidden="true"></i><br>マイページ
 		</a>
 	</li>
 	<li>
-		<a href="">
+		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_licence"}) }}">
 			<i class="fa fa-address-card" aria-hidden="true"></i><br>会員証
 		</a>
 	</li>
 	<li>
-		<a href="">
+		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_yoyaku"}) }}">
 			<i class="fa fa-birthday-cake" aria-hidden="true"></i><br>ケーキ予約
 		</a>
 	</li>
