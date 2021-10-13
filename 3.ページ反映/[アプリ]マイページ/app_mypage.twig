@@ -1,0 +1,61 @@
+{#
+This file is part of EC-CUBE
+
+Copyright(c) EC-CUBE CO.,LTD. All Rights Reserved.
+
+http://www.ec-cube.co.jp/
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+#}
+{% extends 'default_frame.twig' %}
+
+{% set mypageno = 'index' %}
+
+{% set body_class = 'mypage' %}
+
+{% block main %}
+    <div class="ec-layoutRole__main">
+        
+        <div class="ec-mypageRole"style="padding-top: 105px;">
+            <div class="ec-pageHeader">
+                <h1>マイページ</h1>
+            </div>
+            
+            <p>ポイント情報</p>
+            <div class="ec-welcomeMsg">
+			    <p>現在のポイント　　<span style="font-size:20px;"><b>250pt</b></span></p>
+			    <p>今月末失効するポイント　　0pt</p>
+			    <p>来月末失効するポイント　　0pt</p>
+			</div>
+            <p>利用履歴></p>
+            
+            <br><br>
+            <a href="http://t-yokogawa-com.check-xserver.jp/" class="cart_btn">公式オンラインショップ</a>
+            <br><br>
+            
+            <p>ご家族の情報を登録いただきますと、<br>誕生日にポイントを差し上げます。</p>
+            
+            <div class="ec-navlistRole">
+			    <ul class="ec-navlistRole__navlist">
+			        <li class="ec-navlistRole__item">
+			            <a href="">登録情報の変更・確認</a>
+			        </li>
+			        <li class="ec-navlistRole__item ">
+			            <a href="">ポイント履歴</a>
+			        </li>
+			        <li class="ec-navlistRole__item ">
+			            <a href="">利用規約</a>
+			        </li>
+			        <li class="ec-navlistRole__item ">
+			            <a href="">通知設定</a>
+			        </li>
+				</ul>
+			</div>
+
+			
+
+		</div>
+        
+    </div>
+{% endblock %}
