@@ -1,0 +1,114 @@
+{#
+This file is part of EC-CUBE
+
+Copyright(c) EC-CUBE CO.,LTD. All Rights Reserved.
+
+http://www.ec-cube.co.jp/
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+#}
+
+<script>
+    $(function() {
+        const homepage_url = document.getElementById("homepageurl").value;
+        
+        var is_home = false;
+        if(location.href == homepage_url){
+        	//トップページと判定
+        	is_home = true;
+        }
+        
+        var startPos = 0, winScrollTop = 0;
+		// scrollイベントを設定
+		window.addEventListener('scroll', function () {
+		    winScrollTop = this.scrollY;
+		    //トップページ時のみ実行
+		    if(is_home == true)
+		    {
+			    if (winScrollTop >= startPos) {
+			        // 下にスクロールされた時
+			        if (winScrollTop >= 500) {
+			            // 下に500pxスクロールされたら透過させない
+			            document.getElementById('topheader').classList.remove('top_header');
+			        }
+			    } else {
+			        // 上にスクロールされた時
+			        document.getElementById('topheader').classList.add('top_header');
+			    }
+			    startPos = winScrollTop;
+		    }
+		});
+		
+		const burger_btn = document.getElementById('burger_btn');
+		burger_btn.addEventListener('click', () => {
+		   
+		   if(burger_btn.classList.contains('active') == true){
+		   	   //バーガー表示中ならバーガーを非表示にする
+			   document.getElementById('burger_btn').classList.remove('active');
+		   }else{
+			   //バーガー非表示ならバーガーを表示する
+			   document.getElementById('burger_btn').classList.add('active');
+		   }
+		}, false);
+		
+		//検索ボタンを押したら検索を実行する
+		document.getElementById('MakeShopTopSearchButton').addEventListener('click', function(){
+			//表示上のテキストボックスの内容を実質のテキストボックスにコピーする
+			const view_search_text = document.getElementById('MakeShopTopSearchInput')
+			const view_search_value = view_search_text.value
+			
+			document.getElementById('back_search_text').value = view_search_value;
+			
+			//実質の検索ボタンをクリックする
+			var back_search_btn = document.getElementById('back_search_btn') ;
+			back_search_btn.click() ;
+		});
+		
+    });
+</script>
+
+<input type="hidden" value="{{ url('homepage') }}" id="homepageurl" />
+<header id="topheader"  class="{% if Page.url == 'homepage' %}top_header{% endif %}">
+    <div class="inner">
+      <p class="logo"><a href="/"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo.png" alt="菓子工房T.YOKOGAWA"></a></p><!-- .logo -->
+      <span id="burger_btn" class="burger"><span></span><span></span><span></span></span>
+      <nav>
+        <span class="logo_sp">
+        	<a href="/">
+        		<img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo_sp.png" alt="">
+        	</a>
+        </span>
+        <div class="header_btn">
+        	<a href="/guide" class="guide">ご利用ガイド</a>
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ url('mypage') }}" class="mypage">マイページ</a>
+        	<a href="{{ url('logout') }}" class="M_loginBtn">ログアウト</a>
+        {% else %}
+        	<a href="{{ url('entry') }}" class="member">新規会員登録</a> 
+        	<a href="{{ url('mypage_login') }}" class="M_loginBtn">ログイン</a>
+        {% endif %}
+        	<a href="{{ url('mypage') }}" class="mypage"></a>
+        	<a href="https://www.instagram.com/cake_yokogawa/" rel="noopener noreferrer" target="_blank" class="insta"></a>
+        	<a href="https://line.me/R/ti/p/%40854fgmlr" rel="noopener noreferrer" target="_blank" class="line"></a>
+        </div>
+        <ul>
+          <li class="about" style="background-image: none;">
+          	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "ourbrand"}) }}">
+          		<span><span class="agp">OUR BRAND</span>私たちについて</span>
+          	</a>
+          </li>
+          <li id="item_head" class="item">
+          	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}"><span><span class="agp">PRODUCTS</span>商品一覧</span>
+          	</a>
+          </li>
+          
+          <li class="shop"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "SHOP"}) }}"><span><span class="agp">SHOP</span>店舗</span></a></li>
+          <li class="news"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "osirase"}) }}"><span><span class="agp">NEWS</span>お知らせ</span></a></li>
+          <li class="recruit"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "recruit"}) }}"><span><span class="agp">RECRUIT</span>採用情報</span></a></li>
+          <li class="cart"><a href="{{ url('cart') }}" class="cart_btn">カートを見る</a></li>
+        </ul>
+        
+      </nav>
+    </div>
+  </header>

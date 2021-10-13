@@ -16,6 +16,7 @@ if (!file_exists($autoload) && !is_readable($autoload)) {
     die('Composer is not installed.');
 }
 require $autoload;
+require_once 'vendor/autoload.php';
 
 // The check is to ensure we don't use .env in production
 if (!isset($_SERVER['APP_ENV'])) {

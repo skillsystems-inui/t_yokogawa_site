@@ -2616,6 +2616,14 @@ $common
 	.goukei_price {
 		margin-right:50%;
 	}
+	
+	
+	
+	
+	
+	.app_bottom_navi {
+	    display: none;
+	}
 }
 /*.PC*/
 
@@ -5183,6 +5191,58 @@ $common
 	.goukei_price {
 		margin-right:48%;
 	}
+	
+	
+	
+	
+	
+	/**********************
+	スマホのフッターメニュー
+	**********************/
+	ul.app_bottom_navi {
+		margin: 0 auto;
+		padding: 12px 0;
+		width: 100%;
+		overflow: hidden;
+		display: table;
+	        table-layout: fixed;
+	        text-align: center;
+	        width: 100%;
+	}
+	 
+	ul.app_bottom_navi li {
+		margin: 0;
+		padding: 0;
+		display: table-cell;
+		vertical-align:middle;
+		list-style-type: none;
+		font-size: 13px;
+	       line-height: 15px;
+	}
+	 
+	ul.app_bottom_navi li a i{
+		font-size: 24px;
+	}
+	 
+	ul.app_bottom_navi li a {
+		border: none;
+		display: block;
+		color: #000;
+		text-align: center;
+		text-decoration: none;
+	}
+	 
+	.app_bottom_navi {
+		position: fixed;
+		bottom: 0;
+		left:0;
+		background: #fff;
+		z-index: 9999999999;
+		-moz-opacity: 0.9;
+		opacity: 0.9;
+	}
+	
+	
 }
 /*.SP*/
 
