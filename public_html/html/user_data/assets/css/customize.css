@@ -5263,6 +5263,23 @@ $common
 		display: block;
 	}
 	
+	.app_maru {
+		height: 35px;
+		width: 35px;
+		border-radius: 50%;
+		border: 1px solid;;
+		border-color: #000;
+		line-height: 35px;
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+	}
+	
+	.app_use_icon {
+		font-size: 12px;
+		font-weight: bold;
+		padding-right: 10px;
+	}
 }
 /*.SP*/
 
