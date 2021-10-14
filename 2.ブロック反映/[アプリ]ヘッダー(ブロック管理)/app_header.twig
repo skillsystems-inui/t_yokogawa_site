@@ -71,13 +71,24 @@ file that was distributed with this source code.
 <input type="hidden" value="{{ url('homepage') }}" id="homepageurl" />
 <header id="topheader"  class="{% if Page.url == 'homepage' %}top_header{% endif %}">
     <div class="inner">
-      <p class="logo"><a href="/"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo.png" alt="‰ÙŽqH–[T.YOKOGAWA"></a></p><!-- .logo -->
-      <span id="burger_btn" class="burger"><span></span><span></span><span></span></span>
+      <p class="logo"><a href="{{ url('homepage') }}user_data/app_top"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo.png" alt="‰ÙŽqH–[T.YOKOGAWA"></a></p><!-- .logo -->
+      <span id="burger_btn" class="">
+      	<span></span>
+      	<span></span>
+      	<span></span>
+      </span>
+      
+      <span id="" class="burger" style="width:50px;">
+      	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_userguide"}) }}" class="">Žg‚¢•û</a>
+      </span>
+      
       <nav>
-        <span class="logo_sp">
-        	<a href="/">
-        		<img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo_sp.png" alt="">
-        	</a>
+      	<span class="logo_sp">
+        	<span>
+	        	<a href="{{ url('homepage') }}user_data/app_top">
+	        		<img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo_sp.png" alt="">
+	        	</a>
+        	</span>
         </span>
         <div class="header_btn">
         	<a href="/guide" class="guide">‚²—˜—pƒKƒCƒh</a>
