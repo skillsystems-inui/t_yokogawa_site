@@ -725,7 +725,7 @@ file that was distributed with this source code.
                                         <th class="pt-2 pb-2">
                                             <div class="col-8">{{ 'admin.order.quantity'|trans }}</div>
                                         </th>
-                                        <th class="pt-2 pb-2">
+                                        <th class="pt-2 pb-2" style="display:none;">
                                             <div class="col-8">{{ 'admin.order.tax_rate'|trans }}</div>
                                         </th>
                                         <th class="pt-2 pb-2">
@@ -810,7 +810,7 @@ file that was distributed with this source code.
                                                 </div>
                                             </td>
                                             <!-- 税率 -->
-                                            <td class="align-middle">
+                                            <td class="align-middle" style="display:none;">
                                                 <div class="col-12 col-xl-8">
                                                     {# 複数配送・ポイント明細・不課税明細は商品の税率を変更できない #}
                                                     {% if (Order.isMultiple and OrderItem.isProduct) or OrderItem.isPoint or OrderItem.TaxType.id == constant('Eccube\\Entity\\Master\\TaxType::NON_TAXABLE') %}
@@ -910,7 +910,7 @@ file that was distributed with this source code.
                                 </div>
                                 {% for rate, total in Order.taxable_total_by_tax_rate %}
                                     <div class="row justify-content-end mb-3">
-                                        <div class="col-auto"><span class="align-middle">{{ 'common.tax_rate_target'|trans({ '%rate%': rate }) }}</span></div>
+                                        <div class="col-auto"><span class="align-middle">{{ 'common.tax_rate_target'|trans({ '%rate%': 8 }) }}</span></div>
                                         <div class="col-2 text-right"><span class="align-middle font-weight-normal">{{ total|price }}</span></div>
                                     </div>
                                 {% endfor %}
