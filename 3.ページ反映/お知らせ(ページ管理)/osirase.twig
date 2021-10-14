@@ -23,7 +23,7 @@
           			</tr>
           			{% for News in NewsList %}
 	          			<tr bgcolor="#ffffff" height="25">
-	          				<td class="lims" width="80%">&nbsp;<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "osirase_detail"}) }}">{{ News.title }}</a></td>
+	          				<td class="lims" width="80%">&nbsp;<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "osirase_detail"}) }}?id={{ News.id }}">{{ News.title }}</a></td>
 	          				<td class="lims" align="center" width="20%">{{ News.publish_date|date_day }}</td>
 	          			</tr>
           			{% endfor %}

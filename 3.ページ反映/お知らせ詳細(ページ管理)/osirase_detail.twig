@@ -22,27 +22,37 @@ file that was distributed with this source code.
 </tr>
 </table>
     
+    
+    {% set current_url = app.request.server.get('REQUEST_URI') %}
+    {% set news_id = current_url|slice(29) %}
+    
+    {% set NewsList = repository('Eccube\\Entity\\News').getList() %}
+    
     <div class="contents" style="padding-top: 128.516px;">
       <main>
         <div class="news inner" style="padding-top:50px;">
           <h1 class="title"><strong class="agp">NEWS</strong></h1><!-- .title -->
           <div class="news_detail_wrap">
             <article class="inner">
-              <h2 class="news_title">新規会員登録で300ポイントプレゼント！</h2><!-- .news_title -->
-              <span class="date">2021/08/31</span>
-              <div style="font-size:14px;">
-                <span>いつもT.YOKOGAWAをご愛顧いただきまして誠にありがとうございます。
-この度のホームページのリニューアルに伴い、新規会員登録で300ポイントプレゼントキャンペーンを行っております！
+              
+              {% for News in NewsList %}
+              
+              <!-- 詳細 -->
+              {% if News.id == news_id %}
+              
+	              <h2 class="news_title">{{ News.title }}</h2><!-- .news_title -->
+	              <span class="date">{{ News.publish_date|date_day }}</span>
+	              <div style="font-size:14px;">
+	                <span>{{ News.description|raw|nl2br }}</span>
+	              </div>
 
-ご利用方法
-①「新規会員登録」よりお客様の情報をご入力ください。
-②登録が完了すると、自動的にポイントが付与されます。
-
-ポイントは1ポイント1円として500ポイントからご利用いただけます。
-
-ぜひこの機会にご利用くださいませ！</span>
-
-              </div>
+              {% endif %}
+              <!-- .詳細 -->
+              
+              
+              
+              {% endfor %}
+              
             </article>
             <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "osirase"}) }}" class="btn">お知らせ一覧へ</a>
           </div><!-- .news_wrap -->
