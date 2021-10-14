@@ -5203,11 +5203,12 @@ $common
 		margin: 0 auto;
 		padding: 12px 0;
 		width: 100%;
-		overflow: hidden;
+		overflow: visible;
 		display: table;
 	        table-layout: fixed;
 	        text-align: center;
 	        width: 100%;
+	    border-top: 1px solid #ECECEC;
 	}
 	 
 	ul.app_bottom_navi li {
@@ -5231,6 +5232,15 @@ $common
 		text-align: center;
 		text-decoration: none;
 	}
+	ul.app_bottom_navi li a img {
+		width: 30px;
+		height: 30px;
+		padding-bottom: 5px;
+	}
+	ul.app_bottom_navi li a span {
+		font-size: 14px;
+		font-weight: bold;
+	}
 	 
 	.app_bottom_navi {
 		position: fixed;
@@ -5240,6 +5250,7 @@ $common
 		z-index: 9999999999;
 		-moz-opacity: 0.9;
 		opacity: 0.9;
+		overflow: visible;
 	}
 	
 	.slider_item.app_top_item {
@@ -5280,6 +5291,32 @@ $common
 		font-weight: bold;
 		padding-right: 10px;
 	}
+	
+	.app_licence_base {
+		position: relative;
+	}
+	
+	.app_licence_mark {
+		position: absolute;
+  		bottom: 0px;
+		height: 70px;
+		width: 70px;
+		border-radius: 50%;
+		border: 1px solid;;
+		border-color: #1fb3b0;
+		background: #1fb3b0;
+		line-height: 5px;
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	
+	.app_licence_mark a{
+		line-height: 65px;
+	}
+	
 }
 /*.SP*/
 
