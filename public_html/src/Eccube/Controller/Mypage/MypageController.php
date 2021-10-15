@@ -100,10 +100,30 @@ class MypageController extends AbstractController
      */
     public function login(Request $request, AuthenticationUtils $utils)
     {
+        //画面遷移先
+        $to_url = "http://t-yokogawa-com.check-xserver.jp/";
+        
+        //アプリ判定
+        $is_application = false;
+        $current_url = $_SERVER['REQUEST_URI'];
+        if(strpos($current_url,'app_')){
+        	//アプリの場合
+        	//アプリ画面に遷移させる
+        	$to_url = "http://t-yokogawa-com.check-xserver.jp/user_data/app_top";
+        	$is_application = true;
+        }
+        
         if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
-            log_info('認証済のためログイン処理をスキップ');
-
-            return $this->redirectToRoute('mypage');
+	            log_info('認証済のためログイン処理をスキップ');
+				
+				//スキップ処理(PC)
+        		if($is_application == false){
+	            	return $this->redirectToRoute('mypage');
+	        	}else{
+	        		//スキップ処理(アプリ)
+	        		header("Location:http://t-yokogawa-com.check-xserver.jp/user_data/app_top");
+        			exit();
+	        	}
         }
 
         /* @var $form \Symfony\Component\Form\FormInterface */
@@ -129,6 +149,9 @@ class MypageController extends AbstractController
         $this->eventDispatcher->dispatch(EccubeEvents::FRONT_MYPAGE_MYPAGE_LOGIN_INITIALIZE, $event);
 
         $form = $builder->getForm();
+        
+        //画面遷移
+        $this->setLoginTargetPath($to_url);
 
         return [
             'error' => $utils->getLastAuthenticationError(),
