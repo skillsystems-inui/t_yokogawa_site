@@ -5317,6 +5317,21 @@ $common
 		line-height: 65px;
 	}
 	
+	.app_info_type {
+		font-size:12px;
+		color:#fff;
+		height:70px;
+		width:500px;
+		padding: 2px 6px;
+		border-top-left-radius: 30%;
+	    border-top-right-radius: 30%;
+	    border-bottom-right-radius: 30%;
+	    border-bottom-left-radius: 30%;
+		border:1px solid;
+		border-color:#FF82B2;
+		background:#FF82B2;
+	}
+	
 }
 /*.SP*/
 

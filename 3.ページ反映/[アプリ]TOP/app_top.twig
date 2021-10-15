@@ -28,8 +28,19 @@
           			{% for News in NewsList %}
 	          			<tr bgcolor="#ffffff" height="25">
 	          			
-	          				<td class="lims" width="80%">&nbsp;<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "osirase_detail"}) }}">{{ News.title }}</a></td>
-	          				<td class="lims" align="center" width="20%">{{ News.publish_date|date_day }}</td>
+	          				<div style="border-bottom: 1px solid #ECECEC; padding:10px;">
+	          					<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_osirase_detail"}) }}?id={{ News.id }}">
+		          					<div style="100%">
+		          						<span style="color:#A9A9A9;">{{ News.publish_date|date_day }}</span>
+		          						<span class="app_info_type">
+		          							NEWS
+		          						</span>
+		          					</div>
+		          					<div style="100%">
+			          					{{ News.title }}
+			          				</div>
+		          				</a>
+	          				</div>
 	          				
 	          			</tr>
           			{% endfor %}
