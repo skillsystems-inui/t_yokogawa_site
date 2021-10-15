@@ -31,8 +31,7 @@ file that was distributed with this source code.
     
     <div class="contents" style="padding-top: 128.516px;">
       <main>
-        <div class="news inner" style="padding-top:50px;">
-          <h1 class="title"><strong class="agp">NEWS</strong></h1><!-- .title -->
+        <div class="news inner" style="padding-top:10px;">
           <div class="news_detail_wrap">
             <article class="inner">
               
@@ -41,11 +40,17 @@ file that was distributed with this source code.
               <!-- 詳細 -->
               {% if News.id == news_id %}
               
-	              <h2 class="news_title">{{ News.title }}</h2><!-- .news_title -->
-	              <span class="date">{{ News.publish_date|date_day }}</span>
-	              <div style="font-size:14px;">
+	              <div style="font-size:16px;"><b>{{ News.title }}</b></div>
+	              
+	              <span class="app_info_type" style="margin-top:15px;">NEWS</span>
+	              
+	              <div style="font-size:14px; margin-top:20px;">
 	                <span>{{ News.description|raw|nl2br }}</span>
 	              </div>
+	              
+	              <span style="color:#04ccc8; text-decoration: underline;">
+	              	<a href="http://t-yokogawa-com.check-xserver.jp/">オンラインショップはこちら</a>
+	              </span>
 
               {% endif %}
               <!-- .詳細 -->
