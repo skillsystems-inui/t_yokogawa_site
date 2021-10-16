@@ -25,13 +25,21 @@
                         
 	                        <div class="ec-historyRole__header">
 	                            <div class="ec-historyListHeader">
+	                                <!--
 	                                <dl class="ec-definitions">
-	                                    <dt>{{ '—\–ñ”Ô†'|trans }}</dt>
-	                                    <dd>{{ Order.order_no }}</dd>
+	                                    <dt>{{ 'ƒXƒ}ƒŒƒW‚ÌæˆøID'|trans }}</dt>
+	                                    <dd>{{ Order.smaregi_id }}</dd>
 	                                </dl>
+	                                -->
+	                                {% if Order.smaregi_id != null %}
 	                                <div style="width:100%;">
+	                                	{{ getbarcode(Order.smaregi_id) }}
+					    			</div>
+					    			{% else %}
+					    			<div style="width:100%;">
 	                                	{{ getbarcode(Order.order_no) }}
 					    			</div>
+					    			{% endif %}
 					    			
 	                                {% if (BaseInfo.option_mypage_order_status_display) %}
 	                                    <dl class="ec-definitions">
