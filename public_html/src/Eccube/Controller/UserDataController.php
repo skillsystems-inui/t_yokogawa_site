@@ -21,6 +21,7 @@ use Eccube\Repository\PageRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Picqer\Barcode\BarcodeGeneratorHTML;
 
 class UserDataController extends AbstractController
 {
@@ -66,6 +67,18 @@ class UserDataController extends AbstractController
 
         $file = sprintf('@user_data/%s.twig', $Page->getFileName());
 
+log_info(
+            '__testLog0KOKOYO',
+            [
+                'getFileName' => $Page->getFileName(),
+            ]
+        );
+        
+        //会員バーコード
+        //require_once 'vendor/autoload.php';
+		$generator = new BarcodeGeneratorHTML();
+		$customer_barcode = $generator->getBarcode('123456', $generator::TYPE_CODE_128, 2, 50, 'black');
+/**/
         $event = new EventArgs(
             [
                 'Page' => $Page,
@@ -75,6 +88,6 @@ class UserDataController extends AbstractController
         );
         $this->eventDispatcher->dispatch(EccubeEvents::FRONT_USER_DATA_INDEX_INITIALIZE, $event);
 
-        return $this->render($file);
+        return $this->render($file, ['customer_barcode' => $customer_barcode,]);
     }
 }

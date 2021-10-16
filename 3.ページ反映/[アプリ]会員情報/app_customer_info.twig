@@ -10,20 +10,15 @@
 
     <div style="margin-top:110px;">
     	
-    	<!-- ログイン会員名、現在のポイント -->
     	<div>
+    	
+    		<!-- ログイン会員名、現在のポイント -->
     		<div>
     			<p>{{ 'ようこそ　%last_name% %first_name%様'|trans({ '%last_name%': app.user.name01, '%first_name%': app.user.name02 }) }}</p>
     			<!--
     			<span>ようこそ</span>　<span>様</span>
     			-->
     		</div>
-    		
-    		<div>
-    			<p>{{ '会員番号　%customer_code% '|trans({ '%customer_code%': app.user.customer_code }) }}</p>
-    			
-    		</div>
-    		
     		<div class="">
 			    {% if BaseInfo.option_point %}
 			        <p>
@@ -49,11 +44,15 @@
 			        	</span>
 			    {% endif %}
 			</div>
-    	</div>
-    	
-    	
-    	<!-- 会員番号バーコード -->
-    	<div>
+			
+			
+    		<!-- 会員番号バーコード -->
+    		<div>
+    			<div>
+    				{{ exececho(customer_barcode) }}
+    			</div>
+    			<p>{{ '会員番号　%customer_code% '|trans({ '%customer_code%': app.user.customer_code }) }}</p>
+    		</div>
     		
     	</div>
     	
@@ -63,11 +62,5 @@
     	</div>
     	
     </div>
-    
-    <!--
-    <div class="app_item_main app_toppage_item">
-      <img src="/html/user_data/assets/img/app_customer_info.png" alt="会員情報">
-    </div>
-    -->
     
 {% endblock %}
