@@ -22,12 +22,23 @@ file that was distributed with this source code.
 
 {% block main %}
     <div class="ec-layoutRole__main">
-        <div class="ec-mypageRole">
-            <div class="ec-pageHeader">
-                <h1>{{ 'マイページ'|trans }}/{{ '会員情報編集'|trans }}</h1>
-            </div>
-            {% include 'Mypage/navi.twig' %}
-        </div>
+        
+        {% set is_application = false %}
+        {% set current_url = app.request.server.get('REQUEST_URI')%}
+        {% if 'app_mode' in current_url  %}
+        	{% set is_application = true %}
+        {% endif %}
+        
+        <!-- アプリ画面ではない場合 -->
+        {% if is_application != true %}
+	        <div class="ec-mypageRole">
+	            <div class="ec-pageHeader">
+	                <h1>{{ 'マイページ'|trans }}/{{ '会員情報編集'|trans }}</h1>
+	            </div>
+	            {% include 'Mypage/navi.twig' %}
+	        </div>
+        {% endif %}
+        
         <div class="ec-mypageRole">
             <div class="ec-editRole">
                 <div class="ec-off1Grid">
@@ -36,6 +47,28 @@ file that was distributed with this source code.
                             <span class="p-country-name" style="display:none;">Japan</span>
                             {{ form_widget(form._token) }}
                             <div class="ec-borderedDefs">
+                                
+                                <!-- アプリ画面である場合 -->
+                                {% if is_application == true %}
+	                                <dl>
+	                                    <dt>
+	                                        {{ form_label(form.birth, '生年月日', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                    </dt>
+	                                    <dd>
+	                                        <div class="ec-birth{{ has_errors(form.birth) ? ' error'}}">
+	                                            {{ form_widget(form.birth.year) }}<span>/</span>
+	                                            {{ form_widget(form.birth.month) }}<span>/</span>
+	                                            {{ form_widget(form.birth.day) }}
+	                                            {{ form_errors(form.birth) }}
+	                                        </div>
+	                                    </dd>
+	                                </dl>
+	                                
+	                                <span style="font-weight:bold; font-size:18px;">設定頂きますと誕生日ポイントが付与されます</span>
+	                                <span style="font-size:14px;">※一度入力した誕生日は変更できません</span>
+                                {% endif %}
+                                <!-- .アプリ画面である場合 -->
+                                
                                 <dl>
                                     <dt>
                                         {{ form_label(form.name, 'お名前', { 'label_attr': { 'class': 'ec-label' }}) }}
@@ -62,7 +95,8 @@ file that was distributed with this source code.
                                         </div>
                                     </dd>
                                 </dl>
-                                <dl>
+                                
+                                <dl style="display:none;">
                                     <dt>
                                         {{ form_label(form.company_name, '会社名', { 'label_attr': { 'class': 'ec-label' }}) }}
                                     </dt>
@@ -73,6 +107,7 @@ file that was distributed with this source code.
                                         </div>
                                     </dd>
                                 </dl>
+                                
                                 <dl>
                                     <dt>
                                         {{ form_label(form.address, '住所', { 'label_attr': { 'class': 'ec-label' }}) }}
@@ -104,6 +139,7 @@ file that was distributed with this source code.
                                         </div>
                                     </dd>
                                 </dl>
+                                
                                 <dl>
                                     <dt>
                                         {{ form_label(form.phone_number, '電話番号', { 'label_attr': { 'class': 'ec-label' }}) }}
@@ -115,6 +151,7 @@ file that was distributed with this source code.
                                         </div>
                                     </dd>
                                 </dl>
+                                
                                 <dl>
                                     <dt>
                                         {{ form_label(form.email, 'メールアドレス', { 'label_attr': { 'class': 'ec-label' }}) }}
@@ -151,20 +188,26 @@ file that was distributed with this source code.
                                         </div>
                                     </dd>
                                 </dl>
-                                <dl>
-                                    <dt>
-                                        {{ form_label(form.birth, '生年月日', { 'label_attr': {'class': 'ec-label' }}) }}
-                                    </dt>
-                                    <dd>
-                                        <div class="ec-birth{{ has_errors(form.birth) ? ' error'}}">
-                                            {{ form_widget(form.birth.year) }}<span>/</span>
-                                            {{ form_widget(form.birth.month) }}<span>/</span>
-                                            {{ form_widget(form.birth.day) }}
-                                            {{ form_errors(form.birth) }}
-                                        </div>
-                                    </dd>
-                                </dl>
-                                <dl>
+                                
+                                <!-- アプリ画面ではない場合 -->
+                                {% if is_application != true %}
+	                                <dl>
+	                                    <dt>
+	                                        {{ form_label(form.birth, '生年月日', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                    </dt>
+	                                    <dd>
+	                                        <div class="ec-birth{{ has_errors(form.birth) ? ' error'}}">
+	                                            {{ form_widget(form.birth.year) }}<span>/</span>
+	                                            {{ form_widget(form.birth.month) }}<span>/</span>
+	                                            {{ form_widget(form.birth.day) }}
+	                                            {{ form_errors(form.birth) }}
+	                                        </div>
+	                                    </dd>
+	                                </dl>
+                                {% endif %}
+                                <!-- .アプリ画面ではない場合 -->
+                                
+                                <dl style="display:none;">
                                     <dt>
                                         {{ form_label(form.sex, '性別', { 'label_attr': { 'class': 'ec-label' }}) }}
                                     </dt>
@@ -175,7 +218,8 @@ file that was distributed with this source code.
                                         </div>
                                     </dd>
                                 </dl>
-                                <dl>
+                                
+                                <dl style="display:none;">
                                     <dt>
                                         {{ form_label(form.job, '職業', { 'label_attr': {'class': 'ec-label' }}) }}
                                     </dt>
