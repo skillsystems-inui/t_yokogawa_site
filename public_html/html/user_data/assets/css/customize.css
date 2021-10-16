@@ -5332,6 +5332,54 @@ $common
 		background:#FF82B2;
 	}
 	
+	.app_go_onlineshop {
+		font-size: 16px;
+		font-weight: bold;
+		color: #fff !important;
+		background: #0cb4b0;
+		border: 1px solid #0cb4b0;
+		text-align: center;
+		width: 100%;
+		max-width: 265px;
+		cursor: pointer;
+		display: block;
+		padding: 5px 10px;
+		position: relative;
+	}
+	.app_go_onlineshop::before {
+		content: '';
+		width: 1.5em;
+		height: 1.5em;
+		background: url(../img/ico_go_home.png) no-repeat center;
+		background-size: contain;
+		display: inline-block;
+		vertical-align: sub;
+		margin-right: 10px;
+	}
+	.app_go_onlineshop::after {
+		content: '';
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 5px 0 5px 5px;
+		border-color: transparent transparent transparent #fff;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 10px;
+		margin: auto;
+	}
+	.app_go_onlineshop.sold {
+		background: #858585;
+		border: 1px solid #858585;
+		pointer-events: none;
+		cursor: auto;
+	}
+	.app_go_onlineshop.sold::before,
+	.app_go_onlineshop.sold::after {
+		display: none;
+	}
+	
 }
 /*.SP*/
 
