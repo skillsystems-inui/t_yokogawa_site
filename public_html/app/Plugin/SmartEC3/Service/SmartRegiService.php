@@ -485,6 +485,21 @@ class SmartRegiService
 
             //$msg = $arrRet == "ok\n" ? ($arrRet2 == "ok\n" ? "Transaction Updated" : $arrRet2) : $arrRet;
             $msg = $arrRet == "ok\n" ? "Transaction Updated" : $arrRet;
+            
+            //登録が成功したらスマレジの取引IDをECの受注に登録しておく
+            $gparam = 'transaction_ref';
+            $gaData = $this->smartHelper->getTransaction($order, $p_offset, $u_offset);
+            
+            $gaRet = $this->getResult($arrConnect,$gparam,$api_url,$gaData,'TRANSACTION_GET', self::TRANSACTION_LOG);
+            
+            //スマレジ取引ID取得
+            $smartTranHeadId = null;
+            $smartTranHeadId = $gaRet['result'][0]['transactionHeadId'];
+
+            //スマレジ取引IDをECの受注に登録
+            $order->setSmaregiId($smartTranHeadId);
+            $this->entityManager->flush();
+            
         }else{
             $msg = "Transaction update is off";
         }
@@ -603,6 +618,38 @@ class SmartRegiService
 		$error_string .= "error_description:".$arrRet["error_description"]." ";
 		
 		return $error_string;
+	}
+	
+	public function getResult($arrConnect,$param,$url,$SendData,$action,$logfile){
+
+		$send_data = json_encode($SendData,JSON_UNESCAPED_UNICODE);
+
+		$param_string = "";
+		$param_string .= "proc_name=".$param."&params=".$send_data;
+		
+		$headers = array(
+					'Content-Type: application/x-www-form-urlencoded;charset=UTF-8',
+					'X_contract_id: '.$arrConnect['contract_id'].'',
+					'X_access_token:'.$arrConnect['access_token'].'',
+					);
+		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch,CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $param_string);
+		$response = curl_exec($ch);
+
+		$arrRet = json_decode($response, true);
+		curl_close($ch);
+
+        // LOGGING
+	    $req = $this->array2String($SendData,$action,$arrConnect);
+
+		$this->logHistory($url,$req,$result,$action,$logfile);
+		
+		return $arrRet;
 	}
 
 }

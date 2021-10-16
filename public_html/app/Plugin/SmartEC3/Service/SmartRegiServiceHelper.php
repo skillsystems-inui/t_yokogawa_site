@@ -358,14 +358,6 @@ class SmartRegiServiceHelper
         //受取予定日 
         $arrData['data'][0]['rows'][0]['pickUpDate']              = $ShipInfo->getShippingDeliveryDate() == null ? null : $ShipInfo->getShippingDeliveryDate()->format('Y-m-d');
         
-        
-        log_info(
-            'SmartRegiHerper_TransactionUpdate_arrData',
-            [
-                'arrData' => $arrData['data'][0]['rows'][0],
-            ]
-        );
-        
         //受注詳細をセット
         $meisaiNo = 1;
         
@@ -397,29 +389,21 @@ class SmartRegiServiceHelper
         
         $arrData['proc_info']['proc_division'] = "U"; // Command settings
         $arrData['data'][0]['table_name'] = self::TRANSACTION_DETAIL;
-        //$arrData['data'][0]['proc_detail_name'] = "register_layaway";
-        log_info(
-            '__testLog00',
-            [
-                'test_val00' => $arrData['data'][0]['table_name'],
-            ]
-        );
-
-        
-        
         $arrData['data'][0]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）
         $arrData['data'][0]['rows'][0]['salesPrice'] = $order->getTotalPrice();//販売単価
         $arrData['data'][0]['rows'][0]['quantity'] = $order->getQuantity();//数量
         
-        log_info(
-            'SmartRegiHerper_TransactionDetailUpdate_arrData',
-            [
-                'arrData' => $arrData['data'][0]['rows'][0],
-            ]
-        );
+        return $arrData;
+    }
+    
+    public function getTransaction(Order $order, int $p_offset, int $u_offset){
+
+        $arrData = array();
+        $arrData['conditions'][0]['terminalTranDateTime'] = $order->getOrderDate()->format('Y-m-d H:i:s');
+        $arrData['order'][0] = "transactionHeadId";
+        $arrData['table_name'] = self::TRANSACTION_HEAD;
         
         return $arrData;
     }
-
 
 }
