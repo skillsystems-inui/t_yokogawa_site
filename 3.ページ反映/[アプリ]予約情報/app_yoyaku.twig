@@ -8,8 +8,123 @@
 </tr>
 </table>
 
+    <!--
     <div class="app_item_main app_toppage_item">
       <img src="/html/user_data/assets/img/app_yoyaku.png" alt="予約情報">
+    </div>
+    -->
+    <!-- 受け取りしていない予約一覧 -->
+    <div class="ec-mypageRole" style="margin-top:110px;">
+        {% if order_count > 0 %}
+            {% for Order in orders %}
+                <div class="ec-historyRole">
+                    <!-- 新規受付(かつ店舗受取)と取り置きのみ表示する -->
+                    {% if (Order.CustomerOrderStatus == '注文受付' and Order.uketori_type == 1) or Order.CustomerOrderStatus == '取り置き' %}
+                        
+                    	<div class="ec-historyRole__contents">
+                        
+	                        <div class="ec-historyRole__header">
+	                            <div class="ec-historyListHeader">
+	                                <dl class="ec-definitions">
+	                                    <dt>{{ '予約番号'|trans }}</dt>
+	                                    <dd>{{ Order.order_no }}</dd>
+	                                </dl>
+	                                <div style="width:100%;">
+	                                	{{ getbarcode(Order.order_no) }}
+					    			</div>
+					    			
+	                                {% if (BaseInfo.option_mypage_order_status_display) %}
+	                                    <dl class="ec-definitions">
+	                                        <dt>{{ 'ご注文状況'|trans }}</dt>
+	                                        <dd>{{ Order.CustomerOrderStatus }}</dd>
+	                                    </dl>
+	                                {% endif %}
+	                                
+	                                <dl class="ec-definitions">
+	                                    <dt>{{ '受取日：'|trans }}</dt>
+	                                    <dd>{{ Order.Shippings[0].shipping_delivery_date|date_day }}　{{ Order.Shippings[0].shipping_delivery_time }}</dd>
+	                                </dl>
+	                                
+	                                {% set uketoriten = '和泉中央店' %}
+	                                {% if '岸和田' in Order.Shippings[0].shipping_delivery_name %}
+	                                	{% set uketoriten = '岸和田店' %}
+	                                {% endif %}
+	                                <dl class="ec-definitions">
+	                                    <dt>{{ '受取店舗：'|trans }}</dt>
+	                                    <dd>{{ uketoriten }}</dd>
+	                                </dl>
+	                                
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="">
+	                            {% for OrderItem in Order.MergedProductOrderItems %}
+	                                <div class="">
+	                                    <div class="">
+	                                        <div style="float:left;">商品：</div>
+	                                        <div style="float:left;">{{ OrderItem.product_name }}
+		                                        {% if OrderItem.class_category_name1 is not empty %}
+		                                            {{ OrderItem.class_category_name1 }}
+		                                        {% endif %}
+		                                        {% if OrderItem.class_category_name1 is not empty %}
+		                                            / {{ OrderItem.class_category_name2 }}
+		                                        {% endif %}
+	                                        </div>
+	                                        <div style="clear:both;"></div>
+	                                    </div>
+	                                </div>
+	                                {% set option_detail = OrderItem.option_detail %}
+	                                {% if option_detail != '' %}
+		                                <div class="">
+		                                    <div class="">
+		                                        <div style="float:left;">オプション：</div>
+		                                        <div style="float:left;">{{option_detail |replace({ '[オプション]': '' })|raw|nl2br }}</div>
+		                                        <div style="clear:both;"></div>
+		                                    </div>
+		                                </div>
+	                                {% endif %}
+	                            {% endfor %}
+	                        </div>
+	                        
+	                        <div class="ec-historyRole__header">
+	                            <div class="ec-historyListHeader">
+	                                <dl class="ec-definitions">
+	                                    <dt>{{ '備考：'|trans }}</dt>
+	                                    <dd></dd>
+	                                </dl>
+	                            </div>
+	                        </div>
+	                        
+                        </div>
+                    {% endif %}
+                    <!-- .新規受付と取り置きのみ表示する -->
+                    
+                </div>
+            {% endfor %}
+            <div class="ec-pagerRole">
+                {% include "pager.twig" with {'pages': pagination.paginationData} %}
+            </div>
+        {% else %}
+            <p class="ec-para-normal">{{ 'ご予約はありません。'|trans }}</p>
+        {% endif %}
+    </div>
+    
+    
+    
+    <div>
+    	<div>変更の際は各お店へご連絡ください
+    	</div>
+    	<div>
+    		<span>和泉中央店</span>
+    		<span>0725-57-2888</span>
+    	</div>
+    	<div>
+    		<span>岸和田店</span>
+    		<span>072-447-8801</span>
+    	</div>
+    </div>
+    
+    <div>
     </div>
     
     

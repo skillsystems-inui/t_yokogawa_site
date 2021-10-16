@@ -18,10 +18,12 @@ use Eccube\Event\EccubeEvents;
 use Eccube\Event\EventArgs;
 use Eccube\Repository\Master\DeviceTypeRepository;
 use Eccube\Repository\PageRepository;
+use Eccube\Repository\OrderRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Picqer\Barcode\BarcodeGeneratorHTML;
+use Knp\Component\Pager\Paginator;
 
 class UserDataController extends AbstractController
 {
@@ -29,6 +31,11 @@ class UserDataController extends AbstractController
      * @var PageRepository
      */
     protected $pageRepository;
+    
+    /**
+     * @var OrderRepository
+     */
+    protected $orderRepository;
 
     /**
      * @var DeviceTypeRepository
@@ -39,13 +46,16 @@ class UserDataController extends AbstractController
      * UserDataController constructor.
      *
      * @param PageRepository $pageRepository
+     * @param OrderRepository $orderRepository
      * @param DeviceTypeRepository $deviceTypeRepository
      */
     public function __construct(
         PageRepository $pageRepository,
+        OrderRepository $orderRepository,
         DeviceTypeRepository $deviceTypeRepository
     ) {
         $this->pageRepository = $pageRepository;
+        $this->orderRepository = $orderRepository;
         $this->deviceTypeRepository = $deviceTypeRepository;
     }
 
@@ -54,6 +64,9 @@ class UserDataController extends AbstractController
      */
     public function index(Request $request, $route)
     {
+        //会員情報
+        $Customer = $this->getUser();
+        
         $Page = $this->pageRepository->findOneBy(
             [
                 'url' => $route,
@@ -67,18 +80,9 @@ class UserDataController extends AbstractController
 
         $file = sprintf('@user_data/%s.twig', $Page->getFileName());
 
-log_info(
-            '__testLog0KOKOYO',
-            [
-                'getFileName' => $Page->getFileName(),
-            ]
-        );
+        //注文一覧取得
+        $orders = $this->orderRepository->getOrdersByCustomer($Customer);
         
-        //会員バーコード
-        //require_once 'vendor/autoload.php';
-		$generator = new BarcodeGeneratorHTML();
-		$customer_barcode = $generator->getBarcode('123456', $generator::TYPE_CODE_128, 2, 50, 'black');
-/**/
         $event = new EventArgs(
             [
                 'Page' => $Page,
@@ -88,6 +92,8 @@ log_info(
         );
         $this->eventDispatcher->dispatch(EccubeEvents::FRONT_USER_DATA_INDEX_INITIALIZE, $event);
 
-        return $this->render($file, ['customer_barcode' => $customer_barcode,]);
+        return $this->render($file, ['orders' => $orders, 
+                                     'order_count' => count($orders),
+                                    ]);
     }
 }
