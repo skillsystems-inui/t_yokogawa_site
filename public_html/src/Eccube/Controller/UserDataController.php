@@ -80,8 +80,23 @@ class UserDataController extends AbstractController
 
         $file = sprintf('@user_data/%s.twig', $Page->getFileName());
 
+        //アプリ判定
+        $current_url = $_SERVER['REQUEST_URI'];
+        if(strpos($current_url,'app_')){
+        	//アプリの場合
+        	if (!($this->isGranted('IS_AUTHENTICATED_FULLY'))) {
+	            log_info('アプリから未ログインのためログイン画面へ遷移させる');
+	            //ログイン画面へ遷移(アプリ)
+        		header("Location:http://t-yokogawa-com.check-xserver.jp/mypage/login?app_mode");
+    			exit();
+	        }
+        }
+        
         //注文一覧取得
-        $orders = $this->orderRepository->getOrdersByCustomer($Customer);
+        $orders = array();
+        if($Customer != null){
+        	$orders = $this->orderRepository->getOrdersByCustomer($Customer);
+        }
         
         $event = new EventArgs(
             [
