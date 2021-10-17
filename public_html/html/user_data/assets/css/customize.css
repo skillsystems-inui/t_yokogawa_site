@@ -5328,8 +5328,38 @@ $common
 	    border-bottom-right-radius: 30%;
 	    border-bottom-left-radius: 30%;
 		border:1px solid;
-		border-color:#FF82B2;
-		background:#FF82B2;
+		border-color:#c4ac9c;
+		background:#c4ac9c;
+	}
+	
+	.app_event_type {
+		font-size:12px;
+		color:#fff;
+		height:70px;
+		width:500px;
+		padding: 2px 6px;
+		border-top-left-radius: 30%;
+	    border-top-right-radius: 30%;
+	    border-bottom-right-radius: 30%;
+	    border-bottom-left-radius: 30%;
+		border:1px solid;
+		border-color:#8cc4e8;
+		background:#8cc4e8;
+	}
+	
+	.app_news_type {
+		font-size:12px;
+		color:#fff;
+		height:70px;
+		width:500px;
+		padding: 2px 6px;
+		border-top-left-radius: 30%;
+	    border-top-right-radius: 30%;
+	    border-bottom-right-radius: 30%;
+	    border-bottom-left-radius: 30%;
+		border:1px solid;
+		border-color:#da847e;
+		background:#da847e;
 	}
 	
 	.app_go_onlineshop {

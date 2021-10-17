@@ -42,7 +42,22 @@ file that was distributed with this source code.
               
 	              <div style="font-size:16px;"><b>{{ News.title }}</b></div>
 	              
-	              <span class="app_info_type" style="margin-top:15px;">NEWS</span>
+	              {% if 'news' in News.url %}
+					<span class="app_news_type" style="margin-top:15px;">
+						NEWS
+					</span>
+				  {% elseif 'event' in News.url %}
+					<span class="app_event_type" style="margin-top:15px;">
+						イベント
+					</span>
+				  {% elseif 'info' in News.url %}
+					<span class="app_info_type" style="margin-top:15px;">
+						お知らせ
+					</span>
+				  {% else %}
+					<span style="margin-top:15px;">
+					</span>
+				  {% endif %}
 	              
 	              <div style="font-size:14px; margin-top:20px;">
 	                <span>{{ News.description|raw|nl2br }}</span>
