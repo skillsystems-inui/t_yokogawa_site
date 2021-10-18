@@ -105,6 +105,36 @@ class UserDataController extends AbstractController
             ],
             $request
         );
+        
+        //通知設定画面の場合
+        if($Page->getFileName() == 'app_notice'){
+        	//ユーザーがログイン時の場合通知設定情報の更新を実行する
+            log_info('通知設定開始');
+            
+            //通知設定タイプ(する/しない)
+            $notice_type = 'off';
+            if(strpos($current_url,'exec_on')){
+            	$notice_type = 'on';//通知設定する
+            }
+            
+            //デバイストークン
+            $device_token = '123456789';//test
+            
+            //通知設定情報更新
+            //ToDo
+			log_info(
+	            'customer_notice_set',
+	            [
+	                'notice_type' => $notice_type,
+	                'device_token' => $device_token,
+	            ]
+	        );
+            //$this->entityManager->flush();
+            log_info('通知設定終了');
+        }
+        //.通知設定画面の場合
+        
+        
         $this->eventDispatcher->dispatch(EccubeEvents::FRONT_USER_DATA_INDEX_INITIALIZE, $event);
 
         return $this->render($file, ['orders' => $orders, 

@@ -1,0 +1,98 @@
+{% extends 'default_frame.twig' %}
+
+{% block main %}
+    <div class="ec-layoutRole__main">
+        <div class="ec-mypageRole" style="padding-top:110px;">
+            <div class="ec-editRole">
+                <div class="ec-off1Grid">
+                    <div class="ec-off1Grid__cell">
+                            
+                            <div class="ec-borderedDefs">
+                                
+                                <dl style="">
+                                    <dt>
+                                        <label class="ec-label">通知設定</label>
+                                    </dt>
+                                    <dd>
+                                        
+                                        <div class="ec-input">
+			                                <input type="text" id="customer_code" name="customer_code" required="required" max_length="255" style="ime-mode: disabled;" placeholder="会員番号" autofocus="autofocus" class="form-control">
+			                            </div>
+                                        
+                                        
+                                        <div class="ec-radio">
+                                            <div id="entry_tuuchi">        
+                                                <input type="radio" id="entry_tuuchi_1" name="entry[tuuchi]" value="1">
+										        <label for="entry_tuuchi_1">
+										            <span>通知する</span>
+										        </label>
+										        
+										        <input type="radio" id="entry_tuuchi_2" name="entry[tuuchi]" value="2">
+										        <label for="entry_tuuchi_2">
+										            <span>通知しない</span>
+										        </label>
+										    </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                
+                            </div>
+                            
+                            <div class="ec-RegisterRole__actions">
+                                <div class="ec-off4Grid">
+                                    <div class="ec-off4Grid__cell">
+                                        <button class="set_notice ec-blockBtn--cancel">{{ '登録する'|trans }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascript %}
+	<script>
+	    //通知設定するボタン押下
+        $('.set_notice').on('click', function() {
+        	
+        	//選択内容
+        	var selected = checkTuuchiSelect();
+        	
+        	//通知設定選択チェック
+            if(selected != 'none'){
+            	//通知設定画面
+            	var base_notice_url = 'http://t-yokogawa-com.check-xserver.jp/user_data/app_notice';
+            	
+            	//ページ遷移する
+            	if(selected == '1'){
+            		location.href = base_notice_url + '?exec_on';
+            	}else{
+            		location.href = base_notice_url + '?exec_off';
+            	}
+            }else{
+            	//設定未選択の場合メッセージを表示する
+            	alert('いずれかの通知設定を選択してください。');
+            }
+        });
+        
+	</script>
+	<script>
+        //通知設定選択チェック
+        function checkTuuchiSelect() {
+        	let elements = document.getElementsByName('entry[tuuchi]');
+			let len = elements.length;
+			var selectTuuchi = 'none';
+
+			for (let i = 0; i < len; i++){
+			    if (elements.item(i).checked){
+			        selectTuuchi = elements.item(i).value;
+			    }
+			}
+        	return selectTuuchi;
+        }
+    </script>
+{% endblock %}
