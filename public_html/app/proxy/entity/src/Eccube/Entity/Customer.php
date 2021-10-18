@@ -246,6 +246,13 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
         private $customer_code;
         
         /**
+         * @var string|null
+         *
+         * @ORM\Column(name="device_token1", type="string", length=200, nullable=true)
+         */
+        private $device_token1;
+        
+        /**
          * @var string
          *
          * @ORM\Column(name="family_name01", type="string", length=50)
@@ -2659,6 +2666,30 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
         {
             return $this->customer_code;
         }
+        
+        
+        /**
+         * Set device_token1.
+         *
+         * @param string|null $device_token1
+         *
+         * @return Customer
+         */
+        public function setDeviceToken1($device_token1 = null)
+        {
+            $this->device_token1 = $device_token1;
 
+            return $this;
+        }
+
+        /**
+         * Get device_token1.
+         *
+         * @return string|null
+         */
+        public function getDeviceToken1()
+        {
+            return $this->device_token1;
+        }
         
     }

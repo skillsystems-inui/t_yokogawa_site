@@ -133,3 +133,7 @@ ALTER TABLE `dtb_customer` ADD `family_sex10_id` smallint(5) unsigned DEFAULT NU
 
 --列追加(会員)
 ALTER TABLE `dtb_customer` ADD `customer_code` varchar(255) DEFAULT NULL;
+
+--列追加(デバイストークン1)
+ALTER TABLE `dtb_customer` ADD `device_token1` varchar(200) DEFAULT NULL;
+

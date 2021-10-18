@@ -112,16 +112,16 @@ class UserDataController extends AbstractController
             log_info('通知設定開始');
             
             //通知設定タイプ(する/しない)
-            $notice_type = 'off';
+            $notice_type = 'none';
             if(strpos($current_url,'exec_on')){
             	$notice_type = 'on';//通知設定する
+            }else if(strpos($current_url,'exec_off')){
+            	$notice_type = 'off';//通知設定しない
             }
             
             //デバイストークン
             $device_token = '123456789';//test
             
-            //通知設定情報更新
-            //ToDo
 			log_info(
 	            'customer_notice_set',
 	            [
@@ -129,8 +129,23 @@ class UserDataController extends AbstractController
 	                'device_token' => $device_token,
 	            ]
 	        );
-            //$this->entityManager->flush();
-            log_info('通知設定終了');
+	        
+	        //通知設定情報更新
+            if($notice_type == 'on'){
+            	//通知設定ありのためデバイストークンをセットする
+            	$Customer->setDeviceToken1($device_token);
+            	$this->entityManager->flush();
+            	log_info('通知設定ON終了');
+            }else if ($notice_type == 'off'){
+            	//通知設定なしのためデバイストークンをセットしない
+            	$Customer->setDeviceToken1(null);
+            	$this->entityManager->flush();
+            	log_info('通知設定OFF終了');
+            }else{
+            	//更新処理はしない
+            	log_info('通知設定表示時');
+            }
+            
         }
         //.通知設定画面の場合
         
