@@ -64,6 +64,8 @@ class UserDataController extends AbstractController
      */
     public function index(Request $request, $route)
     {
+        $session = $this->session;
+        
         //会員情報
         $Customer = $this->getUser();
         
@@ -81,9 +83,11 @@ class UserDataController extends AbstractController
         $file = sprintf('@user_data/%s.twig', $Page->getFileName());
 
         //アプリ判定
+        $is_application = false;
         $current_url = $_SERVER['REQUEST_URI'];
         if(strpos($current_url,'app_')){
         	//アプリの場合
+        	$is_application = true;
         	if (!($this->isGranted('IS_AUTHENTICATED_FULLY'))) {
 	            log_info('アプリから未ログインのためログイン画面へ遷移させる');
 	            //ログイン画面へ遷移(アプリ)
@@ -105,6 +109,23 @@ class UserDataController extends AbstractController
             ],
             $request
         );
+        
+        //アプリトップ画面の場合
+        if($Page->getFileName() == 'app_top'){
+        	//アプリログイン時であればデバイストークンを更新する
+	        if($is_application == true){
+	        	$deviceToken = $session->get('eccube.device_token');
+	        	
+	        	//デバイストークン更新
+	        	if(strlen($deviceToken) > 0){
+				    //通知設定情報更新 デバイストークンをセットする
+			        $Customer->setDeviceToken1($deviceToken);
+			        $this->entityManager->flush();
+			        log_info('デバイストークンをセット完了');
+	        	}
+	        }
+        }
+        //.アプリトップ画面の場合
         
         //通知設定画面の場合
         if($Page->getFileName() == 'app_notice'){

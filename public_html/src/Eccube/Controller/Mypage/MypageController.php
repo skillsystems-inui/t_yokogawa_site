@@ -100,8 +100,13 @@ class MypageController extends AbstractController
      */
     public function login(Request $request, AuthenticationUtils $utils)
     {
+        $session = $this->session;
+        
         //画面遷移先
         $to_url = "http://t-yokogawa-com.check-xserver.jp/";
+        
+        //デバイストークン
+        $_device_token = null;
         
         //アプリ判定
         $is_application = false;
@@ -113,6 +118,17 @@ class MypageController extends AbstractController
         	$is_application = true;
         }
         
+        //アプリログイン時であればデバイストークンを取得する
+        if($is_application == true){
+        	//URLからトークン開始位置を取得(?token=～～)
+        	$dvt_idx = strpos($current_url, '?token='); 
+        	if($dvt_idx != false){
+        		$token_idx = $dvt_idx + 7;//offset7
+	        	$device_token = substr($current_url, $token_idx);
+	        	$session->set('eccube.device_token', $device_token);
+		    }
+        }
+        
         if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
 	            log_info('認証済のためログイン処理をスキップ');
 				
@@ -121,7 +137,7 @@ class MypageController extends AbstractController
 	            	return $this->redirectToRoute('mypage');
 	        	}else{
 	        		//スキップ処理(アプリ)
-	        		header("Location:http://t-yokogawa-com.check-xserver.jp/user_data/app_top");
+	        		header("Location:".$to_url);
         			exit();
 	        	}
         }
@@ -152,7 +168,7 @@ class MypageController extends AbstractController
         
         //画面遷移
         $this->setLoginTargetPath($to_url);
-
+        
         return [
             'error' => $utils->getLastAuthenticationError(),
             'form' => $form->createView(),
