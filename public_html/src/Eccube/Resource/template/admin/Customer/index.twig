@@ -143,6 +143,21 @@ file that was distributed with this source code.
 	            $('.ec-push-modal').show();
 	        });
 	        
+	        $('.go-push').on('click', function() {
+	            event.preventDefault();
+        		//未入力の項目がなければ意図的にプッシュ通知実行ボタンを押す
+        		var lets_obj = document.getElementById('lets-push');
+        		if(lets_obj != null){
+            		document.getElementById('lets-push').click();
+            		//プッシュ通知入力用ポップアップ非表示
+		            $('.ec-push-modal').hide();
+		            
+		            alert('プッシュ通知を送信しました。');
+            	}else{
+            		alert('プッシュ通知を送信できませんでした。');
+            	}
+            });
+	        
 	        $('.close-push').on('click', function() {
 	            event.preventDefault();
 	            //プッシュ通知入力用ポップアップ非表示
@@ -421,7 +436,7 @@ file that was distributed with this source code.
                                     	<a class="btn btn-ec-regular open-push"><i class="fa fa-send mr-1 text-secondary"></i><span>{{ 'admin.customer.exec_push'|trans }}</span></a>
                                         <!-- プッシュ通知実行用 -->
                                         <div style="display:none;">
-                                        	<a class="btn btn-ec-regular lets-push" href="{{ url('admin_customer_push') }}"><i class="fa fa-send mr-1 text-secondary"></i><span>{{ 'admin.customer.exec_push'|trans }}</span></a>
+                                        	<a class="btn btn-ec-regular lets-push" id="lets-push" href="{{ url('admin_customer_push') }}"><i class="fa fa-send mr-1 text-secondary"></i><span>{{ 'admin.customer.exec_push'|trans }}</span></a>
                                         </div>
                                         <a class="btn btn-ec-regular" href="{{ url('admin_customer_export') }}"><i class="fa fa-cloud-download mr-1 text-secondary"></i><span>{{ 'admin.common.csv_download'|trans }}</span></a>
                                         <a class="btn btn-ec-regular" href="{{ url('admin_setting_shop_csv', { id : constant('\\Eccube\\Entity\\Master\\CsvType::CSV_TYPE_CUSTOMER') }) }}"><i class="fa fa-cog mr-1 text-secondary"></i><span>{{ 'admin.setting.shop.csv_setting'|trans }}</span></a>
