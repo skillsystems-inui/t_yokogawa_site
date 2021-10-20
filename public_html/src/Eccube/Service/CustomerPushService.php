@@ -290,8 +290,15 @@ class CustomerPushService
 		                'perCustomer_id' => $perCustomer->getId(),
 		                'perCustomer_name01' => $perCustomer->getName01(),
 		                'perCustomer_name02' => $perCustomer->getName02(),
+		                'perDevice_Token1' => $perCustomer->getDeviceToken1(),
 		            ]
 		        );
+		        
+		        //デバイストークンがある場合のみプッシュ通知を実行する
+		        if($perCustomer->getDeviceToken1() != null){
+		        	$decvice_token = $perCustomer->getDeviceToken1();
+		        	$this->pushNotification($decvice_token);
+		        }
 	            
 	            /*
 	            $closure($perCustomer, $this);
@@ -304,6 +311,46 @@ class CustomerPushService
 
         $this->fclose();
     }
+    
+    function pushNotification($decvice_token) {
+	  $url = 'https://fcm.googleapis.com/fcm/send';
+	  $headers = array(
+	    'Content-Type: application/json',
+	    'Authorization: key='."AAAANGv8iJI:APA91bFw4naNvCmBXUJE2tz6HnDedxyDnMtwlGFsH0rp3QVXByUl7AyW9OMKjKrTb5CHAHPd-GLUlckbJwIKrJeQQB6HStuomFJ1QhFm8I_MKFwWZnptqphmrkoTUy27Fa-ZLzVhyBqd",
+	  );
+	 
+	  $posts = array(
+	    'registration_ids' => [$decvice_token],
+	    'data' => array(
+	      'message' => "Message本文",
+	    ),
+	    "notification" => [
+	      "title" => "Messageタイトル",
+	      "body" => "Message本文",
+	      "badge" => 1, // 通知を送った際に、アプリのアイコンに表示するバッチ
+	      "sound" => "default", // 通知を送った際に、音を出すかの設定
+	    ],
+	  );
+	 
+	  // curl処理
+	  $ch = curl_init($url);                                     // 初期化
+	  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);               // サーバー証明書の検証を行わないようにする
+	  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);            // ヘッダー定義
+	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);            // 返り値を文字列で返すように
+	  curl_setopt($ch, CURLOPT_POST, TRUE);                      // POSTで送信する & データあり
+	  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($posts)); // ＰＯＳＴするデータ(JSON形式で渡す必要あり)
+	 
+	  $result = curl_exec($ch); // 送信 & 帰って来た値はよしなに
+	  
+	  log_info(
+            '__testLogYYYYYYYYYYY',
+            [
+                'result' => $result,
+            ]
+        );
+	  
+	  curl_close($ch);        // セッションを閉じる 
+	}
 
     /**
      * CSV出力項目と比較し, 合致するデータを返す.
