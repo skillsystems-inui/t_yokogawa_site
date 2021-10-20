@@ -26,6 +26,7 @@ use Eccube\Repository\Master\PageMaxRepository;
 use Eccube\Repository\Master\PrefRepository;
 use Eccube\Repository\Master\SexRepository;
 use Eccube\Service\CsvExportService;
+use Eccube\Service\CustomerPushService;
 use Eccube\Service\MailService;
 use Eccube\Util\FormUtil;
 use Knp\Component\Pager\Paginator;
@@ -43,6 +44,11 @@ class CustomerController extends AbstractController
      * @var CsvExportService
      */
     protected $csvExportService;
+    
+    /**
+     * @var CustomerPushService
+     */
+    protected $customerPushService;
 
     /**
      * @var MailService
@@ -75,7 +81,8 @@ class CustomerController extends AbstractController
         SexRepository $sexRepository,
         PrefRepository $prefRepository,
         MailService $mailService,
-        CsvExportService $csvExportService
+        CsvExportService $csvExportService,
+        CustomerPushService $customerPushService
     ) {
         $this->pageMaxRepository = $pageMaxRepository;
         $this->customerRepository = $customerRepository;
@@ -83,6 +90,7 @@ class CustomerController extends AbstractController
         $this->prefRepository = $prefRepository;
         $this->mailService = $mailService;
         $this->csvExportService = $csvExportService;
+        $this->customerPushService = $customerPushService;
     }
 
     /**
@@ -342,5 +350,116 @@ class CustomerController extends AbstractController
         log_info('会員CSVファイル名', [$filename]);
 
         return $response;
+    }
+    
+    
+    /**
+     * 対象会員へのプッシュ通知実行
+     *
+     * @Route("/%eccube_admin_route%/customer/push", name="admin_customer_push")
+     *
+     * @param Request $request
+     *
+     * @return StreamedResponse
+     */
+    public function push(Request $request)
+    {
+        log_info(
+            '__testLog0pppppppppppppppppppppppppppppp',
+            [
+                'request' => $request,
+            ]
+        );
+        
+        $filename = 'push_tuuchi';
+        log_info('log_push_01', [$filename]);
+        
+        $page_no = intval($this->session->get('eccube.admin.customer.search.page_no'));
+        $page_no = $page_no ? $page_no : Constant::ENABLED;
+        
+        // タイムアウトを無効にする.
+        set_time_limit(0);
+
+        // sql loggerを無効にする.
+        $em = $this->entityManager;
+        $em->getConfiguration()->setSQLLogger(null);
+        
+        log_info(
+            '__testLog0uuuuuuuuuuuuuuu2',
+            [
+                'request' => $request,
+            ]
+        );
+
+        
+        log_info(
+            '__testLog0uuuuuuuuuuuuuuu3',
+            [
+                'request' => $request,
+            ]
+        );
+        
+        
+            // 会員データ検索用のクエリビルダを取得.
+            $qb = $this->customerPushService
+                ->getCustomerQueryBuilder($request);
+
+            //  クエリセット
+            $this->customerPushService->setExportQueryBuilder($qb);
+            //  セットしたクエリを元に実行する
+            $this->customerPushService->exportData(function ($entity, $csvService) use ($request) {
+                $Csvs = $csvService->getCsvs();
+
+                /** @var $Customer \Eccube\Entity\Customer */
+                $Customer = $entity;
+
+                $ExportCsvRow = new \Eccube\Entity\ExportCsvRow();
+
+                // CSV出力項目と合致するデータを取得.
+                foreach ($Csvs as $Csv) {
+                    // 会員データを検索.
+                    $ExportCsvRow->setData($csvService->getData($Csv, $Customer));
+
+                    $event = new EventArgs(
+                        [
+                            'csvService' => $csvService,
+                            'Csv' => $Csv,
+                            'Customer' => $Customer,
+                            'ExportCsvRow' => $ExportCsvRow,
+                        ],
+                        $request
+                    );
+                    //$this->eventDispatcher->dispatch(EccubeEvents::ADMIN_CUSTOMER_CSV_EXPORT, $event);
+
+                    $ExportCsvRow->pushData();
+                }
+
+                $row[] = number_format(memory_get_usage(true));
+                // 出力.
+                $csvService->fputcsv($ExportCsvRow->getRow());
+                
+                log_info(
+		            '__testLog0uuuuuuuuuuuuuuu9',
+		            [
+		                'request' => $request,
+		            ]
+		        );
+
+        	});
+
+        /**/
+        //$now = new \DateTime();
+        //$filename = 'customer_'.$now->format('YmdHis').'.csv';
+        //$response->headers->set('Content-Type', 'application/octet-stream');
+        //$response->headers->set('Content-Disposition', 'attachment; filename='.$filename);
+
+        //$response->send();
+
+        log_info('会員CSVファイル名', [$filename]);
+        
+
+        //return $response;
+        return $this->redirect($this->generateUrl('admin_customer_page',
+                ['page_no' => $page_no]).'?resume='.Constant::ENABLED);
     }
 }
