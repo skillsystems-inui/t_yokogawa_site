@@ -485,6 +485,7 @@ admin.common.move_to_confirm_message: '%name%に移動します。編集内容�
 admin.common.move_to_confirm_move_only: 保存せずに移動
 admin.common.move_to_confirm_save_and_move: 保存して移動
 admin.common.admin_url_warning: 管理画面URLは、セキュリティのため推測されにくいものを設定してください。「<a href="%url%">セキュリティ管理</a>」から設定できます。
+admin.customer.exec_push: 対象会員にプッシュ一括通知を行う
 
 
 # エンティティに関連するラベル
