@@ -364,15 +364,8 @@ class CustomerController extends AbstractController
      */
     public function push(Request $request)
     {
-        log_info(
-            '__testLog0pppppppppppppppppppppppppppppp',
-            [
-                'request' => $request,
-            ]
-        );
-        
-        $filename = 'push_tuuchi';
-        log_info('log_push_01', [$filename]);
+        $filename = 'push_exec';
+        log_info('log_push_start', [$filename]);
         
         $page_no = intval($this->session->get('eccube.admin.customer.search.page_no'));
         $page_no = $page_no ? $page_no : Constant::ENABLED;
@@ -384,81 +377,17 @@ class CustomerController extends AbstractController
         $em = $this->entityManager;
         $em->getConfiguration()->setSQLLogger(null);
         
-        log_info(
-            '__testLog0uuuuuuuuuuuuuuu2',
-            [
-                'request' => $request,
-            ]
-        );
+        // 会員データ検索用のクエリビルダを取得.
+        $qb = $this->customerPushService
+            ->getCustomerQueryBuilder($request);
 
+        //  クエリセット
+        $this->customerPushService->setExportQueryBuilder($qb);
+        //  セットしたクエリを元に実行する
+        $this->customerPushService->pushData(function ($entity, $csvService) use ($request) {});
         
-        log_info(
-            '__testLog0uuuuuuuuuuuuuuu3',
-            [
-                'request' => $request,
-            ]
-        );
+        log_info('log_push_end', [$filename]);
         
-        
-            // 会員データ検索用のクエリビルダを取得.
-            $qb = $this->customerPushService
-                ->getCustomerQueryBuilder($request);
-
-            //  クエリセット
-            $this->customerPushService->setExportQueryBuilder($qb);
-            //  セットしたクエリを元に実行する
-            $this->customerPushService->exportData(function ($entity, $csvService) use ($request) {
-                $Csvs = $csvService->getCsvs();
-
-                /** @var $Customer \Eccube\Entity\Customer */
-                $Customer = $entity;
-
-                $ExportCsvRow = new \Eccube\Entity\ExportCsvRow();
-
-                // CSV出力項目と合致するデータを取得.
-                foreach ($Csvs as $Csv) {
-                    // 会員データを検索.
-                    $ExportCsvRow->setData($csvService->getData($Csv, $Customer));
-
-                    $event = new EventArgs(
-                        [
-                            'csvService' => $csvService,
-                            'Csv' => $Csv,
-                            'Customer' => $Customer,
-                            'ExportCsvRow' => $ExportCsvRow,
-                        ],
-                        $request
-                    );
-                    //$this->eventDispatcher->dispatch(EccubeEvents::ADMIN_CUSTOMER_CSV_EXPORT, $event);
-
-                    $ExportCsvRow->pushData();
-                }
-
-                $row[] = number_format(memory_get_usage(true));
-                // 出力.
-                $csvService->fputcsv($ExportCsvRow->getRow());
-                
-                log_info(
-		            '__testLog0uuuuuuuuuuuuuuu9',
-		            [
-		                'request' => $request,
-		            ]
-		        );
-
-        	});
-
-        /**/
-        //$now = new \DateTime();
-        //$filename = 'customer_'.$now->format('YmdHis').'.csv';
-        //$response->headers->set('Content-Type', 'application/octet-stream');
-        //$response->headers->set('Content-Disposition', 'attachment; filename='.$filename);
-
-        //$response->send();
-
-        log_info('会員CSVファイル名', [$filename]);
-        
-
-        //return $response;
         return $this->redirect($this->generateUrl('admin_customer_page',
                 ['page_no' => $page_no]).'?resume='.Constant::ENABLED);
     }
