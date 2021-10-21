@@ -59,9 +59,11 @@
             window.FirebasePlugin.onMessageReceived(function(message) {
                 console.log("Message type: " + message.messageType);
                 if(message.messageType === "notification"){
-                    alert("Notification message received");
+                    console.log("Notification message received");
+                    //alert("Notification message received");
                     if(message.tap){
-                        alert("Tapped in " + message.tap);
+                        console.log("Tapped in " + message.tap);
+                        //alert("Tapped in " + message.tap);
                     }
                 }
             }, function(error) {
