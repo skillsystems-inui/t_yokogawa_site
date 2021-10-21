@@ -19,6 +19,7 @@ use Eccube\Event\EventArgs;
 use Eccube\Repository\Master\DeviceTypeRepository;
 use Eccube\Repository\PageRepository;
 use Eccube\Repository\OrderRepository;
+use Eccube\Repository\PointHistoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,6 +39,11 @@ class UserDataController extends AbstractController
     protected $orderRepository;
 
     /**
+     * @var PointHistoryRepository
+     */
+    protected $pointHistoryRepository;
+
+    /**
      * @var DeviceTypeRepository
      */
     protected $deviceTypeRepository;
@@ -47,15 +53,18 @@ class UserDataController extends AbstractController
      *
      * @param PageRepository $pageRepository
      * @param OrderRepository $orderRepository
+     * @param PointHistoryRepository $pointHistoryRepository
      * @param DeviceTypeRepository $deviceTypeRepository
      */
     public function __construct(
         PageRepository $pageRepository,
         OrderRepository $orderRepository,
+        PointHistoryRepository $pointHistoryRepository,
         DeviceTypeRepository $deviceTypeRepository
     ) {
         $this->pageRepository = $pageRepository;
         $this->orderRepository = $orderRepository;
+        $this->pointHistoryRepository = $pointHistoryRepository;
         $this->deviceTypeRepository = $deviceTypeRepository;
     }
 
@@ -100,6 +109,34 @@ class UserDataController extends AbstractController
         $orders = array();
         if($Customer != null){
         	$orders = $this->orderRepository->getOrdersByCustomer($Customer);
+        }
+        
+        //ポイント一覧取得
+        $points = array();
+        if($Customer != null){
+        	// ポイント履歴取得
+            $targetPointHistory = $this->pointHistoryRepository->findOneBy(
+                [
+                    'Customer' => $Customer,
+                ]
+            );
+            
+            //初期値セット
+            $points['ec_online'] = 0;
+            $points['ec_yoyaku'] = 0;
+            $points['app_birth'] = 0;
+            $points['shop_honten'] = 0;
+            $points['shop_kishiwada'] = 0;
+            
+            //データがあるならセット
+            if($targetPointHistory != null){
+            	$points['ec_online'] = $targetPointHistory->getEcOnline();
+	            $points['ec_yoyaku'] = $targetPointHistory->getEcYoyaku();
+	            $points['app_birth'] = $targetPointHistory->getAppBirth();
+	            $points['shop_honten'] = $targetPointHistory->getShopHonten();
+	            $points['shop_kishiwada'] = $targetPointHistory->getShopKishiwada();
+	            $points['update_date'] = $targetPointHistory->getUpdateDate();
+            }
         }
         
         $event = new EventArgs(
@@ -175,6 +212,7 @@ class UserDataController extends AbstractController
 
         return $this->render($file, ['orders' => $orders, 
                                      'order_count' => count($orders),
+                                     'points' => $points, 
                                     ]);
     }
 }
