@@ -14,10 +14,12 @@
 namespace Eccube\Controller\Mypage;
 
 use Eccube\Controller\AbstractController;
+use Eccube\Entity\PointHistory;
 use Eccube\Event\EccubeEvents;
 use Eccube\Event\EventArgs;
 use Eccube\Form\Type\Front\EntryType;
 use Eccube\Repository\CustomerRepository;
+use Eccube\Repository\PointHistoryRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,16 +40,23 @@ class ChangeController extends AbstractController
     protected $customerRepository;
 
     /**
+     * @var PointHistoryRepository
+     */
+    protected $pointHistoryRepository;
+
+    /**
      * @var EncoderFactoryInterface
      */
     protected $encoderFactory;
 
     public function __construct(
         CustomerRepository $customerRepository,
+        PointHistoryRepository $pointHistoryRepository,
         EncoderFactoryInterface $encoderFactory,
         TokenStorageInterface $tokenStorage
     ) {
         $this->customerRepository = $customerRepository;
+        $this->pointHistoryRepository = $pointHistoryRepository;
         $this->encoderFactory = $encoderFactory;
         $this->tokenStorage = $tokenStorage;
     }
@@ -100,6 +109,48 @@ class ChangeController extends AbstractController
             $this->entityManager->flush();
 
             log_info('会員編集完了');
+            
+            //誕生日ポイントをセットする
+            // ポイント履歴取得
+            $targetPointHistory = $this->pointHistoryRepository->findOneBy(
+                [
+                    'Customer' => $Customer,
+                ]
+            );
+            
+            $birth_point = 200;//誕生日ポイント
+            $now = new \DateTime("now");//現在日時
+            if($targetPointHistory != null){
+            	// 誕生日がnullではなく、ポイント履歴の誕生日ポイントが0の場合
+            	if($Customer->getBirth() != null && $targetPointHistory->getAppBirth() < 1){
+					$targetPointHistory->setAppBirth(intval($birth_point));
+            	}
+            	$targetPointHistory->setUpdateDate($now);
+            	$this->entityManager->persist($targetPointHistory);
+            	$this->entityManager->flush();
+            	
+            }else{
+            	//データ未作成なら新規作成
+            	
+            	/* @var PointHistory $PointHistory */
+	            $PointHistory = new PointHistory();
+		        $PointHistory->setCustomer($Customer);
+		        
+		        $PointHistory->setSum(0);
+		        
+		        // 誕生日がnullではなく、ポイント履歴の誕生日ポイントが0の場合
+		        if($Customer->getBirth() != null){
+            		$PointHistory->setAppBirth(intval($birth_point));
+            	}
+		        
+		        $PointHistory->setCreateDate($now);
+		        $PointHistory->setUpdateDate($now);
+		        $PointHistory->setAvailable(1);
+		        
+		        $this->entityManager->persist($PointHistory);
+		        $this->entityManager->flush();
+            }
+            
 
             $event = new EventArgs(
                 [
