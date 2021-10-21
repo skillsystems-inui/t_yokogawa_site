@@ -13,9 +13,14 @@
 
 namespace Eccube\Service;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\EntityManagerInterface;
 use Eccube\Entity\Master\OrderStatus;
 use Eccube\Entity\Order;
+use Eccube\Entity\PointHistory;
 use Eccube\Repository\Master\OrderStatusRepository;
+use Eccube\Repository\PointHistoryRepository;
 use Eccube\Service\PurchaseFlow\Processor\PointProcessor;
 use Eccube\Service\PurchaseFlow\Processor\StockReduceProcessor;
 use Eccube\Service\PurchaseFlow\PurchaseContext;
@@ -36,6 +41,11 @@ class OrderStateMachine implements EventSubscriberInterface
     private $orderStatusRepository;
 
     /**
+     * @var PointHistoryRepository
+     */
+    private $pointHistoryRepository;
+
+    /**
      * @var PointProcessor
      */
     private $pointProcessor;
@@ -44,12 +54,14 @@ class OrderStateMachine implements EventSubscriberInterface
      */
     private $stockReduceProcessor;
 
-    public function __construct(StateMachine $_orderStateMachine, OrderStatusRepository $orderStatusRepository, PointProcessor $pointProcessor, StockReduceProcessor $stockReduceProcessor)
+    public function __construct(StateMachine $_orderStateMachine, OrderStatusRepository $orderStatusRepository, PointProcessor $pointProcessor, StockReduceProcessor $stockReduceProcessor, PointHistoryRepository $pointHistoryRepository, EntityManagerInterface $entityManager)
     {
         $this->machine = $_orderStateMachine;
         $this->orderStatusRepository = $orderStatusRepository;
         $this->pointProcessor = $pointProcessor;
         $this->stockReduceProcessor = $stockReduceProcessor;
+        $this->pointHistoryRepository = $pointHistoryRepository;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -189,7 +201,75 @@ class OrderStateMachine implements EventSubscriberInterface
         $Order = $event->getSubject()->getOrder();
         $Customer = $Order->getCustomer();
         if ($Customer) {
+        
+        log_info(
+            '__testLog0poooooooooooooooooooooooooooooooooooooooo!',
+            [
+                'uketoriType!' => $Order->getUketoriType(),
+                'point!' => intval($Order->getAddPoint()),
+            ]
+        );
+        
             $Customer->setPoint(intval($Customer->getPoint()) + intval($Order->getAddPoint()));
+            
+            //----- ポイント履歴にも反映する -----
+            // 受け取り方法(店舗受け取りかどうか)(getUketoriType 1:店舗受取 2:取り寄せ) 
+            $UketoriYoyaku = $Order->getUketoriType() == 2 ? false : true;
+            
+            // ポイント履歴取得
+            $targetPointHistory = $this->pointHistoryRepository->findOneBy(
+                [
+                    'Customer' => $Customer,
+                ]
+            );
+            
+            $now = new \DateTime("now");//現在日時
+            if($targetPointHistory != null){
+            	//データがあればポイント更新
+            	if($UketoriYoyaku == true){
+            		//店舗予約の場合
+            		$current_point = intval($targetPointHistory->getEcYoyaku());
+			        $targetPointHistory->setEcYoyaku($current_point + intval($Order->getAddPoint()));
+            	}else{
+            		//オンライン購入の場合
+            		$current_point = intval($targetPointHistory->getEcOnline());
+            		$targetPointHistory->setEcOnline($current_point + intval($Order->getAddPoint()));
+            	}
+            	
+            	$targetPointHistory->setUpdateDate($now);
+            	
+            	$this->entityManager->persist($targetPointHistory);
+            	
+            }else{
+            	//データ未作成なら新規作成
+            	
+            	/* @var PointHistory $PointHistory */
+	            $PointHistory = new PointHistory();
+		        $PointHistory->setCustomer($Customer);
+		        
+		        $PointHistory->setSum(0);
+		        $PointHistory->setAppBirth(0);
+		        $PointHistory->setShopHonten(0);
+		        $PointHistory->setShopKishiwada(0);
+		        
+		        if($UketoriYoyaku == true){
+            		//店舗予約の場合
+            		$PointHistory->setEcOnline(0);
+			        $PointHistory->setEcYoyaku(intval($Order->getAddPoint()));
+            	}else{
+            		//オンライン購入の場合
+            		$PointHistory->setEcOnline(intval($Order->getAddPoint()));
+			        $PointHistory->setEcYoyaku(0);
+            	}
+		        
+		        $PointHistory->setCreateDate($now);
+		        $PointHistory->setUpdateDate($now);
+		        $PointHistory->setAvailable(1);
+		        
+		        $this->entityManager->persist($PointHistory);
+            }
+            
+            
         }
     }
 
