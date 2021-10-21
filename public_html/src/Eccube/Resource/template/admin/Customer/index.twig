@@ -145,16 +145,37 @@ file that was distributed with this source code.
 	        
 	        $('.go-push').on('click', function() {
 	            event.preventDefault();
-        		//未入力の項目がなければ意図的にプッシュ通知実行ボタンを押す
+        		//プッシュ通知を実行する
         		var lets_obj = document.getElementById('lets-push');
-        		if(lets_obj != null){
-            		document.getElementById('lets-push').click();
-            		//プッシュ通知入力用ポップアップ非表示
-		            $('.ec-push-modal').hide();
+        		
+        		var title_obj = document.getElementById('message_title');
+        		var detail_obj = document.getElementById('message_detail');
+        		
+        		if(title_obj != null && detail_obj != null){
+            		
+            		var input_title = title_obj.value;
+            		var input_detail = detail_obj.value;
+            		
+            		//入力チェック
+            		if(input_title.length > 0 && input_detail.length > 0){
+            			//タイトル、メッセ―ジどちらも入力されているときは送信実行する
+	            		var base_url = '{{ url('admin_customer_push', {'title' : 'target_title', 'detail' : 'target_detail'}) }}';
+	            		var last_url1 = base_url.replace('target_title', input_title);
+	            		var last_url = last_url1.replace('target_detail', input_detail)
+		                var href = last_url;
+		                location.href = href;
+	            		
+	            		//document.getElementById('lets-push').click();
+	            		//プッシュ通知入力用ポップアップ非表示
+			            $('.ec-push-modal').hide();
+			            
+			            alert('プッシュ通知を送信しました。');
+		            }else{
+		            	alert('タイトルとメッセージを入力してください。');
+		            }
 		            
-		            alert('プッシュ通知を送信しました。');
             	}else{
-            		alert('プッシュ通知を送信できませんでした。');
+            		alert('プッシュ通知実行エラー');
             	}
             });
 	        
@@ -449,7 +470,8 @@ file that was distributed with this source code.
 	                    <div class="ec-push-modal push_modal" style="display:none;">
 	                    	<input type="button" id="closeBtn" value="close">
 	                    	<div class="push_modal-content">
-		                    	<b><label>プッシュ通知内容設定</label></b>
+		                    	<label><b>プッシュ通知内容設定</b></label>
+		                    	<div class="ec-input" style="width:100%;"></div>
 		                    	<!-- メッセージタイトル -->
 		                    	<label for="message_title">メッセージタイトル</label>
 								<div class="ec-input" style="width:100%;">

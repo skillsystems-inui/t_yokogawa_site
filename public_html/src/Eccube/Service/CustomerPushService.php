@@ -269,9 +269,10 @@ class CustomerPushService
      * クエリビルダにもとづいた会員データに対してプッシュ通知を行う.
      * このメソッドを使う場合は, 事前にsetExportQueryBuilder($qb)で出力対象のクエリビルダをわたしておく必要がある.
      *
-     * @param \Closure $closure
+     * @param $title
+     * @param $detail
      */
-    public function pushData(\Closure $closure)
+     public function pushData($title = null, $detail = null)
     {
         if (is_null($this->qb) || is_null($this->entityManager)) {
             throw new \LogicException('query builder not set.');
@@ -297,7 +298,7 @@ class CustomerPushService
 		        //デバイストークンがある場合のみプッシュ通知を実行する
 		        if($perCustomer->getDeviceToken1() != null){
 		        	$decvice_token = $perCustomer->getDeviceToken1();
-		        	$this->pushNotification($decvice_token);
+		        	$this->pushNotification($decvice_token, $title, $detail);
 		        }
 	            
 	            /*
@@ -312,7 +313,7 @@ class CustomerPushService
         $this->fclose();
     }
     
-    function pushNotification($decvice_token) {
+    function pushNotification($decvice_token, $title, $detail) {
 	  $url = 'https://fcm.googleapis.com/fcm/send';
 	  $headers = array(
 	    'Content-Type: application/json',
@@ -322,11 +323,11 @@ class CustomerPushService
 	  $posts = array(
 	    'registration_ids' => [$decvice_token],
 	    'data' => array(
-	      'message' => "Message本文",
+	      'message' => $detail,
 	    ),
 	    "notification" => [
-	      "title" => "Messageタイトル",
-	      "body" => "Message本文",
+	      "title" => $title,
+	      "body" => $detail,
 	      "badge" => 1, // 通知を送った際に、アプリのアイコンに表示するバッチ
 	      "sound" => "default", // 通知を送った際に、音を出すかの設定
 	    ],

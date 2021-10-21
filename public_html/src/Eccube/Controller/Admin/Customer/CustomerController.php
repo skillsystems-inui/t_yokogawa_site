@@ -356,13 +356,13 @@ class CustomerController extends AbstractController
     /**
      * 対象会員へのプッシュ通知実行
      *
-     * @Route("/%eccube_admin_route%/customer/push", name="admin_customer_push")
+     * @Route("/%eccube_admin_route%/customer/push/{title}/{detail}", name="admin_customer_push")
      *
      * @param Request $request
      *
      * @return StreamedResponse
      */
-    public function push(Request $request)
+    public function push(Request $request, $title = null, $detail = null)
     {
         $filename = 'push_exec';
         log_info('log_push_start', [$filename]);
@@ -384,7 +384,8 @@ class CustomerController extends AbstractController
         //  クエリセット
         $this->customerPushService->setExportQueryBuilder($qb);
         //  セットしたクエリを元に実行する
-        $this->customerPushService->pushData(function ($entity, $csvService) use ($request) {});
+        //$this->customerPushService->pushData(function ($entity, $csvService) use ($request) {});
+        $this->customerPushService->pushData($title, $detail);
         
         log_info('log_push_end', [$filename]);
         
