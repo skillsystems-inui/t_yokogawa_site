@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js"></script>
+    <script>
+    
+        document.addEventListener("deviceready", function(){
+            window.FirebasePlugin.getToken(function(token) {
+                // save this server-side and use it to push notifications to this device
+                console.log(token);
+            }, function(error) {
+                console.error(error);
+            });
+            
+            // Get notified when a token is refreshed
+            window.FirebasePlugin.onTokenRefresh(function(token) {
+                // save this server-side and use it to push notifications to this device
+                console.log("Refresh to get new token: " + token);
+            }, function(error) {
+                alert(error);
+            });
+            
+            // Get notified when the user opens a notification
+            window.FirebasePlugin.onMessageReceived(function(message) {
+                console.log("Message type: " + message.messageType);
+                if(message.messageType === "notification"){
+                    alert("Notification message received");
+                    if(message.tap){
+                        alert("Tapped in " + message.tap);
+                    }
+                }
+            }, function(error) {
+                console.error(error);
+            }); 
+        }, false);
+    </script>
+</head>
+<body>
+    <h3>Cordova Google Firebase Demo</h3>
+    <div>
+        <button id="check-permission" type="button">Check Permission</button>
+        <button id="grant-permission-ios" type="button">Grant Permission (iOS)</button>
+        <button id="set-badge-number" type="button">Set Badge Number</button>
+        <button id="get-badge-number" type="button">Get Badge Number</button>
+        <button id="unregister" type="button">Unregister</button>
+        
+        <h4>Google Analytics</h4>
+        <button id="set-screen-name" type="button">Set ScreenName</button>
+        <button id="user-id" type="button">Set UserID</button>
+    </div>
+</body>
+</html>
