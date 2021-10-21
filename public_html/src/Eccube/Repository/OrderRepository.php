@@ -457,4 +457,19 @@ class OrderRepository extends AbstractRepository
             'smaregi_id' => $smaregi_id,
         ]);
     }
+    
+    
+    /**
+     * 注文を注文日で検索する.
+     *
+     * @param $order_date
+     *
+     * @return null|Order 見つからない場合はnullを返す.
+     */
+    public function getOrderByOrderdate($order_date)
+    {
+        return $this->findOneBy([
+            'order_date' => $order_date,
+        ]);
+    }
 }

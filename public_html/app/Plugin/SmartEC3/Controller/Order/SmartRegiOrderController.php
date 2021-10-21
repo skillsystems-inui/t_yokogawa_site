@@ -18,10 +18,13 @@ use Eccube\Entity\Master\OrderStatus;
 use Eccube\Entity\Master\OrderItemType;
 
 use Eccube\Repository\CustomerRepository;
+use Eccube\Repository\DeliveryRepository;
 use Eccube\Repository\OrderRepository;
 use Eccube\Repository\PaymentRepository;
 use Eccube\Repository\ProductClassRepository;
 use Eccube\Repository\ProductStockRepository;
+use Eccube\Repository\PointHistoryRepository;
+
 use Eccube\Repository\Master\OrderStatusRepository;
 use Eccube\Repository\Master\OrderItemTypeRepository;
 use Eccube\Repository\Master\TaxTypeRepository;
@@ -56,6 +59,11 @@ class SmartRegiOrderController extends AbstractController
     protected $customerRepository;
 
     /**
+     * @var DeliveryRepository
+     */
+    protected $deliveryRepository;
+
+    /**
      * @var PrefRepository
      */
     protected $prefRepository;
@@ -64,6 +72,11 @@ class SmartRegiOrderController extends AbstractController
      * @var ProductStockRepository
      */
     protected $productStockRepository;
+
+    /**
+     * @var PointHistoryRepository
+     */
+    protected $pointHistoryRepository;
 
     /**
      * @var ProductClassRepository
@@ -106,9 +119,11 @@ class SmartRegiOrderController extends AbstractController
      * @param ConfigRepository $configRepository
      * @param SmartRegiRepository $smartRegiRepository
      * @param CustomerRepository $customerRepository
+     * @param DeliveryRepository $deliveryRepository
      * @param PrefRepository $prefRepository
      * @param ProductStockRepository $productStockRepository
      * @param ProductClassRepository $productClassRepository
+     * @param PointHistoryRepository $pointHistoryRepository
      * @param OrderRepository $orderRepository
      * @param OrderStatusRepository $orderStatusRepository
      * @param OrderItemTypeRepository $orderItemTypeRepository
@@ -120,9 +135,11 @@ class SmartRegiOrderController extends AbstractController
         ConfigRepository $configRepository,
         SmartRegiRepository $smartRegiRepository,
         CustomerRepository $customerRepository,
+        DeliveryRepository $deliveryRepository,
         PrefRepository $prefRepository,
         ProductStockRepository $productStockRepository,
         ProductClassRepository $productClassRepository,
+        PointHistoryRepository $pointHistoryRepository,
         OrderRepository $orderRepository,
         OrderStatusRepository $orderStatusRepository,
         OrderItemTypeRepository $orderItemTypeRepository,
@@ -133,9 +150,11 @@ class SmartRegiOrderController extends AbstractController
         $this->configRepository = $configRepository;
         $this->smartRegiRepository = $smartRegiRepository;
         $this->customerRepository = $customerRepository;
+        $this->deliveryRepository = $deliveryRepository;
         $this->prefRepository = $prefRepository;
         $this->productStockRepository = $productStockRepository;
         $this->productClassRepository = $productClassRepository;
+        $this->pointHistoryRepository = $pointHistoryRepository;
         $this->orderRepository = $orderRepository;
         $this->orderStatusRepository = $orderStatusRepository;
         $this->orderItemTypeRepository = $orderItemTypeRepository;
@@ -176,8 +195,9 @@ class SmartRegiOrderController extends AbstractController
         $this->logOrderInfo($request);
         $post = $request->request->all();
         $info = json_decode($post["params"]);
-
+        
         foreach($info->data as $key => $value){
+            
             // Only this info is processed
             if($value->table_name == "TransactionHead" || $value->table_name == "TransactionDetail" || $value->table_name == "Stock" || $value->table_name == "Customer"){
                 switch ($value->table_name) {
@@ -351,6 +371,19 @@ class SmartRegiOrderController extends AbstractController
             $Shipping->setShippingDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDeliveryName("スマレジ店内購入");
             
+            //配送セット
+            $deliv_id_honten = 3;//和泉中央本店
+            $deliv_id_kishiwada = 4;//岸和田店
+            
+            if($arrOrder['storeId'] == 2){
+            	//岸和田店の場合
+            	$TargetDelivery = $this->deliveryRepository->find($deliv_id_kishiwada);
+            }else{
+            	//和泉中央本店の場合
+            	$TargetDelivery = $this->deliveryRepository->find($deliv_id_honten);
+            }
+            $Shipping->setDelivery($TargetDelivery);
+            
             //スマレジからの受取日をECCUBEのお届け予定日/お届け希望日にセットする
             $Shipping->setShippingDeliveryDate(new \DateTime($arrOrder['pickUpDate']));
 
@@ -405,6 +438,19 @@ class SmartRegiOrderController extends AbstractController
             $Shipping->setShippingDeliveryDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDeliveryName("スマレジ店内購入");
+            
+            //配送セット
+            $deliv_id_honten = 3;//和泉中央本店
+            $deliv_id_kishiwada = 4;//岸和田店
+            
+            if($arrOrder['storeId'] == 2){
+            	//岸和田店の場合
+            	$TargetDelivery = $this->deliveryRepository->find($deliv_id_kishiwada);
+            }else{
+            	//和泉中央本店の場合
+            	$TargetDelivery = $this->deliveryRepository->find($deliv_id_honten);
+            }
+            $Shipping->setDelivery($TargetDelivery);
             
             //スマレジからの受取日をECCUBEのお届け予定日/お届け希望日にセットする
             $Shipping->setShippingDeliveryDate(new \DateTime($arrOrder['pickUpDate']));
@@ -569,7 +615,7 @@ class SmartRegiOrderController extends AbstractController
     }
 
     public function updateCustomerData($rows){
-
+	    
         $Config = $this->configRepository->find(1);
         $offset = $Config->getUserOffset();
         if(!$Config->getUserUpdate())return;
@@ -578,12 +624,117 @@ class SmartRegiOrderController extends AbstractController
             
             $customer_code = $customerData->customerId;//会員コード　$offsetは考慮しない
             $Customer = $this->customerRepository->getRegularCustomerByCustomerCode($customer_code);
-
+            
+            //店舗ID取得(1:和泉中央本店,2:岸和田店)
+	        $store_id = 1;
+            //最終更新日
+		    $updDateTime = date('Y-m-d H:i:s', strtotime($customerData->updDateTime));
+		    
+		    //☆最終更新日だけ先に更新する
+		    /*
+		    $Customer->setLastBuyDate(new \DateTime($customerData->updDateTime));
+		    $this->entityManager->persist($Customer);
+            $this->entityManager->flush();
+            */
+		    
+		    //配送
+            $deliv_id_honten = 3;//和泉中央本店
+            $deliv_id_kishiwada = 4;//岸和田店
+		    
+		    $haisoOrderObj = $this->orderRepository->getOrderByOrderdate(new \DateTime($customerData->updDateTime));
+		    if($haisoOrderObj != null){
+		    	$_Shipping = $haisoOrderObj->getShippings()[0];
+		    	$ship_store_name = $_Shipping->getDelivery()->getName();
+		    	if(strpos($ship_store_name,'岸和田') !== false){
+		    		//店舗ID取得(1:和泉中央本店,2:岸和田店)
+	        		$store_id = 2;
+		    	}
+		    }
+		    
+	        log_info(
+		            '__testLog0wwwwwwwwwwwwwwwwwwwwwwwwwww',
+		            [
+		                'store_id' => $store_id,
+		            ]
+		        );
+            
+            //ポイント反映前
+            $org_customer_point = $Customer->getPoint();
+            //ポイント差分
+            $dif_customer_point = ($customerData->point) - $org_customer_point;
+            
+            //ポイント履歴に反映
+            $this->updatePointHistory($Customer, $dif_customer_point, $store_id);
+            
             $Customer->setPoint($customerData->point);
             $this->entityManager->persist($Customer);
             $this->entityManager->flush();
-
+            
+            
         }
+        
+    }
+    
+    public function updatePointHistory($Customer, $AddPoint, $StoreId){
+        
+        //----- ポイント履歴の更新を行う -----
+        // ポイント履歴取得
+        $targetPointHistory = $this->pointHistoryRepository->findOneBy(
+            [
+                'Customer' => $Customer,
+            ]
+        );
+        
+        //店舗判別(和泉中央本店かどうか)
+        $IsHoten = $StoreId != "2" ? true : false;
+        
+        $now = new \DateTime("now");//現在日時
+        if($targetPointHistory != null){
+        	//データがあればポイント更新
+        	if($IsHoten == true){
+        		//和泉中央本店の場合
+        		$current_point = intval($targetPointHistory->getShopHonten());
+		        $targetPointHistory->setShopHonten($current_point + intval($AddPoint));
+        	}else{
+        		//岸和田店の場合
+        		$current_point = intval($targetPointHistory->getShopKishiwada());
+        		$targetPointHistory->setShopKishiwada($current_point + intval($AddPoint));
+        	}
+        	
+        	$targetPointHistory->setUpdateDate($now);
+        	
+        	$this->entityManager->persist($targetPointHistory);
+        	
+        }else{
+        	//データ未作成なら新規作成
+        	
+        	/* @var PointHistory $PointHistory */
+            $PointHistory = new PointHistory();
+	        $PointHistory->setCustomer($Customer);
+	        
+	        $PointHistory->setSum(0);
+	        $PointHistory->setAppBirth(0);
+	        $PointHistory->setShopHonten(0);
+	        $PointHistory->setShopKishiwada(0);
+	        
+	        if($IsHoten == true){
+        		//和泉中央本店の場合
+        		$PointHistory->setShopKishiwada(0);
+		        $PointHistory->setShopHonten(intval($AddPoint));
+        	}else{
+        		//岸和田店の場合
+        		$PointHistory->setShopKishiwada(intval($AddPoint));
+		        $PointHistory->setShopHonten(0);
+        	}
+	        
+	        $PointHistory->setCreateDate($now);
+	        $PointHistory->setUpdateDate($now);
+	        $PointHistory->setAvailable(1);
+	        
+	        $this->entityManager->persist($PointHistory);
+        }
+        
+        $this->entityManager->flush();
         
     }
 
