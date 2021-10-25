@@ -166,8 +166,10 @@ class MypageController extends AbstractController
 
         $form = $builder->getForm();
         
-        //画面遷移
-        $this->setLoginTargetPath($to_url);
+        //画面遷移(アプリケーション)
+        if($is_application == true){
+        	$this->setLoginTargetPath($to_url);
+        }
         
         return [
             'error' => $utils->getLastAuthenticationError(),
