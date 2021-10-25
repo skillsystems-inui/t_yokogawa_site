@@ -91,7 +91,15 @@ class ChangeController extends AbstractController
         /* @var $form \Symfony\Component\Form\FormInterface */
         $form = $builder->getForm();
         $form->handleRequest($request);
-
+        
+        //アプリ判定
+        $is_application = false;
+        $current_url = $_SERVER['REQUEST_URI'];
+        if(strpos($current_url,'app_')){
+        	//アプリの場合
+        	$is_application = true;
+        }
+        
         if ($form->isSubmitted() && $form->isValid()) {
             log_info('会員編集開始');
 
@@ -160,8 +168,17 @@ class ChangeController extends AbstractController
                 $request
             );
             $this->eventDispatcher->dispatch(EccubeEvents::FRONT_MYPAGE_CHANGE_INDEX_COMPLETE, $event);
-
-            return $this->redirect($this->generateUrl('mypage_change_complete'));
+            
+            //画面遷移
+            //PC
+    		if($is_application == false){
+            	return $this->redirect($this->generateUrl('mypage_change_complete'));
+        	}else{
+        		//アプリ
+        		$to_url = "http://t-yokogawa-com.check-xserver.jp/user_data/app_change_complete";
+        		header("Location:".$to_url);
+    			exit();
+        	}
         }
 
         $this->tokenStorage->getToken()->setUser($LoginCustomer);
