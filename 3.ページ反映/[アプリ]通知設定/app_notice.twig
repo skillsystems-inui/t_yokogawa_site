@@ -2,7 +2,7 @@
 
 {% block main %}
     <div class="ec-layoutRole__main">
-        <div class="ec-mypageRole" style="padding-top:110px;">
+        <div class="ec-mypageRole" style="padding-top:110px; padding-bottom:110px;">
             <div class="ec-editRole">
                 <div class="ec-off1Grid">
                     <div class="ec-off1Grid__cell">
@@ -15,19 +15,14 @@
                                     </dt>
                                     <dd>
                                         
-                                        <div class="ec-input">
-			                                <input type="text" id="customer_code" name="customer_code" required="required" max_length="255" style="ime-mode: disabled;" placeholder="会員番号" autofocus="autofocus" class="form-control">
-			                            </div>
-                                        
-                                        
                                         <div class="ec-radio">
                                             <div id="entry_tuuchi">        
-                                                <input type="radio" id="entry_tuuchi_1" name="entry[tuuchi]" value="1">
+                                                <input type="radio" id="entry_tuuchi_1" name="entry[tuuchi]" value="1"{% if customer_info['notice_type'] == 'on' %} checked {% endif %}>
 										        <label for="entry_tuuchi_1">
 										            <span>通知する</span>
 										        </label>
 										        
-										        <input type="radio" id="entry_tuuchi_2" name="entry[tuuchi]" value="2">
+										        <input type="radio" id="entry_tuuchi_2" name="entry[tuuchi]" value="2" {% if customer_info['notice_type'] == 'off' %} checked {% endif %}>
 										        <label for="entry_tuuchi_2">
 										            <span>通知しない</span>
 										        </label>

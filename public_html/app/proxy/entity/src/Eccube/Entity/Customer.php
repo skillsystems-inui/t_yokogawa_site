@@ -253,6 +253,13 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
         private $device_token1;
         
         /**
+         * @var string|null
+         *
+         * @ORM\Column(name="notice_flg", type="string", length=5, nullable=true)
+         */
+        private $notice_flg;
+        
+        /**
          * @var string
          *
          * @ORM\Column(name="family_name01", type="string", length=50)
@@ -2692,4 +2699,27 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
             return $this->device_token1;
         }
         
+        /**
+         * Set notice_flg.
+         *
+         * @param string|null $notice_flg
+         *
+         * @return Customer
+         */
+        public function setNoticeFlg($notice_flg = null)
+        {
+            $this->notice_flg = $notice_flg;
+
+            return $this;
+        }
+
+        /**
+         * Get notice_flg.
+         *
+         * @return string|null
+         */
+        public function getNoticeFlg()
+        {
+            return $this->notice_flg;
+        }
     }

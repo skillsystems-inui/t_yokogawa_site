@@ -164,6 +164,12 @@ class UserDataController extends AbstractController
         }
         //.アプリトップ画面の場合
         
+        //会員情報取得
+        $customer_info = array();
+        $customer_info['notice_type'] = '';
+        if($Customer != null){
+        	$customer_info['notice_type'] = $Customer->getNoticeFlg();
+        }
         //通知設定画面の場合
         if($Page->getFileName() == 'app_notice'){
         	//ユーザーがログイン時の場合通知設定情報の更新を実行する
@@ -177,40 +183,38 @@ class UserDataController extends AbstractController
             	$notice_type = 'off';//通知設定しない
             }
             
-            //デバイストークン
-            $device_token = '123456789';//test
+            //通知設定取得
+            $notice_flg = $Customer->getNoticeFlg();
             
 			log_info(
 	            'customer_notice_set',
 	            [
 	                'notice_type' => $notice_type,
-	                'device_token' => $device_token,
+	                'notice_flg' => $notice_flg,
 	            ]
 	        );
 	        
 	        //通知設定情報更新
-            if($notice_type == 'on'){
-            	//通知設定ありのためデバイストークンをセットする
-            	$Customer->setDeviceToken1($device_token);
+            if($notice_type == 'on' || $notice_type == 'off'){
+            	//通知設定
+            	$Customer->setNoticeFlg($notice_type);
             	$this->entityManager->flush();
-            	log_info('通知設定ON終了');
-            }else if ($notice_type == 'off'){
-            	//通知設定なしのためデバイストークンをセットしない
-            	$Customer->setDeviceToken1(null);
-            	$this->entityManager->flush();
-            	log_info('通知設定OFF終了');
+            	
+            	$customer_info['notice_type'] = $notice_type;
+		        log_info('通知設定セット');
             }else{
             	//更新処理はしない
             	log_info('通知設定表示時');
             }
-            
+            log_info('通知設定終了');
         }
         //.通知設定画面の場合
         
         
         $this->eventDispatcher->dispatch(EccubeEvents::FRONT_USER_DATA_INDEX_INITIALIZE, $event);
 
-        return $this->render($file, ['orders' => $orders, 
+        return $this->render($file, ['customer_info' => $customer_info,
+                                     'orders' => $orders, 
                                      'order_count' => count($orders),
                                      'points' => $points, 
                                     ]);

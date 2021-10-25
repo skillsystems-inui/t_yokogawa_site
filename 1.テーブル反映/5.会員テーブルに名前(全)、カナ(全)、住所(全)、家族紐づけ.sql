@@ -137,3 +137,5 @@ ALTER TABLE `dtb_customer` ADD `customer_code` varchar(255) DEFAULT NULL;
 --列追加(デバイストークン1)
 ALTER TABLE `dtb_customer` ADD `device_token1` varchar(200) DEFAULT NULL;
 
+--列追加(通知設定フラグ)
+ALTER TABLE `dtb_customer` ADD `notice_flg` varchar(5) DEFAULT NULL;
