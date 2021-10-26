@@ -121,12 +121,15 @@ class UserDataController extends AbstractController
                 ]
             );
             
+            $now = new \DateTime();
+            
             //初期値セット
             $points['ec_online'] = 0;
             $points['ec_yoyaku'] = 0;
             $points['app_birth'] = 0;
             $points['shop_honten'] = 0;
             $points['shop_kishiwada'] = 0;
+            $points['update_date'] = $now;
             
             //データがあるならセット
             if($targetPointHistory != null){
