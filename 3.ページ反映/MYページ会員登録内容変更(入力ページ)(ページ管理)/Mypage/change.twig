@@ -46,7 +46,7 @@ file that was distributed with this source code.
                         <form method="post" action="{{ url('mypage_change') }}" novalidate class="h-adr">
                             <span class="p-country-name" style="display:none;">Japan</span>
                             {{ form_widget(form._token) }}
-                            <div class="ec-borderedDefs">
+                            <div class="ec-borderedDefs" {% if is_application == true %}style="padding-top:120px;"{% endif %}>
                                 
                                 <!-- アプリ画面である場合 -->
                                 {% if is_application == true %}
@@ -54,14 +54,28 @@ file that was distributed with this source code.
 	                                    <dt>
 	                                        {{ form_label(form.birth, '生年月日', { 'label_attr': {'class': 'ec-label' }}) }}
 	                                    </dt>
+	                                    
+	                                    {% set is_first_birthday = false %}
+	                                    {% if form.birth.year is defined %}
+		                                    {% if form.birth.year.vars.value == '' or form.birth.year.vars.value == "" %}
+			                                <!-- 誕生日が1度も登録されていない -->
+			                                {% set is_first_birthday = true %}
+			                                {% endif %}
+		                                {% endif %}
 	                                    <dd>
-	                                        <div class="ec-birth{{ has_errors(form.birth) ? ' error'}}">
+	                                        <div class="ec-birth{{ has_errors(form.birth) ? ' error'}}" {% if is_first_birthday == false %}style="display:none;"{% endif %} >
 	                                            {{ form_widget(form.birth.year) }}<span>/</span>
 	                                            {{ form_widget(form.birth.month) }}<span>/</span>
 	                                            {{ form_widget(form.birth.day) }}
 	                                            {{ form_errors(form.birth) }}
 	                                        </div>
+	                                        <div class="" {% if is_first_birthday == false %}style="display:block;"{% else %}style="display:none;"{% endif %} >
+	                                            {{form.birth.year.vars.value}}<span>/</span>
+	                                            {{form.birth.month.vars.value}}<span>/</span>
+	                                            {{form.birth.day.vars.value}}
+	                                        </div>
 	                                    </dd>
+	                                    
 	                                </dl>
 	                                
 	                                <span style="font-weight:bold; font-size:18px;">設定頂きますと誕生日ポイントが付与されます</span>
@@ -251,7 +265,7 @@ file that was distributed with this source code.
                                 {% endfor %}
                             </div>
 
-                            <div class="ec-RegisterRole__actions">
+                            <div class="ec-RegisterRole__actions"{% if is_application == true %}style="padding-bottom:120px;"{% endif %}>
                                 <div class="ec-off4Grid">
                                     <div class="ec-off4Grid__cell">
                                         <button type="submit"
@@ -259,6 +273,7 @@ file that was distributed with this source code.
                                     </div>
                                 </div>
                             </div>
+                            
                         </form>
                     </div>
                 </div>
