@@ -13,7 +13,14 @@ file that was distributed with this source code.
 {% set body_class = 'mypage' %}
 
 {% block main %}
-    <div class="ec-role">
+    
+    {% set is_application = false %}
+    {% set current_url = app.request.server.get('REQUEST_URI')%}
+    {% if 'app_mode' in current_url  %}
+    	{% set is_application = true %}
+    {% endif %}
+    
+    <div class="ec-role" {% if is_application == true %}style="padding-top:120px;"{% endif %}>
         <div class="ec-pageHeader">
             <h1>{{ 'ÉçÉOÉCÉì'|trans }}</h1>
         </div>
