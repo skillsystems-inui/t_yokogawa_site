@@ -72,6 +72,8 @@ class ChangeController extends AbstractController
         $Customer = $this->getUser();
         $LoginCustomer = clone $Customer;
         $this->entityManager->detach($LoginCustomer);
+        
+        $session = $this->session;
 
         $previous_password = $Customer->getPassword();
         $Customer->setPassword($this->eccubeConfig['eccube_default_password']);
@@ -94,12 +96,23 @@ class ChangeController extends AbstractController
         
         //アプリ判定
         $is_application = false;
-        $current_url = $_SERVER['REQUEST_URI'];
-        if(strpos($current_url,'app_')){
-        	//アプリの場合
-        	$is_application = true;
-        }
+        $org_url = $session->get('eccube.mypagechange_url');
         
+        log_info(
+			            '__testLogB',
+			            [
+			                'org_url' => $org_url,
+			            ]
+			        );
+	        	
+    	//遷移前のページ判定
+    	if(strlen($org_url) > 0){
+		    if(strpos($org_url,'app_')){
+	        	//アプリの場合
+	        	$is_application = true;
+	        }
+    	}
+	    
         if ($form->isSubmitted() && $form->isValid()) {
             log_info('会員編集開始');
 
@@ -175,10 +188,24 @@ class ChangeController extends AbstractController
             	return $this->redirect($this->generateUrl('mypage_change_complete'));
         	}else{
         		//アプリ
+        		
         		$to_url = "http://t-yokogawa-com.check-xserver.jp/user_data/app_change_complete";
         		header("Location:".$to_url);
     			exit();
         	}
+        	
+        }else{
+        	//画面表示時にURL保持
+        	$cur_url = $_SERVER['REQUEST_URI'];
+        	$session->set('eccube.mypagechange_url', $cur_url);
+        	
+        	        
+			log_info(
+			            '__testLogA',
+			            [
+			                'cur_url' => $cur_url,
+			            ]
+			        );
         }
 
         $this->tokenStorage->getToken()->setUser($LoginCustomer);
@@ -198,4 +225,5 @@ class ChangeController extends AbstractController
     {
         return [];
     }
+    
 }
