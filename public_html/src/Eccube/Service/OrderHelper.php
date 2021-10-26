@@ -163,14 +163,6 @@ class OrderHelper
         $OptionMemo = $this->createOrderMemoFromOrderItems($Order);
         $UketoriType = $Cart->getUketoriType();
         
-		log_info(
-            'OptionMemo_UketoriType',
-            [
-                'OptionMemo' => $OptionMemo,
-                'UketoriType' => $UketoriType,
-            ]
-        );
-        
         //オプション指定情報をメモに登録する
         $Order->setNote($OptionMemo);
         //受け取り方法を注文に反映する
@@ -275,6 +267,9 @@ class OrderHelper
     {
         // 購入処理中の受注情報を取得
         if ($Order = $this->getPurchaseProcessingOrder($Cart->getPreOrderId())) {
+        	//カート商品の受け取り情報を反映する
+        	$Order->setUketoriType($Cart->getUketoriType());
+        	
             return $Order;
         }
 
