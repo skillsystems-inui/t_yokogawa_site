@@ -68,71 +68,221 @@ file that was distributed with this source code.
     });
 </script>
 
-<input type="hidden" value="{{ url('homepage') }}" id="homepageurl" />
-<header id="topheader"  class="{% if Page.url == 'homepage' %}top_header{% endif %}">
-    <div class="inner">
-      <p class="logo" style="padding-left:30px; width:50%;">
-      	<a href="{{ url('homepage') }}user_data/app_top">
-      		<img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo.png" alt="菓子工房T.YOKOGAWA">
-      	</a>
-      </p><!-- .logo -->
-      <span id="burger_btn" class="">
-      	<span></span>
-      	<span></span>
-      	<span></span>
-      </span>
-      
-      <span id="" class="" style="width:50px;">
-      	<div class="app_maru">
-	       <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_userguide"}) }}" class="">
-	         <span>?</span>
-	       </a>
-		</div>
-		<div class="app_use_icon">
-      		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_userguide"}) }}" class="">使い方</a>
-      	</div>
-      </span>
-      
-      
-      
-      <nav>
-      	<span class="logo_sp">
-        	<span>
-	        	<a href="{{ url('homepage') }}user_data/app_top">
+{% set current_url = app.request.server.get('REQUEST_URI') %}
+{% if 'app_' in current_url  %}
+<!-- アプリの場合 -->
+	<input type="hidden" value="{{ url('homepage') }}" id="homepageurl" />
+	<header id="topheader"  class="{% if Page.url == 'homepage' %}top_header{% endif %}">
+	    <div class="inner">
+	      <p class="logo" style="padding-left:30px; width:50%;">
+	      	<a href="{{ url('homepage') }}user_data/app_top">
+	      		<img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo.png" alt="菓子工房T.YOKOGAWA">
+	      	</a>
+	      </p><!-- .logo -->
+	      <span id="burger_btn" class="">
+	      	<span></span>
+	      	<span></span>
+	      	<span></span>
+	      </span>
+	      
+	      <span id="" class="" style="width:50px;">
+	      	<div class="app_maru">
+		       <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_userguide"}) }}" class="">
+		         <span>?</span>
+		       </a>
+			</div>
+			<div class="app_use_icon">
+	      		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_userguide"}) }}" class="">使い方</a>
+	      	</div>
+	      </span>
+	      
+	      
+	      
+	      <nav>
+	      	<span class="logo_sp">
+	        	<span>
+		        	<a href="{{ url('homepage') }}user_data/app_top">
+		        		<img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo_sp.png" alt="">
+		        	</a>
+	        	</span>
+	        </span>
+	        <div class="header_btn">
+	        	<a href="/guide" class="guide">ご利用ガイド</a>
+	        {% if is_granted('ROLE_USER') %}
+	            <a href="{{ url('mypage') }}" class="mypage">マイページ</a>
+	        	<a href="{{ url('logout') }}" class="M_loginBtn">ログアウト</a>
+	        {% else %}
+	        	<a href="{{ url('entry') }}" class="member">新規会員登録</a> 
+	        	<a href="{{ url('mypage_login') }}" class="M_loginBtn">ログイン</a>
+	        {% endif %}
+	        	<a href="{{ url('mypage') }}" class="mypage"></a>
+	        	<a href="https://www.instagram.com/cake_yokogawa/" rel="noopener noreferrer" target="_blank" class="insta"></a>
+	        	<a href="https://line.me/R/ti/p/%40854fgmlr" rel="noopener noreferrer" target="_blank" class="line"></a>
+	        </div>
+	        <ul>
+	          <li class="about" style="background-image: none;">
+	          	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "ourbrand"}) }}">
+	          		<span><span class="agp">OUR BRAND</span>私たちについて</span>
+	          	</a>
+	          </li>
+	          <li id="item_head" class="item">
+	          	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}"><span><span class="agp">PRODUCTS</span>商品一覧</span>
+	          	</a>
+	          </li>
+	          
+	          <li class="shop"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "SHOP"}) }}"><span><span class="agp">SHOP</span>店舗</span></a></li>
+	          <li class="news"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "osirase"}) }}"><span><span class="agp">NEWS</span>お知らせ</span></a></li>
+	          <li class="recruit"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "recruit"}) }}"><span><span class="agp">RECRUIT</span>採用情報</span></a></li>
+	          <li class="cart"><a href="{{ url('cart') }}" class="cart_btn">カートを見る</a></li>
+	        </ul>
+	        
+	      </nav>
+	    </div>
+	  </header>
+
+{% else %}
+	<!-- PCの場合 -->
+	<input type="hidden" value="{{ url('homepage') }}" id="homepageurl" />
+	<header id="topheader"  class="{% if Page.url == 'homepage' %}top_header{% endif %}">
+	    <div class="inner">
+	      <p class="logo"><a href="/"><img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo.png" alt="菓子工房T.YOKOGAWA"></a></p><!-- .logo -->
+	      <span id="burger_btn" class="burger"><span></span><span></span><span></span></span>
+	      <nav>
+	        <span class="logo_sp">
+	        	<a href="/">
 	        		<img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo_sp.png" alt="">
 	        	</a>
-        	</span>
-        </span>
-        <div class="header_btn">
-        	<a href="/guide" class="guide">ご利用ガイド</a>
-        {% if is_granted('ROLE_USER') %}
-            <a href="{{ url('mypage') }}" class="mypage">マイページ</a>
-        	<a href="{{ url('logout') }}" class="M_loginBtn">ログアウト</a>
-        {% else %}
-        	<a href="{{ url('entry') }}" class="member">新規会員登録</a> 
-        	<a href="{{ url('mypage_login') }}" class="M_loginBtn">ログイン</a>
-        {% endif %}
-        	<a href="{{ url('mypage') }}" class="mypage"></a>
-        	<a href="https://www.instagram.com/cake_yokogawa/" rel="noopener noreferrer" target="_blank" class="insta"></a>
-        	<a href="https://line.me/R/ti/p/%40854fgmlr" rel="noopener noreferrer" target="_blank" class="line"></a>
-        </div>
-        <ul>
-          <li class="about" style="background-image: none;">
-          	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "ourbrand"}) }}">
-          		<span><span class="agp">OUR BRAND</span>私たちについて</span>
-          	</a>
-          </li>
-          <li id="item_head" class="item">
-          	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}"><span><span class="agp">PRODUCTS</span>商品一覧</span>
-          	</a>
-          </li>
-          
-          <li class="shop"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "SHOP"}) }}"><span><span class="agp">SHOP</span>店舗</span></a></li>
-          <li class="news"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "osirase"}) }}"><span><span class="agp">NEWS</span>お知らせ</span></a></li>
-          <li class="recruit"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "recruit"}) }}"><span><span class="agp">RECRUIT</span>採用情報</span></a></li>
-          <li class="cart"><a href="{{ url('cart') }}" class="cart_btn">カートを見る</a></li>
-        </ul>
-        
-      </nav>
-    </div>
-  </header>
+	        </span>
+	        <div class="header_btn">
+	        	<a href="/guide" class="guide">ご利用ガイド</a>
+	        {% if is_granted('ROLE_USER') %}
+	            <a href="{{ url('mypage') }}" class="mypage">マイページ</a>
+	        	<a href="{{ url('logout') }}" class="M_loginBtn">ログアウト</a>
+	        {% else %}
+	        	<a href="{{ url('entry') }}" class="member">新規会員登録</a> 
+	        	<a href="{{ url('mypage_login') }}" class="M_loginBtn">ログイン</a>
+	        {% endif %}
+	        	<a href="{{ url('mypage') }}" class="mypage"></a>
+	        	<a href="https://www.instagram.com/cake_yokogawa/" rel="noopener noreferrer" target="_blank" class="insta"></a>
+	        	<a href="https://line.me/R/ti/p/%40854fgmlr" rel="noopener noreferrer" target="_blank" class="line"></a>
+	        </div>
+	        <ul>
+	          <li class="about" style="background-image: none;">
+	          	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "ourbrand"}) }}">
+	          		<span><span class="agp">OUR BRAND</span>私たちについて</span>
+	          	</a>
+	          </li>
+	          <li id="item_head" class="item">
+	          	<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}"><span><span class="agp">PRODUCTS</span>商品一覧</span>
+	          	</a>
+	          </li>
+	          <li id= "itsp" class="item_sp">
+	            <div class="inner">
+	            <p><span class="agp">PRODUCTS</span>商品からえらぶ</p>
+	            
+	            <div class="search">
+	            	<input type="text" id="MakeShopTopSearchInput" placeholder="キーワード検索">
+	            	<a href="javascript:void(0)" id="MakeShopTopSearchButton" >検索</a>
+	            	<script>$(function(){$('#MakeShopTopSearchInput').attr('placeholder','キーワード検索');});</script>
+	            </div>
+	            
+				<div style="display:none;">
+					<form method="get" class="searchform" action="{{ path('product_list') }}">
+						<div class="ec-input">
+							<input type="search" id="back_search_text" name="name" maxlength="50" class="search-name" placeholder="キーワード検索" value="">
+							<button class="ec-headerSearch__keywordBtn" style="position:unset; transform:translateY(-20%);"  id="back_search_btn" type="submit">
+						    	<img src="{{ asset('assets/icon/search-dark.svg') }}" alt="検索" width="40" height="40">
+						    </button>
+					    </div>
+				    </form>
+				</div>
+				
+	            <a href="{{ url('cart') }}" class="cart_btn">カートを見る</a>
+	            
+	            <dl class="category">
+	              <dt>商品一覧</dt>
+	              
+	              <dd class="topcat">
+	              	<a href="{{ url('product_list') }}?category_id=63">
+	              		<img src="/html/user_data/assets/img/cat_recommended.png" alt="">
+	              		<span>今月のおすすめ</span>
+	              	</a>
+	              </dd>
+	              
+	              <dd>
+	              	<a href="{{ url('product_list') }}?category_id=67">
+	              		<img src="/html/user_data/assets/img/cat_cake.png" alt="">
+	              		<span>ケーキ</span>
+	              	</a>
+	              </dd>
+	              
+	              <dd>
+	              	<a href="{{ url('product_list') }}?category_id=74">
+	              		<img src="/html/user_data/assets/img/cat_reitoucake.png" alt="">
+	              		<span>冷凍ケーキ</span>
+	              	</a>
+	              </dd>
+	              
+	              <dd>
+	              	<a href="{{ url('product_list') }}?category_id=75">
+	              		<img src="/html/user_data/assets/img/cat_gift.png" alt="">
+	              		<span>ギフト商品</span>
+	              	</a>
+	              </dd>
+	              
+	              <dd>
+	              	<a href="{{ url('product_list') }}?category_id=82">
+	              		<img src="/html/user_data/assets/img/cat_single.png" alt="">
+	              		<span>単品</span>
+	              	</a>
+	              </dd>
+	              
+	              <dd>
+	              	<a href="{{ url('product_list') }}?category_id=91">
+	              		<img src="/html/user_data/assets/img/cat_confiture-honey.png" alt="">
+	              		<span>コンフィチュール</span>
+	              	</a>
+	              </dd>
+	              
+	              <dd>
+	              	<a href="{{ url('product_list') }}?category_id=92">
+	              		<img src="/html/user_data/assets/img/cat_chocolate.png" alt="">
+	              		<span>チョコレート</span>
+	              	</a>
+	              </dd>
+	              
+	            </dl><!-- .category -->
+
+
+	            <dl class="use">
+	              <dt>用途別でえらぶ</dt>
+	              <dd><a href="{{ url('product_list') }}?category_id=17">身近な人へのお礼として</a></dd>
+	              <dd><a href="{{ url('product_list') }}?category_id=18">お中元・お歳暮として</a></dd>
+	              <dd><a href="{{ url('product_list') }}?category_id=19">内祝いとして</a></dd>
+	              <dd><a href="{{ url('product_list') }}?category_id=20">法事のお彼岸として</a></dd>
+	              <!--
+	              <dd class="outer"><a href="/item_all.html#use">詳しく見る</a></dd>
+	              -->
+	            </dl><!-- .use -->
+	            <dl class="price">
+	              <dt>価格別でえらぶ</dt>
+	              <dd><a href="{{ url('product_list') }}?category_id=20">～2,160円</a></dd>
+	              <dd><a href="{{ url('product_list') }}?category_id=20">2,160円～3,780円</a></dd>
+	              <dd><a href="{{ url('product_list') }}?category_id=20">3,780円～</a></dd>
+	              
+	              <!--
+	              <dd><a href="{{ url('product_list') }}">詳しく見る</a></dd>
+	              -->
+	            </dl><!-- .price -->
+	            </div><!-- .inner -->
+	          </li>
+	          <li class="shop"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "SHOP"}) }}"><span><span class="agp">SHOP</span>店舗</span></a></li>
+	          <li class="news"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "osirase"}) }}"><span><span class="agp">NEWS</span>お知らせ</span></a></li>
+	          <li class="recruit"><a href="{{ url(eccube_config.eccube_user_data_route, {"route": "recruit"}) }}"><span><span class="agp">RECRUIT</span>採用情報</span></a></li>
+	          <li class="cart"><a href="{{ url('cart') }}" class="cart_btn">カートを見る</a></li>
+	        </ul>
+	      </nav>
+	    </div>
+	  </header>
+
+{% endif %}
