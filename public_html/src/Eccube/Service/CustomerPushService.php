@@ -295,18 +295,12 @@ class CustomerPushService
 		            ]
 		        );
 		        
-		        //デバイストークンがある場合のみプッシュ通知を実行する
-		        if($perCustomer->getDeviceToken1() != null){
+		        //デバイストークンがあり、通知設定「通知する」の場合のみプッシュ通知を実行する
+		        if($perCustomer->getDeviceToken1() != null && $perCustomer->getNoticeFlg() == 'on'){
 		        	$decvice_token = $perCustomer->getDeviceToken1();
 		        	$this->pushNotification($decvice_token, $title, $detail);
 		        }
 	            
-	            /*
-	            $closure($perCustomer, $this);
-	            $this->entityManager->detach($perCustomer);
-	            $query->free();
-	            flush();
-	            */
             }
         }
 
