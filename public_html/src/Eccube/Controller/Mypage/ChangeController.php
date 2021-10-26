@@ -188,10 +188,7 @@ class ChangeController extends AbstractController
             	return $this->redirect($this->generateUrl('mypage_change_complete'));
         	}else{
         		//アプリ
-        		
-        		$to_url = "http://t-yokogawa-com.check-xserver.jp/user_data/app_change_complete";
-        		header("Location:".$to_url);
-    			exit();
+        		return $this->redirect('/user_data/app_change_complete');
         	}
         	
         }else{
