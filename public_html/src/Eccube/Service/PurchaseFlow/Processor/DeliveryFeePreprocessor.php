@@ -139,7 +139,7 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
             //送料
             $souryo = 0;
 
-            /*koko 配送がヤマトの場合、合計金額によって配送タイプを選択する
+            /* 配送がヤマトの場合、合計金額によって配送タイプを選択する
             * 
             * 2000円未満             ： 配送:ヤマト運輸
             * 2000円以上、5000円未満 ： 配送:ヤマト運輸2
@@ -153,22 +153,23 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
             
             $uketori_type = 1;// 2:お取り寄せ(ヤマト運輸)、2以外:店頭受取
             //注文情報の受け取り方法を取得 //test
-            //$ShipOrder = $Shipping->getOrder();
-            $ShipOrder = $Order;
-            if (!(is_null($ShipOrder)) && !($ShipOrder->getId())) {
+            $ShipOrder = $Shipping->getOrder();
+            if (!(is_null($ShipOrder))) {
                 $uketori_type = $ShipOrder->getUketoriType();// 2:お取り寄せ(ヤマト運輸)、2以外:店頭受取
             }
             
             log_info(
-	            'koko______________',
+	            'test_souryo_info',
 	            [
+	                'is_null_ShipOrder' => is_null($ShipOrder),
+	                'ShipOrder_getId' => $ShipOrder->getId(),
 	                'uketori_type' => $uketori_type,
 	                'getShippingDeliveryName' => $Shipping->getShippingDeliveryName(),
 	            ]
 	        );
             
             //ヤマトかどうか
-            if($Shipping->getShippingDeliveryName() == '配送:ヤマト運輸' && $uketori_type == 2){
+            if($uketori_type == 2){
 	            //--ヤマトの場合--
 	            
 	            //合計金額
