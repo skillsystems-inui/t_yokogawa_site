@@ -51,6 +51,18 @@
 
 {% block javascript %}
 	<script>
+	    window.onload = function(){
+			//設定完了メッセージ
+			// 現在のURL
+			var current_url = location.href;
+			if ( current_url.indexOf('?exec_on') != -1) {
+				alert('通知設定「通知する」に設定しました。');
+			}else if ( current_url.indexOf('?exec_off') != -1) {
+				alert('通知設定「通知しない」に設定しました。');
+			}
+		}
+	</script>
+	<script>
 	    //通知設定するボタン押下
         $('.set_notice').on('click', function() {
         	
