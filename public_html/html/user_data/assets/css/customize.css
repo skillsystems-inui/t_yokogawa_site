@@ -5437,5 +5437,33 @@ $common
   width: 100%;
 }
 
+.arrow_top{
+  width: 10px;
+  height: 10px;
+  border: 2px solid;
+  border-color: #565656 #565656 transparent transparent;
+  transform: rotate(-45deg);
+}
+.arrow_bottom{
+  width: 10px;
+  height: 10px;
+  border: 2px solid;
+  border-color:  transparent transparent #565656 #565656;
+  transform: rotate(-45deg);
+}
+.arrow_right{
+  width: 10px;
+  height: 10px;
+  border: 2px solid;
+  border-color: #565656 #565656 transparent transparent;
+  transform: rotate(45deg);
+}
+.arrow_left{
+  width: 10px;
+  height: 10px;
+  border: 2px solid;
+  border-color:  transparent transparent #565656 #565656;
+  transform: rotate(45deg);
+}
 
 /*.PC and SP*/
