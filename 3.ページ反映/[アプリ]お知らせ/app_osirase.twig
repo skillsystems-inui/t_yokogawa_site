@@ -28,31 +28,38 @@
           			{% for News in NewsList %}
 	          			<tr bgcolor="#ffffff" height="25">
 	          			
-	          				<div style="border-bottom: 1px solid #ECECEC; padding:10px;">
-	          					<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_osirase_detail"}) }}?id={{ News.id }}">
-		          					<div style="100%">
-		          						<span style="color:#A9A9A9;">{{ News.publish_date|date_day }}</span>
-		          						
-		          						{% if 'news' in News.url %}
-		          						<span class="app_news_type">
-		          							NEWS
-		          						</span>
-		          						{% elseif 'event' in News.url %}
-		          						<span class="app_event_type">
-		          							イベント
-		          						</span>
-		          						{% elseif 'info' in News.url %}
-		          						<span class="app_info_type">
-		          							お知らせ
-		          						</span>
-		          						{% endif %}
-		          					</div>
-		          					<div style="100%">
-			          					{{ News.title }}
-			          				</div>
-		          				</a>
-	          				</div>
-	          				
+	          				<div style="border-bottom:1px solid #ECECEC;">
+		          				<div style="padding:10px; width:90%; float:left;">
+		          					<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_osirase_detail"}) }}?id={{ News.id }}">
+			          					<div style="100%">
+			          						<span style="color:#A9A9A9;">{{ News.publish_date|date_day }}</span>
+			          						
+			          						{% if 'news' in News.url %}
+			          						<span class="app_news_type">
+			          							NEWS
+			          						</span>
+			          						{% elseif 'event' in News.url %}
+			          						<span class="app_event_type">
+			          							イベント
+			          						</span>
+			          						{% elseif 'info' in News.url %}
+			          						<span class="app_info_type">
+			          							お知らせ
+			          						</span>
+			          						{% endif %}
+			          					</div>
+			          					<div style="100%">
+				          					{{ News.title }}
+				          				</div>
+			          				</a>
+		          				</div>
+		          				<div style="float:left; padding-top:30px;">
+	      							<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_osirase_detail"}) }}?id={{ News.id }}">
+	      								<div class="arrow_right"></div>
+	      							</a>
+	      						</div>
+	      						<div style="clear:both;"></div>
+          					</div>
 	          			</tr>
 	          			
           			{% endfor %}
