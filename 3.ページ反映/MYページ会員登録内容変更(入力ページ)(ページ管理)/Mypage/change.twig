@@ -78,8 +78,8 @@ file that was distributed with this source code.
 	                                    
 	                                </dl>
 	                                
-	                                <span style="font-weight:bold; font-size:18px;">設定頂きますと誕生日ポイントが付与されます</span>
-	                                <span style="font-size:14px;">※一度入力した誕生日は変更できません</span>
+	                                <span style="font-weight:bold; font-size:14px;">設定頂きますと誕生日ポイントが付与されます</span><br>
+	                                <span style="font-size:13px;">※一度入力した誕生日は変更できません</span>
                                 {% endif %}
                                 <!-- .アプリ画面である場合 -->
                                 
@@ -98,7 +98,7 @@ file that was distributed with this source code.
                                 </dl>
                                 <dl>
                                     <dt>
-                                        {{ form_label(form.kana, 'お名前(カナ)', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                        {{ form_label(form.kana, 'フリガナ', { 'label_attr': { 'class': 'ec-label' }}) }}
                                     </dt>
                                     <dd>
                                         <div class="ec-halfInput{{ has_errors(form.kana.kana01, form.kana.kana02) ? ' error'}}">
@@ -106,6 +106,18 @@ file that was distributed with this source code.
                                             {{ form_widget(form.kana.kana02, { 'attr': { 'placeholder': 'メイ' }}) }}
                                             {{ form_errors(form.kana.kana01) }}
                                             {{ form_errors(form.kana.kana02) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                
+                                <dl>
+                                    <dt>
+                                        {{ form_label(form.phone_number, '電話番号', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-telInput{{ has_errors(form.phone_number) ? ' error' }}">
+                                            {{ form_widget(form.phone_number) }}
+                                            {{ form_errors(form.phone_number) }}
                                         </div>
                                     </dd>
                                 </dl>
@@ -150,18 +162,6 @@ file that was distributed with this source code.
                                         <div class="ec-input{{ has_errors(form.address.addr02) ? ' error' }}">
                                             {{ form_widget(form.address.addr02,  { 'attr': { 'placeholder': '番地・ビル名(例：西梅田1丁目6-8)' }}) }}
                                             {{ form_errors(form.address.addr02) }}
-                                        </div>
-                                    </dd>
-                                </dl>
-                                
-                                <dl>
-                                    <dt>
-                                        {{ form_label(form.phone_number, '電話番号', { 'label_attr': { 'class': 'ec-label' }}) }}
-                                    </dt>
-                                    <dd>
-                                        <div class="ec-telInput{{ has_errors(form.phone_number) ? ' error' }}">
-                                            {{ form_widget(form.phone_number) }}
-                                            {{ form_errors(form.phone_number) }}
                                         </div>
                                     </dd>
                                 </dl>
