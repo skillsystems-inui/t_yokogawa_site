@@ -24,7 +24,7 @@ file that was distributed with this source code.
                         </div>
                         <div class="ec-newsRole__newsColumn">
                             <div class="ec-newsRole__newsTitle">
-                              <a style="color:#000;" href="{{ News.url }}">
+                              <a style="color:#000;" href="{{ url(eccube_config.eccube_user_data_route, {"route": "osirase_detail"}) }}?id={{ News.id }}">
                                 {{ News.title }}
                               </a>
                             </div>
