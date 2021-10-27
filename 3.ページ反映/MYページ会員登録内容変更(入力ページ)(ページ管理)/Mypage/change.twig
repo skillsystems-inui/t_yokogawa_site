@@ -246,7 +246,6 @@ file that was distributed with this source code.
                                 </dl>
                                 
                                 
-                                
                                 <dl style="">
                                     <dt>
                                         {{ form_label(form.family_name01, 'お名前1', { 'label_attr': { 'class': 'ec-label' }}) }}
@@ -294,7 +293,434 @@ file that was distributed with this source code.
 	                                </dd>
 	                            </dl>
                                 
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_name02, 'お名前2', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_name02) }}
+                                            {{ form_errors(form.family_name02) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_sex02, '性別2', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-radio">
+                                            {{ form_widget(form.family_sex02) }}
+                                            {{ form_errors(form.family_sex02) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_relation02, '続柄2', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_relation02) }}
+                                            {{ form_errors(form.family_relation02) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+	                                <dt>
+	                                    {{ form_label(form.family_birth02, '誕生日2', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                </dt>
+	                                <dd>
+	                                    <div class="ec-birth">
+	                                        {{ form_widget(form.family_birth02.year) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth02.month) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth02.day) }}
+	                                        {{ form_errors(form.family_birth02) }}
+	                                    </div>
+	                                </dd>
+	                            </dl>
+	                            
+	                            
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_name03, 'お名前3', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_name03) }}
+                                            {{ form_errors(form.family_name03) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_sex03, '性別3', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-radio">
+                                            {{ form_widget(form.family_sex03) }}
+                                            {{ form_errors(form.family_sex03) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_relation03, '続柄3', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_relation03) }}
+                                            {{ form_errors(form.family_relation03) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+	                                <dt>
+	                                    {{ form_label(form.family_birth03, '誕生日3', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                </dt>
+	                                <dd>
+	                                    <div class="ec-birth">
+	                                        {{ form_widget(form.family_birth03.year) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth03.month) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth03.day) }}
+	                                        {{ form_errors(form.family_birth03) }}
+	                                    </div>
+	                                </dd>
+	                            </dl>
+	                            
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_name04, 'お名前4', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_name04) }}
+                                            {{ form_errors(form.family_name04) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_sex04, '性別4', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-radio">
+                                            {{ form_widget(form.family_sex04) }}
+                                            {{ form_errors(form.family_sex04) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_relation04, '続柄4', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_relation04) }}
+                                            {{ form_errors(form.family_relation04) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+	                                <dt>
+	                                    {{ form_label(form.family_birth04, '誕生日4', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                </dt>
+	                                <dd>
+	                                    <div class="ec-birth">
+	                                        {{ form_widget(form.family_birth04.year) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth04.month) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth04.day) }}
+	                                        {{ form_errors(form.family_birth04) }}
+	                                    </div>
+	                                </dd>
+	                            </dl>
+	                            
+	                            
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_name05, 'お名前5', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_name05) }}
+                                            {{ form_errors(form.family_name05) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_sex05, '性別5', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-radio">
+                                            {{ form_widget(form.family_sex05) }}
+                                            {{ form_errors(form.family_sex05) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_relation05, '続柄5', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_relation05) }}
+                                            {{ form_errors(form.family_relation05) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+	                                <dt>
+	                                    {{ form_label(form.family_birth05, '誕生日5', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                </dt>
+	                                <dd>
+	                                    <div class="ec-birth">
+	                                        {{ form_widget(form.family_birth05.year) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth05.month) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth05.day) }}
+	                                        {{ form_errors(form.family_birth05) }}
+	                                    </div>
+	                                </dd>
+	                            </dl>
+	                            
+	                            
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_name06, 'お名前6', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_name06) }}
+                                            {{ form_errors(form.family_name06) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_sex06, '性別6', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-radio">
+                                            {{ form_widget(form.family_sex06) }}
+                                            {{ form_errors(form.family_sex06) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_relation06, '続柄6', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_relation06) }}
+                                            {{ form_errors(form.family_relation06) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+	                                <dt>
+	                                    {{ form_label(form.family_birth06, '誕生日6', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                </dt>
+	                                <dd>
+	                                    <div class="ec-birth">
+	                                        {{ form_widget(form.family_birth06.year) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth06.month) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth06.day) }}
+	                                        {{ form_errors(form.family_birth06) }}
+	                                    </div>
+	                                </dd>
+	                            </dl>
                                 
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_name07, 'お名前7', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_name07) }}
+                                            {{ form_errors(form.family_name07) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_sex07, '性別7', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-radio">
+                                            {{ form_widget(form.family_sex07) }}
+                                            {{ form_errors(form.family_sex07) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_relation07, '続柄7', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_relation07) }}
+                                            {{ form_errors(form.family_relation07) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+	                                <dt>
+	                                    {{ form_label(form.family_birth07, '誕生日7', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                </dt>
+	                                <dd>
+	                                    <div class="ec-birth">
+	                                        {{ form_widget(form.family_birth07.year) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth07.month) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth07.day) }}
+	                                        {{ form_errors(form.family_birth07) }}
+	                                    </div>
+	                                </dd>
+	                            </dl>
+	                            
+	                            
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_name08, 'お名前8', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_name08) }}
+                                            {{ form_errors(form.family_name08) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_sex08, '性別8', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-radio">
+                                            {{ form_widget(form.family_sex08) }}
+                                            {{ form_errors(form.family_sex08) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_relation08, '続柄8', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_relation08) }}
+                                            {{ form_errors(form.family_relation08) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+	                                <dt>
+	                                    {{ form_label(form.family_birth08, '誕生日8', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                </dt>
+	                                <dd>
+	                                    <div class="ec-birth">
+	                                        {{ form_widget(form.family_birth08.year) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth08.month) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth08.day) }}
+	                                        {{ form_errors(form.family_birth08) }}
+	                                    </div>
+	                                </dd>
+	                            </dl>
+	                            
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_name09, 'お名前9', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_name09) }}
+                                            {{ form_errors(form.family_name09) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_sex09, '性別9', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-radio">
+                                            {{ form_widget(form.family_sex09) }}
+                                            {{ form_errors(form.family_sex09) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_relation09, '続柄9', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_relation09) }}
+                                            {{ form_errors(form.family_relation09) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+	                                <dt>
+	                                    {{ form_label(form.family_birth09, '誕生日9', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                </dt>
+	                                <dd>
+	                                    <div class="ec-birth">
+	                                        {{ form_widget(form.family_birth09.year) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth09.month) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth09.day) }}
+	                                        {{ form_errors(form.family_birth09) }}
+	                                    </div>
+	                                </dd>
+	                            </dl>
+	                            
+	                            
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_name10, 'お名前10', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_name10) }}
+                                            {{ form_errors(form.family_name10) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_sex10, '性別10', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-radio">
+                                            {{ form_widget(form.family_sex10) }}
+                                            {{ form_errors(form.family_sex10) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_relation10, '続柄10', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_relation10) }}
+                                            {{ form_errors(form.family_relation10) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+	                                <dt>
+	                                    {{ form_label(form.family_birth10, '誕生日10', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                </dt>
+	                                <dd>
+	                                    <div class="ec-birth">
+	                                        {{ form_widget(form.family_birth10.year) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth10.month) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth10.day) }}
+	                                        {{ form_errors(form.family_birth10) }}
+	                                    </div>
+	                                </dd>
+	                            </dl>
+	                            
                                 
                                 {# エンティティ拡張の自動出力 #}
                                 {% for f in form if f.vars.eccube_form_options.auto_render %}
