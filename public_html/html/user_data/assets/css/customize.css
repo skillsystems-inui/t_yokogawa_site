@@ -5382,11 +5382,16 @@ $common
 		border: 1px solid #0cb4b0;
 		text-align: center;
 		width: 100%;
-		max-width: 265px;
+		max-width: 310px;
 		cursor: pointer;
 		display: block;
-		padding: 5px 10px;
+		padding: 7px 10px;
 		position: relative;
+		border-radius: 10px;
+		margin-right: auto;
+	    margin-left: auto;
+	    margin-top: 10px;
+	    margin-bottom: 10px;
 	}
 	.app_go_onlineshop::before {
 		content: '';
@@ -5422,6 +5427,70 @@ $common
 		display: none;
 	}
 	
+	.birth_point_sentence{
+		font-size: 14px;
+		font-weight: bold;
+		text-align: center;
+		width: 100%;
+		max-width: 310px;
+		cursor: pointer;
+		display: block;
+		padding: 10px;
+		margin-right: auto;
+	    margin-left: auto;
+	    margin-top: 10px;
+	    margin-bottom: 10px;
+	}
+	
+	
+	.mypage_menu_frame {
+		font-size: 16px;
+		font-weight: bold;
+		background: #FAFAFA;
+		width: 100%;
+	}
+	
+	.mypage_menu_btn {
+		font-size: 14px;
+		font-weight: bold;
+		color: #000 !important;
+		background: #fff;
+		border: 1px solid #fff;
+		text-align: center;
+		width: 100%;
+		max-width: 150px;
+		height: 70px;
+		cursor: pointer;
+		display: block;
+		padding: 7px 10px;
+		position: relative;
+		border-radius: 10px;
+		margin-right: 5px;
+	    margin-left: 5px;
+	    margin-top: 5px;
+	    margin-bottom: 5px;
+	}
+	
+	.currentpoint_frame {
+	    margin-right: auto;
+	    margin-left: auto;
+	    padding-left: 16px;
+	    padding-right: 16px;
+	    box-sizing: border-box;
+	    font-size: 16px;
+	    line-height: 1.4;
+	    color: #525263;
+	    -webkit-text-size-adjust: 100%;
+	    width: 100%;
+	    margin: 1em 0;
+	    padding-top: 15px;
+	    padding-bottom: 5px;
+	    text-align: center;
+	    border: 1px solid #ccc;
+	    border-color: #EEEEEE;
+	    border-radius: 10px;
+	    box-shadow: 5px 5px 7px #dddddd;
+	}
 }
 /*.SP*/
 
@@ -5474,6 +5543,65 @@ $common
   width: 10px;
   height: 10px;
   border: 2px solid;
+  border-color:  transparent transparent #565656 #565656;
+  transform: rotate(45deg);
+}
+
+.mypoint_frame_left{
+  width: 60%;
+  text-align: left;
+}
+
+.mypoint_frame_right{
+  width: 40%;
+  text-align: right;
+}
+
+.mypoint_lost_thismonth{
+  font-size:14px;
+}
+
+.mypoint_lost_nextmonth{
+  font-size:14px;
+} 
+
+.mypoint_lost_thismonth .lost_point{
+  font-size: 15px;
+  font-weight: bold;
+  padding-right: 5px;
+} 
+
+.mypoint_lost_nextmonth .lost_point{
+  font-size: 15px;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.arrow_top_small{
+  width: 10px;
+  height: 10px;
+  border: 1px solid;
+  border-color: #565656 #565656 transparent transparent;
+  transform: rotate(-45deg);
+}
+.arrow_bottom_small{
+  width: 10px;
+  height: 10px;
+  border: 1px solid;
+  border-color:  transparent transparent #565656 #565656;
+  transform: rotate(-45deg);
+}
+.arrow_right_small{
+  width: 10px;
+  height: 10px;
+  border: 1px solid;
+  border-color: #565656 #565656 transparent transparent;
+  transform: rotate(45deg);
+}
+.arrow_left_small{
+  width: 10px;
+  height: 10px;
+  border: 1px solid;
   border-color:  transparent transparent #565656 #565656;
   transform: rotate(45deg);
 }
