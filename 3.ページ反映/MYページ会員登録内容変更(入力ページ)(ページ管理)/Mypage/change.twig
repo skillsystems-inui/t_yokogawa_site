@@ -244,6 +244,58 @@ file that was distributed with this source code.
                                         </div>
                                     </dd>
                                 </dl>
+                                
+                                
+                                
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_name01, 'お名前1', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_name01) }}
+                                            {{ form_errors(form.family_name01) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_sex01, '性別1', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-radio">
+                                            {{ form_widget(form.family_sex01) }}
+                                            {{ form_errors(form.family_sex01) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="">
+                                    <dt>
+                                        {{ form_label(form.family_relation01, '続柄1', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-input">
+                                            {{ form_widget(form.family_relation01) }}
+                                            {{ form_errors(form.family_relation01) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+	                                <dt>
+	                                    {{ form_label(form.family_birth01, '誕生日1', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                </dt>
+	                                <dd>
+	                                    <div class="ec-birth">
+	                                        {{ form_widget(form.family_birth01.year) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth01.month) }}<span>/</span>
+	                                        {{ form_widget(form.family_birth01.day) }}
+	                                        {{ form_errors(form.family_birth01) }}
+	                                    </div>
+	                                </dd>
+	                            </dl>
+                                
+                                
+                                
                                 {# エンティティ拡張の自動出力 #}
                                 {% for f in form if f.vars.eccube_form_options.auto_render %}
                                     {% if f.vars.eccube_form_options.form_theme %}
