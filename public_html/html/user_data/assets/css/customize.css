@@ -2984,6 +2984,18 @@ $common
 		right: 10px;
 		margin: auto;
 	}
+	
+	.back_list_btn {
+		width: 70%;
+		height: 50px;
+		margin: auto;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		background: #FFF;
+		border: 1px solid #000;
+	}
 	/*==================================================
 	$header $footer
 	==================================================*/
