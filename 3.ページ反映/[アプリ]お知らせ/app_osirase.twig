@@ -31,7 +31,7 @@
 	          				<div style="border-bottom:1px solid #ECECEC;">
 		          				<div style="padding:10px; width:90%; float:left;">
 		          					<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_osirase_detail"}) }}?id={{ News.id }}">
-			          					<div style="100%">
+			          					<div style="">
 			          						<span style="color:#A9A9A9;">{{ News.publish_date|date_day }}</span>
 			          						
 			          						{% if 'news' in News.url %}
@@ -48,7 +48,7 @@
 			          						</span>
 			          						{% endif %}
 			          					</div>
-			          					<div style="100%">
+			          					<div style="font-weight: bold;">
 				          					{{ News.title }}
 				          				</div>
 			          				</a>
