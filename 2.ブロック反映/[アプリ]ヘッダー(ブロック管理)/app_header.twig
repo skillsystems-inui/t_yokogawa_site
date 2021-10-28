@@ -74,11 +74,47 @@ file that was distributed with this source code.
 	<input type="hidden" value="{{ url('homepage') }}" id="homepageurl" />
 	<header id="topheader"  class="{% if Page.url == 'homepage' %}top_header{% endif %}">
 	    <div class="inner">
-	      <p class="logo" style="padding-left:30px; width:50%;">
-	      	<a href="{{ url('homepage') }}user_data/app_top">
-	      		<img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo.png" alt="菓子工房T.YOKOGAWA">
-	      	</a>
-	      </p><!-- .logo -->
+	      
+	      <!-- 各ページには戻るボタン表示 -->
+	      {% if 'app_osirase' in current_url or 'app_point_history' in current_url or 'app_yoyaku' in current_url or 'app_mypage' in current_url or 'app_customer_info' in current_url or 'mypage/change' in current_url or 'app_agreement' in current_url or 'app_notice' in current_url %}
+		      <span id="" class="" style="padding-left:10px; width:40px;">
+				<a href="{{ url('homepage') }}user_data/app_top">
+					<div class="arrow_left"></div>
+				</a>
+		  </span>
+		  {% endif %}
+	      
+	      {% if 'app_osirase' in current_url or 'app_point_history' in current_url or 'app_yoyaku' in current_url or 'app_mypage' in current_url or 'app_customer_info' in current_url or 'mypage/change' in current_url or 'app_agreement' in current_url or 'app_notice' in current_url  %}
+	          <p class="logo" style="padding-left:0px; width:50%; height:104.5px; line-height:90px; font-weight:bold; font-size:20px; text-align:center;">
+		      	{% if 'app_osirase' in current_url  %}
+		      		<span>お知らせ</span>
+		      	{% elseif 'app_point_history' in current_url  %}
+		      		<span>ポイント履歴</span>
+		      	{% elseif 'app_yoyaku' in current_url  %}
+		      		<span>予約情報</span>
+		      	{% elseif 'app_mypage' in current_url  %}
+		      		<span>マイページ</span>
+		      	{% elseif 'app_customer_info' in current_url  %}
+		      		<span>会員証</span>
+		      	{% elseif 'mypage/change' in current_url  %}
+		      		<span>登録情報設定</span>
+		      	{% elseif 'app_agreement' in current_url  %}
+		      		<span>利用規約</span>
+		      	{% elseif 'app_notice' in current_url  %}
+		      		<span>通知設定</span>
+		      	{% endif %}
+		      </p><!-- .logo -->
+	      {% else %}
+	          <p class="logo" style="padding-left:30px; width:50%;">
+		      	<a href="{{ url('homepage') }}user_data/app_top">
+		      		<img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo.png" alt="菓子工房T.YOKOGAWA">
+		      	</a>
+		      </p><!-- .logo -->
+	      {% endif %}
+	      
+	      
+	      
+	      
 	      <span id="burger_btn" class="">
 	      	<span></span>
 	      	<span></span>
