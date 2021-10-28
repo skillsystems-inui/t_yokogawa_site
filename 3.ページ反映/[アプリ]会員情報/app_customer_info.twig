@@ -18,27 +18,27 @@
 	    		<div>
 	    			<p>{{ 'ようこそ　%last_name% %first_name%様'|trans({ '%last_name%': app.user.name01, '%first_name%': app.user.name02 }) }}</p>
 	    		</div>
-	    		<div class="">
+	    		<div style="padding-top:15px; padding-bottom:15px;">
 				    {% if BaseInfo.option_point %}
 				        <p>
-				        	<span style="font-size:15px;">
-				        		{{ '現在のポイント' }} 
-				        	</span>
 				        	<span style="font-weight:bold; font-size:20px;">
+				        		{{ '現在のポイント　' }} 
+				        	</span>
+				        	<span style="font-weight:bold; font-size:40px;">
 				        		{{ ' %point%'|trans({ '%point%': app.user.point|number_format}) }} 
 				        	</span>
-				        	<span style="font-size:15px;">
+				        	<span style="font-weight:bold; font-size:18px;">
 				        		{{ 'pt' }}
 				        	</span>
 				        </p>
 				    {% else %}
-				    	<span style="font-size:15px;">
-				        		{{ '現在のポイント' }} 
+				    	<span style="font-weight:bold; font-size:20px;>
+				        		{{ '現在のポイント　' }} 
 				        	</span>
-				        	<span style="font-weight:bold; font-size:20px;">
+				        	<span style="font-weight:bold; font-size:40px;">
 				        		{{ ' 0 ' }} 
 				        	</span>
-				        	<span style="font-size:15px;">
+				        	<span style="font-weight:bold; font-size:18px;">
 				        		{{ 'pt' }}
 				        	</span>
 				    {% endif %}
@@ -49,12 +49,12 @@
 	    		<div class="barcode_frame">
 					{{ getbarcode(app.user.customer_code) }}
 				</div>
-	    		<div>
+	    		<div style="padding-top:5px;">
 	    			<p>{{ '会員番号　%customer_code% '|trans({ '%customer_code%': app.user.customer_code }) }}</p>
 	    		</div>
 	    		
 	    		<!-- 公式オンラインショップ　リンク -->
-		    	<div>
+		    	<div style="padding-top:30px; padding-bottom:40px;">
 		    		<a href="{{ url('homepage') }}" class="app_go_onlineshop">公式オンラインショップ</a>
 		    	</div>
 	    		
