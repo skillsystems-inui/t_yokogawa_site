@@ -25,7 +25,7 @@ file that was distributed with this source code.
 			        <p>
 			        	<div class="mypoint_frame_left" style="float:left;">
 				        	<span style="font-weight:bold; font-size:18px;">
-				        		{{ '現在のポイント' }} 
+				        		{{ '現在のポイント' }} <i class="fab fa-product-hunt "></i>
 				        	</span>
 				        </div>
 				        <div class="mypoint_frame_right" style="float:left;">
@@ -157,47 +157,51 @@ file that was distributed with this source code.
 	            	<p>ご家族の情報を登録いただきますと、<br>誕生日にポイントを差し上げます。</p>
 	            </div>
 	            
-	            <div class="ec-navlistRole">
+	            <div style="">
 	            	
-	            	<div class="mypage_menu_btn" style="float:left;">
-		        		<a href="{{ url('mypage_change') }}?app_mode">
-		        			<div class="" style="float:left; width:70%;">登録情報の<br>変更・確認</div>
-			        		<div class="" style="float:left; width:30%;">
-			        			<img src="/html/user_data/assets/img/app_icon/app_icon_touroku.png">
-			        		</div>
-			        		<div style="clear:both;"></div>
-		        		</a>
-		        	</div>
-				    <div class="mypage_menu_btn" style="float:left;">
-		        		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_point_history"}) }}">
-		        			<div class="" style="float:left; width:70%;">ポイント履歴</div>
-			        		<div class="" style="float:left; width:30%;">
-			        			<img src="/html/user_data/assets/img/app_icon/app_icon_point.png">
-			        		</div>
-			        		<div style="clear:both;"></div>
-		        		</a>
-		        	</div>
-			        <div style="clear:both;"></div>
+	            	<div style="width:320px; margin-right:auto; margin-left:auto;">
+		            	<div class="mypage_menu_btn" style="float:left;">
+			        		<a href="{{ url('mypage_change') }}?app_mode">
+			        			<div class="" style="float:left; width:75%; padding-top:8px;">登録情報の<br>変更・確認</div>
+				        		<div class="" style="float:left; width:25%; line-height:50px;">
+				        			<img src="/html/user_data/assets/img/app_icon/app_icon_touroku.png">
+				        		</div>
+				        		<div style="clear:both;"></div>
+			        		</a>
+			        	</div>
+					    <div class="mypage_menu_btn" style="float:left;">
+			        		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_point_history"}) }}">
+			        			<div class="" style="float:left; width:75%; line-height:55px;">ポイント履歴</div>
+				        		<div class="" style="float:left; width:25%; line-height:50px;">
+				        			<img src="/html/user_data/assets/img/app_icon/app_icon_point.png">
+				        		</div>
+				        		<div style="clear:both;"></div>
+			        		</a>
+			        	</div>
+				        <div style="clear:both;"></div>
+			        </div>
 			        
-			        <div class="mypage_menu_btn" style="float:left;">
-		        		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_agreement"}) }}">
-		        			<div class="" style="float:left; width:70%;">利用規約</div>
-			        		<div class="" style="float:left; width:30%;">
-			        			<img src="/html/user_data/assets/img/app_icon/app_icon_riyou.png">
-			        		</div>
-			        		<div style="clear:both;"></div>
-		        		</a>
-		        	</div>
-				    <div class="mypage_menu_btn" style="float:left;">
-		        		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_notice"}) }}">
-			        		<div class="" style="float:left; width:70%;">通知設定</div>
-			        		<div class="" style="float:left; width:30%;">
-			        			<img src="/html/user_data/assets/img/app_icon/app_icon_tuuchi.png">
-			        		</div>
-			        		<div style="clear:both;"></div>
-		        		</a>
-		        	</div>
-			        <div style="clear:both;"></div>
+			        <div style="width:320px; margin-right:auto; margin-left:auto;">
+				        <div class="mypage_menu_btn" style="float:left;">
+			        		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_agreement"}) }}">
+			        			<div class="" style="float:left; width:75%; line-height:55px;">利用規約</div>
+				        		<div class="" style="float:left; width:25%; line-height:50px;">
+				        			<img src="/html/user_data/assets/img/app_icon/app_icon_riyou.png">
+				        		</div>
+				        		<div style="clear:both;"></div>
+			        		</a>
+			        	</div>
+					    <div class="mypage_menu_btn" style="float:left;">
+			        		<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_notice"}) }}">
+				        		<div class="" style="float:left; width:75%; line-height:55px;">通知設定</div>
+				        		<div class="" style="float:left; width:25%; line-height:50px;">
+				        			<img src="/html/user_data/assets/img/app_icon/app_icon_tuuchi.png">
+				        		</div>
+				        		<div style="clear:both;"></div>
+			        		</a>
+			        	</div>
+				        <div style="clear:both;"></div>
+			        </div>
 			        
 				</div>
 
