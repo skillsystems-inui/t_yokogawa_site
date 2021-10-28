@@ -1,5 +1,25 @@
 {% extends 'default_frame.twig' %}
 
+{% block javascript %}
+    <script>
+        $(function() {    
+        	
+        	$('.open-tukai').on('click', function() {
+	            event.preventDefault();
+	            //ポップアップ表示
+	            $('.ec-tukai-modal').show();
+	        });
+        	
+        	$('.close-tukai').on('click', function() {
+	            event.preventDefault();
+	            //ポップアップ非表示
+	            $('.ec-tukai-modal').hide();
+	        });
+	    });
+    </script>
+    
+{% endblock javascript %}
+
 {% block main %}
 </td>
 </tr>
@@ -8,9 +28,69 @@
 </tr>
 </table>
 
-    <div class="app_item_main app_toppage_item">
-      <img src="/html/user_data/assets/img/app_userguide.png" alt="使い方">
+    <div style="padding-top:150px;"></div>
+    
+    <div class="app_use_icon">
+  		<a class="open-tukai">使い方</a>
+  	</div>
+	      	
+    <!-- 使い方modal -->
+    <div class="ec-tukai-modal tukai_modal" style="display:none; margin-right: auto; margin-left: auto; padding-left:16px; padding-right:16px; box-sizing:border-box; width:100%; text-align:center; border:1px solid #ccc; border-color:#EEEEEE; border-radius:10px;">
+    	
+    	<div style="padding-top:20px; padding-bottom:10px;">
+	    	<div style="float:left; width:80%; padding-left:20%; text-align:center; font-size:16px; font-weight:bold;"><span>使い方</span></div>
+	    	<div style="float:left; width:20%; font-size:18px; font-weight:bold;" class="close-tukai"><span>×</span></div>
+	    	<div style="clear:both;"></div>
+    	</div>
+    	
+    	<div style="width:100%; padding-bottom:120px;">
+        	<div style="font-size:14px; text-align:center; width:100%; max-width:310px; padding:10px; margin-right:auto; margin-left:auto; margin-top:10px; margin-bottom:10px;">
+            	
+            	<!-- ↓↓使い方内容↓↓ -->
+            	<div style="font-weight:bold; padding-top:15px; padding-bottom:15px;">
+            		<p>家族登録でもっとお得に</p>
+            	</div>
+            	<div class="" style="line-height:173px;">
+        			<img src="/html/user_data/assets/img/app_icon/app_guide_family.png">
+        		</div>
+        		<div style="padding-top:10px; padding-bottom:25px; border-bottom:1px solid #ECECEC; font-size:13px; text-align:left;">
+            		<p>ダミー。お誕生日を登録していただくと、誕生日のお買い物で500円分のMUJIショッピングポイントをプレゼント（翌月4日頃までに付与）。
+            		さらに、お誕生日月にお買い物で獲得したMUJIマイルは通常の2倍たまります。</p>
+            	</div>
+            	
+            	<div style="font-weight:bold; padding-top:15px; padding-bottom:15px;">
+            		<p>お店とオンラインショップでポイントGET</p>
+            	</div>
+            	<div class="" style="line-height:173px;">
+        			<img src="/html/user_data/assets/img/app_icon/app_guide_point.png">
+        		</div>
+        		<div style="padding-top:10px; padding-bottom:0px; font-size:13px; text-align:left;">
+            		<p>ダミー。お誕生日を登録していただくと、誕生日のお買い物で500円分のMUJIショッピングポイントをプレゼント（翌月4日頃までに付与）。
+            		さらに、お誕生日月にお買い物で獲得したMUJIマイルは通常の2倍たまります。</p>
+            	</div>
+            	<div style="padding-top:15px; padding-bottom:25px; border-bottom:1px solid #ECECEC;">
+		    		<a href="{{ url('homepage') }}" class="app_go_onlineshop">公式オンラインショップ</a>
+		    	</div>
+		    	
+            	<div style="font-weight:bold; padding-top:15px; padding-bottom:15px;">
+            		<p>予約で使えるクーポンも配信中</p>
+            	</div>
+            	<div class="" style="line-height:173px;">
+        			<img src="/html/user_data/assets/img/app_icon/app_guide_coupon.png">
+        		</div>
+        		<div style="padding-top:10px; padding-bottom:25px; border-bottom:1px solid #fff; font-size:13px; text-align:left;">
+            		<p>ダミー。お誕生日を登録していただくと、誕生日のお買い物で500円分のMUJIショッピングポイントをプレゼント（翌月4日頃までに付与）。
+            		さらに、お誕生日月にお買い物で獲得したMUJIマイルは通常の2倍たまります。</p>
+            	</div>
+            	<!-- ↑↑使い方内容↑↑ -->
+            	
+            </div>
+        </div>
+    	
     </div>
+    <!-- .使い方modal -->
+    
+    
     
     
 {% endblock %}
