@@ -340,6 +340,9 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['rows'][0]['carriage']                = intval($order->getDeliveryFeeTotal());//EC連携用送料
         $arrData['data'][0]['rows'][0]['commission']              = 0;//EC連携用手数料
         
+        $arrData['data'][0]['rows'][0]['sumDivision']             = 2;//締め区分
+        $arrData['data'][0]['rows'][0]['sumDateTime']             = $terminalTranDate;//締め日
+        
         $arrData['data'][0]['rows'][0]['storeId']                 = self::DEFAULT_SHOP_ID;;//店舗ID★
         $arrData['data'][0]['rows'][0]['terminalId']              = 10;//端末ID★
         $arrData['data'][0]['rows'][0]['terminalTranId']          = $order->getId();//端末取引ID★
