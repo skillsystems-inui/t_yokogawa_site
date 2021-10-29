@@ -19,7 +19,10 @@
             {% for Order in orders %}
                 <div class="ec-historyRole">
                     <!-- 新規受付(かつ店舗受取)と取り置きのみ表示する -->
-                    {% if (Order.CustomerOrderStatus == '注文受付' and Order.uketori_type == 1) or Order.CustomerOrderStatus == '取り置き' %}
+                    
+                    {% if (Order.CustomerOrderStatus == '注文受付' and '店' in Order.Shippings[0].shipping_delivery_name) or Order.CustomerOrderStatus == '取り置き' %}
+                        
+                        
                         
                     	<div class="ec-historyRole__contents">
                         
@@ -71,6 +74,15 @@
 		                                        <div style="clear:both;"></div>
 		                                    </div>
 		                                </div>
+		                                {% set option_detail = OrderItem.option_detail %}
+		                                {% if option_detail != '' %}
+			                                <div class="">
+			                                    <div class="">
+			                                        <div style="float:left;">{{option_detail |replace({ '': '' })|raw|nl2br }}</div>
+			                                        <div style="clear:both;"></div>
+			                                    </div>
+			                                </div>
+		                                {% endif %}
 		                            {% endfor %}
 	                                <dl class="ec-definitions">
 	                                    <dt>{{ '受取日：'|trans }}</dt>
