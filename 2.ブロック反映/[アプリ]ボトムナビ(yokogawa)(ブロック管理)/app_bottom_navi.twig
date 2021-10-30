@@ -14,14 +14,14 @@ file that was distributed with this source code.
 	<ul class="app_bottom_navi">
 		<li>
 			<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_osirase"}) }}">
-				<img src="/html/user_data/assets/img/app_icon/app_icon_info.png"><br>
-				<span style="font-size:12px;">お知らせ</span>
+				<img src="/html/user_data/assets/img/app_icon/app_icon_info{% if 'app_osirase' in current_url  %}_selected{% endif %}.png"><br>
+				<span style="font-size:12px; {% if 'app_osirase' in current_url  %}color:#0cb4b0;{% endif %}">お知らせ</span>
 			</a>
 		</li>
 		<li>
 			<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_mypage"}) }}">
-				<img src="/html/user_data/assets/img/app_icon/app_icon_user.png"><br>
-				<span style="font-size:12px;">マイページ</span>
+				<img src="/html/user_data/assets/img/app_icon/app_icon_user{% if 'app_mypage' in current_url or 'mypage/change' in current_url or 'app_point_history' in current_url or 'app_agreement' in current_url or 'app_notice' in current_url %}_selected{% endif %}.png"><br>
+				<span style="font-size:12px; {% if 'app_mypage' in current_url or 'mypage/change' in current_url or 'app_point_history' in current_url or 'app_agreement' in current_url or 'app_notice' in current_url %}color:#0cb4b0;{% endif %}">マイページ</span>
 			</a>
 		</li>
 		<li class="app_licence_base">
@@ -33,8 +33,8 @@ file that was distributed with this source code.
 		</li>
 		<li>
 			<a href="{{ url(eccube_config.eccube_user_data_route, {"route": "app_yoyaku"}) }}">
-				<img src="/html/user_data/assets/img/app_icon/app_icon_yoyaku.png"><br>
-				<span style="font-size:12px;">ケーキ予約</span>
+				<img src="/html/user_data/assets/img/app_icon/app_icon_yoyaku{% if 'app_yoyaku' in current_url  %}_selected{% endif %}.png"><br>
+				<span style="font-size:12px; {% if 'app_yoyaku' in current_url  %}color:#0cb4b0;{% endif %}">ケーキ予約</span>
 			</a>
 			
 		</li>
