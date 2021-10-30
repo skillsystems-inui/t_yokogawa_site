@@ -35,14 +35,14 @@
 	                                </dl>
 	                                -->
 	                                {% if Order.smaregi_id != null %}
-	                                	<div class="barcode_frame">
+	                                	<div class="barcode_frame" style="padding-left:17px;">
 											{{ getbarcode(Order.smaregi_id) }}
 										</div>
 							    		<div style="text-align:center;">
 							    			<p>{{ '%smaregi_code% '|trans({ '%smaregi_code%': Order.smaregi_id }) }}</p>
 							    		</div>
 					    			{% else %}
-					    				<div class="barcode_frame">
+					    				<div class="barcode_frame" style="padding-left:17px;">
 											{{ getbarcode(Order.order_no) }}
 										</div>
 							    		<div style="text-align:center;">
