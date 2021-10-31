@@ -110,6 +110,16 @@ if (!class_exists('\Eccube\Entity\News')) {
          * })
          */
         private $Creator;
+        
+        /**
+         * @var \Eccube\Entity\Master\InfoType
+         *
+         * @ORM\ManyToOne(targetEntity="Eccube\Entity\Master\InfoType")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="info_type", referencedColumnName="id")
+         * })
+         */
+        private $Infotype;
 
         /**
          * Get id.
@@ -332,5 +342,31 @@ if (!class_exists('\Eccube\Entity\News')) {
         {
             return $this->Creator;
         }
+        
+        
+        /**
+         * Set infotype.
+         *
+         * @param \Eccube\Entity\Master\InfoType|null $infotype
+         *
+         * @return News
+         */
+        public function setInfotype(\Eccube\Entity\Master\InfoType $infotype = null)
+        {
+            $this->Infotype = $infotype;
+
+            return $this;
+        }
+
+        /**
+         * Get infotype.
+         *
+         * @return \Eccube\Entity\Master\InfoType|null
+         */
+        public function getInfotype()
+        {
+            return $this->Infotype;
+        }
+        
     }
 }

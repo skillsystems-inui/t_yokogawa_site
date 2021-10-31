@@ -15,6 +15,7 @@ namespace Eccube\Form\Type\Admin;
 
 use Eccube\Common\EccubeConfig;
 use Eccube\Entity\News;
+use Eccube\Form\Type\Master\InfoType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -78,6 +79,14 @@ class NewsType extends AbstractType
                 ],
                 'constraints' => [
                     new Assert\Length(['max' => $this->eccubeConfig['eccube_ltext_len']]),
+                ],
+            ])
+            //NEWSƒ^ƒCƒv
+            ->add('info_type', InfoType::class, [
+                'multiple' => false,
+                'expanded' => false,
+                'constraints' => [
+                    new Assert\NotBlank(),
                 ],
             ])
             ->add('visible', ChoiceType::class, [

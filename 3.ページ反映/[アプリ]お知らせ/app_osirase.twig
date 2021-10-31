@@ -34,17 +34,17 @@
 			          					<div style="">
 			          						<span style="color:#A9A9A9;">{{ News.publish_date|date_day }}</span>
 			          						
-			          						{% if 'news' in News.url %}
-			          						<span style="font-size:12px; color:#fff; height:70px; width:500px; padding: 2px 6px; border-radius:10px; border:1px solid; border-color:#da847e; background:#da847e;">
-			          							NEWS
-			          						</span>
-			          						{% elseif 'event' in News.url %}
+			          						{% if News.Infotype == 'イベント' %}
 			          						<span style="font-size:12px; color:#fff; height:70px; width:500px; padding: 2px 6px; border-radius:10px; border:1px solid; border-color:#8cc4e8; background:#8cc4e8;">
 			          							イベント
 			          						</span>
-			          						{% elseif 'info' in News.url %}
+			          						{% elseif News.Infotype == 'お知らせ' %}
 			          						<span style="font-size:12px; color:#fff; height:70px; width:500px; padding: 2px 6px; border-radius:10px; border:1px solid; border-color:#c4ac9c; background:#c4ac9c;">
 			          							お知らせ
+			          						</span>
+			          						{% else %}
+			          						<span style="font-size:12px; color:#fff; height:70px; width:500px; padding: 2px 6px; border-radius:10px; border:1px solid; border-color:#da847e; background:#da847e;">
+			          							NEWS
 			          						</span>
 			          						{% endif %}
 			          					</div>
