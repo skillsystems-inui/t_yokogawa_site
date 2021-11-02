@@ -145,6 +145,9 @@ class ChangeController extends AbstractController
             	// 誕生日がnullではなく、ポイント履歴の誕生日ポイントが0の場合
             	if($Customer->getBirth() != null && $targetPointHistory->getAppBirth() < 1){
 					$targetPointHistory->setAppBirth(intval($birth_point));
+					$targetPointHistory->setAppBirthDate($now);
+					//会員情報にも反映
+            		$Customer->setPoint($Customer->getPoint() + intval($birth_point));
             	}
             	$targetPointHistory->setUpdateDate($now);
             	$this->entityManager->persist($targetPointHistory);
@@ -162,6 +165,9 @@ class ChangeController extends AbstractController
 		        // 誕生日がnullではなく、ポイント履歴の誕生日ポイントが0の場合
 		        if($Customer->getBirth() != null){
             		$PointHistory->setAppBirth(intval($birth_point));
+            		$PointHistory->setAppBirthDate($now);
+            		//会員情報にも反映
+            		$Customer->setPoint($Customer->getPoint() + intval($birth_point));
             	}
 		        
 		        $PointHistory->setCreateDate($now);

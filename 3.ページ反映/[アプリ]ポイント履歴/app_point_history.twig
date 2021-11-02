@@ -29,22 +29,29 @@
           			{% set app_birth = points['app_birth'] %}
           			{% set shop_honten = points['shop_honten'] %}
           			{% set shop_kishiwada = points['shop_kishiwada'] %}
+          			
+          			{% set ec_yoyaku_date = points['ec_yoyaku_date'] %}
+          			{% set ec_online_date = points['ec_online_date'] %}
+          			{% set app_birth_date = points['app_birth_date'] %}
+          			{% set shop_honten_date = points['shop_honten_date'] %}
+          			{% set shop_kishiwada_date = points['shop_kishiwada_date'] %}
+          			
           			{% set update_date = points['update_date'] %}
           			
       				<tr bgcolor="#ffffff" height="25">
-          				<td class="lims" width="80%">&nbsp;<a href="" style="padding-bottom:0px; font-weight:bold;">“X“ª—\–ñ</a><br><a href="" style="padding-top:0px;">{{ update_date|date_day }}</a></td>
+          				<td class="lims" width="80%">&nbsp;<a href="" style="padding-bottom:0px; font-weight:bold;">“X“ª—\–ñ</a><br><a href="" style="padding-top:0px;">{% if ec_yoyaku_date != null  %}{{ ec_yoyaku_date|date_day }}{% endif %}</a></td>
           				<td class="lims" align="center" width="20%" style="font-weight:bold;">{{ec_yoyaku}}pt</td>
           			</tr>
       				<tr bgcolor="#ffffff" height="25">
-          				<td class="lims" width="80%">&nbsp;<a href="" style="padding-bottom:0px; font-weight:bold;">˜aò’†‰›“X‚Åw“ü</a><br><a href="" style="padding-top:0px;">{{ update_date|date_day }}</a></td>
+          				<td class="lims" width="80%">&nbsp;<a href="" style="padding-bottom:0px; font-weight:bold;">˜aò’†‰›“X‚Åw“ü</a><br><a href="" style="padding-top:0px;">{% if shop_honten_date != null  %}{{ shop_honten_date|date_day }}{% endif %}</a></td>
           				<td class="lims" align="center" width="20%" style="font-weight:bold;">{{shop_honten}}pt</td>
           			</tr>
           			<tr bgcolor="#ffffff" height="25">
-          				<td class="lims" width="80%">&nbsp;<a href="" style="padding-bottom:0px; font-weight:bold;">ƒIƒ“ƒ‰ƒCƒ“ƒVƒ‡ƒbƒv‚Åw“ü</a><br><a href="" style="padding-top:0px;">{{ update_date|date_day }}</a></td>
+          				<td class="lims" width="80%">&nbsp;<a href="" style="padding-bottom:0px; font-weight:bold;">ƒIƒ“ƒ‰ƒCƒ“ƒVƒ‡ƒbƒv‚Åw“ü</a><br><a href="" style="padding-top:0px;">{% if ec_online_date != null  %}{{ ec_online_date|date_day }}{% endif %}</a></td>
           				<td class="lims" align="center" width="20%" style="font-weight:bold;">{{ec_online}}pt</td>
           			</tr>
           			<tr bgcolor="#ffffff" height="25">
-          				<td class="lims" width="80%">&nbsp;<a href="" style="padding-bottom:0px; font-weight:bold;">’a¶“úƒ|ƒCƒ“ƒg</a><br><a href="" style="padding-top:0px;">{{ update_date|date_day }}</a></td>
+          				<td class="lims" width="80%">&nbsp;<a href="" style="padding-bottom:0px; font-weight:bold;">’a¶“úƒ|ƒCƒ“ƒg</a><br><a href="" style="padding-top:0px;">{% if app_birth_date != null  %}{{ app_birth_date|date_day }}{% endif %}</a></td>
           				<td class="lims" align="center" width="20%" style="font-weight:bold;">{{app_birth}}pt</td>
           			</tr>
           			          			

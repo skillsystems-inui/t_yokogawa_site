@@ -129,7 +129,7 @@ class UserDataController extends AbstractController
             $points['app_birth'] = 0;
             $points['shop_honten'] = 0;
             $points['shop_kishiwada'] = 0;
-            $points['update_date'] = $now;
+            $points['update_date'] = null;
             
             //データがあるならセット
             if($targetPointHistory != null){
@@ -138,6 +138,13 @@ class UserDataController extends AbstractController
 	            $points['app_birth'] = $targetPointHistory->getAppBirth();
 	            $points['shop_honten'] = $targetPointHistory->getShopHonten();
 	            $points['shop_kishiwada'] = $targetPointHistory->getShopKishiwada();
+	            
+	            $points['ec_online_date'] = $targetPointHistory->getEcOnlineDate();
+	            $points['ec_yoyaku_date'] = $targetPointHistory->getEcYoyakuDate();
+	            $points['app_birth_date'] = $targetPointHistory->getAppBirthDate();
+	            $points['shop_honten_date'] = $targetPointHistory->getShopHontenDate();
+	            $points['shop_kishiwada_date'] = $targetPointHistory->getShopKishiwadaDate();
+	            
 	            $points['update_date'] = $targetPointHistory->getUpdateDate();
             }
         }

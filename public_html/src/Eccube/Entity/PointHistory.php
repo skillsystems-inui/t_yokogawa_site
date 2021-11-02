@@ -49,6 +49,43 @@ if (!class_exists('\Eccube\Entity\PointHistory')) {
          * @ORM\Column(name="update_date", type="datetimetz")
          */
         private $update_date;
+        
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="ec_online_date", type="datetimetz", nullable=true)
+         */
+        private $ec_online_date;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="ec_yoyaku_date", type="datetimetz", nullable=true)
+         */
+        private $ec_yoyaku_date;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="app_birth_date", type="datetimetz", nullable=true)
+         */
+        private $app_birth_date;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="shop_honten_date", type="datetimetz", nullable=true)
+         */
+        private $shop_honten_date;
+        
+        /**
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="shop_kishiwada_date", type="datetimetz", nullable=true)
+         */
+        private $shop_kishiwada_date;
+
 
         /**
          * @var \Eccube\Entity\Customer
@@ -335,6 +372,127 @@ if (!class_exists('\Eccube\Entity\PointHistory')) {
         public function getShopKishiwada()
         {
             return $this->shop_kishiwada;
+        }
+        
+        
+        /**
+         * Set ec_online_date.
+         *
+         * @param \DateTime|null $ec_online_date
+         *
+         * @return Customer
+         */
+        public function setEcOnlineDate($ec_online_date = null)
+        {
+            $this->ec_online_date = $ec_online_date;
+
+            return $this;
+        }
+
+        /**
+         * Get ec_online_date.
+         *
+         * @return \DateTime|null
+         */
+        public function getEcOnlineDate()
+        {
+            return $this->ec_online_date;
+        }
+        
+        /**
+         * Set ec_yoyaku_date.
+         *
+         * @param \DateTime|null $ec_yoyaku_date
+         *
+         * @return Customer
+         */
+        public function setEcYoyakuDate($ec_yoyaku_date = null)
+        {
+            $this->ec_yoyaku_date = $ec_yoyaku_date;
+
+            return $this;
+        }
+
+        /**
+         * Get ec_yoyaku_date.
+         *
+         * @return \DateTime|null
+         */
+        public function getEcYoyakuDate()
+        {
+            return $this->ec_yoyaku_date;
+        }
+        
+        /**
+         * Set app_birth_date.
+         *
+         * @param \DateTime|null $app_birth_date
+         *
+         * @return Customer
+         */
+        public function setAppBirthDate($app_birth_date = null)
+        {
+            $this->app_birth_date = $app_birth_date;
+
+            return $this;
+        }
+
+        /**
+         * Get app_birth_date.
+         *
+         * @return \DateTime|null
+         */
+        public function getAppBirthDate()
+        {
+            return $this->app_birth_date;
+        }
+        
+        /**
+         * Set shop_honten_date.
+         *
+         * @param \DateTime|null $shop_honten_date
+         *
+         * @return Customer
+         */
+        public function setShopHontenDate($shop_honten_date = null)
+        {
+            $this->shop_honten_date = $shop_honten_date;
+
+            return $this;
+        }
+
+        /**
+         * Get shop_honten_date.
+         *
+         * @return \DateTime|null
+         */
+        public function getShopHontenDate()
+        {
+            return $this->shop_honten_date;
+        }
+        
+        /**
+         * Set shop_kishiwada_date.
+         *
+         * @param \DateTime|null $shop_kishiwada_date
+         *
+         * @return Customer
+         */
+        public function setShopKishiwadaDate($shop_kishiwada_date = null)
+        {
+            $this->shop_kishiwada_date = $shop_kishiwada_date;
+
+            return $this;
+        }
+
+        /**
+         * Get shop_kishiwada_date.
+         *
+         * @return \DateTime|null
+         */
+        public function getShopKishiwadaDate()
+        {
+            return $this->shop_kishiwada_date;
         }
         
         

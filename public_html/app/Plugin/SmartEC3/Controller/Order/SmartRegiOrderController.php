@@ -695,10 +695,12 @@ class SmartRegiOrderController extends AbstractController
         		//和泉中央本店の場合
         		$current_point = intval($targetPointHistory->getShopHonten());
 		        $targetPointHistory->setShopHonten($current_point + intval($AddPoint));
+		        $targetPointHistory->setShopHontenDate($now);
         	}else{
         		//岸和田店の場合
         		$current_point = intval($targetPointHistory->getShopKishiwada());
         		$targetPointHistory->setShopKishiwada($current_point + intval($AddPoint));
+        		$targetPointHistory->setShopKishiwadaDate($now);
         	}
         	
         	$targetPointHistory->setUpdateDate($now);
@@ -714,17 +716,17 @@ class SmartRegiOrderController extends AbstractController
 	        
 	        $PointHistory->setSum(0);
 	        $PointHistory->setAppBirth(0);
-	        $PointHistory->setShopHonten(0);
-	        $PointHistory->setShopKishiwada(0);
 	        
 	        if($IsHoten == true){
         		//和泉中央本店の場合
         		$PointHistory->setShopKishiwada(0);
 		        $PointHistory->setShopHonten(intval($AddPoint));
+		        $PointHistory->setShopHontenDate($now);
         	}else{
         		//岸和田店の場合
         		$PointHistory->setShopKishiwada(intval($AddPoint));
 		        $PointHistory->setShopHonten(0);
+		        $PointHistory->setShopKishiwadaDate($now);
         	}
 	        
 	        $PointHistory->setCreateDate($now);

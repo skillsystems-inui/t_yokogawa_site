@@ -21,3 +21,9 @@ ALTER TABLE `dtb_point_history`
   
   
 
+--äeçXêVì˙éûóÒÇí«â¡
+ALTER TABLE `dtb_point_history` ADD `ec_online_date` datetime DEFAULT NULL;
+ALTER TABLE `dtb_point_history` ADD `ec_yoyaku_date` datetime DEFAULT NULL;
+ALTER TABLE `dtb_point_history` ADD `app_birth_date` datetime DEFAULT NULL;
+ALTER TABLE `dtb_point_history` ADD `shop_honten_date` datetime DEFAULT NULL;
+ALTER TABLE `dtb_point_history` ADD `shop_kishiwada_date` datetime DEFAULT NULL;

@@ -230,10 +230,12 @@ class OrderStateMachine implements EventSubscriberInterface
             		//店舗予約の場合
             		$current_point = intval($targetPointHistory->getEcYoyaku());
 			        $targetPointHistory->setEcYoyaku($current_point + intval($Order->getAddPoint()));
+			        $targetPointHistory->setEcYoyakuDate($now);
             	}else{
             		//オンライン購入の場合
             		$current_point = intval($targetPointHistory->getEcOnline());
             		$targetPointHistory->setEcOnline($current_point + intval($Order->getAddPoint()));
+            		$targetPointHistory->setEcOnlineDate($now);
             	}
             	
             	$targetPointHistory->setUpdateDate($now);
@@ -256,10 +258,12 @@ class OrderStateMachine implements EventSubscriberInterface
             		//店舗予約の場合
             		$PointHistory->setEcOnline(0);
 			        $PointHistory->setEcYoyaku(intval($Order->getAddPoint()));
+			        $PointHistory->setEcYoyakuDate($now);
             	}else{
             		//オンライン購入の場合
             		$PointHistory->setEcOnline(intval($Order->getAddPoint()));
 			        $PointHistory->setEcYoyaku(0);
+			        $PointHistory->setEcOnlineDate($now);
             	}
 		        
 		        $PointHistory->setCreateDate($now);
