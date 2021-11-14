@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "225150011538",
+    "project_id": "t-yokogawa-app",
+    "storage_bucket": "t-yokogawa-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225150011538:android:a6e301a08df8ac4254fe4b",
+        "android_client_info": {
+          "package_name": "and.monaca.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225150011538-mcs5s3nkvl4v0pfcn6p0rkdces5sc9ac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKHjDQlC2c5LtguKx4zCKscjc9ePrd-Fk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225150011538-mcs5s3nkvl4v0pfcn6p0rkdces5sc9ac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
