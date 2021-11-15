@@ -322,7 +322,7 @@ class CustomerPushService
 	    "notification" => [
 	      "title" => $title,
 	      "body" => $detail,
-	      "badge" => 1, // 通知を送った際に、アプリのアイコンに表示するバッチ
+	      "badge" => 0, // 通知を送った際に、アプリのアイコンに表示するバッチ
 	      "sound" => "default", // 通知を送った際に、音を出すかの設定
 	    ],
 	  );
