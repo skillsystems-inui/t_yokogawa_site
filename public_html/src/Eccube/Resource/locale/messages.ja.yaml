@@ -229,6 +229,7 @@ front.mypage.history_not_found: ご注文履歴はありません。
 front.mypage.message_not_found: 記載なし
 front.mypage.view_detail: 詳細を見る
 front.mypage.order_no: ご注文番号
+front.mypage.smaregi_id: スマレジ取引ID
 front.mypage.order_status: ご注文状況
 front.mypage.order_date: ご注文日時
 front.mypage.use_point: ご利用ポイント
@@ -322,6 +323,7 @@ front.cart.delivery_fee_free__quantity: あと「<strong>%quantity%個</strong>�
 
 front.shopping.title: ご注文手続き
 front.shopping.order_no: ご注文番号
+front.shopping.smaregi_id: スマレジ取引ID
 front.shopping.customer_info: お客様情報
 front.shopping.delivery_info: 配送情報
 front.shopping.delivery_to: 受け取り先
@@ -955,6 +957,7 @@ admin.order.payment_date__end: 入金日(終了)
 admin.order.delivery_date__start: 受け取り日(開始)
 admin.order.delivery_date__end: 受け取り日(終了)
 admin.order.order_no: 注文番号
+admin.order.smaregi_id: スマレジ取引ID
 admin.order.shipping_date: 出荷日
 admin.order.message: お問い合わせ
 admin.order.message_short: お問合せ
@@ -1715,6 +1718,7 @@ tooltip.order.order_search_status: 受注の対応状況による絞り込み検
 tooltip.order.bulk_actions: チェックを入れた受注に対して、一括処理を行います。充分に確認をしてから実行してください。
 tooltip.order.order_info: 受注（注文）の基本情報です。
 tooltip.order.order_no: 注文時に自動で採番される管理番号です。
+tooltip.order.smaregi_id: スマレジでの取引IDです。
 tooltip.order.order_status: 新規受注登録以外は受注の対応状況を変更できます。1受注で出荷先が複数ある場合は、全て出荷されると対応状況が「出荷済」となります。
 tooltip.order.customer_id: 自動的に採番される会員のIDです。
 tooltip.order.shipping_info: 出荷先情報を表示します。出荷先の追加も可能です。1受注で複数の出荷先がある場合は「受け取り先を編集」から出荷先詳細情報が確認できます。

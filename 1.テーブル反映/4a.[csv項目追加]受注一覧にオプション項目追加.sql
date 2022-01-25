@@ -92,3 +92,89 @@ INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`,
 --オプション内容を追加
 INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
 (3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_detail', NULL, 'オプション内容', 92, 1, NOW(), NOW(), 'csv');
+
+
+
+
+--CSV種別:受注CSV (dtb_csv:3)
+--オプションごとの列を追加 20220125
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_dai_num', NULL, 'オプション_キャンドル大_数', 101, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_syo_num', NULL, 'オプション_キャンドル小_数', 102, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no1_num', NULL, 'オプション_Noキャンドル1_数', 103, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no2_num', NULL, 'オプション_Noキャンドル2_数', 104, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no3_num', NULL, 'オプション_Noキャンドル3_数', 105, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no4_num', NULL, 'オプション_Noキャンドル4_数', 106, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no5_num', NULL, 'オプション_Noキャンドル5_数', 107, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no6_num', NULL, 'オプション_Noキャンドル6_数', 108, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no7_num', NULL, 'オプション_Noキャンドル7_数', 109, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no8_num', NULL, 'オプション_Noキャンドル8_数', 110, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no9_num', NULL, 'オプション_Noキャンドル9_数', 111, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no0_num', NULL, 'オプション_Noキャンドル0_数', 112, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_plate1', NULL, 'オプション_メッセージプレート1_内容', 113, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_plate2', NULL, 'オプション_メッセージプレート2_内容', 114, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_plate3', NULL, 'オプション_メッセージプレート3_内容', 115, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_plate4', NULL, 'オプション_メッセージプレート4_内容', 116, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_plate5', NULL, 'オプション_メッセージプレート5_内容', 117, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_deco_ichigo_chk', NULL, 'オプション_デコレーション_いちごUP_選択', 118, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_deco_fruit_chk', NULL, 'オプション_デコレーション_フルーツUP_選択', 119, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_deco_namachoco_chk', NULL, 'オプション_デコレーション_生チョコUP_選択', 120, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_deco_echoco_chk', NULL, 'オプション_デコレーション_絵チョコ(4号)_選択', 121, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_pori_cyu_chk', NULL, 'オプション_持ち帰りポリ袋_中_選択', 122, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_pori_dai_chk', NULL, 'オプション_持ち帰りポリ袋_大_選択', 123, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_pori_tokudai_chk', NULL, 'オプション_持ち帰りポリ袋_特大_選択', 124, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_housou_sentaku', NULL, 'オプション_包装方法選択', 125, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_noshi_kakekata', NULL, 'オプション_熨斗紙の掛け方', 126, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_kakehousou_syurui', NULL, 'オプション_掛け紙包装の種類選択', 127, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_uwagaki_sentaku', NULL, 'オプション_上書きを選択', 128, 1, NOW(), NOW(), 'csv'),
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_noshi', NULL, 'オプション_熨斗の名入れ希望', 129, 1, NOW(), NOW(), 'csv');
+
+
+--CSV種別:出荷(配送)CSV (dtb_csv:4)
+--オプションごとの列を追加 20220125
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_dai_num', NULL, 'オプション_キャンドル大_数', 101, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_syo_num', NULL, 'オプション_キャンドル小_数', 102, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no1_num', NULL, 'オプション_Noキャンドル1_数', 103, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no2_num', NULL, 'オプション_Noキャンドル2_数', 104, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no3_num', NULL, 'オプション_Noキャンドル3_数', 105, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no4_num', NULL, 'オプション_Noキャンドル4_数', 106, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no5_num', NULL, 'オプション_Noキャンドル5_数', 107, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no6_num', NULL, 'オプション_Noキャンドル6_数', 108, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no7_num', NULL, 'オプション_Noキャンドル7_数', 109, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no8_num', NULL, 'オプション_Noキャンドル8_数', 110, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no9_num', NULL, 'オプション_Noキャンドル9_数', 111, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_candle_no0_num', NULL, 'オプション_Noキャンドル0_数', 112, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_plate1', NULL, 'オプション_メッセージプレート1_内容', 113, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_plate2', NULL, 'オプション_メッセージプレート2_内容', 114, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_plate3', NULL, 'オプション_メッセージプレート3_内容', 115, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_plate4', NULL, 'オプション_メッセージプレート4_内容', 116, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_plate5', NULL, 'オプション_メッセージプレート5_内容', 117, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_deco_ichigo_chk', NULL, 'オプション_デコレーション_いちごUP_選択', 118, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_deco_fruit_chk', NULL, 'オプション_デコレーション_フルーツUP_選択', 119, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_deco_namachoco_chk', NULL, 'オプション_デコレーション_生チョコUP_選択', 120, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_deco_echoco_chk', NULL, 'オプション_デコレーション_絵チョコ(4号)_選択', 121, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_pori_cyu_chk', NULL, 'オプション_持ち帰りポリ袋_中_選択', 122, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_pori_dai_chk', NULL, 'オプション_持ち帰りポリ袋_大_選択', 123, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_pori_tokudai_chk', NULL, 'オプション_持ち帰りポリ袋_特大_選択', 124, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_housou_sentaku', NULL, 'オプション_包装方法選択', 125, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_noshi_kakekata', NULL, 'オプション_熨斗紙の掛け方', 126, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_kakehousou_syurui', NULL, 'オプション_掛け紙包装の種類選択', 127, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_uwagaki_sentaku', NULL, 'オプション_上書きを選択', 128, 1, NOW(), NOW(), 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_printname_noshi', NULL, 'オプション_熨斗の名入れ希望', 129, 1, NOW(), NOW(), 'csv');
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(3, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_plate_sentaku', NULL, 'オプション_メッセージプレート選択', 130, 1, NOW(), NOW(), 'csv');
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'option_plate_sentaku', NULL, 'オプション_メッセージプレート選択', 130, 1, NOW(), NOW(), 'csv');
+
+
+
+----- 注文枝番  20220125 出荷(配送)CSVにも追加
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(4, 1, 'Eccube\\\\Entity\\\\OrderItem', 'order_sub_no', NULL, '注文枝番', 130, 1, NOW(), NOW(), 'csv');
+
+----- スマレジ取引ID  20220125 受注、出荷(配送)CSVにも追加する
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(3, 1, 'Eccube\\\\Entity\\\\Order', 'smaregi_id', NULL, 'スマレジ取引ID', 130, 1, NOW(), NOW(), 'csv');
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(4, 1, 'Eccube\\\\Entity\\\\Order', 'smaregi_id', NULL, 'スマレジ取引ID', 130, 1, NOW(), NOW(), 'csv');
