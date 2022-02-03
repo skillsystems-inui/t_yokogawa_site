@@ -41,3 +41,67 @@ ALTER TABLE `dtb_cart_item` ADD `option_detail` varchar(1024) DEFAULT NULL;
 
 --受取方法 (tentou:店頭受取、toriyose:お取り寄せ)
 ALTER TABLE `dtb_cart` ADD `uketori_type` varchar(20) DEFAULT NULL;
+
+
+
+
+--各オプション別(cart)
+ALTER TABLE `dtb_cart_item` ADD `option_candle_dai_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_candle_syo_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_candle_no1_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_candle_no2_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_candle_no3_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_candle_no4_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_candle_no5_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_candle_no6_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_candle_no7_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_candle_no8_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_candle_no9_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_candle_no0_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_printname_plate1` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_printname_plate2` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_printname_plate3` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_printname_plate4` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_printname_plate5` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_deco_ichigo_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_deco_fruit_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_deco_namachoco_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_deco_echoco_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_pori_cyu_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_pori_dai_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_pori_tokudai_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_housou_sentaku` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_noshi_kakekata` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_kakehousou_syurui` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_uwagaki_sentaku` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_cart_item` ADD `option_printname_nosina` varchar(100) DEFAULT NULL;
+--各オプション別(order)
+ALTER TABLE `dtb_order_item` ADD `option_candle_dai_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_candle_syo_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_candle_no1_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_candle_no2_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_candle_no3_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_candle_no4_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_candle_no5_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_candle_no6_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_candle_no7_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_candle_no8_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_candle_no9_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_candle_no0_num` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_printname_plate1` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_printname_plate2` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_printname_plate3` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_printname_plate4` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_printname_plate5` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_deco_ichigo_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_deco_fruit_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_deco_namachoco_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_deco_echoco_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_pori_cyu_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_pori_dai_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_pori_tokudai_chk` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_housou_sentaku` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_noshi_kakekata` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_kakehousou_syurui` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_uwagaki_sentaku` varchar(100) DEFAULT NULL;
+ALTER TABLE `dtb_order_item` ADD `option_printname_nosina` varchar(100) DEFAULT NULL;

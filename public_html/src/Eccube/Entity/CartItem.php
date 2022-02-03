@@ -73,6 +73,217 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
          */
         private $option_detail;
         
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_dai_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_dai_num;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_syo_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_syo_num;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_no1_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_no1_num;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_no2_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_no2_num;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_no3_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_no3_num;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_no4_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_no4_num;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_no5_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_no5_num;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_no6_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_no6_num;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_no7_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_no7_num;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_no8_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_no8_num;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_no9_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_no9_num;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_candle_no0_num", type="string", length=100, nullable=true)
+         */
+        private $option_candle_no0_num;
+        
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_printname_plate1", type="string", length=100, nullable=true)
+         */
+        private $option_printname_plate1;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_printname_plate2", type="string", length=100, nullable=true)
+         */
+        private $option_printname_plate2;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_printname_plate3", type="string", length=100, nullable=true)
+         */
+        private $option_printname_plate3;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_printname_plate4", type="string", length=100, nullable=true)
+         */
+        private $option_printname_plate4;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_printname_plate5", type="string", length=100, nullable=true)
+         */
+        private $option_printname_plate5;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_deco_ichigo_chk", type="string", length=100, nullable=true)
+         */
+        private $option_deco_ichigo_chk;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_deco_fruit_chk", type="string", length=100, nullable=true)
+         */
+        private $option_deco_fruit_chk;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_deco_namachoco_chk", type="string", length=100, nullable=true)
+         */
+        private $option_deco_namachoco_chk;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_deco_echoco_chk", type="string", length=100, nullable=true)
+         */
+        private $option_deco_echoco_chk;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_pori_cyu_chk", type="string", length=100, nullable=true)
+         */
+        private $option_pori_cyu_chk;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_pori_dai_chk", type="string", length=100, nullable=true)
+         */
+        private $option_pori_dai_chk;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_pori_tokudai_chk", type="string", length=100, nullable=true)
+         */
+        private $option_pori_tokudai_chk;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_housou_sentaku", type="string", length=100, nullable=true)
+         */
+        private $option_housou_sentaku;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_noshi_kakekata", type="string", length=100, nullable=true)
+         */
+        private $option_noshi_kakekata;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_kakehousou_syurui", type="string", length=100, nullable=true)
+         */
+        private $option_kakehousou_syurui;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_uwagaki_sentaku", type="string", length=100, nullable=true)
+         */
+        private $option_uwagaki_sentaku;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_printname_nosina", type="string", length=100, nullable=true)
+         */
+        private $option_printname_nosina;
+        
+        
+        
+        
+        
+        
+        
         /**
          * @var \Eccube\Entity\ProductClass
          *
@@ -747,7 +958,419 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
 
             return $this;
         }
+        
+        
+        
+        
+        
+        /**
+         * Set option_candle_dai_num.
+         *
+         * @param string|null $option_candle_dai_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleDaiNum($option_candle_dai_num = null)
+        {
+            $this->option_candle_dai_num = $option_candle_dai_num;
 
+            return $this;
+        }
+        
+        /**
+         * Set option_candle_syo_num.
+         *
+         * @param string|null $option_candle_syo_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleSyoNum($option_candle_syo_num = null)
+        {
+            $this->option_candle_syo_num = $option_candle_syo_num;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_candle_no1_num.
+         *
+         * @param string|null $option_candle_no1_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleNo1Num($option_candle_no1_num = null)
+        {
+            $this->option_candle_no1_num = $option_candle_no1_num;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_candle_no2_num.
+         *
+         * @param string|null $option_candle_no2_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleNo2Num($option_candle_no2_num = null)
+        {
+            $this->option_candle_no2_num = $option_candle_no2_num;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_candle_no3_num.
+         *
+         * @param string|null $option_candle_no3_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleNo3Num($option_candle_no3_num = null)
+        {
+            $this->option_candle_no3_num = $option_candle_no3_num;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_candle_no4_num.
+         *
+         * @param string|null $option_candle_no4_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleNo4Num($option_candle_no4_num = null)
+        {
+            $this->option_candle_no4_num = $option_candle_no4_num;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_candle_no5_num.
+         *
+         * @param string|null $option_candle_no5_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleNo5Num($option_candle_no5_num = null)
+        {
+            $this->option_candle_no5_num = $option_candle_no5_num;
+
+            return $this;
+        }
+        
+        
+        /**
+         * Set option_candle_no6_num.
+         *
+         * @param string|null $option_candle_no6_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleNo6Num($option_candle_no6_num = null)
+        {
+            $this->option_candle_no6_num = $option_candle_no6_num;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_candle_no7_num.
+         *
+         * @param string|null $option_candle_no7_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleNo7Num($option_candle_no7_num = null)
+        {
+            $this->option_candle_no7_num = $option_candle_no7_num;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_candle_no8_num.
+         *
+         * @param string|null $option_candle_no8_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleNo8Num($option_candle_no8_num = null)
+        {
+            $this->option_candle_no8_num = $option_candle_no8_num;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_candle_no9_num.
+         *
+         * @param string|null $option_candle_no9_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleNo9Num($option_candle_no9_num = null)
+        {
+            $this->option_candle_no9_num = $option_candle_no9_num;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_candle_no0_num.
+         *
+         * @param string|null $option_candle_no0_num
+         *
+         * @return CartItem
+         */
+        public function setOptionCandleNo0Num($option_candle_no0_num = null)
+        {
+            $this->option_candle_no0_num = $option_candle_no0_num;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_printname_plate1.
+         *
+         * @param string|null $option_printname_plate1
+         *
+         * @return CartItem
+         */
+        public function setOptionPrintnamePlate1($option_printname_plate1 = null)
+        {
+            $this->option_printname_plate1 = $option_printname_plate1;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_printname_plate2.
+         *
+         * @param string|null $option_printname_plate2
+         *
+         * @return CartItem
+         */
+        public function setOptionPrintnamePlate2($option_printname_plate2 = null)
+        {
+            $this->option_printname_plate2 = $option_printname_plate2;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_printname_plate3.
+         *
+         * @param string|null $option_printname_plate3
+         *
+         * @return CartItem
+         */
+        public function setOptionPrintnamePlate3($option_printname_plate3 = null)
+        {
+            $this->option_printname_plate3 = $option_printname_plate3;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_printname_plate4.
+         *
+         * @param string|null $option_printname_plate4
+         *
+         * @return CartItem
+         */
+        public function setOptionPrintnamePlate4($option_printname_plate4 = null)
+        {
+            $this->option_printname_plate4 = $option_printname_plate4;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_printname_plate5.
+         *
+         * @param string|null $option_printname_plate5
+         *
+         * @return CartItem
+         */
+        public function setOptionPrintnamePlate5($option_printname_plate5 = null)
+        {
+            $this->option_printname_plate5 = $option_printname_plate5;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_deco_ichigo_chk.
+         *
+         * @param string|null $option_deco_ichigo_chk
+         *
+         * @return CartItem
+         */
+        public function setOptionDecoIchigoChk($option_deco_ichigo_chk = null)
+        {
+            $this->option_deco_ichigo_chk = $option_deco_ichigo_chk;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_deco_fruit_chk.
+         *
+         * @param string|null $option_deco_fruit_chk
+         *
+         * @return CartItem
+         */
+        public function setOptionDecoFruitChk($option_deco_fruit_chk = null)
+        {
+            $this->option_deco_fruit_chk = $option_deco_fruit_chk;
+
+            return $this;
+        }
+        
+        
+        /**
+         * Set option_deco_namachoco_chk.
+         *
+         * @param string|null $option_deco_namachoco_chk
+         *
+         * @return CartItem
+         */
+        public function setOptionDecoNamachocoChk($option_deco_namachoco_chk = null)
+        {
+            $this->option_deco_namachoco_chk = $option_deco_namachoco_chk;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_deco_echoco_chk.
+         *
+         * @param string|null $option_deco_echoco_chk
+         *
+         * @return CartItem
+         */
+        public function setOptionDecoEchocoChk($option_deco_echoco_chk = null)
+        {
+            $this->option_deco_echoco_chk = $option_deco_echoco_chk;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_pori_cyu_chk.
+         *
+         * @param string|null $option_pori_cyu_chk
+         *
+         * @return CartItem
+         */
+        public function setOptionPoriCyuChk($option_pori_cyu_chk = null)
+        {
+            $this->option_pori_cyu_chk = $option_pori_cyu_chk;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_pori_dai_chk.
+         *
+         * @param string|null $option_pori_dai_chk
+         *
+         * @return CartItem
+         */
+        public function setOptionPoriDaiChk($option_pori_dai_chk = null)
+        {
+            $this->option_pori_dai_chk = $option_pori_dai_chk;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_pori_tokudai_chk.
+         *
+         * @param string|null $option_pori_tokudai_chk
+         *
+         * @return CartItem
+         */
+        public function setOptionPoriTokudaiChk($option_pori_tokudai_chk = null)
+        {
+            $this->option_pori_tokudai_chk = $option_pori_tokudai_chk;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_housou_sentaku.
+         *
+         * @param string|null $option_housou_sentaku
+         *
+         * @return CartItem
+         */
+        public function setOptionHousouSentaku($option_housou_sentaku = null)
+        {
+            $this->option_housou_sentaku = $option_housou_sentaku;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_noshi_kakekata.
+         *
+         * @param string|null $option_noshi_kakekata
+         *
+         * @return CartItem
+         */
+        public function setOptionNoshiKakekata($option_noshi_kakekata = null)
+        {
+            $this->option_noshi_kakekata = $option_noshi_kakekata;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_kakehousou_syurui.
+         *
+         * @param string|null $option_kakehousou_syurui
+         *
+         * @return CartItem
+         */
+        public function setOoptionKakehousouSyurui($option_kakehousou_syurui = null)
+        {
+            $this->option_kakehousou_syurui = $option_kakehousou_syurui;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_uwagaki_sentaku.
+         *
+         * @param string|null $option_uwagaki_sentaku
+         *
+         * @return CartItem
+         */
+        public function setOptionUwagakiSentaku($option_uwagaki_sentaku = null)
+        {
+            $this->option_uwagaki_sentaku = $option_uwagaki_sentaku;
+
+            return $this;
+        }
+        
+        /**
+         * Set option_printname_nosina.
+         *
+         * @param string|null $option_printname_nosina
+         *
+         * @return CartItem
+         */
+        public function setOptionPrintnameNosina($option_printname_nosina = null)
+        {
+            $this->option_printname_nosina = $option_printname_nosina;
+
+            return $this;
+        }
+        
         /**
          * Get option_detail.
          *
@@ -757,6 +1380,310 @@ if (!class_exists('\Eccube\Entity\CartItem')) {
         {
             return $this->option_detail;
         }
+        
+        
+        /**
+         * Get option_candle_dai_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleDaiNum()
+        {
+            return $this->option_candle_dai_num;
+        }
+        
+        /**
+         * Get option_candle_syo_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleSyoNum()
+        {
+            return $this->option_candle_syo_num;
+        }
+        
+        /**
+         * Get option_candle_no1_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleNo1Num()
+        {
+            return $this->option_candle_no1_num;
+        }
+        
+        /**
+         * Get option_candle_no2_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleNo2Num()
+        {
+            return $this->option_candle_no2_num;
+        }
+        
+        
+        /**
+         * Get option_candle_no3_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleNo3Num()
+        {
+            return $this->option_candle_no3_num;
+        }
+        
+        /**
+         * Get option_candle_no4_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleNo4Num()
+        {
+            return $this->option_candle_no4_num;
+        }
+        
+        
+        /**
+         * Get option_candle_no5_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleNo5Num()
+        {
+            return $this->option_candle_no5_num;
+        }
+        
+        /**
+         * Get option_candle_no6_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleNo6Num()
+        {
+            return $this->option_candle_no6_num;
+        }
+        
+        /**
+         * Get option_candle_no7_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleNo7Num()
+        {
+            return $this->option_candle_no7_num;
+        }
+        
+        /**
+         * Get option_candle_no8_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleNo8Num()
+        {
+            return $this->option_candle_no8_num;
+        }
+        
+        /**
+         * Get option_candle_no9_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleNo9Num()
+        {
+            return $this->option_candle_no9_num;
+        }
+        
+        /**
+         * Get option_candle_no0_num.
+         *
+         * @return string|null
+         */
+        public function getOptionCandleNo0Num()
+        {
+            return $this->option_candle_no0_num;
+        }
+        
+		
+        /**
+         * Get option_printname_plate1.
+         *
+         * @return string|null
+         */
+        public function getOptionPrintnamePlate1()
+        {
+            return $this->option_printname_plate1;
+        }
+        
+        /**
+         * Get option_printname_plate2.
+         *
+         * @return string|null
+         */
+        public function getOptionPrintnamePlate2()
+        {
+            return $this->option_printname_plate2;
+        }
+        
+        /**
+         * Get option_printname_plate3.
+         *
+         * @return string|null
+         */
+        public function getOptionPrintnamePlate3()
+        {
+            return $this->option_printname_plate3;
+        }
+        
+        /**
+         * Get option_printname_plate4.
+         *
+         * @return string|null
+         */
+        public function getOptionPrintnamePlate4()
+        {
+            return $this->option_printname_plate4;
+        }
+        
+        
+        /**
+         * Get option_printname_plate5.
+         *
+         * @return string|null
+         */
+        public function getOptionPrintnamePlate5()
+        {
+            return $this->option_printname_plate5;
+        }
+        
+        /**
+         * Get option_deco_ichigo_chk.
+         *
+         * @return string|null
+         */
+        public function getOptionDecoIchigoChk()
+        {
+            return $this->option_deco_ichigo_chk;
+        }
+        
+        
+        /**
+         * Get option_deco_fruit_chk.
+         *
+         * @return string|null
+         */
+        public function getOptionDecoFruitChk()
+        {
+            return $this->option_deco_fruit_chk;
+        }
+        
+        /**
+         * Get option_deco_namachoco_chk.
+         *
+         * @return string|null
+         */
+        public function getOptionDecoNamachocoChk()
+        {
+            return $this->option_deco_namachoco_chk;
+        }
+        
+        /**
+         * Get option_deco_echoco_chk.
+         *
+         * @return string|null
+         */
+        public function getOptionDecoEchocoChk()
+        {
+            return $this->option_deco_echoco_chk;
+        }
+        
+        /**
+         * Get option_pori_cyu_chk.
+         *
+         * @return string|null
+         */
+        public function getOptionPoriCyuChk()
+        {
+            return $this->option_pori_cyu_chk;
+        }
+        
+        /**
+         * Get option_pori_dai_chk.
+         *
+         * @return string|null
+         */
+        public function getOptionPoriDaiChk()
+        {
+            return $this->option_pori_dai_chk;
+        }
+        
+        /**
+         * Get option_pori_tokudai_chk.
+         *
+         * @return string|null
+         */
+        public function getOptionPoriTokudaiChk()
+        {
+            return $this->option_pori_tokudai_chk;
+        }
+        
+		
+        /**
+         * Get option_housou_sentaku.
+         *
+         * @return string|null
+         */
+        public function getOptionHousouSentaku()
+        {
+            return $this->option_housou_sentaku;
+        }
+        
+        /**
+         * Get option_noshi_kakekata.
+         *
+         * @return string|null
+         */
+        public function getOptionNoshiKakekata()
+        {
+            return $this->option_noshi_kakekata;
+        }
+        
+        /**
+         * Get option_kakehousou_syurui.
+         *
+         * @return string|null
+         */
+        public function getOptionKakehousouSyurui()
+        {
+            return $this->option_kakehousou_syurui;
+        }
+        
+        /**
+         * Get option_uwagaki_sentaku.
+         *
+         * @return string|null
+         */
+        public function getOptionUwagakiSentaku()
+        {
+            return $this->option_uwagaki_sentaku;
+        }
+        
+        
+        /**
+         * Get option_printname_nosina.
+         *
+         * @return string|null
+         */
+        public function getOptionPrintnameNosina()
+        {
+            return $this->option_printname_nosina;
+        }
+
+
+        
+        
+        
+        
         
         /**
          * @param  integer  $additional_price
