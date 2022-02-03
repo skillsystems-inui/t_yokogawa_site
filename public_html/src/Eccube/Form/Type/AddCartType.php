@@ -341,6 +341,33 @@ class AddCartType extends AbstractType
                 ],
             ]);
             
+            //オプション別
+            $builder->add('option_candle_dai_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 1024]),
+                ],
+            ]);
+            $builder->add('option_candle_syo_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 1024]),
+                ],
+            ]);
+            
+            
+            
+            
+            
+            
             $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) use ($Product) {
                 $data = $event->getData();
                 $form = $event->getForm();

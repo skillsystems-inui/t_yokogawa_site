@@ -354,6 +354,14 @@ class OrderHelper
             $OptionDetail     = $item->getOptionDetail();
             
             
+            //-------------------------------------------------------
+            //↓[Option]オプション別
+            $OptionCandleDaiNum  = $item->getOptionCandleDaiNum();
+            $OptionCandleSyoNum  = $item->getOptionCandleSyoNum();
+	        //↑[Option]オプション別
+            //-------------------------------------------------------
+            
+            
             //オプションによる追加価格
             $AdditionalPrice = $item->getAdditionalPrice();
             
@@ -383,6 +391,19 @@ class OrderHelper
             if (!is_null($OptionDetail)) {
                 $OrderItem->setOptionDetail($OptionDetail);
             }
+            
+            //-------------------------------------------------------
+            //↓[Option]オプション別
+            if (!is_null($OptionCandleDaiNum)) {
+                $OrderItem->setOptionCandleDaiNum($OptionCandleDaiNum);
+            }
+            if (!is_null($OptionCandleSyoNum)) {
+                $OrderItem->setOptionCandleSyoNum($OptionCandleSyoNum);
+            }
+	        //↑[Option]オプション別
+	        //-------------------------------------------------------
+	        
+	        
             //オプションによる追加価格
             if (!is_null($AdditionalPrice)) {
                 $OrderItem->setAdditionalPrice($AdditionalPrice);

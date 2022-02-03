@@ -379,6 +379,8 @@ class CartService
      *
      * @param $ProductClass ProductClass 商品規格
      * @param $OptionDetail オプション選択情報
+     * @param $option_candle_dai_num オプション別
+     * @param $option_candle_syo_num オプション別
      * @param $additional_option_price 追加料金
      * @param $quantity int 数量
      *
@@ -386,6 +388,8 @@ class CartService
      */
     public function addProductOption($ProductClass, 
                                      $OptionDetail,
+                                     $option_candle_dai_num,
+                                     $option_candle_syo_num,
                                      $additional_option_price,
                                      $quantity = 1)
     {
@@ -418,6 +422,11 @@ class CartService
 		
         //[Option]オプション情報を登録する
         $newItem->setOptionDetail($OptionDetail);
+        
+        //↓[Option]オプション別
+        $newItem->setOptionCandleDaiNum($option_candle_dai_num);
+        $newItem->setOptionCandleSyoNum($option_candle_syo_num);
+        //↑[Option]オプション別
         
 		//[Option]追加料金を登録する
 		$newItem->setAdditionalPrice($additional_option_price);

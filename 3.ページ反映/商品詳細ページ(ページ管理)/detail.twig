@@ -529,6 +529,9 @@ file that was distributed with this source code.
 						optionselect_candle = optionselect_candle + ' キャンドル大:'
 						optionselect_candle = optionselect_candle + ' ' + candle_dai_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_dai_num").textContent = candle_dai_num.value + '本';
 					}
 					
 					//キャンドル小
@@ -536,6 +539,9 @@ file that was distributed with this source code.
 						optionselect_candle = optionselect_candle + ' キャンドル小:'
 						optionselect_candle = optionselect_candle + ' ' + candle_syo_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_syo_num").textContent = candle_syo_num.value + '本';
 					}
 					
 					//Noキャンドル(1)
@@ -3624,6 +3630,26 @@ file that was distributed with this source code.
 				                                </div>
 				                            {% endif %}
 											<!-- .オプション選択情報を裏側で保持する -->
+											
+											
+											<!-- ↓オプション別 -->
+											{% if form.option_candle_dai_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_dai_num) }}
+				                                    {{ form_errors(form.option_candle_dai_num) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_candle_syo_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_syo_num) }}
+				                                    {{ form_errors(form.option_candle_syo_num) }}
+				                                </div>
+				                            {% endif %}
+											<!-- ↑オプション別 -->
+											
+											
+											
+											
 			                                
 			                                <!-- ☆↑-------------------オプション入力欄-------------------☆ -->
 			                                

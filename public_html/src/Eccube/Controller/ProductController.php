@@ -415,6 +415,10 @@ class ProductController extends AbstractController
         
         //オプション情報
         $option_detail = $form->get('option_detail')->getData();
+        //オプション別 0204↓
+        $option_candle_dai_num = $form->get('option_candle_dai_num')->getData();
+        $option_candle_syo_num = $form->get('option_candle_syo_num')->getData();
+        //オプション別 0204↑
         
         //オプションによる追加価格
         $additional_option_price = $form->get('additional_price')->getData();
@@ -433,6 +437,8 @@ class ProductController extends AbstractController
         //オプション選択されていればカートに反映する
         $this->cartService->addProductOption($addCartData['product_class_id'], 
                                              $option_detail,
+                                             $option_candle_dai_num,
+                                             $option_candle_syo_num,
                                              $additional_option_price,
                                              $addCartData['quantity']);
         //$this->cartService->addProduct($addCartData['product_class_id'], $addCartData['quantity']);
