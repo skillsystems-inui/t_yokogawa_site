@@ -408,6 +408,7 @@ class CartService
      * @param $option_kakehousou_syurui オプション別
      * @param $option_uwagaki_sentaku   オプション別
      * @param $option_printname_nosina  オプション別
+     * @param $option_plate_sentaku  オプション別
      * @param $additional_option_price 追加料金
      * @param $quantity int 数量
      *
@@ -444,6 +445,7 @@ class CartService
                                      $option_kakehousou_syurui,
                                      $option_uwagaki_sentaku,
                                      $option_printname_nosina,
+                                     $option_plate_sentaku,
                                      $additional_option_price,
                                      $quantity = 1)
     {
@@ -507,6 +509,7 @@ class CartService
         $newItem->setOptionKakehousouSyurui($option_kakehousou_syurui);
         $newItem->setOptionUwagakiSentaku($option_uwagaki_sentaku);
         $newItem->setOptionPrintnameNosina($option_printname_nosina);
+        $newItem->setOptionPlateSentaku($option_plate_sentaku);
         //↑[Option]オプション別
 
         

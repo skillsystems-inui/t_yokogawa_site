@@ -385,6 +385,7 @@ class OrderHelper
             $OptionKakehousouSyurui  = $item->getOptionKakehousouSyurui();
             $OptionUwagakiSentaku  = $item->getOptionUwagakiSentaku();
             $OptionPrintnameNosina  = $item->getOptionPrintnameNosina();
+            $OptionPlateSentaku  = $item->getOptionPlateSentaku();
 	        //↑[Option]オプション別
             //-------------------------------------------------------
             
@@ -507,6 +508,9 @@ class OrderHelper
             }
             if (!is_null($OptionPrintnameNosina)) {
                 $OrderItem->setOptionPrintnameNosina($OptionPrintnameNosina);
+            }
+            if (!is_null($OptionPlateSentaku)) {
+                $OrderItem->setOptionPlateSentaku($OptionPlateSentaku);
             }
 	        //↑[Option]オプション別
 	        //-------------------------------------------------------

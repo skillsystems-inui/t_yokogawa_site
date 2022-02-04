@@ -445,6 +445,7 @@ class ProductController extends AbstractController
         $option_kakehousou_syurui = $form->get('option_kakehousou_syurui')->getData();
         $option_uwagaki_sentaku   = $form->get('option_uwagaki_sentaku')->getData();
         $option_printname_nosina  = $form->get('option_printname_nosina')->getData();
+        $option_plate_sentaku  = $form->get('option_plate_sentaku')->getData();
         //オプション別 0204↑
         
         //オプションによる追加価格
@@ -493,6 +494,7 @@ class ProductController extends AbstractController
                                              $option_kakehousou_syurui,
                                              $option_uwagaki_sentaku,
                                              $option_printname_nosina,
+                                             $option_plate_sentaku,
                                              $additional_option_price,
                                              $addCartData['quantity']);
         //$this->cartService->addProduct($addCartData['product_class_id'], $addCartData['quantity']);

@@ -730,6 +730,9 @@ file that was distributed with this source code.
 						optionselect_message = optionselect_message + ' メッセージプレートを選択:'
 						optionselect_message = optionselect_message + ' ' + checkPlate + ' '; 
 						optionselect_message = optionselect_message + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_plate_sentaku").textContent = checkPlate;
 					}
 					
 					//メッセージ1
@@ -940,7 +943,7 @@ file that was distributed with this source code.
 						optionselect_gift = optionselect_gift + '\n';
 						
 						//0204オプション選択別テキストエリアに出力する
-            			document.getElementById("option_kakehousou_syurui").textContent = ' ' + checkSyurui + ' ';
+            			document.getElementById("option_kakehousou_syurui").textContent = checkSyurui;
 					}
 					
 					//上書きを選択
@@ -3888,6 +3891,12 @@ file that was distributed with this source code.
 				                                <div style="display:none;">
 				                                    {{ form_widget(form.option_printname_nosina) }}
 				                                    {{ form_errors(form.option_printname_nosina) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_plate_sentaku is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_plate_sentaku) }}
+				                                    {{ form_errors(form.option_plate_sentaku) }}
 				                                </div>
 				                            {% endif %}
 				                            

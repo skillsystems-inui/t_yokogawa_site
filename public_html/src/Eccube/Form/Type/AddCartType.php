@@ -636,6 +636,16 @@ class AddCartType extends AbstractType
                     new Length(['min' => 0, 'max' => 100]),
                 ],
             ]);
+            $builder->add('option_plate_sentaku', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
             
             //-----オプション別↑-----
             

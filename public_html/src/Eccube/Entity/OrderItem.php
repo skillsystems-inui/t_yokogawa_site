@@ -534,7 +534,12 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
         private $option_printname_nosina;
         
         
-        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="option_plate_sentaku", type="string", length=100, nullable=true)
+         */
+        private $option_plate_sentaku;
         
         
         
@@ -1855,10 +1860,19 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
             return $this;
         }
         
-        
-        
-        
-        
+        /**
+         * Set option_plate_sentaku.
+         *
+         * @param string|null $option_plate_sentaku
+         *
+         * @return CartItem
+         */
+        public function setOptionPlateSentaku($option_plate_sentaku = null)
+        {
+            $this->option_plate_sentaku = $option_plate_sentaku;
+
+            return $this;
+        }
         
         
         
@@ -2325,8 +2339,15 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
             return $this->option_printname_nosina;
         }
 
-
-        
+		/**
+         * Get option_plate_sentaku.
+         *
+         * @return string|null
+         */
+        public function getOptionPlateSentaku()
+        {
+            return $this->option_plate_sentaku;
+        }
         
         
         
