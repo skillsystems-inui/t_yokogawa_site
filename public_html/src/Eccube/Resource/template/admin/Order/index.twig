@@ -537,7 +537,7 @@ file that was distributed with this source code.
                                                     />
                                                 </td>
                                                 <td class="align-middle text-left">
-                                                    <a class="action-edit" href="{{ url('admin_order_edit', { id : Order.id }) }}">{{ Order.smaregi_id }}<br>{{ Order.name01 ~ Order.name02 }}<br>{{ Order.order_date|date_min }}</a>
+                                                    <a class="action-edit" href="{{ url('admin_order_edit', { id : Order.id }) }}">レシート番号 : {{ Order.transaction_uuid }}<br>端末取引ID : {{ Order.terminal_tran_id }}<br>{{ Order.name01 ~ Order.name02 }}<br>{{ Order.order_date|date_min }}</a>
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     {{ Order.payment_method }}

@@ -273,6 +273,18 @@ file that was distributed with this source code.
                                             <div class="col">{{ Order.order_no }}</div>
                                         </div>
                                         
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-3" data-tooltip="true" data-placement="top" title="{{ 'tooltip.order.transaction_uuid'|trans }}">{{ 'admin.order.transaction_uuid'|trans }}<i class="fa fa-question-circle fa-lg ml-1"></i></div>
+                                            <div class="col">{{ Order.transaction_uuid }}</div>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-3" data-tooltip="true" data-placement="top" title="{{ 'tooltip.order.terminal_tran_id'|trans }}">{{ 'admin.order.terminal_tran_id'|trans }}<i class="fa fa-question-circle fa-lg ml-1"></i></div>
+                                            <div class="col">{{ Order.terminal_tran_id }}</div>
+                                        </div>
+                                        
+                                        
                                         <div class="row mb-3">
                                             <div class="col-3" data-tooltip="true" data-placement="top" title="{{ 'tooltip.order.smaregi_id'|trans }}">{{ 'admin.order.smaregi_id'|trans }}<i class="fa fa-question-circle fa-lg ml-1"></i></div>
                                             <div class="col">{{ Order.smaregi_id }}</div>

@@ -228,6 +228,9 @@ front.mypage.message_not_found: Not found
 front.mypage.view_detail: See details
 front.mypage.order_no: Order No.
 front.mypage.smaregi_id: Smaregi ID.
+front.mypage.transaction_uuid: Transaction Uuid.
+front.mypage.terminal_id: Terminal Id.
+front.mypage.terminal_tran_id: Terminal Tran Id.
 front.mypage.order_status: Order Status
 front.mypage.order_date: Order Date
 front.mypage.use_point: Points Used
@@ -322,6 +325,9 @@ front.cart.delivery_fee_free__quantity: <strong class="ec-color-red">Free shippi
 front.shopping.title: Checkout
 front.shopping.order_no: Order No.
 front.shopping.smaregi_id: Smaregi ID.
+front.shopping.transaction_uuid: Transaction Uuid.
+front.shopping.terminal_id: Terminal Id.
+front.shopping.terminal_tran_id: Terminal Tran Id.
 front.shopping.customer_info: Customer Information
 front.shopping.delivery_info: Delivery Information
 front.shopping.delivery_to: Delivery to
@@ -856,6 +862,9 @@ admin.order.delivery_date__start: Delivery Date (Start)
 admin.order.delivery_date__end: Delivery Date (End)
 admin.order.order_no: Order No.
 admin.order.smaregi_id: Smaregi ID.
+admin.order.transaction_uuid: Transaction Uuid.
+admin.order.terminal_id: Terminal Id.
+admin.order.terminal_tran_id: Terminal Tran Id.
 admin.order.shipping_date: Shipping Date
 admin.order.message: Inquiry
 admin.order.message_short: Inquiry
@@ -1615,7 +1624,10 @@ tooltip.order.bulk_actions: Bulk processing is applied to the checked orders. Pl
 tooltip.order.order_info: General information of orders.
 tooltip.order.order_no: Order No. is automatically generated upon placing the order.
 tooltip.order.smaregi_id: Smaregi ID. is ID on SramrtRegi.
-tooltip.order.order_status: 受注の対応状況を変更できます。ただし新規受注登録以外。また、1受注で出荷先が複数ある場合は全て出荷されると対応状況が「出荷済」となります。
+tooltip.order.transaction_uuid: Receipt number at Smaregi.
+tooltip.order.terminal_id: This is the terminal ID for Smaregi.
+tooltip.order.terminal_tran_id: It is a terminal transaction ID in Smaregi.
+tooltip.order.order_status: You can change the status of orders received. However, other than new order registration. Also, if there are multiple shipping destinations in one order, the correspondence status will be "shipped" when all are shipped.
 tooltip.order.customer_id: Customer IDs which are automatically generated.
 tooltip.order.shipping_info: Displaying the delivery information. You can add delivery addresses too. If you have multiple delivery addresses within a order, you can check the delivery address details at [Edit Delivery Address].
 tooltip.order.shipping_info.tracking_number: If you have a tracking number (delivery slip number), you can enter from here. You can also bulk-input from All Orders.

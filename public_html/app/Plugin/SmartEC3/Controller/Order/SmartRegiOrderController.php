@@ -297,6 +297,19 @@ class SmartRegiOrderController extends AbstractController
 	        	//ステータスをセット
 	        	$OrderStatus = $this->orderStatusRepository->find(OrderStatus::DELIVERED);
 				$Order->setOrderStatus($OrderStatus);
+				
+				//20220204
+	            //レシート番号を登録しておく
+	            $transactionUuid = $arrOrder['transactionUuid'];
+	            $Order->setTransactionUuid($transactionUuid);
+	            //端末IDを登録しておく
+	            $terminalId = $arrOrder['terminalId'];
+	            $Order->setTerminalId($terminalId);
+	            //端末取引IDを登録しておく
+	            $terminalTranId = $arrOrder['terminalTranId'];
+	            $Order->setTerminalTranId($terminalTranId);
+				
+				
         	}else{
         		$torioki_orderId = $arrOrder['transactionHeadId'];
         		$TargetOrder = $this->orderRepository->getRegularCustomerByEmail($torioki_orderId);
@@ -349,6 +362,17 @@ class SmartRegiOrderController extends AbstractController
             //スマレジの取引IDを登録しておく
             $smaregiId = $arrOrder['transactionHeadId'];
             $Order->setSmaregiId($smaregiId);
+            
+            //20220204
+            //レシート番号を登録しておく
+            $transactionUuid = $arrOrder['transactionUuid'];
+            $Order->setTransactionUuid($transactionUuid);
+            //端末IDを登録しておく
+            $terminalId = $arrOrder['terminalId'];
+            $Order->setTerminalId($terminalId);
+            //端末取引IDを登録しておく
+            $terminalTranId = $arrOrder['terminalTranId'];
+            $Order->setTerminalTranId($terminalTranId);
             
             //メモをセット
             $Order->setNote($arrOrder['memo']);
@@ -405,6 +429,17 @@ class SmartRegiOrderController extends AbstractController
             //スマレジの取引IDを登録しておく
             $smaregiId = $arrOrder['transactionHeadId'];
             $Order->setSmaregiId($smaregiId);
+            
+            //20220204
+            //レシート番号を登録しておく
+            $transactionUuid = $arrOrder['transactionUuid'];
+            $Order->setTransactionUuid($transactionUuid);
+            //端末IDを登録しておく
+            $terminalId = $arrOrder['terminalId'];
+            $Order->setTerminalId($terminalId);
+            //端末取引IDを登録しておく
+            $terminalTranId = $arrOrder['terminalTranId'];
+            $Order->setTerminalTranId($terminalTranId);
             
             //メモをセット
             $Order->setNote($arrOrder['memo']);

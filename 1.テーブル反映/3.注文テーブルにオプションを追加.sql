@@ -85,3 +85,12 @@ ALTER TABLE `dtb_order` ADD `smaregi_id` varchar(20) DEFAULT NULL;
 
 --受取方法 (tentou:店頭受取、toriyose:お取り寄せ)
 ALTER TABLE `dtb_order` ADD `uketori_type` varchar(20) DEFAULT NULL;
+
+
+
+--レシート番号 20220204
+ALTER TABLE `dtb_order` ADD `transaction_uuid` varchar(30) DEFAULT NULL;
+--端末ID 20220204
+ALTER TABLE `dtb_order` ADD `terminal_id` varchar(10) DEFAULT NULL;
+--端末取引ID 20220204
+ALTER TABLE `dtb_order` ADD `terminal_tran_id` varchar(15) DEFAULT NULL;

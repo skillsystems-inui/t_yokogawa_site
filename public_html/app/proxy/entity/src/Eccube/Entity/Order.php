@@ -471,6 +471,29 @@ use Eccube\Service\PurchaseFlow\ItemCollection;
          * @ORM\Column(name="smaregi_id", type="string", length=20, nullable=true)
          */
         private $smaregi_id;
+        
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="transaction_uuid", type="string", length=30, nullable=true)
+         */
+        private $transaction_uuid;
+
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="terminal_id", type="string", length=10, nullable=true)
+         */
+        private $terminal_id;
+
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="terminal_tran_id", type="string", length=15, nullable=true)
+         */
+        private $terminal_tran_id;
+
 
         /**
          * @var string|null
@@ -1918,7 +1941,83 @@ use Eccube\Service\PurchaseFlow\ItemCollection;
         {
             return $this->smaregi_id;
         }
-                
+        
+        
+        /**
+         * Set transactionUuid.
+         *
+         * @param string|null $transactionUuid
+         *
+         * @return Order
+         */
+        public function setTransactionUuid($transactionUuid = null)
+        {
+            $this->transaction_uuid = $transactionUuid;
+
+            return $this;
+        }
+
+        /**
+         * Get transactionUuid.
+         *
+         * @return string|null
+         */
+        public function getTransactionUuid()
+        {
+            return $this->transaction_uuid;
+        }
+        
+        /**
+         * Set terminalId.
+         *
+         * @param string|null $terminalId
+         *
+         * @return Order
+         */
+        public function setTerminalId($terminalId = null)
+        {
+            $this->terminal_id = $terminalId;
+
+            return $this;
+        }
+
+        /**
+         * Get terminalId.
+         *
+         * @return string|null
+         */
+        public function getTerminalId()
+        {
+            return $this->terminal_id;
+        }
+        
+        
+        /**
+         * Set terminalTranId.
+         *
+         * @param string|null $terminalTranId
+         *
+         * @return Order
+         */
+        public function setTerminalTranId($terminalTranId = null)
+        {
+            $this->terminal_tran_id = $terminalTranId;
+
+            return $this;
+        }
+
+        /**
+         * Get terminalTranId.
+         *
+         * @return string|null
+         */
+        public function getTerminalTranId()
+        {
+            return $this->terminal_tran_id;
+        }
+        
+        
+        
         /**
          * Set uketoriType.
          *

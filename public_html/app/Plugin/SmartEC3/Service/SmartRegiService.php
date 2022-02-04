@@ -495,9 +495,20 @@ class SmartRegiService
             //スマレジ取引ID取得
             $smartTranHeadId = null;
             $smartTranHeadId = $gaRet['result'][0]['transactionHeadId'];
-
             //スマレジ取引IDをECの受注に登録
             $order->setSmaregiId($smartTranHeadId);
+            $this->entityManager->flush();
+            
+            //20220204
+            //レシート番号を登録しておく
+            $transactionUuid = $gaRet['result'][0]['transactionUuid'];
+            $order->setTransactionUuid($transactionUuid);
+            //端末IDを登録しておく
+            $terminalId = $gaRet['result'][0]['terminalId'];
+            $order->setTerminalId($terminalId);
+            //端末取引IDを登録しておく
+            $terminalTranId = $gaRet['result'][0]['terminalTranId'];
+            $order->setTerminalTranId($terminalTranId);
             $this->entityManager->flush();
             
         }else{
