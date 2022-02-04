@@ -418,6 +418,33 @@ class ProductController extends AbstractController
         //オプション別 0204↓
         $option_candle_dai_num = $form->get('option_candle_dai_num')->getData();
         $option_candle_syo_num = $form->get('option_candle_syo_num')->getData();
+        $option_candle_no1_num = $form->get('option_candle_no1_num')->getData();
+        $option_candle_no2_num = $form->get('option_candle_no2_num')->getData();
+        $option_candle_no3_num = $form->get('option_candle_no3_num')->getData();
+        $option_candle_no4_num = $form->get('option_candle_no4_num')->getData();
+        $option_candle_no5_num = $form->get('option_candle_no5_num')->getData();
+        $option_candle_no6_num = $form->get('option_candle_no6_num')->getData();
+        $option_candle_no7_num = $form->get('option_candle_no7_num')->getData();
+        $option_candle_no8_num = $form->get('option_candle_no8_num')->getData();
+        $option_candle_no9_num = $form->get('option_candle_no9_num')->getData();
+        $option_candle_no0_num = $form->get('option_candle_no0_num')->getData();
+        $option_printname_plate1 = $form->get('option_printname_plate1')->getData();
+        $option_printname_plate2 = $form->get('option_printname_plate2')->getData();
+        $option_printname_plate3 = $form->get('option_printname_plate3')->getData();
+        $option_printname_plate4 = $form->get('option_printname_plate4')->getData();
+        $option_printname_plate5 = $form->get('option_printname_plate5')->getData();
+        $option_deco_ichigo_chk     = $form->get('option_deco_ichigo_chk')->getData();
+        $option_deco_fruit_chk      = $form->get('option_deco_fruit_chk')->getData();
+        $option_deco_namachoco_chk  = $form->get('option_deco_namachoco_chk')->getData();
+        $option_deco_echoco_chk     = $form->get('option_deco_echoco_chk')->getData();
+        $option_pori_cyu_chk      = $form->get('option_pori_cyu_chk')->getData();
+        $option_pori_dai_chk      = $form->get('option_pori_dai_chk')->getData();
+        $option_pori_tokudai_chk  = $form->get('option_pori_tokudai_chk')->getData();
+        $option_housou_sentaku    = $form->get('option_housou_sentaku')->getData();
+        $option_noshi_kakekata    = $form->get('option_noshi_kakekata')->getData();
+        $option_kakehousou_syurui = $form->get('option_kakehousou_syurui')->getData();
+        $option_uwagaki_sentaku   = $form->get('option_uwagaki_sentaku')->getData();
+        $option_printname_nosina  = $form->get('option_printname_nosina')->getData();
         //オプション別 0204↑
         
         //オプションによる追加価格
@@ -439,6 +466,33 @@ class ProductController extends AbstractController
                                              $option_detail,
                                              $option_candle_dai_num,
                                              $option_candle_syo_num,
+                                             $option_candle_no1_num,
+                                             $option_candle_no2_num,
+                                             $option_candle_no3_num,
+                                             $option_candle_no4_num,
+                                             $option_candle_no5_num,
+                                             $option_candle_no6_num,
+                                             $option_candle_no7_num,
+                                             $option_candle_no8_num,
+                                             $option_candle_no9_num,
+                                             $option_candle_no0_num,
+                                             $option_printname_plate1,
+                                             $option_printname_plate2,
+                                             $option_printname_plate3,
+                                             $option_printname_plate4,
+                                             $option_printname_plate5,
+                                             $option_deco_ichigo_chk,
+                                             $option_deco_fruit_chk,
+                                             $option_deco_namachoco_chk,
+                                             $option_deco_echoco_chk,
+                                             $option_pori_cyu_chk,
+                                             $option_pori_dai_chk,
+                                             $option_pori_tokudai_chk,
+                                             $option_housou_sentaku,
+                                             $option_noshi_kakekata,
+                                             $option_kakehousou_syurui,
+                                             $option_uwagaki_sentaku,
+                                             $option_printname_nosina,
                                              $additional_option_price,
                                              $addCartData['quantity']);
         //$this->cartService->addProduct($addCartData['product_class_id'], $addCartData['quantity']);

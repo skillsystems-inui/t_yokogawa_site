@@ -358,6 +358,33 @@ class OrderHelper
             //↓[Option]オプション別
             $OptionCandleDaiNum  = $item->getOptionCandleDaiNum();
             $OptionCandleSyoNum  = $item->getOptionCandleSyoNum();
+            $OptionCandleNo1Num  = $item->getOptionCandleNo1Num();
+            $OptionCandleNo2Num  = $item->getOptionCandleNo2Num();
+            $OptionCandleNo3Num  = $item->getOptionCandleNo3Num();
+            $OptionCandleNo4Num  = $item->getOptionCandleNo4Num();
+            $OptionCandleNo5Num  = $item->getOptionCandleNo5Num();
+            $OptionCandleNo6Num  = $item->getOptionCandleNo6Num();
+            $OptionCandleNo7Num  = $item->getOptionCandleNo7Num();
+            $OptionCandleNo8Num  = $item->getOptionCandleNo8Num();
+            $OptionCandleNo9Num  = $item->getOptionCandleNo9Num();
+            $OptionCandleNo0Num  = $item->getOptionCandleNo0Num();
+            $OptionPrintnamePlate1  = $item->getOptionPrintnamePlate1();
+            $OptionPrintnamePlate2  = $item->getOptionPrintnamePlate2();
+            $OptionPrintnamePlate3  = $item->getOptionPrintnamePlate3();
+            $OptionPrintnamePlate4  = $item->getOptionPrintnamePlate4();
+            $OptionPrintnamePlate5  = $item->getOptionPrintnamePlate5();
+            $OptionDecoIchigoChk  = $item->getOptionDecoIchigoChk();
+            $OptionDecoFruitChk  = $item->getOptionDecoFruitChk();
+            $OptionDecoNamachocoChk  = $item->getOptionDecoNamachocoChk();
+            $OptionDecoEchocoChk  = $item->getOptionDecoEchocoChk();
+            $OptionPoriCyuChk  = $item->getOptionPoriCyuChk();
+            $OptionPoriDaiChk  = $item->getOptionPoriDaiChk();
+            $OptionPoriTokudaiChk  = $item->getOptionPoriTokudaiChk();
+            $OptionHousouSentaku  = $item->getOptionHousouSentaku();
+            $OptionNoshiKakekata  = $item->getOptionNoshiKakekata();
+            $OptionKakehousouSyurui  = $item->getOptionKakehousouSyurui();
+            $OptionUwagakiSentaku  = $item->getOptionUwagakiSentaku();
+            $OptionPrintnameNosina  = $item->getOptionPrintnameNosina();
 	        //↑[Option]オプション別
             //-------------------------------------------------------
             
@@ -399,6 +426,87 @@ class OrderHelper
             }
             if (!is_null($OptionCandleSyoNum)) {
                 $OrderItem->setOptionCandleSyoNum($OptionCandleSyoNum);
+            }
+            if (!is_null($OptionCandleNo1Num)) {
+                $OrderItem->setOptionCandleNo1Num($OptionCandleNo1Num);
+            }
+            if (!is_null($OptionCandleNo2Num)) {
+                $OrderItem->setOptionCandleNo2Num($OptionCandleNo2Num);
+            }
+            if (!is_null($OptionCandleNo3Num)) {
+                $OrderItem->setOptionCandleNo3Num($OptionCandleNo3Num);
+            }
+            if (!is_null($OptionCandleNo4Num)) {
+                $OrderItem->setOptionCandleNo4Num($OptionCandleNo4Num);
+            }
+            if (!is_null($OptionCandleNo5Num)) {
+                $OrderItem->setOptionCandleNo5Num($OptionCandleNo5Num);
+            }
+            if (!is_null($OptionCandleNo6Num)) {
+                $OrderItem->setOptionCandleNo6Num($OptionCandleNo6Num);
+            }
+            if (!is_null($OptionCandleNo7Num)) {
+                $OrderItem->setOptionCandleNo7Num($OptionCandleNo7Num);
+            }
+            if (!is_null($OptionCandleNo8Num)) {
+                $OrderItem->setOptionCandleNo8Num($OptionCandleNo8Num);
+            }
+            if (!is_null($OptionCandleNo9Num)) {
+                $OrderItem->setOptionCandleNo9Num($OptionCandleNo9Num);
+            }
+            if (!is_null($OptionCandleNo0Num)) {
+                $OrderItem->setOptionCandleNo0Num($OptionCandleNo0Num);
+            }
+            if (!is_null($OptionPrintnamePlate1)) {
+                $OrderItem->setOptionPrintnamePlate1($OptionPrintnamePlate1);
+            }
+            if (!is_null($OptionPrintnamePlate2)) {
+                $OrderItem->setOptionPrintnamePlate2($OptionPrintnamePlate2);
+            }
+            if (!is_null($OptionPrintnamePlate3)) {
+                $OrderItem->setOptionPrintnamePlate3($OptionPrintnamePlate3);
+            }
+            if (!is_null($OptionPrintnamePlate4)) {
+                $OrderItem->setOptionPrintnamePlate4($OptionPrintnamePlate4);
+            }
+            if (!is_null($OptionPrintnamePlate5)) {
+                $OrderItem->setOptionPrintnamePlate5($OptionPrintnamePlate5);
+            }
+            if (!is_null($OptionDecoIchigoChk)) {
+                $OrderItem->setOptionDecoIchigoChk($OptionDecoIchigoChk);
+            }
+            if (!is_null($OptionDecoFruitChk)) {
+                $OrderItem->setOptionDecoFruitChk($OptionDecoFruitChk);
+            }
+            if (!is_null($OptionDecoNamachocoChk)) {
+                $OrderItem->setOptionDecoNamachocoChk($OptionDecoNamachocoChk);
+            }
+            if (!is_null($OptionDecoEchocoChk)) {
+                $OrderItem->setOptionDecoEchocoChk($OptionDecoEchocoChk);
+            }
+            if (!is_null($OptionPoriCyuChk)) {
+                $OrderItem->setOptionPoriCyuChk($OptionPoriCyuChk);
+            }
+            if (!is_null($OptionPoriDaiChk)) {
+                $OrderItem->setOptionPoriDaiChk($OptionPoriDaiChk);
+            }
+            if (!is_null($OptionPoriTokudaiChk)) {
+                $OrderItem->setOptionPoriTokudaiChk($OptionPoriTokudaiChk);
+            }
+            if (!is_null($OptionHousouSentaku)) {
+                $OrderItem->setOptionHousouSentaku($OptionHousouSentaku);
+            }
+            if (!is_null($OptionNoshiKakekata)) {
+                $OrderItem->setOptionNoshiKakekata($OptionNoshiKakekata);
+            }
+            if (!is_null($OptionKakehousouSyurui)) {
+                $OrderItem->setOptionKakehousouSyurui($OptionKakehousouSyurui);
+            }
+            if (!is_null($OptionUwagakiSentaku)) {
+                $OrderItem->setOptionUwagakiSentaku($OptionUwagakiSentaku);
+            }
+            if (!is_null($OptionPrintnameNosina)) {
+                $OrderItem->setOptionPrintnameNosina($OptionPrintnameNosina);
             }
 	        //↑[Option]オプション別
 	        //-------------------------------------------------------

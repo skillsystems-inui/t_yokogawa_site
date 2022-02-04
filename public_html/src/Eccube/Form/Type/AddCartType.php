@@ -341,7 +341,8 @@ class AddCartType extends AbstractType
                 ],
             ]);
             
-            //オプション別
+            
+            //-----オプション別↓-----
             $builder->add('option_candle_dai_num', TextareaType::class, [
                 'required' => false,
                 'attr' => [
@@ -362,6 +363,281 @@ class AddCartType extends AbstractType
                     new Length(['min' => 0, 'max' => 1024]),
                 ],
             ]);
+            
+            $builder->add('option_candle_no1_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_candle_no2_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_candle_no3_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_candle_no4_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_candle_no5_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_candle_no6_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_candle_no7_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_candle_no8_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_candle_no9_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_candle_no0_num', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            
+            $builder->add('option_printname_plate1', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_printname_plate2', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_printname_plate3', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_printname_plate4', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_printname_plate5', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            
+            $builder->add('option_deco_ichigo_chk', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_deco_fruit_chk', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_deco_namachoco_chk', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_deco_echoco_chk', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_pori_cyu_chk', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_pori_dai_chk', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_pori_tokudai_chk', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_housou_sentaku', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_noshi_kakekata', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_kakehousou_syurui', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_uwagaki_sentaku', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            $builder->add('option_printname_nosina', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                    'style' => 'min-height : 20px',
+                ],
+                'constraints' => [
+                    new Length(['min' => 0, 'max' => 100]),
+                ],
+            ]);
+            
+            //-----オプション別↑-----
             
             
             

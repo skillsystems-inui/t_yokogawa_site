@@ -1820,7 +1820,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
          *
          * @return CartItem
          */
-        public function setOoptionKakehousouSyurui($option_kakehousou_syurui = null)
+        public function setOptionKakehousouSyurui($option_kakehousou_syurui = null)
         {
             $this->option_kakehousou_syurui = $option_kakehousou_syurui;
 

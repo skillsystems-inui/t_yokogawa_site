@@ -381,6 +381,33 @@ class CartService
      * @param $OptionDetail オプション選択情報
      * @param $option_candle_dai_num オプション別
      * @param $option_candle_syo_num オプション別
+     * @param $option_candle_no1_num オプション別
+     * @param $option_candle_no2_num オプション別
+     * @param $option_candle_no3_num オプション別
+     * @param $option_candle_no4_num オプション別
+     * @param $option_candle_no5_num オプション別
+     * @param $option_candle_no6_num オプション別
+     * @param $option_candle_no7_num オプション別
+     * @param $option_candle_no8_num オプション別
+     * @param $option_candle_no9_num オプション別
+     * @param $option_candle_no0_num オプション別
+     * @param $option_printname_plate1 オプション別
+     * @param $option_printname_plate2 オプション別
+     * @param $option_printname_plate3 オプション別
+     * @param $option_printname_plate4 オプション別
+     * @param $option_printname_plate5 オプション別
+     * @param $option_deco_ichigo_chk    オプション別
+     * @param $option_deco_fruit_chk     オプション別
+     * @param $option_deco_namachoco_chk オプション別
+     * @param $option_deco_echoco_chk    オプション別
+     * @param $option_pori_cyu_chk      オプション別
+     * @param $option_pori_dai_chk      オプション別
+     * @param $option_pori_tokudai_chk  オプション別
+     * @param $option_housou_sentaku    オプション別
+     * @param $option_noshi_kakekata    オプション別
+     * @param $option_kakehousou_syurui オプション別
+     * @param $option_uwagaki_sentaku   オプション別
+     * @param $option_printname_nosina  オプション別
      * @param $additional_option_price 追加料金
      * @param $quantity int 数量
      *
@@ -390,6 +417,33 @@ class CartService
                                      $OptionDetail,
                                      $option_candle_dai_num,
                                      $option_candle_syo_num,
+                                     $option_candle_no1_num,
+                                     $option_candle_no2_num,
+                                     $option_candle_no3_num,
+                                     $option_candle_no4_num,
+                                     $option_candle_no5_num,
+                                     $option_candle_no6_num,
+                                     $option_candle_no7_num,
+                                     $option_candle_no8_num,
+                                     $option_candle_no9_num,
+                                     $option_candle_no0_num,
+                                     $option_printname_plate1,
+                                     $option_printname_plate2,
+                                     $option_printname_plate3,
+                                     $option_printname_plate4,
+                                     $option_printname_plate5,
+                                     $option_deco_ichigo_chk,
+                                     $option_deco_fruit_chk,
+                                     $option_deco_namachoco_chk,
+                                     $option_deco_echoco_chk,
+                                     $option_pori_cyu_chk,
+                                     $option_pori_dai_chk,
+                                     $option_pori_tokudai_chk,
+                                     $option_housou_sentaku,
+                                     $option_noshi_kakekata,
+                                     $option_kakehousou_syurui,
+                                     $option_uwagaki_sentaku,
+                                     $option_printname_nosina,
                                      $additional_option_price,
                                      $quantity = 1)
     {
@@ -426,7 +480,35 @@ class CartService
         //↓[Option]オプション別
         $newItem->setOptionCandleDaiNum($option_candle_dai_num);
         $newItem->setOptionCandleSyoNum($option_candle_syo_num);
+        $newItem->setOptionCandleNo1Num($option_candle_no1_num);
+        $newItem->setOptionCandleNo2Num($option_candle_no2_num);
+        $newItem->setOptionCandleNo3Num($option_candle_no3_num);
+        $newItem->setOptionCandleNo4Num($option_candle_no4_num);
+        $newItem->setOptionCandleNo5Num($option_candle_no5_num);
+        $newItem->setOptionCandleNo6Num($option_candle_no6_num);
+        $newItem->setOptionCandleNo7Num($option_candle_no7_num);
+        $newItem->setOptionCandleNo8Num($option_candle_no8_num);
+        $newItem->setOptionCandleNo9Num($option_candle_no9_num);
+        $newItem->setOptionCandleNo0Num($option_candle_no0_num);
+        $newItem->setOptionPrintnamePlate1($option_printname_plate1);
+        $newItem->setOptionPrintnamePlate2($option_printname_plate2);
+        $newItem->setOptionPrintnamePlate3($option_printname_plate3);
+        $newItem->setOptionPrintnamePlate4($option_printname_plate4);
+        $newItem->setOptionPrintnamePlate5($option_printname_plate5);
+        $newItem->setOptionDecoIchigoChk($option_deco_ichigo_chk);
+        $newItem->setOptionDecoFruitChk($option_deco_fruit_chk);
+        $newItem->setOptionDecoNamachocoChk($option_deco_namachoco_chk);
+        $newItem->setOptionDecoEchocoChk($option_deco_echoco_chk);
+        $newItem->setOptionPoriCyuChk($option_pori_cyu_chk);
+        $newItem->setOptionPoriDaiChk($option_pori_dai_chk);
+        $newItem->setOptionPoriTokudaiChk($option_pori_tokudai_chk);
+        $newItem->setOptionHousouSentaku($option_housou_sentaku);
+        $newItem->setOptionNoshiKakekata($option_noshi_kakekata);
+        $newItem->setOptionKakehousouSyurui($option_kakehousou_syurui);
+        $newItem->setOptionUwagakiSentaku($option_uwagaki_sentaku);
+        $newItem->setOptionPrintnameNosina($option_printname_nosina);
         //↑[Option]オプション別
+
         
 		//[Option]追加料金を登録する
 		$newItem->setAdditionalPrice($additional_option_price);

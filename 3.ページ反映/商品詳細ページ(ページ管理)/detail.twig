@@ -526,7 +526,7 @@ file that was distributed with this source code.
 				if(chk_candle_nosel.checked != true){
 					//キャンドル大
 					if(candle_dai_num.value != ''){
-						optionselect_candle = optionselect_candle + ' キャンドル大:'
+						optionselect_candle = optionselect_candle + ' キャンドル大:';
 						optionselect_candle = optionselect_candle + ' ' + candle_dai_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + '\n';
 						
@@ -536,7 +536,7 @@ file that was distributed with this source code.
 					
 					//キャンドル小
 					if(candle_syo_num.value != ''){
-						optionselect_candle = optionselect_candle + ' キャンドル小:'
+						optionselect_candle = optionselect_candle + ' キャンドル小:';
 						optionselect_candle = optionselect_candle + ' ' + candle_syo_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + '\n';
 						
@@ -550,12 +550,14 @@ file that was distributed with this source code.
 						var $plus_price_cn1 = candle_no1_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn1;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' Noキャンドル:';
 						optionselect_candle = optionselect_candle + ' 「' + candle_no1_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no1_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn1 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
 						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_no1_num").textContent = candle_no1_num.value + '本';
 					}
 					
 					//Noキャンドル(2)
@@ -564,11 +566,14 @@ file that was distributed with this source code.
 						var $plus_price_cn2 = candle_no2_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn2;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' Noキャンドル:';
 						optionselect_candle = optionselect_candle + ' 「' + candle_no2_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no2_num.value + '本'; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn2 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_no2_num").textContent = candle_no2_num.value + '本';
 					}
 					
 					//Noキャンドル(3)
@@ -577,11 +582,14 @@ file that was distributed with this source code.
 						var $plus_price_cn3 = candle_no3_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn3;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' Noキャンドル:';
 						optionselect_candle = optionselect_candle + ' 「' + candle_no3_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no3_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn3 + '円) '; 
 						optionselect_candle = optionselect_candle + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_no3_num").textContent = candle_no3_num.value + '本';
 					}
 					//Noキャンドル(4)
 					if(candle_no4_no.value != '' && candle_no4_num.value != ''){
@@ -589,12 +597,14 @@ file that was distributed with this source code.
 						var $plus_price_cn4 = candle_no4_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn4;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' Noキャンドル:';
 						optionselect_candle = optionselect_candle + ' 「' + candle_no4_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no4_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn4 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
 						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_no4_num").textContent = candle_no4_num.value + '本';
 					}
 					
 					//Noキャンドル(5)
@@ -603,11 +613,14 @@ file that was distributed with this source code.
 						var $plus_price_cn5 = candle_no5_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn5;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' Noキャンドル:';
 						optionselect_candle = optionselect_candle + ' 「' + candle_no5_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no5_num.value + '本'; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn5 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_no5_num").textContent = candle_no5_num.value + '本';
 					}
 					
 					//Noキャンドル(6)
@@ -616,11 +629,14 @@ file that was distributed with this source code.
 						var $plus_price_cn6 = candle_no6_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn6;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' Noキャンドル:';
 						optionselect_candle = optionselect_candle + ' 「' + candle_no6_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no6_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn6 + '円) '; 
 						optionselect_candle = optionselect_candle + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_no6_num").textContent = candle_no6_num.value + '本';
 					}
 					
 					//Noキャンドル(7)
@@ -629,11 +645,14 @@ file that was distributed with this source code.
 						var $plus_price_cn7 = candle_no7_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn7;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' Noキャンドル:';
 						optionselect_candle = optionselect_candle + ' 「' + candle_no7_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no7_num.value + '本'; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn7 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_no7_num").textContent = candle_no7_num.value + '本';
 					}
 					
 					//Noキャンドル(8)
@@ -642,11 +661,14 @@ file that was distributed with this source code.
 						var $plus_price_cn8 = candle_no8_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn8;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' Noキャンドル:';
 						optionselect_candle = optionselect_candle + ' 「' + candle_no8_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no8_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn8 + '円) '; 
 						optionselect_candle = optionselect_candle + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_no8_num").textContent = candle_no8_num.value + '本';
 					}
 					//Noキャンドル(9)
 					if(candle_no9_no.value != '' && candle_no9_num.value != ''){
@@ -654,12 +676,14 @@ file that was distributed with this source code.
 						var $plus_price_cn9 = candle_no9_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn9;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' Noキャンドル:';
 						optionselect_candle = optionselect_candle + ' 「' + candle_no9_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no9_num.value + '本 '; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn9 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
 						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_no9_num").textContent = candle_no9_num.value + '本';
 					}
 					
 					//Noキャンドル(0)
@@ -668,11 +692,14 @@ file that was distributed with this source code.
 						var $plus_price_cn0 = candle_no0_num.value*$no_candle;
 						$addprice = $addprice + $plus_price_cn0;
 						
-						optionselect_candle = optionselect_candle + ' Noキャンドル:'
+						optionselect_candle = optionselect_candle + ' Noキャンドル:';
 						optionselect_candle = optionselect_candle + ' 「' + candle_no0_no.value + '」';
 						optionselect_candle = optionselect_candle + ' ' + candle_no0_num.value + '本'; 
 						optionselect_candle = optionselect_candle + ' (+' + $plus_price_cn0 + '円) ';
 						optionselect_candle = optionselect_candle + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_candle_no0_num").textContent = candle_no0_num.value + '本';
 					}
 				}else{
 					//・キャンドル指定なし
@@ -711,6 +738,9 @@ file that was distributed with this source code.
 						optionselect_message = optionselect_message + ' メッセージ入力:';
 						optionselect_message = optionselect_message + ' ' + p_message + ' '; 
 						optionselect_message = optionselect_message + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_printname_plate1").textContent = p_message;
 					}
 					
 					//メッセージ2
@@ -723,6 +753,9 @@ file that was distributed with this source code.
 							optionselect_message = optionselect_message + ' メッセージ入力(2枚目)' + '(+' + $deco_tuika_plate + '円):';
 							optionselect_message = optionselect_message + ' ' + p_message + ' '; 
 							optionselect_message = optionselect_message + '\n';
+							
+							//0204オプション選択別テキストエリアに出力する
+	            			document.getElementById("option_printname_plate2").textContent = p_message;
 						}
 					}
 					
@@ -736,6 +769,9 @@ file that was distributed with this source code.
 							optionselect_message = optionselect_message + ' メッセージ入力(3枚目)' + '(+' + $deco_tuika_plate + '円):';
 							optionselect_message = optionselect_message + ' ' + p_message + ' '; 
 							optionselect_message = optionselect_message + '\n';
+							
+							//0204オプション選択別テキストエリアに出力する
+	            			document.getElementById("option_printname_plate3").textContent = p_message;
 						}
 					}
 					//メッセージ4
@@ -748,6 +784,9 @@ file that was distributed with this source code.
 							optionselect_message = optionselect_message + ' メッセージ入力(4枚目)' + '(+' + $deco_tuika_plate + '円):';
 							optionselect_message = optionselect_message + ' ' + p_message + ' '; 
 							optionselect_message = optionselect_message + '\n';
+							
+							//0204オプション選択別テキストエリアに出力する
+	            			document.getElementById("option_printname_plate4").textContent = p_message;
 						}
 					}
 					//メッセージ5
@@ -760,6 +799,9 @@ file that was distributed with this source code.
 							optionselect_message = optionselect_message + ' メッセージ入力(5枚目)' + '(+' + $deco_tuika_plate + '円):';
 							optionselect_message = optionselect_message + ' ' + p_message + ' '; 
 							optionselect_message = optionselect_message + '\n';
+							
+							//0204オプション選択別テキストエリアに出力する
+	            			document.getElementById("option_printname_plate5").textContent = p_message;
 						}
 					}
 				}else{
@@ -784,8 +826,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($deco_ichigo_up);
 						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: いちごUP (+400円)' 
+						optionselect_deco = optionselect_deco + ' デコレーション追加: いちごUP (+400円)'; 
 						optionselect_deco = optionselect_deco + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_deco_ichigo_chk").textContent = 'デコレーション追加: いちごUP (+400円)' ;
 					}
 					//フルーツUP
 					const fruit_chk = document.getElementById("fruit_chk");
@@ -795,8 +840,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($deco_fluit_up);
 						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: フルーツUP (+400円)' 
+						optionselect_deco = optionselect_deco + ' デコレーション追加: フルーツUP (+400円)'; 
 						optionselect_deco = optionselect_deco + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_deco_fruit_chk").textContent = 'デコレーション追加: フルーツUP (+400円)'; 
 					}
 					//生チョコUP
 					const namachoco_chk = document.getElementById("namachoco_chk");
@@ -806,8 +854,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($deco_namachoco_up);
 						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: 生チョコUP (+400円)' 
+						optionselect_deco = optionselect_deco + ' デコレーション追加: 生チョコUP (+400円)'; 
 						optionselect_deco = optionselect_deco + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_deco_namachoco_chk").textContent = 'デコレーション追加: 生チョコUP (+400円)';
 					}
 					//絵チョコ(4号)
 					const echoco_chk = document.getElementById("echoco_chk");
@@ -817,8 +868,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($deco_echoco_yongou);
 						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: 絵チョコ(4号) (+800円)' 
+						optionselect_deco = optionselect_deco + ' デコレーション追加: 絵チョコ(4号) (+800円)';
 						optionselect_deco = optionselect_deco + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_deco_echoco_chk").textContent = 'デコレーション追加: 絵チョコ(4号) (+800円)';
 					}
 
 				}else{
@@ -844,9 +898,12 @@ file that was distributed with this source code.
 					    }
 					}
 					if(checkHaiso != ''){
-						optionselect_gift = optionselect_gift + ' 包装方法を選択:'
+						optionselect_gift = optionselect_gift + ' 包装方法を選択:';
 						optionselect_gift = optionselect_gift + ' ' + checkHaiso + ' '; 
 						optionselect_gift = optionselect_gift + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_housou_sentaku").textContent = checkHaiso;
 					}
 					
 					//熨斗紙の掛け方選択
@@ -859,9 +916,12 @@ file that was distributed with this source code.
 					    }
 					}
 					if(checkHKakekata != ''){
-						optionselect_gift = optionselect_gift + ' 熨斗紙の掛け方を選択:'
+						optionselect_gift = optionselect_gift + ' 熨斗紙の掛け方を選択:';
 						optionselect_gift = optionselect_gift + ' ' + checkHKakekata + ' '; 
 						optionselect_gift = optionselect_gift + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_noshi_kakekata").textContent = checkHKakekata;
 					}
 					
 					//掛け紙・包装の種類選択
@@ -875,9 +935,12 @@ file that was distributed with this source code.
 					}
 					if(checkSyurui != ''){
 						
-						optionselect_gift = optionselect_gift + ' 掛け紙・包装の種類を選択:'
+						optionselect_gift = optionselect_gift + ' 掛け紙・包装の種類を選択:';
 						optionselect_gift = optionselect_gift + ' ' + checkSyurui + ' '; 
 						optionselect_gift = optionselect_gift + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_kakehousou_syurui").textContent = ' ' + checkSyurui + ' ';
 					}
 					
 					//上書きを選択
@@ -891,17 +954,23 @@ file that was distributed with this source code.
 					}
 					if(checkUwagaki != ''){
 						
-						optionselect_gift = optionselect_gift + ' 上書きを選択:'
+						optionselect_gift = optionselect_gift + ' 上書きを選択:';
 						optionselect_gift = optionselect_gift + ' ' + checkUwagaki + ' '; 
 						optionselect_gift = optionselect_gift + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_uwagaki_sentaku").textContent = checkUwagaki;
 					}
 					
 					//熨斗の名入れ希望
 					if(document.getElementById("printname_noshi") != null){
 						const p_message = document.getElementById("printname_noshi").value;
-						optionselect_gift = optionselect_gift + ' 熨斗の名入れ希望:'
+						optionselect_gift = optionselect_gift + ' 熨斗の名入れ希望:';
 						optionselect_gift = optionselect_gift + ' ' + p_message + ' '; 
 						optionselect_gift = optionselect_gift + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_printname_nosina").textContent = p_message;
 					}
 					
 				}else{
@@ -925,8 +994,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($bag_poli_cyu);
 						
 						//チェックあり
-						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 中 (+10円)' 
+						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 中 (+10円)';
 						optionselect_bag = optionselect_bag + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_pori_cyu_chk").textContent = '持ち帰りポリ袋: ポリ袋 中 (+10円)';
 					}
 					//ポリ袋 大
 					const pori_dai_chk = document.getElementById("pori_dai_chk");
@@ -935,8 +1007,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($bag_poli_dai);
 						
 						//チェックあり
-						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 大 (+10円)' 
+						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 大 (+10円)';
 						optionselect_bag = optionselect_bag + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_pori_dai_chk").textContent = '持ち帰りポリ袋: ポリ袋 大 (+10円)';
 					}
 					//ポリ袋 特大
 					const pori_tokudai_chk = document.getElementById("pori_tokudai_chk");
@@ -945,8 +1020,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($bag_poli_tokudai);
 						
 						//チェックあり
-						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 特大 (+30円)' 
+						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 特大 (+30円)'; 
 						optionselect_bag = optionselect_bag + '\n';
+						
+						//0204オプション選択別テキストエリアに出力する
+            			document.getElementById("option_pori_tokudai_chk").textContent = '持ち帰りポリ袋: ポリ袋 特大 (+30円)';
 					}
 
 				}else{
@@ -3645,6 +3723,174 @@ file that was distributed with this source code.
 				                                    {{ form_errors(form.option_candle_syo_num) }}
 				                                </div>
 				                            {% endif %}
+				                            
+				                            
+				                            {% if form.option_candle_no1_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_no1_num) }}
+				                                    {{ form_errors(form.option_candle_no1_num) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_candle_no2_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_no2_num) }}
+				                                    {{ form_errors(form.option_candle_no2_num) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_candle_no3_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_no3_num) }}
+				                                    {{ form_errors(form.option_candle_no3_num) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_candle_no4_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_no4_num) }}
+				                                    {{ form_errors(form.option_candle_no4_num) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_candle_no5_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_no5_num) }}
+				                                    {{ form_errors(form.option_candle_no5_num) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_candle_no6_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_no6_num) }}
+				                                    {{ form_errors(form.option_candle_no6_num) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_candle_no7_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_no7_num) }}
+				                                    {{ form_errors(form.option_candle_no7_num) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_candle_no8_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_no8_num) }}
+				                                    {{ form_errors(form.option_candle_no8_num) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_candle_no9_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_no9_num) }}
+				                                    {{ form_errors(form.option_candle_no9_num) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_candle_no0_num is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_candle_no0_num) }}
+				                                    {{ form_errors(form.option_candle_no0_num) }}
+				                                </div>
+				                            {% endif %}
+				                            
+				                            {% if form.option_printname_plate1 is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_printname_plate1) }}
+				                                    {{ form_errors(form.option_printname_plate1) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_printname_plate2 is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_printname_plate2) }}
+				                                    {{ form_errors(form.option_printname_plate2) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_printname_plate3 is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_printname_plate3) }}
+				                                    {{ form_errors(form.option_printname_plate3) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_printname_plate4 is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_printname_plate4) }}
+				                                    {{ form_errors(form.option_printname_plate4) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_printname_plate5 is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_printname_plate5) }}
+				                                    {{ form_errors(form.option_printname_plate5) }}
+				                                </div>
+				                            {% endif %}
+				                            
+				                            {% if form.option_deco_ichigo_chk is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_deco_ichigo_chk) }}
+				                                    {{ form_errors(form.option_deco_ichigo_chk) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_deco_fruit_chk is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_deco_fruit_chk) }}
+				                                    {{ form_errors(form.option_deco_fruit_chk) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_deco_namachoco_chk is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_deco_namachoco_chk) }}
+				                                    {{ form_errors(form.option_deco_namachoco_chk) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_deco_echoco_chk is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_deco_echoco_chk) }}
+				                                    {{ form_errors(form.option_deco_echoco_chk) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_pori_cyu_chk is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_pori_cyu_chk) }}
+				                                    {{ form_errors(form.option_pori_cyu_chk) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_pori_dai_chk is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_pori_dai_chk) }}
+				                                    {{ form_errors(form.option_pori_dai_chk) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_pori_tokudai_chk is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_pori_tokudai_chk) }}
+				                                    {{ form_errors(form.option_pori_tokudai_chk) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_housou_sentaku is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_housou_sentaku) }}
+				                                    {{ form_errors(form.option_housou_sentaku) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_noshi_kakekata is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_noshi_kakekata) }}
+				                                    {{ form_errors(form.option_noshi_kakekata) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_kakehousou_syurui is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_kakehousou_syurui) }}
+				                                    {{ form_errors(form.option_kakehousou_syurui) }}
+				                                </div>
+				                            {% endif %}
+				                            
+				                            {% if form.option_uwagaki_sentaku is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_uwagaki_sentaku) }}
+				                                    {{ form_errors(form.option_uwagaki_sentaku) }}
+				                                </div>
+				                            {% endif %}
+				                            {% if form.option_printname_nosina is defined %}
+				                                <div style="display:none;">
+				                                    {{ form_widget(form.option_printname_nosina) }}
+				                                    {{ form_errors(form.option_printname_nosina) }}
+				                                </div>
+				                            {% endif %}
+				                            
 											<!-- ↑オプション別 -->
 											
 											
