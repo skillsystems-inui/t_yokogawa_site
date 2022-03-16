@@ -103,10 +103,11 @@
 			                    		<!-- “ú•t•\Ž¦Žw‚È‚µ -->
 			                    		<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}</span></td>
 			                    	{% endif %}
+			                    
 			                    {% if day|date('w') == 6 or loop.last %}
 			                    
 			                        <!-- ÅIT‚ª“y—j‚Ü‚Å‚È‚¯‚ê‚Î•â“U‚·‚é -->
-			                        {% if loop.last %}
+			                        {% if loop.last and day|date('w') != 6%}
 			                        	{% for i in (day|date('w')+1)..6 %}
 			                                {% if i == 6 %}
 			                                	<td class=" sat"><span></span></td>
