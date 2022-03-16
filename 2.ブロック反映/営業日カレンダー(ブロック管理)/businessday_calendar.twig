@@ -88,19 +88,29 @@
 			                        <!-- 6週目がある場合、5週目での翌週の日付も表示する -->
 			                        {% set dayview = day|date('j') %}
 			                        {% if week_cnt == 4 %}
-			                        	<!-- 翌週の日付が付きの最終日以内なら表示する -->
+			                        	<!-- 翌週の日付が次の最終日以内なら表示する -->
 			                        	{% set nextweekday = day|date('j') + 7 %}
 			                        	{% if nextweekday <= month_last_day %}
 			                        		{% set dayview = dayview~'/'~nextweekday %}
 			                        	{% endif %}
 			                        {% endif %}
 			                        
+			                        <!-- 祝日表示指定(日曜と同じスタイル) -->
+			                        <!-- ※指定方法: month == '指定月' and day|date('j') == '指定日' -->
+			                        {% if month == '3' and day|date('j') == '21' %}
+			                        	 {% set class = class ~ ' sun' %}
+			                        {% elseif month == '4' and day|date('j') == '29' %}
+			                        	 {% set class = class ~ ' sun' %}
+			                    	{% endif %}
+			                        
 			                        <!-- 日付表示指定あり -->
 			                        <!-- ※指定方法: month == '指定月' and day|date('j') == '指定日' -->
-			                        {% if month == '10' and day|date('j') == '3' %}
+			                        {% if month == '4' and day|date('j') == '10' %}
 			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">18時閉店</small></span></td>
+			                    	{% elseif month == '3' and day|date('j') == '31' %}
+			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17時閉店</small></span></td>
 			                    	{% else %}
-			                    		<!-- 日付表示指なし -->
+			                    		<!-- 日付表示指定なし -->
 			                    		<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}</span></td>
 			                    	{% endif %}
 			                    
