@@ -237,8 +237,11 @@ class SmartRegiOrderController extends AbstractController
 
         $Order = new Order();
 
+        //受注親情報
+    	$headOrder = null;
+        
         foreach ($arrData as $info) {
-            switch ($info->table_name) {
+        	switch ($info->table_name) {
                 case 'TransactionHead':
                 	$arrOrder = json_decode(json_encode($info->rows[0]), true);
                 	
@@ -250,19 +253,20 @@ class SmartRegiOrderController extends AbstractController
 			        );
 			        
                     $Order = $this->fillOrder($Order, $arrOrder);
+                    //受注親情報セット
+        			$headOrder = $arrOrder;
                     break;
                 case 'TransactionDetail':
                     $arrOrderItems = json_decode(json_encode($info->rows), true);
-                    $arrOrder = json_decode(json_encode($info->rows[0]), true);
                     
                 	log_info(
 			            '受注データ作成(TransactionDetail)',
 			            [
-			                'arrOrder' => $arrOrder
+			                'headOrder' => $headOrder
 			            ]
 			        );
 			        
-                    $Order = $this->setOrderItems($Order, $arrOrderItems, $arrOrder);
+                    $Order = $this->setOrderItems($Order, $arrOrderItems, $headOrder);
                     break;
                 default:
                     break;
@@ -315,7 +319,7 @@ class SmartRegiOrderController extends AbstractController
         	
         	
         	log_info(
-	            '受注情報登録_付加処理　紐づく商品データ取得開始',
+	            '受注情報登録　取り置きキャンセル　紐づく商品データ取得開始',
 	            [
 	                'Order' => $Order
 	            ]
@@ -324,7 +328,7 @@ class SmartRegiOrderController extends AbstractController
             foreach ($OrderItems as $OrderItem) {
             
 	            log_info(
-		            '受注情報登録_付加処理　紐づく商品データ取得して削除実行',
+		            '受注情報登録　取り置きキャンセル　紐づく商品データ取得して削除実行',
 		            [
 		                'OrderItem' => $OrderItem
 		            ]
@@ -335,14 +339,14 @@ class SmartRegiOrderController extends AbstractController
                 $this->entityManager->flush($OrderItem);
                 
                 log_info(
-		            '受注情報登録_付加処理　紐づく商品データ取得して削除完了',
+		            '受注情報登録　取り置きキャンセル　紐づく商品データ取得して削除完了',
 		            [
 		                'Order' => $Order
 		            ]
 		        );
             }
         	log_info(
-	            '受注情報登録_付加処理　紐づく商品データ取得終了',
+	            '受注情報登録　取り置きキャンセル　紐づく商品データ取得終了',
 	            [
 	                'Order' => $Order
 	            ]
@@ -392,14 +396,45 @@ class SmartRegiOrderController extends AbstractController
 				$Order->setOrderStatus($OrderStatus);
 				
 				//20220317
-				//小計も更新する
-				log_info(
-		            '受注情報　取り置き商品購入判定　小計セット',
+				//↓金額・ポイントも更新する
+				$Order->setSubtotal($arrOrder['subtotalForDiscount']);
+		        $Order->setCharge(0);
+
+		        $discount = $arrOrder['subtotalDiscountPrice'] + $arrOrder['couponDiscount'];
+		        $Order->setDiscount($discount);
+
+		        $Order->setTax($arrOrder['taxInclude']);
+		        $Order->setTotal($arrOrder['total']);
+		        $Order->setPaymentTotal($arrOrder['total']);
+
+		        $Order->setUsePoint($arrOrder['spendPoint']);
+		        $Order->setAddPoint($arrOrder['newPoint']);
+
+		        // Payment type and method
+		        $payment_id = $arrOrder['paymentMethodId1'] ? $arrOrder['paymentMethodId1'] : 0;
+		        if($payment_id != 0){
+		            $Payment = $this->paymentRepository->find($payment_id);
+		            $Order->setPayment($Payment);
+		        }
+		        //skill custom スマレジで購入したデータは支払方法がnullで送られてくるので「スマレジ」ではなく「店舗支払い」とする 
+		        //$method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"スマレジ";
+		        $method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"店舗支払い";
+		        $Order->setPaymentMethod($method);
+		        log_info(
+		            '受注情報　取り置き商品購入判定　金額・ポイントセット',
 		            [
 		                'subtotalForDiscount' => $arrOrder['subtotalForDiscount'],
+		                'discount' => $discount,
+		                'taxInclude' => $arrOrder['taxInclude'],
+		                'total' => $arrOrder['total'],
+		                'PaymentTotal' => $arrOrder['total'],
+		                'UsePoint' => $arrOrder['spendPoint'],
+		                'AddPoint' => $arrOrder['newPoint'],
+		                'method' => $method,
 		            ]
 		        );
-				$Order->setSubtotal($arrOrder['subtotalForDiscount']);
+		        //↑金額・ポイントも更新する
+				
 				
 				//20220204
 	            //レシート番号を登録しておく
@@ -431,6 +466,29 @@ class SmartRegiOrderController extends AbstractController
 	            $Order->setTerminalTranId($terminalTranId);
 				
 				
+				$OrderItems = $this->orderItemRepository->findBy(['Order' => $Order]);
+	            foreach ($OrderItems as $OrderItem) {
+	            
+		            log_info(
+			            '受注情報登録　取り置き商品購入判定　紐づく商品データ取得して削除実行',
+			            [
+			                'OrderItem' => $OrderItem
+			            ]
+			        );
+	            
+	                $Order->removeOrderItem($OrderItem);
+	                $this->entityManager->remove($OrderItem);
+	                $this->entityManager->flush($OrderItem);
+	                
+	                log_info(
+			            '受注情報登録　取り置き商品購入判定　紐づく商品データ取得して削除完了',
+			            [
+			                'Order' => $Order
+			            ]
+			        );
+	            }
+				
+				
         	}else{
         		$torioki_orderId = $arrOrder['transactionHeadId'];
         		$TargetOrder = $this->orderRepository->getRegularCustomerByEmail($torioki_orderId);
@@ -445,34 +503,14 @@ class SmartRegiOrderController extends AbstractController
         	}
         	
         	log_info(
-	            '受注情報登録_付加処理　紐づく商品データ取得開始',
+	            '受注情報登録　取り置き商品購入判定　紐づく商品データ取得開始',
 	            [
 	                'Order' => $Order
 	            ]
 	        );
-        	$OrderItems = $this->orderItemRepository->findBy(['Order' => $Order]);
-            foreach ($OrderItems as $OrderItem) {
-            
-	            log_info(
-		            '受注情報登録_付加処理　紐づく商品データ取得して削除実行',
-		            [
-		                'OrderItem' => $OrderItem
-		            ]
-		        );
-            
-                $Order->removeOrderItem($OrderItem);
-                $this->entityManager->remove($OrderItem);
-                $this->entityManager->flush($OrderItem);
-                
-                log_info(
-		            '受注情報登録_付加処理　紐づく商品データ取得して削除完了',
-		            [
-		                'Order' => $Order
-		            ]
-		        );
-            }
+        	
         	log_info(
-	            '受注情報登録_付加処理　紐づく商品データ取得終了',
+	            '受注情報登録　取り置き商品購入判定　紐づく商品データ取得終了',
 	            [
 	                'Order' => $Order
 	            ]
@@ -723,61 +761,49 @@ class SmartRegiOrderController extends AbstractController
         return $Order;
     }
 
-    public function setOrderItems($Order, $arrOrderItems, $arrOrder){
+    public function setOrderItems($Order, $arrOrderItems, $headOrder){
 
 			log_info(
-	            '受注詳細情報登録開始　スマレジからのパラメータ取得(arrOrder)',
+	            '受注詳細情報登録開始　スマレジからのパラメータ取得(headOrder)',
 	            [
-	                'arrOrder' => $arrOrder,
+	                'headOrder' => $headOrder,
 	            ]
 	        );
 	        
-	        if ( isset($arrOrder['pickUpTransactionHeadId']) && ($arrOrder['pickUpTransactionHeadId'] > 0) ){
+	        if ( isset($headOrder['pickUpTransactionHeadId']) && ($headOrder['pickUpTransactionHeadId'] > 0) ){
 		    // 【取り置き商品購入の場合】pickUpTransactionHeadIdに対象の取引IDが指定されている
 		    //  2件のデータが来る
 		    //  　1件目　pickUpTransactionHeadId:transactionHeadIdと同じ、     layawayServerTransactionHeadId:取り置き実施したtransactionHeadId、transactionHeadId:オリジナル
 		    //  　2件目　pickUpTransactionHeadId:上記1件目のtransactionHeadId、layawayServerTransactionHeadId:なし、                             transactionHeadId:取り置き実施したtransactionHeadId
 		    	
-		    	//対象の取引IDが指定されている場合、購入商品の追加はしない
-	        	$torioki_orderId = $arrOrder['layawayServerTransactionHeadId'];
-	        	
-		    	log_info(
-		            '受注詳細情報登録　取り置き商品購入判定',
-		            [
-		                'arrOrder' => $arrOrder,
-		                'torioki_orderId' => $torioki_orderId,
-		                'pickUpTransactionHeadId' => $arrOrder['pickUpTransactionHeadId'],
-		                'layawayServerTransactionHeadId' => $arrOrder['layawayServerTransactionHeadId'],
-		                'transactionHeadId' => $arrOrder['transactionHeadId'],
-		            ]
-		        );
-		        
-	        	
-	        	if($torioki_orderId > 0){
+	        	//「pickUpTransactionHeadId」は2件とも値が入っている
+	        	//「layawayServerTransactionHeadId」は取り置き購入時(購入時内容)のみ値が入っている　取り置き時内容のデータには入っていない
+	        	if( isset($headOrder['layawayServerTransactionHeadId']) && ($headOrder['layawayServerTransactionHeadId'] > 0) ){
 	        		
 	        		log_info(
-			            '受注詳細情報登録　取り置き商品購入判定　対象の取引IDが指定されている場合、購入商品の追加はしない',
+			            '受注詳細情報登録　取り置き商品購入判定　必要なデータのため、処理続行',
 			            [
-			                'arrOrder' => $arrOrder,
-			                'torioki_orderId' => $torioki_orderId,
-			                'pickUpTransactionHeadId' => $arrOrder['pickUpTransactionHeadId'],
-			                'layawayServerTransactionHeadId' => $arrOrder['layawayServerTransactionHeadId'],
-			                'transactionHeadId' => $arrOrder['transactionHeadId'],
+			                'headOrder' => $headOrder,
+			                'pickUpTransactionHeadId' => $headOrder['pickUpTransactionHeadId'],
+			                'layawayServerTransactionHeadId' => $headOrder['layawayServerTransactionHeadId'],
+			                'transactionHeadId' => $headOrder['transactionHeadId'],
 			            ]
 			        );
 			        
-					return $Order;
+
 	        	}else{
+	        		
 	        		log_info(
-			            '受注詳細情報登録　取り置き商品購入判定　対象の取引IDが指定されていないため処理続行',
+			            '受注詳細情報登録　取り置き商品購入判定　不要なデータのため、購入商品の追加はしない',
 			            [
-			                'arrOrder' => $arrOrder,
-			                'torioki_orderId' => $torioki_orderId,
-			                'pickUpTransactionHeadId' => $arrOrder['pickUpTransactionHeadId'],
-			                'layawayServerTransactionHeadId' => $arrOrder['layawayServerTransactionHeadId'],
-			                'transactionHeadId' => $arrOrder['transactionHeadId'],
+			                'headOrder' => $headOrder,
+			                'pickUpTransactionHeadId' => $headOrder['pickUpTransactionHeadId'],
+			                'layawayServerTransactionHeadId' => $headOrder['layawayServerTransactionHeadId'],
+			                'transactionHeadId' => $headOrder['transactionHeadId'],
 			            ]
 			        );
+			        
+			        return $Order;
 	        	}
 	        	
 	        	
@@ -785,9 +811,9 @@ class SmartRegiOrderController extends AbstractController
 	        	log_info(
 	            '受注詳細情報登録　取り置き商品購入以外',
 		            [
-		                'pickUpTransactionHeadId' => $arrOrder['pickUpTransactionHeadId'],
-		                'layawayServerTransactionHeadId' => $arrOrder['layawayServerTransactionHeadId'],
-		                'transactionHeadId' => $arrOrder['transactionHeadId'],
+		                'pickUpTransactionHeadId' => $headOrder['pickUpTransactionHeadId'],
+		                'layawayServerTransactionHeadId' => $headOrder['layawayServerTransactionHeadId'],
+		                'transactionHeadId' => $headOrder['transactionHeadId'],
 		            ]
 		        );
 	        }
@@ -827,6 +853,19 @@ class SmartRegiOrderController extends AbstractController
 
                 $OrderItemType = $this->orderItemTypeRepository->find(OrderItemType::PRODUCT);
                 $OrderItem->setOrderItemType($OrderItemType);
+                
+                log_info(
+		            '受注詳細情報登録　商品情報',
+			            [
+			                'Product' => $Product,
+			                'ProductClass' => $ProductClass,
+			                'TaxType' => $TaxType,
+			                'setTaxRate' => $TaxRuleVal,
+			                'setTax' => $arrOrderItem['taxExcludeProportional'],
+			                'setPrice' => $ProductClass->getPrice02(),
+			                'OrderItemType' => $OrderItemType,
+			            ]
+			        );
 
             }else{
 
@@ -838,6 +877,16 @@ class SmartRegiOrderController extends AbstractController
                 $OrderItem->setTaxRate($TaxRuleVal);
                 $OrderItem->setTax($arrOrderItem['taxExcludeProportional']);
                 $OrderItem->setPrice($arrOrderItem['price']);
+                
+                log_info(
+		            '受注詳細情報登録　商品情報以外',
+			            [
+			                'TaxType' => $TaxType,
+			                'setTaxRate' => $TaxRuleVal,
+			                'setTax' => $arrOrderItem['taxExcludeProportional'],
+			                'setPrice' => $arrOrderItem['price'],
+			            ]
+			        );
             }
 
 
@@ -848,6 +897,17 @@ class SmartRegiOrderController extends AbstractController
             $OrderItem->setOrder($Order);
 
             $Order->addOrderItem($OrderItem);
+            
+            
+            log_info(
+		            '受注詳細情報登録　配送情報など',
+			            [
+			                'setQuantity' => $arrOrderItem['quantity'],
+			                'setProductName' => $arrOrderItem['productName'],
+			                'setShipping' => $Order->getShippings()[0],
+			                'setOrder' => $Order,
+			            ]
+			        );
 
         }
 
