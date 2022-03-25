@@ -592,6 +592,9 @@ class SmartRegiOrderController extends AbstractController
             $Shipping->setKana01($Customer->getKana01());
             $Shipping->setKana02($Customer->getKana02());
             
+            //出荷用メモ欄にスマレジからのレシートメモをセットする 20220325
+            $Shipping->setNote($arrOrder['receiptMemo']);
+            
             $Shipping->setPref($Customer->getPref());
             $Shipping->setPostalCode('5300001');
             $Shipping->setPhoneNumber('09011112222');
@@ -658,6 +661,9 @@ class SmartRegiOrderController extends AbstractController
             //カナ登録
             $Shipping->setKana01("ゲスト");
             $Shipping->setKana02("ゲスト");
+            
+            //出荷用メモ欄にスマレジからのレシートメモをセットする 20220325
+            $Shipping->setNote($arrOrder['receiptMemo']);
             
             //都道府県コードも登録する(大阪府)
             $zip_code = 27;
