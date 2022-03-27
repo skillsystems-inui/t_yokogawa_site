@@ -82,7 +82,9 @@ class OrderRepository extends AbstractRepository
             ->addSelect('oi', 'pref')
             ->leftJoin('o.OrderItems', 'oi')
             ->leftJoin('o.Pref', 'pref')
-            ->innerJoin('o.Shippings', 's');
+            ->innerJoin('o.Shippings', 's')
+            ->leftJoin('s.Delivery', 'dv');
+
 
         // order_id_start
         if (isset($searchData['order_id']) && StringUtil::isNotBlank($searchData['order_id'])) {
@@ -106,16 +108,66 @@ class OrderRepository extends AbstractRepository
         }
         // multi
         if (isset($searchData['multi']) && StringUtil::isNotBlank($searchData['multi'])) {
+            
+            
+            log_info(
+	            '受注検索　注文番号・お名前・会社名・メールアドレス・電話番号・店舗A',
+	            [
+	                'searchData_multi' => $searchData['multi'],
+	            ]
+	        );
+            
+            
             $multi = preg_match('/^\d{0,10}$/', $searchData['multi']) ? $searchData['multi'] : null;
+            
+            
+            
+            log_info(
+	            '受注検索　注文番号・お名前・会社名・メールアドレス・電話番号・店舗X',
+	            [
+	                'searchData_multi' => $searchData['multi'],
+	            ]
+	        );
+            
+            
             if ($multi && $multi > '2147483647' && $this->isPostgreSQL()) {
                 $multi = null;
             }
-            $qb
-                ->andWhere('o.id = :multi OR o.name01 LIKE :likemulti OR o.name02 LIKE :likemulti OR '.
-                            'o.kana01 LIKE :likemulti OR o.kana02 LIKE :likemulti OR o.company_name LIKE :likemulti OR '.
-                            'o.order_no LIKE :likemulti OR o.email LIKE :likemulti OR o.phone_number LIKE :likemulti')
-                ->setParameter('multi', $multi)
-                ->setParameter('likemulti', '%'.$searchData['multi'].'%');
+            
+            log_info(
+	            '受注検索　注文番号・お名前・会社名・メールアドレス・電話番号・店舗',
+	            [
+	                'searchData_multi' => $searchData['multi'],
+	            ]
+	        );
+            
+            //20220327店舗名を検索条件指定する↓
+            // $searchData['multi'] が「本店」または「岸和田店」のとき、店舗指定する
+            // 対象 dtb_shipping のdelivery_id
+            //     <dtb_delivery>
+            //     idが3　店舗受取：和泉中央本店
+            //     idが4　店舗受取：岸和田店
+            if ($searchData['multi'] == '本店' || $searchData['multi'] == '岸和田店') {
+                
+                //id指定
+                if ($searchData['multi'] == '岸和田店'){
+                	$multi = 4;//岸和田店
+                }else{
+                	$multi = 3;//本店
+                }
+                
+                $qb
+	                ->andWhere('dv.id = :multi ')
+	                ->setParameter('multi', $multi);
+            } else {
+            //20220327店舗名を検索条件指定する↑
+	            $qb
+	                ->andWhere('o.id = :multi OR o.name01 LIKE :likemulti OR o.name02 LIKE :likemulti OR '.
+	                            'o.kana01 LIKE :likemulti OR o.kana02 LIKE :likemulti OR o.company_name LIKE :likemulti OR '.
+	                            'o.order_no LIKE :likemulti OR o.email LIKE :likemulti OR o.phone_number LIKE :likemulti')
+	                ->setParameter('multi', $multi)
+	                ->setParameter('likemulti', '%'.$searchData['multi'].'%');
+            }//20220327店舗名を検索条件指定する用
         }
 
         // order_id_end
@@ -253,26 +305,26 @@ class OrderRepository extends AbstractRepository
         if (!empty($searchData['update_datetime_start']) && $searchData['update_datetime_start']) {
             $date = $searchData['update_datetime_start'];
             $qb
-                ->andWhere('o.update_date >= :update_date_start')
+                ->andWhere('s.shipping_date >= :update_date_start')
                 ->setParameter('update_date_start', $date);
         } elseif (!empty($searchData['update_date_start']) && $searchData['update_date_start']) {
             $date = $searchData['update_date_start'];
             $qb
-                ->andWhere('o.update_date >= :update_date_start')
+                ->andWhere('s.shipping_date >= :update_date_start')
                 ->setParameter('update_date_start', $date);
         }
 
         if (!empty($searchData['update_datetime_end']) && $searchData['update_datetime_end']) {
             $date = $searchData['update_datetime_end'];
             $qb
-                ->andWhere('o.update_date < :update_date_end')
+                ->andWhere('s.shipping_date < :update_date_end')
                 ->setParameter('update_date_end', $date);
         } elseif (!empty($searchData['update_date_end']) && $searchData['update_date_end']) {
             $date = clone $searchData['update_date_end'];
             $date = $date
                 ->modify('+1 days');
             $qb
-                ->andWhere('o.update_date < :update_date_end')
+                ->andWhere('s.shipping_date < :update_date_end')
                 ->setParameter('update_date_end', $date);
         }
 

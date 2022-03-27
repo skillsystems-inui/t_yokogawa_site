@@ -294,7 +294,8 @@ file that was distributed with this source code.
                         {{ form_errors(searchForm.email) }}
                     </div>
                     <div class="col">
-                        <label class="col-form-label">{{ 'admin.common.update_date'|trans }}</label>
+                        <!-- 20220327更新日の出荷日を検索するように変更 -->
+                        <label class="col-form-label">{{ 'admin.order.shipping_date'|trans }}</label>
                         <div class="form-row align-items-center">
                             <div class="col">
                                 {{ form_widget(searchForm.update_datetime_start) }}
