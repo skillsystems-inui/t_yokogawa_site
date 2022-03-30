@@ -541,8 +541,8 @@ class SmartRegiOrderController extends AbstractController
         
         // Set Customer Data and Shipping
         //-------------------------------------------------------------------------
-        if (isset($arrOrder['customerId'])){
-            $customerCode = $arrOrder['customerId'];//会員コード指定　$customerOffsetは考慮しない
+        if (isset($arrOrder['customerCode'])){
+            $customerCode = $arrOrder['customerCode'];//会員コード指定　$customerOffsetは考慮しない
             $Customer = $this->customerRepository->getRegularCustomerByCustomerCode($customerCode);
             $Order->setCustomer($Customer);
             $Order->setName01($Customer->getName01());
@@ -962,7 +962,7 @@ class SmartRegiOrderController extends AbstractController
 
         foreach ($rows as $customerData) {
             
-            $customer_code = $customerData->customerId;//会員コード　$offsetは考慮しない
+            $customer_code = $customerData->customerCode;//会員コード　$offsetは考慮しない
             $Customer = $this->customerRepository->getRegularCustomerByCustomerCode($customer_code);
             
             //店舗ID取得(1:和泉中央本店,2:岸和田店)
