@@ -78,8 +78,8 @@ class SmartRegiServiceHelper
 	        $arrData['proc_info']['proc_division'] = "U"; // Command settings
 	        $arrData['data'][0]['table_name'] = self::USER_TABLE;
 	        //会員コードで管理する(もともとは$customer->getId() + $offset)
-	        $arrData['data'][0]['rows'][0]['customerId'] = $customer_code;
-	        $arrData['data'][0]['rows'][0]['customerCode'] = $arrData['data'][0]['rows'][0]['customerId'];
+	        $arrData['data'][0]['rows'][0]['customerId'] = $customer->getId();
+	        $arrData['data'][0]['rows'][0]['customerCode'] = $customer->getCustomerCode();
 	        $arrData['data'][0]['rows'][0]['lastName'] = $customer->getName01();
 	        $arrData['data'][0]['rows'][0]['firstName'] = $customer->getName02();
 	        $arrData['data'][0]['rows'][0]['lastKana'] = $customer->getKana01();
@@ -118,17 +118,25 @@ class SmartRegiServiceHelper
 	        $Status = $customer->getStatus();
 	        $arrData['data'][0]['rows'][0]['status'] = $Status->getId() == 2? 0 : $Status->getId();
         }
+        
+        //20220331会員コードで判定
+        log_info(
+            '会員更新　arrData',
+            [
+                'arrData' => $arrData,
+            ]
+        );
 
         return $arrData;
 
     }
 
-    public function setUserDelete(string $customer_code, int $offset ){
+    public function setUserDelete(string $customer_id, int $offset ){
      
         $arrData = array();
         $arrData['proc_info']['proc_division'] = "D"; // Command settings
         $arrData['data'][0]['table_name'] = self::USER_TABLE;
-        $arrData['data'][0]['rows'][0]['customerId'] = $customer_code;//スマレジの会員コードをそのまま使うので$offsetは考慮しない
+        $arrData['data'][0]['rows'][0]['customerId'] = $customer_id;//スマレジの会員IDをそのまま使うので$offsetは考慮しない
 		
 		return $arrData;
 

@@ -300,11 +300,11 @@ class Event implements EventSubscriberInterface
     public function SmartEC3UserDelete(EventArgs $event){
 
         $arguments = $event->getArguments();
-        $customer_code = $arguments["customer_code"];
-        log_info('SmartEC3UserDelete_CODE_log', [$customer_code]);
+        $customer_id = $arguments["customer_id"];
+        log_info('SmartEC3UserDelete_CODE_log', [$customer_id]);
         
-		//customer_codeからスマレジ側の該当会員データを削除する
-        $msg = $this->smartRegiService->deleteSmartRegiUser((string)$customer_code);
+		//customer_idからスマレジ側の該当会員データを削除する
+        $msg = $this->smartRegiService->deleteSmartRegiUser($customer_id);
         $msg = "スマレジ： " . $msg;
         $flashbag = $this->session->getFlashBag();
         $flashbag->add('eccube.'.'admin'.'.warning', $msg);

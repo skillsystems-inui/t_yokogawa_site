@@ -321,7 +321,7 @@ class SmartRegiService
         return $msg;
     }
 
-    public function deleteSmartRegiUser(string $customer_code){
+    public function deleteSmartRegiUser(string $customer_id){
         
         $Config = $this->configRepository->find(1);
         if ($Config->getUserUpdate()){
@@ -337,7 +337,7 @@ class SmartRegiService
             $api_url = $Config->getApiURL();
 
             // Query settings
-            $arrData = $this->smartHelper->setUserDelete($customer_code, $offset);
+            $arrData = $this->smartHelper->setUserDelete($customer_id, $offset);
 
             // Log message and file
             $arrRet = $this->doRequest($arrConnect,$param,$api_url,$arrData,self::USER_DELETE_ACTION, self::USER_LOG);
