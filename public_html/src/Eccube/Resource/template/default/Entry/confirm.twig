@@ -27,6 +27,17 @@ file that was distributed with this source code.
 よろしければ、一番下の「会員登録をする」ボタンをクリックしてください。
 '|trans|nl2br }}</p>
                     <div class="ec-borderedDefs">
+                        <!-- 20220331会員コードも登録させる -->
+                        <dl>
+                            <dt>
+                                {{ form_label(form.customer_code, '会員コード', { 'label_attr': { 'class': 'ec-label'}}) }}
+                            </dt>
+                            <dd>
+                                {{ form.customer_code.vars.data }}
+                                {{ form_widget(form.customer_code, { type : 'hidden' }) }}
+                            </dd>
+                        </dl>
+                        <!-- 20220331会員コードも登録させる -->
                         <dl>
                             <dt>
                                 {{ form_label(form.name, 'お名前', { 'label_attr': { 'class': 'ec-label '}}) }}

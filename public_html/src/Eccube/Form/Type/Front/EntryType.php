@@ -62,6 +62,9 @@ class EntryType extends AbstractType
                 'required' => true,
             ])
             ->add('kana', KanaType::class, [])
+            ->add('customer_code', TextType::class, [
+                'required' => false,
+            ])
             ->add('company_name', TextType::class, [
                 'required' => false,
                 'constraints' => [

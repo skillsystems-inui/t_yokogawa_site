@@ -715,6 +715,11 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
                 'message' => 'form_error.customer_already_exists',
                 'repositoryMethod' => 'getNonWithdrawingCustomers',
             ]));
+            
+            $metadata->addConstraint(new UniqueEntity([
+                'fields' => 'customer_code',
+                'message' => 'この会員コードは既に登録されています。',
+            ]));
         }
 
         /**
