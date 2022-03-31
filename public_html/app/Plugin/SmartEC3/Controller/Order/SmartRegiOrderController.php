@@ -292,7 +292,9 @@ class SmartRegiOrderController extends AbstractController
         
         //--- 登録か更新か判定する ---
         // 【取り置きキャンセルの場合】disposeServerTransactionHeadIdに取引IDが指定されている
-        if ( isset($arrOrder['disposeServerTransactionHeadId']) && ($arrOrder['disposeServerTransactionHeadId'] != '0') ){
+        if ( (isset($arrOrder['disposeServerTransactionHeadId']) && ($arrOrder['disposeServerTransactionHeadId'] != '0')) ||
+             (isset($arrOrder['cancelDivision']) && ($arrOrder['cancelDivision'] == 1)) 
+           ){
 		    
         	//対象の取引IDが指定されている場合、更新モード
         	//仮に今ある受注IDを指定する
