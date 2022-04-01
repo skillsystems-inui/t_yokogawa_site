@@ -105,7 +105,18 @@ class SmartRegiServiceHelper
 	        $arrData['data'][0]['rows'][0]['point'] = $customer->getPoint();
 	        
 	        $Sex = $customer->getSex();
-	        $arrData['data'][0]['rows'][0]['sex'] = isset($Sex) ? $Sex->getId() : 0;
+	        //20220401 その他はスマレジの不明を登録する
+	        if(isset($Sex)){
+	        	//性別「その他(3)」ならスマレジの「不明(0)」を指定する
+	        	if($Sex->getId() < 3){
+	        		$arrData['data'][0]['rows'][0]['sex'] =  $Sex->getId();
+	        	}else{
+	        		$arrData['data'][0]['rows'][0]['sex'] =  0;
+	        	}
+	        }else{
+	        	$arrData['data'][0]['rows'][0]['sex'] =  0;
+	        }
+	        
 	        
 	        $Birth = $customer->getBirth();
 	        if (isset($Birth))
