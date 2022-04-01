@@ -90,6 +90,7 @@ file that was distributed with this source code.
                                 {% endif %}
                                 
                                 <!--会員番号 -->
+                                                                
                                 {% if Customer.customer_code %}
                                     <div class="row mb-2">
                                         <div class="col-3">
@@ -97,6 +98,7 @@ file that was distributed with this source code.
                                                  title="{{ 'tooltip.customer.customer_code'|trans }}">
                                                 <span>{{ 'admin.customer.customer_code'|trans }}</span>
                                                 <i class="fa fa-question-circle fa-lg ml-1"></i>
+                                                <br><font size="0">※フロント側では会員番号と表示されます</font>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -114,8 +116,6 @@ file that was distributed with this source code.
                                         {{ form_errors(form.customer_code) }}
                                     </div>
                                 </div>
-                                
-                                
                                 
                                 <div class="row mb-2">
                                     <div class="col-3">

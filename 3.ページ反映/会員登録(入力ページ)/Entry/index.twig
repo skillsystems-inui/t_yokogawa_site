@@ -32,13 +32,14 @@ file that was distributed with this source code.
                         <!-- 20220331会員コードも登録させる -->
                         <dl>
                             <dt>
-                                {{ form_label(form.customer_code, '会員コード', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                {{ form_label(form.customer_code, '会員番号', { 'label_attr': { 'class': 'ec-label' }}) }}
                             </dt>
                             <dd>
                                 <div class="ec-halfInput{{ has_errors(form.customer_code) ? ' error' }}">
                                     {{ form_widget(form.customer_code, { 'attr': { 'placeholder': '例：123456' }}) }}
                                     {{ form_errors(form.customer_code) }}
                                 </div>
+                                ※お持ちでない方は空白にしてください
                             </dd>
                         </dl>
                         <!-- 20220331会員コードも登録させる -->

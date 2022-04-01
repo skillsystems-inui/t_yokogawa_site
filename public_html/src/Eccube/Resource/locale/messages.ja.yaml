@@ -746,7 +746,7 @@ admin.product.product_csv.delete_flag_description: 0:登録 1:削除を指定し
 admin.product.product_csv.product_image_col: 商品画像
 admin.product.product_csv.product_image_description: 画像のファイル名を指定します。複数画像の場合、画像ファイル名をカンマ区切りで「"」で囲んでください。
 admin.product.product_csv.category_col: 商品カテゴリ(ID)
-admin.product.product_csv.category_description: カテゴリIDを指定します。複数カテゴリの場合、商品カテゴリIDをカンマ区切りで「"」で囲んでください。
+admin.product.product_csv.category_description: カテゴリIDを指定します。複数カテゴリの場合、商品カテゴリIDをカンマ区切りで「"」で囲んでください。(※スマレジ連携する場合は複数不可)
 admin.product.product_csv.tag_col: タグ(ID)
 admin.product.product_csv.tag_description: タグIDを指定します。複数タグの場合、タグIDをカンマ区切りで「"」で囲んでください。
 admin.product.product_csv.sale_type_col: 販売種別(ID)
