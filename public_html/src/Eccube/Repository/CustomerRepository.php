@@ -107,8 +107,9 @@ class CustomerRepository extends AbstractRepository
                 $id = null;
             }
             $qb
-                ->andWhere('c.id = :customer_id OR CONCAT(c.name01, c.name02) LIKE :name OR CONCAT(c.kana01, c.kana02) LIKE :kana OR c.email LIKE :email')
+                ->andWhere('c.id = :customer_id OR c.customer_code = :customer_code OR CONCAT(c.name01, c.name02) LIKE :name OR CONCAT(c.kana01, c.kana02) LIKE :kana OR c.email LIKE :email')
                 ->setParameter('customer_id', $id)
+                ->setParameter('customer_code', $clean_key_multi)
                 ->setParameter('name', '%'.$clean_key_multi.'%')
                 ->setParameter('kana', '%'.$clean_key_multi.'%')
                 ->setParameter('email', '%'.$clean_key_multi.'%');

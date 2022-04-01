@@ -1030,7 +1030,7 @@ admin.order.delivery_time: 受け取り時間
 admin.order.delivery_provider: 配送方法
 admin.order.to_shipped: 出荷済にする
 admin.order.send_mail: メールする
-admin.order.shop_memo_for_shipped: 出荷用メモ欄
+admin.order.shop_memo_for_shipped: レシートメモ
 admin.order.shipping__card_title: 出荷情報
 admin.order.shipping_id: 出荷ID
 admin.order.shipping_mail: 出荷メール
@@ -1052,7 +1052,7 @@ admin.order.to_shipped__confirm_send_mail_in_same_time: 出荷お知らせメー
 admin.order.change_status: 対応状況の変更
 admin.order.csv_shipping_date_description: 出荷日を「YYYY-MM-DD」の形式で設定
 admin.order.order_csv: 受注CSV
-admin.order.shipping_csv: 出荷CSV
+admin.order.shipping_csv: 取り置きCSV
 admin.order.shipping_status: 出荷状況
 admin.order.delivery: 受け取り先
 admin.order.not_payment: 未入金
@@ -1109,7 +1109,7 @@ admin.customer.customer_address_registration: 受け取り先登録
 
 # ラベル/メッセージ
 admin.customer.customer_id: 会員ID
-admin.customer.customer_code: 会員番号
+admin.customer.customer_code: 会員コード
 admin.customer.customer_info: 会員情報
 admin.customer.purchase_history: 注文履歴
 admin.customer.purchase_history__not_found: 注文履歴がありません
@@ -1119,7 +1119,7 @@ admin.customer.customer_address__add: 受け取り先住所を追加
 admin.customer.customer_address_count_is_over: 受け取り先登録の上限の%eccube_deliv_addr_max%件に達しています。受け取り先を入力したい場合は、削除か変更を行ってください。
 admin.customer.customer_address_id: 受け取り先ID
 admin.customer.customer_address_info: 受け取り先情報
-admin.customer.multi_search_label: 会員ID・メールアドレス・お名前
+admin.customer.multi_search_label: 会員ID・会員コード・メールアドレス・お名前
 admin.customer.customer_status: 会員種別
 admin.customer.birth_month: 誕生月
 admin.customer.familybirth_month: 家族誕生月
