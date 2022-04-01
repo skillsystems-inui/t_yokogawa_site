@@ -262,6 +262,18 @@ file that was distributed with this source code.
                                 
                                 <dl>
                                     <dt>
+                                        {{ form_label(form.customer_code, '会員番号', { 'label_attr': { 'class': 'ec-label' }}) }}
+                                    </dt>
+                                    <dd>
+                                        <div class="ec-halfInput{{ has_errors(form.customer_code) ? ' error' }}">
+                                            {{ form.customer_code.vars.data }}
+                                            {{ form_widget(form.customer_code, { type : 'hidden' }) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+                                
+                                <dl>
+                                    <dt>
                                         {{ form_label(form.name, 'お名前', { 'label_attr': { 'class': 'ec-label' }}) }}
                                     </dt>
                                     <dd>
