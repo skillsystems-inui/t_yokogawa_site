@@ -328,6 +328,21 @@ class SearchOrderType extends AbstractType
                 'label' => 'admin.order.purchase_product',
                 'required' => false,
             ])
+            ->add('buy_product_name', TextType::class, [
+                'label' => '発送',
+                'required' => false,
+            ])
+            ->add('family_main', ChoiceType::class, [
+                'label' => '注文場所',
+                'placeholder' => false,
+                'choices' => [
+                    'ECサイトで注文' => 0,
+                    '店舗で注文' => 1,
+                ],
+                'expanded' => true,
+                'multiple' => true,
+            ])
+
         ;
     }
 

@@ -363,6 +363,23 @@ class OrderRepository extends AbstractRepository
                 }
             }
         }
+        
+        // 20220403注文場所指定
+        if (isset($searchData['family_main']) && $count = count($searchData['family_main'])) {
+            // ECで注文/店舗で注文両方にチェックされている場合は検索条件に追加しない
+            if ($count < 2) {
+                $checked = current($searchData['family_main']);
+                if ($checked == 0) {
+                    // ECで注文
+                    $qb
+                        ->andWhere('o.uketori_type IS NOT NULL');
+                } elseif ($checked == 1) {
+                    // 店舗で注文
+                    $qb
+                        ->andWhere('o.uketori_type IS NULL');                   
+                }
+            }
+        }
 
         // 送り状番号.
         if (!empty($searchData['tracking_number'])) {
