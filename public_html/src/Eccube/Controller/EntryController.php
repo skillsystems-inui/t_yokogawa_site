@@ -22,6 +22,7 @@ use Eccube\Repository\BaseInfoRepository;
 use Eccube\Repository\CustomerRepository;
 use Eccube\Repository\Master\CustomerStatusRepository;
 use Eccube\Service\MailService;
+use Eccube\Util\StringUtil;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception as HttpException;
@@ -121,7 +122,7 @@ class EntryController extends AbstractController
 
             return $this->redirectToRoute('mypage');
         }
-
+        
         /** @var $Customer \Eccube\Entity\Customer */
         $Customer = $this->customerRepository->newCustomer();
 
@@ -157,6 +158,36 @@ class EntryController extends AbstractController
 
                 case 'complete':
                     log_info('会員登録開始');
+                    
+                    log_info(
+			            '入力された会員コード',
+			            [
+			                'InputCustomerCode' => StringUtil::trimAll($Customer->getCustomerCode()),
+			            ]
+			        );
+                    //20220403会員コードが空白なら自動採番する
+                    if (StringUtil::trimAll($Customer->getCustomerCode()) == '') {
+                    	$auto_num = '';
+                    	
+                    	$current_time = date('YmdHis');
+        
+				        log_info(
+				            '会員コードが空白なら自動採番する',
+				            [
+				                'current_time' => $current_time,
+				            ]
+				        );
+				        
+				        //会員コードセット
+				        $Customer->setCustomerCode($current_time);
+                    }else{
+                    	log_info(
+				            '会員コードが指定されているため指定コードを登録する',
+				            [
+				                'InputCustomerCode' => StringUtil::trimAll($Customer->getCustomerCode()),
+				            ]
+				        );
+                    }
 
                     $encoder = $this->encoderFactory->getEncoder($Customer);
                     $salt = $encoder->createSalt();
@@ -204,6 +235,19 @@ class EntryController extends AbstractController
                     } else {
                         // 仮会員設定が無効な場合は、会員登録を完了させる.
                         $qtyInCart = $this->entryActivate($request, $Customer->getSecretKey());
+                        
+                        
+                        //20220403フロント側で新規登録(本会員)された場合はスマレジに登録する
+                        $event = new EventArgs(
+			               [
+			                   'form' => $form,
+			                   'Customer' => $Customer,
+			               ],
+			               $request
+			            );
+			            $this->eventDispatcher->dispatch(EccubeEvents::FRONT_MYPAGE_CHANGE_INDEX_COMPLETE, $event);
+			            //20220403フロント側で新規登録(本会員)された場合はスマレジに登録する
+			            
 
                         // URLを変更するため完了画面にリダイレクト
                         return $this->redirectToRoute('entry_activate', [
