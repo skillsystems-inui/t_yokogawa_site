@@ -265,6 +265,7 @@ class CustomerController extends AbstractController
             [
                 'Customer' => $Customer,
                 'customer_code' => $Customer->getCustomerCode(),
+                'customer_id' => $id,
             ],
             $request
         );
