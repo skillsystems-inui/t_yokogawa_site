@@ -105,10 +105,29 @@ class ShippingType extends AbstractType
                 if($uketori_type != 2){
                 	//ヤマト以外
                 	$Deliveries = $this->deliveryRepository->getDeliveriesTentou();
+                	
+                	//配送セット(店舗)
+                	$deliv_id_honten = 3;//店舗：和泉中央本店
+            		$deliv_id_kishiwada = 4;//店舗：岸和田店
+            		$TargetDelivery = $this->deliveryRepository->find($deliv_id_honten);
+            		$Shipping->setDelivery($TargetDelivery);
+	            	
                 }else{
                 	//ヤマト指定
                 	$Deliveries = $this->deliveryRepository->getDeliveriesYamato();
+                	
+                	//配送セット(取り寄せ)
+            		$deliv_id_yamato = 1;//取り寄せ：ヤマト
+	            	$TargetDelivery = $this->deliveryRepository->find($deliv_id_yamato);
+	            	$Shipping->setDelivery($TargetDelivery);
                 }
+                
+                log_info(
+			            '販売種別に紐づく配送業者を取得　uketori_type',
+			            [
+			                'uketori_type' => $uketori_type,
+			            ]
+			        );
 
                 // 配送業者のプルダウンにセット.
                 $form = $event->getForm();
@@ -220,6 +239,15 @@ class ShippingType extends AbstractType
                 $ShippingDeliveryTime = null;
                 $DeliveryTimes = [];
                 $Delivery = $Shipping->getDelivery();
+                
+                log_info(
+		            'お取り寄せ方法　Shipping',
+		            [
+		                'Shipping' => $Shipping->getId(),
+		            ]
+		        );
+                
+                
                 if ($Delivery) {
                     $DeliveryTimes = $Delivery->getDeliveryTimes();
                     $DeliveryTimes = $DeliveryTimes->filter(function (DeliveryTime $DeliveryTime) {
