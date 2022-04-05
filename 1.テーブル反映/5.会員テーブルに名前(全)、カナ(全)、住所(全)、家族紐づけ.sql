@@ -139,3 +139,7 @@ ALTER TABLE `dtb_customer` ADD `device_token1` varchar(200) DEFAULT NULL;
 
 --列追加(通知設定フラグ)
 ALTER TABLE `dtb_customer` ADD `notice_flg` varchar(5) DEFAULT NULL;
+
+----- 会員コード 
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(2, NULL, 'Eccube\\\\Entity\\\\Customer', 'customer_code', NULL, '会員コード', 1, 1, '2021-09-02 03:47:59', '2021-09-02 03:47:59', 'csv');

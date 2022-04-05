@@ -31,6 +31,9 @@ INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`,
 
 
 
+
+
+
 --CSV種別:商品CSV (dtb_csv:1)
 ------※※オプション1～10のidとnameはdtb_product_class_categoryの指定のレコード(1商品1データ)から取得する必要がある
 ------    (予想される要望)CSV出力メニューとしてオリジナル(単純に受注や商品ではなく、月末に使うとか特化した内容)を設けておく
@@ -178,3 +181,10 @@ INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`,
 (3, 1, 'Eccube\\\\Entity\\\\Order', 'smaregi_id', NULL, 'スマレジ取引ID', 130, 1, NOW(), NOW(), 'csv');
 INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
 (4, 1, 'Eccube\\\\Entity\\\\Order', 'smaregi_id', NULL, 'スマレジ取引ID', 130, 1, NOW(), NOW(), 'csv');
+
+
+
+--会員コード
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(3, 1, 'Eccube\\\\Entity\\\\Order', 'Customer', 'customer_code', '会員コード', 56, 1, '2021-09-02 03:47:59', '2022-02-04 11:47:05', 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\Order', 'Customer', 'customer_code', '会員コード', 56, 1, '2021-09-02 03:47:59', '2022-02-04 11:47:05', 'csv');
