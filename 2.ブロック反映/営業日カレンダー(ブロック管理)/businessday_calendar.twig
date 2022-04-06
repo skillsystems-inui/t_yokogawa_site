@@ -16,19 +16,19 @@
     <h2 class="title"><strong class="agp">CALENDAR</strong></h2>
 	<div class="inner">
 	    <div class="shop_calendar_bx_wrap">
-    
-	    
-	    
-	    
+
+
+
+
 	    {% set year = 'now'|date('Y') %}
 	    {% for month, monthitem in Date %}
 	        {% if loop.index0 > 0 and month == '1' %}
 	            {% set year = year+1 %}
 	        {% endif %}
-	        
+
 	        <div class="shop_calendar_bx">
 	        	<p class="caTop">{{ year }}.{{ month }}</p>
-	        	
+
 		        <table style="position: relative;">
 		            <!-- ƒwƒbƒ_[•” -->
 		            <thead>
@@ -42,25 +42,25 @@
                             <th width="26" style="background-color:#71CBC9" scope="col">SAT</th>
 		            	</tr>
 		            </thead>
-		            
+
 		            <!-- ƒf[ƒ^•” -->
 		            <tbody>
-		                
+
 		                <!-- T‚ÌƒJƒEƒ“ƒg(5T‚Ü‚Å•\¦‚·‚é(2Œ‚Í4T‚ÌŒ‚à‚ ‚è“¾‚é)) -->
 		                {% set week_cnt = 0 %}
-		                
+
 		                <!-- Œ‚ÌÅI“ú -->
 		                {% set month_last_day = 0 %}
 		                {% for lastdayitem in monthitem %}
 		                	{% set lastday = lastdayitem.day %}
 		                	{% set month_last_day = lastday|date('j') %}
 		                {% endfor %}
-		                
+
 		                {% for dayitem in monthitem %}
-		                    
+
 		                    <!-- 4TˆÈ“à‚È‚ç•\¦‚·‚é -->
 		                    {% if week_cnt <= 4 %}
-		                    
+
 			                    {% set day = dayitem.day %}
 			                    {% if day|date('j') == '1' %}
 			                        <tr>
@@ -84,7 +84,7 @@
 			                    {% elseif day|date('w') == 6 %}
 			                        {% set class = class ~ ' sat' %}
 			                    {% endif %}
-			                        
+
 			                        <!-- 6T–Ú‚ª‚ ‚éê‡A5T–Ú‚Å‚Ì—‚T‚Ì“ú•t‚à•\¦‚·‚é -->
 			                        {% set dayview = day|date('j') %}
 			                        {% if week_cnt == 4 %}
@@ -94,7 +94,7 @@
 			                        		{% set dayview = dayview~'/'~nextweekday %}
 			                        	{% endif %}
 			                        {% endif %}
-			                        
+
 			                        <!-- j“ú•\¦w’è(“ú—j‚Æ“¯‚¶ƒXƒ^ƒCƒ‹) -->
 			                        <!-- ¦w’è•û–@: month == 'w’èŒ' and day|date('j') == 'w’è“ú' -->
 			                        {% if month == '3' and day|date('j') == '21' %}
@@ -102,20 +102,34 @@
 			                        {% elseif month == '4' and day|date('j') == '29' %}
 			                        	 {% set class = class ~ ' sun' %}
 			                    	{% endif %}
-			                        
+
 			                        <!-- “ú•t•\¦w’è‚ ‚è -->
 			                        <!-- ¦w’è•û–@: month == 'w’èŒ' and day|date('j') == 'w’è“ú' -->
-			                        {% if month == '4' and day|date('j') == '10' %}
+			                        {% if month == '5' and day|date('j') == '10' %}
+			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">ƒeƒXƒg</small></span></td>
+			                        {% elseif month == '4' and day|date('j') == '10' %}
 			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">18•Â“X</small></span></td>
-			                    	{% elseif month == '3' and day|date('j') == '31' %}
+			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17•Â“X</small></span></td>
+			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17•Â“X</small></span></td>
+			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17•Â“X</small></span></td>
+			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17•Â“X</small></span></td>
+			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17•Â“X</small></span></td>
+			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17•Â“X</small></span></td>
+			                    	{% elseif month == '5' and day|date('j') == '15' %}
 			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17•Â“X</small></span></td>
 			                    	{% else %}
 			                    		<!-- “ú•t•\¦w’è‚È‚µ -->
 			                    		<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}</span></td>
 			                    	{% endif %}
-			                    
+
 			                    {% if day|date('w') == 6 or loop.last %}
-			                    
+
 			                        <!-- ÅIT‚ª“y—j‚Ü‚Å‚È‚¯‚ê‚Î•â“U‚·‚é -->
 			                        {% if loop.last and day|date('w') != 6%}
 			                        	{% for i in (day|date('w')+1)..6 %}
@@ -126,30 +140,30 @@
 			                                {% endif %}
 			                            {% endfor %}
 			                        {% endif %}
-			                        
+
 			                        </tr>
-			                        
+
 			                        {% set week_cnt = week_cnt + 1 %}
 			                    {% endif %}
-			                
+
 			                {% endif %}
 		                    <!-- .5TˆÈ“à‚È‚ç•\¦‚·‚é -->
-		                    
+
 		                {% endfor %}
-		                
+
 		            </tbody>
 		        </table>
 	        </div>
-	        
+
 	    {% endfor %}
 	    </div>
-	    
+
 	    <p style="text-align:right;margin-bottom:10px;">¦ƒRƒƒiƒEƒCƒ‹ƒX‚Ì‰e‹¿‚É‚æ‚èA—\‚È‚µ‚É‰c‹ÆŠÔ‚Ì’Zk‚Ü‚½‚Í—Õ‹x‹Æ‚ğs‚¤‰Â”\«‚ª‚²‚´‚¢‚Ü‚·B</p>
         <div class="shop_calendar_caption">
           <div></div>
           <p>‹x‹Æ“ú</p>
         </div>
-		
+
     </div>
-	
+
 </section>
