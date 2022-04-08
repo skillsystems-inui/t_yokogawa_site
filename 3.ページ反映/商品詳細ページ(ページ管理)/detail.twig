@@ -2466,7 +2466,14 @@ file that was distributed with this source code.
                             <div class="slide-item"><img src="{{ asset(''|no_image_product, 'save_image') }}"/></div>
                         {% endfor %}
                     </div>
-                    <div class="item_nav" id="top_syohin_main00">
+                    
+                    <!-- ÉTÉÄÉlÉCÉãêîÇ™2à»è„ÇÃÇ∆Ç´ÇÃÇ›ï\é¶Ç∑ÇÈ -->
+                    {% set is_solo_image = true  %}
+                    {% if Product.ProductImage|length > 1 %}
+                    	{% set is_solo_image = false  %}
+                    {% endif %}
+                    <!-- ÉTÉÄÉlÉCÉãêîÇ™2à»è„ÇÃÇ∆Ç´ÇÃÇ›ï\é¶Ç∑ÇÈ -->
+                    <div class="item_nav" id="top_syohin_main00" style="{% if is_solo_image == true %}display:none;{% endif %}">
                         {% for ProductImage in Product.ProductImage %}
                             <div class="slideThumb" data-index="{{ loop.index0 }}"><img src="{{ asset(ProductImage, 'save_image') }}"></div>
                         {% endfor %}
@@ -2523,6 +2530,33 @@ file that was distributed with this source code.
                     {% set price_poribukuro_dai_price = ''  %}
                     {% set price_poribukuro_tokudai_price = ''  %}
                     
+                    <!-- îÃîÑéÌóﬁ -->
+                    {% if Product.salestype %}
+                    	<!-- ìXì™ó\ñÒ(ECÇ≈çwì¸ÇµÇƒìXì™Ç≈éÛÇØéÊÇË) -->
+                    	{% if Product.salestype.id == 1 %}
+	                		{% set is_tentouuketorika = true  %}
+	                    {% endif %}
+	                    
+	                    <!-- í êMîÃîÑ(ECÇ≈çwì¸ÇµÇƒîzëóÇ≈éÛÇØéÊÇË) -->
+	                    {% if Product.salestype.id == 2 %}
+	                    	{% set is_toriyoseka = true  %}
+	                    {% endif %}
+	                    
+	                    <!-- ìXì™ó\ñÒÇ∆í êMîÃîÑÇÃóºï˚ -->
+	                    {% if Product.salestype.id == 3 %}
+	                    	{% set is_tentouuketorika = true  %}
+	                    	{% set is_toriyoseka = true  %}
+	                    {% endif %}
+	                    
+	                    <!-- ìXì™îÃîÑÇÃÇ›(ECîÃîÑÇ»Çµ) -->
+	                    {% if Product.salestype.id == 4 %}
+	                    	{% set is_tennomi = true  %}
+	                    	<!-- îÃîÑÇ»Çµ -->
+	                    	{% set is_no_sale_category = true  %}
+	                    {% endif %}
+	                {% endif %}
+                    
+                    
                     {% if Product.ProductCategories is not empty %}
                         {% for ProductCategory in Product.ProductCategories %}
                                 {% for Category in ProductCategory.Category.path %}
@@ -2539,16 +2573,6 @@ file that was distributed with this source code.
                                     
                                     {% if Category.name == 'ë‹ÉIÉvÉVÉáÉì' %}
                                     	{% set is_bag_option = true  %}
-                                    {% endif %}
-                                    
-                                    {% if Category.name == 'ìXì™éÛéÊâ¬' %}
-                                    	{% set is_tentouuketorika = true  %}
-                                    {% endif %}
-                                    {% if Category.name == 'éÊÇËäÒÇπâ¬' %}
-                                    	{% set is_toriyoseka = true  %}
-                                    {% endif %}
-                                    {% if Category.name == 'ìXì™îÃîÑÇÃÇ›' %}
-                                    	{% set is_tennomi = true  %}
                                     {% endif %}
                                     
                                     {% if Category.name == 'ó‚ìÄ' %}
@@ -2633,12 +2657,15 @@ file that was distributed with this source code.
                             
                             <!-- å¬êî(ÉTÉCÉYÇÃÇ›) -->
                             <div class="ec-numberInput" style="margin-top:10px; padding-top:20px; border-top:1px solid #ECECEC; border-bottom:1px solid #ECECEC;">
-                            	<div class="product_detail_quantity">
+                            	
+                            	<!-- ìXì™îÃîÑÇÃÇ›Ç»ÇÁå¬êîÇÕï\é¶ÇµÇ»Ç¢ -->
+                            	<div class="product_detail_quantity" style="{% if is_no_sale_category == true %}display:none;{% endif %}">
 	                            	<span>{{ 'å¬êî:'|trans }}</span>
 	                            	{{ form_widget(form.quantity) }}
 	                                {{ form_errors(form.quantity) }}
 	                                <span>{{ 'å¬'|trans }}</span>
                                 </div>
+                                
                                 <div class="product_detail_price" style="font-size:20px; padding:2px;">
 			                        {% if Product.hasProductClass -%}
 			                            {% if Product.getPrice02IncTaxMin == Product.getPrice02IncTaxMax %}
