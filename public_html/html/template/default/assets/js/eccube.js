@@ -65,6 +65,10 @@
     var price02_origin = [];
     var price02_orgkikaku = [];
     var price02_orggoukei = [];
+    // 税抜価格
+    var price02nuki_origin = [];
+    var price02nuki_orgkikaku = [];
+    
     eccube.checkStock = function($form, product_id, classcat_id1, classcat_id2, option_id1 = null, option_id2 = null, option_id3 = null, option_id4 = null, option_id5 = null, option_id6 = null, option_id7 = null, option_id8 = null, option_id9 = null, option_id10 = null) {
 
         classcat_id2 = classcat_id2 ? classcat_id2 : '';
@@ -120,7 +124,6 @@
                 price02_origin[product_id] = $price02.text();
             }
             $price02.text(price02_origin[product_id]);
-            
             // 販売価格(規格のみ)
             var $price02_kikaku = $form.parent().find('.price02-view-default').first();
             if (typeof price02_orgkikaku[product_id] === 'undefined') {
@@ -137,7 +140,29 @@
             }
             //$price02_orggoukei.text(price02_orggoukei[product_id]);
             $price02_orggoukei.text('000');
-
+            
+            
+            
+            //--税抜価格--
+            // 販売価格
+            var $price02nuki = $form.parent().find('.price02nuki-default').first();
+            if (typeof price02nuki_origin[product_id] === 'undefined') {
+                // 初期値を保持しておく
+                price02nuki_origin[product_id] = $price02nuki.text();
+            }
+            $price02nuki.text(price02nuki_origin[product_id]);
+            
+            // 販売価格(規格のみ)
+            var $price02nuki_kikaku = $form.parent().find('.price02nuki-view-default').first();
+            if (typeof price02nuki_orgkikaku[product_id] === 'undefined') {
+                // 初期値を保持しておく
+                price02nuki_orgkikaku[product_id] = $price02nuki_kikaku.text();
+            }
+            $price02nuki_kikaku.text(price02nuki_orgkikaku[product_id]);
+            //--税抜価格--
+            
+            
+            
             // 商品規格
             var $product_class_id_dynamic = $form.find('[id^=ProductClass]');
             $product_class_id_dynamic.val('');
@@ -232,6 +257,41 @@
             	//画面表示時の価格(1,000～3,000など)
                 $price02_kikaku.text(price02_orgkikaku[product_id]);
             }
+            
+            
+            
+            //--税抜価格--
+            // 販売価格
+            /*
+            var $price02nuki = $form.parent().find('.price02nuki-default').first();
+            if (typeof price02nuki_origin[product_id] === 'undefined') {
+                // 初期値を保持しておく
+                price02nuki_origin[product_id] = $price02nuki.text();
+            }
+            $price02nuki.text(price02nuki_origin[product_id]);
+            */
+            
+            // 販売価格(規格のみ)
+            var $price02nuki_kikaku = $form.parent().find('.price02nuki-view-default').first();
+            if (typeof price02nuki_orgkikaku[product_id] === 'undefined') {
+                // 初期値を保持しておく
+                price02nuki_orgkikaku[product_id] = $price02nuki_kikaku.text();
+            }
+            /*
+            //$price02nuki_kikaku.text(price02nuki_orgkikaku[product_id]);
+            //test
+            $price02nuki_kikaku.text('999');
+            */
+            if (classcat2 && typeof classcat2.price02 !== 'undefined' && String(classcat2.price02).length >= 1) {                
+                //規格の販売価格(1,000など)
+                $price02nuki_kikaku.text('(税抜:￥' + classcat2.price02 + ')');
+            } else {
+            	//画面表示時の価格(1,000～3,000など)
+                $price02nuki_kikaku.text(price02_orgkikaku[product_id]);
+            }
+            //--税抜価格--
+            
+            
             
             // 販売価格(合計)
             var $price02_goukei = $form.parent().find('.additional-total-price-default').first();
