@@ -2484,6 +2484,7 @@ file that was distributed with this source code.
                     {% set is_gift = false  %}
                     {% set is_bag_option = false  %}
                     {% set is_tentouuketorika = false  %}
+                    {% set is_tennomi = false  %}
                     {% set is_toriyoseka = false  %}
                     {% set is_reitou = false  %}
                     <!-- ”Ì”„‚È‚µƒJƒeƒSƒŠ-->
@@ -2546,6 +2547,9 @@ file that was distributed with this source code.
                                     {% if Category.name == 'Žæ‚èŠñ‚¹‰Â' %}
                                     	{% set is_toriyoseka = true  %}
                                     {% endif %}
+                                    {% if Category.name == '“X“ª”Ì”„‚Ì‚Ý' %}
+                                    	{% set is_tennomi = true  %}
+                                    {% endif %}
                                     
                                     {% if Category.name == '—â“€' %}
                                     	{% set is_reitou = true  %}
@@ -2585,6 +2589,11 @@ file that was distributed with this source code.
 	                    		<div style="float:left; width: 86px; height: 72px; background-image: url({{ asset('assets/img/icon_toriyose.png') }})"></div>
 	                    	{% endif %}
 	                        <!-- .Žæ‚èŠñ‚¹‰Â -->
+	                        <!-- “X“ª”Ì”„‚Ì‚Ý -->
+	                    	{% if is_tennomi == true %}
+	                    		<div style="float:left; width: 86px; height: 72px; background-image: url({{ asset('assets/img/icon_tennomi.png') }})"></div>
+	                    	{% endif %}
+	                        <!-- “X“ª”Ì”„‚Ì‚Ý -->
 	                        <div style="clear:both;"></div>
 	                        
 	                        <!-- —â“€¤•i -->
