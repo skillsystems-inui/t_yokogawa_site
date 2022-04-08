@@ -123,6 +123,16 @@ class EntryController extends AbstractController
             return $this->redirectToRoute('mypage');
         }
         
+        
+        $maxCustomerCode = $this->customerRepository->getMaxCustomerCode();
+        log_info(
+            '新規会員登録　最大会員番号',
+            [
+                'maxCustomerCode' => $maxCustomerCode,
+            ]
+        );
+        
+        
         /** @var $Customer \Eccube\Entity\Customer */
         $Customer = $this->customerRepository->newCustomer();
 
