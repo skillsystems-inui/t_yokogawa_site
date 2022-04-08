@@ -2676,6 +2676,11 @@ file that was distributed with this source code.
 			                                    <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
 			                                    	{{ '(税込)'|trans }}
 			                                    </span>
+			                                    
+			                                    <!-- 税抜表示 -->
+				                                <span class="ec-price__tax" style="font-size:8px; font-weight:bold;">
+				                                	{{ '(税抜: '|trans }}{{ Product.getPrice02Min|price }}{{ ')'|trans }}
+				                                </span>
 			                                </div>
 			                            {% elseif Product.getPrice02Min is not null and Product.getPrice02Max is not null %}
 			                                <span class="ec-productRole__priceRegularPrice">
@@ -2686,6 +2691,12 @@ file that was distributed with this source code.
 			                                <span class="ec-productRole__priceRegularTax" style="font-size:16px; font-weight:bold;">
 			                                	{{ '(税込)'|trans }}
 			                                </span>
+			                                
+			                                <!-- 税抜表示 -->
+			                                <span class="ec-price__tax" style="font-size:8px; font-weight:bold;">
+			                                	{{ '(税抜: '|trans }}{{ Product.getPrice02Min|price }}{{ ')'|trans }}
+			                                </span>
+				                                
 			                            {% else %}
 			                                <div class="ec-price">
 			                                    <span class="ec-price__price price02-view-default" style="padding-left:0px; font-size:20px; font-weight:bold;">
@@ -2694,6 +2705,11 @@ file that was distributed with this source code.
 			                                    <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
 			                                    	{{ '(税込)'|trans }}
 			                                    </span>
+			                                    
+			                                    <!-- 税抜表示 -->
+				                                <span class="ec-price__tax" style="font-size:8px; font-weight:bold;">
+				                                	{{ '(税抜: '|trans }}{{ Product.getPrice02Min|price }}{{ ')'|trans }}
+				                                </span>
 			                                </div>
 			                            {% endif %}
 			                        {% else %}
@@ -2703,6 +2719,11 @@ file that was distributed with this source code.
 			                                </span>
 			                                <span class="ec-price__tax" style="font-size:16px; font-weight:bold;">
 			                                	{{ '(税込)'|trans }}
+			                                </span>
+			                                
+			                                <!-- 税抜表示 -->
+			                                <span class="ec-price__tax" style="font-size:8px; font-weight:bold;">
+			                                	{{ '(税抜: '|trans }}{{ Product.getPrice02Min|price }}{{ ')'|trans }}
 			                                </span>
 			                            </div>
 			                        {% endif %}
