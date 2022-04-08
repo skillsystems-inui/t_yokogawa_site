@@ -203,7 +203,17 @@ file that was distributed with this source code.
                                     {% set statusForm = searchForm.status %}
                                     <!-- 各対応状況の件数を表示する -->
                                     {% for status_id, child in statusForm.children %}
+                                      <!-- ステータスの表示判定↓ -->
+                                        
+                                      {% if child.vars.value == 4 or child.vars.value == 6 or child.vars.value == 7 or child.vars.value == 8 %}
+                                        <!-- 　不要なステータスは出さない　　対応中(4)、入金済み(6)、決済処理中(7)、購入処理中(8)-->
+                                        <div class="form-check form-check-inline" style="display:none;">
+                                      {% else %}
+                                        <!-- 　必要なステータスは出す -->
                                         <div class="form-check form-check-inline">
+                                      {% endif %}
+                                      <!-- ステータスの表示判定↑ -->
+                                        
                                             <input type="checkbox"
                                                    id="{{ child.vars.id }}"
                                                    name="{{ child.vars.full_name }}"
