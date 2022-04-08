@@ -180,6 +180,14 @@ class ShippingType extends AbstractType
                 'format' => 'yyyy-MM-dd',
                 'required' => false,
             ])
+            
+            //出荷予定日
+            ->add('shipping_shukkayotei_date', DateType::class, [
+                'placeholder' => '',
+                'format' => 'yyyy-MM-dd',
+                'required' => false,
+            ])
+            
             ->add('tracking_number', TextType::class, [
                 'required' => false,
                 'constraints' => [

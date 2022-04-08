@@ -441,6 +441,19 @@ file that was distributed with this source code.
                                             </div>
                                         </div>
                                         <div class="col-6">
+                                            
+                                            <!-- 出荷予定日 -->
+                                            <div class="row mb-3 form-group">
+                                                <label class="col-3 col-form-label">
+                                                    <i class="fa fa-calendar-check-o fa-fw mr-1" aria-hidden="true"></i>
+                                                    {{ 'admin.order.shukkayotei_date'|trans }}
+                                                </label>
+                                                <div class="col">
+                                                    {{ form_widget(shippingForm.shipping_shukkayotei_date) }}
+                                                    {{ form_errors(shippingForm.shipping_shukkayotei_date) }}
+                                                </div>
+                                            </div>
+                                            
                                             <div class="row mb-3 form-group">
                                                 <label class="col-3 col-form-label">
                                                     <i class="fa fa-calendar-check-o fa-fw mr-1" aria-hidden="true"></i>

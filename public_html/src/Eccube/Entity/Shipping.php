@@ -167,6 +167,15 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
          * @ORM\Column(name="delivery_date", type="datetimetz", nullable=true)
          */
         private $shipping_delivery_date;
+        
+         /**
+         * 出荷予定日
+         *
+         * @var \DateTime|null
+         *
+         * @ORM\Column(name="shukkayotei_date", type="datetimetz", nullable=true)
+         */
+        private $shipping_shukkayotei_date;
 
         /**
          * 出荷日
@@ -716,6 +725,31 @@ if (!class_exists('\Eccube\Entity\Shipping')) {
         public function getShippingDeliveryDate()
         {
             return $this->shipping_delivery_date;
+        }
+        
+        
+        /**
+         * Set shippingShukkayoteiDate.
+         *
+         * @param \DateTime|null $shippingShukkayoteiDate
+         *
+         * @return Shipping
+         */
+        public function setShippingShukkayoteiDate($shippingShukkayoteiDate = null)
+        {
+            $this->shipping_shukkayotei_date = $shippingShukkayoteiDate;
+
+            return $this;
+        }
+
+        /**
+         * Get shippingShukkayoteiDate.
+         *
+         * @return \DateTime|null
+         */
+        public function getShippingShukkayoteiDate()
+        {
+            return $this->shipping_shukkayotei_date;
         }
 
         /**

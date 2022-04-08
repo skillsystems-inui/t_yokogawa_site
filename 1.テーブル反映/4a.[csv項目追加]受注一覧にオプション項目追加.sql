@@ -188,3 +188,8 @@ INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`,
 INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
 (3, 1, 'Eccube\\\\Entity\\\\Order', 'Customer', 'customer_code', '会員コード', 56, 1, '2021-09-02 03:47:59', '2022-02-04 11:47:05', 'csv'),
 (4, 1, 'Eccube\\\\Entity\\\\Order', 'Customer', 'customer_code', '会員コード', 56, 1, '2021-09-02 03:47:59', '2022-02-04 11:47:05', 'csv');
+
+--出荷予定日
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(3, 1, 'Eccube\\\\Entity\\\\Shipping', 'shipping_shukkayotei_date', NULL, '出荷予定日', 6, 1, '2021-09-02 03:47:59', '2022-02-04 11:47:05', 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\Shipping', 'shipping_shukkayotei_date', NULL, '出荷予定日', 56, 0, '2021-09-02 03:47:59', '2022-03-27 04:19:48', 'csv');

@@ -28,3 +28,8 @@ INSERT INTO `dtb_accept_shop` (`accept_shop`, `sort_no`, `visible`, `create_date
 
 --配送テーブルに受取店舗を追加
 ALTER TABLE `dtb_shipping` ADD `accept_shop` varchar(255) DEFAULT NULL;
+
+
+--出荷予定日を追加
+ALTER TABLE `dtb_shipping` ADD `shukkayotei_date` datetime DEFAULT NULL COMMENT '(DC2Type:datetimetz)';
+  

@@ -387,6 +387,33 @@ class OrderRepository extends AbstractRepository
                 ->andWhere('s.tracking_number = :tracking_number')
                 ->setParameter('tracking_number', $searchData['tracking_number']);
         }
+        
+        // 出荷予定日
+        if (!empty($searchData['shipping_shukkayotei_datetime_start']) && $searchData['shipping_shukkayotei_datetime_start']) {
+            $date = $searchData['shipping_shukkayotei_datetime_start'];
+            $qb
+                ->andWhere('s.shipping_shukkayotei_date >= :shipping_shukkayotei_date_start')
+                ->setParameter('shipping_shukkayotei_date_start', $date);
+        } elseif (!empty($searchData['shipping_shukkayotei_date_start']) && $searchData['shipping_shukkayotei_date_start']) {
+            $date = $searchData['shipping_shukkayotei_date_start'];
+            $qb
+                ->andWhere('s.shipping_shukkayotei_date >= :shipping_shukkayotei_date_start')
+                ->setParameter('shipping_shukkayotei_date_start', $date);
+        }
+
+        if (!empty($searchData['shipping_shukkayotei_datetime_end']) && $searchData['shipping_shukkayotei_datetime_end']) {
+            $date = $searchData['shipping_shukkayotei_datetime_end'];
+            $qb
+                ->andWhere('s.shipping_shukkayotei_date < :shipping_shukkayotei_date_end')
+                ->setParameter('shipping_shukkayotei_date_end', $date);
+        } elseif (!empty($searchData['shipping_shukkayotei_date_end']) && $searchData['shipping_shukkayotei_date_end']) {
+            $date = clone $searchData['shipping_shukkayotei_date_end'];
+            $date = $date
+                ->modify('+1 days');
+            $qb
+                ->andWhere('s.shipping_shukkayotei_date < :shipping_shukkayotei_date_end')
+                ->setParameter('shipping_shukkayotei_date_end', $date);
+        }
 
         // お届け予定日(Shipping.delivery_date)
         if (!empty($searchData['shipping_delivery_datetime_start']) && $searchData['shipping_delivery_datetime_start']) {

@@ -266,6 +266,60 @@ class SearchOrderType extends AbstractType
                     'data-toggle' => 'datetimepicker',
                 ],
             ])
+            
+            // 出荷予定日↓
+            ->add('shipping_shukkayotei_date_start', DateType::class, [
+                'label' => 'admin.order.shukkayotei_date__start',
+                'required' => false,
+                'input' => 'datetime',
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'attr' => [
+                    'class' => 'datetimepicker-input',
+                    'data-target' => '#'.$this->getBlockPrefix().'_shipping_shukkayotei_date_start',
+                    'data-toggle' => 'datetimepicker',
+                ],
+            ])
+            ->add('shipping_shukkayotei_datetime_start', DateTimeType::class, [
+                'label' => 'admin.order.shukkayotei_date__start',
+                'required' => false,
+                'input' => 'datetime',
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd HH:mm:ss',
+                'attr' => [
+                    'class' => 'datetimepicker-input',
+                    'data-target' => '#'.$this->getBlockPrefix().'_shipping_shukkayotei_datetime_start',
+                    'data-toggle' => 'datetimepicker',
+                ],
+            ])
+            ->add('shipping_shukkayotei_date_end', DateType::class, [
+                'label' => 'admin.order.shukkayotei_date__end',
+                'required' => false,
+                'input' => 'datetime',
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'placeholder' => ['year' => '----', 'month' => '--', 'day' => '--'],
+                'attr' => [
+                    'class' => 'datetimepicker-input',
+                    'data-target' => '#'.$this->getBlockPrefix().'_shipping_shukkayotei_date_end',
+                    'data-toggle' => 'datetimepicker',
+                ],
+            ])
+            ->add('shipping_shukkayotei_datetime_end', DateTimeType::class, [
+                'label' => 'admin.order.shukkayotei_date__end',
+                'required' => false,
+                'input' => 'datetime',
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd HH:mm:ss',
+                'attr' => [
+                    'class' => 'datetimepicker-input',
+                    'data-target' => '#'.$this->getBlockPrefix().'_shipping_shukkayotei_datetime_end',
+                    'data-toggle' => 'datetimepicker',
+                ],
+            ])
+            // 出荷予定日↑
+            
             ->add('shipping_delivery_date_start', DateType::class, [
                 'label' => 'admin.order.delivery_date__start',
                 'required' => false,
