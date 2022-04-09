@@ -19,6 +19,7 @@ use Eccube\Entity\DeliveryTime;
 use Eccube\Entity\Shipping;
 use Eccube\Repository\DeliveryFeeRepository;
 use Eccube\Repository\DeliveryRepository;
+use Plugin\DeliveryDate4\Repository\DeliveryDateRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -40,11 +41,16 @@ class ShippingType extends AbstractType
      * @var DeliveryRepository
      */
     protected $deliveryRepository;
-
+    
     /**
      * @var DeliveryFeeRepository
      */
     protected $deliveryFeeRepository;
+
+    /**
+     * @var DeliveryDateRepository
+     */
+    protected $deliveryDateRepository;
 
     /**
      * ShippingType constructor.
@@ -52,12 +58,14 @@ class ShippingType extends AbstractType
      * @param EccubeConfig $eccubeConfig
      * @param DeliveryRepository $deliveryRepository
      * @param DeliveryFeeRepository $deliveryFeeRepository
+     * @param DeliveryDateRepository $deliveryDateRepository
      */
-    public function __construct(EccubeConfig $eccubeConfig, DeliveryRepository $deliveryRepository, DeliveryFeeRepository $deliveryFeeRepository)
+    public function __construct(EccubeConfig $eccubeConfig, DeliveryRepository $deliveryRepository, DeliveryFeeRepository $deliveryFeeRepository, DeliveryDateRepository $deliveryDateRepository)
     {
         $this->eccubeConfig = $eccubeConfig;
         $this->deliveryRepository = $deliveryRepository;
         $this->deliveryFeeRepository = $deliveryFeeRepository;
+        $this->deliveryDateRepository = $deliveryDateRepository;
     }
 
     /**
@@ -293,12 +301,89 @@ class ShippingType extends AbstractType
             } else {
                 $Shipping->setShippingDeliveryName(null);
             }
+            
             $DeliveryDate = $form['shipping_delivery_date']->getData();
+            log_info(
+	            '配達日セット　開始',
+	            [
+	                'DeliveryDate' => $DeliveryDate,
+	            ]
+	        );
             if ($DeliveryDate) {
                 $Shipping->setShippingDeliveryDate(new \DateTime($DeliveryDate));
+                
+                //出荷予定日にデフォルトセット(配送日) 20220409
+                $ShukkayoteiDate = $DeliveryDate;
+                
+                //配送日から配送先の配送日数を引いた日付を出荷予定日とする
+                // 都道府県ごとの配送日数を引く
+	            $PrefDate = $this->deliveryDateRepository->findOneBy([
+	                'Delivery' => $Delivery,
+	                'Pref' => $Shipping->getPref(),
+	            ]);
+	            
+	            
+                log_info(
+		            '出荷予定日セット　配送先の都道府県に要する日数を取得',
+		            [
+		                'PrefDate' => $PrefDate,
+		            ]
+		        );
+	            
+	            if($PrefDate){
+	                $pDate = $PrefDate->getDates();
+	                
+	                log_info(
+			            '出荷予定日セット　日数取得',
+			            [
+			                'pDate' => $pDate,
+			            ]
+			        );
+	                
+	                $strDeliveryDate = date('Y-m-d H:i:s', strtotime($DeliveryDate));
+	                
+	                if(!is_null($pDate)){
+	                    $minus = " -".$pDate." day";
+	                    
+	                    log_info(
+			            '出荷予定日セット　マイナス日数',
+				            [
+				                'minus' => $minus,
+				                'DeliveryDate' => $strDeliveryDate,
+				            ]
+				        );
+			        
+	                    //出荷予定日をセット
+	                    $ShukkayoteiDate = date("Y-m-d H:i:s", strtotime($strDeliveryDate.$minus));
+	                    
+	                    log_info(
+				            '出荷予定日セット　日付取得',
+				            [
+				                'ShukkayoteiDate' => $ShukkayoteiDate,
+				            ]
+				        );
+	                }
+	            }
+                
+                //出荷予定日もあわせて登録する 20220409
+                $Shipping->setShippingShukkayoteiDate(new \DateTime($ShukkayoteiDate));
+                
+                log_info(
+		            '出荷予定日セット　完了',
+		            [
+		                'ShukkayoteiDate' => $ShukkayoteiDate,
+		            ]
+		        );
+                
             } else {
                 $Shipping->setShippingDeliveryDate(null);
             }
+            log_info(
+	            '配達日セット　終了',
+	            [
+	                'DeliveryDate' => $DeliveryDate,
+	            ]
+	        );
 
             $DeliveryTime = $form['DeliveryTime']->getData();
             if ($DeliveryTime) {
