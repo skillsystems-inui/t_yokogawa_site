@@ -123,15 +123,14 @@ class EntryController extends AbstractController
             return $this->redirectToRoute('mypage');
         }
         
-        
-        $maxCustomerCode = $this->customerRepository->getMaxCustomerCode();
+        $_maxCustomerCode = $this->customerRepository->getMaxCustomerCode();
+				        
         log_info(
-            '新規会員登録　最大会員番号',
+            'フロントから新規会員登録画面表示　最大会員番号確認',
             [
-                'maxCustomerCode' => $maxCustomerCode,
+                '新規会員登録　最大会員番号' => $_maxCustomerCode,
             ]
         );
-        
         
         /** @var $Customer \Eccube\Entity\Customer */
         $Customer = $this->customerRepository->newCustomer();
@@ -179,17 +178,39 @@ class EntryController extends AbstractController
                     if (StringUtil::trimAll($Customer->getCustomerCode()) == '') {
                     	$auto_num = '';
                     	
-                    	$current_time = date('YmdHis');
+                    	//年月日時分秒
+                    	//$current_time = date('YmdHis');
         
+				        //基準となる番号
+				        $targetCustomerCode = 110000;
+				        
+				        //最大会員番号コード+1を求める
+				        // 最大会員番号コード取得
+				        $maxCustomerCode = $this->customerRepository->getMaxCustomerCode();
+				        
 				        log_info(
-				            '会員コードが空白なら自動採番する',
+				            'フロントから新規会員登録　会員コードが空白なら最大会員番号を付与する(110000以上)',
 				            [
-				                'current_time' => $current_time,
+				                '新規会員登録　最大会員番号　maxCustomerCode' => $maxCustomerCode,
+				            ]
+				        );
+				        
+				        $maxPrusOneCustomerCode = (int)$maxCustomerCode + 1;
+				        if($targetCustomerCode > $maxPrusOneCustomerCode){
+				        	//「基準となる番号」未満なら「基準となる番号」をセットする(旧会員カードの続きの番号に近い110000以上にしたいため)
+				        	$maxPrusOneCustomerCode = $targetCustomerCode;
+				        }
+				        
+				        log_info(
+				            'フロントから新規会員登録　会員コードを+1でセット',
+				            [
+				                'maxPrusOneCustomerCode' => $maxPrusOneCustomerCode,
+				                'targetCustomerCode' => $targetCustomerCode,
 				            ]
 				        );
 				        
 				        //会員コードセット
-				        $Customer->setCustomerCode($current_time);
+				        $Customer->setCustomerCode($maxPrusOneCustomerCode);
                     }else{
                     	log_info(
 				            '会員コードが指定されているため指定コードを登録する',
