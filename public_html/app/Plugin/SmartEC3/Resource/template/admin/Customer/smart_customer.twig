@@ -1,6 +1,7 @@
 
 {# Button #}
-<a id="smartButton" class="btn btn-ec-regular" href="{{url('admin_smart_customer_all')}}">
+<!-- 20220409全件対象だったもともとの仕様は出さない -->
+<a id="smartButton" class="btn btn-ec-regular" style="display:none;" href="{{url('admin_smart_customer_all')}}">
     <i class="fa fa-cloud-upload mr-1 text-secondary"></i>
     <span>
         {{ 'plg.smartec3.customer.upload_all'|trans }}
@@ -10,8 +11,9 @@
 <script>
 
     $(function () {  
-        var smartButton = $('#smartButton');
-        $('.btn-group').prepend(smartButton);
+        //20220409全件対象だったもともとの仕様は出さない
+        //var smartButton = $('#smartButton');
+        //$('.btn-group').prepend(smartButton);
     });
 
 </script>

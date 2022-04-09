@@ -50,6 +50,26 @@ file that was distributed with this source code.
 			padding: 30px;
 		}
         
+        .smaregi_modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			overflow: auto;
+			background-color: rgba(0,0,0,0.5);
+		}
+
+		.smaregi_modal-content{
+			background-color: white;
+			width: 40%;
+			margin-top: 20%;
+			margin-left: 35%;
+			padding: 30px;
+		}
+        
     </style>
 {% endblock stylesheet %}
 
@@ -183,6 +203,28 @@ file that was distributed with this source code.
 	            event.preventDefault();
 	            //プッシュ通知入力用ポップアップ非表示
 	            $('.ec-push-modal').hide();
+	        });
+	        
+	        
+	        
+	        //-----スマレジ登録-----
+	        $('.open-smaregi').on('click', function() {
+	            event.preventDefault();
+	            //プッシュ通知入力用ポップアップ表示
+	            $('.ec-smaregi-modal').show();
+	        });
+	        
+	        $('.go-smaregi').on('click', function() {
+        		//スマレジに登録処理を実行する
+        		document.getElementById('lets-smaregi').click();
+        		
+        		alert('完了しました。');
+            });
+	        
+	        $('.close-smaregi').on('click', function() {
+	            event.preventDefault();
+	            //スマレジに登録用ポップアップ非表示
+	            $('.ec-smaregi-modal').hide();
 	        });
 	        
         });
@@ -437,7 +479,7 @@ file that was distributed with this source code.
                 <div class="c-primaryCol">
                     {% if pagination and pagination.totalItemCount %}
                         <div class="row justify-content-between mb-2">
-                            <div class="col-5"></div>
+                            <div class="col-5" style="position: relative;"><span style="position: absolute; bottom: 0;">※対象会員・・・検索条件に該当する会員データ</span></div>
 
                             <div class="col-6 text-right">
                                 {#Dropdown page count#}
@@ -453,6 +495,15 @@ file that was distributed with this source code.
 
                                 <div class="d-inline-block">
                                     <div class="btn-group" role="group">
+                                    	
+                                    	<!-- スマレジに登録ボタン(表示用) -->
+                                    	<a class="btn btn-ec-regular open-smaregi"><i class="fa fa-cloud-upload mr-1 text-secondary"></i><span>{{ 'admin.customer.merge_smaregi'|trans }}</span></a>
+                                        <!-- スマレジに登録実行用 -->
+                                        <div style="display:none;">
+                                        	<a class="btn btn-ec-regular lets-smaregi" id="lets-smaregi" href="{{ url('admin_smart_customer_all') }}"><i class="fa fa-cloud-upload mr-1 text-secondary"></i><span>{{ 'admin.customer.merge_smaregi'|trans }}</span></a>
+                                        </div>
+                                    	
+                                    	
                                     	<!-- プッシュ通知ボタン(表示用) -->
                                     	<a class="btn btn-ec-regular open-push"><i class="fa fa-send mr-1 text-secondary"></i><span>{{ 'admin.customer.exec_push'|trans }}</span></a>
                                         <!-- プッシュ通知実行用 -->
@@ -490,7 +541,32 @@ file that was distributed with this source code.
                             </div>
 	                    </div>
 	                    <!-- .プッシュ通知内容設定用modal -->
-                        
+	                    
+	                    
+	                     <!-- スマレジ登録確認用modal -->
+	                    <div class="ec-smaregi-modal smaregi_modal" style="display:none;">
+
+	                    	<div class="smaregi_modal-content">
+		                    	<label><b>スマレジ登録確認</b></label>
+		                    	<div class="ec-input" style="width:100%;"></div>
+		                    	<br>
+		                    	<b>対象の会員データをスマレジに登録(更新)します。よろしいですか？</b>
+		                    	<br>
+		                    	<b>(※不正なデータ(必須項目が未入力、誕生日が不正など)は対象としません。)</b>
+		                    	<br>
+		                    	<b>(※対象のデータ件数が500件以下のみ実行します。(超えると実行しません))</b>
+		                    	<br>
+		                    	<br>
+				                <!-- スマレジに登録する -->
+				                <a class="btn btn-ec-regular go-smaregi"><span>OK</span></a>
+				                <a class="btn btn-ec-regular close-smaregi"><span>キャンセル</span></a>
+                            </div>
+	                    </div>
+	                    <!-- .スマレジ登録確認用modal -->
+	                    
+	                    
+	                    
+	                    
                         <div class="card rounded border-0 mb-4 d-block">
                             <div class="card-body p-0">
                                 <table class="table">
