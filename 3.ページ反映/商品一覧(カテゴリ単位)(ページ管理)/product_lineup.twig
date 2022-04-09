@@ -1,343 +1,273 @@
-{#
-This file is part of EC-CUBE
-
-Copyright(c) EC-CUBE CO.,LTD. All Rights Reserved.
-
-http://www.ec-cube.co.jp/
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
-#}
 {% extends 'default_frame.twig' %}
 
-{% set body_class = 'product_page' %}
-
-{% block javascript %}
-    <script>
-        eccube.productsClassCategories = {
-            {% for Product in pagination %}
-            "{{ Product.id|escape('js') }}": {{ class_categories_as_json(Product)|raw }}{% if loop.last == false %}, {% endif %}
-            {% endfor %}
-        };
-
-        $(function() {
-
-            // 表示件数を変更
-            $('.disp-number').change(function() {
-                var dispNumber = $(this).val();
-                $('#disp_number').val(dispNumber);
-                $('#pageno').val(1);
-                $("#form1").submit();
-            });
-
-            // 並び順を変更
-            $('.order-by').change(function() {
-                var orderBy = $(this).val();
-                $('#orderby').val(orderBy);
-                $('#pageno').val(1);
-                $("#form1").submit();
-            });
-
-            $('.add-cart').on('click', function(e) {
-                var $form = $(this).parents('li').find('form');
-
-                // 個数フォームのチェック
-                var $quantity = $form.parent().find('.quantity');
-                if ($quantity.val() < 1) {
-                    $quantity[0].setCustomValidity('{{ '1以上で入力してください。'|trans }}');
-                    setTimeout(function() {
-                        loadingOverlay('hide');
-                    }, 100);
-                    return true;
-                } else {
-                    $quantity[0].setCustomValidity('');
-                }
-                e.preventDefault();
-                $.ajax({
-                    url: $form.attr('action'),
-                    type: $form.attr('method'),
-                    data: $form.serialize(),
-                    dataType: 'json',
-                    beforeSend: function(xhr, settings) {
-                        // Buttonを無効にする
-                        $('.add-cart').prop('disabled', true);
-                    }
-                }).done(function(data) {
-                    // レスポンス内のメッセージをalertで表示
-                    $.each(data.messages, function() {
-                        $('#ec-modal-header').html(this);
-                    });
-
-                    $('.ec-modal').show()
-
-                    // カートブロックを更新する
-                    $.ajax({
-                        url: '{{ url('block_cart') }}',
-                        type: 'GET',
-                        dataType: 'html'
-                    }).done(function(html) {
-                        $('.ec-headerRole__cart').html(html);
-                    });
-                }).fail(function(data) {
-                    alert('{{ 'カートへの追加に失敗しました。'|trans }}');
-                }).always(function(data) {
-                    // Buttonを有効にする
-                    $('.add-cart').prop('disabled', false);
-                });
-            });
-        });
-
-        $('.ec-modal-overlay, .ec-modal .ec-inlineBtn--cancel').on('click', function() {
-            $('.ec-modal').hide()
-        });
-    </script>
-{% endblock %}
-
 {% block main %}
-    {% if search_form.category_id.vars.errors|length > 0 %}
-        <div class="ec-searchnavRole">
-            <p class="errormsg text-danger">{{ 'ご指定のカテゴリは存在しません'|trans }}</p>
-        </div>
-    {% else %}
-        <div class="ec-searchnavRole">
-            <form name="form1" id="form1" method="get" action="?">
-                {% for item in search_form %}
-                    <input type="hidden" id="{{ item.vars.id }}"
-                           name="{{ item.vars.full_name }}"
-                           {% if item.vars.value is not empty %}value="{{ item.vars.value }}" {% endif %}/>
-                {% endfor %}
-            </form>
-            <div class="ec-searchnavRole__topicpath">
-                <ol class="ec-topicpath" style="color:#000; letter-spacing: 0;">
-                    <!-- 非表示
-                    <li class="ec-topicpath__item"><a href="{{ url('product_list') }}">{{ '全て'|trans }}</a>
-                    </li>
-                    -->
 
-                    {% set cate_type = '' %}
+<main>
+        <div class="item_index inner">
+          <h1 class="title"><strong class="agp">PRODUCTS</strong><span>商品一覧</span></h1><!-- .title -->
 
-                    {% if Category is not null %}
-
-                        {% for Path in Category.path %}
-
-                            <!--
-					          カテゴリ写真用のパス一覧
-					          ※画像はファイル管理で登録されているものを指定してください
-					        -->
-
-                            <!-- カテゴリ画像を表示する -->
-                            <!--  デコレーション  -->
-                            {% set image_pass = '' %}
-                            {% if 'ケーキ' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000002_deco.gif' %}
-                            	{% set cate_type = Path.name %}
-                            {% endif %}
-                            {% if '冷凍商品' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/1_000000000011.png' %}
-                            	{% set cate_type = Path.name %}
-                            {% endif %}
-                            {% if 'ギフト' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000007_paundocake.gif' %}
-                            	{% set cate_type = Path.name %}
-                            {% endif %}
-                            {% if '単品' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000005_baum.gif' %}
-                            	{% set cate_type = Path.name %}
-                            {% endif %}
-                            {% if 'コンフィチュール' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000010_conficyuru.gif' %}
-                            	{% set cate_type = Path.name %}
-                            {% endif %}
-                            {% if 'チョコレート' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000043_chocolate.gif' %}
-                            	{% set cate_type = Path.name %}
-                            {% endif %}
-                            {% if '季節のおすすめ' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000045_genteisweets.gif' %}
-                            	{% set cate_type = Path.name %}
-                            {% endif %}
-
-                            <!-- 画像表示 -->
-                            {% if image_pass != '' %}
-                            <div class="item_main">
-                            	<img src="{{image_pass}}" alt="">
-                            </div>
-                            {% endif %}
-
-                            <!-- カテゴリ名を表示する -->
-	                        <h1 class="small_title">
-	                        	<strong>{{ Path.name }}</strong>
-	                        	{% if 'ケーキ' in Path.name %}
-                            		<span class="">Cake</span>
-	                            {% endif %}
-	                            {% if '冷凍商品' in Path.name %}
-	                            	<span class="">Ice items</span>
-	                            {% endif %}
-	                            {% if 'ギフト' in Path.name %}
-	                            	<span class="">Gift</span>
-	                            {% endif %}
-	                            {% if '単品' in Path.name %}
-	                            	<span class="">Single</span>
-	                            {% endif %}
-	                            {% if 'コンフィチュール' in Path.name %}
-	                            	<span class="">Confiture</span>
-	                            {% endif %}
-	                            {% if 'チョコレート' in Path.name %}
-	                            	<span class="">Chocolate</span>
-	                            {% endif %}
-	                            {% if '季節のおすすめ' in Path.name %}
-	                            	<span class="">Recommended</span>
-	                            {% endif %}
-	                        </h1>
-
-                        {% endfor %}
-
-                    {% endif %}
-
-                    {% if search_form.vars.value and search_form.vars.value.name %}
-                        <li class="ec-topicpath__divider"></li>
-                        <li class="ec-topicpath__item">{{ '「%name%」の検索結果'|trans({ '%name%': search_form.vars.value.name }) }}</li>
-                    {% endif %}
-                </ol>
+          <section class="cake" id="cake">
+            <div class="item_main item_pc">
+              <a href="{{ url('product_list') }}?category_id=67" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/item/decoration.jpg" alt="ケーキ">
+              </a>
             </div>
-
-            <div class="ec-searchnavRole__infos" style="display:none;">
-                <div class="ec-searchnavRole__counter">
-                    <span></span>
-                </div>
-                {% if pagination.totalItemCount > 0 %}
-                    <div class="ec-searchnavRole__actions">
-                        <div class="ec-select">
-                            <span>表示件数: </span>{{ form_widget(disp_number_form, {'id': '', 'attr': {'class': 'disp-number'}}) }}
-                        </div>
-                    </div>
-                {% endif %}
+            <div class="item_main item_sp">
+              <a href="{{ url('product_list') }}?category_id=67" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/item/decoration.jpg" alt="ケーキ">
+              </a>
             </div>
-        </div>
-        {% if pagination.totalItemCount > 0 %}
+            <div class="category_name">
+              <h2 class="small_title"><strong>ケーキ</strong><span class="agp">Cake</span></h2>
+            </div><!-- .category_name -->
+            <p>ホールケーキ・ロールケーキ・カットケーキ。様々なシーンでご利用いただけます。</p>
+          </section>
 
-        	<!-- カテゴリ：ケーキの場合 -->
-            {% if 'ケーキ' in cate_type %}
-                <div class="ec-shelfRole">
-		            <!-- カットケーキの場合 -->
-		            <div style="background-color:lightblue; font-size:18px;">
-		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
-		            		<b>カットケーキ</b>
-		            	</div>
-		            </div>
-	                <ul class="ec-shelfGrid">
-	                    {% for Product in pagination %}
-
-	                        {% for p_cat in Product.getProductCategories() %}
-	                        	{% if 'カットケーキ' in p_cat.Category.name %}
-				            		<li class="ec-shelfGrid__item">
-			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
-			                                <p class="ec-shelfGrid__item-image">
-			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
-			                                </p>
-			                                <p>{{ Product.name }}</p>
-			                            </a>
-			                        </li>
-				                {% endif %}
-			                {% endfor %}
-
-	                    {% endfor %}
-	                </ul>
-	            </div>
-	            <div class="ec-shelfRole">
-		            <!-- ロールケーキの場合 -->
-		            <div style="background-color:lightblue; font-size:18px;">
-		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
-		            		<b>ロールケーキ</b>
-		            	</div>
-		            </div>
-	                <ul class="ec-shelfGrid">
-	                    {% for Product in pagination %}
-
-	                        {% for p_cat in Product.getProductCategories() %}
-	                        	{% if 'ロールケーキ' in p_cat.Category.name %}
-				            		<li class="ec-shelfGrid__item">
-			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
-			                                <p class="ec-shelfGrid__item-image">
-			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
-			                                </p>
-			                                <p>{{ Product.name }}</p>
-			                            </a>
-			                        </li>
-				                {% endif %}
-			                {% endfor %}
-
-	                    {% endfor %}
-	                </ul>
-	            </div>
-	            <div class="ec-shelfRole">
-		            <!-- デコレーションの場合 -->
-		            <div style="background-color:lightblue; font-size:18px;">
-		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
-		            		<b>デコレーション</b>
-		            	</div>
-		            </div>
-	                <ul class="ec-shelfGrid">
-	                    {% for Product in pagination %}
-
-	                        {% for p_cat in Product.getProductCategories() %}
-	                        	{% if 'デコレーション' in p_cat.Category.name %}
-				            		<li class="ec-shelfGrid__item">
-			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
-			                                <p class="ec-shelfGrid__item-image">
-			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
-			                                </p>
-			                                <p>{{ Product.name }}</p>
-			                            </a>
-			                        </li>
-				                {% endif %}
-			                {% endfor %}
-
-	                    {% endfor %}
-	                </ul>
-	            </div>
-            {% else %}
-            	<!-- 上記以外の場合 -->
-            	<div class="ec-shelfRole">
-		            <ul class="ec-shelfGrid">
-	                    {% for Product in pagination %}
-	                        <li class="ec-shelfGrid__item">
-	                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
-	                                <p class="ec-shelfGrid__item-image">
-	                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
-	                                </p>
-	                                <p>{{ Product.name }}</p>
-	                            </a>
-	                        </li>
-	                    {% endfor %}
-	                </ul>
-	            </div>
-            {% endif %}
-
-            <div class="ec-modal">
-                <div class="ec-modal-overlay">
-                    <div class="ec-modal-wrap">
-                        <span class="ec-modal-close"><span class="ec-icon"><img src="{{ asset('assets/icon/cross-dark.svg') }}" alt=""/></span></span>
-                        <div id="ec-modal-header" class="text-center">{{ 'カートに追加しました。'|trans }}</div>
-                        <div class="ec-modal-box">
-                            <div class="ec-role">
-                                <span class="ec-inlineBtn--cancel">{{ 'お買い物を続ける'|trans }}</span>
-                                <a href="{{ url('cart') }}" class="ec-inlineBtn--action">{{ 'カートへ進む'|trans }}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!--  <section class="petit" id="petit">
+            <div class="item_main item_pc">
+              <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/item/petit-gateau.jpg" alt="プチガトー">
+              </a>
             </div>
-            <div class="ec-pagerRole">
-                {% include "pager.twig" with {'pages': pagination.paginationData} %}
+            <div class="item_main item_sp">
+              <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/item/petit-gateau.jpg" alt="プチガトー">
+              </a>
             </div>
+            <div class="category_name">
+              <h2 class="small_title"><strong>プチガトー</strong><span class="agp">Petit Gateau</span></h2>
+            </div>--><!-- .category_name -->
+            <!--<p>季節の魅力あふれる、表情豊かなプチガトー<br>パティシエが丁寧に作り上げた見た目も楽しいケーキたちをぜひ、ご賞味ください。</p>
+          </section>-->
 
+          <!--<section class="roll" id="roll">
+            <div class="item_main item_pc">
+              <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+                <img src="/html/user_data/assets/img/main/item/swiss-roll.jpg" alt="ロールケーキ">
+              </a>
+            </div>
+            <div class="item_main item_sp">
+              <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+                <img src="/html/user_data/assets/img/main/item/swiss-roll.jpg" alt="ロールケーキ">
+            </div>
+            <div class="category_name">
+              <h2 class="small_title"><strong>ロールケーキ</strong><span class="agp">Swiss Roll</span></h2>
+            </div>--><!-- .category_name -->
+            <!--<p>こだわりのクリームやチョコレート、フルーツを贅沢に使用したロールケーキ</p>
+          </section>-->
 
-        {% endif %}
+          <!-- 今月のおすすめ -->
+          <section class="recommended" id="recommended">
+            <div class="item_main item_pc">
+              <a href="{{ url('product_list') }}?category_id=63" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/sakurasweets.JPG" alt="季節のおすすめ">
+              </a>
+            </div>
+            <div class="item_main item_sp">
+              <a href="{{ url('product_list') }}?category_id=63" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/sakurasweets.JPG" alt="季節のおすすめ">
+              </a>
+            </div>
+            <div class="category_name">
+              <h2 class="small_title"><strong>限定スイーツ</strong><span class="agp">Seasonal</span></h2>
+            </div><!-- .category_name -->
+            <p>季節の味覚をたっぷり使用した、T.YOKOGAWAでしか出会えないスイーツです。</p>
+          </section>
 
-    {% endif %}
-    <div style="padding-bottom:20px;">
-		<a href="http://t-yokogawa-com.check-xserver.jp/user_data/product_lineup" class="btn">商品一覧に戻る</a>
-    </div>
+          <section class="chocolate" id="chocolate">
+            <div class="item_main item_pc">
+              <a href="{{ url('product_list') }}?category_id=92" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/chocolate.jpg" alt="チョコレート">
+              </a>
+            </div>
+            <div class="item_main item_sp">
+              <a href="{{ url('product_list') }}?category_id=92" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/chocolate.jpg" alt="チョコレート">
+              </a>
+            </div>
+            <div class="category_name">
+              <h2 class="small_title"><strong>チョコレート</strong><span class="agp">Chocolate</span></h2>
+            </div><!-- .category_name -->
+            <p>職人のこだわりが詰まったT.YOKOGAWA自慢のチョコレートで<br>心も身体もしあわせなひと時を。</p>
+          </section>
+
+          <section class="baumkuchen" id="baumkuchen">
+            <div class="item_main item_pc">
+              <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+                <img src="/html/user_data/assets/img/main/item/baumkuchen.jpg" alt="バームクーヘン">
+              </a>
+            </div>
+            <div class="item_main item_sp">
+              <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+                <img src="/html/user_data/assets/img/main/item/baumkuchen.jpg" alt="バームクーヘン">
+              </a>
+            </div>
+            <div class="category_name">
+              <h2 class="small_title"><strong>バームクーヘン</strong><span class="agp">Baumkuchen</span></h2>
+            </div><!-- .category_name -->
+            <p>素朴な味わいを大切に、一層一層丁寧に焼き上げたこだわりのバームクーヘン。<br>生地の状態を確かめながら職人の手でじっくりと焼き上げています。</p>
+          </section>
+          
+          <section class="bakegoods" id="bakegoods">
+            <div class="item_main item_pc">
+              <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/item/bakegoods.jpg" alt="クッキー">
+              </a>
+            </div>
+            <div class="item_main item_sp">
+              <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/item/bakegoods.jpg" alt="クッキー">
+              </a>
+            </div>
+            <div class="category_name">
+              <h2 class="small_title"><strong>クッキー</strong><span class="agp">Bakegoods</span></h2>
+            </div><!-- .category_name -->
+            <p>さっくりとした食感が愛される理由。<br>保存料を一切使用していないからこそ、生きている豊かな風味をお楽しみください。</p>
+          </section>
+
+          
+          
+          <section class="madeleine-financie" id="madeleine-financie">
+            <div class="item_main item_pc">
+              <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/item/madeleine-financie.jpg" alt="マドレーヌ・フィナンシェ">
+              </a>
+            </div>
+            <div class="item_main item_sp">
+              <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+              	<img src="/html/user_data/assets/img/main/item/madeleine-financie.jpg" alt="マドレーヌ・フィナンシェ">
+              </a>
+            </div>
+            <div class="category_name">
+              <h2 class="small_title"><strong>マドレーヌ・フィナンシェ</strong><span class="agp">Madeleine/Financier</span></h2>
+            </div><!-- .category_name -->
+            <p>シンプルでやさしい味わいに、ひろがるはちみつの華やかな香り。<br>焼き立てからあらねつが取れた一番美味しい瞬間を香りも一緒に閉じ込めました。</p>
+          </section>
+          
+          <!-- .column2 -->
+          <div class="column2">
+            
+            <section class="pound-cake" id="pound-cake">
+              <div class="item_main item_pc">
+                <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+                  <img src="/html/user_data/assets/img/main/item/pound-cake.jpg" alt="パウンドケーキ">
+                </a>
+              </div>
+              <div class="item_main item_sp">
+                <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+                  <img src="/html/user_data/assets/img/main/item/pound-cake.jpg" alt="パウンドケーキ">
+                </a>
+              </div>
+              <div class="category_name">
+                <h2 class="small_title"><strong>パウンドケーキ</strong><span class="agp">Pound Cake</span></h2>
+              </div><!-- .category_name -->
+              <p>バターやチョコレート、フルーツやクルミなど、<br>それぞれの素材に合った製法で焼き上げた<br>それぞれの素材に合った製法で焼き上げた個性豊かなパウンドケーキ。</p>
+            </section>
+
+            <section class="reitoucake" id="reitoucake">
+              <div class="item_main item_pc">
+                <a href="{{ url('product_list') }}?category_id=74" style="text-decoration: none;">
+                  <img src="/html/user_data/assets/img/main/item/donut-macaron.jpg" alt="冷凍商品">
+                </a>
+              </div>
+              <div class="item_main item_sp">
+                <a href="{{ url('product_list') }}?category_id=74" style="text-decoration: none;">
+                  <img src="/html/user_data/assets/img/main/item/donut-macaron.jpg" alt="冷凍商品">
+                </a>
+              </div>
+              <div class="category_name">
+                <h2 class="small_title"><strong>冷凍商品</strong><span class="agp">Pound Cake</span></h2>
+              </div><!-- .category_name -->
+              <p>バターやチョコレート、フルーツやクルミなど、<br>それぞれの素材に合った製法で焼き上げた<br>それぞれの素材に合った製法で焼き上げた個性豊かなパウンドケーキ。</p>
+            </section>
+            
+            <section class="donut" id="donut">
+              <div class="item_main item_pc">
+                <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+                  <img src="/html/user_data/assets/img/main/item/donut-kasutera.jpg" alt="ドーナツ・カステラ">
+                </a>
+              </div>
+              <div class="item_main item_sp">
+                <a href="{{ url('product_list') }}?category_id=00" style="text-decoration: none;">
+                  <img src="/html/user_data/assets/main/item/donut-kasutera.jpg" alt="ドーナツ・カステラ">
+                </a>
+              </div>
+              <div class="category_name">
+                <h2 class="small_title"><strong>ドーナツ・カステラ</strong><span class="agp">Donut/Castella</span></h2>
+              </div><!-- .category_name -->
+              <p>焼菓子感覚で食べられるヘルシーなドーナツと<br>自然の恵みに感謝して、毎朝焼き上げる焼き立てのカステラ。</p>
+            </section>
+  
+            <section class="confiture-honey" id="confiture-honey">
+              <div class="item_main item_pc">
+                <a href="{{ url('product_list') }}?category_id=91" style="text-decoration: none;">
+                  <img src="/html/user_data/assets/img/main/item/cinfiture-honey.jpg" alt="コンフィチュール">
+                </a>
+              </div>
+              <div class="item_main item_sp">
+                <a href="{{ url('product_list') }}?category_id=91" style="text-decoration: none;">
+                  <img src="/html/user_data/assets/img/main/item/cinfiture-honey.jpg" alt="コンフィチュール">
+                </a>
+              </div>
+              <div class="category_name">
+                <h2 class="small_title"><strong>コンフィチュール</strong><span class="agp">Confiture</span></h2>
+              </div><!-- .category_name -->
+              <p>旬のフルーツなどを使用し、じっくりとお砂糖のみで炊き上げました。</p>
+            </section>
+
+          </div>
+          
+        </div><!-- .item_index -->
+        
+        <!--
+        <nav class="use_nav" id="use">
+          <p>用途別でえらぶ</p>
+          <dl class="shop">
+            <dt>店頭受取</dt>
+            <dd><a href="{{ url('product_list') }}?category_id=22" class="btn">身近な人へのお礼として</a></dd>
+            <dd><a href="{{ url('product_list') }}?category_id=23" class="btn">お中元・お歳暮として</a></dd>
+            <dd><a href="{{ url('product_list') }}?category_id=24" class="btn">内祝いとして</a></dd>
+            <dd><a href="{{ url('product_list') }}?category_id=25" class="btn">法事のお供えとして</a></dd>
+          </dl>
+          <dl class="order">
+            <dt>お取り寄せ</dt>
+            <dd><a href="{{ url('product_list') }}?category_id=17" class="btn">身近な人へのお礼として</a></dd>
+            <dd><a href="{{ url('product_list') }}?category_id=18" class="btn">お中元・お歳暮として</a></dd>
+            <dd><a href="{{ url('product_list') }}?category_id=19" class="btn">内祝いとして</a></dd>
+            <dd><a href="{{ url('product_list') }}?category_id=20" class="btn">法事のお供えとして</a></dd>
+          </dl>
+        </nav>
+        <nav class="price_nav" id="price">
+          <p>価格帯からえらぶ</p>
+          <dl class="shop">
+            <dt>店頭受取</dt>
+            <dd><a href="{{ url('product_list') }}?category_id=31" class="btn">～\2,160</a></dd>
+            <dd><a href="{{ url('product_list') }}?category_id=32" class="btn">\2,160～3,780</a></dd>
+            <dd><a href="{{ url('product_list') }}?category_id=33" class="btn">\3,780～</a></dd>
+          </dl>
+          <dl class="order">
+            <dt>お取り寄せ</dt>
+            <dd><a href="{{ url('product_list') }}?category_id=27" class="btn">～\2,160</a></dd>
+            <dd><a href="{{ url('product_list') }}?category_id=28" class="btn">\2,160～3,780</a></dd>
+            <dd><a href="{{ url('product_list') }}?category_id=29" class="btn">\3,780～</a></dd>
+          </dl>
+        </nav>
+        -->
+        
+        <!--
+        <nav class="guide_nav">
+          <p>ご利用ガイド</p>
+          <ul>
+            <li class="howto"><a href="/guide.html#g01"><span>注文方法</span></a></li>
+            <li class="purse"><a href="/guide.html#g02"><span>支払方法</span></a></li>
+            <li class="cancel"><a href="/guide.html#g03"><span>キャンセルに<br>ついて</span></a></li>
+            <li class="wrapping"><a href="/guide.html#g04"><span>ラッピングに<br>ついて</span></a></li>
+            <li class="postage"><a href="/guide.html#g05"><span>送料について</span></a></li>
+            <li class="shopfront"><a href="/guide.html#g06"><span>店頭受取に<br>ついて</span></a></li>
+            <li class="point"><a href="/guide.html#g07"><span>ポイントに<br>ついて</span></a></li>
+          </ul>
+        </nav>
+        -->
+      </main>
 
 {% endblock %}
