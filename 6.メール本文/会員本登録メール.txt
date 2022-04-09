@@ -20,7 +20,7 @@ file that was distributed with this source code.
 　ご連絡いただければ幸いです。
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-ID:{{ Customer.id }}
+会員番号:{{ Customer.customer_code }}
 
 {{ Customer.name01 }} {{ Customer.name02 }} 様
 
