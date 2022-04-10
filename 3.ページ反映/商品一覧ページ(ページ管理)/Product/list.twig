@@ -113,18 +113,18 @@ file that was distributed with this source code.
                     <li class="ec-topicpath__item"><a href="{{ url('product_list') }}">{{ '全て'|trans }}</a>
                     </li>
                     -->
-                    
+
                     {% set cate_type = '' %}
-                    
+
                     {% if Category is not null %}
-                        
+
                         {% for Path in Category.path %}
-                            
+
                             <!--
 					          カテゴリ写真用のパス一覧
 					          ※画像はファイル管理で登録されているものを指定してください
 					        -->
-					        
+
                             <!-- カテゴリ画像を表示する -->
                             <!--  デコレーション  -->
                             {% set image_pass = '' %}
@@ -140,8 +140,8 @@ file that was distributed with this source code.
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000007_paundocake.gif' %}
                             	{% set cate_type = Path.name %}
                             {% endif %}
-                            {% if '単品' in Path.name %}
-                            	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000005_baum.gif' %}
+                            {% if 'クッキー' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/main/item/bakegoods.jpg' %}
                             	{% set cate_type = Path.name %}
                             {% endif %}
                             {% if 'コンフィチュール' in Path.name %}
@@ -156,14 +156,14 @@ file that was distributed with this source code.
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000045_genteisweets.gif' %}
                             	{% set cate_type = Path.name %}
                             {% endif %}
-                            
+
                             <!-- 画像表示 -->
                             {% if image_pass != '' %}
                             <div class="item_main">
                             	<img src="{{image_pass}}" alt="">
                             </div>
                             {% endif %}
-                            
+
                             <!-- カテゴリ名を表示する -->
 	                        <h1 class="small_title">
 	                        	<strong>{{ Path.name }}</strong>
@@ -189,18 +189,18 @@ file that was distributed with this source code.
 	                            	<span class="">Recommended</span>
 	                            {% endif %}
 	                        </h1>
-	                        
+
                         {% endfor %}
-                        
+
                     {% endif %}
-                    
+
                     {% if search_form.vars.value and search_form.vars.value.name %}
                         <li class="ec-topicpath__divider"></li>
                         <li class="ec-topicpath__item">{{ '「%name%」の検索結果'|trans({ '%name%': search_form.vars.value.name }) }}</li>
                     {% endif %}
                 </ol>
             </div>
-            
+
             <div class="ec-searchnavRole__infos" style="display:none;">
                 <div class="ec-searchnavRole__counter">
                     <span></span>
@@ -215,7 +215,7 @@ file that was distributed with this source code.
             </div>
         </div>
         {% if pagination.totalItemCount > 0 %}
-        
+
         	<!-- カテゴリ：ケーキの場合 -->
             {% if 'ケーキ' in cate_type %}
                 <div class="ec-shelfRole">
@@ -227,7 +227,7 @@ file that was distributed with this source code.
 		            </div>
 	                <ul class="ec-shelfGrid">
 	                    {% for Product in pagination %}
-	                        
+
 	                        {% for p_cat in Product.getProductCategories() %}
 	                        	{% if 'カットケーキ' in p_cat.Category.name %}
 				            		<li class="ec-shelfGrid__item">
@@ -240,9 +240,9 @@ file that was distributed with this source code.
 			                        </li>
 				                {% endif %}
 			                {% endfor %}
-	                        
+
 	                    {% endfor %}
-	                </ul>                
+	                </ul>
 	            </div>
 	            <div class="ec-shelfRole">
 		            <!-- ロールケーキの場合 -->
@@ -253,7 +253,7 @@ file that was distributed with this source code.
 		            </div>
 	                <ul class="ec-shelfGrid">
 	                    {% for Product in pagination %}
-	                        
+
 	                        {% for p_cat in Product.getProductCategories() %}
 	                        	{% if 'ロールケーキ' in p_cat.Category.name %}
 				            		<li class="ec-shelfGrid__item">
@@ -266,9 +266,9 @@ file that was distributed with this source code.
 			                        </li>
 				                {% endif %}
 			                {% endfor %}
-	                        
+
 	                    {% endfor %}
-	                </ul>                
+	                </ul>
 	            </div>
 	            <div class="ec-shelfRole">
 		            <!-- デコレーションの場合 -->
@@ -279,7 +279,7 @@ file that was distributed with this source code.
 		            </div>
 	                <ul class="ec-shelfGrid">
 	                    {% for Product in pagination %}
-	                        
+
 	                        {% for p_cat in Product.getProductCategories() %}
 	                        	{% if 'デコレーション' in p_cat.Category.name %}
 				            		<li class="ec-shelfGrid__item">
@@ -292,10 +292,70 @@ file that was distributed with this source code.
 			                        </li>
 				                {% endif %}
 			                {% endfor %}
-	                        
+
 	                    {% endfor %}
-	                </ul>                
+	                </ul>
 	            </div>
+            
+            
+            
+            <!-- カテゴリ：クッキーの場合 -->
+            {% elseif 'クッキー' in cate_type %}
+                <div class="ec-shelfRole">
+		            <!-- 単品の場合 -->
+		            <div style="background-color:lightblue; font-size:18px;">
+		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
+		            		<b>単品</b>
+		            	</div>
+		            </div>
+	                <ul class="ec-shelfGrid">
+	                    {% for Product in pagination %}
+
+	                        {% for p_cat in Product.getProductCategories() %}
+	                        	{% if p_cat.Category.id == 110 %}
+				            		<li class="ec-shelfGrid__item">
+			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
+			                                <p class="ec-shelfGrid__item-image">
+			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
+			                                </p>
+			                                <p>{{ Product.name }}</p>
+			                            </a>
+			                        </li>
+				                {% endif %}
+			                {% endfor %}
+
+	                    {% endfor %}
+	                </ul>
+	            </div>
+	            <div class="ec-shelfRole">
+		            <!-- ギフトの場合 -->
+		            <div style="background-color:lightblue; font-size:18px;">
+		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
+		            		<b>ギフト</b>
+		            	</div>
+		            </div>
+	                <ul class="ec-shelfGrid">
+	                    {% for Product in pagination %}
+
+	                        {% for p_cat in Product.getProductCategories() %}
+	                        	{% if p_cat.Category.id == 111 %}
+				            		<li class="ec-shelfGrid__item">
+			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
+			                                <p class="ec-shelfGrid__item-image">
+			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
+			                                </p>
+			                                <p>{{ Product.name }}</p>
+			                            </a>
+			                        </li>
+				                {% endif %}
+			                {% endfor %}
+
+	                    {% endfor %}
+	                </ul>
+	            </div>
+            
+            
+            
             {% else %}
             	<!-- 上記以外の場合 -->
             	<div class="ec-shelfRole">
@@ -310,10 +370,10 @@ file that was distributed with this source code.
 	                            </a>
 	                        </li>
 	                    {% endfor %}
-	                </ul>                
+	                </ul>
 	            </div>
             {% endif %}
-            
+
             <div class="ec-modal">
                 <div class="ec-modal-overlay">
                     <div class="ec-modal-wrap">
@@ -331,13 +391,12 @@ file that was distributed with this source code.
             <div class="ec-pagerRole">
                 {% include "pager.twig" with {'pages': pagination.paginationData} %}
             </div>
-            
-            
+
+
         {% endif %}
-        
+
     {% endif %}
     <div style="padding-bottom:20px;">
 		<a href="http://t-yokogawa-com.check-xserver.jp/user_data/product_lineup" class="btn">商品一覧に戻る</a>
     </div>
-
 {% endblock %}
