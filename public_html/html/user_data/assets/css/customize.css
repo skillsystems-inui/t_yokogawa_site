@@ -17,7 +17,7 @@ $common
 		text-align: left;
 		letter-spacing: .05em;
 	}
-	
+
 	li {
 	    list-style: none;
 	}
@@ -85,7 +85,7 @@ $common
 	.cart_btn.sold::after {
 		display: none;
 	}
-	
+
 	.syosai_go_btn {
 		font-size: 18px;
 		font-weight: bold;
@@ -133,7 +133,7 @@ $common
 	.syosai_go_btn.sold::after {
 		display: none;
 	}
-	
+
 	.syosai_label {
 		font-size: 18px;
 		font-weight: bold;
@@ -182,7 +182,7 @@ $common
 	.syosai_label.sold::after {
 		display: none;
 	}
-	
+
 	.cart_input_btn {
 		font-size: 18px;
 		font-weight: bold;
@@ -230,7 +230,7 @@ $common
 	.cart_input_btn.sold::after {
 		display: none;
 	}
-	
+
 	.cart_back_btn {
 		font-size: 18px;
 		font-weight: bold;
@@ -767,7 +767,7 @@ $common
 		background-image: url(../img/mothersday_top.png);
 	}
 	.front_page .slider_wrap .slider .slider_item.main12 {
-		background-image: url(../img/yakiimo_toppc.png);
+		background-image: url(../img/main/cuore_toppc.png);
 	}
 	.front_page .slider_wrap .slider .slider_item.main13 {
 		background-image: url(../img/cuore_toppc.png);
@@ -1568,15 +1568,15 @@ $common
 		margin: 0 auto 100px;
 		display: block;
 	}
-	
+
 	.item_pc {
 		display: block;
 	}
-	
+
 	.item_sp {
 	  display: none;
 	}
-	
+
 	.item_main>img {
 	  position: absolute;
 	  top: 50%;
@@ -2531,15 +2531,15 @@ $common
 	div#search {
 	    padding-top: 140px;
 	}
-	
+
 	.uketori_houhou {
 		margin: 20px auto;
 	}
-	
+
 	.product_detail_right {
 		width: 500px;
 	}
-	
+
 	.product_detail_quantity {
 		float:left;
 		width:35%;
@@ -2548,7 +2548,7 @@ $common
 		float:left;
 		width:50%;
 	}
-	
+
 	.option_candle_label_left {
 		float:left;
 		width:80%;
@@ -2560,7 +2560,7 @@ $common
 		padding:8px;
 		font-size:16px;
 	}
-	
+
 	.option_decolation_label_left {
 		float:left;
 		width:80%;
@@ -2572,7 +2572,7 @@ $common
 		padding:8px;
 		font-size:16px;
 	}
-	
+
 	.option_decotuika_label_left {
 		float:left;
 		width:80%;
@@ -2584,7 +2584,7 @@ $common
 		padding:8px;
 		font-size:16px;
 	}
-	
+
 	.option_bag_label_left {
 		float:left;
 		width:80%;
@@ -2596,7 +2596,7 @@ $common
 		padding:8px;
 		font-size:16px;
 	}
-	
+
 	.option_gift_label_left {
 		float:left;
 		width:80%;
@@ -2608,21 +2608,21 @@ $common
 		padding:8px;
 		font-size:16px;
 	}
-	
+
 	.option_decotuika_frame {
 		padding:20px;
 	}
-	
+
 	.goukei_price {
 		margin-right:50%;
 	}
-	
-	
-	
-	
-	
+
 	.app_bottom_navi {
 	    display: none;
+	}
+	
+	.mypage_header {
+	    padding-top:0px;
 	}
 }
 /*.PC*/
@@ -2699,7 +2699,7 @@ $common
 	.cart_btn.sold::after {
 		display: none;
 	}
-	
+
 	.syosai_go_btn {
 		font-size: 18px;
 		font-weight: bold;
@@ -2747,7 +2747,7 @@ $common
 	.syosai_go_btn.sold::after {
 		display: none;
 	}
-	
+
 	.syosai_label {
 		font-size: 18px;
 		font-weight: bold;
@@ -2795,7 +2795,7 @@ $common
 	.syosai_label.sold::after {
 		display: none;
 	}
-	
+
 	.cart_input_btn {
 		font-size: 18px;
 		font-weight: bold;
@@ -2843,7 +2843,7 @@ $common
 	.cart_input_btn.sold::after {
 		display: none;
 	}
-	
+
 	.cart_back_btn {
 		font-size: 18px;
 		font-weight: bold;
@@ -2891,7 +2891,7 @@ $common
 	.cart_back_btn.sold::after {
 		display: none;
 	}
-	
+
 	.title {
 		display: block;
 		text-align: center;
@@ -2984,7 +2984,7 @@ $common
 		right: 10px;
 		margin: auto;
 	}
-	
+
 	.back_list_btn {
 		width: 70%;
 		height: 50px;
@@ -3290,12 +3290,12 @@ $common
 		width: 49%;
 		border-bottom: 1px solid #C8C8C8;
 	}
-	
+
 	header div nav ul li.item_sp dl.category dd.topcat {
 		width: 98%;
 		border-bottom: 1px solid #C8C8C8;
 	}
-	
+
 	header div nav ul li.item_sp dl.category dd a {
 		display: flex;
 		flex-wrap: nowrap;
@@ -3303,8 +3303,8 @@ $common
 		padding: 0;
 		padding: 5px 0;
 	}
-	
-	
+
+
 	header div nav ul li.item_sp dl.category dd.topcat a {
 		display: flex;
 		flex-wrap: nowrap;
@@ -3314,7 +3314,7 @@ $common
 		padding-left:24%;
 		padding-right:24%;
 	}
-	
+
 	header div nav ul li.item_sp dl.category dd a img {
 		width: 35%;
 	}
@@ -3322,7 +3322,7 @@ $common
 		width: 63%;
 		text-align: left;
 	}
-	
+
 	header div nav ul li.item_sp dl.use dd a {
 		border-bottom: 1px solid #C8C8C8;
 		justify-content: flex-start;
@@ -3461,7 +3461,7 @@ $common
 		background-image: url(../img/mothersday_top_sp.png);
 	}
 	.front_page .slider_wrap .slider .slider_item.main12 {
-		background-image: url(../img/yakiimo_topsp.png);
+		background-image: url(../img/main/cuore_topsp.png);
 	}
 	.front_page .slider_wrap .slider .slider_item.main13 {
 		background-image: url(../img/cuore_topsp.png);
@@ -4264,15 +4264,15 @@ $common
 		margin: 0 auto 10%;
 		display: block;
 	}
-	
+
 	.item_pc {
 		display: none;
 	}
-	
+
 	.item_sp {
 	  display: block;
 	}
-	
+
 	.item_main>img {
 	  position: absolute;
 	  top: 50%;
@@ -5120,22 +5120,22 @@ $common
 		margin-inline-end: 0px;
 		padding-inline-start: 0px;
 	}
-	
+
 	.uketori_houhou {
 		width: 100%;
 	}
-	
+
 	.product_detail_right {
 		width: 100%;
 	}
-	
+
 	.product_detail_quantity {
 		width: 100%;
 	}
 	.product_detail_price {
 		width: 100%;
 	}
-	
+
 	.option_candle_label_left {
 		float:left;
 		width:70%;
@@ -5147,7 +5147,7 @@ $common
 		padding:8px;
 		font-size:16px;
 	}
-	
+
 	.option_decolation_label_left {
 		float:left;
 		width:70%;
@@ -5159,7 +5159,7 @@ $common
 		padding:8px;
 		font-size:16px;
 	}
-	
+
 	.option_decotuika_label_left {
 		float:left;
 		width:70%;
@@ -5171,7 +5171,7 @@ $common
 		padding:8px;
 		font-size:16px;
 	}
-	
+
 	.option_bag_label_left {
 		float:left;
 		width:70%;
@@ -5183,7 +5183,7 @@ $common
 		padding:8px;
 		font-size:16px;
 	}
-	
+
 	.option_gift_label_left {
 		float:left;
 		width:70%;
@@ -5195,19 +5195,19 @@ $common
 		padding:8px;
 		font-size:16px;
 	}
-	
+
 	.option_decotuika_frame {
 		padding:5px;
 	}
-	
+
 	.goukei_price {
 		margin-right:48%;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	/**********************
 	スマホのフッターメニュー
 	**********************/
@@ -5222,7 +5222,7 @@ $common
 	        width: 100%;
 	    border-top: 1px solid #ECECEC;
 	}
-	 
+
 	ul.app_bottom_navi li {
 		margin: 0;
 		padding: 0;
@@ -5232,11 +5232,11 @@ $common
 		font-size: 13px;
 	       line-height: 15px;
 	}
-	 
+
 	ul.app_bottom_navi li a i{
 		font-size: 24px;
 	}
-	 
+
 	ul.app_bottom_navi li a {
 		border: none;
 		display: block;
@@ -5253,7 +5253,7 @@ $common
 		font-size: 14px;
 		font-weight: bold;
 	}
-	 
+
 	.app_bottom_navi {
 		position: fixed;
 		bottom: 0;
@@ -5264,20 +5264,20 @@ $common
 		opacity: 0.9;
 		overflow: visible;
 	}
-	
+
 	.slider_item.app_top_item {
 		background-image: url(../img/catelist_jelly_sp.png);
 	}
-	
+
 	.app_toppage_item {
 		margin-top:110px;
 	}
-	
+
 	.app_toppage_item img {
 		width:100%;
 		height:auto;
 	}
-	
+
 	.app_item_main {
 		width: 100%;
 		position: relative;
@@ -5285,7 +5285,7 @@ $common
 		max-width: 1600px;
 		display: block;
 	}
-	
+
 	.app_maru {
 		height: 35px;
 		width: 35px;
@@ -5297,17 +5297,17 @@ $common
 		font-weight: bold;
 		text-align: center;
 	}
-	
+
 	.app_use_icon {
 		font-size: 12px;
 		font-weight: bold;
 		padding-right: 10px;
 	}
-	
+
 	.app_licence_base {
 		position: relative;
 	}
-	
+
 	.app_licence_mark {
 		position: absolute;
   		bottom: 0px;
@@ -5324,11 +5324,11 @@ $common
 		margin-right: auto;
 		margin-left: auto;
 	}
-	
+
 	.app_licence_mark a{
 		line-height: 65px;
 	}
-	
+
 	.app_licence_frame {
 		position: absolute;
   		top: 90px;
@@ -5336,7 +5336,7 @@ $common
 		margin-right: auto;
 		margin-left: auto;
 	}
-	
+
 	.app_info_type {
 		font-size:12px;
 		color:#fff;
@@ -5351,7 +5351,7 @@ $common
 		border-color:#c4ac9c;
 		background:#c4ac9c;
 	}
-	
+
 	.app_event_type {
 		font-size:12px;
 		color:#fff;
@@ -5366,7 +5366,7 @@ $common
 		border-color:#8cc4e8;
 		background:#8cc4e8;
 	}
-	
+
 	.app_news_type {
 		font-size:12px;
 		color:#fff;
@@ -5381,7 +5381,7 @@ $common
 		border-color:#da847e;
 		background:#da847e;
 	}
-	
+
 	.app_go_onlineshop {
 		font-size: 16px;
 		font-weight: bold;
@@ -5434,7 +5434,7 @@ $common
 	.app_go_onlineshop.sold::after {
 		display: none;
 	}
-	
+
 	.birth_point_sentence{
 		font-size: 14px;
 		font-weight: bold;
@@ -5449,15 +5449,15 @@ $common
 	    margin-top: 10px;
 	    margin-bottom: 10px;
 	}
-	
-	
+
+
 	.mypage_menu_frame {
 		font-size: 16px;
 		font-weight: bold;
 		background: #FAFAFA;
 		width: 100%;
 	}
-	
+
 	.mypage_menu_btn {
 		font-size: 14px;
 		font-weight: bold;
@@ -5478,7 +5478,7 @@ $common
 	    margin-top: 5px;
 	    margin-bottom: 5px;
 	}
-	
+
 	.currentpoint_frame {
 	    margin-right: auto;
 	    margin-left: auto;
@@ -5499,7 +5499,7 @@ $common
 	    border-radius: 10px;
 	    box-shadow: 5px 5px 7px #dddddd;
 	}
-	
+
 	.customer_lisence_frame {
 	    margin-right: auto;
 	    margin-left: auto;
@@ -5521,13 +5521,17 @@ $common
 	    box-shadow: 5px 5px 7px #dddddd;
 	    background-color: #fff;
 	}
-	
+
 	.barcode_frame {
 	    margin-right: auto;
 	    margin-left: auto;
 	    width: 155px;
 	}
 	
+	.mypage_header {
+	    padding-top:130px;
+	}
+
 }
 /*.SP*/
 
@@ -5548,7 +5552,7 @@ $common
   padding:0;
   text-align: center;
   color: #000;
-  
+
 }
 
 .amikake img {
@@ -5600,13 +5604,13 @@ $common
 
 .mypoint_lost_nextmonth{
   font-size:14px;
-} 
+}
 
 .mypoint_lost_thismonth .lost_point{
   font-size: 15px;
   font-weight: bold;
   padding-right: 5px;
-} 
+}
 
 .mypoint_lost_nextmonth .lost_point{
   font-size: 15px;

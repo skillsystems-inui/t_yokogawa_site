@@ -208,7 +208,7 @@ file that was distributed with this source code.
         
         <!-- アプリ画面ではない場合 -->
         {% if is_application != true %}
-	        <div class="ec-mypageRole">
+	        <div class="ec-mypageRole mypage_header">
 	            <div class="ec-pageHeader">
 	                <h1>{{ 'マイページ'|trans }}/{{ '会員情報編集'|trans }}</h1>
 	            </div>
@@ -396,7 +396,7 @@ file that was distributed with this source code.
                                 {% if is_application != true %}
 	                                <dl>
 	                                    <dt>
-	                                        {{ form_label(form.birth, '生年月日', { 'label_attr': {'class': 'ec-label' }}) }}
+	                                        {{ form_label(form.birth, '誕生日', { 'label_attr': {'class': 'ec-label' }}) }}
 	                                    </dt>
 	                                    <dd>
 	                                        <div class="ec-birth{{ has_errors(form.birth) ? ' error'}}">
