@@ -207,6 +207,14 @@ class PurchaseFlow
         $context->setFlowType($this->flowType);
 
         foreach ($this->purchaseProcessors as $processor) {
+        	
+        	 log_info(
+            	'購入処理＿commit',
+	            [
+	                'target' => $target,
+	                'context' => $context,
+	            ]
+	        );
             $processor->commit($target, $context);
         }
     }
@@ -307,6 +315,16 @@ class PurchaseFlow
 
                 return $sum;
             }, 0);
+            
+            log_info(
+            	'購入処理＿料金合計計算　calculateDeliveryFeeTotal',
+	            [
+	                'getDeliveryFees' => $itemHolder->getItems()->getDeliveryFees(),
+	                'total' => $total,
+	            ]
+	        );
+
+            
         $itemHolder->setDeliveryFeeTotal($total);
     }
 
