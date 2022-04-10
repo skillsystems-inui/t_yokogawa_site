@@ -156,6 +156,15 @@ file that was distributed with this source code.
                             	{% set image_pass = '/html/user_data/assets/img/category/CODE0000000045_genteisweets.gif' %}
                             	{% set cate_type = Path.name %}
                             {% endif %}
+                            <!-- パウンドケーキは「ケーキ」特別するためID指定する -->
+                            {% if Path.id == 115 %}
+                            	{% set image_pass = '/html/user_data/assets/img/main/item/pound-cake.jpg' %}
+                            	{% set cate_type = 'pound' %}
+                            {% endif %}
+                             {% if 'マドレーヌ・フィナンシェ' in Path.name %}
+                            	{% set image_pass = '/html/user_data/assets/img/main/item/madeleine-financie.jpg' %}
+                            	{% set cate_type = Path.name %}
+                            {% endif %}
 
                             <!-- 画像表示 -->
                             {% if image_pass != '' %}
@@ -354,6 +363,116 @@ file that was distributed with this source code.
 	                </ul>
 	            </div>
             
+            
+            <!-- カテゴリ：パウンドケーキの場合 -->
+            {% elseif cate_type == 'pound' %}
+                <div class="ec-shelfRole">
+		            <!-- 単品の場合 -->
+		            <div style="background-color:lightblue; font-size:18px;">
+		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
+		            		<b>単品</b>
+		            	</div>
+		            </div>
+	                <ul class="ec-shelfGrid">
+	                    {% for Product in pagination %}
+
+	                        {% for p_cat in Product.getProductCategories() %}
+	                        	{% if p_cat.Category.id == 116 %}
+				            		<li class="ec-shelfGrid__item">
+			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
+			                                <p class="ec-shelfGrid__item-image">
+			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
+			                                </p>
+			                                <p>{{ Product.name }}</p>
+			                            </a>
+			                        </li>
+				                {% endif %}
+			                {% endfor %}
+
+	                    {% endfor %}
+	                </ul>
+	            </div>
+	            <div class="ec-shelfRole">
+		            <!-- ギフトの場合 -->
+		            <div style="background-color:lightblue; font-size:18px;">
+		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
+		            		<b>ギフト</b>
+		            	</div>
+		            </div>
+	                <ul class="ec-shelfGrid">
+	                    {% for Product in pagination %}
+
+	                        {% for p_cat in Product.getProductCategories() %}
+	                        	{% if p_cat.Category.id == 117 %}
+				            		<li class="ec-shelfGrid__item">
+			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
+			                                <p class="ec-shelfGrid__item-image">
+			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
+			                                </p>
+			                                <p>{{ Product.name }}</p>
+			                            </a>
+			                        </li>
+				                {% endif %}
+			                {% endfor %}
+
+	                    {% endfor %}
+	                </ul>
+	            </div>
+            
+            <!-- カテゴリ：マドレーヌ・フィナンシェの場合 -->
+            {% elseif 'マドレーヌ・フィナンシェ' in cate_type %}
+                <div class="ec-shelfRole">
+		            <!-- 単品の場合 -->
+		            <div style="background-color:lightblue; font-size:18px;">
+		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
+		            		<b>単品</b>
+		            	</div>
+		            </div>
+	                <ul class="ec-shelfGrid">
+	                    {% for Product in pagination %}
+
+	                        {% for p_cat in Product.getProductCategories() %}
+	                        	{% if p_cat.Category.id == 113 %}
+				            		<li class="ec-shelfGrid__item">
+			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
+			                                <p class="ec-shelfGrid__item-image">
+			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
+			                                </p>
+			                                <p>{{ Product.name }}</p>
+			                            </a>
+			                        </li>
+				                {% endif %}
+			                {% endfor %}
+
+	                    {% endfor %}
+	                </ul>
+	            </div>
+	            <div class="ec-shelfRole">
+		            <!-- ギフトの場合 -->
+		            <div style="background-color:lightblue; font-size:18px;">
+		            	<div class="" style="width:100%; padding:10px; font-weight:bold; text-align:center;">
+		            		<b>ギフト</b>
+		            	</div>
+		            </div>
+	                <ul class="ec-shelfGrid">
+	                    {% for Product in pagination %}
+
+	                        {% for p_cat in Product.getProductCategories() %}
+	                        	{% if p_cat.Category.id == 114 %}
+				            		<li class="ec-shelfGrid__item">
+			                            <a href="{{ url('product_detail', {'id': Product.id}) }}">
+			                                <p class="ec-shelfGrid__item-image">
+			                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}">
+			                                </p>
+			                                <p>{{ Product.name }}</p>
+			                            </a>
+			                        </li>
+				                {% endif %}
+			                {% endfor %}
+
+	                    {% endfor %}
+	                </ul>
+	            </div>
             
             
             {% else %}
