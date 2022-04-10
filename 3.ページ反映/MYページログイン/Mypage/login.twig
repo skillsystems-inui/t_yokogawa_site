@@ -20,7 +20,7 @@ file that was distributed with this source code.
     	{% set is_application = true %}
     {% endif %}
     
-    <div class="ec-role" {% if is_application == true %}style="padding-top:120px;"{% endif %}>
+    <div class="ec-role {% if is_application == false %}topitem_header{% endif %}" {% if is_application == true %}style="padding-top:120px;"{% endif %}>
         <div class="ec-pageHeader">
             <h1>{{ 'ƒƒOƒCƒ“'|trans }}</h1>
         </div>
