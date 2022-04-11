@@ -159,12 +159,13 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
             }
             
             log_info(
-	            'test_souryo_info',
+	            '送料計算　開始',
 	            [
+	                '送料' => $souryo,
 	                'is_null_ShipOrder' => is_null($ShipOrder),
 	                'ShipOrder_getId' => $ShipOrder->getId(),
-	                'uketori_type' => $uketori_type,
-	                'getShippingDeliveryName' => $Shipping->getShippingDeliveryName(),
+	                '受け取りタイプ(uketori_type)' => $uketori_type,
+	                '配送名(getShippingDeliveryName)' => $Shipping->getShippingDeliveryName(),
 	            ]
 	        );
             
@@ -185,12 +186,37 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	            	$TargetDelivery = $this->deliveryRepository->find($deliv_id4);
 	            }
 	            
+	            log_info(
+		            '送料計算　タイプ：ヤマト　区画決定',
+			            [
+			                '送料' => $souryo,
+			                '商品の合計金額' => $targetSubTotal,
+			                '区画(TargetDelivery)' => $TargetDelivery,
+			                '受け取りタイプ(uketori_type)' => $uketori_type,
+			                '配送名(getShippingDeliveryName)' => $Shipping->getShippingDeliveryName(),
+			            ]
+		        );
+	            
 	            //配送方法セット
 	            /** @var DeliveryFee $DeliveryFee */
 	            $DeliveryFee = $this->deliveryFeeRepository->findOneBy([
 	                'Delivery' => $TargetDelivery,
 	                'Pref' => $Shipping->getPref(),
 	            ]);
+	            
+	            
+	            log_info(
+		            '送料計算　タイプ：ヤマト　基本送料決定',
+			            [
+			                '送料' => $souryo,
+			                '基本送料(DeliveryFee)' => $DeliveryFee,
+			                '区画(TargetDelivery)' => $TargetDelivery,
+			                '都道府県コード(Pref)' => $Shipping->getPref(),
+			                '受け取りタイプ(uketori_type)' => $uketori_type,
+			                '配送名(getShippingDeliveryName)' => $Shipping->getShippingDeliveryName(),
+			            ]
+		        );
+	            
 	            
 	            //----- 配送タイプ判定(常温・冷蔵・冷凍) -----
 	            // 常温：追加料金 0円
@@ -210,14 +236,55 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	                	//冷蔵配送の場合　カテゴリ：「ゼリーソルベ」id:97
 	                	if($p_category->getCategoryId() == 97){
 	                		$include_reiZou = true;
+	                		
+				            log_info(
+					            '送料計算　タイプ：ヤマト　配送タイプ：冷蔵配送',
+						            [
+						                '送料' => $souryo,
+						                '基本送料(DeliveryFee)' => $DeliveryFee,
+						                'カテゴリID(CategoryId)' => $p_category->getCategoryId(),
+						                '配送名(getShippingDeliveryName)' => $Shipping->getShippingDeliveryName(),
+						            ]
+					        );
+					        
+					        //商品単位でカテゴリ判定できたらループから抜ける
+	                		break;
+	                		
+					        
 	                	}else if($p_category->getCategoryId() == 74){
 	                		//冷凍配送の場合　カテゴリ：「冷凍商品」id:74
 	                		$include_reiTou = true;
-	                	}else{
-	                		//常温の場合　それ以外
-	                		$include_Jouon = true;
+	                		
+				            log_info(
+					            '送料計算　タイプ：ヤマト　配送タイプ：冷凍配送',
+						            [
+						                '送料' => $souryo,
+						                '基本送料(DeliveryFee)' => $DeliveryFee,
+						                'カテゴリID(CategoryId)' => $p_category->getCategoryId(),
+						                '配送名(getShippingDeliveryName)' => $Shipping->getShippingDeliveryName(),
+						            ]
+					        );
+					        
+					        //商品単位でカテゴリ判定できたらループから抜ける
+	                		break;
 	                	}
 	                }
+	                
+	                
+	                //冷凍でも冷蔵でもなければ「常温」と判断する
+	                if($include_reiTou != true && $include_reiZou != true){
+                		$include_Jouon = true;
+                		
+			            log_info(
+				            '送料計算　タイプ：ヤマト　配送タイプ：それ以外(常温)',
+					            [
+					                '送料' => $souryo,
+					                '基本送料(DeliveryFee)' => $DeliveryFee,
+					                '配送名(getShippingDeliveryName)' => $Shipping->getShippingDeliveryName(),
+					            ]
+				        );
+                	}
+                	
 	            }
 	            
 	            //-----配送タイプがバラバラになったときの追加の送料-----
@@ -227,23 +294,117 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	            if($include_reiZou == true && $include_reiTou == true && $include_Jouon == true){
 	            	//+2送料分+冷凍追加分+冷蔵追加分
 	            	$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee() + $DeliveryFee->getFee() + $plus_reizou + $plus_reitou;
+	            	
+	                
+		            log_info(
+			            '送料計算　タイプ：ヤマト　配送タイプがバラバラで追加時：+2送料分+冷凍追加分+冷蔵追加分',
+				            [
+				                '送料' => $souryo,
+				                'include_type_addition_fee' => $include_type_addition_fee,
+				                'DeliveryFee->getFee()' => $DeliveryFee->getFee(),
+				                'DeliveryFee->getFee()' => $DeliveryFee->getFee(),
+				                'plus_reizou' => $plus_reizou,
+				                'plus_reitou' => $plus_reitou,
+				                '送料追加分(include_type_addition_fee)' => $include_type_addition_fee,
+				            ]
+			        );
+	            	
 	            }else if($include_reiZou == true && $include_reiTou == true && $include_Jouon == false){
 	            	//+1送料分+冷凍追加分+冷蔵追加分
 	            	$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee() + $plus_reizou + $plus_reitou;
+	            	
+	            	
+	                
+		            log_info(
+			            '送料計算　タイプ：ヤマト　配送タイプがバラバラで追加時：+1送料分+冷凍追加分+冷蔵追加分',
+				            [
+				                '送料' => $souryo,
+				                'include_type_addition_fee' => $include_type_addition_fee,
+				                'DeliveryFee->getFee()' => $DeliveryFee->getFee(),
+				                'plus_reizou' => $plus_reizou,
+				                'plus_reitou' => $plus_reitou,
+				                '送料追加分(include_type_addition_fee)' => $include_type_addition_fee,
+				            ]
+			        );
+	            	
 	            }else if($include_reiZou == true && $include_reiTou == false && $include_Jouon == true){
 	            	//+1送料分+冷蔵追加分
 	            	$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee() + $plus_reizou;
+	            	
+	                
+	                
+		            log_info(
+			            '送料計算　タイプ：ヤマト　配送タイプがバラバラで追加時：+1送料分+冷蔵追加分',
+				            [
+				                '送料' => $souryo,
+				                'include_type_addition_fee' => $include_type_addition_fee,
+				                'DeliveryFee->getFee()' => $DeliveryFee->getFee(),
+				                'plus_reizou' => $plus_reizou,
+				                '送料追加分(include_type_addition_fee)' => $include_type_addition_fee,
+				            ]
+			        );
+	            	
 	            }else if($include_reiZou == false && $include_reiTou == true && $include_Jouon == true){
 	            	//+1送料分+冷凍追加分
 	            	$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee()  + $plus_reitou;
+	            	
+	            	
+	                
+		            log_info(
+			            '送料計算　タイプ：ヤマト　配送タイプがバラバラで追加時：+1送料分+冷凍追加分',
+				            [
+				                '送料' => $souryo,
+				                'include_type_addition_fee' => $include_type_addition_fee,
+				                'DeliveryFee->getFee()' => $DeliveryFee->getFee(),
+				                'plus_reitou' => $plus_reitou,
+				                '送料追加分(include_type_addition_fee)' => $include_type_addition_fee,
+				            ]
+			        );
+	            	
 	            }else if($include_reiZou == false && $include_reiTou == false && $include_Jouon == true){
 	            	//+なし
+	            	
+	            	
+	                
+		            log_info(
+			            '送料計算　タイプ：ヤマト　配送タイプがバラバラで追加時：+なし',
+				            [
+				                '送料' => $souryo,
+				            ]
+			        );
+	            	
 	            }else if($include_reiZou == false && $include_reiTou == true && $include_Jouon == false){
 	            	//+冷凍追加分
 	            	$include_type_addition_fee = $include_type_addition_fee + $plus_reitou;
+	            	
+	            	
+	                
+		            log_info(
+			            '送料計算　タイプ：ヤマト　配送タイプがバラバラで追加時：+冷凍追加分',
+				            [
+				                '送料' => $souryo,
+				                'include_type_addition_fee' => $include_type_addition_fee,
+				                'plus_reitou' => $plus_reitou,
+				                '送料追加分(include_type_addition_fee)' => $include_type_addition_fee,
+				            ]
+			        );
+	            	
 	            }else if($include_reiZou == true && $include_reiTou == false && $include_Jouon == false){
 	            	//+冷蔵追加分
 	            	$include_type_addition_fee = $include_type_addition_fee + $plus_reizou;
+	            	
+	            	
+	                
+		            log_info(
+			            '送料計算　タイプ：ヤマト　配送タイプがバラバラで追加時：+2送料分+冷凍追加分+冷蔵追加分',
+				            [
+				                '送料' => $souryo,
+				                'include_type_addition_fee' => $include_type_addition_fee,
+				                'plus_reizou' => $plus_reizou,
+				                '送料追加分(include_type_addition_fee)' => $include_type_addition_fee,
+				            ]
+			        );
+	            	
 	            }
 	            
 	            //-----会員の場合は割引を行う(ゲストは対象外)-----
@@ -261,6 +422,17 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	            
 	            //送料
 	            $souryo = $DeliveryFee->getFee() + $include_type_addition_fee - $user_sub_price;
+	            
+	            log_info(
+		            '送料計算　タイプ：ヤマト　　最終送料',
+			            [
+			                '送料(最終)' => $souryo,
+			                '基本送料(DeliveryFee->getFee())' => $DeliveryFee->getFee(),
+			                '追加送料(include_type_addition_fee)' => $include_type_addition_fee,
+			                '会員割引(user_sub_price)' => $user_sub_price,
+			            ]
+		        );
+		        
             }else{
 	            //配送以外(店頭受取)の場合
 	            
@@ -271,6 +443,18 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	            ]);
 	            //送料なし
 	            $souryo = 0;
+	            
+	            log_info(
+	            '送料計算　タイプ：ヤマト以外',
+		            [
+		                '送料(最終)' => $souryo,
+		                'is_null_ShipOrder' => is_null($ShipOrder),
+		                'ShipOrder_getId' => $ShipOrder->getId(),
+		                '受け取りタイプ(uketori_type)' => $uketori_type,
+		                '配送名(getShippingDeliveryName)' => $Shipping->getShippingDeliveryName(),
+		            ]
+		        );
+		        
             }
             
             $OrderItem = new OrderItem();
