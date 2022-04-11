@@ -1920,6 +1920,12 @@ file that was distributed with this source code.
                  }
         });
         
+        $('.ec-modal-close').on('click', function() {
+	            event.preventDefault();
+	            //カートへ入れるポップアップ非表示
+	            $('.ec-modal').hide();
+	        });
+        
         
         //詳細を指定する
         $('.select-options').on('click', function() {
@@ -4263,7 +4269,7 @@ file that was distributed with this source code.
                                 <div id="ec-modal-header" class="text-center">{{ 'カートに追加しました。'|trans }}</div>
                                 <div class="ec-modal-box">
                                     <div class="ec-role">
-                                        <span class="ec-inlineBtn--cancel">{{ 'お買い物を続ける'|trans }}</span>
+                                        <a href="{{ url(eccube_config.eccube_user_data_route, {"route": "product_lineup"}) }}" class="ec-inlineBtn--cancel">{{ 'お買い物を続ける'|trans }}</a>
                                         <a href="{{ url('cart') }}" class="ec-inlineBtn--action">{{ 'カートへ進む'|trans }}</a>
                                     </div>
                                 </div>
