@@ -9,7 +9,11 @@ http://www.ec-cube.co.jp/
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 #}
+
+
 <html lang="{{ eccube_config.locale }}">
+
+
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# product: http://ogp.me/ns/product#">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,6 +41,37 @@ file that was distributed with this source code.
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     {% block stylesheet %}{% endblock %}
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    
+    
+    {#  202204トップページにお知らせを表示する  #}
+    {% if Page.url == 'homepage' %}
+        <script>
+		    //初期表示時の処理
+		    window.onload = function(){
+		    	event.preventDefault();
+	            //ポップアップ表示
+	            $('.topmessage-modal').show();
+			}
+		</script>
+		<script>
+	        $(function() {
+	             $('.topmessage-close').on('click', function() {
+		            event.preventDefault();
+		            //ポップアップ非表示
+		            $('.topmessage-modal').hide();
+		        });
+		        
+		        $('.topmessage-x').on('click', function() {
+		            event.preventDefault();
+		            //ポップアップ非表示
+		            $('.topmessage-modal').hide();
+		        });
+	        });
+	    </script>
+    {% endif %}
+    {#  202204トップページにお知らせを表示する  #}
+    
+    
     <script>
         $(function() {
             $.ajaxSetup({
@@ -59,6 +94,40 @@ file that was distributed with this source code.
 {% if Layout.BodyAfter %}
     {{ include('block.twig', {'Blocks': Layout.BodyAfter}) }}
 {% endif %}
+
+
+
+<!-- 202204トップページにお知らせを表示する -->
+{% if Page.url == 'homepage' %}
+<div class="top_lightbox topmessage-modal" style="opacity:1; pointer-events:auto;">
+	    <div>
+	      <span class="close topmessage-x"></span>
+	      <img src="https://gigaplus.makeshop.jp/yokogawa/common/img/logo.png" alt="">
+			<p style="text-align:left;margin-bottom:15px;"><strong style="text-align:center;">オンラインショップリニューアルに伴う受注休業について</strong><br>
+			 お客様各位<br>
+			<br>
+			日頃より菓子工房ティ・ヨコガワをご愛顧いただきありがとうございます。<br>
+			この度、オンラインショップをリニューアルし、<br>
+			店頭のポイントカードをオンラインでもご利用できるようになりました。<br>
+			<br>
+			ポイントカードをお持ちのお客様は、下記の情報をご用意いただき、ログインボタンよりお進みくださいませ。<br>
+			【ログイン情報】<br>
+			会員番号：ポイントカードに記載されている番号<br>
+			パスワード：ご登録のお電話番号　※ハイフン無し<br>
+			<a href="{{ url('mypage_login') }}" target="_blank">ログインはこちら>></a><br>
+			<br>
+			<br>また、旧オンラインショップで会員登録済のお客様へは、後日メールにてログイン情報をお伝えいたします。<br>
+			<br>
+			パスワード等のお問い合わせに関しましては<a href="/contact" target="_blank">こちら</a>よりご連絡くださいませ。<br>
+
+			</p>
+	      <span class="btn topmessage-close">閉じる</span>
+	    </div>
+  </div> <!-- .top_lightbox -->
+{% endif %}
+<!-- 202204トップページにお知らせを表示する -->
+
+
 
 <div class="ec-layoutRole">
     {# Layout: HEADER #}
