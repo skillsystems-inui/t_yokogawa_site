@@ -132,6 +132,33 @@ class ShoppingService
             }else{
                 return [];
             }
+            
+            
+            //20220411最大配送日数は4日以上にする
+            $_shipOrder = $Shipping->getOrder();
+            $_uketori_type = $_shipOrder->getUketoriType();
+            log_info(
+		            '配送画面セット　最大配送日数セット　前',
+		            [
+		                'minDate' => $minDate,
+		                '_uketori_type' => $_uketori_type,
+		            ]
+		        );
+            if($_uketori_type == 2){
+            	//ヤマトの場合のみ、配達最大日数を4以上にする
+            	if($minDate < 4){
+            		$minDate = 4;
+            		$deliveryDurationFlag = true;//指定ON
+            		
+	                log_info(
+			            '配送画面セット　最大配送日数セット　ヤマトで4未満なので4セット',
+			            [
+			                'minDate' => $minDate,
+			                '_uketori_type' => $_uketori_type,
+			            ]
+			        );
+            	}
+            }
 
             // 配達最大日数期間を設定
             $period = new \DatePeriod (
