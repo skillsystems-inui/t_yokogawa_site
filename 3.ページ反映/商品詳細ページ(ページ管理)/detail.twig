@@ -442,19 +442,19 @@ file that was distributed with this source code.
         //----- 有料オプション価格 -----
         //【デコオプション】
         //  いちごUP
-        var $deco_ichigo_up       = 400;
+        var $deco_ichigo_up       = 350;
         //  フルーツUP
-        var $deco_fluit_up        = 400;
+        var $deco_fluit_up        = 350;
         //  生チョコUP
-        var $deco_namachoco_up    = 400;
+        var $deco_namachoco_up    = 350;
         //  追加プレート(2枚目から)
         var $deco_tuika_plate     = 60;
         //  絵チョコ(4号)
-        var $deco_echoco_yongou   = 800;
+        var $deco_echoco_yongou   = 700;
         
         //【キャンドルオプション】
         //  Noキャンドル
-        var $no_candle       = 130;
+        var $no_candle       = 120;
         
         //【袋オプション】
         //  紙袋特小 目安:焼き菓子小分け用
@@ -470,11 +470,11 @@ file that was distributed with this source code.
         //  ポリ特小 目安:焼き菓子小分け用
         var $bag_poli_tokusyo   = 10;
         //  ポリ中 目安:ケーキ4号・5号サイズ
-        var $bag_poli_cyu       = 10;
+        var $bag_poli_cyu       = 20;
         //  ポリ大 目安:ケーキ6号サイズ
-        var $bag_poli_dai       = 10;
+        var $bag_poli_dai       = 20;
         //  ポリ特大 目安:ケーキ5号サイズ2つ
-        var $bag_poli_tokudai   = 30;
+        var $bag_poli_tokudai   = 100;
         //  オリジナル保冷バッグ 目安:ホールケーキ
         var $bag_horei_original  = 350;
         //  保冷BAG小 目安:ロールケーキ1個
@@ -829,11 +829,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($deco_ichigo_up);
 						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: いちごUP (+400円)'; 
+						optionselect_deco = optionselect_deco + ' デコレーション追加: いちごUP (+350円)'; 
 						optionselect_deco = optionselect_deco + '\n';
 						
 						//0204オプション選択別テキストエリアに出力する
-            			document.getElementById("option_deco_ichigo_chk").textContent = 'デコレーション追加: いちごUP (+400円)' ;
+            			document.getElementById("option_deco_ichigo_chk").textContent = 'デコレーション追加: いちごUP (+350円)' ;
 					}
 					//フルーツUP
 					const fruit_chk = document.getElementById("fruit_chk");
@@ -843,11 +843,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($deco_fluit_up);
 						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: フルーツUP (+400円)'; 
+						optionselect_deco = optionselect_deco + ' デコレーション追加: フルーツUP (+350円)'; 
 						optionselect_deco = optionselect_deco + '\n';
 						
 						//0204オプション選択別テキストエリアに出力する
-            			document.getElementById("option_deco_fruit_chk").textContent = 'デコレーション追加: フルーツUP (+400円)'; 
+            			document.getElementById("option_deco_fruit_chk").textContent = 'デコレーション追加: フルーツUP (+350円)'; 
 					}
 					//生チョコUP
 					const namachoco_chk = document.getElementById("namachoco_chk");
@@ -857,11 +857,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($deco_namachoco_up);
 						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: 生チョコUP (+400円)'; 
+						optionselect_deco = optionselect_deco + ' デコレーション追加: 生チョコUP (+350円)'; 
 						optionselect_deco = optionselect_deco + '\n';
 						
 						//0204オプション選択別テキストエリアに出力する
-            			document.getElementById("option_deco_namachoco_chk").textContent = 'デコレーション追加: 生チョコUP (+400円)';
+            			document.getElementById("option_deco_namachoco_chk").textContent = 'デコレーション追加: 生チョコUP (+350円)';
 					}
 					//絵チョコ(4号)
 					const echoco_chk = document.getElementById("echoco_chk");
@@ -871,11 +871,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($deco_echoco_yongou);
 						
 						//チェックあり
-						optionselect_deco = optionselect_deco + ' デコレーション追加: 絵チョコ(4号) (+800円)';
+						optionselect_deco = optionselect_deco + ' デコレーション追加: 絵チョコ(4号) (+700円)';
 						optionselect_deco = optionselect_deco + '\n';
 						
 						//0204オプション選択別テキストエリアに出力する
-            			document.getElementById("option_deco_echoco_chk").textContent = 'デコレーション追加: 絵チョコ(4号) (+800円)';
+            			document.getElementById("option_deco_echoco_chk").textContent = 'デコレーション追加: 絵チョコ(4号) (+700円)';
 					}
 
 				}else{
@@ -997,11 +997,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($bag_poli_cyu);
 						
 						//チェックあり
-						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 中 (+10円)';
+						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 中 (+20円)';
 						optionselect_bag = optionselect_bag + '\n';
 						
 						//0204オプション選択別テキストエリアに出力する
-            			document.getElementById("option_pori_cyu_chk").textContent = '持ち帰りポリ袋: ポリ袋 中 (+10円)';
+            			document.getElementById("option_pori_cyu_chk").textContent = '持ち帰りポリ袋: ポリ袋 中 (+20円)';
 					}
 					//ポリ袋 大
 					const pori_dai_chk = document.getElementById("pori_dai_chk");
@@ -1010,11 +1010,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($bag_poli_dai);
 						
 						//チェックあり
-						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 大 (+10円)';
+						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 大 (+20円)';
 						optionselect_bag = optionselect_bag + '\n';
 						
 						//0204オプション選択別テキストエリアに出力する
-            			document.getElementById("option_pori_dai_chk").textContent = '持ち帰りポリ袋: ポリ袋 大 (+10円)';
+            			document.getElementById("option_pori_dai_chk").textContent = '持ち帰りポリ袋: ポリ袋 大 (+20円)';
 					}
 					//ポリ袋 特大
 					const pori_tokudai_chk = document.getElementById("pori_tokudai_chk");
@@ -1023,11 +1023,11 @@ file that was distributed with this source code.
 						$addprice = $addprice + ($bag_poli_tokudai);
 						
 						//チェックあり
-						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 特大 (+30円)'; 
+						optionselect_bag = optionselect_bag + ' 持ち帰りポリ袋: ポリ袋 特大 (+100円)'; 
 						optionselect_bag = optionselect_bag + '\n';
 						
 						//0204オプション選択別テキストエリアに出力する
-            			document.getElementById("option_pori_tokudai_chk").textContent = '持ち帰りポリ袋: ポリ袋 特大 (+30円)';
+            			document.getElementById("option_pori_tokudai_chk").textContent = '持ち帰りポリ袋: ポリ袋 特大 (+100円)';
 					}
 
 				}else{
@@ -2066,23 +2066,23 @@ file that was distributed with this source code.
 	    
 	    //【有料オプション金額】
 	    // Noキャンドル
-		const per_price_candle_no  = 130;
+		const per_price_candle_no  = 120;
 		
 		//ポリ中
-		const per_price_bag_poli_cyu = 10;
+		const per_price_bag_poli_cyu = 20;
 		//ポリ大
-		const per_price_bag_poli_dai = 10;
+		const per_price_bag_poli_dai = 20;
 		//ポリ特大
-		const per_price_bag_poli_tokudai = 30;
+		const per_price_bag_poli_tokudai = 100;
 		
 		//いちごUP
-        const per_price_ichigo_up       = 400;
+        const per_price_ichigo_up       = 350;
         //フルーツUP
-        const per_price_fruit_up        = 400;
+        const per_price_fruit_up        = 350;
         //生チョコUP
-        const per_price_namachoco_up    = 400;
+        const per_price_namachoco_up    = 350;
         //絵チョコ(4号)
-        const per_price_echoco_yongou   = 800;
+        const per_price_echoco_yongou   = 700;
         
         //追加プレート
         const per_price_add_plate       = 60;
@@ -2498,14 +2498,14 @@ file that was distributed with this source code.
                     {% set is_no_sale_category = false  %}
                     
                     <!-- 有料オプション金額 -->
-                    {% set price_no_candle = '130'  %}
-                    {% set price_addoption_ichigo_up    = '400'  %}
-                    {% set price_addoption_fruit_up     = '400'  %}
-                    {% set price_addoption_namachoco_up = '400'  %}
-                    {% set price_addoption_echoco_up    = '800'  %}
-                    {% set price_poribukuro_cyu = '10'  %}
-                    {% set price_poribukuro_dai = '10'  %}
-                    {% set price_poribukuro_tokudai = '30'  %}
+                    {% set price_no_candle = '120'  %}
+                    {% set price_addoption_ichigo_up    = '350'  %}
+                    {% set price_addoption_fruit_up     = '350'  %}
+                    {% set price_addoption_namachoco_up = '350'  %}
+                    {% set price_addoption_echoco_up    = '700'  %}
+                    {% set price_poribukuro_cyu = '20'  %}
+                    {% set price_poribukuro_dai = '20'  %}
+                    {% set price_poribukuro_tokudai = '100'  %}
                     
                     <!-- 有料オプションラベル -->
                     {% set price_no_candle_1_label = ''  %}

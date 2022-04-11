@@ -386,9 +386,15 @@ class SmartRegiServiceHelper
         /* @var $detail OrderItem */
         foreach ($order->getProductOrderItems() as $detail) {
             
+            //オプションの追加料金
+            $optional_sum_addprice = 0;
+            if($detail->getAdditionalPrice() != null){
+            	$optional_sum_addprice = $detail->getAdditionalPrice();
+            }
+            
             $arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;
 	        $arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）
-	        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = intval($detail->getTotalPrice());//販売単価
+	        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = intval($detail->getTotalPrice()) - intval($optional_sum_addprice);//販売単価(オプション追加料金は含まない)
 	        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = intval($detail->getQuantity());//数量
 	        
 	        //商品規格データ
@@ -396,8 +402,78 @@ class SmartRegiServiceHelper
 	        //商品ID
 	        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $productClass->getId() + $p_offset;
 	        
+	        log_info(
+	            'スマレジへ送る受注詳細(商品)セット',
+	            [
+	                'arrData' => $arrData['data'][$meisaiNo]['rows'][0],
+	            ]
+	        );
+	        
             $meisaiNo++;
+            
+            
+            //【オプション追加料金もセットする】
+            
+            //商品ID
+            // Noキャンドル・０ :
+            $_no_can_0 = 10368; 
+            // Noキャンドル・１ :
+            $_no_can_1 = 10369;
+            // Noキャンドル・２ : 
+            $_no_can_2 = 10370;
+            // Noキャンドル・３ : 
+            $_no_can_3 = 10371;
+            // Noキャンドル・４ : 
+            $_no_can_4 = 10372;
+            // Noキャンドル・５ : 
+            $_no_can_5 = 10373;
+            // Noキャンドル・６ : 
+            $_no_can_6 = 10374;
+            // Noキャンドル・７ : 
+            $_no_can_7 = 10375;
+            // Noキャンドル・８ : 
+            $_no_can_8 = 10376;
+            // Noキャンドル・９ : 
+            $_no_can_9 = 10377;
+            
+            // Noキャンドル 販売単価
+            $_no_can_price = 120;
+            
+            // [ケーキ]
+            // A.) No.キャンドル(0～9)
+            if($detail->getOptionCandleNo1Num() != null){
+            	
+            	$numstr = str_replace('本', '', $detail->getOptionCandleNo1Num() );
+            	$num = intval($numstr);
+            	
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_no_can_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_no_can_1 + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            
+            
+            // B.) 追加プレート(2～5)
+            // C.) デコレーション追加(いちごUP、フルーツUP、生チョコUP、絵チョコ(4号))
+            
+            // [袋]
+            // D.) ポリ袋(中、大、特大)
+            
         }
+        
+        /*
+        log_info(
+            'スマレジへ受注データ登録　setTransactionUpdate',
+            [
+                'arrData' => $arrData,
+            ]
+        );
+        */
         
         return $arrData;
     }
@@ -414,6 +490,13 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）
         $arrData['data'][0]['rows'][0]['salesPrice'] = $order->getTotalPrice();//販売単価
         $arrData['data'][0]['rows'][0]['quantity'] = $order->getQuantity();//数量
+        
+        log_info(
+            'スマレジへ受注データ登録　setTransactionDetailUpdate',
+            [
+                'arrData' => $arrData,
+            ]
+        );
         
         return $arrData;
     }
