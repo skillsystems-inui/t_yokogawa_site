@@ -683,8 +683,8 @@ file that was distributed with this source code.
                             </div>
                         </div>
                     {% endfor %}
-                    <!-- 出荷先を追加 -->
-                    <div class="card rounded border-0 mb-4">
+                    <!-- 出荷先を追加　複数配送できないため非表示 -->
+                    <div class="card rounded border-0 mb-4" style="display:none;">
                         <button id="addShipping" type="button" class="btn btn-ec-regular">{{ 'admin.order.add_shipping'|trans }}</button>
                     </div>
                 </div>
