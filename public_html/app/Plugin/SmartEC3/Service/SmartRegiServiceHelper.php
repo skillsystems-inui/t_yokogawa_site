@@ -414,7 +414,8 @@ class SmartRegiServiceHelper
             
             //【オプション追加料金もセットする】
             
-            //商品ID
+            //<   商品ID   >
+            // ----- Noキャンドル ID-----
             // Noキャンドル・０ :
             $_no_can_0 = 10368; 
             // Noキャンドル・１ :
@@ -435,17 +436,66 @@ class SmartRegiServiceHelper
             $_no_can_8 = 10376;
             // Noキャンドル・９ : 
             $_no_can_9 = 10377;
-            
+            //<   追加料金   >
+            // ----- Noキャンドル 単価-----
             // Noキャンドル 販売単価
             $_no_can_price = 120;
             
+            //<   商品ID   >
+            // ----- 追加プレート ID-----
+            $_add_plate_id = 10357;
+            //<   追加料金   >
+            // ----- 追加プレート 単価-----
+            $_add_plate_price = 60;
+            
+            //<   商品ID   >
+            // ----- デコレーション追加 ID-----
+            // いちごUP
+            $_deco_add_ichigo_up_id = 10351; 
+            // フルーツUP
+            $_deco_add_fruit_up_id = 10349;
+            // 生チョコUP 
+            $_deco_add_namachoco_up_id = 10350;
+            // 絵チョコ(4号) 
+            $_deco_add_echoco_4_id = 10340;
+            //<   追加料金   >
+            // ----- デコレーション追加 単価-----
+            // いちごUP
+            $_deco_add_ichigo_up_price = 350; 
+            // フルーツUP
+            $_deco_add_fruit_up_price = 350;
+            // 生チョコUP 
+            $_deco_add_namachoco_up_price = 350;
+            // 絵チョコ(4号) 
+            $_deco_add_echoco_4_price = 700;
+            
+            //<   商品ID   >
+            // ----- ポリ袋 ID-----
+            // ポリ中
+            $_poli_cyu_id = 10237; 
+            // ポリ大
+            $_poli_dai_id = 10238;
+            // ポリ特大 
+            $_poli_tokudai_id = 10239;
+            //<   追加料金   >
+            // ----- ポリ袋 単価-----
+            // ポリ中
+            $_poli_cyu_price = 20; 
+            // ポリ大
+            $_poli_dai_price = 20;
+            // ポリ特大 
+            $_poli_tokudai_price = 100;
+            
+            
+            //ToDo  No.キャンドル(0,2～9)、追加プレート(2～5)、デコレーション追加(いちごUP、フルーツUP、生チョコUP、絵チョコ(4号))、ポリ袋(中、大、特大)　　もNo.キャンドル1同様に記載すること！！
+            
+            
             // [ケーキ]
             // A.) No.キャンドル(0～9)
+            // 　No.1
             if($detail->getOptionCandleNo1Num() != null){
-            	
             	$numstr = str_replace('本', '', $detail->getOptionCandleNo1Num() );
             	$num = intval($numstr);
-            	
             	
             	//共通
             	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
@@ -456,14 +506,256 @@ class SmartRegiServiceHelper
 		        
             	$meisaiNo++;
             }
+            // 　No.2
+            if($detail->getOptionCandleNo2Num() != null){
+            	$numstr = str_replace('本', '', $detail->getOptionCandleNo2Num() );
+            	$num = intval($numstr);
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_no_can_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_no_can_2 + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　No.3
+            if($detail->getOptionCandleNo3Num() != null){
+            	$numstr = str_replace('本', '', $detail->getOptionCandleNo3Num() );
+            	$num = intval($numstr);
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_no_can_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_no_can_3 + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　No.4
+            if($detail->getOptionCandleNo4Num() != null){
+            	$numstr = str_replace('本', '', $detail->getOptionCandleNo4Num() );
+            	$num = intval($numstr);
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_no_can_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_no_can_4 + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　No.5
+            if($detail->getOptionCandleNo5Num() != null){
+            	$numstr = str_replace('本', '', $detail->getOptionCandleNo5Num() );
+            	$num = intval($numstr);
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_no_can_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_no_can_5 + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　No.6
+            if($detail->getOptionCandleNo6Num() != null){
+            	$numstr = str_replace('本', '', $detail->getOptionCandleNo6Num() );
+            	$num = intval($numstr);
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_no_can_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_no_can_6 + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　No.7
+            if($detail->getOptionCandleNo7Num() != null){
+            	$numstr = str_replace('本', '', $detail->getOptionCandleNo7Num() );
+            	$num = intval($numstr);
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_no_can_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_no_can_7 + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　No.8
+            if($detail->getOptionCandleNo8Num() != null){
+            	$numstr = str_replace('本', '', $detail->getOptionCandleNo8Num() );
+            	$num = intval($numstr);
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_no_can_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_no_can_8 + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　No.9
+            if($detail->getOptionCandleNo9Num() != null){
+            	$numstr = str_replace('本', '', $detail->getOptionCandleNo9Num() );
+            	$num = intval($numstr);
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_no_can_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_no_can_9 + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　No.0
+            if($detail->getOptionCandleNo0Num() != null){
+            	$numstr = str_replace('本', '', $detail->getOptionCandleNo0Num() );
+            	$num = intval($numstr);
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_no_can_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_no_can_0 + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            
             
             
             // B.) 追加プレート(2～5)
+            // 　2～5枚目
+            $addPlateNum = 0;
+            if($detail->getOptionPrintnamePlate2() != null){
+            	$addPlateNum = $addPlateNum + 1;
+            }
+            if($detail->getOptionPrintnamePlate3() != null){
+            	$addPlateNum = $addPlateNum + 1;
+            }
+            if($detail->getOptionPrintnamePlate4() != null){
+            	$addPlateNum = $addPlateNum + 1;
+            }
+            if($detail->getOptionPrintnamePlate5() != null){
+            	$addPlateNum = $addPlateNum + 1;
+            }
+            if($addPlateNum > 0){
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_add_plate_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $addPlateNum;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_add_plate_id + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            
             // C.) デコレーション追加(いちごUP、フルーツUP、生チョコUP、絵チョコ(4号))
+            // 　いちごUP
+            if($detail->getOptionDecoIchigoChk() != null){
+            	$num = 1;
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_deco_add_ichigo_up_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_deco_add_ichigo_up_id + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　フルーツUP
+            if($detail->getOptionDecoFruitChk() != null){
+            	$num = 1;
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_deco_add_fruit_up_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_deco_add_fruit_up_id + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　生チョコUP
+            if($detail->getOptionDecoNamachocoChk() != null){
+            	$num = 1;
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_deco_add_namachoco_up_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_deco_add_namachoco_up_id + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　絵チョコ(4号)
+            if($detail->getOptionDecoEchocoChk() != null){
+            	$num = 1;
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_deco_add_echoco_4_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_deco_add_echoco_4_id + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
             
             // [袋]
             // D.) ポリ袋(中、大、特大)
-            
+            // 　ポリ袋(中)
+            if($detail->getOptionPoriCyuChk() != null){
+            	$num = 1;
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_poli_cyu_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_poli_cyu_id + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　ポリ袋(大)
+            if($detail->getOptionPoriDaiChk() != null){
+            	$num = 1;
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_poli_dai_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_poli_dai_id + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
+            // 　ポリ袋(特大)
+            if($detail->getOptionPoriTokudaiChk() != null){
+            	$num = 1;
+            	
+            	//共通
+            	$arrData['data'][$meisaiNo]['table_name'] = self::TRANSACTION_DETAIL;　固定;
+            	$arrData['data'][$meisaiNo]['rows'][0]['transactionDetailDivision'] = 1;//取引明細を識別する区分。（1：通常、2：返品、3：部門売り）　固定
+		        $arrData['data'][$meisaiNo]['rows'][0]['salesPrice'] = $_poli_tokudai_price;//販売単価　ToDo直値指定じゃなく動的にしたい
+		        $arrData['data'][$meisaiNo]['rows'][0]['quantity']   = $num;//数量
+		        $arrData['data'][$meisaiNo]['rows'][0]['productId'] = $_poli_tokudai_id + $p_offset;//商品ID　ToDo直値指定じゃなく動的にしたい
+		        
+            	$meisaiNo++;
+            }
         }
         
         /*
