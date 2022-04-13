@@ -1569,6 +1569,14 @@ $common
 		display: block;
 	}
 
+	.mdl_pc {
+		display: block;
+	}
+
+	.mdl_sp {
+	  display: none;
+	}
+
 	.item_pc {
 		display: block;
 	}
@@ -4269,6 +4277,15 @@ $common
 		display: block;
 	}
 
+	.mdl_pc {
+		display: none;
+	}
+
+	.mdl_sp {
+	  display: block;
+	}
+	
+	
 	.item_pc {
 		display: none;
 	}
@@ -4995,9 +5012,12 @@ $common
 		padding: 5%;
 		position: relative;
 	}
+	/*
 	.top_lightbox div br {
 		display: none;
 	}
+	*/
+	
 	.top_lightbox div img {
 		width: 25%;
 		display: block;
