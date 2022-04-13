@@ -467,6 +467,21 @@ class CustomerRepository extends AbstractRepository
         return $this->findBy($criteria);
     }
     
+    
+    /**
+     * 最大の会員Idを取得する.
+     *
+     * @return string
+     */
+    public function getMaxCustomerId()
+    {
+        $maxCustomerId = $this->createQueryBuilder('c')
+                    ->select('COALESCE(MAX(c.id), 0)')
+                    ->getQuery()
+                    ->getSingleScalarResult();
+        return $maxCustomerId;
+    }
+    
     /**
      * 最大の会員コードを取得する.
      *

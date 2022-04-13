@@ -123,12 +123,12 @@ class EntryController extends AbstractController
             return $this->redirectToRoute('mypage');
         }
         
-        $_maxCustomerCode = $this->customerRepository->getMaxCustomerCode();
+        $_maxCustomerId = $this->customerRepository->getMaxCustomerId();
 				        
         log_info(
-            'フロントから新規会員登録画面表示　最大会員番号確認',
+            'フロントから新規会員登録画面表示　最大会員ID確認',
             [
-                '新規会員登録　最大会員番号' => $_maxCustomerCode,
+                '新規会員登録　最大会員ID' => $_maxCustomerId,
             ]
         );
         
@@ -181,31 +181,25 @@ class EntryController extends AbstractController
                     	//年月日時分秒
                     	//$current_time = date('YmdHis');
         
-				        //基準となる番号
-				        $targetCustomerCode = 110000;
+				        // 最大会員ID取得
+				        $maxCustomerId = $this->customerRepository->getMaxCustomerId();
 				        
-				        //最大会員番号コード+1を求める
-				        // 最大会員番号コード取得
-				        $maxCustomerCode = $this->customerRepository->getMaxCustomerCode();
+				        //調整用の数字
+				        $adjustNum = 960430;//結果を11000台にしたい
 				        
 				        log_info(
-				            'フロントから新規会員登録　会員コードが空白なら最大会員番号を付与する(110000以上)',
+				            'フロントから新規会員登録　会員コードが空白なら最大会員IDを付与する(110000以上)',
 				            [
-				                '新規会員登録　最大会員番号　maxCustomerCode' => $maxCustomerCode,
+				                '新規会員登録　最大会員ID　maxCustomerId' => $maxCustomerId,
 				            ]
 				        );
 				        
-				        $maxPrusOneCustomerCode = (int)$maxCustomerCode + 1;
-				        if($targetCustomerCode > $maxPrusOneCustomerCode){
-				        	//「基準となる番号」未満なら「基準となる番号」をセットする(旧会員カードの続きの番号に近い110000以上にしたいため)
-				        	$maxPrusOneCustomerCode = $targetCustomerCode;
-				        }
+				        $maxPrusOneCustomerCode = (int)$maxCustomerId - $adjustNum;
 				        
 				        log_info(
-				            'フロントから新規会員登録　会員コードを+1でセット',
+				            'フロントから新規会員登録　会員コードを調整してセット',
 				            [
 				                'maxPrusOneCustomerCode' => $maxPrusOneCustomerCode,
-				                'targetCustomerCode' => $targetCustomerCode,
 				            ]
 				        );
 				        
@@ -229,7 +223,7 @@ class EntryController extends AbstractController
                         ->setSalt($salt)
                         ->setPassword($password)
                         ->setSecretKey($secretKey)
-                        ->setPoint(0);
+                        ->setPoint(300);
 
                     $this->entityManager->persist($Customer);
                     $this->entityManager->flush();
