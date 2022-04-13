@@ -379,7 +379,7 @@ file that was distributed with this source code.
                 <div class="ec-orderDelivery">
                     <div class="ec-rectHeading">
                         {% if Order.uketori_type == 2 %}
-                        <h2>{{ 'お取り寄せ情報'|trans }}</h2>
+                        <h2>{{ '宅配情報'|trans }}</h2>
                         {% else %}
                         <h2>{{ '受け取り情報'|trans }}</h2>
                         {% endif %}
@@ -471,7 +471,7 @@ file that was distributed with this source code.
                             <div class="ec-selects">
                                 <div class="ec-select">
                                     {% if Order.uketori_type == 2 %}
-                                    <label>{{ 'お取り寄せ方法'|trans }}</label>
+                                    <label>{{ '宅配方法'|trans }}</label>
                                     {% else %}
                                     <label>{{ '受け取り方法'|trans }}</label>
 			                        {% endif %}
@@ -500,7 +500,7 @@ file that was distributed with this source code.
                             </div>
                         </div>
                     {% endfor %}
-                    <div class="ec-orderDelivery__edit" {% if Order.uketori_type != 2 %}style="display:none;"{% endif %}>
+                    <div class="ec-orderDelivery__edit" style="display:none;">
                         <button type="button" class="ec-inlineBtn" data-trigger="click" data-path="{{ path('shopping_shipping_multiple') }}">{{ 'お届け先を追加する'|trans }}</button>
                     </div>
                 </div>
@@ -566,7 +566,7 @@ file that was distributed with this source code.
                     <div class="ec-totalBox__total">{{ '合計'|trans }}<span class="ec-totalBox__price">{{ Order.taxable_total|price }}</span><span class="ec-totalBox__taxLabel">{{ '税込'|trans }}</span></div>
                     {% for rate, total in Order.taxable_total_by_tax_rate %}
                     <dl class="ec-totalBox__taxRate">
-                        <dt>{{ '税率 %rate% %対象'|trans({ '%rate%': rate }) }}</dt>
+                        <dt>{{ '税率8%対象'|trans({ '%rate%': rate }) }}</dt>
                         <dd>{{ total|price }}</dd>
                     </dl>
                     {% endfor %}
