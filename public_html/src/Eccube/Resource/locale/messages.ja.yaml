@@ -1009,9 +1009,10 @@ admin.order.last_buy_date: 最終購入日
 admin.order.last_buy_date__start: 最終購入日(開始)
 admin.order.last_buy_date__end: 最終購入日(終了)
 admin.order.purchase_product: 購入商品名
+admin.order.customer_id: 会員ID
 admin.order.purchase_count: 購入件数
-admin.order.purchase_count__start: 購入件数(開始)
-admin.order.purchase_count__end: 購入件数(終了)
+admin.order.purchase_count__start: 会員ID(開始)
+admin.order.purchase_count__end: 会員ID(終了)
 admin.order.tracking_number: お問い合わせ番号
 admin.order.tracking_number_error: お問い合わせ番号は半角英数字かハイフンのみを入力してください。
 admin.order.mail_purchase_product_count: '他%count%点'

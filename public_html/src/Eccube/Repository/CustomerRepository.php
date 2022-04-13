@@ -224,14 +224,27 @@ class CustomerRepository extends AbstractRepository
 
         // buy_times
         if (isset($searchData['buy_times_start']) && StringUtil::isNotBlank($searchData['buy_times_start'])) {
+            //20220413会員IDの比較をする(購入件数は使わないので代用)
+            $qb
+                ->andWhere('c.id >= :buy_times_start')
+                ->setParameter('buy_times_start', $searchData['buy_times_start']);
+            
+            /*
             $qb
                 ->andWhere('c.buy_times >= :buy_times_start')
                 ->setParameter('buy_times_start', $searchData['buy_times_start']);
+            */
         }
         if (isset($searchData['buy_times_end']) && StringUtil::isNotBlank($searchData['buy_times_end'])) {
+            //20220413会員IDの比較をする(購入件数は使わないので代用)
+            $qb
+                ->andWhere('c.id <= :buy_times_end')
+                ->setParameter('buy_times_end', $searchData['buy_times_end']);
+            /*
             $qb
                 ->andWhere('c.buy_times <= :buy_times_end')
                 ->setParameter('buy_times_end', $searchData['buy_times_end']);
+            */
         }
 
         // create_date
