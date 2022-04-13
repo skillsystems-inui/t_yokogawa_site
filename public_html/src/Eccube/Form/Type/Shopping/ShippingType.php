@@ -107,6 +107,13 @@ class ShippingType extends AbstractType
                     $SaleType = $ProductClass->getSaleType();
                     $SaleTypes[$SaleType->getId()] = $SaleType;
                 }
+                
+                log_info(
+		            '配送選択画面　配送セット',
+		            [
+		                'getDelivery()' => $Shipping->getDelivery(),
+		            ]
+		        );
 
                 // 販売種別に紐づく配送業者を取得.
                 //$Deliveries = $this->deliveryRepository->getDeliveries($SaleTypes);
@@ -117,8 +124,20 @@ class ShippingType extends AbstractType
                 	//配送セット(店舗)
                 	$deliv_id_honten = 3;//店舗：和泉中央本店
             		$deliv_id_kishiwada = 4;//店舗：岸和田店
-            		$TargetDelivery = $this->deliveryRepository->find($deliv_id_honten);
-            		$Shipping->setDelivery($TargetDelivery);
+            		
+            		//取り置きするかの判定　配送方法に「本店」が含まれるかどうか
+            		$_Delivery = $Shipping->getDelivery();
+        			$_shippingDelivery = $_Delivery->getName();
+        			if ( strpos( $_shippingDelivery, '岸和田' ) === false ) {
+        				//配送方法に「岸和田」が含まれないから「本店」
+        				$TargetDelivery = $this->deliveryRepository->find($deliv_id_honten);
+            			$Shipping->setDelivery($TargetDelivery);        				
+            		}else{
+            			//配送方法に「岸和田」が含まれるから「岸和田店」
+            			$TargetDelivery = $this->deliveryRepository->find($deliv_id_kishiwada);
+            			$Shipping->setDelivery($TargetDelivery);
+            		}
+            		
 	            	
                 }else{
                 	//ヤマト指定
