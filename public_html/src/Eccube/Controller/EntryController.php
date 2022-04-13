@@ -132,6 +132,7 @@ class EntryController extends AbstractController
             ]
         );
         
+        
         /** @var $Customer \Eccube\Entity\Customer */
         $Customer = $this->customerRepository->newCustomer();
 
@@ -202,6 +203,53 @@ class EntryController extends AbstractController
 				                'maxPrusOneCustomerCode' => $maxPrusOneCustomerCode,
 				            ]
 				        );
+				        
+				        
+				        
+				        
+						//----- コード重複チェック -----
+						$existCustomer = $this->customerRepository->getRegularCustomerByCustomerCode($maxPrusOneCustomerCode);
+				        log_info(
+				            '【コード重複チェック】会員コードの重複確認後',
+				            [
+				                'maxPrusOneCustomerCode' => $maxPrusOneCustomerCode,
+				                'existCustomer' => $existCustomer,
+				            ]
+				        );
+				        
+				        while (!is_null($existCustomer)) {
+				        	//既に使われている会員コードがある(existCustomerがnullではない)場合は、会員コードを+1して再チェックする
+				        	
+				        	$existCustomer = $this->customerRepository->getRegularCustomerByCustomerCode($maxPrusOneCustomerCode);
+					        
+					        log_info(
+					            '【コード重複チェック】会員コードの重複しているため再検索　コード加算前',
+					            [
+					                'maxPrusOneCustomerCode' => $maxPrusOneCustomerCode,
+					            ]
+					        );
+				        	
+				        	$maxPrusOneCustomerCode = $maxPrusOneCustomerCode + 1;
+				        	
+				        	
+					        log_info(
+					            '【コード重複チェック】会員コードの重複しているため再検索　コード加算後　+1',
+					            [
+					                'maxPrusOneCustomerCode' => $maxPrusOneCustomerCode,
+					            ]
+					        );
+				        	
+							$existCustomer = $this->customerRepository->getRegularCustomerByCustomerCode($maxPrusOneCustomerCode);
+				        }     
+        
+			            log_info(
+			            '【コード重複チェック】会員コードの重複チェック　ループ後',
+				            [
+				                'maxPrusOneCustomerCode' => $maxPrusOneCustomerCode,
+				            ]
+				        );
+				        //----- コード重複チェック -----
+				        
 				        
 				        //会員コードセット
 				        $Customer->setCustomerCode($maxPrusOneCustomerCode);
