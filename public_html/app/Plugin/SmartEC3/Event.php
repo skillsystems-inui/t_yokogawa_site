@@ -374,37 +374,51 @@ class Event implements EventSubscriberInterface
     }
     
     public function SmartEC3TransactionUpdate(EventArgs $event){
-log_info(
-            '__testLog1',
-            [
-                'test_val' => 'test1',
-            ]
-        );
 
         $arguments = $event->getArguments();
         $transaction = $arguments["Order"];
 
 
-log_info(
-            '__testLog2',
+		log_info(
+            'ECからスマレジへ受注データ登録する　開始',
             [
-                'test2a' => $arguments,
-                'test2b' => $transaction,
+                'arguments' => $arguments,
+                'transaction' => $transaction,
             ]
         );
 
+        $uketori_type = $transaction->getUketoriType();
+        if($uketori_type != 2){
+        	//受け取り判定　「店舗」
+        	log_info(
+            	'ECからスマレジへ受注データ登録する　受け取り判定　「店舗」',
+	            [
+	                'uketori_type' => $uketori_type,
+	                'transaction' => $transaction,
+	            ]
+	        );
+        
+           //店舗受け取り(配送以外)の場合、スマレジ登録実行
+           $msg = $this->smartRegiService->updateSmartRegiTransaction($transaction);
+	        $msg = "スマレジ： " . $msg;
+	        $flashbag = $this->session->getFlashBag();
+	        $flashbag->add('eccube.'.'admin'.'.warning', $msg);
+           
+        }else{
+           //受け取り判定　「配送」
+           //配送の場合、スマレジ登録しない
+           log_info(
+            	'ECからスマレジへ受注データ登録する　受け取り判定　「配送」',
+	            [
+	                'uketori_type' => $uketori_type,
+	                'transaction' => $transaction,
+	            ]
+	        );
+        }
+        
+        
 
-        $msg = $this->smartRegiService->updateSmartRegiTransaction($transaction);
-        $msg = "スマレジ： " . $msg;
-        $flashbag = $this->session->getFlashBag();
-        $flashbag->add('eccube.'.'admin'.'.warning', $msg);
 
-log_info(
-            '__testLog3',
-            [
-                'test_val' => 'test',
-            ]
-        );
 
     }
 
