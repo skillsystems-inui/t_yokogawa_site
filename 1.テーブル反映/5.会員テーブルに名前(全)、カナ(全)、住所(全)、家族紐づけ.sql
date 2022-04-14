@@ -143,3 +143,55 @@ ALTER TABLE `dtb_customer` ADD `notice_flg` varchar(5) DEFAULT NULL;
 ----- 会員コード 
 INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
 (2, NULL, 'Eccube\\\\Entity\\\\Customer', 'customer_code', NULL, '会員コード', 1, 1, '2021-09-02 03:47:59', '2021-09-02 03:47:59', 'csv');
+
+
+
+
+--CSV項目にも追加(会員)
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_name01', NULL, '家族情報1 お名前', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_sex01', 'name', '家族情報1 性別(1;男性,2;女性,3;その他)', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_relation01', NULL, '家族情報1 続柄', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_birth01', NULL, '家族情報1 誕生日', 50, 1, NOW(), NOW(), 'csv');
+
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_name02', NULL, '家族情報2 お名前', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_sex02', 'name', '家族情報2 性別(1;男性,2;女性,3;その他)', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_relation02', NULL, '家族情報2 続柄', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_birth02', NULL, '家族情報2 誕生日', 50, 1, NOW(), NOW(), 'csv');
+
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_name03', NULL, '家族情報3 お名前', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_sex03', 'name', '家族情報3 性別(1;男性,2;女性,3;その他)', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_relation03', NULL, '家族情報3 続柄', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_birth03', NULL, '家族情報3 誕生日', 50, 1, NOW(), NOW(), 'csv');
+
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_name04', NULL, '家族情報4 お名前', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_sex04', 'name', '家族情報4 性別(1;男性,2;女性,3;その他)', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_relation04', NULL, '家族情報4 続柄', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_birth04', NULL, '家族情報4 誕生日', 50, 1, NOW(), NOW(), 'csv');
+
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_name05', NULL, '家族情報5 お名前', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_sex05', 'name', '家族情報5 性別(1;男性,2;女性,3;その他)', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_relation05', NULL, '家族情報5 続柄', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_birth05', NULL, '家族情報5 誕生日', 50, 1, NOW(), NOW(), 'csv');
+
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_name06', NULL, '家族情報6 お名前', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_sex06', 'name', '家族情報6 性別(1;男性,2;女性,3;その他)', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_relation06', NULL, '家族情報6 続柄', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_birth06', NULL, '家族情報6 誕生日', 50, 1, NOW(), NOW(), 'csv');
+
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_name07', NULL, '家族情報7 お名前', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_sex07', 'name', '家族情報7 性別(1;男性,2;女性,3;その他)', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_relation07', NULL, '家族情報7 続柄', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_birth07', NULL, '家族情報7 誕生日', 50, 1, NOW(), NOW(), 'csv');
+
+INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_name08', NULL, '家族情報8 お名前', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_sex08', 'name', '家族情報8 性別(1;男性,2;女性,3;その他)', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_relation08', NULL, '家族情報8 続柄', 50, 1, NOW(), NOW(), 'csv'),
+(2, 1, 'Eccube\\\\Entity\\\\Customer', 'family_birth08', NULL, '家族情報8 誕生日', 50, 1, NOW(), NOW(), 'csv');
