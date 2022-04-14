@@ -233,8 +233,8 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	                }
 	                //商品が持つカテゴリから判断する
 	                foreach ($p_item->getProduct()->getProductCategories() as $p_category) {
-	                	//冷蔵配送の場合　カテゴリ：「ゼリーソルベ」id:97
-	                	if($p_category->getCategoryId() == 97){
+	                	//冷蔵配送の場合　カテゴリ：「ゼリーソルベ」id:97 //冷蔵商品：132
+	                	if($p_category->getCategoryId() == 132){
 	                		$include_reiZou = true;
 	                		
 				            log_info(
