@@ -293,7 +293,8 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	            $plus_reitou = 220;
 	            if($include_reiZou == true && $include_reiTou == true && $include_Jouon == true){
 	            	//+2送料分+冷凍追加分+冷蔵追加分
-	            	$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee() + $DeliveryFee->getFee() + $plus_reizou + $plus_reitou;
+	            	//$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee() + $DeliveryFee->getFee() + $plus_reizou + $plus_reitou;
+	            	$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee() + $plus_reizou + $plus_reitou;//常温と冷蔵が一緒ならまとめる
 	            	
 	                
 		            log_info(
