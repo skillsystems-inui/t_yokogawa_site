@@ -329,8 +329,9 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	            	
 	            }else if($include_reiZou == true && $include_reiTou == false && $include_Jouon == true){
 	            	//+1送料分+冷蔵追加分
-	            	$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee() + $plus_reizou;
-	            	
+	            	//冷蔵のみと同じ処理
+	            	//$include_type_addition_fee = $include_type_addition_fee + $DeliveryFee->getFee() + $plus_reizou;
+	            	$include_type_addition_fee = $include_type_addition_fee + $plus_reizou;
 	                
 	                
 		            log_info(
@@ -338,7 +339,7 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 				            [
 				                '送料' => $souryo,
 				                'include_type_addition_fee' => $include_type_addition_fee,
-				                'DeliveryFee->getFee()' => $DeliveryFee->getFee(),
+				                //'DeliveryFee->getFee()' => $DeliveryFee->getFee(),
 				                'plus_reizou' => $plus_reizou,
 				                '送料追加分(include_type_addition_fee)' => $include_type_addition_fee,
 				            ]
