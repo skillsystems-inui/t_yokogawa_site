@@ -953,7 +953,7 @@ admin.order.mail: メール通知
 admin.order.shipping_save_message: 出荷に関わる情報が変更されました。送料の変更が必要な場合は、受注管理より手動で変更してください。
 
 # ラベル/メッセージ
-admin.order.multi_search_label: 注文番号・お名前・会社名・メールアドレス・電話番号・店舗名(本店、岸和田店)
+admin.order.multi_search_label: 注文番号・お名前・会社名・メールアドレス・電話番号・店舗名(本店、岸和田店)・スマレジ取引ID
 admin.order.order_info: 注文情報
 admin.order.order_date: 注文日
 admin.order.order_date__start: 注文日(開始)
@@ -1058,7 +1058,7 @@ admin.order.change_status: 対応状況の変更
 admin.order.csv_shipping_date_description: 出荷日を「YYYY-MM-DD」の形式で設定
 admin.order.order_csv: 受注CSV
 admin.order.shipping_csv: 取り置きCSV
-admin.order.shipping_status: 出荷状況
+admin.order.shipping_status: 受注日
 admin.order.delivery: 配送先
 admin.order.not_payment: 未入金
 admin.order.unshipped: 未出荷
