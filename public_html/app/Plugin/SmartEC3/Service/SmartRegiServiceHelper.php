@@ -439,14 +439,14 @@ class SmartRegiServiceHelper
             //<   追加料金   >
             // ----- Noキャンドル 単価-----
             // Noキャンドル 販売単価
-            $_no_can_price = 120;
+            $_no_can_price = 132;
             
             //<   商品ID   >
             // ----- 追加プレート ID-----
             $_add_plate_id = 10357;
             //<   追加料金   >
             // ----- 追加プレート 単価-----
-            $_add_plate_price = 60;
+            $_add_plate_price = 65;
             
             //<   商品ID   >
             // ----- デコレーション追加 ID-----
@@ -461,13 +461,13 @@ class SmartRegiServiceHelper
             //<   追加料金   >
             // ----- デコレーション追加 単価-----
             // いちごUP
-            $_deco_add_ichigo_up_price = 350; 
+            $_deco_add_ichigo_up_price = 378; 
             // フルーツUP
-            $_deco_add_fruit_up_price = 350;
+            $_deco_add_fruit_up_price = 378;
             // 生チョコUP 
-            $_deco_add_namachoco_up_price = 350;
+            $_deco_add_namachoco_up_price = 378;
             // 絵チョコ(4号) 
-            $_deco_add_echoco_4_price = 700;
+            $_deco_add_echoco_4_price = 756;
             
             //<   商品ID   >
             // ----- ポリ袋 ID-----
@@ -480,11 +480,11 @@ class SmartRegiServiceHelper
             //<   追加料金   >
             // ----- ポリ袋 単価-----
             // ポリ中
-            $_poli_cyu_price = 20; 
+            $_poli_cyu_price = 22; 
             // ポリ大
-            $_poli_dai_price = 20;
+            $_poli_dai_price = 22;
             // ポリ特大 
-            $_poli_tokudai_price = 100;
+            $_poli_tokudai_price = 110;
             
             
             //ToDo  No.キャンドル(0,2～9)、追加プレート(2～5)、デコレーション追加(いちごUP、フルーツUP、生チョコUP、絵チョコ(4号))、ポリ袋(中、大、特大)　　もNo.キャンドル1同様に記載すること！！
