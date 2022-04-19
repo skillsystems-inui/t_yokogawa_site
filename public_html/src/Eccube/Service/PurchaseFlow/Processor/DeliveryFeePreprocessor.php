@@ -228,7 +228,20 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 				$include_reiTou = false;//冷凍が含まれる
 				$include_Jouon = false;//常温が含まれる
 				foreach ($Shipping->getOrderItems() as $p_item) {
+	                
+	                //リセット
+	                $chk_reiZou = false;//冷蔵が含まれる(常温判定時に使用)
+					$chk_reiTou = false;//冷凍が含まれる(常温判定時に使用)
+					
 	                if (!$p_item->isProduct()) {
+	                	
+	                	log_info(
+					            '商品なし判定',
+						            [
+						                'isProduct' => $p_item->isProduct(),
+						            ]
+					        );
+	                
 	                    continue;
 	                }
 	                //商品が持つカテゴリから判断する
@@ -236,7 +249,8 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	                	//冷蔵配送の場合　カテゴリ：「ゼリーソルベ」id:97 //冷蔵商品：132
 	                	if($p_category->getCategoryId() == 132){
 	                		$include_reiZou = true;
-	                		
+	                		$chk_reiZou = true;//冷蔵が含まれる(常温判定時に使用)
+							
 				            log_info(
 					            '送料計算　タイプ：ヤマト　配送タイプ：冷蔵配送',
 						            [
@@ -254,6 +268,7 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	                	}else if($p_category->getCategoryId() == 74){
 	                		//冷凍配送の場合　カテゴリ：「冷凍商品」id:74
 	                		$include_reiTou = true;
+	                		$chk_reiTou = true;//冷凍が含まれる(常温判定時に使用)
 	                		
 				            log_info(
 					            '送料計算　タイプ：ヤマト　配送タイプ：冷凍配送',
@@ -270,9 +285,27 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	                	}
 	                }
 	                
+	                log_info(
+					            '送料計算　「常温」と判断する前',
+						            [
+						                'chk_reiTou' => $chk_reiTou,
+						                'chk_reiZou' => $chk_reiZou,
+						            ]
+					        );
 	                
 	                //冷凍でも冷蔵でもなければ「常温」と判断する
-	                if($include_reiTou != true && $include_reiZou != true){
+	                if($chk_reiTou == false && $chk_reiZou == false){
+	                
+					$_today = date("Y/m/d"); //今日の日付
+					$_startDate = "2022/04/20"; //開始日
+					$_endDate = "2022/11/30"; //終了日
+					if(strtotime($_today) >= strtotime($_startDate) && strtotime($_endDate) >= strtotime($_today)){
+						//範囲内
+						log_info('はいんない', ['送料' => $_today, ] );
+					}else{
+						//範囲外
+						log_info('はんいがい', ['送料' => $_today, ] );
+					}
                 		$include_Jouon = true;
                 		
 			            log_info(
