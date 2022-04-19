@@ -380,6 +380,9 @@ class SmartRegiServiceHelper
         //受取予定日 
         $arrData['data'][0]['rows'][0]['pickUpDate']              = $ShipInfo->getShippingDeliveryDate() == null ? null : $ShipInfo->getShippingDeliveryDate()->format('Y-m-d');
         
+        //前受金 20220420
+        $arrData['data'][0]['rows'][0]['partPayment']                   = intval($order->getTotalPrice());//合計をセット
+        
         //受注詳細をセット
         $meisaiNo = 1;
         
