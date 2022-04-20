@@ -372,7 +372,7 @@ class SmartRegiServiceHelper
         //会員情報取得
         $CustomerInfo = $order->getCustomer();
         if($CustomerInfo != null){
-        	$arrData['data'][0]['rows'][0]['customerId'] = $CustomerInfo->getCustomerCode();//会員コード
+        	$arrData['data'][0]['rows'][0]['customerId'] = $CustomerInfo->getId();//会員ID
         }
         
         //配送情報取得
