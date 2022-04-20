@@ -382,6 +382,10 @@ class SmartRegiServiceHelper
         
         //前受金 20220420
         $arrData['data'][0]['rows'][0]['partPayment']                   = intval($order->getTotalPrice());//合計をセット
+        //受領金額 20220420
+        $arrData['data'][0]['rows'][0]['deposit']                   = intval($order->getTotalPrice());//合計をセット
+        //おつり 20220420
+        $arrData['data'][0]['rows'][0]['charge']                   = 0;//おつりなし
         
         //受注詳細をセット
         $meisaiNo = 1;
