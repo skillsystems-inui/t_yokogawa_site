@@ -900,6 +900,8 @@ class SmartRegiOrderController extends AbstractController
 
             $OrderItem->setQuantity($arrOrderItem['quantity']);
             $OrderItem->setProductName($arrOrderItem['productName']);
+            //20220414 プロダクトコード追加
+            $OrderItem->setProductCode($arrOrderItem['productCode']);
             
             $OrderItem->setShipping($Order->getShippings()[0]);
             $OrderItem->setOrder($Order);
