@@ -46,7 +46,8 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
 
             //20220422 税金は税率と商品金額から算出する(スマレジから送られる税金は商品の注文数量分まとめてくるためEC(商品1つあたり)と整合性が合わないため)
             //return $this->price + $this->tax;
-            $_tax = $this->calcTax($this->getPrice(), $this->getTaxRate(), $this->getRoundingType()->getId(),$this->getTaxAdjust());
+            //$_tax = $this->calcTax($this->getPrice(), $this->getTaxRate(), $this->getRoundingType()->getId(),$this->getTaxAdjust());
+            $_tax = $this->calcTax($this->getPrice(), $this->getTaxRate(), 1,$this->getTaxAdjust());
             
             return $this->price + $_tax;
         }
@@ -56,7 +57,27 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
          */
         public function getTotalPrice()
         {
-            return ($this->getPriceIncTax() + $this->getAdditionalPrice()) * $this->getQuantity();
+            $_price = $this->getPrice();
+            $_quantity = $this->getQuantity();
+            
+            if($_quantity < 2){
+            	return ($this->getPriceIncTax() + $this->getAdditionalPrice()) * $this->getQuantity();
+            }
+            
+            //20220422
+            //税抜き合計
+            $_p_q = $_price * $_quantity;
+            
+            //税率
+            $_taxRate = $this->getTaxRate() == 0 ? 0 : ($this->getTaxRate()/100) + 1;
+            
+            //合計
+            $_sum = $_p_q * $_taxRate;
+            
+            //最終合計
+            $last_sum = $_sum == 0 ? 0 : floor($_sum);
+            
+            return $last_sum;
         }
 
         /**
@@ -2625,7 +2646,6 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
 	        return $roundTax + $taxAdjust;
 	    }
 	    
-	    
 	    /**
 	     * 課税規則に応じて端数処理を行う
 	     *
@@ -2636,6 +2656,7 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
 	     */
 	    public function roundByRoundingType($value, $RoundingType)
 	    {
+	        /*
 	        switch ($RoundingType) {
 	            // 四捨五入
 	            case \Eccube\Entity\Master\RoundingType::ROUND:
@@ -2654,6 +2675,9 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
 	                $ret = ceil($value);
 	                break;
 	        }
+	        */
+	        //切り捨て固定
+	        $ret = floor($value);
 
 	        return $ret;
 	    }
