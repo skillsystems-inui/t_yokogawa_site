@@ -44,7 +44,11 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
                 return $this->price;
             }
 
-            return $this->price + $this->tax;
+            //20220422 税金は税率と商品金額から算出する(スマレジから送られる税金は商品の注文数量分まとめてくるためEC(商品1つあたり)と整合性が合わないため)
+            //return $this->price + $this->tax;
+            $_tax = $this->calcTax($this->getPrice(), $this->getTaxRate(), $this->getRoundingType()->getId(),$this->getTaxAdjust());
+            
+            return $this->price + $_tax;
         }
 
         /**
@@ -2602,6 +2606,57 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
             return $this->order_sub_no;
         }
         
+        
+        /**
+	     * 税金額を計算する
+	     *
+	     * @param  int    $price     計算対象の金額
+	     * @param  int    $taxRate   税率(%単位)
+	     * @param  int    $RoundingType  端数処理
+	     * @param  int    $taxAdjust 調整額
+	     *
+	     * @return double 税金額
+	     */
+	    public function calcTax($price, $taxRate, $RoundingType, $taxAdjust = 0)
+	    {
+	        $tax = $price * $taxRate / 100;
+	        $roundTax = $this->roundByRoundingType($tax, $RoundingType);
+
+	        return $roundTax + $taxAdjust;
+	    }
+	    
+	    
+	    /**
+	     * 課税規則に応じて端数処理を行う
+	     *
+	     * @param  integer $value    端数処理を行う数値
+	     * @param integer $RoundingType
+	     *
+	     * @return double        端数処理後の数値
+	     */
+	    public function roundByRoundingType($value, $RoundingType)
+	    {
+	        switch ($RoundingType) {
+	            // 四捨五入
+	            case \Eccube\Entity\Master\RoundingType::ROUND:
+	                $ret = round($value);
+	                break;
+	            // 切り捨て
+	            case \Eccube\Entity\Master\RoundingType::FLOOR:
+	                $ret = floor($value);
+	                break;
+	            // 切り上げ
+	            case \Eccube\Entity\Master\RoundingType::CEIL:
+	                $ret = ceil($value);
+	                break;
+	            // デフォルト:切り上げ
+	            default:
+	                $ret = ceil($value);
+	                break;
+	        }
+
+	        return $ret;
+	    }
         
     }
 }
