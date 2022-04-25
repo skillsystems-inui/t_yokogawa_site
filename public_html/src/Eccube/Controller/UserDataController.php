@@ -100,7 +100,7 @@ class UserDataController extends AbstractController
         	if (!($this->isGranted('IS_AUTHENTICATED_FULLY'))) {
 	            log_info('アプリから未ログインのためログイン画面へ遷移させる');
 	            //ログイン画面へ遷移(アプリ)
-        		header("Location:http://t-yokogawa-com.check-xserver.jp/mypage/login?app_mode");
+        		header("Location:http://t-yokogawa.com/mypage/login?app_mode");
     			exit();
 	        }
         }

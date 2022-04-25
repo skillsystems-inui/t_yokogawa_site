@@ -103,7 +103,7 @@ class MypageController extends AbstractController
         $session = $this->session;
         
         //画面遷移先
-        $to_url = "http://t-yokogawa-com.check-xserver.jp/";
+        $to_url = "http://t-yokogawa.com/";
         
         //デバイストークン
         $_device_token = null;
@@ -114,7 +114,7 @@ class MypageController extends AbstractController
         if(strpos($current_url,'app_')){
         	//アプリの場合
         	//アプリ画面に遷移させる
-        	$to_url = "http://t-yokogawa-com.check-xserver.jp/user_data/app_top";
+        	$to_url = "http://t-yokogawa.com/user_data/app_top";
         	$is_application = true;
         }
         
