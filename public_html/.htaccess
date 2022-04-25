@@ -1,7 +1,21 @@
 SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
 SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode
 
+# 20220418µì¥µ¥¤¥ÈÍí¤ß¤Ç¥ê¥À¥¤¥ì¥¯¥È
+RewriteEngine on
+RewriteRule ^smartphone/$ https://t-yokogawa.com/ [L,R=301]
+RewriteRule ^about.html$ https://t-yokogawa.com/user_data/ourbrand [L,R=301]
+RewriteRule ^item_all.html$ https://t-yokogawa.com/user_data/product_lineup [L,R=301]
+RewriteRule ^shop.html$ https://t-yokogawa.com/user_data/SHOP [L,R=301]
+RewriteRule ^shop.html$ https://t-yokogawa.com/user_data/SHOP [L,R=301]
+RewriteRule ^new/index.html$ https://t-yokogawa.com/user_data/osirase [L,R=301]
+RewriteRule ^/html/page16.html$ https://t-yokogawa.com/help/privacy [L,R=301] 
+
+
+
 DirectoryIndex index.php index.html .ht
+
+
 
 <FilesMatch "^composer|^COPYING|^\.env|^\.maintenance|^Procfile|^app\.json|^gulpfile\.js|^package\.json|^package-lock\.json|web\.config|^Dockerfile|^\.editorconfig|\.(ini|lock|dist|git|sh|bak|swp|env|twig|yml|yaml|dockerignore|sample)$">
     order allow,deny
@@ -14,28 +28,30 @@ DirectoryIndex index.php index.html .ht
 </Files>
 
 <IfModule mod_headers.c>
-    # ã‚¯ãƒªãƒƒã‚¯ã‚¸ãƒ£ãƒƒã‚­ãƒ³ã‚°å¯¾ç­–
+    # ¥¯¥ê¥Ã¥¯¥¸¥ã¥Ã¥­¥ó¥°ÂĞºö
     Header always set X-Frame-Options SAMEORIGIN
 
-    # XSSå¯¾ç­–
+    # XSSÂĞºö
     Header set X-XSS-Protection "1; mode=block"
     Header set X-Content-Type-Options nosniff
 </IfModule>
 
-# ãƒ‡ã‚¶ã‚¤ãƒ³ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’é©ç”¨ã™ã‚‹ãŸã‚10Mã§è¨­å®š 
+# ¥Ç¥¶¥¤¥ó¥Æ¥ó¥×¥ì¡¼¥È¤òÅ¬ÍÑ¤¹¤ë¤¿¤á10M¤ÇÀßÄê
+# CSV¥¢¥×¥í¡¼¥É¤Î°Ù1024 20220418
 <IfModule mod_php7.c>
-    php_value upload_max_filesize 10M
+    php_value upload_max_filesize 4096M
+    php_value max_execution_time 0
 </IfModule>
 
 <IfModule mod_rewrite.c>
-    #403 Forbiddenå¯¾å¿œæ–¹æ³•
-    #ãƒšãƒ¼ã‚¸ã‚¢ã‚¯ã‚»ã‚¹ã§ããªã„æ™‚ã‚·ãƒ³ãƒœãƒªãƒƒã‚¯ãƒªãƒ³ã‚¯ãŒæœ‰åŠ¹ã«ãªã£ã¦ã„ãªã„å¯èƒ½æ€§ã‚ã‚Šã¾ã™ã€
-    #ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
+    #403 ForbiddenÂĞ±şÊıË¡
+    #¥Ú¡¼¥¸¥¢¥¯¥»¥¹¤Ç¤­¤Ê¤¤»ş¥·¥ó¥Ü¥ê¥Ã¥¯¥ê¥ó¥¯¤¬Í­¸ú¤Ë¤Ê¤Ã¤Æ¤¤¤Ê¤¤²ÄÇ½À­¤¢¤ê¤Ş¤¹¡¢
+    #¥ª¥×¥·¥ç¥ó¤òÄÉ²Ã¤·¤Æ¤¯¤À¤µ¤¤
     #Options +FollowSymLinks +SymLinksIfOwnerMatch
 
     RewriteEngine On
 
-    # Authorization ãƒ˜ãƒƒãƒ€ãŒå–å¾—ã§ããªã„ç’°å¢ƒã¸ã®å¯¾å¿œ
+    # Authorization ¥Ø¥Ã¥À¤¬¼èÆÀ¤Ç¤­¤Ê¤¤´Ä¶­¤Ø¤ÎÂĞ±ş
     RewriteCond %{HTTP:Authorization} ^(.*)
     RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
 
@@ -56,5 +72,3 @@ DirectoryIndex index.php index.html .ht
     RewriteCond %{REQUEST_FILENAME} !^(.*)\.(gif|png|jpe?g|css|ico|js|svg|map)$ [NC]
     RewriteRule ^(.*)$ index.php [QSA,L]
 </IfModule>
-
-
