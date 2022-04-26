@@ -367,7 +367,9 @@ class SmartRegiServiceHelper
         $arrData['data'][0]['rows'][0]['terminalTranId']          = $order->getId();//端末取引ID★
         $arrData['data'][0]['rows'][0]['terminalTranDateTime']    = $terminalTranDateTime;//端末取引日時★
         
-        $arrData['data'][0]['rows'][0]['memo']    = $order->getNote();//メモをセット
+        //英数字を全角に変換する 20220426
+        $_memo = mb_convert_kana($order->getNote(), 'A', 'utf-8');
+        $arrData['data'][0]['rows'][0]['memo']    = $_memo;//メモをセット
         
         //会員情報取得
         $CustomerInfo = $order->getCustomer();
