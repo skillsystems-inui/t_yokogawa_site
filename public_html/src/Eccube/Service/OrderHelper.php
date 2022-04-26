@@ -167,6 +167,14 @@ class OrderHelper
         $Order->setNote($OptionMemo);
         //受け取り方法を注文に反映する
         $Order->setUketoriType($UketoriType);
+        
+        //20220426 名前(全)セット
+        $_NameAll = $Customer->getName01().' '.$Customer->getName02();
+        $_KanaAll = $Customer->getKana01().' '.$Customer->getKana02();
+        $_AddrAll = $Customer->getAddr01().' '.$Customer->getAddr02();
+        $Order->setNameAll($_NameAll);
+        $Order->setKanaAll($_KanaAll);
+        $Order->setAddrAll($_AddrAll);
 
         $this->entityManager->persist($Order);
 
@@ -532,6 +540,11 @@ class OrderHelper
      */
     protected function createShippingFromCustomer(Customer $Customer)
     {
+        //名前(全)セット
+        $_NameAll = $Customer->getName01().' '.$Customer->getName02();
+        $_KanaAll = $Customer->getKana01().' '.$Customer->getKana02();
+        $_AddrAll = $Customer->getAddr01().' '.$Customer->getAddr02();
+                
         $Shipping = new Shipping();
         $Shipping
             ->setName01($Customer->getName01())
@@ -544,9 +557,9 @@ class OrderHelper
             ->setPref($Customer->getPref())
             ->setAddr01($Customer->getAddr01())
             ->setAddr02($Customer->getAddr02())
-            ->setNameAll($Customer->getNameAll())
-            ->setKanaAll($Customer->getKanaAll())
-            ->setAddrAll($Customer->getAddrAll())
+            ->setNameAll($_NameAll)
+            ->setKanaAll($_KanaAll)
+            ->setAddrAll($_AddrAll)
             ;
 
         return $Shipping;

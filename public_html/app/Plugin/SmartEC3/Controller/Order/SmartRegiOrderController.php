@@ -551,6 +551,14 @@ class SmartRegiOrderController extends AbstractController
             $Order->setName02($Customer->getName02());
             $Order->setKana01($Customer->getKana01());
             $Order->setKana02($Customer->getKana02());
+            
+            //名前(全)セット 20220426
+            $_NameAll = $Customer->getName01().' '.$Customer->getName02();
+            $_KanaAll = $Customer->getKana01().' '.$Customer->getKana02();
+            $_AddrAll = $Customer->getAddr01().' '.$Customer->getAddr02();
+            $Order->setNameAll($_NameAll);
+            $Order->setKanaAll($_KanaAll);
+            $Order->setAddrAll($_AddrAll);
 
             //電話。住所、メールを登録
             /*
@@ -600,8 +608,13 @@ class SmartRegiOrderController extends AbstractController
             $Shipping->setPref($Customer->getPref());
             $Shipping->setPostalCode('5300001');
             $Shipping->setPhoneNumber('09011112222');
-            $Shipping->setAddr01('大阪市北区梅田');
-            $Shipping->setAddr02('123');
+            $Shipping->setAddr01($Customer->getAddr01());
+            $Shipping->setAddr02($Customer->getAddr02());
+            
+            //名前(全)セット 20220426
+            $Shipping->setNameAll($_NameAll);
+            $Shipping->setKanaAll($_KanaAll);
+            $Shipping->setAddrAll($_AddrAll);
             
             $Shipping->setShippingDeliveryDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDate(new \DateTime($arrOrder['transactionDateTime']));
@@ -631,6 +644,13 @@ class SmartRegiOrderController extends AbstractController
             $Order->setKana01("ゲスト");
             $Order->setKana02("ゲスト");
             
+            //名前(全)セット 20220426
+            $_NameAll = 'ゲスト ゲスト';
+            $_KanaAll = 'ゲスト ゲスト';
+            $_AddrAll = '大阪市北区梅田 123';
+            $Order->setNameAll($_NameAll);
+            $Order->setKanaAll($_KanaAll);
+            $Order->setAddrAll($_AddrAll);
             
             $Order->setPostalCode('5300001');
             $Order->setPhoneNumber('09011112222');
@@ -663,6 +683,11 @@ class SmartRegiOrderController extends AbstractController
             //カナ登録
             $Shipping->setKana01("ゲスト");
             $Shipping->setKana02("ゲスト");
+            
+            //名前(全)セット 20220426
+            $Shipping->setNameAll($_NameAll);
+            $Shipping->setKanaAll($_KanaAll);
+            $Shipping->setAddrAll($_AddrAll);
             
             //出荷用メモ欄にスマレジからのレシートメモをセットする 20220325
             $Shipping->setNote($arrOrder['receiptMemo']);
