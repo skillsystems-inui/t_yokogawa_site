@@ -373,11 +373,11 @@ class OrderRepository extends AbstractRepository
                 if ($checked == 0) {
                     // ECで注文
                     $qb
-                        ->andWhere('o.uketori_type IS NOT NULL');
+                        ->andWhere('o.order_no IS NOT NULL');
                 } elseif ($checked == 1) {
                     // 店舗で注文
                     $qb
-                        ->andWhere('o.uketori_type IS NULL');                   
+                        ->andWhere('o.order_no IS NULL');                   
                 }
             }
         }
