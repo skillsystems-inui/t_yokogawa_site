@@ -197,9 +197,9 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	                		$chk_reiZou = true;//冷蔵が含まれる(常温判定時に使用)
 							
 							//冷蔵商品の金額を加算
-                			$baseprice_reiZou = $baseprice_reiZou + $p_item->getPrice() + $p_item->getAdditionalPrice();
+                			$baseprice_reiZou = $baseprice_reiZou + ( $p_item->getPrice() + $p_item->getAdditionalPrice() + $p_item->getTax() )*$p_item->getQuantity();
 	                		
-				            log_info( '送料計算　タイプ：ヤマト　配送タイプ：冷蔵配送', [ '送料' => $souryo,'カテゴリID(CategoryId)' => $p_category->getCategoryId(), ]);
+				            log_info( '送料計算　タイプ：ヤマト　配送タイプ：冷蔵配送', [ 'baseprice_reiZou' => $baseprice_reiZou,'getPrice' => $p_item->getPrice(),'getAdditionalPrice' => $p_item->getAdditionalPrice(), ]);
 					        
 					        //商品単位でカテゴリ判定できたらループから抜ける
 	                		break;
@@ -211,7 +211,7 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	                		$chk_reiTou = true;//冷凍が含まれる(常温判定時に使用)
 	                		
 	                		//冷凍商品の金額を加算
-                			$baseprice_reiTou = $baseprice_reiTou + $p_item->getPrice() + $p_item->getAdditionalPrice();
+                			$baseprice_reiTou = $baseprice_reiTou + ( $p_item->getPrice() + $p_item->getAdditionalPrice() + $p_item->getTax() )*$p_item->getQuantity();
 	                		
 				            log_info('送料計算　タイプ：ヤマト　配送タイプ：冷凍配送', [ '送料' => $souryo,'カテゴリID(CategoryId)' => $p_category->getCategoryId(),]);
 					        
@@ -232,16 +232,21 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 						if(strtotime($_today) >= strtotime($_startDate) && strtotime($_endDate) >= strtotime($_today)){
 							//範囲内
 							log_info('範囲内', ['送料' => $_today, ] );
+							//冷蔵になる
+							$include_reiZou = true;
+							$baseprice_reiZou = $baseprice_reiZou + ( $p_item->getPrice() + $p_item->getAdditionalPrice() + $p_item->getTax() )*$p_item->getQuantity();
+							
 						}else{
 							//範囲外
 							log_info('範囲外', ['送料' => $_today, ] );
+							//常温判定する
+	                		$include_Jouon = true;
+	                		
+	                		//常温商品の金額を加算
+	                		$baseprice_Jouon = $baseprice_Jouon + ( $p_item->getPrice() + $p_item->getAdditionalPrice() + $p_item->getTax() )*$p_item->getQuantity();
 						}
 						
-						//常温判定する
-                		$include_Jouon = true;
-                		
-                		//常温商品の金額を加算
-                		$baseprice_Jouon = $baseprice_Jouon + $p_item->getPrice() + $p_item->getAdditionalPrice();
+						
                 		
                 		log_info( '送料計算　タイプ：ヤマト　配送タイプ：それ以外(常温)', [ '送料' => $souryo, ]);
                 	}
@@ -371,29 +376,81 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	            	//①常温、②冷凍、③冷蔵なので「冷凍と冷蔵」分の送料　※常温は冷蔵にまとめることができる
 	            	$total_fee = $basefee_reiTou + $basefee_JZ;
 	            	
+	            	log_info(
+			            '①常温、②冷凍、③冷蔵なので「冷凍と冷蔵」分の送料　※常温は冷蔵にまとめることができる',
+				            [
+				                'basefee_reiTou' => $basefee_reiTou,
+				                'basefee_JZ' => $basefee_JZ,
+				            ]
+			        );
+	            	
 	            }else if($include_reiZou == true && $include_reiTou == true && $include_Jouon == false){
 	            	//②冷凍、③冷蔵なので「冷凍と冷蔵」分の送料
 	            	$total_fee = $basefee_reiTou + $basefee_reiZou;
 	            	
+	            	log_info(
+			            '②冷凍、③冷蔵なので「冷凍と冷蔵」分の送料',
+				            [
+				                'basefee_reiTou' => $basefee_reiTou,
+				                'basefee_reiZou' => $basefee_reiZou,
+				            ]
+			        );
+	            	
 	            }else if($include_reiZou == true && $include_reiTou == false && $include_Jouon == true){
 	            	//①常温、③冷蔵なので「冷蔵」分の送料　※常温は冷蔵にまとめることができる
 	            	$total_fee = $basefee_JZ;
+	            	
+	            	log_info(
+			            '①常温、③冷蔵なので「冷蔵」分の送料　※常温は冷蔵にまとめることができる',
+				            [
+				                'basefee_JZ' => $basefee_JZ,
+				            ]
+			        );
 	                
 	            }else if($include_reiZou == false && $include_reiTou == true && $include_Jouon == true){
 	            	//①常温、②冷凍なので「常温と冷凍」分の送料
 	            	$total_fee = $basefee_reiTou + $basefee_Jouon;
 	            	
+	            	log_info(
+			            '①常温、②冷凍なので「常温と冷凍」分の送料',
+				            [
+				                'basefee_reiTou' => $basefee_reiTou,
+				                'basefee_Jouon' => $basefee_Jouon,
+				            ]
+			        );
+	            	
 	            }else if($include_reiZou == false && $include_reiTou == false && $include_Jouon == true){
 	            	//①常温なので「常温」分の送料
 	            	$total_fee = $basefee_Jouon;
+	            	
+	            	log_info(
+			            '①常温なので「常温」分の送料',
+				            [
+				                'basefee_Jouon' => $basefee_Jouon,
+				            ]
+			        );
 	            	
 	            }else if($include_reiZou == false && $include_reiTou == true && $include_Jouon == false){
 	            	//②冷凍なので「冷凍」分の送料
 	            	$total_fee = $basefee_reiTou;
 	            	
+	            	log_info(
+			            '②冷凍なので「冷凍」分の送料',
+				            [
+				                'basefee_reiTou' => $basefee_reiTou,
+				            ]
+			        );
+	            	
 	            }else if($include_reiZou == true && $include_reiTou == false && $include_Jouon == false){
 	            	//③冷蔵なので「冷蔵」分の送料
 	            	$total_fee = $basefee_reiZou;
+	            	
+	            	log_info(
+			            '③冷蔵なので「冷蔵」分の送料',
+				            [
+				                'basefee_reiZou' => $basefee_reiZou,
+				            ]
+			        );
 	            }
 	            
 	            //-----会員の場合は割引を行う(ゲストは対象外)-----
@@ -415,7 +472,7 @@ class DeliveryFeePreprocessor implements ItemHolderPreprocessor
 	            log_info(
 		            '送料計算　タイプ：ヤマト　　最終送料',
 			            [
-			                '送料(最終)' => $souryo,
+			                '送料(最終)' => $total_fee,
 			                '会員割引(user_sub_price)' => $user_sub_price,
 			            ]
 		        );
