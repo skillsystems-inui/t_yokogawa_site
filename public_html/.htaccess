@@ -1,6 +1,11 @@
 SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
 SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode
 
+# 20220425 HTTPSにリダイレクトする
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
 # 20220418旧サイト絡みでリダイレクト
 RewriteEngine on
 RewriteRule ^smartphone/$ https://t-yokogawa.com/ [L,R=301]
