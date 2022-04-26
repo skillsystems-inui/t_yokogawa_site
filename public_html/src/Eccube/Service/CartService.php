@@ -308,6 +308,16 @@ class CartService
 
             if (isset($Carts[$cartKey])) {
                 $Cart = $Carts[$cartKey];
+                
+                
+                log_info(
+		            'カートに追加',
+		            [
+		                'item' => $item,
+		            ]
+		        );
+                
+                
                 $Cart->addCartItem($item);
                 $item->setCart($Cart);
             } else {
@@ -315,6 +325,15 @@ class CartService
                 $Cart = $this->cartRepository->findOneBy(['cart_key' => $cartKey]);
                 if ($Cart) {
                     foreach ($Cart->getCartItems() as $i) {
+                        
+                        
+                        log_info(
+				            'カートから外す',
+				            [
+				                'item' => $i,
+				            ]
+				        );
+                        
                         $this->entityManager->remove($i);
                         $this->entityManager->flush($i);
                     }
