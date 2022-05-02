@@ -88,26 +88,49 @@ class Event implements EventSubscriberInterface
             '@admin/Order/index.twig' => 'SmartEC3OrderIndexTwig',
             '@admin/Order/edit.twig' => 'SmartEC3OrderEditTwig',
             
+            //カテゴリ
+            //★管理画面にて商品カテゴリ更新時に、スマレジの該当の部門(カテゴリ)情報も更新する
             EccubeEvents::ADMIN_PRODUCT_CATEGORY_INDEX_COMPLETE => 'SmartEC3CategoryUpdate',
+            //★管理画面にて商品カテゴリ削除時に、スマレジの該当の部門(カテゴリ)情報も削除する
             EccubeEvents::ADMIN_PRODUCT_CATEGORY_DELETE_COMPLETE => 'SmartEC3CategoryDelete',
 
+
+            //会員
+            //★管理画面にて会員情報更新時に、スマレジの該当の会員情報も更新する
             EccubeEvents::ADMIN_CUSTOMER_EDIT_INDEX_COMPLETE => 'SmartEC3UserRegister',
+            //★管理画面にて会員情報削除時に、スマレジの該当の会員情報も削除する
             EccubeEvents::ADMIN_CUSTOMER_DELETE_COMPLETE => 'SmartEC3UserDelete',
 
-            EccubeEvents::ADMIN_CUSTOMER_EDIT_INDEX_COMPLETE => 'SmartEC3UserRegister',
+            //★フロント画面にて会員情報更新時に、スマレジの該当の会員情報も更新する
             EccubeEvents::FRONT_MYPAGE_CHANGE_INDEX_COMPLETE => 'SmartEC3UserRegisterFront',
+            //★フロント画面にて会員情報の退会処理完了時に、スマレジの該当の会員情報も更新する
             EccubeEvents::FRONT_MYPAGE_WITHDRAW_INDEX_COMPLETE => 'SmartEC3UserRegisterFront',
-            //EccubeEvents::FRONT_MYPAGE_WITHDRAW_INDEX_COMPLETE => 'SmartEC3UserDeleteFront',
-
-            EccubeEvents::ADMIN_PRODUCT_EDIT_COMPLETE => 'SmartEC3ProductRegister',
-            SmartRegiEvents::PLG_SMARTREGI_ADMIM_SMART_EDIT_COMPLETE => 'SmartEC3ProductRegister',
-            SmartRegiEvents::PLG_SMARTREGI_ADMIM_SMART_EDIT_STORE_CHANGE => 'SmartEC3ProductDelete',
-            //EccubeEvents::ADMIN_PRODUCT_DELETE_COMPLETE => 'SmartEC3ProductDelete',
             
-            //購入完了した時
+            
+            //商品
+            //★管理画面にて商品情報更新時に、スマレジの該当の商品情報も更新する
+            EccubeEvents::ADMIN_PRODUCT_EDIT_COMPLETE => 'SmartEC3ProductRegister',
+            //★管理画面にて商品情報(スマレジ用情報管理)更新時に、スマレジの該当の商品情報も更新する
+            SmartRegiEvents::PLG_SMARTREGI_ADMIM_SMART_EDIT_COMPLETE => 'SmartEC3ProductRegister',
+            //★管理画面にて商品情報(スマレジ用情報管理)の「販売店舗(ECのみ)」が指定された時に、スマレジの該当の商品情報を削除する
+            SmartRegiEvents::PLG_SMARTREGI_ADMIM_SMART_EDIT_STORE_CHANGE => 'SmartEC3ProductDelete',
+            
+            
+            //受注
+            //★フロント画面にて購入完了した時、スマレジに受注情報を登録する
             EccubeEvents::FRONT_SHOPPING_COMPLETE_INITIALIZE => 'SmartEC3TransactionUpdate',
-            //最終確認　購入完了した時
-            //EccubeEvents::FRONT_SHOPPING_COMPLETE_INITIALIZE => 'SmartEC3TransactionUpdate',
+            
+            
+            
+            
+            
+            //[会員]フロント画面にて会員情報の退会処理完了時に、スマレジの該当の会員情報を削除する
+            //EccubeEvents::FRONT_MYPAGE_WITHDRAW_INDEX_COMPLETE => 'SmartEC3UserDeleteFront',//※[注意]元からコメントアウトされてなのでコメントのままにする。
+            //[商品]管理画面にて商品情報削除完了時に、スマレジの該当の商品情報も削除する
+            //EccubeEvents::ADMIN_PRODUCT_DELETE_COMPLETE => 'SmartEC3ProductDelete',//※[注意]元からコメントアウトされてなのでコメントのままにする。
+            //[受注]最終確認　購入完了した時
+            //EccubeEvents::FRONT_SHOPPING_COMPLETE_INITIALIZE => 'SmartEC3TransactionUpdate',//※[注意]元からコメントアウトされてなのでコメントのままにする。
+            
             
         ];
     }
