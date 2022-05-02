@@ -60,11 +60,12 @@ if (!class_exists('\Eccube\Entity\OrderItem')) {
             $_price = $this->getPrice();
             $_quantity = $this->getQuantity();
             
+            //20220422　個数が1つの場合は既存の処理( (税金+追加料金)×個数(1)  )
             if($_quantity < 2){
             	return ($this->getPriceIncTax() + $this->getAdditionalPrice()) * $this->getQuantity();
             }
             
-            //20220422
+            //20220422　個数が複数の場合は計算方法変更
             //税抜き合計
             $_p_q = $_price * $_quantity;
             
