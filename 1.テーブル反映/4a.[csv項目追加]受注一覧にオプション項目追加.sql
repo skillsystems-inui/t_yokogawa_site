@@ -203,5 +203,5 @@ INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`,
 */
 --販売タイプ(こちらに変更)
 INSERT INTO `dtb_csv` (`csv_type_id`, `creator_id`, `entity_name`, `field_name`, `reference_field_name`, `disp_name`, `sort_no`, `enabled`, `create_date`, `update_date`, `discriminator_type`) VALUES
-(3, 1, 'Eccube\\\\Entity\\\\Order', 'order_no', NULL, '販売タイプ(ECで注文：番号あり(EC注文番号)、店舗で注文：空白)', 6, 1, '2021-09-02 03:47:59', '2022-02-04 11:47:05', 'csv'),
-(4, 1, 'Eccube\\\\Entity\\\\Order', 'order_no', NULL, '販売タイプ(ECで注文：番号あり(EC注文番号)、店舗で注文：空白)', 56, 0, '2021-09-02 03:47:59', '2022-03-27 04:19:48', 'csv');
+(3, 1, 'Eccube\\\\Entity\\\\Order', 'DeviceType', 'name', '購入場所フラグ(ECで注文：端末名(モバイル,PC)を表示、店舗で注文：空白)', 6, 1, '2021-09-02 03:47:59', '2022-02-04 11:47:05', 'csv'),
+(4, 1, 'Eccube\\\\Entity\\\\Order', 'DeviceType', 'name', '購入場所フラグ(ECで注文：端末名(モバイル,PC)を表示、店舗で注文：空白)', 56, 0, '2021-09-02 03:47:59', '2022-03-27 04:19:48', 'csv');
