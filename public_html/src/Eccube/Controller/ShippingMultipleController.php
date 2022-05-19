@@ -256,8 +256,7 @@ class ShippingMultipleController extends AbstractShoppingController
                 $Product = $OrderItem->getProduct();
                 $saleTypeId = $ProductClass->getSaleType()->getId();
                 $productClassId = $ProductClass->getId();
-                $OptionCategory1 = $OrderItem->getClassCategory1();
-
+                
                 foreach ($multiples as $items) {
                     foreach ($items as $item) {
                         $CustomerAddress = $item['customer_address']->getData();
@@ -298,49 +297,6 @@ class ShippingMultipleController extends AbstractShoppingController
                             $OrderItem->setClasscategoryName2($ClassCategory2->getName());
                             $OrderItem->setClassName2($ClassCategory2->getClassName()->getName());
                         }
-                        
-			            //注文に選択したオプションを追加
-			            if (!is_null($OptionCategory1)) {
-			                $OrderItem->setOptionCategoryName1($OptionCategory1->getName());
-			                $OrderItem->setOptionName1($OptionCategory1->getClassName()->getName());
-			            }
-			            if (!is_null($OptionCategory2)) {
-			                $OrderItem->setOptionCategoryName2($OptionCategory2->getName());
-			                $OrderItem->setOptionName2($OptionCategory2->getClassName()->getName());
-			            }
-			            if (!is_null($OptionCategory3)) {
-			                $OrderItem->setOptionCategoryName3($OptionCategory3->getName());
-			                $OrderItem->setOptionName3($OptionCategory3->getClassName()->getName());
-			            }
-			            if (!is_null($OptionCategory4)) {
-			                $OrderItem->setOptionCategoryName4($OptionCategory4->getName());
-			                $OrderItem->setOptionName4($OptionCategory4->getClassName()->getName());
-			            }
-			            if (!is_null($OptionCategory5)) {
-			                $OrderItem->setOptionCategoryName5($OptionCategory5->getName());
-			                $OrderItem->setOptionName5($OptionCategory5->getClassName()->getName());
-			            }
-			            if (!is_null($OptionCategory6)) {
-			                $OrderItem->setOptionCategoryName6($OptionCategory6->getName());
-			                $OrderItem->setOptionName6($OptionCategory6->getClassName()->getName());
-			            }
-			            if (!is_null($OptionCategory7)) {
-			                $OrderItem->setOptionCategoryName7($OptionCategory7->getName());
-			                $OrderItem->setOptionName7($OptionCategory7->getClassName()->getName());
-			            }
-			            if (!is_null($OptionCategory8)) {
-			                $OrderItem->setOptionCategoryName8($OptionCategory8->getName());
-			                $OrderItem->setOptionName8($OptionCategory8->getClassName()->getName());
-			            }
-			            if (!is_null($OptionCategory9)) {
-			                $OrderItem->setOptionCategoryName9($OptionCategory9->getName());
-			                $OrderItem->setOptionName9($OptionCategory9->getClassName()->getName());
-			            }
-			            if (!is_null($OptionCategory10)) {
-			                $OrderItem->setOptionCategoryName10($OptionCategory10->getName());
-			                $OrderItem->setOptionName10($OptionCategory10->getClassName()->getName());
-			            }
-			            //ToDo 名入れ(プレート)(熨斗)の処理も入れる
                         
                         $Shipping->addOrderItem($OrderItem);
                         $Order->addOrderItem($OrderItem);
