@@ -67,6 +67,20 @@
 }
 </style>
               <div id="M_lumpProductList">
+              
+              test
+              
+              {% set this_year = 'now'|date('Y') %}
+              
+              {{ this_year }}
+              
+              {% if ( date(this_year~'-05-01 00:00:00') <= date() ) and ( date() <= date(this_year~'-11-30 23:59:59') ) %}
+				期間内です
+				{% else %}
+				期間外です
+				{% endif %}
+              
+              
                 <div class="M_lumpProduct">
                   <div class="M_lumpProductImg"><a href="/shopdetail/000000000210/ct12/page1/price/"><img src="https://shop80-makeshop.akamaized.net/shopimages/yokogawa/0000000002103_iDfXFnE.jpg" border="0" align="center" alt="レジ袋　小"></a><img src="https://shop80-makeshop.akamaized.net/images/white.gif" width="5" height="10"></div>
                   <div class="M_lumpProductName"><a href="/shopdetail/000000000210/ct12/page1/price/">レジ袋　小</a></div>
