@@ -83,7 +83,9 @@ class OrderRepository extends AbstractRepository
             ->leftJoin('o.OrderItems', 'oi')
             ->leftJoin('o.Pref', 'pref')
             ->innerJoin('o.Shippings', 's')
-            ->leftJoin('s.Delivery', 'dv');
+            ->leftJoin('s.Delivery', 'dv')
+            ->leftJoin('o.DeviceType', 'de')
+            ;
 
 
         // order_id_start
@@ -371,13 +373,17 @@ class OrderRepository extends AbstractRepository
             if ($count < 2) {
                 $checked = current($searchData['family_main']);
                 if ($checked == 0) {
-                    // ECで注文
+                    // ECで注文 (ECで購入されているためpre_order_idとdevice_type_idはどちらも入る)
                     $qb
-                        ->andWhere('o.order_no IS NOT NULL');
+                        ->andWhere('o.pre_order_id IS NOT NULL');
+                    $qb
+                        ->andWhere('de.id IS NOT NULL');
                 } elseif ($checked == 1) {
-                    // 店舗で注文
+                    // 店舗で注文 (ECで購入されていないためpre_order_idとdevice_type_idはどちらも入らない)
                     $qb
-                        ->andWhere('o.order_no IS NULL');                   
+                        ->andWhere('o.pre_order_id IS NULL');
+                    $qb
+                        ->andWhere('de.id IS NULL');
                 }
             }
         }
