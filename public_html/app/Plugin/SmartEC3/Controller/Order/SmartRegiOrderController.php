@@ -564,8 +564,8 @@ class SmartRegiOrderController extends AbstractController
             /*
             $Order->setPostalCode('5300001');
             $Order->setPref(27);
-            $Order->setAddr01('大阪府大阪市');
-            $Order->setAddr02('123');
+            $Order->setAddr01('未登録');
+            $Order->setAddr02('.');
             $Order->setPhoneNumber('09011112222');
             $Order->setEmail('test@gmail.com');
             */
@@ -647,15 +647,15 @@ class SmartRegiOrderController extends AbstractController
             //名前(全)セット 20220426
             $_NameAll = 'ゲスト ゲスト';
             $_KanaAll = 'ゲスト ゲスト';
-            $_AddrAll = '大阪市北区梅田 123';
+            $_AddrAll = '未登録.';
             $Order->setNameAll($_NameAll);
             $Order->setKanaAll($_KanaAll);
             $Order->setAddrAll($_AddrAll);
             
             $Order->setPostalCode('5300001');
             $Order->setPhoneNumber('09011112222');
-            $Order->setAddr01('大阪市北区梅田');
-            $Order->setAddr02('123');
+            $Order->setAddr01('未登録');
+            $Order->setAddr02('.');
             $Order->setEmail('test@gmail.com');
             
             //スマレジの取引IDを登録しておく
@@ -707,8 +707,8 @@ class SmartRegiOrderController extends AbstractController
             
             $Shipping->setPostalCode('5300001');
             $Shipping->setPhoneNumber('09011112222');
-            $Shipping->setAddr01('大阪市北区梅田');
-            $Shipping->setAddr02('123');
+            $Shipping->setAddr01('未登録');
+            $Shipping->setAddr02('.');
             
             $Shipping->setShippingDeliveryDate(new \DateTime($arrOrder['transactionDateTime']));
             $Shipping->setShippingDate(new \DateTime($arrOrder['transactionDateTime']));
