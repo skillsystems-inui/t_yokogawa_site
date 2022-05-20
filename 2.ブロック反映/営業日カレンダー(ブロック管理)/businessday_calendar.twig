@@ -105,23 +105,25 @@
 
 			                        <!-- 日付表示指定あり -->
 			                        <!-- ※指定方法: month == '指定月' and day|date('j') == '指定日' -->
-			                        {% if month == '5' and day|date('j') == '10' %}
-			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">テスト</small></span></td>
+			                        {% if month == '5' and day|date('j') == '22' %}
+			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">18時閉店</small></span></td>
+			                        {% elseif month == '6' and day|date('j') == '19' %}
+			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">18時閉店</small></span></td>
 			                        {% elseif month == '4' and day|date('j') == '10' %}
 			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">18時閉店</small></span></td>
-			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                    	{% elseif month == '3' and day|date('j') == '15' %}
 			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17時閉店</small></span></td>
-			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                    	{% elseif month == '3' and day|date('j') == '15' %}
 			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17時閉店</small></span></td>
-			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                    	{% elseif month == '3' and day|date('j') == '15' %}
 			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17時閉店</small></span></td>
-			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                    	{% elseif month == '3' and day|date('j') == '15' %}
 			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17時閉店</small></span></td>
-			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                    	{% elseif month == '3' and day|date('j') == '15' %}
 			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17時閉店</small></span></td>
-			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                    	{% elseif month == '3' and day|date('j') == '15' %}
 			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17時閉店</small></span></td>
-			                    	{% elseif month == '5' and day|date('j') == '15' %}
+			                    	{% elseif month == '3' and day|date('j') == '15' %}
 			                        	<td {% if class != '' %} class="{{ class }}" {% endif %}><span>{{ dayview }}<br><small style="font-size:12px;">17時閉店</small></span></td>
 			                    	{% else %}
 			                    		<!-- 日付表示指定なし -->
@@ -158,7 +160,8 @@
 	    {% endfor %}
 	    </div>
 
-	    <p style="text-align:right;margin-bottom:10px;">※コロナウイルスの影響により、予告なしに営業時間の短縮または臨時休業を行う可能性がございます。</p>
+	    <p style="margin-bottom:10px;">※コロナウイルスの影響により、予告なしに営業時間の短縮または臨時休業を行う可能性がございます。
+	    <br>※日曜日・定休日は発送業務並びに事務作業をお休みさせていただいております。土曜日１２時以降にご注文ただ来ました注文処理やお問合せに対する返信は、翌営業日に対応させていただいております。対応、ご返事にお時間頂戴する場合がございますので、予めご了承くださいませ。また、お急ぎの場合はお手数ですが、営業時間内に直接店舗にお問合せくださいませ。</p>
         <div class="shop_calendar_caption">
           <div></div>
           <p>休業日</p>
