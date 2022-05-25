@@ -10,12 +10,16 @@ use Plugin\SmartEC3\Repository\SmartRegiRepository;
 
 use Eccube\Controller\AbstractController;
 
+use Eccube\Entity\Product;
+use Eccube\Entity\ProductClass;
+use Eccube\Entity\ProductStock;
 use Eccube\Entity\Order;
 use Eccube\Entity\OrderItem;
 use Eccube\Entity\Master\Pref;
 use Eccube\Entity\Shipping;
 use Eccube\Entity\Master\OrderStatus;
 use Eccube\Entity\Master\OrderItemType;
+use Eccube\Entity\Master\ProductStatus;
 
 use Eccube\Repository\CustomerRepository;
 use Eccube\Repository\DeliveryRepository;
@@ -24,6 +28,7 @@ use Eccube\Repository\OrderRepository;
 use Eccube\Repository\OrderItemRepository;
 
 use Eccube\Repository\PaymentRepository;
+use Eccube\Repository\ProductRepository;
 use Eccube\Repository\ProductClassRepository;
 use Eccube\Repository\ProductStockRepository;
 use Eccube\Repository\PointHistoryRepository;
@@ -32,6 +37,9 @@ use Eccube\Repository\Master\OrderStatusRepository;
 use Eccube\Repository\Master\OrderItemTypeRepository;
 use Eccube\Repository\Master\TaxTypeRepository;
 use Eccube\Repository\Master\PrefRepository;
+use Eccube\Repository\Master\SaleTypeRepository;
+use Eccube\Repository\Master\SalesTypeRepository;
+use Eccube\Repository\Master\ProductStatusRepository;
 
 use Eccube\Service\TaxRuleService;
 
@@ -85,6 +93,22 @@ class SmartRegiProductController extends AbstractController
      * @var ProductClassRepository
      */
     protected $productClassRepository;
+    
+    /**
+     * @var ProductRepository
+     */
+    protected $productRepository;
+    
+    /**
+     * @var SaleTypeRepository
+     */
+    protected $saleTypeRepository;
+
+    /**
+     * @var SalesTypeRepository
+     */
+    protected $salesTypeRepository;
+
 
     /**
      * @var OrderRepository
@@ -120,6 +144,12 @@ class SmartRegiProductController extends AbstractController
      * @var TaxRuleService
      */
     private $taxRuleService;
+    
+    /**
+     * @var ProductStatusRepository
+     */
+    protected $productStatusRepository;
+    
 
     /**
      * SmartRegiController constructor.
@@ -131,6 +161,9 @@ class SmartRegiProductController extends AbstractController
      * @param PrefRepository $prefRepository
      * @param ProductStockRepository $productStockRepository
      * @param ProductClassRepository $productClassRepository
+     * @param ProductRepository $productRepository
+     * @param SaleTypeRepository $saleTypeRepository
+     * @param SalesTypeRepository $salesTypeRepository
      * @param PointHistoryRepository $pointHistoryRepository
      * @param OrderRepository $orderRepository
      * @param OrderItemRepository $orderItemRepository
@@ -139,6 +172,7 @@ class SmartRegiProductController extends AbstractController
      * @param TaxTypeRepository $taxTypeRepository
      * @param PaymentRepository $paymentRepository
      * @param TaxRuleService $taxRuleService
+     * @param ProductStatusRepository $productStatusRepository
      */
     public function __construct(
         ConfigRepository $configRepository,
@@ -148,6 +182,9 @@ class SmartRegiProductController extends AbstractController
         PrefRepository $prefRepository,
         ProductStockRepository $productStockRepository,
         ProductClassRepository $productClassRepository,
+        ProductRepository $productRepository,
+        SaleTypeRepository $saleTypeRepository,
+        SalesTypeRepository $salesTypeRepository,
         PointHistoryRepository $pointHistoryRepository,
         OrderRepository $orderRepository,
         OrderItemRepository $orderItemRepository,
@@ -155,7 +192,8 @@ class SmartRegiProductController extends AbstractController
         OrderItemTypeRepository $orderItemTypeRepository,
         TaxTypeRepository $taxTypeRepository,
         PaymentRepository $paymentRepository,
-        TaxRuleService $taxRuleService
+        TaxRuleService $taxRuleService,
+        ProductStatusRepository $productStatusRepository
     ){
         $this->configRepository = $configRepository;
         $this->smartRegiRepository = $smartRegiRepository;
@@ -164,6 +202,9 @@ class SmartRegiProductController extends AbstractController
         $this->prefRepository = $prefRepository;
         $this->productStockRepository = $productStockRepository;
         $this->productClassRepository = $productClassRepository;
+        $this->productRepository = $productRepository;
+        $this->saleTypeRepository = $saleTypeRepository;
+        $this->salesTypeRepository = $salesTypeRepository;
         $this->pointHistoryRepository = $pointHistoryRepository;
         $this->orderRepository = $orderRepository;
         $this->orderItemRepository = $orderItemRepository;
@@ -172,6 +213,7 @@ class SmartRegiProductController extends AbstractController
         $this->taxTypeRepository = $taxTypeRepository;
         $this->paymentRepository = $paymentRepository;
         $this->taxRuleService = $taxRuleService;
+        $this->productStatusRepository = $productStatusRepository;
     }
 
     /**
@@ -179,15 +221,6 @@ class SmartRegiProductController extends AbstractController
      */
     public function productConnect(Request $request)
     {
-
-//        $Config = $this->configRepository->find(1);
-//        if (!$Config->getOrderUpdate()){ // Product and customer update?
-//            $logfile = 'smartregi_error.log';
-//            $dir = $this->container->getParameter('plugin_realdir').'/SmartEC3/logs';
-//            file_put_contents($dir.'/'.$logfile, array('Received' => "Order update received. Make sure to turn on order synchronization to update database data\n\n"), FILE_APPEND);
-//            return;
-//        } 
-
         $this->logProductInfo($request);
         $post = $request->request->all();
         $info = json_decode($post["params"]);
@@ -203,17 +236,24 @@ class SmartRegiProductController extends AbstractController
             // Only this info is processed
             if($value->table_name == "Product"){
             
-            //test
-            $this->debugLog('test03');
-            $this->debugLog($value->table_name);
-            
-                switch ($value->table_name) {
-                    case 'Product':
-                        return $this->json(['Result2' => true], 200);
-                        break;
-                    default:
-                        break;
-                }
+
+	            
+		            //test
+		            //$this->debugLog('test03');
+		            //$this->debugLog($value->table_name);
+		            //$this->debugLog($row->productId);
+		            
+		            
+		            switch ($value->table_name) {
+	                    case 'Product':
+	                        $this->createProductInfo($value);
+	                        //return $this->json(['Result2' => true], 200);
+	                        break;
+	                    default:
+	                        break;
+	                }
+	                /**/
+	                
             }
         }
         
@@ -225,6 +265,205 @@ class SmartRegiProductController extends AbstractController
     }
 
 
+    //商品情報登録
+    public function createProductInfo($value){
+    	
+    	/*-----必須情報-----
+    	//[dtb_product]
+    	// id : ユニークなID
+    	//creator_id : 1固定
+    	//product_status_id : DISPLAY_HIDE
+    	// name : 任意の商品名
+    	// create_date : 作成日時
+    	// update_date : 更新日時
+    	// discriminator_type : 「product」固定
+    	// smart_category_id : スマレジのカテゴリID+1
+    	// 
+    	//[dtb_product_class]
+    	// id : ユニークなID
+    	// stock_unlimited : 1(無制限)固定
+    	// price02 : 任意の価格
+    	// visible : 1(有効)固定
+    	// create_date : 作成日時
+    	// update_date : 更新日時
+    	// discriminator_type : 「productclass」固定
+    	// delivery_date_days : 0固定
+    	// 
+    	// [dtb_product_stock]
+    	// id : ユニークなID
+    	// create_date : 作成日時
+    	// update_date : 更新日時
+    	// discriminator_type : 「productstock」固定
+    	//-------------------*/
+    	
+    	$this->debugLog('start');
+    	
+    	$metadata = $this->entityManager->getClassMetaData(\Eccube\Entity\ProductClass::class);
+    	$metadata->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
+    	$metadata->setIdGenerator(new \Doctrine\ORM\Id\AssignedGenerator());
+    	
+    	$Config = $this->configRepository->find(1);
+        $p_offset = $Config->getProductOffset();
+        $c_offset = $Config->getCategoryOffset();
+    	
+    	//------------------------------------------------------------
+    	
+    	//スマレジからの値をセットするプロパティ
+    	//商品ID取得
+    	$smaregi_product_id = 0;
+    	//商品コード取得
+    	$smaregi_product_code = '';
+    	//商品名
+    	$smaregi_product_name = '';
+    	//スマレジカテゴリID
+    	$smaregi_category_id = '';
+    	//価格
+    	$smaregi_product_class_price = 0;
+    	
+    	//$this->debugLog($value->rows);
+    	
+    	//---スマレジからの値をセットする---
+    	foreach($value->rows as $key => $row){
+			$smaregi_product_id = $row->productId;
+			$smaregi_product_code = $row->productCode;
+			$smaregi_product_name = $row->productName;
+			$smaregi_category_id = $row->categoryId;
+			$smaregi_product_class_price = $row->price;
+    	}
+	            
+    	//商品クラスID取得
+    	$product_class_id = $smaregi_product_id - $p_offset;
+    	//商品クラス存在確認
+    	$existProducClass = $this->productClassRepository->find($product_class_id);
+    	
+    	//商品コード
+    	$product_code = $smaregi_product_code;
+    	
+    	//商品名
+    	$product_name = $smaregi_product_name;
+    	
+    	//スマレジカテゴリID
+    	$smart_category_id = $smaregi_category_id - $c_offset;
+    	
+    	//価格
+    	$product_class_price = $smaregi_product_class_price;
+	
+    	//販売種類(意図的に1固定)
+    	$SalesType = $this->salesTypeRepository->find(1);
+    	//商品種類ID(意図的に1固定)
+        $SaleType = $this->saleTypeRepository->find(1);
+          
+        $this->debugLog('testVal');
+
+$this->debugLog($smaregi_product_id);
+$this->debugLog($smaregi_product_code);
+$this->debugLog($smaregi_product_name);
+$this->debugLog($smaregi_category_id);
+$this->debugLog($smaregi_product_class_price);
+/**/
+        
+        
+        
+        
+    	//新規登録時
+    	if (!$existProducClass) {
+            
+            $this->debugLog('testB');
+            
+            $Product = new Product();
+            $this->entityManager->persist($Product);
+            
+            
+            //[Product]
+            //商品ステータスを登録
+            $ProductStatus = $this->productStatusRepository->find(ProductStatus::DISPLAY_HIDE);//新規登録時はステータスは非公開(DISPLAY_HIDE)
+            $Product->setStatus($ProductStatus);
+            
+            $this->debugLog('testB1');
+            
+            //[ProductClass]
+            $ProductClass = new ProductClass();
+            //指定の商品クラスIDをセットする(スマレジ側の商品ID-1)
+            $ProductClass->setId($product_class_id);
+            //商品テーブルと紐づけ
+            $ProductClass->setProduct($Product);
+            //有効
+            $ProductClass->setVisible(true);
+            //無制限
+            $ProductClass->setStockUnlimited(true);
+            
+            //[ProductStock]
+            $ProductStock = new ProductStock();
+            $ProductStock->setProductClass($ProductClass);
+            
+            //[Product]
+            //商品名を登録
+            $Product->setName($product_name);
+            //カテゴリIDを登録
+            $Product->setSmartCategoryId($smart_category_id);
+            //販売種類IDを登録(意図的に1固定)
+            $Product->setSalesType($SalesType);
+            //登録日、更新日を登録
+            $Product->setCreateDate(new \DateTime());
+            $Product->setUpdateDate(new \DateTime());
+            
+            $this->debugLog('testB2');
+            
+            $this->entityManager->flush();
+            $this->debugLog('testB3');
+            
+            //[ProductClass]
+            //商品種類IDを登録(意図的に1固定)
+            $ProductClass->setSaleType($SaleType);
+            //価格を登録
+            $ProductClass->setPrice02($product_class_price);
+            //商品コードを登録
+            $ProductClass->setCode($product_code);
+            
+            //配送日数を登録
+            $ProductClass->setDeliveryDateDays(0);
+            //登録日、更新日を登録
+            $ProductClass->setCreateDate(new \DateTime());
+            $ProductClass->setUpdateDate(new \DateTime());
+            $this->debugLog('testB4');
+            
+            $this->entityManager->flush();
+            $this->debugLog('testB5');
+            //[ProductStock]
+            //登録日、更新日を登録
+            $ProductStock->setCreateDate(new \DateTime());
+            $ProductStock->setUpdateDate(new \DateTime());
+            
+           
+            $this->entityManager->persist($ProductClass);
+            $this->entityManager->flush();
+            
+            $this->entityManager->persist($ProductStock);
+            $this->entityManager->flush();
+            
+        } else {
+        //更新時
+            $this->debugLog('testC');
+        
+            //商品クラス情報取得
+            $ProductClass = $this->productClassRepository->find($product_class_id);
+	        
+	        /*
+            //[Product]
+            //商品名を更新
+            $Product->setName($product_name);
+            //カテゴリIDを更新
+            $Product->setSmartCategoryId($smart_category_id);
+            //更新日を更新
+            $Product->setUpdateDate(new \DateTime());
+            */
+        }
+        
+        $this->debugLog('testD');
+    	$this->debugLog('end');
+    }
+    
+    
     public function logProductInfo($request){
 
         $logfile = 'smartregi_oroductg.log';
