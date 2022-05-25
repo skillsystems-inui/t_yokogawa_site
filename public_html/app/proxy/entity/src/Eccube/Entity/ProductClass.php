@@ -262,6 +262,13 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
          * @ORM\Column(name="currency_code", type="string", nullable=true)
          */
         private $currency_code;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="smart_group_code", type="string", nullable=true)
+         */
+        private $smart_group_code;
 
         /**
          * @var string
@@ -642,6 +649,30 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 
             return $this;
         }
+        
+        /**
+         * Get smartGroupCode.
+         *
+         * @return string
+         */
+        public function getSmartGroupCode()
+        {
+            return $this->smart_group_code;
+        }
+
+        /**
+         * Set smartGroupCode.
+         *
+         * @param string|null $smartGroupCode
+         *
+         * @return $this
+         */
+        public function setSmartGroupCode($smartGroupCode = null)
+        {
+            $this->smart_group_code = $smartGroupCode;
+
+            return $this;
+        }
 
         /**
          * Set productStock.
@@ -848,6 +879,17 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 
             return $this;
         }
+        
+        /**
+	     * @see 
+	     * @param int $id
+	     * @return ProductClass
+	     */
+	    public function setId($id)
+	    {
+	        $this->id = $id;
+	        return $this;
+	    }
 
         /**
          * Get pointRate
