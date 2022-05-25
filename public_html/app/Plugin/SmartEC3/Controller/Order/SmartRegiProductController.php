@@ -424,7 +424,6 @@ $this->debugLog($smaregi_product_class_price);
             $ProductClass->setPrice02($product_class_price);
             //商品コードを登録
             $ProductClass->setCode($product_code);
-            
             //配送日数を登録
             $ProductClass->setDeliveryDateDays(0);
             //登録日、更新日を登録
@@ -453,15 +452,34 @@ $this->debugLog($smaregi_product_class_price);
             //商品クラス情報取得
             $ProductClass = $this->productClassRepository->find($product_class_id);
 	        
-	        /*
-            //[Product]
-            //商品名を更新
-            $Product->setName($product_name);
-            //カテゴリIDを更新
-            $Product->setSmartCategoryId($smart_category_id);
+	        //商品クラス更新-----------------------------------------------------
+	        //[ProductClass]
+            //価格を更新
+            $ProductClass->setPrice02($product_class_price);
+            //商品コードを更新
+            $ProductClass->setCode($product_code);
             //更新日を更新
-            $Product->setUpdateDate(new \DateTime());
-            */
+            $ProductClass->setUpdateDate(new \DateTime());
+            $this->debugLog('testB4');
+            $this->entityManager->persist($ProductClass);//登録実行
+            $this->entityManager->flush();//DB反映
+            
+            //商品更新-----------------------------------------------------
+	        $Product = $ProductClass->getProduct();
+	        if($Product != null){
+	        $this->debugLog('testXX4');
+	        	//[Product]
+	            //商品名を更新
+	            $Product->setName($product_name);
+	            //カテゴリIDを更新
+	            $Product->setSmartCategoryId($smart_category_id);
+	            //更新日を更新
+	            $Product->setUpdateDate(new \DateTime());
+	            $this->entityManager->persist($Product);//登録実行
+                $this->entityManager->flush();//DB反映
+                $this->debugLog('testXX5');
+	        }
+	        
         }
         
         $this->debugLog('testD');
