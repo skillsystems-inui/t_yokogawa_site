@@ -28,7 +28,7 @@ use Doctrine\ORM\Mapping as ORM;
      */
     class Product extends \Eccube\Entity\AbstractEntity
     {
-    use \Plugin\RelatedProduct4\Entity\ProductTrait;
+    use \Plugin\RelatedProduct4\Entity\ProductTrait, \Plugin\ExpressLink4\Entity\ProductTrait;
 
         private $_calc = false;
         private $stockFinds = [];
