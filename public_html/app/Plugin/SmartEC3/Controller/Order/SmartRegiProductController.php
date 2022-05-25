@@ -268,7 +268,7 @@ class SmartRegiProductController extends AbstractController
     //商品情報登録
     public function createProductInfo($value){
     	
-    	/*-----必須情報-----
+    	// -----必須情報-----
     	//[dtb_product]
     	// id : ユニークなID
     	//creator_id : 1固定
@@ -294,7 +294,7 @@ class SmartRegiProductController extends AbstractController
     	// create_date : 作成日時
     	// update_date : 更新日時
     	// discriminator_type : 「productstock」固定
-    	//-------------------*/
+    	// -------------------
     	
     	$this->debugLog('start');
     	
@@ -307,7 +307,6 @@ class SmartRegiProductController extends AbstractController
         $c_offset = $Config->getCategoryOffset();
     	
     	//------------------------------------------------------------
-    	
     	//スマレジからの値をセットするプロパティ
     	//商品ID取得
     	$smaregi_product_id = 0;
@@ -317,17 +316,21 @@ class SmartRegiProductController extends AbstractController
     	$smaregi_product_name = '';
     	//スマレジカテゴリID
     	$smaregi_category_id = '';
+    	//スマレジグループコード
+    	$smaregi_group_code = '';
     	//価格
     	$smaregi_product_class_price = 0;
     	
-    	//$this->debugLog($value->rows);
-    	
+    	//------------------------------------------------------------
     	//---スマレジからの値をセットする---
     	foreach($value->rows as $key => $row){
 			$smaregi_product_id = $row->productId;
 			$smaregi_product_code = $row->productCode;
 			$smaregi_product_name = $row->productName;
 			$smaregi_category_id = $row->categoryId;
+			
+			$smaregi_group_code = $row->groupCode;
+			
 			$smaregi_product_class_price = $row->price;
     	}
 	            
@@ -344,6 +347,9 @@ class SmartRegiProductController extends AbstractController
     	
     	//スマレジカテゴリID
     	$smart_category_id = $smaregi_category_id - $c_offset;
+    	
+    	//スマレジグループコード
+    	$smart_group_code = $smaregi_group_code;
     	
     	//価格
     	$product_class_price = $smaregi_product_class_price;
@@ -391,6 +397,8 @@ $this->debugLog($smaregi_product_class_price);
             $ProductClass->setVisible(true);
             //無制限
             $ProductClass->setStockUnlimited(true);
+            //スマレジ用グループコードを登録
+            $ProductClass->setSmartGroupCode($smart_group_code);
             
             //[ProductStock]
             $ProductStock = new ProductStock();
@@ -399,7 +407,7 @@ $this->debugLog($smaregi_product_class_price);
             //[Product]
             //商品名を登録
             $Product->setName($product_name);
-            //カテゴリIDを登録
+            //スマレジ用カテゴリIDを登録
             $Product->setSmartCategoryId($smart_category_id);
             //販売種類IDを登録(意図的に1固定)
             $Product->setSalesType($SalesType);
@@ -407,10 +415,7 @@ $this->debugLog($smaregi_product_class_price);
             $Product->setCreateDate(new \DateTime());
             $Product->setUpdateDate(new \DateTime());
             
-            $this->debugLog('testB2');
-            
-            $this->entityManager->flush();
-            $this->debugLog('testB3');
+            $this->entityManager->flush();//DB反映
             
             //[ProductClass]
             //商品種類IDを登録(意図的に1固定)
@@ -427,7 +432,7 @@ $this->debugLog($smaregi_product_class_price);
             $ProductClass->setUpdateDate(new \DateTime());
             $this->debugLog('testB4');
             
-            $this->entityManager->flush();
+            $this->entityManager->flush();//DB反映
             $this->debugLog('testB5');
             //[ProductStock]
             //登録日、更新日を登録
@@ -436,10 +441,10 @@ $this->debugLog($smaregi_product_class_price);
             
            
             $this->entityManager->persist($ProductClass);
-            $this->entityManager->flush();
+            $this->entityManager->flush();//DB反映
             
             $this->entityManager->persist($ProductStock);
-            $this->entityManager->flush();
+            $this->entityManager->flush();//DB反映
             
         } else {
         //更新時
