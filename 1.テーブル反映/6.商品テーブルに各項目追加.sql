@@ -27,4 +27,4 @@ ALTER TABLE `dtb_product_smart_category`
   
   
 --列追加(スマレジ用グループコード)
-ALTER TABLE `dtb_product` ADD `smart_group_code` varchar(90) DEFAULT NULL;
+ALTER TABLE `dtb_product` ADD `smart_group_code` varchar(1000) DEFAULT NULL;
