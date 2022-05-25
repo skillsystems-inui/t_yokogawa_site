@@ -20,3 +20,11 @@ CREATE TABLE IF NOT EXISTS `dtb_product_smart_category` (
 
 ALTER TABLE `dtb_product_smart_category`
   ADD PRIMARY KEY (`product_id`,`category_id`);
+  
+  
+  
+  
+  
+  
+--列追加(スマレジ用グループコード)
+ALTER TABLE `dtb_product` ADD `smart_group_code` varchar(90) DEFAULT NULL;

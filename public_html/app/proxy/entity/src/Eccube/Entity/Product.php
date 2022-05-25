@@ -968,6 +968,13 @@ use Doctrine\ORM\Mapping as ORM;
          * @ORM\Column(name="free_area", type="text", nullable=true)
          */
         private $free_area;
+        
+        /**
+         * @var string|null
+         *
+         * @ORM\Column(name="smart_group_code", type="string", nullable=true)
+         */
+        private $smart_group_code;
 
         /**
          * @var \DateTime
@@ -1369,6 +1376,30 @@ use Doctrine\ORM\Mapping as ORM;
         public function getFreeArea()
         {
             return $this->free_area;
+        }
+        
+        /**
+         * Get smartGroupCode.
+         *
+         * @return string
+         */
+        public function getSmartGroupCode()
+        {
+            return $this->smart_group_code;
+        }
+
+        /**
+         * Set smartGroupCode.
+         *
+         * @param string|null $smartGroupCode
+         *
+         * @return Product
+         */
+        public function setSmartGroupCode($smartGroupCode = null)
+        {
+            $this->smart_group_code = $smartGroupCode;
+
+            return $this;
         }
 
         /**

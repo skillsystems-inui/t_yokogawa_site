@@ -376,4 +376,20 @@ class ProductRepository extends AbstractRepository
 
         return $this->queries->customize(QueryKey::PRODUCT_SEARCH_ADMIN, $qb, $searchData);
     }
+    
+    
+    /**
+     * 商品をグループコードで検索する.
+     *
+     * @param $smart_group_code
+     *
+     * @return null|Product 見つからない場合はnullを返す.
+     */
+    public function getProductByGroupCode($smart_group_code)
+    {
+        return $this->findOneBy([
+            'smart_group_code' => $smart_group_code,
+        ]);
+    }
+    
 }
