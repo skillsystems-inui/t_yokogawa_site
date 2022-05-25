@@ -21,6 +21,8 @@ use Eccube\Entity\Master\OrderStatus;
 use Eccube\Entity\Master\OrderItemType;
 use Eccube\Entity\Master\ProductStatus;
 
+use Eccube\Repository\ClassCategoryRepository;
+
 use Eccube\Repository\CustomerRepository;
 use Eccube\Repository\DeliveryRepository;
 use Eccube\Repository\OrderRepository;
@@ -63,6 +65,11 @@ class SmartRegiProductController extends AbstractController
      * @var SmartRegiRepository
      */
     protected $smartRegiRepository;
+
+    /**
+     * @var ClassCategoryRepository
+     */
+    protected $classCategoryRepository;
 
     /**
      * @var CustomerRepository
@@ -156,6 +163,7 @@ class SmartRegiProductController extends AbstractController
      *
      * @param ConfigRepository $configRepository
      * @param SmartRegiRepository $smartRegiRepository
+     * @param ClassCategoryRepository $classCategoryRepository
      * @param CustomerRepository $customerRepository
      * @param DeliveryRepository $deliveryRepository
      * @param PrefRepository $prefRepository
@@ -177,6 +185,7 @@ class SmartRegiProductController extends AbstractController
     public function __construct(
         ConfigRepository $configRepository,
         SmartRegiRepository $smartRegiRepository,
+        ClassCategoryRepository $classCategoryRepository,
         CustomerRepository $customerRepository,
         DeliveryRepository $deliveryRepository,
         PrefRepository $prefRepository,
@@ -197,6 +206,7 @@ class SmartRegiProductController extends AbstractController
     ){
         $this->configRepository = $configRepository;
         $this->smartRegiRepository = $smartRegiRepository;
+        $this->classCategoryRepository = $classCategoryRepository;
         $this->customerRepository = $customerRepository;
         $this->deliveryRepository = $deliveryRepository;
         $this->prefRepository = $prefRepository;
@@ -268,40 +278,13 @@ class SmartRegiProductController extends AbstractController
     //商品情報登録
     public function createProductInfo($value){
     	
-    	// -----必須情報-----
-    	//[dtb_product]
-    	// id : ユニークなID
-    	//creator_id : 1固定
-    	//product_status_id : DISPLAY_HIDE
-    	// name : 任意の商品名
-    	// create_date : 作成日時
-    	// update_date : 更新日時
-    	// discriminator_type : 「product」固定
-    	// smart_category_id : スマレジのカテゴリID+1
-    	// 
-    	//[dtb_product_class]
-    	// id : ユニークなID
-    	// stock_unlimited : 1(無制限)固定
-    	// price02 : 任意の価格
-    	// visible : 1(有効)固定
-    	// create_date : 作成日時
-    	// update_date : 更新日時
-    	// discriminator_type : 「productclass」固定
-    	// delivery_date_days : 0固定
-    	// 
-    	// [dtb_product_stock]
-    	// id : ユニークなID
-    	// create_date : 作成日時
-    	// update_date : 更新日時
-    	// discriminator_type : 「productstock」固定
-    	// -------------------
-    	
     	$this->debugLog('start');
-    	
+    	//商品クラスのIDを指定するための設定
     	$metadata = $this->entityManager->getClassMetaData(\Eccube\Entity\ProductClass::class);
     	$metadata->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
     	$metadata->setIdGenerator(new \Doctrine\ORM\Id\AssignedGenerator());
     	
+    	//スマレジ項目との調整用プロパティ
     	$Config = $this->configRepository->find(1);
         $p_offset = $Config->getProductOffset();
         $c_offset = $Config->getCategoryOffset();
@@ -318,6 +301,10 @@ class SmartRegiProductController extends AbstractController
     	$smaregi_category_id = '';
     	//スマレジグループコード
     	$smaregi_group_code = '';
+    	//スマレジ規格
+    	$smaregi_attribute = '';
+    	//スマレジサイズ
+    	$smaregi_size = '';
     	//価格
     	$smaregi_product_class_price = 0;
     	
@@ -328,8 +315,10 @@ class SmartRegiProductController extends AbstractController
 			$smaregi_product_code = $row->productCode;
 			$smaregi_product_name = $row->productName;
 			$smaregi_category_id = $row->categoryId;
-			
 			$smaregi_group_code = $row->groupCode;
+			$smaregi_attribute = $row->attribute;
+			
+			$smaregi_size = $row->size;
 			
 			$smaregi_product_class_price = $row->price;
     	}
@@ -341,25 +330,27 @@ class SmartRegiProductController extends AbstractController
     	
     	//商品コード
     	$product_code = $smaregi_product_code;
-    	
     	//商品名
     	$product_name = $smaregi_product_name;
+    	//価格
+    	$product_class_price = $smaregi_product_class_price;
     	
     	//スマレジカテゴリID
     	$smart_category_id = $smaregi_category_id - $c_offset;
-    	
     	//スマレジグループコード
-    	$smart_group_code = $smaregi_group_code;
+    	//$smart_group_code = $smaregi_group_code; //ToDo規格商品以外の情報も入っているので、ひとまず「規格」を使う
+    	//スマレジ規格
+    	$smart_group_code = $smaregi_attribute;
     	
-    	//価格
-    	$product_class_price = $smaregi_product_class_price;
-	
+    	//スマレジサイズ
+    	$smart_size = $smaregi_size;
+    	
     	//販売種類(意図的に1固定)
     	$SalesType = $this->salesTypeRepository->find(1);
     	//商品種類ID(意図的に1固定)
         $SaleType = $this->saleTypeRepository->find(1);
-          
-        $this->debugLog('testVal');
+        
+        
 
 $this->debugLog($smaregi_product_id);
 $this->debugLog($smaregi_product_code);
@@ -368,7 +359,41 @@ $this->debugLog($smaregi_category_id);
 $this->debugLog($smaregi_product_class_price);
 /**/
         
+        //規格あり商品
+        $isKikakuProductFlg = false;
+        $this->debugLog('kikaku01');
+        if($smart_group_code != null){
+           //規格が入っていれば規格あり商品とみなす
+           $isKikakuProductFlg = true;
+           $this->debugLog('kikaku02');
+        }
         
+        //規格親商品情報
+        $kikakuParentProduct = $this->productRepository->getProductByGroupCode($smart_group_code);
+        $this->debugLog($smart_group_code);
+        $this->debugLog($kikakuParentProduct);
+        $this->debugLog('kikaku03');
+        
+        //規格あり親データフラグ
+        $isKikakuParentFlg = false;
+        if($kikakuParentProduct == null && $isKikakuProductFlg == true){
+        	 $isKikakuParentFlg = true;
+        }
+        
+        
+         $this->debugLog('testSize');
+        $this->debugLog($smart_size);
+        
+        //クラス規格ID
+        $class_category_id = null;
+        //クラス規格判定
+        if($smart_size == '4号'){
+        	$class_category_id = 3;
+        }else if($smart_size == '5号'){
+        	$class_category_id = 4;
+        }else if($smart_size == '6号'){
+        	$class_category_id = 5;
+        }
         
         
     	//新規登録時
@@ -376,46 +401,82 @@ $this->debugLog($smaregi_product_class_price);
             
             $this->debugLog('testB');
             
-            $Product = new Product();
-            $this->entityManager->persist($Product);
+            //規格あり商品でない場合
+            if($kikakuParentProduct == null){
             
+	            $Product = new Product();
+	            //------DB処理------
+	            $this->entityManager->persist($Product);
+	            
+	            
+	            //[Product]
+	            //商品ステータスを登録
+	            $ProductStatus = $this->productStatusRepository->find(ProductStatus::DISPLAY_HIDE);//新規登録時は非公開(DISPLAY_HIDE)
+	            $Product->setStatus($ProductStatus);
+            }else{
+                //規格あり商品である場合、商品情報は作らない
+            }
             
-            //[Product]
-            //商品ステータスを登録
-            $ProductStatus = $this->productStatusRepository->find(ProductStatus::DISPLAY_HIDE);//新規登録時はステータスは非公開(DISPLAY_HIDE)
-            $Product->setStatus($ProductStatus);
-            
-            $this->debugLog('testB1');
+            $this->debugLog('testB0000000001');
             
             //[ProductClass]
             $ProductClass = new ProductClass();
             //指定の商品クラスIDをセットする(スマレジ側の商品ID-1)
             $ProductClass->setId($product_class_id);
+            
+            
             //商品テーブルと紐づけ
-            $ProductClass->setProduct($Product);
+                //規格あり商品でない場合
+            if($kikakuParentProduct == null){
+            
+            	$ProductClass->setProduct($Product);
+            }else{
+                //規格あり商品である場合、親商品情報と紐づけ
+                $ProductClass->setProduct($kikakuParentProduct);
+            }
+            
+            $this->debugLog('testB0000000002');
+            
             //有効
-            $ProductClass->setVisible(true);
+            if($isKikakuParentFlg == true){
+            	//規格あり親データなら無効
+            	$ProductClass->setVisible(false);
+            }else{
+            	$ProductClass->setVisible(true);
+            }
+            
             //無制限
             $ProductClass->setStockUnlimited(true);
-            //スマレジ用グループコードを登録
-            $ProductClass->setSmartGroupCode($smart_group_code);
             
             //[ProductStock]
             $ProductStock = new ProductStock();
             $ProductStock->setProductClass($ProductClass);
             
-            //[Product]
-            //商品名を登録
-            $Product->setName($product_name);
-            //スマレジ用カテゴリIDを登録
-            $Product->setSmartCategoryId($smart_category_id);
-            //販売種類IDを登録(意図的に1固定)
-            $Product->setSalesType($SalesType);
-            //登録日、更新日を登録
-            $Product->setCreateDate(new \DateTime());
-            $Product->setUpdateDate(new \DateTime());
+            $this->debugLog('testB0000000003');
             
+            //規格あり商品でない場合
+            if($kikakuParentProduct == null){
+            $this->debugLog('testB0000000004');
+	            //[Product]
+	            //商品名を登録
+	            $Product->setName($product_name);
+	            //スマレジ用グループコードを登録
+	            $Product->setSmartGroupCode($smart_group_code);
+	            //スマレジ用カテゴリIDを登録
+	            $Product->setSmartCategoryId($smart_category_id);
+	            //販売種類IDを登録(意図的に1固定)
+	            $Product->setSalesType($SalesType);
+	            //登録日、更新日を登録
+	            $Product->setCreateDate(new \DateTime());
+	            $Product->setUpdateDate(new \DateTime());
+             }else{
+                //規格あり商品である場合、商品情報は作らない
+                $this->debugLog('testB0000000005');
+            }
+            //------DB処理------
             $this->entityManager->flush();//DB反映
+            
+            $this->debugLog('testB0000000006');
             
             //[ProductClass]
             //商品種類IDを登録(意図的に1固定)
@@ -429,19 +490,40 @@ $this->debugLog($smaregi_product_class_price);
             //登録日、更新日を登録
             $ProductClass->setCreateDate(new \DateTime());
             $ProductClass->setUpdateDate(new \DateTime());
-            $this->debugLog('testB4');
             
+            $this->debugLog('testB0000000007');
+            
+            
+            $this->debugLog($class_category_id);
+            
+            if($class_category_id != null){
+	            //クラス規格IDをセット
+	            $ClassCategory = $this->classCategoryRepository->find($class_category_id);
+	            if ($ClassCategory) {
+	                $ProductClass->setClassCategory1($ClassCategory);
+	                
+	                //$ProductClass->setVisualname($smart_size);
+	            }
+            }
+            
+            $this->debugLog('testB0000000009');
+            
+            
+            $this->debugLog('testB4');
+            //------DB処理------
             $this->entityManager->flush();//DB反映
             $this->debugLog('testB5');
+            
+            
             //[ProductStock]
             //登録日、更新日を登録
             $ProductStock->setCreateDate(new \DateTime());
             $ProductStock->setUpdateDate(new \DateTime());
             
-           
+            //------DB処理------
             $this->entityManager->persist($ProductClass);
             $this->entityManager->flush();//DB反映
-            
+            //------DB処理------
             $this->entityManager->persist($ProductStock);
             $this->entityManager->flush();//DB反映
             
@@ -460,32 +542,63 @@ $this->debugLog($smaregi_product_class_price);
             $ProductClass->setCode($product_code);
             //更新日を更新
             $ProductClass->setUpdateDate(new \DateTime());
+            
+            
+            
+            
+            
+            
+            
+            if($class_category_id != null){
+	            //クラス規格IDをセット
+	            $ClassCategory = $this->classCategoryRepository->find($class_category_id);
+	            if ($ClassCategory) {
+	                $ProductClass->setClassCategory1($ClassCategory);
+	                
+	                //$ProductClass->setVisualname($smart_size);
+	            }
+            }
+            
+            
+            
+            
+            
+            
             $this->debugLog('testB4');
+            //------DB処理------
             $this->entityManager->persist($ProductClass);//登録実行
             $this->entityManager->flush();//DB反映
             
+            
+            
             //商品更新-----------------------------------------------------
-	        $Product = $ProductClass->getProduct();
-	        if($Product != null){
-	        $this->debugLog('testXX4');
-	        	//[Product]
-	            //商品名を更新
-	            $Product->setName($product_name);
-	            //カテゴリIDを更新
-	            $Product->setSmartCategoryId($smart_category_id);
-	            //更新日を更新
-	            $Product->setUpdateDate(new \DateTime());
-	            $this->entityManager->persist($Product);//登録実行
-                $this->entityManager->flush();//DB反映
-                $this->debugLog('testXX5');
+	        //規格あり商品でない場合
+            if($kikakuParentProduct == null){
+		        $Product = $ProductClass->getProduct();
+		        if($Product != null){
+		        $this->debugLog('testXX4');
+		        	//[Product]
+		            //商品名を更新
+		            $Product->setName($product_name);
+		            //スマレジ用グループコードを更新
+	                $Product->setSmartGroupCode($smart_group_code);
+		            //カテゴリIDを更新
+		            $Product->setSmartCategoryId($smart_category_id);
+		            //更新日を更新
+		            $Product->setUpdateDate(new \DateTime());
+		            //------DB処理------
+		            $this->entityManager->persist($Product);//登録実行
+	                $this->entityManager->flush();//DB反映
+	                $this->debugLog('testXX5');
+		        }
 	        }
+	        
 	        
         }
         
         $this->debugLog('testD');
     	$this->debugLog('end');
     }
-    
     
     public function logProductInfo($request){
 
