@@ -321,9 +321,15 @@ file that was distributed with this source code.
                                             </div>
                                         </div>
                                         <div class="col mb-2">
-                                            <div>
+                                            <div {% if form.class.code %}style="display:none;"{% endif %}>
+                                                
                                                 {{ form_widget(form.class.code) }}
                                                 {{ form_errors(form.class.code) }}
+                                            </div>
+                                            <div {% if form.class.code %}style="display:block;"{% endif %}>
+                                                {% for Class in Product.ProductClasses %}
+                                                        {{ Class.code }}
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>
