@@ -303,10 +303,16 @@ file that was distributed with this source code.
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col mb-2">
+                                    <div class="col mb-2" {% if form.name %}style="display:none;"{% endif %}>
                                         {{ form_widget(form.name) }}
                                         {{ form_errors(form.name) }}
                                     </div>
+                                    
+                                    <div class="col mb-2" {% if form.name %}style="display:block;"{% endif %}>
+                                           {{ Product.name }}
+                                    </div>
+                                    
+                                    
                                 </div>
                                 
                                 
