@@ -2755,8 +2755,7 @@ file that was distributed with this source code.
                             <!-- 金額(サイズのみ) -->
                             
                             <!-- 詳細を指定するボタン -->
-                            <!-- 20220607受注停止 -->
-                            <div class="ec-productRole__btn" style="padding-top:10px;width:100%; display:none;">
+                            <div class="ec-productRole__btn" style="padding-top:10px;width:100%; {% if is_no_sale_category == true %}display:none;{% endif %}">
                                 <button type="button" class="select-options syosai_go_btn">　カートに入れる</button>
                             </div>
                             
@@ -4258,8 +4257,7 @@ file that was distributed with this source code.
 			                            </div>
 			                            
 			                            <!-- カートに入れるボタンを押す用のボタン -->
-			                            <!-- 20220607受注停止 -->
-			                            <div class="ec-productRole__btn" style="padding-top:10px; margin-bottom:0px; width:100%; display:none;">
+			                            <div class="ec-productRole__btn" style="padding-top:10px; margin-bottom:0px; width:100%;">
 			                                <button type="button" class="go-cart cart_input_btn">　カートに入れる</button>
 			                            </div>
 			                            
