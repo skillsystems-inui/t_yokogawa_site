@@ -319,7 +319,11 @@ class SmartRegiOrderController extends AbstractController
 			//ステータスをセット
         	$Order->setOrderStatus($OrderStatus);
         	
-        	
+        	//getRegularCustomerByEmailより後で処理 sic 202205
+			//スマレジの取引IDを登録しておく
+	        $smaregiId = $arrOrder['transactionHeadId'];
+	        $Order->setSmaregiId($smaregiId);
+
         	log_info(
 	            '受注情報登録　取り置きキャンセル　紐づく商品データ取得開始',
 	            [
@@ -397,144 +401,84 @@ class SmartRegiOrderController extends AbstractController
 		        );
 				$Order->setOrderStatus($OrderStatus);
 				
+				
+				//getRegularCustomerByEmailより後で処理 sic 20220530
+				//スマレジの取引IDを登録しておく
+	            $smaregiId = $arrOrder['transactionHeadId'];
+	            $Order->setSmaregiId($smaregiId);
+            
 				//20220317
 				//↓金額・ポイントも更新する
-				$Order->setSubtotal($arrOrder['subtotalForDiscount']);
-		        $Order->setCharge(0);
 
-		        $discount = $arrOrder['subtotalDiscountPrice'] + $arrOrder['couponDiscount'];
-		        $Order->setDiscount($discount);
+		        // Payment type and method sic 20220530 EC購入の場合判定
+		        //EC購入の場合は金額等更新しないように設定（クレジットで購入されているので）
+		        //追加等あった場合は別で購入をしないといけないため　デバイスタイプ（EC購入時のみ入る値）がNullの場合は店舗購入
+		        if($Order->getDeviceType()==null){
 
-		        $Order->setTax($arrOrder['taxInclude']);
-		        $Order->setTotal($arrOrder['total']);
-		        $Order->setPaymentTotal($arrOrder['total']);
+					$Order->setSubtotal($arrOrder['subtotalForDiscount']);
+			        $Order->setCharge(0);
 
-		        $Order->setUsePoint($arrOrder['spendPoint']);
-		        $Order->setAddPoint($arrOrder['newPoint']);
+					//subtotalDiscountPrice+couponDiscount+unitDiscountsubtotal　割引全部まとめる
+			        $discount = $arrOrder['subtotalDiscountPrice'] + $arrOrder['couponDiscount'] + $arrOrder['unitDiscountsubtotal'];
+			        $Order->setDiscount($discount);
 
-		        // Payment type and method
-		        $payment_id = $arrOrder['paymentMethodId1'] ? $arrOrder['paymentMethodId1'] : 0;
-		        if($payment_id != 0){
-		            $Payment = $this->paymentRepository->find($payment_id);
-		            $Order->setPayment($Payment);
+			        $Order->setTax($arrOrder['taxInclude']);
+			        $Order->setTotal($arrOrder['total']);
+			        $Order->setPaymentTotal($arrOrder['total']);
+
+			        $Order->setUsePoint($arrOrder['spendPoint']);
+			        $Order->setAddPoint($arrOrder['newPoint']);
+
+
+			        $payment_id = $arrOrder['paymentMethodId1'] ? $arrOrder['paymentMethodId1'] : 0;
+			       
+			        if($payment_id != 0){
+			            $Payment = $this->paymentRepository->find($payment_id);
+			            $Order->setPayment($Payment);
+				        //skill custom スマレジで購入したデータは支払方法がnullで送られてくるので「スマレジ」ではなく「店舗支払い」とする 
+				        //$method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"スマレジ";
+				        $method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"店舗支払い";
+				        $Order->setPaymentMethod($method);
+				        
+				    }
+				    
+			        //↑金額・ポイントも更新する
+				
+					//20220204
+		            //レシート番号を登録しておく
+		            $transactionUuid = $arrOrder['transactionUuid'];
+		            $Order->setTransactionUuid($transactionUuid);
+
+		            //端末IDを登録しておく
+		            $terminalId = $arrOrder['terminalId'];
+		            $Order->setTerminalId($terminalId);
+
+		            //端末取引IDを登録しておく
+		            $terminalTranId = $arrOrder['terminalTranId'];
+		            $Order->setTerminalTranId($terminalTranId);
+					
+
 		        }
-		        //skill custom スマレジで購入したデータは支払方法がnullで送られてくるので「スマレジ」ではなく「店舗支払い」とする 
-		        //$method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"スマレジ";
-		        $method = $arrOrder['paymentMethodName1'] ? $arrOrder['paymentMethodName1'] :"店舗支払い";
-		        $Order->setPaymentMethod($method);
-		        log_info(
-		            '受注情報　取り置き商品購入判定　金額・ポイントセット',
-		            [
-		                'subtotalForDiscount' => $arrOrder['subtotalForDiscount'],
-		                'discount' => $discount,
-		                'taxInclude' => $arrOrder['taxInclude'],
-		                'total' => $arrOrder['total'],
-		                'PaymentTotal' => $arrOrder['total'],
-		                'UsePoint' => $arrOrder['spendPoint'],
-		                'AddPoint' => $arrOrder['newPoint'],
-		                'method' => $method,
-		            ]
-		        );
-		        //↑金額・ポイントも更新する
-				
-				
-				//20220204
-	            //レシート番号を登録しておく
-	            $transactionUuid = $arrOrder['transactionUuid'];
-	            log_info(
-		            '受注情報　取り置き商品購入判定　レシート番号セット',
-		            [
-		                'transactionUuid' => $transactionUuid,
-		            ]
-		        );
-	            $Order->setTransactionUuid($transactionUuid);
-	            //端末IDを登録しておく
-	            $terminalId = $arrOrder['terminalId'];
-	            log_info(
-		            '受注情報　取り置き商品購入判定　端末IDセット',
-		            [
-		                'terminalId' => $terminalId,
-		            ]
-		        );
-	            $Order->setTerminalId($terminalId);
-	            //端末取引IDを登録しておく
-	            $terminalTranId = $arrOrder['terminalTranId'];
-	            log_info(
-		            '受注情報　取り置き商品購入判定　端末取引IDセット',
-		            [
-		                'terminalTranId' => $terminalTranId,
-		            ]
-		        );
-	            $Order->setTerminalTranId($terminalTranId);
-				
-				
-				$OrderItems = $this->orderItemRepository->findBy(['Order' => $Order]);
+		        
+		        $OrderItems = $this->orderItemRepository->findBy(['Order' => $Order]);
 	            foreach ($OrderItems as $OrderItem) {
-	            
-		            log_info(
-			            '受注情報登録　取り置き商品購入判定　紐づく商品データ取得して削除実行',
-			            [
-			                'OrderItem' => $OrderItem
-			            ]
-			        );
 	            
 	                $Order->removeOrderItem($OrderItem);
 	                $this->entityManager->remove($OrderItem);
 	                $this->entityManager->flush($OrderItem);
 	                
-	                log_info(
-			            '受注情報登録　取り置き商品購入判定　紐づく商品データ取得して削除完了',
-			            [
-			                'Order' => $Order
-			            ]
-			        );
 	            }
 				
 				
         	}else{
         		$torioki_orderId = $arrOrder['transactionHeadId'];
         		$TargetOrder = $this->orderRepository->getRegularCustomerByEmail($torioki_orderId);
-        		log_info(
-		            '受注情報　取り置き商品購入判定　対象の取引IDが指定されていないため受注情報を返すだけ',
-		            [
-		                'torioki_orderId' => $torioki_orderId,
-		                'TargetOrder' => $TargetOrder,
-		            ]
-		        );
+
         		$Order = $TargetOrder;
         	}
         	
-        	log_info(
-	            '受注情報登録　取り置き商品購入判定　紐づく商品データ取得開始',
-	            [
-	                'Order' => $Order
-	            ]
-	        );
-        	
-        	log_info(
-	            '受注情報登録　取り置き商品購入判定　紐づく商品データ取得終了',
-	            [
-	                'Order' => $Order
-	            ]
-	        );
-        	
-        	
-        	log_info(
-	            '受注情報登録終了　取り置き商品購入判定',
-	            [
-	                'Order' => $Order
-	            ]
-	        );
-        	
         	return $Order;
         }else{
-
-	        log_info(
-		            '受注情報　取り置きの場合以外　登録モード',
-		            [
-		                '_Order' => $_Order,
-		            ]
-		        );
         
         	//対象の取引IDが指定されていない場合、登録モード
         	$Order = $_Order;
@@ -590,7 +534,13 @@ class SmartRegiOrderController extends AbstractController
             //端末取引IDを登録しておく
             $terminalTranId = $arrOrder['terminalTranId'];
             $Order->setTerminalTranId($terminalTranId);
-            
+            //受注店舗を登録しておく sic 0606
+            $storeId = $arrOrder['storeId'];
+            $Order->setStoreId($storeId);
+            //デポジットを登録しておく sic 0606
+            $deposit = $arrOrder['deposit'];
+            $Order->setdeposit($deposit);
+
             //メモをセット
             $Order->setNote($arrOrder['memo']);
             
@@ -672,6 +622,12 @@ class SmartRegiOrderController extends AbstractController
             //端末取引IDを登録しておく
             $terminalTranId = $arrOrder['terminalTranId'];
             $Order->setTerminalTranId($terminalTranId);
+            //受注店舗を登録しておく sic 0606
+            $storeId = $arrOrder['storeId'];
+            $Order->setStoreId($storeId);
+            //デポジットを登録しておく sic 0606
+            $deposit = $arrOrder['deposit'];
+            $Order->setdeposit($deposit);
             
             //メモをセット
             $Order->setNote($arrOrder['memo']);
@@ -738,8 +694,8 @@ class SmartRegiOrderController extends AbstractController
 
         $Order->setSubtotal($arrOrder['subtotalForDiscount']);
         $Order->setCharge(0);
-
-        $discount = $arrOrder['subtotalDiscountPrice'] + $arrOrder['couponDiscount'];
+		//subtotalDiscountPrice+couponDiscount+unitDiscountsubtotal　割引全部まとめる
+        $discount = $arrOrder['subtotalDiscountPrice'] + $arrOrder['couponDiscount'] + $arrOrder['unitDiscountsubtotal'];
         $Order->setDiscount($discount);
 
         $Order->setTax($arrOrder['taxInclude']);
@@ -777,11 +733,20 @@ class SmartRegiOrderController extends AbstractController
 
         //----- 取り置き以外は発送済みにする -----
         $OrderStatus = $this->orderStatusRepository->find(OrderStatus::DELIVERED);
+    	//EC発送 0 EC取り置き 1 店舗通常 2 店舗取り置き 3 店舗発送 4
+        $buyType = 2;
+
         
         //〇取り置きの場合
         if($arrOrder['transactionHeadDivision'] == 10){
         	$OrderStatus = $this->orderStatusRepository->find(OrderStatus::KEEPED);
+        	
+        	//受注店舗を登録しておく sic 0606
+        	//EC発送 0 EC取り置き 1 店舗通常 2 店舗取り置き 3 店舗発送 4
+            $buyType = 3;
         }
+        $Order->setBuyType($buyType);
+
         
         //ステータスをセット
         $Order->setOrderStatus($OrderStatus);
@@ -882,8 +847,10 @@ class SmartRegiOrderController extends AbstractController
                 $TaxRuleVal = $arrOrderItem['taxRate'];
                 $OrderItem->setTaxRate($TaxRuleVal);
                 $OrderItem->setTax($arrOrderItem['taxExcludeProportional']);                           
-                $OrderItem->setPrice($ProductClass->getPrice02());
-
+                
+                //$OrderItem->setPrice($ProductClass->getPrice02());
+                $OrderItem->setPrice($arrOrderItem['price']);
+                
                 $OrderItemType = $this->orderItemTypeRepository->find(OrderItemType::PRODUCT);
                 $OrderItem->setOrderItemType($OrderItemType);
                 
@@ -927,6 +894,9 @@ class SmartRegiOrderController extends AbstractController
             $OrderItem->setProductName($arrOrderItem['productName']);
             //20220414 プロダクトコード追加
             $OrderItem->setProductCode($arrOrderItem['productCode']);
+            
+            //20220610 sic 金額をスマレジからのデータで上書き　if分のTrueで対応
+            //$OrderItem->setPrice($arrOrderItem['price']);
             
             $OrderItem->setShipping($Order->getShippings()[0]);
             $OrderItem->setOrder($Order);
