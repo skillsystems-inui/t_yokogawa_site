@@ -2755,8 +2755,12 @@ file that was distributed with this source code.
                             <!-- 金額(サイズのみ) -->
                             
                             <!-- 詳細を指定するボタン -->
-                            <!-- 20220607受注停止 -->
-                            <div class="ec-productRole__btn" style="padding-top:10px;width:100%; display:none;">
+                            <!-- 20220607受注停止
+                            <div class="ec-productRole__btn" style="padding-top:10px;width:100%; {% if app.user.customer_code == '41990' or app.user.customer_code == '99994' %}display:block;{% else %}display:none;{% endif %}">
+                             -->
+                             
+                            <!-- ※受注停止前-->
+                            <div class="ec-productRole__btn" style="padding-top:10px;width:100%; {% if is_no_sale_category == true %}display:none;{% endif %}">
                                 <button type="button" class="select-options syosai_go_btn">　カートに入れる</button>
                             </div>
                             
