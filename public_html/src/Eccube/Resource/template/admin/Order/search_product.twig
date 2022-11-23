@@ -20,70 +20,45 @@ file that was distributed with this source code.
     function fnSetClassCategory2(select, product_id) {
         // 規格1の要素を取得
         var $sele1 = $(select);
-        // 規格2の要素を取得
-        var $sele2 = $sele1.parents(".align-middle").find('select[name=classcategory_id2]');
-
         // 規格1の選択肢
         var classcat_id1 = $sele1.val() ? $sele1.val() : '';
-
-        // 規格2がある場合は選択肢を書き換える
-        if ($sele2 && $sele2.length) {
-            // 規格2の選択肢をクリア
-            $sele2.children().remove();
-            var classcat2 = productsClassCategories[product_id][classcat_id1];
-
-            // 規格2の要素を設定
-            for (var key in classcat2) {
-                if (classcat2.hasOwnProperty(key)) {
-                    var id = classcat2[key].classcategory_id2;
-                    var name = classcat2[key].name;
-                    var option = $('<option />').val(id ? id : '').text(name);
-                    $sele2.append(option);
-                }
-            }
-        }
     }
 
     // 受注明細行を追加する.
     function fnAddOrderItem($row, product_id, type, product_name) {
+        
         // 規格1の要素を取得
-        var $sele1 = $row.find('select[name=classcategory_id1]');
-        // 規格2の要素を取得
-        var $sele2 = $row.find('select[name=classcategory_id2]');
+        let eleCat1 = document.getElementsByName('classcategory_id1');
+		let lenCat1 = eleCat1.length;
+		let selCat1 = '';
+        for (let i = 0; i < lenCat1; i++){
+		    if (eleCat1.item(i).checked){
+		        selCat1 = eleCat1.item(i).value;
+		    }
+		}
 
         var product_class_id = null;
         var price = 0;
         var quantity = 1;
 
+        // 規格が登録されている商品の場合
+        if (selCat1 != '') {
+            var class_category_id1 = selCat1;
+            if (class_category_id1 == '__unselected') {
+                alert('{{ 'admin.product.unselected_class'|trans }}');
+                return;
+            }
+            
+            var product = productsClassCategories[product_id][class_category_id1]['#'];
+
+            product_class_id = product['product_class_id'];
+
+            price = product['price02'];
+        }else{
         // 規格なし商品の場合
-        if (!$sele1.length && !$sele2.length) {
             var product = productsClassCategories[product_id]['__unselected2']['#'];
             product_class_id = product['product_class_id'];
             price = product['price02'];
-            // 規格が登録されている商品の場合
-        } else if ($sele1.length) {
-            if ($sele2.length) {
-                var class_category_id1 = $sele1.val();
-                var class_cateogry_id2 = $sele2.val();
-                if (class_category_id1 == '__unselected' || !class_cateogry_id2) {
-                    alert('{{'admin.product.unselected_class'|trans}}');
-                    return;
-                }
-                var product = productsClassCategories[product_id][class_category_id1]['#' + class_cateogry_id2];
-
-                product_class_id = product['product_class_id'];
-                price = product['price02'];
-            } else {
-                var class_category_id1 = $sele1.val();
-                if (class_category_id1 == '__unselected') {
-                    alert('{{ 'admin.product.unselected_class'|trans }}');
-                    return;
-                }
-                var product = productsClassCategories[product_id][class_category_id1]['#'];
-
-                product_class_id = product['product_class_id'];
-                price = product['price02'];
-            }
         }
 
         var prototype = $collectionHolder.data('prototype');
@@ -165,14 +140,7 @@ file that was distributed with this source code.
                             </div>
                         </div>
                     {% endif %}
-                    {% if form.classcategory_id2 is defined %}
-                        <div class="row">
-                            <div class="col-4 pr-0"><span>{{ form_label(form.classcategory_id2) }}</span></div>
-                            <div class="col-8 text-left pl-0">
-                                {{ form_widget(form.classcategory_id2, {'id': ''}) }}
-                            </div>
-                        </div>
-                    {% endif %}
+                    
                 </td>
                 <td class="align-middle pr-3 text-right">
                     <button type="button" class="btn btn-ec-actionIcon" onclick="fnAddOrderItem($(this).parent().parent(), {{ Product.id }}, {{ constant('Eccube\\Entity\\Master\\OrderItemType::PRODUCT') }}, '{{ Product.name|escape('js') }}')" name="mode" value="modal">
