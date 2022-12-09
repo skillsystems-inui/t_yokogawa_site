@@ -390,7 +390,10 @@ class ProductClassController extends AbstractController
             'ClassCategory1' => null,
             'ClassCategory2' => null,
         ]);
-        $DefaultProductClass->setVisible(false);
+        //20221209 デフォルト規格がnullじゃなければ実行する
+        if($DefaultProductClass != null){
+        	$DefaultProductClass->setVisible(false);
+        }
 
         $this->entityManager->flush();
     }
